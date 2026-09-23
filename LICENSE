@@ -1,0 +1,63 @@
+================================================================================
+ARJUN AGRAWAL · IB DP ECONOMICS
+Two licences apply to this repository. Please read both.
+================================================================================
+
+1. SOURCE CODE — MIT Licence
+--------------------------------------------------------------------------------
+The software in this repository — the HTML structure, CSS, JavaScript, the
+diagram-rendering engine, the diagnostic logic, the state and storage code, and
+the build and deployment configuration — is released under the MIT Licence.
+
+MIT Licence
+
+Copyright (c) 2026 Arjun Agrawal
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+2. EDUCATIONAL CONTENT AND BRAND — All rights reserved
+--------------------------------------------------------------------------------
+The MIT Licence above covers the code only. It does NOT cover, and no licence is
+granted for, any of the following, all of which remain the exclusive property of
+Arjun Agrawal:
+
+  · the Arjun Agrawal name, logo, monogram, wordmark and visual identity;
+  · the photograph of Arjun Agrawal;
+  · all written educational content, including concept explanations, mechanisms,
+    chains, examiner notes, misconception diagnoses, evaluation dimensions,
+    exemplar answers, teaching frames and the Arjun Method;
+  · all teacher-written practice questions, model chains, scaffolds, data sets
+    and worked examples;
+  · the design of the diagrams as annotated teaching artefacts;
+  · all copy on the About and Tutorials pages.
+
+These materials may not be copied, redistributed, adapted, republished, sold or
+used to train machine-learning systems without prior written permission.
+
+Teachers and students are warmly welcome to USE this site for learning and in
+the classroom, and to link to it. That is what it is for. Republishing the
+content as your own, or repackaging it commercially, is not permitted.
+
+For permissions, contact arjun1agr@gmail.com
+
+3. Independence
+--------------------------------------------------------------------------------
+This is an independent educational resource created by Arjun Agrawal. It is not
+affiliated with, endorsed by, or produced by the International Baccalaureate
+Organization. "International Baccalaureate", "IB" and "Diploma Programme" are
+registered trademarks of the International Baccalaureate Organization.

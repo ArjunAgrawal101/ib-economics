@@ -1,0 +1,29 @@
+{
+  "name": "Arjun Agrawal · IB DP Economics",
+  "short_name": "IB DP Economics",
+  "description": "A learning environment for IB Diploma Programme Economics. Learn the concepts, see the model, build the chain, stress-test the argument, make the judgement.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "any",
+  "background_color": "#0C2340",
+  "theme_color": "#0C2340",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education"],
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-256.png", "sizes": "256x256", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-384.png", "sizes": "384x384", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Mind maps", "short_name": "Mind maps", "url": "./#mind", "description": "Open the mind map library" },
+    { "name": "Five-minute session", "short_name": "5 minutes", "url": "./#session", "description": "Start a short timed session" },
+    { "name": "Video library", "short_name": "Video", "url": "./#video", "description": "Open the curated video library" }
+  ]
+}

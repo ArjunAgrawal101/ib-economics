@@ -1,0 +1,25 @@
+# macOS / Windows / Linux desktop clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+*~
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Node (not required to run this site, but ignored if you ever add tooling)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Build and temp output
+dist/
+build/
+tmp/
+*.log
+
+# Local student data exports (never commit a student's progress file)
+*progress*.json
