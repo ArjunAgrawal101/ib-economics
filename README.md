@@ -118,7 +118,7 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   required, and neither can leave a gap. Both also travel inside `index.html`, as JSON held in
   function bodies the engine skips until they are called. If the copy in `assets/data` loads, the
   bundled copy is never read; if it does not, the platform adopts the bundled copy and nothing on
-  the screen changes. A single copied `index.html` runs the full 1,644 checks with nothing failing
+  the screen changes. A single copied `index.html` runs the full 1,659 checks with nothing failing
   and has all 203 cases, all 212 analysed questions and all ten carousels.
 - **Diagram Engine 2.0.** Every quantitative diagram is generated from a declared model:
   equations, parameters, an equilibrium solver, then curves plotted from those same equations.
@@ -140,9 +140,18 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   installable and genuinely usable without a connection once it has been opened, with icons
   generated from the supplied logo. Registration happens only on a secure origin, after load, and
   nothing external is cached or claimed to work offline.
+- **Every page has an address.** Moving between sections, tabs and items updates the address
+  bar (`#/world`, `#/lab/diagram-atlas/<diagram>`, `#/learn/concept-spine/<concept>`), so the
+  browser's Back and Forward buttons move through the platform rather than out of it, a refresh
+  keeps the reader where they were, and a teacher can bookmark or send a link to one page. The
+  address is a hash, so it works from a `file://` path and from a subdirectory with no server
+  rewrite rules; the short form the install shortcuts use (`#mind`, `#session`, `#video`) works
+  too. The router writes nothing while the self-tests run, leaves assignment links (`#assign=…`)
+  untouched and stores nothing. A reload, a Back step into the platform or a deep link skips the
+  five-second opening sequence; a fresh visit still plays it.
 - A command palette opens on `/` or `Ctrl`/`Cmd` + `K` and reaches every section, every printable and
   every indexed item of content.
-- The build includes a self-test of **1,644 checks** reported across every area of the build: startup, printing,
+- The build includes a self-test of **1,659 checks** reported across every area of the build: startup, printing,
   navigation, mobile, desktop, resources, Google Drive, IB Economics, TOK, economics theory, calculations,
   diagrams, mindmap integrity, topic architecture, assessment, IA, student features, teacher features,
   progress, storage, export and import, contact links, tutorials, branding, accessibility, performance,
@@ -909,6 +918,20 @@ Sign in to GitHub → **New repository** → name it `arjun-agrawal-ib-economics
 On the empty repository page choose **uploading an existing file**, then drag in the contents
 of this folder: `index.html`, `README.md`, `LICENSE`, `.gitignore`, `404.html`, `favicon.svg`
 and the `assets` folder. Commit directly to the `main` branch.
+
+> **Keep the folders.** Drag the `assets` folder itself, not the files inside it. If the files
+> arrive flattened at the top level, the page still opens, but the ten carousel PDFs, the app
+> icons, the offline cache and the external Exam DNA and real-world corpora all miss, because the
+> page asks for them at `assets/carousels/`, `assets/icons/` and `assets/data/`. The expected
+> layout is:
+>
+> ```text
+> index.html  404.html  favicon.svg  manifest.webmanifest  service-worker.js  robots.txt
+> assets/data/        exam-dna.js, real-world.js
+> assets/icons/       app icons and apple-touch-icon.png
+> assets/carousels/   economics-in-60-seconds-001.pdf … 010.pdf
+> assets/brand/       source logo, monogram and portrait files (the page embeds its own copies)
+> ```
 
 > The `.github` folder is hidden on macOS. In Finder press `Cmd + Shift + .` to show hidden
 > files before dragging, or skip it, see step 3b.

@@ -6,6 +6,17 @@
 <title>Arjun Agrawal · IB DP Economics: Think like an economist</title>
 <meta name="description" content="A learning environment for IB Diploma Programme Economics by Arjun Agrawal, IB DP Facilitator. Learn the concepts, see the model, build the chain, stress-test the argument, make the judgement.">
 <meta name="author" content="Arjun Agrawal">
+<!-- How a shared link previews in messaging apps and social feeds. No image is
+     declared: a preview image needs an absolute URL, and that depends on the
+     domain the site is published under. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Arjun Agrawal · IB DP Economics">
+<meta property="og:title" content="Arjun Agrawal · IB DP Economics: Think like an economist">
+<meta property="og:description" content="A free learning environment for IB Diploma Programme Economics. Learn the concepts, see the model, build the chain, stress-test the argument, make the judgement.">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Arjun Agrawal · IB DP Economics: Think like an economist">
+<meta name="twitter:description" content="A free learning environment for IB Diploma Programme Economics. Learn the concepts, see the model, build the chain, stress-test the argument, make the judgement.">
 <meta name="theme-color" content="#16181C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%2316181C%22/%3E%3Cpath%20d%3D%22M12%2050%20L52%2014%22%20stroke%3D%22%237A2436%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M12%2014%20L52%2050%22%20stroke%3D%22%23F8F6F1%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%224.5%22%20fill%3D%22%23F8F6F1%22/%3E%3C/svg%3E">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -1035,9 +1046,32 @@ table.heat th{white-space:nowrap}
   .mmmodes::-webkit-scrollbar{display:none}
   .mmwrap{padding:8px}
   .mmul .mmul{margin-left:8px;padding-left:10px}}
+/* ── refinements · drawer, focus, tab strip ─────────────────────────────
+   A closed drawer waits just beyond the right edge. Its deep shadow used to
+   fall back across the page as a pale band down the right-hand side, and its
+   controls stayed in the keyboard order while out of sight. Once it has slid
+   away it is now hidden outright; it still slides in and out as before. */
+.drawer:not(.on){visibility:hidden;box-shadow:none;
+  transition:transform .32s var(--ez),visibility 0s linear .32s,box-shadow 0s linear .32s}
+/* The main landmark receives focus after a route change so keyboard and
+   screen-reader users continue from the new content; it needs no ring. */
+#main:focus{outline:none}
+/* The mobile menu is a scrolling flex column. Its rows were allowed to shrink
+   to fit the screen height, which squeezed the Home row onto the rule below
+   it; each row now keeps its own height and the column scrolls instead. */
+.drawer.mobnav>*{flex-shrink:0}
+/* A tab strip wider than the screen scrolls sideways. The edge that has more
+   tabs beyond it fades, so the strip reads as continuing rather than ending. */
+.subnav .in.fl{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 40px);mask-image:linear-gradient(90deg,transparent 0,#000 40px)}
+.subnav .in.fr{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent 100%);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent 100%)}
+.subnav .in.fl.fr{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 40px,#000 calc(100% - 40px),transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 40px,#000 calc(100% - 40px),transparent 100%)}
 </style>
 </head>
 <body>
+<noscript><div style="max-width:40em;margin:12vh auto;padding:0 6vw;font:17px/1.6 Georgia,serif;color:#1A1C20">
+ <p style="font:700 12px/1.4 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#7A2436">Arjun Agrawal · IB DP Economics</p>
+ <p style="margin-top:14px">This platform runs entirely in your browser, and JavaScript is turned off. Turn it on for this page and reload: nothing is sent anywhere, and your progress stays on this device.</p>
+</div></noscript>
 <div id="splash" role="status" aria-label="Arjun Agrawal, IB DP Economics. Think like an economist."><div class="sp">
   <!-- PART 3 · the supplied logo already contains the name, so the name is not
        set again in type beneath it. One identity, stated once. -->
@@ -24156,7 +24190,13 @@ function RESPONSIVESUITE(){
    [...document.querySelectorAll("#view table")].every(t=>{
      const p=t.closest(".scrollx");return !!p||t.getBoundingClientRect().right<=vw+1}));
  T("Mobile · diagrams scale to their container rather than overflowing",
-   [...document.querySelectorAll("#view svg")].every(s=>s.getBoundingClientRect().right<=vw+1));
+   [...document.querySelectorAll("#view svg")].every(s=>{
+     if(s.getBoundingClientRect().right<=vw+1)return true;
+     /* a wide map inside a sideways-scrolling frame is panned, not overflowing,
+        which is the same allowance the table check above makes for .scrollx */
+     for(let e=s.parentElement;e&&e.id!=="view";e=e.parentElement)
+      if(/auto|scroll/.test(getComputedStyle(e).overflowX))return true;
+     return false}));
  T("Mobile · diagram plates carry a viewBox so they scale rather than clip",
    [...document.querySelectorAll("#view .plate svg")].every(s=>s.hasAttribute("viewBox")));
  /* the drawer */
@@ -31764,6 +31804,17 @@ function runQA(){
    record("__qa",{chn:100},"qa");const ok=S.sk.chn.v>v0&&S.hist.length>0;S=JSON.parse(b);save();return ok})());
  A("Definitions · every entry has a precise and a loose form",DEFS.every(d=>d.length===5&&d[2].length>d[3].length));
  A("Routing · every section has a renderer",SECTIONS.every(s=>typeof VIEWS[s.v]==="function"));
+ A("Routing · every section, tab and item has an address that reads back to the same place",
+   SECTIONS.every(sc=>(sc.tabs||[null]).every((_,i)=>{
+     const r=routeParse(routeFormat(sc.v,i,"item-1"));
+     return !!r&&r.v===sc.v&&r.t===(sc.v==="home"?0:i)&&r.a===(sc.v==="home"?null:"item-1")})));
+ A("Routing · no two tabs in a section share an address",
+   SECTIONS.every(sc=>{const sl=(sc.tabs||[]).map(routeSlug);return new Set(sl).size===sl.length&&sl.every(Boolean)}));
+ A("Routing · the install shortcuts' short form opens its section",
+   ["mind","session","video"].every(v=>{const r=routeParse("#"+v);return !!r&&r.v===v}));
+ A("Routing · an unknown hash such as the skip link's is ignored, and an assignment link opens home",
+   routeParse("#main")===null&&routeParse("#/nowhere")===null&&routeParse("#assign=abc").v==="home");
+ A("Routing · the address bar is left alone while the self-tests run",routeQuiet()===true);
  A("Brand · tutorials section is routed and priced",(()=>{const h=VIEWS.tutorials();return typeof VIEWS.tutorials==="function"&&/US\$/.test(h)&&/>20</.test(h)&&/90-minute/.test(h)&&!new RegExp("\\u20B9|60[- ]min").test(h)})());
  A("Brand · tutorial CTA uses a real mailto to the supplied address",TUT.mailto.startsWith("mailto:arjun1agr@gmail.com"));
  A("Brand · no fabricated social proof on the tutorials page",(()=>{const h=VIEWS.tutorials();
@@ -32009,6 +32060,132 @@ function runQA(){
  return{total:QA.length,failed:f};
 }
 const SAMPLE=`An indirect tax is a tax on expenditure levied on producers, who may pass part of it on to consumers through a higher price. A demerit good is one that is over-consumed relative to the social optimum because consumption generates negative externalities. Figure 1 shows the market for tobacco. The free market equilibrium is at Pe, Qe where MPB equals MPC. Because consumption imposes external costs, MSB lies below MPB and the social optimum is at Qopt. A specific tax shifts supply vertically upward by the amount of the tax, therefore the price paid by consumers rises from Pe to Pc and quantity falls from Qe towards Qopt, and as a result the welfare loss shown by the shaded triangle is reduced. However, the size of that reduction depends on the price elasticity of demand. Tobacco has low PED because it is addictive, so the tax is absorbed mainly as a higher price rather than a lower quantity, which means government revenue is large while the health objective is met only weakly in the short run. In the United Kingdom, tobacco duty has risen above inflation since 1993 and smoking prevalence in the United Kingdom has continued to fall, but advertising bans operated over the same period, so the decline cannot be attributed to the tax alone. A further limitation is distributional, because lower-income households spend a larger proportion of income on tobacco, so the tax is regressive and an efficiency gain is bought at an equity cost. Compared with regulation, the tax preserves consumer choice. On balance, indirect taxes are more effective at raising revenue than at reducing consumption where demand is inelastic, and are most defensible provided that revenue is directed towards measures that raise elasticity over time.`;
+/* ── the tab strip: keep the current tab in sight, fade the edge that continues ── */
+function subnavEdges(){
+ const c=document.getElementById("subnavin");if(!c)return;
+ const over=c.scrollWidth-c.clientWidth>2;
+ c.classList.toggle("fl",over&&c.scrollLeft>2);
+ c.classList.toggle("fr",over&&c.scrollLeft<c.scrollWidth-c.clientWidth-2);
+}
+function subnavReveal(){
+ const c=document.getElementById("subnavin");if(!c)return;
+ const b=c.querySelector("button.on");
+ if(b&&c.scrollWidth>c.clientWidth){
+  const cr=c.getBoundingClientRect(),br=b.getBoundingClientRect();
+  if(br.left<cr.left+8||br.right>cr.right-8)c.scrollLeft+=(br.left+br.width/2)-(cr.left+cr.width/2);
+ }
+ subnavEdges();
+}
+(function(){
+ const prev=render;
+ render=function(){const r=prev.apply(this,arguments);try{subnavReveal()}catch(e){}return r};
+ const c=document.getElementById("subnavin");
+ if(c)c.addEventListener("scroll",subnavEdges,{passive:true});
+ window.addEventListener("resize",subnavEdges,{passive:true});
+})();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ADDRESS BAR ROUTING
+   Every section, tab and opened item has an address, so the browser's Back
+   and Forward buttons move through the platform rather than out of it, a
+   refresh keeps the reader where they were, and any page can be bookmarked
+   or sent to a student: #/lab/diagram-atlas/<diagram>, #/world, #/learn.
+   The address is a hash, so it works from a file:// path and from a project
+   subdirectory with no server rewrite rules. The older single-word form the
+   install shortcuts use (#mind, #session, #video) is read as well.
+   The router writes nothing while the self-tests or the link audit run, never
+   overwrites an assignment link (#assign=…), and ignores any hash it does not
+   recognise, such as the skip link's #main. It stores nothing.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const ROUTER={last:null,applying:false,deep:false};
+function routeSlug(t){
+ return String(t).toLowerCase().replace(/&/g," and ").replace(/×/g," x ")
+  .normalize("NFKD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+}
+function routeFormat(v,t,a){
+ if(!v||v==="home")return "";
+ const sec=SECTIONS.find(s=>s.v===v);
+ const hasArg=typeof a==="string"&&a!=="";
+ let h="#/"+encodeURIComponent(v);
+ if(t>0||hasArg){
+  const lab=sec&&sec.tabs?sec.tabs[t]:undefined;
+  h+="/"+(lab!==undefined&&routeSlug(lab)?routeSlug(lab):String(t|0));
+ }
+ if(hasArg)h+="/"+encodeURIComponent(a);
+ return h;
+}
+function routeParse(hash){
+ hash=hash||"";
+ if(hash===""||hash==="#"||hash==="#/"||/^#assign=/.test(hash))return {v:"home",t:0,a:null};
+ const dec=x=>{try{return decodeURIComponent(x)}catch(e){return x}};
+ let v,ts="",a=null;
+ const m=/^#\/([^/]+)(?:\/([^/]*))?(?:\/(.+))?$/.exec(hash);
+ if(m){v=dec(m[1]);ts=m[2]||"";a=m[3]!==undefined?dec(m[3]):null}
+ else{const l=/^#([a-z]+)$/.exec(hash);if(!l)return null;v=l[1]}
+ if(v==="home")return {v:"home",t:0,a:null};
+ const sec=SECTIONS.find(s=>s.v===v);
+ if(!sec||typeof VIEWS[v]!=="function")return null;
+ let t=0;
+ if(/^\d+$/.test(ts))t=+ts;
+ else if(ts&&sec.tabs){const i=sec.tabs.findIndex(x=>routeSlug(x)===ts);t=i<0?0:i}
+ if(sec.tabs&&t>=sec.tabs.length&&!/^\d+$/.test(ts))t=0;
+ return {v,t,a:a===""?null:a};
+}
+function routeQuiet(){
+ try{if(QARUNNING||LINKAUDITING)return true}catch(e){return true}
+ try{if(store.sandboxed())return true}catch(e){}
+ return ROUTER.applying;
+}
+/* After a route change the old controls have gone, so focus would fall back to
+   the document. It is moved to the main landmark instead, so a keyboard or
+   screen-reader user continues from the new content rather than the top. A
+   view that has already placed focus somewhere deliberate keeps it. */
+function routeFocus(){
+ const a=document.activeElement;
+ if(a&&a!==document.body&&a.isConnected)return;
+ const m=document.getElementById("main");
+ if(m){if(!m.hasAttribute("tabindex"))m.setAttribute("tabindex","-1");try{m.focus({preventScroll:true})}catch(e){}}
+}
+function routeSync(){
+ if(routeQuiet())return;
+ const h=routeFormat(VIEW,TAB,ARG);
+ if(h===ROUTER.last)return;
+ const first=ROUTER.last===null;
+ ROUTER.last=h;
+ if(first)return;                              /* the boot paint never rewrites the address */
+ if(/^#assign=/.test(location.hash||""))return;   /* an assignment link is kept intact */
+ try{history.pushState(null,"",location.pathname+location.search+h)}catch(e){}
+ routeFocus();
+}
+function routeApply(){
+ if(routeQuiet())return;
+ const r=routeParse(location.hash);
+ if(!r)return;
+ const h=routeFormat(r.v,r.t,r.a);
+ if(h===ROUTER.last&&!/^#assign=/.test(location.hash||""))return;
+ ROUTER.applying=true;
+ try{
+  VIEW=r.v;TAB=r.t;ARG=r.a;
+  try{closeMenu()}catch(e){}try{closeMenuPop()}catch(e){}try{closeDrawer()}catch(e){}
+  render();
+  window.scrollTo({top:0,behavior:"instant"});
+ }finally{ROUTER.applying=false}
+ ROUTER.last=h;
+ routeFocus();
+}
+(function(){
+ const prev=render;
+ render=function(){const r=prev.apply(this,arguments);try{routeSync()}catch(e){}return r};
+ /* A deep link is held until the platform has booted and self-tested exactly
+    as it always has, on the home view, and is opened straight after: some
+    views read values declared later in this file, and the startup checks
+    measure the view they boot on. */
+ const r=routeParse(location.hash);
+ if(r&&r.v!=="home"){ROUTER.pending=r;ROUTER.deep=true}
+ window.addEventListener("popstate",routeApply);
+ window.addEventListener("hashchange",routeApply);
+})();
+
 render();
 /* PARTS 69 to 72 · five seconds exactly, then the overlay leaves the document.
    It is removed rather than hidden, so nothing invisible is left over the page,
@@ -32037,8 +32214,25 @@ function splashEnd(skipped){
  SPLASH_T=setTimeout(()=>splashEnd(false),SPLASH_MS);
 })();
 const _qa=runQA();
+/* The opening sequence is for arriving. A reload, a Back or Forward step into
+   the platform, or a deep link to one page has already arrived, so the overlay
+   leaves as soon as the platform is ready instead of holding for five seconds.
+   Read from the browser's own navigation record: nothing is stored. */
+(function(){
+ let again=false;
+ try{const n=performance.getEntriesByType("navigation")[0];again=!!n&&(n.type==="reload"||n.type==="back_forward")}catch(e){}
+ if((again||ROUTER.deep)&&!SPLASH_DONE)splashEnd(true);
+})();
 PRINTGUARD.booted=true;                 /* printing is permitted only after this */
 if(_qa.failed.length)setTimeout(()=>toast(_qa.failed.length+" internal check(s) failed, see console"),800);
+/* open the page the address asked for, now that everything above exists */
+if(ROUTER.pending){
+ const r=ROUTER.pending;ROUTER.pending=null;
+ ROUTER.applying=true;
+ try{VIEW=r.v;TAB=r.t;ARG=r.a;render()}catch(e){VIEW="home";TAB=0;ARG=null;render()}
+ finally{ROUTER.applying=false}
+ ROUTER.last=routeFormat(VIEW,TAB,ARG);
+}
 </script>
 </body>
 </html>
