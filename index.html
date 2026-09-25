@@ -1218,6 +1218,10 @@ table.heat th{white-space:nowrap}
 /* The main landmark receives focus after a route change so keyboard and
    screen-reader users continue from the new content; it needs no ring. */
 #main:focus{outline:none}
+.cpchips{display:flex;gap:6px;flex-wrap:wrap;padding:10px 18px;border-bottom:1px solid var(--hair);background:var(--chalk)}
+.cpchip{font-family:var(--ui);font-size:12px;font-weight:600;padding:5px 11px;min-height:30px;border:1px solid var(--hair-2);border-radius:999px;background:var(--white);color:var(--tx-2);cursor:pointer}
+.cpchip .mn{color:var(--tx-4);font-size:11px}
+.cpchip.on{background:var(--obs);border-color:var(--obs);color:#fff}.cpchip.on .mn{color:rgba(255,255,255,.7)}
 /* The toast waited just below the viewport at full opacity, so a browser
    whose toolbar collapses (and every full-page capture) showed an empty dark
    box. Hidden now until it has something to say; it still slides in. */
@@ -2099,7 +2103,7 @@ const CHAINS=[
  pool:[
   {o:1,t:"Exports become cheaper in foreign currency terms and imports become more expensive in domestic currency terms.",w:"Correct opening link: the relative price change is the whole mechanism, and it must be stated in both directions."},
   {o:2,t:"Export volumes rise and import volumes fall, provided demand on both sides is sufficiently price elastic.",w:"Correct, and the conditional clause is essential. Without it the chain assumes the answer."},
-  {o:3,t:"If the Marshall-Lerner condition holds (PEDx + PEDm > 1), the value of net exports rises.",w:"Correct: naming the condition converts an assertion into economics."},
+  {o:3,t:"If demand for exports and imports is sufficiently price elastic, the value of net exports rises.",w:"Correct: the condition is about elasticity. At HL, name it as the Marshall-Lerner condition (PEDx + PEDm > 1)."},
   {o:4,t:"Higher net exports raise aggregate demand, supporting output and employment.",w:"Correct: this is the expansionary channel."},
   {o:5,t:"At the same time, dearer imported energy and food raise firms' costs and household prices, generating cost-push inflationary pressure.",w:"Correct, and in this economy this link is not a footnote. It is the reason the net effect is genuinely uncertain."},
   {o:0,t:"The trade balance improves immediately because import prices rise straight away.",w:"Prices change before volumes do, so the balance typically worsens first: the J-curve effect."},
@@ -2115,7 +2119,7 @@ const CHAINS=[
   {t:"Depreciation is good for the economy because exports become more competitive.",g:"weak",w:"Takes one channel and ignores the one the stem was written to highlight."},
   {t:"Depreciation will worsen inflation, so it is harmful.",g:"weak",w:"The mirror-image error: one channel again, opposite sign."},
   {t:"Depreciation supports net exports and output but raises imported input costs, so the net effect depends on elasticities.",g:"mid",w:"Balanced and correct, but it stops one step short of applying the balance to this economy."},
-  {t:"For an economy this dependent on inelastic imported energy and food, the cost-push effect is likely to dominate in the short run even if the Marshall-Lerner condition holds; the depreciation is more likely to be net beneficial over a horizon long enough for export capacity to respond.",g:"strong",w:"Applies the specific context, distinguishes short from long run, and reaches a conditional verdict rather than a verdict plus caveats."}]},
+  {t:"For an economy this dependent on inelastic imported energy and food, the cost-push effect is likely to dominate in the short run even if export and import demand are elastic enough for net exports to rise; the depreciation is more likely to be net beneficial over a horizon long enough for export capacity to respond.",g:"strong",w:"Applies the specific context, distinguishes short from long run, and reaches a conditional verdict rather than a verdict plus caveats."}]},
 
 {id:"ch4",sub:"2.8",lvl:"SL",t:"A factory pollutes a river",kc:"Efficiency",sk:["chn","dge","evl","jud"],
  shock:"A chemical plant discharges effluent into a river used downstream for fishing and irrigation. The firm's costs reflect only its own inputs. The government is considering a per-unit tax on output.",
@@ -2148,7 +2152,7 @@ const CHAINS=[
   {o:3,t:"The multiplier is 1 ÷ MPW = 1 ÷ 0.50 = 2, so the eventual rise in real GDP is approximately $40bn.",w:"Correct: show the substitution and the arithmetic. An unworked multiplier claim earns no AO4 credit."},
   {o:4,t:"Because the economy has substantial spare capacity, most of the increase in demand is met by higher output rather than higher prices.",w:"Correct: this is the condition that makes the output result credible, and it comes from the stem."},
   {o:5,t:"Employment rises and cyclical unemployment falls, though the government's budget position deteriorates in the short run.",w:"Correct closing link: the fiscal cost must appear in the chain or the evaluation will have nothing to weigh."},
-  {o:0,t:"The multiplier is 1 ÷ MPC, so with MPC = 0.5 the multiplier is 2 by coincidence.",w:"The formula 1 ÷ (1 − MPC) is the closed-economy version. In an open economy with taxation the reliable route is 1 ÷ MPW. The coincidence here hides the error."},
+  {o:0,t:"The multiplier is 1 ÷ MPC, so with MPC = 0.5 the multiplier is 2 by coincidence.",w:"The formula is 1 ÷ (1 − MPC), not 1 ÷ MPC. Here MPC = 1 − 0.50 = 0.50, so the wrong formula happens to give 2; with any other MPC it would not. 1 ÷ (1 − MPC) and 1 ÷ (MPS + MPT + MPM) are the same multiplier."},
   {o:0,t:"Because government spending rises, aggregate supply shifts right immediately.",w:"Infrastructure may raise capacity eventually, but not immediately. Treating a demand-side injection as an instant supply-side effect skips years."},
   {o:0,t:"Higher government borrowing raises interest rates, so the policy has no effect at all.",w:"Crowding out is a legitimate evaluation point, but 'no effect at all' overstates it, and it is least likely to bind in a deep recession."}],
  cond:{q:"Which condition would most reduce the size of the multiplier effect in this economy?",
@@ -2276,7 +2280,7 @@ const CHAINS=[
   {t:"FDI is beneficial because it creates jobs and raises exports.",g:"weak",w:"Lists benefits without asking who captures them or whether they persist."},
   {t:"Multinationals exploit developing countries, so FDI should be restricted.",g:"weak",w:"A position asserted rather than derived, and it discards the savings and foreign exchange arguments without engaging them."},
   {t:"FDI raises employment and export earnings, but the retained benefit depends on profit repatriation and the tax arrangements agreed.",g:"mid",w:"Correctly distinguishes gross gains from retained gains: a genuinely evaluative move."},
-  {t:"The immediate gains in employment, exports and tax revenue are real, but whether they amount to development rather than output depends on linkage: if the facility sources locally and transfers skills, domestic productive capability rises durably; if it operates as an enclave, GDP rises while GNI and capability do not, which is why the terms negotiated matter as much as the investment itself.",g:"strong",w:"This is the target. It separates growth from development using the specific mechanism, and identifies the policy variable that decides which outcome occurs."}]}
+  {t:"The immediate gains in employment, exports and tax revenue are real, but whether they amount to development rather than output depends on linkage: if the facility sources locally and transfers skills, domestic productive capability rises durably; if it operates as an enclave, GDP rises by much more than GNI, because the profits are repatriated, and domestic capability barely changes, which is why the terms negotiated matter as much as the investment itself.",g:"strong",w:"This is the target. It separates growth from development using the specific mechanism, and identifies the policy variable that decides which outcome occurs."}]}
 ];
 /* ============================================================
    LAYER 4: MISCONCEPTION LAB
@@ -2465,7 +2469,7 @@ const DEFS=[
 ["Structural unemployment","3.3","Unemployment arising from a mismatch between the skills or location of the unemployed and the requirements of available jobs.","Long-term unemployment.","The mismatch, not the duration, is the definition."],
 ["Cyclical unemployment","3.3","Unemployment caused by a fall in aggregate demand during a downturn in the business cycle.","Recession unemployment.","Also called demand-deficient unemployment."],
 ["Natural rate of unemployment","3.3","The rate of unemployment that exists when the labour market is in equilibrium, comprising structural, frictional and seasonal unemployment.","Normal unemployment.","It excludes cyclical unemployment by construction."],
-["Economic growth","3.3","An increase in real output over time, shown by an outward movement of the production possibilities curve or a rightward shift in LRAS.","GDP going up.","Distinguish actual growth from an increase in potential output."],
+["Economic growth","3.3","An increase in real output (real GDP) over time. An increase in potential output is shown by an outward shift of the production possibilities curve or a rightward shift of LRAS.","GDP going up.","Distinguish actual growth from an increase in potential output."],
 ["Gini coefficient","3.4","A summary measure of income inequality derived from the Lorenz curve, ranging from 0 (perfect equality) to 1 (perfect inequality).","Inequality measure.","State the range and its endpoints."],
 ["Progressive tax","3.4","A tax for which the average rate of tax rises as income rises.","Rich pay more.","Average rate, not the amount paid: that would also be true of a proportional tax."],
 ["Monetary policy","3.5","Central bank actions affecting interest rates and the money supply in order to influence aggregate demand and achieve macroeconomic objectives.","Interest rate policy.","Name the transmission target: aggregate demand."],
@@ -2504,7 +2508,7 @@ const DATA=[
  steps:["%ΔQd = (450 − 500) ÷ 500 × 100 = −10%","%ΔP = (24 − 20) ÷ 20 × 100 = +20%","PED = −10 ÷ 20 = −0.5 (magnitude 0.5, inelastic)","TR before = 20 × 500 = $10,000k; TR after = 24 × 450 = $10,800k: revenue rises"],
  ans:"0.5",tol:0.05,
  note:"Because demand is inelastic, the proportionate price rise exceeds the proportionate quantity fall, so total revenue rises. Report the magnitude and state the sign convention you are using."},
-{id:"d3",sub:"3.6",sk:"qnt",t:"The multiplier",
+{id:"d3",sub:"3.6",lvl:"HL",sk:"qnt",t:"The multiplier",
  tbl:[["Marginal propensity","Value"],["Save (MPS)","0.20"],["Tax (MPT)","0.25"],["Import (MPM)","0.05"]],
  q:"Calculate the multiplier and the change in real GDP from a $12bn injection.",
  steps:["MPW = 0.20 + 0.25 + 0.05 = 0.50","k = 1 ÷ 0.50 = 2","ΔY = 2 × $12bn = $24bn"],
@@ -2513,7 +2517,7 @@ const DATA=[
 {id:"d4",sub:"3.3",sk:"evd",t:"Reading an inflation series",
  tbl:[["Year","CPI"],["2021","100.0"],["2022","112.0"],["2023","117.6"]],
  q:"Calculate the inflation rate in 2023 and describe what happened to prices.",
- steps:["Inflation 2022 = (112.0 − 100.0) ÷ 100.0 × 100 = 12.0%","Inflation 2023 = (117.6 − 112.0) ÷ 112.0 × 100 = 5.0%","Prices rose in both years; the rate of increase halved: disinflation, not deflation"],
+ steps:["Inflation 2022 = (112.0 − 100.0) ÷ 100.0 × 100 = 12.0%","Inflation 2023 = (117.6 − 112.0) ÷ 112.0 × 100 = 5.0%","Prices rose in both years; the rate of increase fell by more than half: disinflation, not deflation"],
  ans:"5",tol:0.15,
  note:"Write the discriminating sentence explicitly: the price level continued to rise, but more slowly."},
 {id:"d5",sub:"4.6",sk:"evd",t:"Current account balance",
@@ -2534,7 +2538,7 @@ const DATA=[
  steps:["Richest 20% share in A = 53%","Poorest 20% share in A = 3%","Difference = 50 percentage points (in B it is 34)"],
  ans:"50",tol:0.5,
  note:"Quantified comparison of specific quintiles is what earns AO4 credit. Country A's Lorenz curve lies further from the line of equality, so its Gini coefficient is higher."},
-{id:"d8",sub:"2.7",sk:"qnt",t:"Tax revenue and incidence",
+{id:"d8",sub:"2.7",lvl:"HL",sk:"qnt",t:"Tax revenue and incidence",
  tbl:[["","Free market","After $3 specific tax"],["Price paid by consumers ($)","20","22"],["Quantity (000)","400","340"]],
  q:"Calculate total government revenue from the tax, in thousands of dollars.",
  steps:["Revenue = tax per unit × quantity traded after tax","= $3 × 340,000 = $1,020,000, i.e. $1,020k","Consumer burden = $2 of the $3 per unit; producer burden = $1"],
@@ -2560,7 +2564,7 @@ const QB=[
  a:[{ct:"Explain",s:"Using a diagram, explain how a negative production externality leads to a misallocation of resources.",dg:"MSC above MPC; welfare loss triangle",cp:["MSC","MPC","social optimum","welfare loss"],gd:"The MSC = MSB condition must be stated, not implied. The welfare loss must be identified as loss from over-production."},
     {ct:"Explain",s:"Explain why common pool resources tend to be over-used.",dg:"Optional: MSC/MPC on resource extraction",cp:["rivalry","non-excludability","sustainability"],gd:"Both characteristics must be tested against the resource. Reward reference to intergenerational cost."}],
  b:[{ct:"Evaluate",s:"Evaluate the effectiveness of carbon taxes in reducing the welfare loss associated with pollution.",cp:["carbon tax","MEC","elasticity","international coordination"],gd:"Expect the valuation problem (setting the tax equal to MEC), elasticity of demand for energy, and leakage across borders. A real-world scheme should be developed, not merely named."},
-    {ct:"Discuss",s:"Discuss whether tradable permits are preferable to direct regulation in addressing negative externalities.",cp:["tradable permits","regulation","abatement cost","certainty"],gd:"The comparison turns on certainty of quantity versus flexibility of cost. Reward candidates who identify who bears the abatement cost under each."}]},
+    {ct:"Discuss",s:"Discuss whether tradable permits are preferable to direct regulation in addressing negative externalities.",cp:["tradable permits","regulation","abatement cost","certainty"],gd:"Both can fix the quantity of emissions; the comparison turns on cost-effectiveness, since permits let abatement happen where it is cheapest, against the source-by-source certainty and simpler enforcement of regulation. Reward candidates who identify who bears the abatement cost under each."}]},
 {sub:"3.2",n:"AD and AS",lvl:"SL",
  a:[{ct:"Explain",s:"Using a diagram, explain how an increase in aggregate demand affects the price level and real output in an economy with substantial spare capacity.",dg:"AD-AS with Keynesian AS or elastic SRAS range",cp:["AD","spare capacity","output gap"],gd:"The AS model chosen must be appropriate to the stated capacity condition and should be justified in a clause."},
     {ct:"Explain",s:"Explain two factors that could cause a leftward shift of the short-run aggregate supply curve.",dg:"SRAS shift",cp:["SRAS","input costs","wages","indirect taxes"],gd:"Two distinct causes, each with a transmission step. Listing without mechanism is capped at the description band."}],
@@ -2569,13 +2573,13 @@ const QB=[
 {sub:"3.5",n:"Monetary policy",lvl:"SL",
  a:[{ct:"Explain",s:"Explain how a central bank uses interest rates to reduce demand-pull inflation.",dg:"AD-AS with leftward AD shift",cp:["policy rate","transmission","AD","demand-pull"],gd:"Reward a complete transmission chain including the exchange rate channel. Chains that jump from 'rates rise' to 'inflation falls' are capped."},
     {ct:"Explain",s:"Explain two limitations of monetary policy in achieving macroeconomic objectives.",dg:null,cp:["lags","liquidity trap","confidence","zero lower bound"],gd:"Two developed limitations, each explained as a mechanism rather than asserted."}],
- b:[{ct:"Evaluate",s:"Evaluate the effectiveness of monetary policy compared with fiscal policy in closing a deflationary gap.",cp:["monetary policy","fiscal policy","multiplier","lags","crowding out"],gd:"Sustained comparison is required. Expect the zero lower bound and confidence constraints on monetary policy, weighed against implementation lags and debt effects on fiscal policy."},
+ b:[{ct:"Evaluate",s:"Evaluate the effectiveness of monetary policy compared with fiscal policy in closing a deflationary gap.",cp:["monetary policy","fiscal policy","spare capacity","lags","crowding out"],gd:"Sustained comparison is required. Expect the zero lower bound and confidence constraints on monetary policy, weighed against implementation lags and debt effects on fiscal policy."},
     {ct:"To what extent",s:"To what extent is central bank independence necessary for price stability?",cp:["credibility","expectations","time inconsistency","accountability"],gd:"Reward discussion of expectations anchoring. The democratic accountability counterargument should appear."}]},
 {sub:"3.6",n:"Fiscal policy",lvl:"SL",
  a:[{ct:"Explain",s:"Explain how automatic stabilisers moderate fluctuations in economic activity.",dg:"Business cycle diagram (optional)",cp:["automatic stabilisers","progressive tax","transfers"],gd:"Both directions of the cycle should be covered, and the absence of discretionary action should be stated."},
-    {ct:"Explain",s:"Using a diagram, explain how an increase in government expenditure affects real output in an economy operating below full employment.",dg:"AD-AS, Keynesian region",cp:["G","AD","multiplier","spare capacity"],gd:"The multiplier should appear as a mechanism. Reward the explicit spare-capacity assumption."}],
+    {ct:"Explain",s:"Using a diagram, explain how an increase in government expenditure affects real output in an economy operating below full employment.",dg:"AD-AS, Keynesian region",cp:["G","AD","injection","spare capacity"],gd:"Expect the AD shift and the spare-capacity condition to be explained. At HL, reward the multiplier as the mechanism by which output rises by more than the initial spending. Reward the explicit spare-capacity assumption."}],
  b:[{ct:"Discuss",s:"Discuss the consequences of a persistent government budget deficit for an economy.",cp:["deficit","debt","crowding out","intergenerational equity"],gd:"Expect distinction between deficits incurred for investment and for current spending, and the debt-to-GDP framing rather than the absolute figure."},
-    {ct:"Evaluate",s:"Evaluate the use of expansionary fiscal policy to reduce unemployment.",cp:["fiscal policy","cyclical unemployment","structural unemployment","multiplier"],gd:"The strongest answers classify the unemployment first. Demand-side policy against structural unemployment is the key limitation."}]},
+    {ct:"Evaluate",s:"Evaluate the use of expansionary fiscal policy to reduce unemployment.",cp:["fiscal policy","cyclical unemployment","structural unemployment","aggregate demand"],gd:"The strongest answers classify the unemployment first. Demand-side policy against structural unemployment is the key limitation."}]},
 {sub:"3.3",n:"Macroeconomic objectives",lvl:"SL",
  a:[{ct:"Explain",s:"Explain the difference between structural and cyclical unemployment.",dg:null,cp:["structural","cyclical","mismatch","AD"],gd:"Distinguish by cause, not by duration. Reward a policy implication attached to each."},
     {ct:"Explain",s:"Explain two costs of high inflation for an economy.",dg:null,cp:["inflation","purchasing power","uncertainty","competitiveness"],gd:"Costs must be explained as mechanisms, for example, uncertainty reducing investment, not merely 'things cost more'."}],
@@ -2589,7 +2593,7 @@ const QB=[
 {sub:"4.5",n:"Exchange rates",lvl:"SL",
  a:[{ct:"Explain",s:"Using a diagram, explain how a fall in domestic interest rates may cause a currency to depreciate.",dg:"Foreign exchange market: demand and supply of currency",cp:["exchange rate","capital flows","depreciation"],gd:"Axes must be labelled correctly: price of the currency in terms of another, and quantity of the currency."},
     {ct:"Explain",s:"Explain two consequences of a currency appreciation for a country's economy.",dg:null,cp:["appreciation","net exports","import prices","inflation"],gd:"Reward the dual effect: competitiveness loss against cheaper imported inputs."}],
- b:[{ct:"Discuss",s:"Discuss the view that a depreciation of the currency will improve a country's current account balance.",cp:["Marshall-Lerner","J-curve","elasticity","import dependence"],gd:"Marshall-Lerner and the J-curve are both expected at the top band, with the elasticity condition stated explicitly."},
+ b:[{ct:"Discuss",s:"Discuss the view that a depreciation of the currency will improve a country's current account balance.",cp:["elasticity","time lags","import dependence","inflation"],gd:"At SL the top band needs the elasticity and time-lag argument in words: volumes respond more slowly than prices, so the balance may worsen before it improves. At HL, name the Marshall-Lerner condition and the J-curve and state the elasticity condition explicitly."},
     {ct:"Evaluate",s:"Evaluate the advantages and disadvantages of a fixed exchange rate system for a developing economy.",cp:["fixed rate","reserves","credibility","policy independence"],gd:"Expect the trade-off between certainty and the loss of independent monetary policy, plus the reserve requirement."}]},
 {sub:"4.10",n:"Development strategies",lvl:"SL",
  a:[{ct:"Explain",s:"Explain how foreign direct investment may contribute to economic development.",dg:null,cp:["FDI","savings gap","technology transfer","employment"],gd:"Reward the savings gap and foreign exchange constraints as mechanisms rather than a list of benefits."},
@@ -2607,9 +2611,9 @@ const QB=[
 ];
 
 /* Paper 2 data-response scaffold and Paper 3 scaffold */
-const P2SHAPE=[["(a)(i)","Define / State",2,"AO1"],["(a)(ii)","Define / State",2,"AO1"],["(b)","Explain / Calculate (may split 3+2)",5,"AO2 · AO4"],
- ["(c)","Explain using a diagram",4,"AO2 · AO4"],["(d)","Explain / Calculate",4,"AO2 · AO4"],["(e)","Explain using the text",4,"AO2"],
- ["(f)","Calculate / Explain",4,"AO2 · AO4"],["(g)","Discuss / Evaluate using the text/data",15,"AO3"]];
+const P2SHAPE=[["(a)(i)","Define / State",2,"AO1"],["(a)(ii)","Define / State",2,"AO1"],["(b)","Mostly quantitative: calculate, determine or sketch (often subdivided)",5,"AO2 · AO4"],
+ ["(c)","Explain using a diagram",4,"AO2 · AO4"],["(d)","Explain, usually with a diagram and the data",4,"AO2 · AO4"],["(e)","Explain using the text",4,"AO2"],
+ ["(f)","Explain, usually with a diagram and the data",4,"AO2 · AO4"],["(g)","Discuss / Evaluate using the text/data",15,"AO3"]];
 const P3SHAPE=[["(a)","Subdivided: define, calculate, explain, draw",20,"AO1 · AO2 · AO4"],["(b)","Recommend a policy",10,"AO3"]];
 
 /* Evaluation move bank: the vocabulary of AO3 */
@@ -2659,7 +2663,7 @@ const EXEMPLARS=[
  {t:"In the United Kingdom, successive above-inflation increases in tobacco duty have been accompanied by continued long-run declines in smoking prevalence, but that decline has coincided with advertising bans, display restrictions and public health campaigns, so the tax alone cannot be credited with the outcome.",
   f:"Real-world example, developed",why:"The example is not merely named. It is used to raise an attribution problem, which is a genuinely evaluative use of evidence. This is the difference between 'identified' and 'fully developed' in the markband."},
  {t:"A further limitation is distributional: because lower-income households spend a larger proportion of income on such goods, the tax is regressive, so an efficiency gain is bought at an equity cost.",
-  f:"Stakeholder and values",why:"Introduces a second, independent evaluative dimension. Two distinct evaluative strands are what produce 'balanced' in the markband, rather than one point repeated."},
+  f:"Stakeholder and values",why:"Introduces a second, independent evaluative dimension. Two distinct, genuinely competing evaluative strands are what make this read as balanced rather than as one point repeated."},
  {t:"On balance, indirect taxes are more effective at raising revenue than at rapidly changing consumption where demand is inelastic, and are most defensible when the revenue is directed towards measures that raise elasticity over time (substitutes, information and cessation support), since it is those measures that make the price signal bite.",
   f:"Judgement",why:"The conclusion follows from the analysis that preceded it and specifies the condition under which the policy works. It does not introduce new material and it does not sit on the fence. This is a supported judgement."}]},
 {id:"x2",q:"Using the text/data provided, evaluate the likely effects of a depreciation of the currency on the economy of Country X. [15]",
@@ -4450,7 +4454,7 @@ function strResult(){
    ${PROBES.map(p=>{const st=used.includes(p)?["Developed","pos"]:thin.includes(p)?["Too brief","neg"]:["Not used",""];
     return `<div class="skrow"><div><h3 class="hsub">${p}</h3><p class="xs">${(EVDIM.find(x=>x.k===p)||{}).q||""}</p></div>
      <span class="tag ${st[1]}">${st[0]}</span><span></span></div>`}).join("")}
-   <p class="xs mt3">${used.length>=4?"Four or more developed dimensions is what balance means in the markband: genuinely competing considerations rather than one point repeated."
+   <p class="xs mt3">${used.length>=4?"Four or more developed dimensions is this system's working threshold for balance: genuinely competing considerations rather than one point repeated. The markband itself sets no number."
     :"Fewer than four developed dimensions. Adding a distinct one is worth more than developing an existing one further."}</p>
    ${skipped.length?`<div class="note mt3"><div class="t">Worth returning to</div>
      <p class="sm">${skipped.slice(0,3).join(", ")}: you judged ${skipped.length===1?"this":"these"} not to apply. That may be right. If it was avoidance, it is the cheapest mark on the page.</p></div>`:""}</div>
@@ -4534,7 +4538,7 @@ const LABA=200;
 let LAB={B:10,D:10,mode:"none",t:3,s:3,pmax:7,pmin:13,pred:null};
 function mkt(){
  const A=LABA,B=LAB.B,D=LAB.D,P0=A/(B+D),Q0=A-B*P0;
- const o={A,B,D,P0,Q0,ped:-(B*P0/Q0),pes:D*P0/Q0,mode:LAB.mode};
+ const o={A,B,D,P0,Q0,ped:-Math.round(B*P0/Q0*1e9)/1e9,pes:Math.round(D*P0/Q0*1e9)/1e9,mode:LAB.mode};
  const iD=q=>(A-q)/B,iS=q=>q/D;
  if(LAB.mode==="tax"){const t=LAB.t;o.t=t;o.Pc=(A+D*t)/(B+D);o.Q=A-B*o.Pc;o.Pp=o.Pc-t;
   o.cb=o.Pc-P0;o.pb=t-o.cb;o.rev=t*o.Q;o.wl=.5*t*(Q0-o.Q);
@@ -4603,7 +4607,7 @@ function marketLab(){
     <div class="stat"><span class="k">Producer surplus</span><span class="v">${o.ps.toFixed(0)}</span><span class="d">$ thousand</span></div>
     ${o.rev!==undefined?`<div class="stat"><span class="k">Tax revenue</span><span class="v">${o.rev.toFixed(0)}</span><span class="d">tax × new quantity</span></div>`:""}
     ${o.cost!==undefined?`<div class="stat"><span class="k">Cost to government</span><span class="v">${o.cost.toFixed(0)}</span><span class="d">$ thousand</span></div>`:""}
-    <div class="stat"><span class="k">Welfare loss</span><span class="v">${o.wl.toFixed(0)}</span><span class="d">${o.wl>0?"units no longer traded":"none at this allocation"}</span></div>
+    <div class="stat"><span class="k">Welfare loss</span><span class="v">${o.wl.toFixed(0)}</span><span class="d">${o.wl>0?(o.mode==="sub"?"units over-produced":"units no longer traded"):"none at this allocation"}</span></div>
    </div>
   </div>
   <div class="stack">
@@ -4639,12 +4643,12 @@ let ADAS={model:"m",dAD:0,dAS:0,Yf:1000};
 function adasSolve(){const{dAD,dAS,Yf,model}=ADAS;
  let P=(2000+dAD-dAS)/20,Y=10*P+dAS,cap=false,fl=false;
  if(Y>Yf){Y=Yf;P=(2000+dAD-Yf)/10;cap=true}
- if(model==="k"&&!cap&&Y<Yf*.85){P=90;Y=Math.min(2000+dAD-900,Yf);fl=true}
+ if(model==="k"&&!cap&&P<90){P=90;Y=Math.min(2000+dAD-900,Yf);fl=true}
  const u=clamp(5+.5*((Yf-Y)/Yf*100),1.5,22);
  let note;
- if(!dAD&&!dAS)note="Baseline. The economy sits at a price level of 100 with real output of $1,000bn, at potential, by construction.";
- else if(dAD&&!dAS)note=`Aggregate demand ${dAD>0?"rises":"falls"} by $${Math.abs(dAD)}bn. ${cap?"Output is constrained by capacity, so the whole adjustment falls on the price level. This is the demonstration that stimulus into a full-employment economy is inflationary rather than expansionary.":fl?"With substantial spare capacity and a price level rigid downwards, the adjustment falls almost entirely on output: the Keynesian case for demand management.":`Output moves to $${Y.toFixed(0)}bn and the price level to ${P.toFixed(1)}, so the effect is split between real and nominal adjustment.`}`;
- else if(dAS&&!dAD)note=`Short-run aggregate supply ${dAS>0?"increases":"decreases"} by $${Math.abs(dAS)}bn. ${dAS<0?"Output falls while the price level rises: the signature of a supply shock, and the reason demand-side policy cannot resolve one without cost.":"Output rises while the price level falls, which is why supply-side improvement is the only route to non-inflationary growth."}`;
+ if(!dAD&&!dAS)note=Yf===1000?"Baseline. The economy sits at a price level of 100 with real output of $1,000bn, at potential, by construction.":`Baseline curves. The economy sits at a price level of ${P.toFixed(1)} with real output of $${Y.toFixed(0)}bn, ${Y<Yf?"below":"at"} potential output of $${Yf}bn.`;
+ else if(dAD&&!dAS)note=`Aggregate demand ${dAD>0?"rises":"falls"} by $${Math.abs(dAD)}bn. ${cap?"Output is constrained by capacity, so once money wages have adjusted the whole adjustment falls on the price level. The point shown is that long-run outcome: in the short run output can rise above potential, an inflationary gap, before SRAS shifts left to close it. Either way, stimulus into a full-employment economy is inflationary rather than expansionary.":fl?"With substantial spare capacity and a price level rigid downwards, the adjustment falls almost entirely on output: the Keynesian case for demand management.":`Output moves to $${Y.toFixed(0)}bn and the price level to ${P.toFixed(1)}, so the effect is split between real and nominal adjustment.`}`;
+ else if(dAS&&!dAD)note=`Short-run aggregate supply ${dAS>0?"increases":"decreases"} by $${Math.abs(dAS)}bn. ${dAS<0?"Output falls while the price level rises: the signature of a supply shock, and the reason demand-side policy cannot resolve one without cost.":cap?"The economy is already at potential output, and output cannot exceed it in this model, so a rise in short-run supply on its own changes neither output nor the price level. A lasting supply-side gain has to raise potential output itself: raise Yf as well, and output rises while the price level falls.":"Output rises while the price level falls, which is why supply-side improvement is the only route to non-inflationary growth."}`;
  else note=`Both curves have moved. Output settles at $${Y.toFixed(0)}bn and the price level at ${P.toFixed(1)}. When two shocks act together, say which dominates and why rather than describing each separately.`;
  return{P,Y,u,cap,fl,note}}
 function adasSVG(r){
@@ -4654,7 +4658,7 @@ function adasSVG(r){
  let b="";
  if(ADAS.dAD)b+=P.ln(X(ad(Pl)),Y(Pl),X(ad(Ph)),Y(Ph),G.C.d2,{dash:"6,4",w:2});
  b+=P.ln(X(ad1(Pl)),Y(Pl),X(ad1(Ph)),Y(Ph),G.C.d);
- if(ADAS.model==="k"){b+=P.ln(G.L,Y(90),X(ADAS.Yf*.85),Y(90),G.C.s)+P.path(`M ${X(ADAS.Yf*.85)} ${Y(90)} Q ${X(ADAS.Yf*.95)} ${Y(100)} ${X(ADAS.Yf)} ${Y(135)}`,G.C.s)}
+ if(ADAS.model==="k"){const yk=Math.min(900+ADAS.dAS,ADAS.Yf),pk=Math.max(90,(ADAS.Yf-ADAS.dAS)/10);b+=P.ln(G.L,Y(90),X(yk),Y(90),G.C.s)+P.ln(X(yk),Y(90),X(ADAS.Yf),Y(pk),G.C.s)+P.ln(X(ADAS.Yf),Y(pk),X(ADAS.Yf),Y(Ph),G.C.s)}
  else{if(ADAS.dAS)b+=P.ln(X(10*Pl),Y(Pl),X(10*Ph),Y(Ph),G.C.s2,{dash:"6,4",w:2});
   b+=P.ln(X(as1(Pl)),Y(Pl),X(as1(Ph)),Y(Ph),G.C.s)}
  b+=P.ln(X(ADAS.Yf),G.T,X(ADAS.Yf),G.H-G.B,G.C.cap,{w:2,dash:"7,4"})
@@ -4847,7 +4851,7 @@ function qEngine(){
  const pool=[];
  QB.filter(q=>S.lvl==="HL"||q.lvl!=="HL").forEach(q=>{
   if(PR.unit!=="all"&&q.sub.split(".")[0]!==PR.unit)return;
-  const src=PR.paper==="p1"?[...q.a.map(x=>({...x,part:"a",m:10})),...q.b.map(x=>({...x,part:"b",m:15}))]:q.b.map(x=>({...x,part:"g",m:15}));
+  const src=PR.paper==="p1"?[...q.a.map(x=>({...x,part:"a",m:10})),...q.b.map(x=>({...x,part:"b",m:15}))]:q.b.map(x=>({...x,part:"b",m:15}));
   src.forEach(x=>{if(PR.ct!=="all"&&x.ct!==PR.ct)return;pool.push({...x,sub:q.sub,n:q.n})})});
  if(PR.q)return qDetail(PR.q);
  return H.pageHead("Practise","Question engine",
@@ -4860,7 +4864,7 @@ function qEngine(){
    </div>
   <div class="stack">
    <div class="panel"><div class="eb">Paper</div>
-    <div class="row mt2" style="gap:5px">${[["p1","Paper 1"],["p2","Paper 2 (g)"]].map(([v,n])=>
+    <div class="row mt2" style="gap:5px">${[["p1","Paper 1"],["p2","15-mark parts only"]].map(([v,n])=>
      `<button class="tag ${PR.paper===v?"f":""}" style="cursor:pointer" onclick="PR.paper='${v}';PR.q=null;render()">${n}</button>`).join("")}</div>
     <div class="eb mt3">Unit</div>
     <div class="row mt2" style="gap:5px">${[["all","All"],["2","Micro"],["3","Macro"],["4","Global"]].map(([v,n])=>
@@ -4870,14 +4874,14 @@ function qEngine(){
      `<button class="tag ${PR.ct===c?"f":""}" style="cursor:pointer" onclick="PR.ct='${c}';PR.q=null;render()">${c==="all"?"All":c}</button>`).join("")}</div>
    </div>
    <div class="panel q"><div class="eb g">Provenance</div>
-    <p class="xs mt2">These are teacher-written practice questions in IB style. They are not past examination questions and are not published IB material. Mark allocations follow the structure set out in the guide.</p></div>
+    <p class="xs mt2">These are teacher-written practice questions in IB style. They are not past examination questions and are not published IB material. Mark allocations follow the structure set out in the guide. No extract is supplied here, so these are not Paper 2 (g) questions: for the data-response shape, use the Paper 2 data lab.</p></div>
   </div>
  </div></div>`;
 }
 function prOpen(i){
  const pool=[];QB.filter(q=>S.lvl==="HL"||q.lvl!=="HL").forEach(q=>{
   if(PR.unit!=="all"&&q.sub.split(".")[0]!==PR.unit)return;
-  const src=PR.paper==="p1"?[...q.a.map(x=>({...x,part:"a",m:10})),...q.b.map(x=>({...x,part:"b",m:15}))]:q.b.map(x=>({...x,part:"g",m:15}));
+  const src=PR.paper==="p1"?[...q.a.map(x=>({...x,part:"a",m:10})),...q.b.map(x=>({...x,part:"b",m:15}))]:q.b.map(x=>({...x,part:"b",m:15}));
   src.forEach(x=>{if(PR.ct!=="all"&&x.ct!==PR.ct)return;pool.push({...x,sub:q.sub,n:q.n})})});
  PR.q=pool[i];PR.plan={};render();
 }
@@ -4909,7 +4913,7 @@ function qDetail(x){
     <div class="panel"><div class="eb g">Examiner guidance</div><p class="sm mt2">${x.gd}</p></div>
     <div class="panel q"><div class="eb">Expected concepts</div><div class="tags mt2">${x.cp.map(c=>`<span class="tag">${c}</span>`).join("")}</div></div>
     <div class="panel"><div class="eb g">Why this question is difficult</div>
-     <p class="sm mt2">${x.m===15?"The command term is AO3, so the marks sit in judgement rather than explanation. Candidates who know the topic best often score least well here, because they spend the words proving they know it."
+     <p class="sm mt2">${x.m===15?"The command term is AO3, so the top bands need a supported judgement on top of the explanation: without balanced evaluation the answer cannot reach them, however good the theory. Candidates who know the topic best often score least well here, because they spend the words proving they know it."
        :"Ten marks reward complete explanation of one mechanism, not partial coverage of three. The discipline is in choosing what to leave out."}</p>
      <div class="eb g mt3">Common traps</div><ul class="ls mt2">${traps.map(t=>`<li class="sm">${t}</li>`).join("")}</ul></div>
     ${x.m===15?`<div class="panel q"><div class="eb">What top-band answers do</div>
@@ -4920,7 +4924,7 @@ function qDetail(x){
 function prToWrite(){EX.ct=PR.q.ct;EX.qtype=PR.q.part==="a"?"p1a":PR.q.part==="g"?"p2g":"p1b";EX.topic=PR.q.sub;EX.qstem=PR.q.s;
  record("Practise · planning",{str:74},"Planned "+PR.q.sub+" · "+PR.q.ct);nav("examine",0)}
 function dataResponse(){
- const d=DATA[PR.d%DATA.length];
+ const DL=DATA.filter(x=>S.lvl==="HL"||x.lvl!=="HL"),d=DL[PR.d%DL.length];
  return H.pageHead("Practise","Data response",
   "Paper 2 marks are won and lost in the quantitative parts, where method carries credit even when the final figure is wrong. Every set below is constructed, internally consistent and verified by independent recalculation.")
  +`<div class="wrap sec tight"><div class="split">
@@ -4958,7 +4962,7 @@ function retrievalQ(){
     <button class="btn xs gh" onclick="nav('${x.misc?"learn":"practise"}',${x.misc?2:2}${x.misc?`,'${x.misc}'`:""})">Go</button></div></div>`).join("")}`
   :`<div class="panel q"><p class="sm">Nothing is due. Retrieval works because it is spaced: practising an item that is still fresh produces the feeling of fluency without the durability. An empty queue is a good sign, not an idle one.</p></div>`}
   <div class="note g mt5"><div class="t">How the interval is set</div>
-   <p class="sm">Interval in days = 2 + (skill strength ÷ 100) × 16. A skill at 40 returns after about eight days; a skill at 90 after about eighteen. Misconceptions run on a fixed ten-day cycle until they clear cleanly, because a faulty model reasserts itself faster than a forgotten fact.</p></div>
+   <p class="sm">Interval in days = 2 + (skill strength ÷ 100) × 16. A skill at 40 returns after about eight days; a skill at 90 after about sixteen. Misconceptions run on a fixed ten-day cycle until they clear cleanly, because a faulty model reasserts itself faster than a forgotten fact.</p></div>
  </div>`;
 }
 /* ═══ ECONOMICS, RIGHT NOW: rebuilt ═══════════════════════ */
@@ -5130,7 +5134,7 @@ function gymBuild(){
  const w=new Set(SKILLS.map(s=>({k:s.k,v:eff(s.k)})).sort((a,b)=>a.v-b.v).slice(0,5).map(x=>x.k));
  const it=[];
  const g={
- def:()=>{const d=pick(DEFS,1)[0],x=pick(DEFS.filter(y=>y[0]!==d[0]),1)[0];
+ def:()=>{const d=pick(DEFS.filter(y=>S.lvl==="HL"||(!["2.10","2.11","2.12"].includes(y[1])&&!/Marshall-Lerner/.test(y[0]))),1)[0],x=pick(DEFS.filter(y=>y[0]!==d[0]),1)[0];
   it.push({ty:"Definition drill",sk:["def"],p:`Which is the examinable definition of <strong>${d[0]}</strong>?`,tag:d[1],
    opts:shuf([{t:d[2],ok:1},{t:d[3],ok:0,w:"The everyday paraphrase. Not wrong in spirit, but it would not satisfy an examiner asking you to define."},
     {t:x[2],ok:0,w:`This defines ${x[0].toLowerCase()}, not ${d[0].toLowerCase()}.`}]),e:d[4]})},
@@ -5138,9 +5142,9 @@ function gymBuild(){
   const cor=c.pool.filter(p=>p.o>0).sort((a,b)=>a.o-b.o),i=1+Math.floor(Math.random()*(cor.length-1));
   it.push({ty:"Chain drill",sk:["chn"],tag:c.sub,p:`<span class="xs">${c.shock}</span><br><br>You have just written: “${cor[i-1].t}”<br><br>Which step follows?`,
    opts:shuf([{t:cor[i].t,ok:1},...pick(c.pool.filter(p=>p.o===0),2).map(b=>({t:b.t,ok:0,w:b.w}))]),e:cor[i].w})},
- dgc:()=>{const q=pick(DGQ,1)[0];
+ dgc:()=>{const q=pick(DGQ.filter(x=>S.lvl==="HL"||!["monopoly","phillips"].includes(x[0])),1)[0];
   it.push({ty:"Diagram drill",sk:["dgc","dge"],tag:"diagram",p:q[1],dg:q[0],opts:q[2].map((t,i)=>({t,ok:i===q[3]?1:0})),e:q[4]})},
- qnt:()=>{const d=pick(DATA,1)[0];
+ qnt:()=>{const d=pick(DATA.filter(x=>S.lvl==="HL"||x.lvl!=="HL"),1)[0];
   it.push({ty:"Data drill",sk:[d.sk],tag:d.sub,p:d.q,tbl:d.tbl,num:d.ans,tol:d.tol,steps:d.steps,e:d.note})},
  evl:()=>{const m=pick(EVDIM,3),t=m[0];
   it.push({ty:"Evaluation drill",sk:["evl"],tag:"AO3",p:`Which sentence performs the evaluation move <strong>${t.k}</strong>?`,
@@ -5153,11 +5157,11 @@ function gymBuild(){
   it.push({ty:"Real-world drill",sk:["app"],tag:"Unit "+r.unit,p:`Story: <strong>${r.t}</strong><br><br>Which step belongs to the middle of this mechanism?`,
    opts:shuf([{t:r.chain[2],ok:1},...o.map(x=>({t:x.chain[2],ok:0,w:`That step belongs to a different mechanism: ${x.t.toLowerCase()}.`}))]),
    e:"Full chain: "+r.chain.join(" → ")})},
- cmd:()=>{const q=pick(QB,1)[0],src=Math.random()<.5?q.a[0]:q.b[0],ao=(GUIDE.ct[src.ct]||["AO2"])[0];
+ cmd:()=>{const q=pick(QB.filter(x=>S.lvl==="HL"||x.lvl!=="HL"),1)[0],src=Math.random()<.5?q.a[0]:q.b[0],ao=(GUIDE.ct[src.ct]||["AO2"])[0];
   it.push({ty:"Command drill",sk:["str"],tag:q.sub,p:`“${src.s}”<br><br>What does the command term <strong>${src.ct}</strong> (${ao}) require?`,
    opts:shuf([{t:GUIDE.ct[src.ct][1],ok:1},...pick(Object.entries(GUIDE.ct).filter(([k])=>k!==src.ct),2).map(([k,v])=>({t:v[1],ok:0,w:`That defines “${k}”.`}))]),
    e:ao==="AO3"?"An AO3 term requires a judgement. Explanation alone, however thorough, answers a different question.":"An AO2 term requires reasons and mechanisms. Evaluation earns nothing here."})},
- int:()=>{const m=pick(MISC,1)[0];
+ int:()=>{const m=pick(MISC.filter(x=>S.lvl==="HL"||x.id!=="m7"),1)[0];
   it.push({ty:"Misconception drill",sk:m.sk,tag:m.sub,misc:m.id,p:`True or false: ${m.claim}`,
    opts:[{t:"True",ok:m.verdict?1:0},{t:"False",ok:m.verdict?0:1}],e:m.why})}};
  Object.entries(g).forEach(([k,f])=>{if(w.has(k))f()});
@@ -5259,6 +5263,8 @@ const STOP=new Set(("Qopt Qmarket Qm Qe Qs Qd Pe Pc Pp Pmax Pmin Pw Wmin Marshal
  "Firstly Secondly Finally Furthermore Moreover Nevertheless Consequently Thus Hence Economic Economics Government Governments Consumers Producers Firms Households "+
  "Workers Price Prices Demand Supply Market Markets Inflation Unemployment Growth Trade Tariff Tax Taxes Subsidy Policy Policies Aggregate Real Nominal Short Long One Two Three First Second Third").split(" "));
 function sentences(t){return t.replace(/\s+/g," ").split(/(?<=[.!?])\s+(?=[A-Z"“(])/).map(s=>s.trim()).filter(s=>s.length>3)}
+/* Paper 2 (g) is read against the same five strands as Paper 1 (b), but its sixth strand is the use of the text and data rather than a real-world example. The wording of that strand is this system's paraphrase. */
+function BANDS15G(){const s=["Information from the text/data used effectively throughout","Information from the text/data used appropriately","Information from the text/data used, but not consistently","Some reference to the text/data","No use of the text/data"];return GUIDE.bands15.map((b,i)=>({...b,d:b.d.slice(0,5).concat([s[i]])}))}
 function analyse(txt,ct,qtype,topic){
  const t=" "+txt.replace(/\s+/g," ").trim()+" ",low=t.toLowerCase();
  const words=t.trim().split(/\s+/).filter(Boolean),wc=words.length;
@@ -5311,7 +5317,7 @@ function analyse(txt,ct,qtype,topic){
  s.judgement=ao==="AO3"?clamp((concl?1:0)+(tailCond?1:0)+(concl&&tailCond&&counter>0?1:0),0,3):null;
  const strands=Object.entries(s).filter(([,v])=>v!==null);
  const maxMark=qtype==="p1a"?10:15,pct=strands.reduce((a,[,v])=>a+v,0)/(strands.length*3);
- const bands=maxMark===10?GUIDE.bands10:GUIDE.bands15;
+ const bands=maxMark===10?GUIDE.bands10:qtype==="p2g"?BANDS15G():GUIDE.bands15;
  const bi=pct>=.86?0:pct>=.68?1:pct>=.48?2:pct>=.26?3:4;
  return{wc,sents,fc,s,strands,moves,movesUsed,counter,conn,causal,dgRef,dgPoint,termsFound,expFound,expMissing,
   rwName,rwDev,nums,years,concl,tailCond,band:bands[bi],bandIdx:bi,maxMark,ao,ct,qtype,pct};
@@ -5435,7 +5441,7 @@ function exDiag(){
      ${loss.map(([k,v])=>`<div class="note n"><div class="t">${STRANDN[k]} · ${v}/3</div><p class="sm">${exLoss(k,r)}</p></div>`).join("")}`:""}</div>
    <div class="panel q"><div class="eb">Evaluation dimensions detected</div>
     <div class="tags mt2">${EVDIM.map(d=>`<span class="tag ${r.moves[d.k]>0?"f":""}">${d.k}</span>`).join("")}</div>
-    <p class="xs mt2">${r.movesUsed.length>=4?"Four or more distinct dimensions: this is what produces balance in the markband."
+    <p class="xs mt2">${r.movesUsed.length>=4?"Four or more distinct dimensions is this system's working threshold for balance. The markband asks for balanced evaluation and sets no number."
      :r.movesUsed.length>=2?"Two or three dimensions. Adding a distinct one is worth more than developing an existing one further."
      :"Fewer than two distinct dimensions. Repeating one point in different words does not read as balance."}</p>
     <button class="btn gh sm w mt3" onclick="nav('think',2)">Open the dimension library →</button></div>
@@ -5494,7 +5500,7 @@ Figure 1 shows the market for tobacco. The free market equilibrium is at Pe, Qe 
 
 However, the size of that reduction depends on the price elasticity of demand. Tobacco has low PED because it is addictive and has few close substitutes, so the tax is absorbed mainly as a higher price rather than a lower quantity. This means government revenue is large and stable while the health objective is met only weakly in the short run.
 
-In the United Kingdom, tobacco duty has risen above inflation since 1993 and smoking prevalence in the United Kingdom has continued to fall, but advertising bans and cessation support operated over the same period, so the decline cannot be attributed to the tax alone.
+In the United Kingdom, tobacco duty has been raised faster than inflation for most of the period since 1993 and smoking prevalence in the United Kingdom has continued to fall, but advertising bans and cessation support operated over the same period, so the decline cannot be attributed to the tax alone.
 
 A further limitation is distributional. Because lower-income households spend a larger proportion of income on tobacco, the tax is regressive, so an efficiency gain is bought at an equity cost. Compared with direct regulation, the tax preserves consumer choice.
 
@@ -5748,7 +5754,7 @@ const CALC=[
  solve:v=>{const dq=(v.q2-v.q1)/v.q1*100,dp=(v.p2-v.p1)/v.p1*100,a=dq/dp;
   return{a:r2(a),u:"",steps:[`%ΔQd = (${v.q2} − ${v.q1}) ÷ ${v.q1} × 100 = ${r2(dq)}%`,
    `%ΔP = (${v.p2} − ${v.p1}) ÷ ${v.p1} × 100 = ${r2(dp)}%`,`PED = ${r2(dq)} ÷ ${r2(dp)} = ${r2(a)}`]}},
- interp:(v,a)=>{const m=Math.abs(a);return `PED is ${r2(a)}. Ignoring the sign, |PED| = ${r2(m)}, so demand is ${m>1?"elastic: quantity responds more than proportionately, and total revenue moves with quantity":m<1?"inelastic: quantity responds less than proportionately, and total revenue moves with price":"unit elastic, so total revenue is unchanged"}.`},
+ interp:(v,a)=>{const m=Math.abs(a);return `PED is ${r2(a)}. Ignoring the sign, |PED| = ${r2(m)}, so demand is ${m>1?"elastic: quantity responds more than proportionately, and total revenue moves with quantity":m<1?"inelastic: quantity responds less than proportionately, and total revenue moves with price":"unit elastic, so total revenue is unchanged"}. That revenue rule holds exactly only for small changes: over this change, measured from the original values, total revenue goes from $${r2(v.p1*v.q1)} to $${r2(v.p2*v.q2)}.`},
  mist:["Dropping the negative sign without saying you are using the magnitude.","Using absolute changes rather than percentage changes.","Treating the slope of the demand curve as its elasticity."],
  ib:"Required at SL and HL. Expect it in Paper 2 with a follow-up on total revenue or tax incidence.",
  gen:()=>{const p1=rnd(10,40,2),q1=rnd(200,900,20);return{p1,p2:p1+rnd(2,8,1),q1,q2:q1-rnd(20,180,10)}},tol:.03},
@@ -5822,7 +5828,7 @@ const CALC=[
  mist:["Confusing welfare loss with government revenue.","Omitting the ½.","Calling the entire fall in consumer surplus a welfare loss.","Applying half times base times height to a curved demand or supply line. The triangle formula is exact only where the line is straight; against a genuinely curved function the area is an integral and the triangle is an approximation. IB diagrams are drawn linear, so the formula holds in this course."],
  ib:"HL quantitative. Where the tax corrects a negative externality, the welfare loss may fall rather than rise, say which case you are in.",
  gen:()=>{const q0=rnd(400,1000,20);return{t:rnd(2,8,1),q0,q1:q0-rnd(40,200,10)}},tol:1},
-{id:"compadv",n:"Comparative advantage",lvl:"Both",g:"Global economy",f:"Opportunity cost of one good = output of the other ÷ output of that good",
+{id:"compadv",n:"Comparative advantage",ask:"country A's opportunity cost of one unit of wheat, in units of cloth",lvl:"Both",g:"Global economy",f:"Opportunity cost of one good = output of the other ÷ output of that good",
  m:"Which country should specialise in which good, judged by opportunity cost rather than by productivity.",
  inp:[["a1","Country A: units of wheat",""],["a2","Country A: units of cloth",""],["b1","Country B: units of wheat",""],["b2","Country B: units of cloth",""]],
  solve:v=>{const oa=v.a2/v.a1,ob=v.b2/v.b1;
@@ -5842,7 +5848,7 @@ const CALC=[
  m:"Output measured at constant prices, stripping out the effect of inflation.",
  inp:[["n","Nominal GDP","$bn"],["d","GDP deflator (base = 100)",""]],
  solve:v=>({a:r2(v.n/v.d*100),u:"$bn",steps:[`Real GDP = ${v.n} ÷ ${v.d} × 100`,`Real GDP = $${r2(v.n/v.d*100)}bn`]}),
- interp:(v,a)=>`Real GDP is $${a}bn at base-year prices, against nominal GDP of $${v.n}bn. ${v.d>100?"Prices have risen since the base year, so nominal output overstates the volume of goods and services produced.":"Prices are below the base year, so nominal output understates the volume produced."}`,
+ interp:(v,a)=>`Real GDP is $${a}bn at base-year prices, against nominal GDP of $${v.n}bn. ${v.d>100?"Prices have risen since the base year, so nominal output overstates the volume of goods and services produced.":v.d<100?"Prices are below the base year, so nominal output understates the volume produced.":"The deflator is at its base value of 100, so nominal and real GDP coincide in this year."}`,
  mist:["Multiplying by the deflator instead of dividing.","Comparing nominal figures across years and calling the difference growth.","Forgetting the ×100 when the deflator is indexed to 100."],
  ib:"SL and HL, subtopic 3.1. The most common quantitative trap in Paper 2.",
  gen:()=>({n:rnd(300,900,10),d:rnd(96,135,1)}),tol:.5},
@@ -5851,7 +5857,7 @@ const CALC=[
  inp:[["g1","Real GDP, year 1","$bn"],["g2","Real GDP, year 2","$bn"]],
  solve:v=>{const a=(v.g2-v.g1)/v.g1*100;
   return{a:r2(a),u:"%",steps:[`Change = ${v.g2} − ${v.g1} = ${r2(v.g2-v.g1)}`,`Growth = ${r2(v.g2-v.g1)} ÷ ${v.g1} × 100 = ${r2(a)}%`]}},
- interp:(v,a)=>`Real output ${a>=0?"grew":"contracted"} by ${Math.abs(a)}%. Definitions of recession vary: some countries and commentators use two consecutive quarters of falling real GDP as a rule of thumb, while national statistical or dating bodies use broader judgements across output, employment and income. Growth alone says nothing about distribution or sustainability.`,
+ interp:(v,a)=>`Real output ${a>0?"grew by "+Math.abs(a)+"%":a<0?"contracted by "+Math.abs(a)+"%":"was unchanged"}. Definitions of recession vary: some countries and commentators use two consecutive quarters of falling real GDP as a rule of thumb, while national statistical or dating bodies use broader judgements across output, employment and income. Growth alone says nothing about distribution or sustainability.`,
  mist:["Using nominal figures.","Reporting the absolute change in $bn as a growth rate.","Confusing a fall in the growth rate with a fall in output."],
  ib:"SL and HL, subtopic 3.3.",
  gen:()=>{const g1=rnd(400,900,10);return{g1,g2:g1+rnd(-30,60,5)}},tol:.05},
@@ -5876,7 +5882,7 @@ const CALC=[
  m:"What a wage, income or benefit is actually worth once prices are accounted for.",
  inp:[["nom","Nominal value","$"],["idx","Price index (base = 100)",""]],
  solve:v=>({a:r2(v.nom/v.idx*100),u:"$ at base-year prices",steps:[`Real = ${v.nom} ÷ ${v.idx} × 100`,`Real = $${r2(v.nom/v.idx*100)}`]}),
- interp:(v,a)=>`In base-year prices the figure is worth $${a}. ${v.idx>100?"Because prices have risen, purchasing power is lower than the nominal figure suggests: a nominal pay rise below the inflation rate is a real pay cut.":"Prices are below the base year, so real purchasing power exceeds the nominal figure."}`,
+ interp:(v,a)=>`In base-year prices the figure is worth $${a}. ${v.idx>100?"Because prices have risen, purchasing power is lower than the nominal figure suggests: a nominal pay rise below the inflation rate is a real pay cut.":v.idx<100?"Prices are below the base year, so real purchasing power exceeds the nominal figure.":"The index is at its base value of 100, so the real and nominal figures coincide."}`,
  mist:["Comparing nominal wages across years without deflating.","Multiplying instead of dividing.","Treating a nominal increase as an increase in living standards."],
  ib:"SL and HL. Appears in data response on inflation and on inequality.",
  gen:()=>({nom:rnd(20000,70000,500),idx:rnd(98,145,1)}),tol:1},
@@ -5892,8 +5898,8 @@ const CALC=[
    "Check the data before calculating."]};
   const k=1/w,dY=k*v.inj;
   return{a:r2(k),u:"",steps:[`MPW = ${v.mps} + ${v.mpt} + ${v.mpm} = ${r2(w)}`,`k = 1 ÷ ${r2(w)} = ${r2(k)}`,
-   `ΔY = ${r2(k)} × ${v.inj} = $${r2(dY)}bn`]}},
- interp:(v,a)=>{const dY=r2(a*v.inj);return `The multiplier is ${a}, so within this model a $${v.inj}bn injection raises income by about $${dY}bn. Three conditions have to hold for that figure to describe the world. There has to be spare capacity, or the extra demand ends in the price level rather than in output. The marginal propensities have to stay put as income rises. And nothing must offset the injection, whether monetary tightening or crowding out. This is the theoretical multiplier: estimated multipliers are generally smaller than the formula implies, vary with the state of the cycle, and are larger in a slump than near capacity. Quote the calculated figure, then say what would make the observed effect fall short of it.`},
+   `ΔY = k × ${v.inj} = ${v.inj} ÷ ${r2(w)} = $${r2(dY)}bn`]}},
+ interp:(v,a)=>{const dY=r2(v.inj/(v.mps+v.mpt+v.mpm));return `The multiplier is ${a}, so within this model a $${v.inj}bn injection raises income by about $${dY}bn. Three conditions have to hold for that figure to describe the world. There has to be spare capacity, or the extra demand ends in the price level rather than in output. The marginal propensities have to stay put as income rises. And nothing must offset the injection, whether monetary tightening or crowding out. This is the theoretical multiplier: estimated multipliers are generally smaller than the formula implies, vary with the state of the cycle, and are larger in a slump than near capacity. Quote the calculated figure, then say what would make the observed effect fall short of it.`},
  mist:["Applying the multiplier to total government spending rather than to the change in it.","Omitting the spare-capacity assumption.","Reporting the calculated multiplier as what the economy will do, rather than as what the model predicts under its assumptions.","Mixing the two forms: use 1 ÷ (1 − MPC) when the data gives MPC, and 1 ÷ (MPS + MPT + MPM) when it gives the three withdrawals. Do not combine them."],
  ib:"HL quantitative, subtopics 3.2 and 3.6. State the assumptions: they are where the evaluation begins.",
  gen:()=>{const mps=+(rnd(10,25,5)/100).toFixed(2),mpt=+(rnd(10,30,5)/100).toFixed(2),mpm=+(rnd(5,25,5)/100).toFixed(2);
@@ -5911,9 +5917,9 @@ const CALC=[
  inp:[["r1","Original rate: 1 A = ? B",""],["r2","New rate: 1 A = ? B",""]],
  solve:v=>{const a=(v.r2-v.r1)/v.r1*100;
   return{a:r2(a),u:"%",steps:[`Change = ${v.r2} − ${v.r1} = ${r2(v.r2-v.r1)}`,`%Δ = ${r2(v.r2-v.r1)} ÷ ${v.r1} × 100 = ${r2(a)}%`]}},
- interp:(v,a)=>`Currency A has ${a>=0?"appreciated":"depreciated"} by ${Math.abs(r2(a))}% against B. ${a<0?"Exports become cheaper abroad and imports dearer at home; whether the trade balance improves depends on elasticities and on the time allowed for volumes to adjust.":"Exports become dearer abroad and imports cheaper at home."} A market-driven fall is depreciation; a deliberate reduction of a fixed rate is devaluation.`,
+ interp:(v,a)=>a===0?"The rate is unchanged, so Currency A has neither appreciated nor depreciated against B and the exchange rate has not altered the price of exports or imports.":`Currency A has ${a>0?"appreciated":"depreciated"} by ${Math.abs(r2(a))}% against B. ${a<0?"Exports become cheaper abroad and imports dearer at home; whether the trade balance improves depends on elasticities and on the time allowed for volumes to adjust.":"Exports become dearer abroad and imports cheaper at home."} A market-driven fall is depreciation; a deliberate reduction of a fixed rate is devaluation.`,
  mist:["Reversing the quotation and reading an appreciation as a depreciation.","Assuming depreciation automatically improves the current account.","Using percentage points instead of percentage change."],
- ib:"SL and HL, subtopic 4.5. Expect Marshall-Lerner and the J-curve in the evaluation.",
+ ib:"SL and HL, subtopic 4.5. At HL, bring the Marshall-Lerner condition and the J-curve (4.6) into the evaluation.",
  gen:()=>{const r1=+(rnd(60,160,1)/100).toFixed(2);return{r1,r2:+(r1+rnd(-20,20,1)/100).toFixed(2)}},tol:.05},
 {id:"tot",n:"Terms of trade",lvl:"Both",g:"Global economy",f:"ToT = index of export prices ÷ index of import prices × 100",
  m:"How many imports a country can obtain per unit of exports.",
@@ -5930,7 +5936,7 @@ const CALC=[
  solve:v=>{const g=v.xg-v.mg,s=v.xs-v.ms,a=g+s+v.pi+v.si;
   return{a:r2(a),u:"$bn",steps:[`Balance on goods = ${v.xg} − ${v.mg} = ${r2(g)}`,`Balance on services = ${v.xs} − ${v.ms} = ${r2(s)}`,
    `CA = ${r2(g)} + ${r2(s)} + ${v.pi} + ${v.si} = $${r2(a)}bn`]}},
- interp:(v,a)=>`The current account is in ${a<0?"deficit":"surplus"} by $${Math.abs(a)}bn. A deficit is financed by a corresponding surplus elsewhere in the accounts; what matters for evaluation is the cause, the composition of the financing and its persistence, not the sign alone.`,
+ interp:(v,a)=>`The current account is ${a<0?"in deficit by $"+Math.abs(a)+"bn":a>0?"in surplus by $"+Math.abs(a)+"bn":"exactly in balance"}. A deficit is financed by a corresponding surplus elsewhere in the accounts; what matters for evaluation is the cause, the composition of the financing and its persistence, not the sign alone.`,
  mist:["Stopping at the goods balance and calling it the current account.","Omitting primary and secondary income.","Treating any deficit as evidence of poor performance."],
  ib:"SL and HL, subtopic 4.6.",
  gen:()=>({xg:rnd(120,320,5),mg:rnd(120,340,5),xs:rnd(40,140,5),ms:rnd(30,120,5),pi:rnd(-30,20,1),si:rnd(-12,15,1)}),tol:.5},
@@ -5988,7 +5994,7 @@ function cbOpen(id){const c=CMAPC[id];CB={id,v:Object.fromEntries(c.inp.map(([k]
 function cbSet(k,val){CB.v[k]=val}
 function cbRun(){
  const c=CMAPC[CB.id],v={};let bad=null;
- c.inp.forEach(([k,l])=>{const n=parseFloat(String(CB.v[k]).replace(/[^0-9.\-]/g,""));
+ c.inp.forEach(([k,l])=>{const n=parseFloat(String(CB.v[k]).replace(/\u2212/g,"-").replace(/[^0-9.\-]/g,""));
   if(isNaN(n))bad=bad||l;v[k]=n});
  if(bad){toast("Enter a value for "+bad);return}
  try{const r=c.solve(v);if(!isFinite(r.a))throw 0;CB.res={v,...r}}catch(e){CB.res=null;toast("Those values do not produce a valid result: check them.")}
@@ -5998,10 +6004,10 @@ function cbExample(){const c=CMAPC[CB.id];CB.v=c.gen();CB.res=null;render();setT
 function cbNewQ(){const c=CMAPC[CB.id];CB.pq=c.gen();CB.ans="";CB.chk=null;CB.show=false;render()}
 function cbCheck(){
  const c=CMAPC[CB.id],r=c.solve(CB.pq);
- const g=parseFloat(String(CB.ans).replace(/[^0-9.\-]/g,""));
+ const g=parseFloat(String(CB.ans).replace(/\u2212/g,"-").replace(/[^0-9.\-]/g,""));
  if(isNaN(g)){toast("Enter your answer first");return}
  const tol=Math.max(c.tol,Math.abs(r.a)*0.001);
- CB.chk=Math.abs(g-r.a)<=tol;CB.show=true;
+ CB.chk=Math.abs(g-r.a)<=tol||(c.id==="ped"&&Math.abs(Math.abs(g)-Math.abs(r.a))<=tol);CB.show=true;
  record("Calculation Board · "+c.n,{qnt:CB.chk?90:42},CB.chk?"Correct to within tolerance":"Answer outside tolerance: working revealed");
  render();
 }
@@ -6023,7 +6029,7 @@ VIEWS.calculate=()=>{
     <span class="t" style="font-size:15px;font-weight:600">${c.n}</span>
     <span class="mn" style="font-size:11px;color:var(--tx-4)">${esc(c.f)}</span></button>`).join("")}</div></div>`).join("")}
  <div class="wrap edit sec t"><div class="panel q"><div class="kicker">On level tags</div>
-  <p class="sm mt3">Level tags follow the quantitative requirements set out in the Economics guide: elasticity, index numbers, growth, exchange rates and the terms of trade are required at both levels, while surplus, tax and tariff areas, welfare loss and the multiplier sit in the HL quantitative material. Confirm against your own syllabus outline: this is a teacher's reading of the guide, not an IB statement.</p></div></div>`;
+  <p class="sm mt3">Level tags follow the quantitative requirements set out in the Economics guide: elasticity, index numbers, growth and exchange rates are required at both levels, the terms of trade calculation is enrichment rather than a named requirement, while surplus, tax and tariff areas, welfare loss and the multiplier sit in the HL quantitative material. Confirm against your own syllabus outline: this is a teacher's reading of the guide, not an IB statement.</p></div></div>`;
 };
 function cbDetail(c){
  const r=CB.res, ready=c.inp.every(([k])=>String(CB.v[k]||"").length);
@@ -6075,7 +6081,7 @@ function cbDetail(c){
  <div class="wrap full sec t">${H.head("03","Try it yourself","Generated practice · the solution stays hidden until you attempt it")}
   <div class="split">
    <div>${CB.pq?`
-     <p class="ed">Using the values below, calculate <strong>${c.n.toLowerCase()}</strong>.</p>
+     <p class="ed">Using the values below, calculate <strong>${c.ask||c.n.toLowerCase()}</strong>. Give your answer to two decimal places unless it is a whole number.${c.id==="ped"?" PED may be given with its negative sign or as a magnitude.":""}</p>
      <div class="scrollx mt3"><table class="t" style="min-width:360px"><tbody>
       ${c.inp.map(([k,l,u])=>`<tr><td>${l}</td><td class="mn">${u==="$"?"$":""}${CB.pq[k]}${u&&u!=="$"?" "+u:""}</td></tr>`).join("")}
      </tbody></table></div>
@@ -6107,12 +6113,12 @@ const PAPERS={
   parts:[["(a)","Explain",10],["(b)","Discuss / Evaluate / To what extent",15]],
   brief:"Calculators are not permitted. Choose the question you can develop, not the one you recognise."},
  p2:{n:"Paper 2",dur:105,marks:40,desc:"Data response. One question from a choice of two.",
-  parts:[["(a)(i)+(ii)","Define",4],["(b)","Explain / Calculate",5],["(c)","Diagram",4],["(d)","Explain / Calculate",4],
-         ["(e)","Use the text",4],["(f)","Calculate / Explain",4],["(g)","Discuss / Evaluate using the text",15]],
-  brief:"Calculators permitted. Part (g) rewards use of the extract: quote the figures that do analytical work."},
+  parts:[["(a)(i)+(ii)","Define",4],["(b)","Mostly calculate / sketch",5],["(c)","Diagram",4],["(d)","Explain, with the data",4],
+         ["(e)","Use the text",4],["(f)","Explain, with the data",4],["(g)","Discuss / Evaluate using the text",15]],
+  brief:"Calculators permitted. Part (g) rewards use of the extract: quote the figures that do analytical work. The cockpit serves a 15-mark practice stem without an extract; for the full data-response shape, use the Paper 2 data lab."},
  p3:{n:"Paper 3",dur:105,marks:60,desc:"HL policy paper. Two compulsory questions, 30 marks each.",
   parts:[["(a)","Subdivided: define, calculate, draw, explain","up to 20"],["(b)","Recommend a policy",10]],
-  brief:"HL only. Calculators permitted. Part (a) assesses AO1, AO2 and AO4; part (b) assesses AO3."}};
+  brief:"HL only. Calculators permitted. Part (a) assesses AO1, AO2 and AO4; part (b) assesses AO3. The cockpit serves a single 15-mark practice stem, not a Paper 3 question: for the Paper 3 shape, use the Paper 3 recommendation lab."}};
 const PLAN=[["cmd","What is the command term, and what does it require?"],["thy","Which theory is doing the work?"],
  ["dgm","Which diagram, and which labels will I refer to?"],["ctx","What context or data must I use?"],
  ["chn","What is my chain, in five steps?"],["cnd","What condition would change my conclusion?"]];
@@ -6125,7 +6131,7 @@ function ckSave(){try{store.s("aa_cockpit",JSON.stringify({p:CK.p,stage:CK.stage
 function ckPick(p){CK.p=p;CK.q=null;CK.stage=0;CK.txt="";CK.plan={};CK.rec={};CK.started=false;ckSave();render()}
 function ckQuestion(){
  const pool=[];QB.filter(q=>S.lvl==="HL"||q.lvl!=="HL").forEach(q=>{
-  (CK.p==="p1"?[...q.a.map(x=>({...x,m:10,part:"a"})),...q.b.map(x=>({...x,m:15,part:"b"}))]:q.b.map(x=>({...x,m:15,part:"g"})))
+  (CK.p==="p1"?[...q.a.map(x=>({...x,m:10,part:"a"})),...q.b.map(x=>({...x,m:15,part:"b"}))]:q.b.map(x=>({...x,m:15,part:"b"})))
    .forEach(x=>pool.push({...x,sub:q.sub,n:q.n}))});
  CK.q=pick(pool,1)[0];CK.txt="";CK.plan={};CK.rec={};CK.stage=0;CK.started=false;ckSave();render();
 }
@@ -6228,21 +6234,21 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")document.body.classL
 const WHATIF=[
  {q:"What if demand becomes more elastic?",set:()=>{LAB.B=18;LAB.D=8;LAB.mode="tax";LAB.t=4},
   a:"Consumers can now leave the market more easily, so a smaller share of the tax can be pushed onto them. The consumer burden falls, the producer burden rises, quantity falls further and the welfare loss grows. Elasticity, not the size of the tax, decides who pays."},
- {q:"What if supply becomes inelastic?",set:()=>{LAB.B=12;LAB.D=4;LAB.mode="tax";LAB.t=4},
-  a:"Producers cannot withdraw output easily, so they absorb most of the tax. The consumer price rises by little. This is why taxes on land and on goods with fixed short-run supply raise revenue with a small quantity effect."},
- {q:"What if the tax is doubled?",set:()=>{LAB.mode="tax";LAB.t=8},
+ {q:"What if supply is inelastic relative to demand?",set:()=>{LAB.B=12;LAB.D=4;LAB.mode="tax";LAB.t=4},
+  a:"Supply in this lab runs through the origin, so its elasticity stays at 1 whatever its slope; this preset makes demand elastic instead, at −3, which leaves supply the relatively inelastic side. Buyers can walk away more easily than sellers, so producers absorb three quarters of the tax and the consumer price rises by only $1. The same logic is why taxes on land and on goods with fixed short-run supply fall mainly on their owners."},
+ {q:"What if the tax is doubled?",set:()=>{LAB.mode="tax";LAB.t=Math.min(8,2*LAB.t)},
   a:"The burden doubles but the split does not: incidence is set by relative elasticities. Revenue rises less than proportionately, because the tax base (the quantity traded) shrinks. The welfare loss grows roughly with the square of the tax."},
  {q:"What if the government subsidises instead of taxing?",set:()=>{LAB.mode="sub";LAB.s=4},
   a:"Output moves above the free-market allocation rather than below it. Consumers pay less and producers receive more, and the whole gap is paid by taxpayers. Absent a positive externality, the triangle is still a welfare loss, from over-allocation this time."},
  {q:"What if the ceiling is set far below equilibrium?",set:()=>{LAB.mode="ceil";LAB.pmax=3},
   a:"Excess demand widens and the quantity actually traded falls further. Price is no longer rationing, so queues, waiting lists or parallel markets do it instead, and those mechanisms have their own distributional consequences."},
- {q:"What if the economy already has substantial spare capacity?",set:()=>{ADAS.model="k";ADAS.dAD=250;ADAS.dAS=0;ADAS.Yf=1000},
-  a:"Demand expansion raises output with little effect on the price level. This is the Keynesian case for demand management, and the reason the same stimulus has completely different consequences in a slump and at full employment.",lab:1},
+ {q:"What if the economy already has substantial spare capacity?",set:()=>{ADAS.model="k";ADAS.dAD=150;ADAS.dAS=0;ADAS.Yf=1200},
+  a:"With potential output at $1,200bn the economy starts $200bn below capacity. A $150bn rise in demand now raises real output by $75bn and the price level by 7.5 points, narrowing the output gap; at full employment the same rise would end entirely in the price level. That is the Keynesian case for demand management, and the reason the same stimulus has different consequences in a slump and at full employment.",lab:1},
  {q:"What if the economy is already at full employment?",set:()=>{ADAS.model="m";ADAS.dAD=400;ADAS.dAS=0;ADAS.Yf=1000},
   a:"Output is capped by capacity, so the whole adjustment falls on the price level. The stimulus is inflationary rather than expansionary: the same policy, the same model, the opposite conclusion.",lab:1},
  {q:"What if input costs rise sharply?",set:()=>{ADAS.model="m";ADAS.dAD=0;ADAS.dAS=-200},
   a:"Output falls while the price level rises. Demand-side policy can restore output or restore the price level, but not both, which is the whole evaluation of a supply shock in one interaction.",lab:1},
- {q:"What if the marginal propensity to import rises?",set:()=>{POL.g=2;POL.r=0;POL.tax=0},
+ {q:"What if the marginal propensity to import rises?",set:()=>{},nofig:1,
   a:"A larger MPM raises the marginal propensity to withdraw, so the multiplier falls and each unit of stimulus buys less domestic income. Open economies get less from fiscal expansion than closed ones, see the multiplier on the Calculation Board.",calc:"mult"},
  {q:"What if the government regulates instead of taxing?",set:()=>{LAB.mode="none"},
   a:"A standard fixes the quantity and leaves the abatement cost wherever it falls; a tax fixes the price and lets firms choose how much to abate. You are choosing which uncertainty to live with: quantity certainty or cost certainty."}];
@@ -6255,7 +6261,7 @@ function whatIf(){
       <span class="n">${String(i+1).padStart(2,"0")}</span><span class="tx">${w.q}${WI.i===i?`<br><span class="xs" style="color:var(--tx-2)">${w.a}</span>`:""}</span></button>`).join("")}</div></div>
    <div>${WI.i===null?`<div class="empty"><div class="t">Choose a counterfactual</div>
      <div class="d">Each one re-runs a live model with a different assumption and reports what changed. Nothing here is scripted animation: the numbers are recomputed.</div></div>`
-    :(WHATIF[WI.i].lab?`<figure class="plate">${adasSVG(adasSolve())}<figcaption class="cap"><span class="t">AD-AS, recomputed</span><span class="s">${ADAS.model==="k"?"Keynesian":"Monetarist"}</span></figcaption></figure>`
+    :(WHATIF[WI.i].nofig?"":WHATIF[WI.i].lab?`<figure class="plate">${adasSVG(adasSolve())}<figcaption class="cap"><span class="t">AD-AS, recomputed</span><span class="s">${ADAS.model==="k"?"Keynesian":"Monetarist"}</span></figcaption></figure>`
       :`<figure class="plate">${mktSVG(mkt())}<figcaption class="cap"><span class="t">The market, recomputed</span><span class="s">Qd = 200 − ${LAB.B}P · Qs = ${LAB.D}P</span></figcaption></figure>`)
      +`<div class="note g mt3"><div class="t">What changed</div><p class="sm">${WHATIF[WI.i].a}</p></div>
       <div class="row mt3"><button class="btn gh sm" onclick="nav('lab',${WHATIF[WI.i].lab?1:0})">Open the full model →</button>
@@ -9359,7 +9365,7 @@ const PAPERARCH={
  p2:{n:"Paper 2: data response",
   shape:[["Choice","Two questions are set on stimulus material. You answer one."],
    ["(a)(i) and (a)(ii), 2 marks each","Definitions or short statements, usually of terms appearing in the extract."],
-   ["(b), 5 marks","Explanation or calculation; may be split 3 + 2 or 2 + 3."],
+   ["(b), 5 marks","Mostly quantitative (calculate, determine, sketch), often split into two or three subparts."],
    ["(c) to (f), 4 marks each","Explanation, diagram work and use of the data."],
    ["(g), 15 marks","The evaluation question. Its markband requires the use of the text and data."]],
   build:["Use the reading time to mark up the extract: numbers, policy announcements, stakeholder names.",
@@ -9458,7 +9464,7 @@ const DSETS=[
    {q:"Calculate the balance of trade in goods.",a:"−$140m",
     w:"820 − 960 = −$140m. The services surplus of $130m offsets most of it."},
    {q:"What must be true of the rest of the accounts?",a:"They must sum to +$40m.",
-    w:"The balance of payments sums to zero: credits are matched by debits across the three accounts and reserves."}],
+    w:"The balance of payments sums to zero: the current account balance is matched by the capital and financial accounts, reserve assets included, with net errors and omissions closing any measurement gap."}],
   trap:"Debits are entered as negatives. Adding magnitudes without signs is the fastest way to lose the arithmetic mark."},
  {n:"Market for a taxed good",unit:2,sub:"2.7",
   cols:["Price ($)","Quantity demanded","Quantity supplied"],
@@ -10152,7 +10158,7 @@ const NEWCALC=[
  solve:v=>{const t1=v.b1*v.r1/100,t2=v.b2*v.r2r/100,tot=t1+t2,a=tot/v.inc*100;
   return{a:r2(a),u:"%",steps:[`Band 1 tax = ${v.b1} × ${v.r1}% = ${r2(t1)}`,`Band 2 tax = ${v.b2} × ${v.r2r}% = ${r2(t2)}`,
    `Total tax = ${r2(tot)}`,`Average rate = ${r2(tot)} ÷ ${v.inc} × 100 = ${r2(a)}%`]}},
- interp:(v,a)=>{const top=Math.max(v.r1,v.r2r);return a<top
+ interp:(v,a)=>{const top=Math.max(v.r1,v.r2r);return v.r2r>v.r1&&a<top
    ?`The average rate is ${a}%, below the top marginal rate of ${top}%. That gap is the whole point of a progressive schedule: only income above the threshold is taxed at the higher rate.`
    :`The average rate is ${a}%. The higher band here does not carry the higher rate, so this schedule is not progressive over this income. Check which rate applies to which band before drawing any conclusion about equity.`},
  mist:["Applying the top marginal rate to the whole income.","Confusing the average rate with the marginal rate.","Forgetting any income that falls below the first threshold and is untaxed."],
@@ -10185,7 +10191,7 @@ const NEWCALC=[
  mist:["Treating normal profit as zero return rather than as the level that covers opportunity cost.","Reading the profit-maximising price off the MR curve instead of the AR curve.","Assuming a loss means immediate exit."],
  ib:"HL only. The guide names profit, MC, MR, AC and AR from data as a required HL calculation under 2.11.",
  gen:()=>{const ac=rnd(6,20,1);return{q:rnd(200,2000,50),ar:ac+rnd(-4,8,1),ac}},tol:.01},
-{id:"mcmr",n:"Marginal cost and marginal revenue",lvl:"HL",g:"Microeconomics",sub:"2.11",
+{id:"mcmr",n:"Marginal cost and marginal revenue",ask:"marginal revenue minus marginal cost over this change in output",lvl:"HL",g:"Microeconomics",sub:"2.11",
  f:"MC = ΔTC ÷ ΔQ · MR = ΔTR ÷ ΔQ",
  m:"The addition to cost and to revenue from one more unit: the pair that locates the profit-maximising output.",
  inp:[["q1","Output before","units"],["tc1","Total cost before","$"],["tr1","Total revenue before","$"],
@@ -10212,7 +10218,7 @@ const NEWCALC=[
    "Without that there is no market-clearing price to compare the ceiling against. Check the values of b and d."]};
   const qd=v.a-v.b*v.pmax,qs=v.d*v.pmax,sh=qd-qs;
   const pe=v.a/den,qe=v.a-v.b*pe;
-  return{a:r2(sh),u:"units",steps:[`Free-market price = ${v.a} ÷ (${v.b} + ${v.d}) = ${r2(pe)}`,
+  return{a:r2(Math.max(0,sh)),u:"units",steps:[`Free-market price = ${v.a} ÷ (${v.b} + ${v.d}) = ${r2(pe)}`,
    `Qd at $${v.pmax} = ${v.a} − ${v.b}×${v.pmax} = ${r2(qd)}`,
    `Qs at $${v.pmax} = ${v.d}×${v.pmax} = ${r2(qs)}`,
    `Shortage = ${r2(qd)} − ${r2(qs)} = ${r2(sh)} units`,
@@ -10229,8 +10235,8 @@ const NEWCALC=[
  f:"Surplus = Qs − Qd at the controlled price",
  m:"The excess supply a binding minimum price creates, and the cost of buying it up.",
  inp:[["pmin","Minimum price","$"],["a","Demand intercept: Qd = a − bP",""],["b","Demand slope b",""],["d","Supply slope: Qs = dP",""]],
- solve:v=>{const qd=v.a-v.b*v.pmin,qs=v.d*v.pmin,su=qs-qd;
-  return{a:r2(su),u:"units",steps:[`Qd at $${v.pmin} = ${v.a} − ${v.b}×${v.pmin} = ${r2(qd)}`,
+ solve:v=>{const qd=Math.max(0,v.a-v.b*v.pmin),qs=v.d*v.pmin,su=qs-qd;
+  return{a:r2(Math.max(0,su)),u:"units",steps:[`Qd at $${v.pmin} = ${v.a} − ${v.b}×${v.pmin} = ${r2(v.a-v.b*v.pmin)}${v.a-v.b*v.pmin<0?", below zero, so nothing is demanded at this price: Qd = 0":""}`,
    `Qs at $${v.pmin} = ${v.d}×${v.pmin} = ${r2(qs)}`,
    `Surplus = ${r2(qs)} − ${r2(qd)} = ${r2(su)} units`,
    su>0?`Cost of buying the surplus = ${r2(su)} × $${v.pmin} = $${r2(su*v.pmin)}`
@@ -10252,10 +10258,10 @@ const NEWCALC=[
  mist:["Calculating a rectangle instead of a triangle.","Measuring the height at the optimum, where the divergence is zero.","Placing the triangle on the wrong side of the optimum."],
  ib:"HL only. The guide names the calculation of welfare loss from a diagram under 2.8.",
  gen:()=>{const qo=rnd(400,1200,50);return{qm:qo+rnd(80,400,20),qo,mev:rnd(2,18,1)}},tol:.01},
-{id:"quotaeff",n:"Quota effects on stakeholders",lvl:"HL",g:"The global economy",sub:"4.2",
+{id:"quotaeff",n:"Quota effects on stakeholders",ask:"the quota rent",lvl:"HL",g:"The global economy",sub:"4.2",
  f:"Quota rent = (domestic price − world price) × quota quantity",
  m:"Who captures the gap a quota opens between the world price and the domestic price.",
- inp:[["pw","World price","$"],["pd","Domestic price under the quota","$"],["quota","Quota quantity","units"],["qs","Domestic quantity supplied at the domestic price","units"]],
+ inp:[["pw","World price","$"],["pd","Domestic price under the quota","$"],["quota","Quota quantity","units"],["qs","Domestic quantity supplied at the world price, before the quota","units"]],
  solve:v=>{const rent=(v.pd-v.pw)*v.quota, prodgain=(v.pd-v.pw)*v.qs;
   return{a:r2(rent),u:"$",steps:[`Price gap = ${v.pd} − ${v.pw} = ${r2(v.pd-v.pw)}`,
    `Quota rent = ${r2(v.pd-v.pw)} × ${v.quota} = $${r2(rent)}`,
@@ -10264,7 +10270,7 @@ const NEWCALC=[
  mist:["Awarding the rent to the government.","Using the world price rather than the price gap.","Forgetting that domestic producers also gain on every unit they already supplied."],
  ib:"HL only. The guide names the calculation of the effects on stakeholders of quotas under 4.2.",
  gen:()=>{const pw=rnd(8,30,1);return{pw,pd:pw+rnd(2,10,1),quota:rnd(200,1500,50),qs:rnd(300,2000,50)}},tol:.01},
-{id:"tradeflow",n:"Trade flows from a diagram",lvl:"HL",g:"The global economy",sub:"4.1",
+{id:"tradeflow",n:"Trade flows from a diagram",ask:"the value of the trade flow at the world price (import expenditure or export revenue)",lvl:"HL",g:"The global economy",sub:"4.1",
  f:"Imports = Qd − Qs at the world price · Import expenditure = imports × world price",
  m:"Reading the quantity traded, and what is spent on it, off a free-trade diagram.",
  inp:[["pw","World price","$"],["qd","Domestic quantity demanded at the world price","units"],["qs","Domestic quantity supplied at the world price","units"]],
@@ -11195,19 +11201,19 @@ const DRILLS=[
   items:[
    {c:"A tax on sugary drinks will substantially reduce obesity.",
     a:"That the drinks are a large enough share of calorie intake, and that consumers do not substitute towards untaxed sugary alternatives.",
-    d:["That demand is price elastic","That the tax is fully passed through","That there are no untaxed substitutes"],ok:2},
+    d:["That the revenue is spent on health care","That the tax is levied on producers","That there are no untaxed substitutes"],ok:2},
    {c:"Raising the interest rate will reduce inflation.",
     a:"That the inflation is demand-driven and that the rate change is transmitted to the rates households and firms actually face.",
     d:["That inflation originates on the demand side","That the central bank is independent","That inflation expectations are already anchored"],ok:0},
    {c:"Free trade makes both countries better off.",
     a:"That aggregate gains are the relevant test, and that adjustment costs and distribution are set aside.",
-    d:["That the countries have different opportunity costs","That the gains are shared within each country","That transport costs are zero"],ok:1},
+    d:["That both countries use the same currency","That aggregate gains, not their distribution, are the test of better off","That both countries are the same size"],ok:1},
    {c:"A minimum wage rise will cause unemployment.",
     a:"That the labour market is competitive rather than monopsonistic, and that the floor binds above the market wage.",
     d:["That employers have no wage-setting power","That labour demand is elastic","That firms cannot adjust hours"],ok:0},
    {c:"Economic growth raises living standards.",
     a:"That the additional output reaches households, and that nothing else that matters to well-being deteriorates alongside it.",
-    d:["That the gains are distributed","That the environment is unaffected","That population is constant"],ok:0}]},
+    d:["That the gains are distributed","That the growth is export-led","That the currency is floating"],ok:0}]},
  {k:"reverse",n:"Reverse the conclusion",
   lede:"If you cannot argue the opposite, you have not evaluated: you have asserted.",
   items:[
@@ -11227,7 +11233,7 @@ const DRILLS=[
   lede:"Most lost analysis marks are a step that was thought but not written.",
   items:[
    {c:"The tax is imposed, so government revenue rises.",
-    a:"Missing: the tax raises the price paid, quantity traded falls, and revenue is the tax multiplied by that smaller quantity, so revenue rises only if the quantity effect is small.",
+    a:"Missing: the tax raises the price paid, quantity traded falls, and revenue is the tax multiplied by that smaller quantity, so how much revenue is raised depends on how far quantity falls, which depends on elasticity.",
     d:["The quantity traded falls, so revenue depends on elasticity","Consumers pay more","Producers receive less"],ok:0},
    {c:"Interest rates fall, so investment rises.",
     a:"Missing: the cost of borrowing falls, so projects that were marginal become profitable, provided firms expect demand for the output.",
@@ -11244,10 +11250,10 @@ const DRILLS=[
    {c:"Demand is highly inelastic and a tax is imposed. How much does quantity fall?",
     a:"Very little. Almost all of the adjustment appears as a higher price, which is why the revenue effect dominates the consumption effect.",
     d:["Almost all the adjustment is in price","Quantity falls roughly in proportion","Quantity falls more than price rises"],ok:0},
-   {c:"MPC is 0.5 and government spending rises by $10bn. How large is the final change in GDP?",
-    a:"$20bn, because the multiplier is 1/(1−0.5) = 2: assuming no leakage to tax or imports.",
+   {c:"HL: MPC is 0.5 and government spending rises by $10bn. How large is the final change in GDP?",
+    a:"$20bn, because the multiplier is 1/(1−0.5) = 2, which is the same as 1/MPW with MPW = 0.5. HL content; it assumes spare capacity.",
     d:["$20bn","$5bn","$50bn"],ok:0},
-   {c:"Export and import price elasticities are −0.3 and −0.4. Does a depreciation improve the current account?",
+   {c:"HL: Export and import price elasticities are −0.3 and −0.4. Does a depreciation improve the current account?",
     a:"Not in the short run. The absolute values sum to 0.7, which is below one, so the Marshall-Lerner condition is not satisfied.",
     d:["No: the elasticities sum to less than one","Yes, both are negative","Yes: exports become cheaper"],ok:0}]},
  {k:"term",n:"Fix the imprecise term",
@@ -12292,7 +12298,7 @@ function extModel(id,o){
     : (over?[[Es.q,Es.p],[Em.q,MSB.p(Em.q)],[Em.q,MPC.p(Em.q)]]:[[Es.q,Es.p],[Em.q,MPC.p(Em.q)],[Em.q,MSB.p(Em.q)]]);
    return{xmax:220,ymax:26,
     eqs:["MPB: P = "+p.a+" − "+p.b+"Q","MPC: P = "+p.c+" + "+p.d+"Q",
-      (o.side==="cost"?"MSC":"MSB")+": the private curve shifted by the external "+(o.side==="cost"?"cost":"benefit")+" of "+ext+" per unit",
+      (o.side==="cost"?"MSC":"MSB")+": the private curve shifted by the external "+(o.sign<0?"cost":"benefit")+" of "+ext+" per unit",
       "Market: MPB = MPC → Q = "+NUM(Em.q),
       "Social optimum: MSB = MSC → Q = "+NUM(Es.q),
       "Welfare loss = ½ × "+ext+" × |"+NUM(Em.q)+" − "+NUM(Es.q)+"| = "+NUM(wl)],
@@ -12303,7 +12309,7 @@ function extModel(id,o){
     guides:[{q:Em.q,p:Em.p,xLab:"Q market = "+NUM(Em.q)},
       {q:Es.q,p:Es.p,xLab:"Q social = "+NUM(Es.q),col:"#E4DED2",lc:"#5B4B8A"}],
     facts:[["Market outcome",NUM(Em.q)+" units at $"+NUM(Em.p)],["Social optimum",NUM(Es.q)+" units at $"+NUM(Es.p)],
-      ["External "+(o.side==="cost"?"cost":"benefit")+" per unit","$"+NUM(ext)],
+      ["External "+(o.sign<0?"cost":"benefit")+" per unit","$"+NUM(ext)],
       ["Direction of the failure",over?"over-provision of "+NUM(Em.q-Es.q)+" units":"under-provision of "+NUM(Es.q-Em.q)+" units"],
       ["Welfare loss","$"+NUM(wl)],["Curve that diverges",o.side==="cost"?"marginal social cost":"marginal social benefit"]],
     alt:o.alt(Em,Es,wl,ext),
@@ -12649,8 +12655,8 @@ defModel("compadv",{sub:"4.1",t:"Comparative advantage",model:"Two linear produc
    marks:[{q:p.aw*0.52,p:p.ac*0.26,text:"slope = "+NUM(ocA)+" cloth per wheat",col:CD,sz:9},
      {q:p.bw*0.30,p:p.bc*0.62,text:"slope = "+NUM(ocB)+" cloth per wheat",col:CS,sz:9}],
    guides:[{q:p.aw,p:0,xLab:NUM(p.aw)},{q:p.bw,p:0,xLab:NUM(p.bw)}],
-   facts:[["A gives up per tonne of wheat",NUM(ocA)+" thousand metres of cloth"],
-     ["B gives up per tonne of wheat",NUM(ocB)+" thousand metres of cloth"],
+   facts:[["A gives up per tonne of wheat",NUM(ocA)+" metres of cloth"],
+     ["B gives up per tonne of wheat",NUM(ocB)+" metres of cloth"],
      ["Comparative advantage in wheat","Country A, because "+NUM(ocA)+" is less than "+NUM(ocB)],
      ["Comparative advantage in cloth","Country B, because "+NUM(1/ocB)+" is less than "+NUM(1/ocA)],
      ["Mutually beneficial terms of trade","between "+NUM(ocA)+" and "+NUM(ocB)+" cloth per wheat"],
@@ -13830,12 +13836,14 @@ function cpOpen(){
   else if(e.key==="Escape"){e.preventDefault();cpClose()}});
  cpPaint();inp.focus();
 }
+/* a description cut at a word, not mid-word */
+function cpTrim(d){d=String(d);if(d.length<=110)return d;const c=d.slice(0,110);return c.slice(0,Math.max(60,c.lastIndexOf(" "))).replace(/[,;:.\s]+$/,"")+"…"}
 function cpPaint(keep){
  CP.items=cpMatch(CP.q);
  const box=document.getElementById("cpres");if(!box)return;
  box.innerHTML=CP.items.length?CP.items.map((x,i)=>`<button class="cprow ${i===CP.sel?"on":""}" onclick="cpRun(${i})">
    <span class="k">${esc(x.k)}</span><span class="t">${esc(x.t)}</span>
-   ${x.d?`<span class="d">${esc(String(x.d).slice(0,90))}</span>`:""}</button>`).join("")
+   ${x.d?`<span class="d">${esc(cpTrim(x.d))}</span>`:""}</button>`).join("")
   :`<p class="xs" style="padding:16px">Nothing matches that. The palette searches every section, every printable and everything in the content index.</p>`;
  if(keep){const el=box.querySelector(".cprow.on");if(el&&el.scrollIntoView)el.scrollIntoView({block:"nearest"})}
 }
@@ -13860,6 +13868,55 @@ function openSearch(){cpOpen()}
 /* the header search control opens the palette, so there is one way in */
 (function(){const b=document.getElementById("searchbtn");
  if(b)b.onclick=function(e){e&&e.preventDefault&&e.preventDefault();cpOpen()};})();
+
+
+/* ── the search, filtered by kind ──────────────────────────────────────────
+   The palette searches about 2,400 items across sixty kinds. A row of filters
+   narrows it to one family, with a live count for the current query, so a
+   student looking for a diagram is not wading through mindmap nodes. With no
+   filter chosen, the palette behaves exactly as it always has.            */
+const CPGROUPS=[
+ ["all","All",null],["ee","Economics, Everywhere",/^Everywhere/],
+ ["concepts","Concepts",/^(Concept|Key concept|Dictionary|Definition|Misconception|Mechanism|Syllabus|Curriculum|Topic dossier|Command term|Chain|Evaluation|Economics in 60 Seconds|Real-world issue)$/],
+ ["cases","Cases and data",/^(Real world|Case study|Case room|Media room|Data source|Data set)$/],
+ ["diagrams","Diagrams and models",/^(Diagram|Diagram builder|Model or reality|Policy|Tool)$/],
+ ["calc","Calculations",/^Calculation$/],["maps","Mindmaps",/^Mindmap/],["video","Videos",/^Video$/],
+ ["exam","Exam and questions",/^(Question|Question architecture|Exam archetype|What earns marks|Paper [123] practice|Exam simulator|Transfer task|Drill)$/],
+ ["tok","TOK",/^(TOK|Knowledge question|Model epistemology|TOK activity)$/],["go","Sections",null]];
+CP.f="all";
+function cpScore(list,terms,tw,sw){return list.map(x=>{let sc=0;terms.forEach(t=>{if(x.t.toLowerCase().includes(t))sc+=tw;if(String(x.s).toLowerCase().includes(t))sc+=sw});return{...x,sc}})
+ .filter(x=>x.sc>=terms.length).sort((a,b)=>b.sc-a.sc)}
+function cpGroupItems(g,q){
+ const terms=q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+ if(g[0]==="go"){const a=cpActions();return terms.length?cpScore(a,terms,4,1):a}
+ const I=buildIndex().filter(x=>g[2].test(x.k)).map(x=>({k:x.k,t:x.t,d:x.d,run:x.go,s:x.s}));
+ return terms.length?cpScore(I,terms,3,1):I;
+}
+(function(){
+ const base=cpMatch;
+ cpMatch=function(q){
+  const g=CPGROUPS.find(x=>x[0]===CP.f);
+  if(!g||g[0]==="all")return base(q);
+  return cpGroupItems(g,q).slice(0,30);
+ };
+ const open=cpOpen;
+ cpOpen=function(){
+  const was=!!document.getElementById("cpal");
+  open.apply(this,arguments);
+  if(was)return;
+  CP.f="all";
+  const inp=document.getElementById("cpin");if(!inp)return;
+  const bar=document.createElement("div");bar.className="cpchips";bar.id="cpchips";bar.setAttribute("role","group");bar.setAttribute("aria-label","Filter the search");
+  inp.insertAdjacentElement("afterend",bar);cpChips();
+  inp.addEventListener("input",cpChips);
+ };
+})();
+function cpChips(){
+ const bar=document.getElementById("cpchips");if(!bar)return;
+ const q=CP.q||"";
+ bar.innerHTML=CPGROUPS.map(g=>{const n=g[0]==="all"?"":q.trim()?cpGroupItems(g,q).length:"";
+  return `<button class="cpchip ${CP.f===g[0]?"on":""}" aria-pressed="${CP.f===g[0]}" onclick="CP.f='${g[0]}';CP.sel=0;cpPaint();cpChips();const i=document.getElementById('cpin');if(i)i.focus()">${esc(g[1])}${n!==""?` <span class="mn">${n}</span>`:""}</button>`}).join("");
+}
 
 /* ═══ PART 35 · THE MISTAKE BOOK, IMPROVED ════════════════════════════════ */
 const MB={filter:"open",cat:"",sort:"recent"};
@@ -13991,7 +14048,7 @@ function flashcardsPlus(){
 }
 
 /* ═══ PARTS 82, 83, 84, 85 · IA ACCURACY CORRECTIONS ══════════════════════
-   Three corrections the 2026 examiner guidance requires, applied at source
+   Three corrections, applied at source
    rather than bolted on as a footnote. */
 
 /* PART 82: the 800-word limit is not one of the three criterion F rubric
@@ -14074,7 +14131,7 @@ iaArticleTest=function(){
  +`<section class="sec t"><div class="wrap">
    ${HD("02","What counts as the article","and what does not")}
    <table class="t">${IASOURCING.map(([n,d])=>`<tr><th style="width:26%">${n}</th><td class="sm">${d}</td></tr>`).join("")}</table>
-   <p class="xs mt3">Read from the Economics guide and the current examiner instructions for the internal assessment. Confirm against the instructions for your own session.</p>
+   <p class="xs mt3">Read from the Economics guide and the teacher support material held in this project. Confirm against the instructions for your own session.</p>
    ${HD("03","The diagram, before you paste it in")}
    ${iaDiagramCheck()}
    ${HD("04","How your teacher will mark it")}
@@ -14104,7 +14161,7 @@ assessCentre=function(){
    ${HD("05","Examination conventions for "+k.toUpperCase().replace("P","Paper "),"the rules that decide marks before any economics is written")}
    <div class="cols2">
     <div><ul class="sm" style="line-height:1.8">${PAPERNOTES[k].map(x=>`<li>${x}</li>`).join("")}</ul>
-     <p class="xs mt3">Read from the Economics guide and the current examiner instructions. Session instructions take precedence over any third-party summary.</p></div>
+     <p class="xs mt3">Read from the Economics guide held in this project. Session instructions take precedence over any third-party summary.</p></div>
     <div class="panel q"><div class="eb">Own-figure rule</div>
      <p class="sm mt2">Where a later part of a question depends on an answer from an earlier part, the later part is marked on the figure you produced, not on the correct one. An arithmetic slip early on therefore costs one mark rather than the whole sequence, provided the working is shown.</p>
      <div class="kicker mt3">Which is why</div>
@@ -22682,10 +22739,10 @@ function debatePrint(){
    what they are. One engine, one set of numbers, one place to maintain. */
 const MKTSCEN=[
  {k:"housing",n:"Urban rental housing",sub:"2.7",B:4,D:5,mode:"ceil",pmax:16,
-  why:"Demand is inelastic because people must live somewhere, and supply responds slowly because building takes years and planning takes longer. Both curves are therefore steep, and a maximum price produces a shortage that persists rather than clearing.",
-  watch:"Set the ceiling and read the shortage. Then load the luxury preset and set a ceiling the same distance below its equilibrium: the shortage is far smaller, because demand there can go elsewhere."},
+  why:"Demand is inelastic because people must live somewhere, and supply responds slowly because building takes years and planning takes longer. Both curves are therefore steep, and a maximum price produces a shortage that persists rather than clearing. In this lab supply passes through the origin, so its elasticity stays at 1 however steep it is; what sets this preset apart is its inelastic demand.",
+  watch:"Set the ceiling and read the shortage. Then load the luxury preset and set a ceiling the same distance below its equilibrium: the shortage is far larger, because quantity demanded responds much more to the lower price when demand is elastic."},
  {k:"coffee",n:"A commodity crop",sub:"2.5",B:16,D:5,mode:"none",
-  why:"Substitutes exist, so demand is elastic, while the harvest is fixed once it has grown and the trees take years to mature.",
+  why:"Substitutes exist, so demand is elastic, while the harvest is fixed once it has grown and the trees take years to mature. In this lab supply passes through the origin, so its elasticity stays at 1; the preset differs in the elasticity of demand.",
   watch:"Compare the price elasticity of demand shown here with the housing preset. The same shift in supply moves price far less when buyers can substitute."},
  {k:"tickets",n:"Concert tickets",sub:"2.3",B:4,D:4,mode:"ceil",pmax:18,
   why:"The venue holds what it holds, so supply is the steepest this model allows, and demand for a specific event has few substitutes.",
@@ -22704,7 +22761,7 @@ const MKTSCEN=[
   watch:"Compare the tax revenue with the tobacco preset at the same tax. Far less is raised and far more quantity is lost."},
  {k:"labour",n:"A low-wage labour market",sub:"3.3",B:8,D:8,mode:"floor",pmin:15,
   why:"A wage floor is a minimum price. Demand for labour slopes down, supply of labour slopes up, and the floor is set above the clearing wage.",
-  watch:"The excess supply is unemployment. Set the same distance above equilibrium as the housing ceiling is below it, and note that the two policies mirror each other exactly."}];
+  watch:"The excess supply is unemployment. Set the same distance above equilibrium as the housing ceiling is below it, and note that the two policies mirror each other: a gap between quantity demanded and quantity supplied, with trade on the short side. The sizes differ because the slopes differ."}];
 function marketScenarios(){
  return H.pageHead("Tools","Market scenarios","Named markets, loaded into the simulator that already exists.")
  +`<section class="sec"><div class="wrap">
@@ -22806,15 +22863,15 @@ function tradeGame(){
     <td class="mn" style="color:${c.gainC<0?"var(--loss)":"var(--ok)"}">${c.gainC>=0?"+":""}${r(c.gainC)}</td></tr></table></div>
   <div class="note ${c.correct?"p":"n"} mt3"><div class="t">${c.correct?"That is the pattern comparative advantage implies":"That is not the pattern comparative advantage implies"}</div>
    <p class="sm">${c.correct
-    ?"Each country is producing the good in which its opportunity cost is lower, and combined output of at least one good rises without the other falling. That surplus is what the two countries divide between them."
+    ?"Each country is producing the good in which its opportunity cost is lower, so valued at any terms of trade between the two opportunity cost ratios, combined output is worth more than before. Complete specialisation need not raise the output of both goods against a half-and-half split, and one total can fall, but the value of the whole rises. That gain is what the two countries divide between them."
     :(c.caWheat==="none"?"With identical ratios no allocation raises combined output."
-      :"Both countries are producing the good in which their opportunity cost is higher, or both are producing the same good. Combined output falls. Set country "+c.caWheat+" on wheat and the other on cloth and compare.")}</p></div>
+      :"Both countries are producing the good in which their opportunity cost is higher, or both are producing the same good. Valued at any terms of trade between the two opportunity cost ratios, combined output is worth less than it would be if each country specialised according to comparative advantage. Set country "+c.caWheat+" on wheat and the other on cloth and compare.")}</p></div>
 
   ${HD("03","Terms of trade","the range, not a number you may choose freely")}
   <div class="split">
    <div>
     <label class="lb">Cloth per tonne of wheat · ${r(TG.tot)}</label>
-    <input type="range" aria-label="Terms of trade: cloth per tonne of wheat" min="0.05" max="3" step="0.05" value="${TG.tot}" oninput="TG.tot=+this.value;render()">
+    <input type="range" aria-label="Terms of trade: cloth per tonne of wheat" min="0.05" max="10" step="0.05" value="${TG.tot}" oninput="TG.tot=+this.value;render()">
     <div class="row mt3" style="gap:6px">
      <span class="tag mn">Lower limit ${r(c.lo)}</span>
      <span class="tag mn">Upper limit ${r(c.hi)}</span>
@@ -22930,7 +22987,7 @@ function cpbShock(k){
 const LZ={sh:[4,9,15,23,49]};
 function lzCalc(){
  const tot=LZ.sh.reduce((a,b)=>a+b,0)||1;
- const shares=LZ.sh.map(s=>s/tot);
+ const shares=LZ.sh.map(s=>s/tot).sort((a,b)=>a-b);
  const cum=[0];shares.forEach(s=>cum.push(cum[cum.length-1]+s));
  /* Gini by the trapezium rule on five equal population groups */
  let sum=0;for(let i=1;i<cum.length;i++)sum+=(cum[i]+cum[i-1]);
@@ -22999,7 +23056,8 @@ function lorenzBuilder(){
     <div class="row mt3" style="gap:6px">
      <button class="btn sm gh" onclick="LZ.sh=[20,20,20,20,20];render()">Perfect equality</button>
      <button class="btn sm gh" onclick="LZ.sh=[0,0,0,0,100];render()">All income to the top fifth</button>
-     <button class="btn sm gh" onclick="LZ.sh=[4,9,15,23,49];render()">Reset</button></div></div></div>
+     <button class="btn sm gh" onclick="LZ.sh=[4,9,15,23,49];render()">Reset</button></div>
+    ${LZ.sh.some((v,i)=>i&&v<LZ.sh[i-1])?`<p class="xs mt2">These shares are not in ascending order. A Lorenz curve ranks the population from poorest to richest, so they have been sorted before plotting and before the coefficient was computed.</p>`:""}</div></div>
 
   ${HD("01","How the coefficient was computed","so that you can do it by hand")}
   <div class="split">
@@ -23167,7 +23225,7 @@ function bopSign(s){
    the two schedules shown; the current account effect is computed from the
    two elasticities entered, which is where the Marshall-Lerner condition
    comes from rather than being asserted alongside it. */
-const FX={a:160,b:40,c:20,d:60,shift:18,shiftD:0,shiftS:0,ex:0.6,em:0.5,X:500,M:520,shown:false};
+const FX={a:160,b:40,c:20,d:60,shift:18,shiftD:0,shiftS:0,ex:0.6,em:0.5,X:500,M:500,shown:false};
 const FXSHIFTS=[
  {k:"exp",n:"Foreign demand for exports rises",d:1,s:0,
   w:"Foreign buyers must obtain this currency to pay for the goods, so demand for it rises."},
@@ -23191,7 +23249,7 @@ function fxCalc(){
  /* the current account effect of the rate change, from the two elasticities */
  const dep=-chg;                              /* a fall in E is a depreciation */
  const X1=FX.X*(1+FX.ex*dep);
- const M1=FX.M*(1+dep)*(1-FX.em*dep);
+ const M1=FX.M*(1+dep*(1-FX.em));
  return {E,Q,E0,Q0,chg,dep,X1,M1,ca0:FX.X-FX.M,ca1:X1-M1,ml:FX.ex+FX.em>1};
 }
 function fxLab(){
@@ -23265,7 +23323,7 @@ function fxLab(){
     <div class="row mt3" style="gap:6px">
      <span class="tag mn">Sum = ${r(FX.ex+FX.em)}</span>
      <span class="tag ${f.ml?"pos":"neg"}">${f.ml?"Marshall-Lerner condition satisfied":"Marshall-Lerner condition not satisfied"}</span></div>
-    <p class="sm mt3">The condition is that the two elasticities sum to more than one. Below that, a depreciation raises the domestic cost of imports faster than it raises export earnings, and the current account worsens.</p></div>
+    <p class="sm mt3">Starting from balanced trade, and for a change in the rate small enough for the elasticities to stay put, the condition is that the two elasticities sum to more than one in absolute value. Below that, a depreciation raises the domestic cost of imports faster than it raises export earnings, and the current account worsens.</p></div>
    <div><table class="t">
      <tr><th></th><th>Before</th><th>After</th></tr>
      <tr><td class="sm">Export earnings</td><td class="mn">${r(FX.X,0)}</td><td class="mn">${r(f.X1,0)}</td></tr>
@@ -23292,7 +23350,7 @@ function fxLab(){
 const MUL={mps:0.15,mpt:0.20,mpm:0.15,inj:100,rounds:12};
 function mulCalc(){
  const w=MUL.mps+MUL.mpt+MUL.mpm, mpc=1-w;
- const k=w>0?1/w:Infinity;
+ const k=w>0&&w<=1?1/w:Infinity;
  const rows=[];let cum=0,cur=MUL.inj;
  for(let i=0;i<MUL.rounds;i++){cum+=cur;rows.push({i:i+1,spend:cur,cum});cur=cur*mpc}
  return {w,mpc,k,rows,total:MUL.inj*k,captured:cum};
@@ -23316,7 +23374,7 @@ function multiplierLab(){
     ${sl("mpm","Marginal propensity to import",MUL.mpm)}
     <label class="lb mt3">Initial injection · ${MUL.inj}</label>
     <input type="range" aria-label="Initial injection" min="20" max="400" step="10" value="${MUL.inj}" oninput="MUL.inj=+this.value;render()">
-    ${m.w<=0?`<div class="note n mt3"><div class="t">No leakage at all</div>
+    ${m.w>1?`<div class="note n mt3"><div class="t">More than all of it leaks</div><p class="sm">MPS, MPT and MPM are shares of each extra unit of income, so together they cannot exceed one. Lower one of the three above.</p></div>`:""}${m.w<=0?`<div class="note n mt3"><div class="t">No leakage at all</div>
       <p class="sm">With nothing leaking out, every unit of income is respent in full and the series never converges. The multiplier is undefined. Raise one of the three above.</p></div>`:""}</div>
    <div>
     <div class="statrow">
@@ -23324,13 +23382,13 @@ function multiplierLab(){
       <span class="d">MPS + MPT + MPM</span></div>
      <div class="stat"><span class="k">Marginal propensity to consume domestically</span><span class="v">${r(m.mpc)}</span>
       <span class="d">1 − MPW</span></div>
-     <div class="stat"><span class="k">Multiplier</span><span class="v">${m.w>0?r(m.k):"-"}</span>
+     <div class="stat"><span class="k">Multiplier</span><span class="v">${isFinite(m.k)?r(m.k):"-"}</span>
       <span class="d">1 ÷ MPW</span></div>
-     <div class="stat"><span class="k">Final change in income</span><span class="v">${m.w>0?r(m.total,0):"-"}</span>
+     <div class="stat"><span class="k">Final change in income</span><span class="v">${isFinite(m.k)?r(m.total,0):"-"}</span>
       <span class="d">injection × multiplier</span></div></div>
     <div class="note g mt3"><div class="t">The two forms of the formula</div>
      <p class="sm mn">k = 1 ÷ (1 − MPC) = 1 ÷ (MPS + MPT + MPM)</p>
-     <p class="sm mt2">They are the same statement. The first is the closed-economy form with no government; the second names every leakage separately and is the one the HL syllabus uses. Dividing by MPC instead of by the withdrawals is the single commonest error in this calculation, and it gives a number smaller than one.</p></div></div></div>
+     <p class="sm mt2">They are the same statement when MPC is read as the share of extra income spent on domestic output after tax and imports, so that 1 − MPC = MPS + MPT + MPM. In a closed economy with no government MPT and MPM are zero and both reduce to 1 ÷ MPS. The second form names every leakage separately and is the one the HL syllabus uses. Dividing by MPC instead of by the withdrawals is the single commonest error in this calculation, and it gives a multiplier far too small: with an MPC of 0.8 it gives 1.25 instead of 5.</p></div></div></div>
 
   ${HD("01","Round by round","the series, computed")}
   <figure class="plate">
@@ -23347,8 +23405,8 @@ function multiplierLab(){
   <div class="scrollx mt4"><table class="t">
    <tr><th>Round</th><th>Spending in this round</th><th>Cumulative change in income</th><th>Share of the final total</th></tr>
    ${m.rows.map(x=>`<tr><td class="mn">${x.i}</td><td class="mn">${r(x.spend,1)}</td>
-     <td class="mn">${r(x.cum,1)}</td><td class="xs">${m.w>0?r(x.cum/m.total*100,1)+"%":"-"}</td></tr>`).join("")}</table></div>
-  <p class="sm mt3">${m.w>0?`After ${m.rows.length} rounds the series has reached ${r(m.captured,1)} of a final total of ${r(m.total,0)}, which is ${r(m.captured/m.total*100,1)}% of it. The remainder arrives in rounds that are individually too small to matter but collectively are not.`:""}</p>
+     <td class="mn">${r(x.cum,1)}</td><td class="xs">${isFinite(m.k)?r(x.cum/m.total*100,1)+"%":"-"}</td></tr>`).join("")}</table></div>
+  <p class="sm mt3">${isFinite(m.k)?`After ${m.rows.length} rounds the series has reached ${r(m.captured,1)} of a final total of ${r(m.total,0)}, which is ${r(m.captured/m.total*100,1)}% of it. The remainder arrives in rounds that are individually too small to matter but collectively are not.`:""}</p>
 
   <div class="split mt5">
    <div class="panel q"><div class="eb">What raises the multiplier</div>
@@ -27359,7 +27417,7 @@ const SOURCE_REGISTER=[
   reproduced:"No. Metadata only.",treatment:"Analysed locally. Not shipped, not published, not committed to the repository."},
  {file:"Economics HL Paper 3 (compiled question set)",paper:"Paper 3",level:"HL",
   sessions:"November 2020 to November 2025",
-  purpose:"Extraction of the quantitative and policy-recommendation structure specific to the HL third paper.",
+  purpose:"Extraction of the quantitative and policy-recommendation structure specific to the HL third paper. Papers from November 2020 to November 2021 were set under the previous guide, whose Paper 3 was a quantitative paper with no Recommend part.",
   reproduced:"No. Metadata only.",treatment:"Analysed locally. Not shipped, not published, not committed to the repository."},
  {file:"Economics SL Paper 1 (compiled question set)",paper:"Paper 1",level:"SL",
   sessions:"Specimen and November 2020 to November 2025",
@@ -27384,7 +27442,8 @@ const DNALINKS=[
 /* ── helpers over the metadata ────────────────────────────────────────── */
 const DNAOK=()=>typeof EXAM_DNA!=="undefined"&&Array.isArray(EXAM_DNA);
 const dnaAll=()=>DNAOK()?DNAPARTS():[];
-const dnaSess=s=>(typeof EXAM_DNA_SESSIONS==="object"&&EXAM_DNA_SESSIONS[s])||s;
+const DNA_PREV=["20N","21M","21N"];
+const dnaSess=s=>((typeof EXAM_DNA_SESSIONS==="object"&&EXAM_DNA_SESSIONS[s])||s)+(DNA_PREV.includes(s)?" (previous guide)":"");
 const dnaTopic=c=>(SUBMAP[c]&&c+" "+SUBMAP[c].title)||"Not classified";
 const dnaHasF=(p,ch)=>String(p.f||"").indexOf(ch)>=0;
 const dnaMap=c=>MMKEYS().find(k=>(MIND_MAPS[k].subs||[]).includes(c))||null;
@@ -27463,7 +27522,7 @@ const ARCHETYPES=[
   maps:["bop","global"],code:"4.6"},
  {k:"recommend",n:"Recommend a policy",paper:"Paper 3 (b)",marks:"10",
   match:p=>p.ct==="Recommend",
-  d:"The most structurally demanding task in the HL papers. It requires the data to be used, at least two policies to be compared on their mechanisms, and a recommendation that is conditional on something established earlier.",
+  d:"The most structurally demanding task in the HL papers. It rewards an appropriate policy, fully explained, supported by theory and by the data, with balanced evaluation. Comparing it with an alternative on their mechanisms is one effective way to show that balance: a strategy, not a stated requirement.",
   skills:["Evidence taken from the supplied material and quoted as evidence","Two or more policies compared on mechanism, not on preference","A recommendation with a stated condition","A statement of what would change the recommendation"],
   errors:["Recommending before comparing","Comparing without ever deciding","Ignoring the data entirely and answering from theory","A condition that is generic rather than specific to the case"],
   task:"A government faces inflation at 7.9%, unemployment at 4.2% and a budget deficit of 5.1% of GDP. Compare a rise in the policy rate with a cut in current spending, then recommend one and state the condition your recommendation depends on.",
@@ -27789,7 +27848,8 @@ function dnaHeat(){
  return H.pageHead("Exam DNA","Question architecture heatmap","What the supplied papers actually asked.")
  +`<section class="sec"><div class="wrap">
   <div class="panel warn"><div class="eb">Historical, not predictive</div>
-   <p class="sm mt2">This visualises the supplied historical papers and is not a prediction tool. It describes what was asked in ${[...new Set(all.map(p=>p.s))].length} analysed sessions. It does not indicate what will be asked in any future session, and no part of this platform claims that it does.</p></div>
+   <p class="sm mt2">This visualises the supplied historical papers and is not a prediction tool. It describes what was asked in ${[...new Set(all.map(p=>p.s))].length} analysed sessions. It does not indicate what will be asked in any future session, and no part of this platform claims that it does.</p>
+   <p class="sm mt2">Sessions from November 2020 to November 2021 were set under the previous guide, whose Paper 2 and Paper 3 were structured differently; they are labelled “previous guide” wherever a session is named. Some mark allocations in the metadata are known to be incomplete or mis-parsed and are awaiting re-extraction, so treat the long tail of the mark table as indicative.</p></div>
   <div class="row mt4" style="gap:6px;flex-wrap:wrap">
    ${[["topic","By subtopic"],["skill","By skill"],["ct","By command term"]].map(([v,n])=>
      `<button class="btn sm ${DH.view===v?"":"gh"}" onclick="DH.view='${v}';render()">${n}</button>`).join("")}
@@ -28209,7 +28269,7 @@ const P2SETS=[
     ["Unemployment rate (%)","7.8","7.4","8.9","8.6"]]},
   parts:[
    {pt:"a.i",m:2,ct:"Define",q:"Define the term budget deficit.",
-    guide:"One sentence. The defining feature is that planned government spending exceeds planned government revenue over a period."},
+    guide:"One sentence. The defining feature is that government expenditure exceeds government revenue over a period, usually a fiscal year."},
    {pt:"a.ii",m:2,ct:"Define",q:"Define the term depreciation.",
     guide:"A fall in the value of a currency in terms of another currency, brought about by market forces under a floating system."},
    {pt:"b",m:3,ct:"Calculate",q:"Using Table 1, calculate the percentage change in export earnings between 2022 and 2023.",
@@ -28247,7 +28307,7 @@ const P2SETS=[
    {pt:"c",m:4,ct:"Explain",q:"Using a diagram, explain the effect of the rent cap on the market for capped tenancies.",
     guide:"A ceiling below equilibrium creates excess demand. Draw it, mark the shortage between the two curves at the capped price, and say what the non-price allocation becomes."},
    {pt:"d",m:4,ct:"Explain",q:"Explain, using the information in the text, why rents in exempt categories rose by 23%.",
-    guide:"Demand displaced from the capped segment raises demand in the exempt one, while supply moves towards it because the return is higher there. Both effects push the exempt price up."},
+    guide:"Demand displaced from the capped segment raises demand in the exempt one, while supply also moves towards it because the return is higher there, which on its own would lower the exempt price. The 23% rise shows that the demand effect has outweighed the supply effect, helped by the low short-run elasticity of housing supply."},
    {pt:"e",m:4,ct:"Explain",q:"Explain why the price elasticity of supply of housing in Harven is likely to be low in the short run.",
     guide:"Completion takes years, the planning lag is 31 months, and the existing stock cannot be added to quickly, so quantity supplied responds very little to price within a year."},
    {pt:"f",m:15,ct:"Evaluate",q:"Using information from the text and Table 1, evaluate the rent cap as a response to housing affordability in Harven.",
@@ -28278,7 +28338,7 @@ const P2SETS=[
    {pt:"c",m:4,ct:"Explain",q:"Using an AD and AS diagram, explain the effect of the capital programme on output and the price level in Nordhaven.",
     guide:"AD shifts right. Because the economy is well inside capacity, most of the adjustment is in real output with little effect on the price level. Draw the Keynesian AS and locate the economy in its horizontal section."},
    {pt:"d",m:4,ct:"Explain",q:"Explain why business investment has fallen despite the policy rate falling to 0.25%.",
-    guide:"Investment depends on expected returns as well as on the cost of borrowing. With confidence at a record low and demand falling, the expected return is negative at any interest rate, so the rate is not the binding constraint."},
+    guide:"Investment depends on expected returns as well as on the cost of borrowing. With confidence at a record low and demand falling, expected returns on many projects are below even a very low cost of borrowing, so the interest rate is not the binding constraint."},
    {pt:"e",m:4,ct:"Explain",q:"Explain one limitation of further monetary loosening in the situation described.",
     guide:"There is almost no room left to cut, and the transmission mechanism works through a cost of borrowing that is already minimal. This is the liquidity trap case."},
    {pt:"f",m:15,ct:"Discuss",q:"Using information from the text and Table 1, discuss the two proposals before the cabinet.",
@@ -28365,7 +28425,7 @@ const P3CASES=[
    {n:"Information and labelling with a smaller tax",
     mech:"Aims to raise the elasticity of demand over time, so that the same tax achieves more later.",
     risk:"Slow, uncertain in magnitude, and the evidence on labelling alone is mixed."}],
-  cond:"Which objective is primary. If it is revenue, the first option is already working. If it is the external cost, the elasticity evidence says the tax is the wrong instrument and the second is better matched.",
+  cond:"Which objective is primary. If it is revenue, the first option is already working. If it is the external cost, the elasticity evidence says a tax will reduce it only slightly: raising the tax towards the estimated 0.62 would complete the internalisation, but regulating composition acts on the cost per unit and is better matched to cutting the total.",
   maps:["intervene","extern","syn-elastax"],dgs:["negcons","tax"]},
  {id:"p3-marenth",title:"Marenth: unemployment with two different causes",lvl:"HL",unit:3,
   brief:"Marenth's headline unemployment rate conceals two separate problems. The policy that helps one will not help the other, and the data supplied is enough to tell them apart.",
@@ -28378,12 +28438,12 @@ const P3CASES=[
     ["Manufacturing employment (000)","890","742","701"],
     ["Services employment (000)","3 120","3 010","3 190"]]},
   calcs:[{q:"Calculate the change in manufacturing employment between Year 1 and Year 3 as a percentage.",w:"(701 − 890) ÷ 890 × 100",a:"-21.2%"},
-   {q:"Calculate the ratio of unfilled vacancies to the long-term unemployed share in Year 3 relative to Year 2.",w:"141 ÷ 62",a:"2.27 times"},
+   {q:"Calculate unfilled vacancies in Year 3 as a multiple of their Year 2 level.",w:"141 ÷ 62",a:"2.27 times"},
    {q:"Calculate the change in total employment between Year 2 and Year 3.",w:"(3 190 + 701) − (3 010 + 742)",a:"+139 thousand"}],
   policies:[
    {n:"Expansionary demand management",
     mech:"Raises aggregate demand and reduces cyclical unemployment.",
-    risk:"Vacancies have recovered to above their Year 1 level while unemployment has not fallen. That pattern points to a mismatch, which demand management does not fix."},
+    risk:"Vacancies have recovered to above their Year 1 level while unemployment has fallen only from 8.4% to 8.1%, still far above its Year 1 rate. That pattern points to a mismatch, which demand management does not fix."},
    {n:"Retraining and relocation support",
     mech:"Addresses the structural component directly by moving displaced manufacturing workers towards where the vacancies are.",
     risk:"Slow, expensive per worker, and its success rate depends on age and on how far the skills have to travel."},
@@ -28409,7 +28469,7 @@ const P3CASES=[
   policies:[
    {n:"Allow further depreciation",
     mech:"Raises the domestic price of imports and lowers the foreign price of exports, switching expenditure towards domestic output.",
-    risk:"The elasticities sum to 1.0, so the Marshall-Lerner condition is not met and a depreciation worsens the balance in the period the data covers."},
+    risk:"The elasticities sum to 1.0, so the Marshall-Lerner condition is not met: a depreciation would not improve the balance in the period the data covers, and in the short run the J-curve suggests it would worsen first."},
    {n:"Expenditure reduction through fiscal contraction",
     mech:"Reduces domestic demand, which reduces import volumes directly and predictably.",
     risk:"It works by reducing output and employment, which is a high price for an external objective, and it does nothing about competitiveness."},
@@ -28431,7 +28491,7 @@ const P3CASES=[
    ═══════════════════════════════════════════════════════════════════════════ */
 const PL={i:0,step:0,show:{},txt:{},set:0,case:0,ans:{},stage:0};
 const PLBADGE='<span class="tag a">Teacher-created original practice</span>';
-const PLNOTE='<p class="xs mt3">Original task written for this platform. It is not an IB question, not taken from one and not adapted from one. It follows the mark architecture that the Exam DNA analysis found in the historical papers, which is structure rather than content.</p>';
+const PLNOTE='<p class="xs mt3">Original task written for this platform. It is not an IB question, not taken from one and not adapted from one. It keeps the order of demands that the Exam DNA analysis found in the historical papers, which is structure rather than content. The Paper 1 tasks carry the full 10 + 15 marks; the Paper 2 sets and Paper 3 cases are shorter than a real question, which carries 40 marks in Paper 2 (the 15-mark part is (g)) and 30 in Paper 3.</p>';
 
 /* ── PART 44 and 98 · the Paper 1 workshop ───────────────────────────── */
 function p1Lab(){
@@ -28479,7 +28539,7 @@ function p1Lab(){
 
   ${HD("03","Step 3 · Write it")}
   <div class="panel">
-   <p class="sm">Twenty-five marks is about forty-five minutes. Write part (a) in fifteen and part (b) in thirty, and stop when the time stops.</p>
+   <p class="sm">Twenty-five marks is the whole of Paper 1: seventy-five minutes for one question. Write part (a) in about twenty-five minutes and part (b) in about forty-five, and stop when the time stops.</p>
    <textarea class="inp mt3" style="min-height:220px" aria-label="Your response to this Paper 1 task"
      placeholder="Part (a)..." oninput="PL.txt['${k}']=this.value;plSave()">${esc(PL.txt[k]||"")}</textarea>
    <p class="xs mt2">${(PL.txt[k]||"").trim().split(/\s+/).filter(Boolean).length} words</p>
@@ -28678,7 +28738,7 @@ const SIMRUNS=[
     .concat([{m:10,ct:"Recommend",q:"Compare the options for "+c.title.split(":")[0]+", recommend one, justify it from the data and state what would change your recommendation.",
       g:c.cond,case:c.id}])}},
  {k:"mock",n:"Full original mock",mins:90,lvl:"SL + HL",
-  d:"One complete Paper 1 task at 25 marks plus a full original data-response set. Ninety minutes, written straight through.",
+  d:"One complete Paper 1 task at 25 marks plus one original data-response set. Ninety minutes, written straight through: a compressed drill, since the two real papers together run to three hours.",
   build:()=>{const t=P1TASKS[(todaySeed()+SIM.n*11)%P1TASKS.length];
    const s=P2SETS[(todaySeed()+SIM.n*17)%P2SETS.length];
    return [{m:10,ct:"Explain",q:t.a,g:"Mechanism, with a direction on every step.",ref:t.id},
@@ -28719,7 +28779,7 @@ function simView(){
   +`<section class="sec"><div class="wrap">
    <div class="row" style="gap:6px;flex-wrap:wrap">${PLBADGE}<span class="tag">Original tasks only</span></div>
    <div class="panel warn mt3"><div class="eb">What this is, precisely</div>
-    <p class="sm mt2">Every task in every run below was written for this platform. None is an official IB question, an official practice paper or an official mock, and none is adapted from one. What is borrowed is the timing and the mark architecture, which is structure rather than content.</p></div>
+    <p class="sm mt2">Every task in every run below was written for this platform. None is an official IB question, an official practice paper or an official mock, and none is adapted from one. What is borrowed is the order of demands and the relative size of the parts, which is structure rather than content. The runs are shorter than the real papers, so this clock is a drill, not the examination timing.</p></div>
    <div class="cols2 mt4">${SIMRUNS.filter(r=>r.lvl!=="HL"||S.lvl==="HL").map(r=>`<div class="panel">
      <div class="row" style="justify-content:space-between;align-items:baseline">
       <h3>${esc(r.n)}</h3><span class="tag ${r.lvl==="HL"?"hl":""}">${esc(r.lvl)}</span></div>
@@ -33353,6 +33413,30 @@ function eeHomeBand(){
  };
 })();
 
+
+/* ── the home page, without repetition ─────────────────────────────────────
+   Releases added home bands one at a time, and three of them came to answer
+   the same question. "Start here" repeated the time picker that "One next
+   step" and "What should I do next?" already offer; "Your next move" repeated
+   "One next step" word for word ("Today's training"). Both are withdrawn from
+   the home page; everything they linked to is still one click away there.
+   "Your economic thinking" and "Your growth" are the dashboard's panels: for a
+   visitor with no evidence yet they were two thousand pixels of "not enough
+   evidence yet", so they appear once there is something to show. Section
+   numbers are then renumbered so the sequence reads without gaps.        */
+function homeTidy(html){
+ if(typeof document==="undefined")return html;
+ const t=document.createElement("template");t.innerHTML=html;
+ const title=el=>{const h=el.querySelector(".shead h2");return h?h.textContent.trim():""};
+ let ev=false;try{ev=evidenced().length>0}catch(e){}
+ const drop=new Set(["Start here","Your next move"]);
+ if(!ev){drop.add("Your economic thinking");drop.add("Your growth")}
+ [...t.content.children].forEach(el=>{if(drop.has(title(el)))el.remove()});
+ let n=0;t.content.querySelectorAll(".shead .n").forEach(x=>{if(/^\d+$/.test(x.textContent.trim())){n++;x.textContent=String(n).padStart(2,"0")}});
+ return t.innerHTML;
+}
+(function(){const prev=VIEWS.home;VIEWS.home=()=>homeTidy(prev())})();
+
 /* ═══════════════════════════════════════════════════════════════════════════
    ECONOMICS, EVERYWHERE: the self-tests
    Content integrity (schema, links, sources, labels), and the economics of
@@ -33516,6 +33600,9 @@ function EESUITE(){
  T("Everywhere · the section sits on the bar, in the drawer and in the More menu, and the home page opens a door to it",
    (()=>{const s=SECTIONS.find(x=>x.v==="everywhere");const flat=MOBGROUPS.flatMap(([,i])=>i.map(x=>x[0]));
     return s&&s.pri&&flat.includes("everywhere")&&/Economics, Everywhere/.test(VIEWS.home())})());
+ T("Everywhere · the search filters return only their own kind, and every filter finds something",
+   CPGROUPS.filter(g=>g[2]).every(g=>{const r=cpGroupItems(g,"");return r.length>0&&r.every(x=>g[2].test(x.k))})
+   &&cpGroupItems(CPGROUPS.find(g=>g[0]==="ee"),"flight").some(x=>/flight/i.test(x.t)));
  T("Everywhere · a saved piece joins the platform's single saved list",SVKINDS.ee==="Economics, Everywhere"&&/svToggle\('ee'/.test(eeQuestionPage(EEQ[0])));
  return out;
 }
@@ -34132,7 +34219,7 @@ function runQA(){
  window.__failed=f.map(x=>x.n);window.__qa=QA;
  return{total:QA.length,failed:f};
 }
-const SAMPLE=`An indirect tax is a tax on expenditure levied on producers, who may pass part of it on to consumers through a higher price. A demerit good is one that is over-consumed relative to the social optimum because consumption generates negative externalities. Figure 1 shows the market for tobacco. The free market equilibrium is at Pe, Qe where MPB equals MPC. Because consumption imposes external costs, MSB lies below MPB and the social optimum is at Qopt. A specific tax shifts supply vertically upward by the amount of the tax, therefore the price paid by consumers rises from Pe to Pc and quantity falls from Qe towards Qopt, and as a result the welfare loss shown by the shaded triangle is reduced. However, the size of that reduction depends on the price elasticity of demand. Tobacco has low PED because it is addictive, so the tax is absorbed mainly as a higher price rather than a lower quantity, which means government revenue is large while the health objective is met only weakly in the short run. In the United Kingdom, tobacco duty has risen above inflation since 1993 and smoking prevalence in the United Kingdom has continued to fall, but advertising bans operated over the same period, so the decline cannot be attributed to the tax alone. A further limitation is distributional, because lower-income households spend a larger proportion of income on tobacco, so the tax is regressive and an efficiency gain is bought at an equity cost. Compared with regulation, the tax preserves consumer choice. On balance, indirect taxes are more effective at raising revenue than at reducing consumption where demand is inelastic, and are most defensible provided that revenue is directed towards measures that raise elasticity over time.`;
+const SAMPLE=`An indirect tax is a tax on expenditure levied on producers, who may pass part of it on to consumers through a higher price. A demerit good is one that is over-consumed relative to the social optimum because consumption generates negative externalities. Figure 1 shows the market for tobacco. The free market equilibrium is at Pe, Qe where MPB equals MPC. Because consumption imposes external costs, MSB lies below MPB and the social optimum is at Qopt. A specific tax shifts supply vertically upward by the amount of the tax, therefore the price paid by consumers rises from Pe to Pc and quantity falls from Qe towards Qopt, and as a result the welfare loss shown by the shaded triangle is reduced. However, the size of that reduction depends on the price elasticity of demand. Tobacco has low PED because it is addictive, so the tax is absorbed mainly as a higher price rather than a lower quantity, which means government revenue is large while the health objective is met only weakly in the short run. In the United Kingdom, tobacco duty has been raised faster than inflation for most of the period since 1993 and smoking prevalence in the United Kingdom has continued to fall, but advertising bans operated over the same period, so the decline cannot be attributed to the tax alone. A further limitation is distributional, because lower-income households spend a larger proportion of income on tobacco, so the tax is regressive and an efficiency gain is bought at an equity cost. Compared with regulation, the tax preserves consumer choice. On balance, indirect taxes are more effective at raising revenue than at reducing consumption where demand is inelastic, and are most defensible provided that revenue is directed towards measures that raise elasticity over time.`;
 /* ── the tab strip: keep the current tab in sight, fade the edge that continues ── */
 function subnavEdges(){
  const c=document.getElementById("subnavin");if(!c)return;
