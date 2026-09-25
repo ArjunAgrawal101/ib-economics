@@ -1,0 +1,17 @@
+{
+  "name": "ib-economics-tests",
+  "private": true,
+  "type": "module",
+  "description": "Browser tests for the platform. Kept in this folder so the site itself stays dependency-free.",
+  "scripts": {
+    "test": "node run-all.mjs",
+    "selftest": "node selftest.mjs",
+    "routes": "node routes.mjs",
+    "widths": "node widths.mjs",
+    "e2e": "node e2e.mjs",
+    "pwa": "node pwa.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.1"
+  }
+}
