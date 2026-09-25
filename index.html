@@ -3027,10 +3027,12 @@ DG.cycle=()=>({t:"The business cycle",x:"Time",y:"Real output",
  alt:"Real output fluctuating around a rising long-term trend line, showing peaks, troughs, expansions and contractions.",
  note:"The trend is potential output; the wave is actual output. The vertical distance between them at any moment is the output gap that demand-side policy attempts to close.",
  b:P.ln(gx(.04),gy(.24),gx(.94),gy(.82),G.C.cap,{dash:"7,4",w:2})
-  +P.path(`M ${gx(.04)} ${gy(.3)} C ${gx(.16)} ${gy(.06)}, ${gx(.26)} ${gy(.6)}, ${gx(.38)} ${gy(.36)} S ${gx(.56)} ${gy(.9)}, ${gx(.66)} ${gy(.56)} S ${gx(.84)} ${gy(1.02)}, ${gx(.94)} ${gy(.74)}`,G.C.d)
-  +P.pt(gx(.608),gy(.647),G.C.p)+P.t(gx(.608),gy(.7),"peak",{a:"middle",c:G.C.p,sz:10.5})
-  +P.pt(gx(.426),gy(.313),G.C.w)+P.t(gx(.426),gy(.24),"trough",{a:"middle",c:G.C.w,sz:10.5})
-  +P.t(gx(.72),gy(.66),"long-term trend",{c:G.C.cap,sz:11})});
+  /* actual output is the trend plus a cycle, so it fluctuates around potential
+     rather than sitting below it: peaks above trend, troughs below */
+  +P.path((()=>{let d="";for(let i=0;i<=90;i++){const x=.04+i*.01,y=.24+(.58/.9)*(x-.04)+.13*Math.sin(2*Math.PI*(x-.04)/.36);d+=(i?" L ":"M ")+gx(x)+" "+gy(y)}return d})(),G.C.d)
+  +P.pt(gx(.49),gy(.66),G.C.p)+P.t(gx(.49),gy(.72),"peak",{a:"middle",c:G.C.p,sz:10.5})
+  +P.pt(gx(.31),gy(.284),G.C.w)+P.t(gx(.31),gy(.21),"trough",{a:"middle",c:G.C.w,sz:10.5})
+  +P.t(gx(.56),gy(.84),"long-term trend",{c:G.C.cap,sz:11})});
 DG.circular=()=>({t:"The circular flow with injections and withdrawals",x:"",y:"",
  alt:"A circular flow between households and firms, with investment, government spending and export revenue as injections, and saving, taxation and import spending as withdrawals.",
  note:"National income is in equilibrium when total injections equal total withdrawals. Every demand-side policy in the course operates by changing one of these six flows.",
@@ -5768,7 +5770,7 @@ const CALC=[
  mist:["Classifying by size before checking the sign.","Calling any positive YED a luxury: it must exceed one.","Confusing YED with PED because both use %ΔQd."],
  ib:"Required at SL and HL. Often paired with a question on sectoral change as an economy develops.",
  gen:()=>{const y1=rnd(20000,60000,1000),q1=rnd(100,600,10);
-  return{y1,y2:y1+rnd(2000,9000,500),q1,q2:q1+rnd(-90,140,5)||q1+20}},tol:.03},
+  return{y1,y2:y1+rnd(2000,9000,500),q1,q2:q1+(rnd(-90,140,5)||20)}},tol:.03},
 {id:"pes",n:"Price elasticity of supply",lvl:"Both",g:"Microeconomics",f:"PES = %ΔQs ÷ %ΔP",
  m:"How responsive quantity supplied is to a change in price.",
  inp:[["p1","Original price","$"],["p2","New price","$"],["q1","Original quantity supplied",""],["q2","New quantity supplied",""]],
@@ -22355,11 +22357,11 @@ const REPAIRS=[
  {dg:"poscons",sub:"2.8",t:"A positive consumption externality",
   drew:["MPB and MSB drawn, with MSB ABOVE MPB.","One cost curve drawn, MPC = MSC.",
    "Free market at the intersection of MPB and MPC.",
-   "A subsidy drawn shifting DEMAND up to MSB, described as making the market efficient."],
+   "A per-unit subsidy paid to PRODUCERS drawn as shifting DEMAND up to MSB, described as making the market efficient."],
   opts:["MSB should lie below MPB.","There is nothing wrong with this diagram as described.",
-   "The label must match the shift: a subsidy paid to producers shifts supply, a subsidy paid to consumers shifts demand, and an information or provision intervention also shifts demand and should be labelled as such.",
+   "The label must match the shift: a subsidy paid to producers shifts supply, a subsidy paid to consumers shifts demand, and an information or education campaign also shifts demand and should be labelled as such.",
    "The free market should be at the intersection of MSB and MSC."],a:2,
-  fix:"Both interventions are defensible, but a subsidy and an information or provision measure are different diagrams with different incidence. A per-unit subsidy to producers shifts supply down by the subsidy; the same subsidy paid to consumers shifts demand up by the subsidy, with the same prices, quantity and incidence. An intervention that raises private valuation, such as education or free provision, shifts demand towards MSB. An answer that draws one and names the other loses the application mark."}];
+  fix:"Both interventions are defensible, but a subsidy and an information or provision measure are different diagrams with different incidence. A per-unit subsidy to producers shifts supply down by the subsidy; the same subsidy paid to consumers shifts demand up by the subsidy, with the same prices, quantity and incidence. An intervention that raises private valuation, such as education or an information campaign, shifts demand towards MSB; direct provision is drawn differently, as the government supplying the good. An answer that draws one and names the other loses the application mark."}];
 function repairShop(){
  const c=REPAIRS[RS.i], picked=RS.pick;
  return H.pageHead("Tools","Diagram repair shop","A candidate's diagram, described as it was drawn.")
@@ -22944,6 +22946,7 @@ function cpiBuilder(){
  return H.pageHead("Tools","CPI basket builder","A weighted index, computed in front of you.")
  +`<section class="sec"><div class="wrap">
   <button class="btn xs gh" onclick="nav('tools')">← All tools</button>
+  ${c.tw===0?`<div class="panel warn mt4"><div class="eb">No weights, no index</div><p class="sm mt2">Every category has a weight of zero, so there is no basket and no index can be computed. The figures below are not meaningful until at least one category has a weight.</p></div>`:""}
   <p class="ann mt4" style="max-width:76ch">Each category carries a weight in proportion to spending on it and a price index of its own. The consumer price index is the weighted mean of those category indices. Change a weight or a price and watch which categories actually move the headline figure.</p>
 
   <div class="cols4 mt4">

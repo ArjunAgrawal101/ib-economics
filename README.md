@@ -26,6 +26,11 @@ A student can download `index.html`, double-click it, and work offline.
 - **Students** taking IB DP Economics at SL or HL, at any point from first lesson to final exam.
 - **Teachers** who want accurate diagrams, classroom-projectable models, misconception tools,
   question banks and assessment reasoning they can use directly in a lesson.
+- **Anyone curious about how the economy works**: school and university students, parents,
+  professionals. **Economics, Everywhere** is written for them: everyday questions answered
+  from the mechanism up, without assuming the IB course.
+
+> Economics is not only a subject you study. It is a way of understanding the world.
 
 ## What it contains
 
@@ -60,7 +65,41 @@ A student can download `index.html`, double-click it, and work offline.
 | **Analytical layers** | Five cross-cutting surfaces rather than new content: a skills matrix over the twelve tracked dimensions, a topic dependency graph, a concept network, "Explain it like an economist" against a timer with self-check criteria, "Model or reality" on the eleven named models, and "What would change your mind?" attached to every evaluation surface. |
 | **Economics in 60 Seconds** | Ten original visual essays inside Learn, each one idea taken from the story to the syllabus. Every issue carries its real cover, a ten-page outline, the syllabus link, why it matters for IB Economics, a page-by-page accuracy note and original retrieval questions with answers. The ten-page file opens only when it is asked for. |
 | **About** | An editorial educator profile rather than a résumé: three photographs at their own aspect ratios with a lightbox, three roles, an interactive five-stage academic timeline, the teaching philosophy, a six-part teaching portfolio, the UPSC CSE mentorship, and why the platform exists. |
+| **Economics, Everywhere** | The public-facing layer: *the economics behind the world around us*. Nineteen big questions (why flights cost more tomorrow, why queues exist, how an app can be free), each with a short answer, the economic idea, the mechanism revealed a step at a time, a labelled real example, a lab or sorting task, a prediction to commit to, an explanation at four levels from beginner to university, the confusion to avoid, links into the rest of the platform, a pathway onward and sources. Twelve *Economics in real life* cards, sixteen *One economic idea* cards, fifteen interactive labs, the *Economist's eye* game, and *Where the numbers live*, which routes current figures to the institutions that publish them. |
 | **Tutorials** | One-to-one IB DP Economics sessions with Arjun Agrawal. |
+
+## Economics, Everywhere
+
+A section for readers who are not taking the IB course, and for IB students who want the economics
+behind it. It lives at `#/everywhere` and is linked from the bar, the drawer, the More menu and the
+home page.
+
+**Every big question is built the same way.** The question → the short answer → the economic idea →
+*Why does this happen?*, the mechanism revealed one step at a time → a real example, labelled →
+*Change one thing*, an interactive lab → *What would you expect?*, a prediction made before the
+reasoning is shown → *Go deeper*, at beginner, student, IB or advanced level → the confusion to avoid
+→ links to the platform's concepts, cases, mindmaps, diagrams and calculations → a pathway onward →
+sources.
+
+**Every claim carries its layer.** A **fact** names its source, drawn from one register of checked
+URLs (central banks, statistical agencies, the IMF, World Bank, OECD, WTO, ILO, UNDP, the Nobel
+Prize site, and a small number of papers and reputable reports). An **illustrative example** uses
+invented numbers and says so. A **stylised model** is labelled on every lab and states its
+assumptions; none is a forecast. Nothing in the section is live data: *Where the numbers live* says
+which institution publishes each current figure and how to read it, and holds no figures itself.
+
+**The labs are declared models checked against independent solutions.** Price, inflation and
+purchasing power, tax incidence, the minimum wage (competitive and monopsony), the exchange rate,
+interest rates and loan repayments, externalities, comparative advantage, a repeated pricing game,
+a public-goods game, who gets the growth, the power of growth, a membership calculator, an AD-AS
+explorer and network effects. The self-tests check, among other things, that tax incidence follows
+PES / (PES + |PED|), that the exchange-rate lab switches exactly at the Marshall-Lerner condition,
+that monopsony employment traces an inverted U, and that both countries gain from trade exactly when
+the terms of trade lie between the two opportunity costs.
+
+**It remembers, on this device only.** Saved pieces join the platform's single saved list; recently
+opened pieces appear under *Continue exploring* and in the home page's continue-learning record; the
+chosen explanation level is remembered. Nothing is transmitted.
 
 ## Educational philosophy
 
