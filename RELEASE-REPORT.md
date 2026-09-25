@@ -1,372 +1,585 @@
 # Release report
 
-**Arjun Agrawal · IB DP Economics** · final production release
+**Arjun Agrawal · IB DP Economics** · release 2026.09-b, *Economics, Everywhere*
 
-## Build identity
-
-```text
-CONTENT_VERSION:    2026.09
-BUILD_TIMESTAMP:    2026-09-22T21:45:00+05:30
-GIT_COMMIT:         not applicable, this package was not built from a git working tree
-INDEX_HTML_SHA256:  7815dd227c1f18d5775790e4720b15a8d3e5f87e0d2bca198145f1814d059829
-ZIP_SHA256:         published beside the archive, see "A note on the ZIP hash" below
-```
-
-Both hashes were produced programmatically by `sha256sum`. Neither was typed by hand. Every digest
-in this report is SHA-256 and is named as such.
-
-### A note on the ZIP hash
-
-A file cannot state the hash of the archive that contains it. Writing `ZIP_SHA256` into this
-report changes the report, which changes the archive, which changes the archive's hash, and the
-value written would be wrong the moment it was written. Rather than print a number that cannot be
-correct, the archive's hash is published outside it, in `SHA256SUMS.txt`, which is delivered
-alongside the ZIP and is also quoted in the delivery message.
-
-What the archive can prove about itself, and does, is that the `index.html` inside it is the one
-that was tested. That is the hash above, and the verification chain is in section 9.
-
-To check the archive yourself:
-
-```sh
-sha256sum arjun-agrawal-ib-economics.zip        # compare with SHA256SUMS.txt
-unzip -p arjun-agrawal-ib-economics.zip arjun-agrawal-ib-economics/index.html | sha256sum
-# the second value must equal INDEX_HTML_SHA256 above
-```
+This report was written on 25 September 2026. Every number in it was produced by running something,
+and it says what was run. Where something could not be checked, it says so. The previous release's
+report, which records the live verification of nine IB claims against the IB's own pages, is kept at
+[`docs/releases/2026-09-22-release-report.md`](docs/releases/2026-09-22-release-report.md) and
+remains the source for those claims.
 
 ---
 
-## 1. What changed in this release
+## 1. What changed, in one paragraph
 
-This release does one thing: it replaces the platform's claim that the IB website could not be
-reached with a record of what was actually read there. The educational content was not rewritten.
-Every syllabus, assessment and command-term claim was re-checked, and where the check agreed with
-the platform, nothing was touched. Three discrepancies were found, all outside the teaching
-material, and all three are fixed and listed in section 3.
+A new public-facing section, **Economics, Everywhere**, now sits beside the IB course: nineteen
+big-question explainers, twelve *Economics in real life* cards, sixteen *One economic idea* cards,
+fifteen interactive labs, an *Economist's eye* game and a *Where the numbers live* page. Before it
+was built, the existing platform was put through an independent content audit in six parts
+(diagrams, calculations, language, Real World cases, mindmaps and policy, assessment). That audit
+found **223 problems**, almost all of them in economics that the existing 1,659 self-tests could not
+see, because those tests mostly checked the code against itself. **About 195 were corrected** in
+this release; the rest need the author's decision or source material and are listed in section 11.
+The self-test system was then rebuilt around what the audits found: it now runs **1,868 checks**,
+including 138 written from the audit findings, of which 113 fail on the release before the audit.
+Those new checks found four more defects, which were fixed. A browser test harness was added under
+`tests/`.
 
-The previous release marked live verification **NOT EXECUTED** because outbound access from the
-build environment is refused. That is still true of the build environment: `curl` to `ibo.org`
-returns `CONNECT tunnel failed, response 403`. What changed is that the retrieval tooling available
-to this session reaches those pages even though the shell does not, so the check was run. Every
-page named in section 2 was retrieved and read on 22 September 2026.
+## 2. What was added
 
----
+### Economics, Everywhere (`#/everywhere`)
 
-## 2. Live verification against the IB
+*"The economics behind the world around us."* For anyone curious, not only IB students.
 
-Nine claims were checked against the IB's own pages. Eight are verified; one could not be
-established and is recorded as not verified rather than asserted. The same table is published
-inside the platform, under **Exam → IB reference layer → Live verification**, with a link to each
-source, so a reader can repeat the check rather than take this report's word for it.
-
-| Claim | Official source | Published | Status |
-|---|---|---|---|
-| The nine key concepts are scarcity, choice, efficiency, equity, economic well-being, sustainability, change, interdependence and intervention | Economics in the DP, official IB subject page | no dated revision line on the page | **VERIFIED** |
-| The course is studied through six real-world issues | Economics in the DP | no dated revision line | **VERIFIED** |
-| The internal assessment is a portfolio of three commentaries on published extracts from the news media, using the key concepts as a lens | Economics in the DP | no dated revision line | **VERIFIED** |
-| SL candidates sit two examinations, HL candidates sit three | Economics in the DP | no dated revision line | **VERIFIED** |
-| The guide first assessed in 2022 is still the current course | Read curriculum updates | last updated 24 March 2026 | **VERIFIED** |
-| Session arrangements are set by the Diploma Programme Assessment procedures for that session | Diploma Programme Assessment procedures 2026 | 2026 session edition | **VERIFIED** |
-| Digital examinations are available to all IB World Schools for selected subjects from November 2026, and Economics is not among the subjects named | Digital examinations for the DP and CP | no dated revision line | **VERIFIED** |
-| The models of calculator permitted are set by the IB for each session and published to schools | Exam calculator policy | last updated 19 February 2026 | **VERIFIED** |
-| The IB publishes short subject briefs for Economics SL and HL | linked from the subject page | not established | **NOT VERIFIED** |
-
-The nine key concepts were compared word for word and in order. The curriculum updates page lists
-revised courses by first teaching year for 2024, 2025, 2026 and 2027; Economics appears in none of
-them, which is what now supports the statement that the 2022 guide is current. The digital
-examinations page names language and literature and language acquisition, states that specimen
-materials were released in May 2025 and that a pilot runs in May 2026, and says the timeline is
-subject to change.
-
-Two IB pages returned a site maintenance notice on the first attempt and their real content on a
-later one. Nothing was recorded from a maintenance page.
-
-### What the live check did not establish
-
-- **The Economics subject briefs.** Both are linked from the subject page and neither file could be
-  retrieved. The previous release stated that the HL brief covers assessment sessions through 2029.
-  That claim rested on a document this build never read, so it has been removed rather than
-  restated. Nothing in the platform now depends on the briefs.
-- **Permitted calculator models.** The IB publishes these per session through the Programme
-  Resource Centre, which requires a school login. No model is named anywhere in the platform, and an
-  assertion fails the build if one ever is.
-- **The teacher support material's public page.** The TSM is distributed through the Programme
-  Resource Centre and has no public URL to cite, so its entry in the reference layer carries no
-  link and says why.
-
-### What was re-read in the guide
-
-Because the instruction was not to change educational content unless a discrepancy was found, the
-syllabus side of the reference layer was re-checked against the guide held in this project rather
-than assumed. No discrepancy was found.
-
-| Re-read | Result |
-|---|---|
-| Command term glossary | 33 terms in the platform, 33 in the guide appendix, every definition matching word for word |
-| Command terms by assessment objective | 5 at AO1, 6 at AO2, 9 at AO3, 13 at AO4, matching the guide's table exactly |
-| Recommended teaching hours | 150 SL and 240 HL, with 20 hours for the portfolio at both levels |
-| Internal assessment weighting | 30% SL and 20% HL |
-| Internal assessment marks | criteria A to E total 14 per commentary, 14 × 3 + 3 for criterion F = 45 |
-| Paper mark totals | Paper 1: 10 + 15 = 25. Paper 2: 2 + 2 + 5 + 4 + 4 + 4 + 4 + 15 = 40. Paper 3: 2 × 30 = 60 |
-| External examination time | SL 1 h 15 + 1 h 45 = 3 h. HL 3 h + 1 h 45 = 4 h 45 |
-| TOK reference claims | exhibition 33%, essay 67%, 1,600-word limit, all confirmed against the official TOK page and the published TOK subject brief |
-
----
-
-## 3. Discrepancies found and fixed
-
-Three, none of them in the teaching material.
-
-**3a. A claim that could not be supported.** The reference layer stated that the published HL
-subject brief covers assessment sessions through 2029. The brief was not retrievable, so the claim
-was removed and replaced by what was actually checked: that the IB curriculum updates page,
-last updated 24 March 2026, announces no revised Economics course for first teaching through 2027.
-
-**3b. A claim that is no longer true.** The reference layer told the reader that the live IB pages
-were unreachable from the environment the build was produced in and that nothing had been checked
-against them. That sentence was accurate when written and is false now. It is replaced by a record
-of what was read, when, and what it did not settle.
-
-**3c. Two data source links had moved.** The Sources and method page linked `data.oecd.org`, which
-now redirects to `oecd.org/en/data.html`, and `comtrade.un.org`, which is superseded by
-`comtradeplus.un.org`. Both were followed and both now point at the page that actually serves the
-data.
-
-One further defect was found while reviewing a screenshot of the new page, unrelated to the IB
-work. The toast notification is hidden by translating it down 170 per cent of its own height. An
-**empty** toast is only 28 px tall, so 170 per cent did not clear its 28 px offset from the bottom
-of the window, and an 8 px dark sliver sat at the bottom centre of every route. It is now offset by
-its own height plus the inset plus a margin, which clears it at any content height, and the fix is
-held by an assertion. The transform was kept rather than switching to `visibility:hidden`, so the
-`role="status"` live region still announces text inserted while it is hidden.
-
----
-
-## 4. External links, opened
-
-Every external host in the build was resolved. This test was **NOT EXECUTED** in the previous
-release.
-
-| Target | Result |
-|---|---|
-| The Drive library, the exact URL you supplied, unaltered | **PASS** · resolves, and the folder is titled "IB DP Economics Resources" |
-| 34 curated YouTube videos | **PASS** · all 34 IDs resolve to real public videos, and every stored title and channel matches the video's own metadata |
-| YouTube thumbnail hosts | **PASS** · both `i.ytimg.com` and `img.youtube.com` return image data |
-| 4 official IB TOK links, 3 pages and 1 PDF | **PASS** · all four resolve; the TOK pages carry "last updated 19 February 2026" |
-| `questionbank.ibo.org` | **PASS** · resolves to the IB Questionbank sign-in page |
-| 4 Google Fonts families | **PASS** · all four stylesheets resolve and name the requested family |
-| World Bank Open Data, FRED, Human Development Reports, Our World in Data, IMF Data, WTO trade and tariff data | **PASS** · all six resolve |
-| OECD Data, UN Comtrade | **FIXED** · both had moved; see 3c |
-| `resources.ibo.org` | **NOT ESTABLISHED** · the Programme Resource Centre returned a 400 to an unauthenticated request. It is a sign-in-only service and is labelled as one in the platform |
-| LinkedIn, Instagram, WhatsApp | **NOT TESTABLE** · all three publish a `robots.txt` that disallows automated retrieval, so the request was refused before it reached the site. The identifiers are unchanged from the ones you supplied and none was invented |
-
----
-
-## 5. Content totals
-
-| | |
-|---|---|
-| Real World cases · deep cards | 203 · 12 |
-| Case status | 203 verified historical, 0 verified current, 0 illustrative, 0 needing review |
-| Countries · year range | 39 · 1923 to 2024 |
-| Subtopics with an indexed case | 24 of 31; the other 7 are listed with source guidance |
-| Mindmaps · nodes · edges | 42 · 762 · 720 |
-| HL-tagged nodes | 131 |
-| Diagram plates | 34, of which 27 model-driven and 7 schematic; 9 further plates declared as gaps |
-| Calculations | 36 · 18 HL, 17 both levels, 1 enrichment |
-| Exam DNA questions · analysed parts | 212 · 990 |
-| Curated videos | 34, every one resolved against YouTube in this release |
-| Economics in 60 Seconds | 10 · 7 core, 3 enrichment |
-| Dictionary terms | 157 |
-| Original question-bank items | 110 |
-| Command terms | 33, matching the guide's glossary exactly |
-| Sections · routes | 26 · 151 |
-| Search index | 2,304 rows across 50 kinds |
-| In-browser assertions | 1,654 |
-| Live IB verification records | 9 · 8 verified, 1 recorded as not verified |
-| Syllabus coverage matrix | 208 of 279 cells filled, 71 gaps shown |
-
-Coverage by column, out of 31 subtopics: notes 31, mindmap 31, Exam DNA 29, TOK 29, Real World 24,
-diagram 20, video 19, calculation 16, carousel 9. No surface claims complete coverage.
-
----
-
-## 6. Tests executed
-
-Every harness below was run against this build. Where a harness was corrected during this pass, the
-correction is stated, because a green result from a test that was checking the wrong thing is worth
-nothing.
-
-| Test | Result |
-|---|---|
-| Content integrity · in-browser self-test, final folder | **PASS** · 1,654 assertions, 0 failed |
-| Content integrity · single copied `index.html` | **PASS** · 1,654 assertions, 0 failed |
-| Self-test side effects | **PASS** · 0 downloads, 0 navigations, 0 form submissions; storage restored |
-| Economic accuracy · red team | **PASS** · clean, 0 findings, 0 page errors |
-| IB reference layer · live verification records | **PASS** · 9 records, every verified one citing an `https://ibo.org` page, no date in the future, the unverified one labelled as such |
-| IB reference layer · no calculator model named | **PASS** |
-| IB accuracy · syllabus code audit | **PASS** · every code in every registry resolves in the single authority |
-| IB accuracy · level labels | **PASS** · every stored value maps onto SL, HL, Both or Enrichment |
-| IB accuracy · enrichment containment | **PASS** · no enrichment item carries a syllabus code or is shown to a standard level profile |
-| Release gate, every route | **PASS** · 151 routes, 0 throws, 0 empty, 0 thin, 0 placeholder, measured on rendered text |
-| Diagram accuracy · model-driven | **PASS** · 27 of 27 validated against an independent algebraic solution, largest miss 0.0000 px |
-| Diagram accuracy · public goods semantics | **PASS** · 9 semantic checks on the redrawn plate |
-| Calculation accuracy | **PASS** · 36 calculations, boundary and degenerate inputs |
-| Mindmap visual · every map, four widths | **PASS** · 168 renders, 3,048 node positions measured, 0 collisions |
-| Overlap · bounding-box collision, 8 rules | **PASS** · 172 deep sweeps, 0 collisions |
-| Responsive · every route, 14 widths | **PASS** · clean at every width, 0 unexpected horizontal overflow |
-| Accessibility · 8 rules, every route | **PASS** · 151 routes, 0 defect classes |
-| Accessibility · keyboard | **PASS** · 30 tab stops walked with real Tab presses, all with an immediate focus ring, skip link first and its target present |
-| Accessibility · contrast against WCAG AA | **PASS** · every text node on 151 routes, 0 below threshold |
-| Search | **PASS** · 2,304 rows across 50 kinds; every expected kind present; the app's own matching used for the probes |
-| Student and teacher journeys | **PASS** · 14 of 14 and 11 of 11 steps, 0 page errors |
-| Navigation | **PASS** · primary order frozen, Mindmaps and Real World primary, Resources and Settings in More, every section reachable |
-| Real World integrity | **PASS** · 203 cases, 0 defects, 0 current claims, 0 needing review |
-| Provenance | **PASS** · 203 cases across 7 source classes, 0 panel defects, 0 fabricated citations |
-| Video library | **PASS** · 34 cards, every card keeping its title, channel and a named control; the player stays an inert thumbnail until clicked and then loads `youtube-nocookie` with no autoplay |
-| Local storage | **PASS** · name, syllabus, saved items, queue, mistake book, paper answers, revision schedule and all 42 mindmap records survive a reload |
-| Migration | **PASS** · every seeded legacy value preserved, stamped with this build's own storage version |
-| Interaction and leak sweep | **PASS** · 200 navigations, 964 nodes before and after, 0 stray iframes, menus, drawers or scrims, timer not left running |
-| Startup safety | **PASS** · 0 print calls at startup, navigation or prepare |
-| Opening sequence | **PASS** · five stages, skip leaves no lock or overlay, 0 prints |
-| Dataset parity | **PASS** · bundled and external copies declare matching hashes in both distribution modes |
-| PWA over HTTP then offline | **PASS** · worker registers, manifest valid, 6 icons resolve, offline reload renders the app and all 42 maps |
-| Served folder | **PASS** · external data adopted, 0 failed local requests, carousel PDFs offered |
-| GitHub Pages compatibility | **PASS** · see section 7 |
-| Photographs | **PASS** · all three load at their natural aspect ratios; the third is below the fold and loads on scroll |
-| Settings | **PASS** · profile, export, import, reset behind confirmation, nothing transmitted, 0 unlabelled controls |
-| Coverage matrix | **PASS** · 208 ticks, 71 gaps, 0 overflow, no claim of complete coverage |
-| Performance | **PASS** · see section 8 |
-| Copyright | **PASS** · see section 9 |
-
-### Harnesses corrected during this pass
-
-Five harnesses were reporting on something other than the product. Each was corrected and re-run,
-and the corrected version is the one whose result is quoted above.
-
-| Harness | What it was testing | What it tests now |
+| Part | Count | What each one contains |
 |---|---|---|
-| Red team, search | that a kind called "Mind map" exists, and that the literal string "mind map" appears in a row's text | that the kind the platform actually uses, "Mindmap", exists, and that the app's own whitespace-splitting match reaches the maps. A user typing "mind map" gets 43 hits; the old probe demanded a contiguous match the product never used |
-| Accessibility, skip link | that an element carries a class containing "skip" | that the first focusable element is an in-page anchor offering to skip and that its target exists. The skip link uses the class `sr`, so the old check reported false while the same harness measured it as the first tab stop with a focus ring |
-| Migration | that storage is stamped version 5 | that storage is stamped with this build's own version, which is now 6. The number had been copied from an older release, so the harness would have gone on failing on every version bump and could have masked a real migration defect |
-| Saved items, learning paths | that the text contains "Step 01" | the same check, case-insensitively. The label renders as "STEP 01" |
-| User journeys | ran against `bmOpen` and `BM`, an API renamed several releases ago, and matched node labels as contiguous text | runs against `mmOpen` and `MM`, and reads the view with whitespace collapsed and accessible names included, because SVG labels wrap across lines. Both journeys now complete |
-| Video library | counted thumbnails that failed to load as broken | states that the thumbnail hosts are refused by this environment's egress proxy, and tests what matters instead: that a card with no thumbnail keeps its title, its channel and a control with an accessible name, and shows no empty box |
+| Big questions | 19 | The question, a short answer, the economic idea, *Why does this happen?* (the mechanism revealed step by step), a labelled real example, *Change one thing* (a lab or a sorting task), *What would you expect?* (a prediction before the reasoning), *Go deeper* at four levels (beginner, student, IB, advanced), the confusion to avoid, links into the platform, a pathway onward, sources |
+| Economics in real life | 12 | Observation → economic concept → mechanism → real-world example → trade-off → a question to think about |
+| One economic idea | 16 | One idea in about a minute: the idea in one line, the explanation, a visual, an example, where you will meet it, the confusion to avoid |
+| Labs | 15 | Price, inflation, tax incidence, minimum wage (competitive and monopsony), exchange rate, interest rates, externalities, comparative advantage, a repeated pricing game, a public-goods game, who gets the growth, the power of growth, membership versus pay-per-visit, an AD-AS explorer, network effects |
+| Economist's eye | 15 situations | An everyday situation; which economic idea is hiding in it? |
+| Where the numbers live | 7 areas | For each current figure: what to look for, how to read it, who publishes it. No figures are held. |
 
-### Tests not executed
+Categories: Money, Prices, Markets, Work, Business, Trade, Government, Technology, Environment,
+Development, Everyday economics, Behaviour, Global economy.
 
-| Test | Why | Exact manual test |
+It is reached from the header bar ("Everywhere"), the mobile drawer, the More menu, the home page
+(a band directly under the opening hero, for visitors who are not studying IB Economics), the
+search, and the saved-items page. Every question, card, idea and lab has its own address and a
+*Share* button.
+
+**Claim discipline.** Every example carries one of the platform's claim layers: *Fact* (with a
+named source), *Illustrative example*, *Stylised model*, *Interpretation*, or *Teacher explanation*.
+Every lab is badged *Stylised model* and states its assumptions. The figures in the flight question
+(₹8,000 and ₹18,000) and the ₹80-per-dollar exchange rate in the rupee lab are labelled illustrative.
+Nothing in the section is live data.
+
+**Local personalisation, nothing transmitted.** Saved pieces join the platform's single saved list;
+recently opened pieces appear under *Continue exploring* and in the home page's continue-learning
+record; the chosen explanation level is remembered. All of this lives in the existing profile in
+`localStorage`, added lazily, so no schema migration was needed and existing profiles are untouched.
+
+### Search
+
+The command palette (`/` or Ctrl/Cmd + K) now has filters: Economics, Everywhere · Concepts · Cases
+and data · Diagrams and models · Calculations · Mindmaps · Videos · Exam and questions · TOK ·
+Sections, each with a live count for the current query. With no filter the palette behaves exactly
+as before. Descriptions are now trimmed at a word rather than mid-word.
+
+### The test harness (`tests/`)
+
+Browser tests the page cannot run on itself: `selftest.mjs`, `e2e.mjs`, `pwa.mjs`, `widths.mjs`,
+`routes.mjs`. They live in `tests/` with their own `package.json`, so the site stays free of
+dependencies and build steps (see `tests/README.md`).
+
+## 3. What was improved
+
+- **Home page.** Two bands that repeated others word for word were withdrawn from it ("Start here",
+  a third time picker, and "Your next move", a second copy of "Today's training"). Two dashboard
+  panels ("Your economic thinking", "Your growth") now appear only once there is evidence to show;
+  for a new visitor they were about 2,000 px of "not enough evidence yet". Section numbers are
+  renumbered so the sequence has no gaps. The page went from about 13,500 px to about 10,700 px and
+  from 993 to 821 DOM nodes on a first visit. Nothing was removed from the platform: everything those
+  bands linked to is still one click away.
+- **Continue panel.** In the home page's sidebar its cards were about 130 px wide and their labels
+  broke one letter per line. The grid now fits the space.
+- **Toast.** The idle notification box waited just below the viewport at full opacity, so it could
+  peek into view as an empty dark rectangle. It is now hidden until it has something to say.
+- **The quality-control system.** 204 new built-in checks, most of them written so that they fail
+  on a specific economics or content error the audits found (section 9), plus the browser harness.
+  Two existing checks that could not fail were replaced with recomputation from the data.
+- **Keyboard access to wide tables.** A table that scrolls sideways on a phone (the diagram atlas's
+  subtopic table, for one) could not be reached from the keyboard. Any such table now becomes a
+  named tab stop.
+- **The labs at their extremes.** The market lab's price floor, and the AD-AS lab at large shifts,
+  now stay inside their diagrams and never show a negative quantity (section 6).
+- **Two dead buttons.** "Search everything" and "Open the global search" called a function that did
+  not exist; both now open the search.
+
+## 4. What was audited, and how
+
+Six independent audits, run in parallel. **Each was carried out by a separate AI agent** (not a
+human examiner), instructed to review as an experienced IB examiner and economics lecturer would,
+and not to trust the existing self-tests. Their findings are therefore reviewed work, not expert
+certification; section 11 lists what still needs a human with the source documents.
+
+| Audit | Scope | Findings |
 |---|---|---|
-| The Economics subject briefs | Both files are linked from the IB subject page and neither could be retrieved | Download the SL and HL subject briefs from the IB Economics page and confirm nothing in them contradicts the reference layer |
-| Programme Resource Centre content | Sign-in only; an unauthenticated request returns 400 | Sign in to `resources.ibo.org`, open the Economics section, and confirm the teacher support material and the calculator list for your session |
-| LinkedIn, Instagram and WhatsApp links | All three disallow automated retrieval in `robots.txt`, so the request was refused before reaching the site | Click each of the four contact links on the About page and confirm each opens the right profile or chat |
-| Real-device iOS and Android | No physical device in this environment | Open the published URL on an iPhone and an Android phone. Install to the home screen. Confirm the header holds four objects without collision, the drawer opens with Real World, Mindmaps and Resources in the Explore group and Settings under About, a case opens, a mindmap opens in list view, and a carousel cover renders |
-| Real installed-PWA launch | Headless Chromium cannot install to an OS launcher | Install from Chrome on a desktop, close the browser, launch the installed app, turn the network off and open a case, a mindmap and a calculation |
-| Safari, desktop and mobile | Only Chromium is available here | Repeat the responsive and interaction checks in Safari. Pay attention to the focus ring, the dark-panel text and the diagram labels |
-| Screen reader | No assistive technology in this environment | Navigate the About page, the photograph lightbox, a carousel viewer, a case reader, the coverage matrix, the Settings page and the diagram atlas with VoiceOver or NVDA. Confirm each diagram announces its name and the skip link is the first tab stop |
-| Opening a carousel PDF in a viewer | Headless Chromium has no PDF viewer wired to a new tab | Click **Open the full carousel** on two issues and confirm the ten-page file opens |
-| Printing to paper | Headless printing is simulated, not physical | Print a case, a mindmap, a lesson pack, a casebook, an exam task and a teacher checklist. Confirm page breaks fall between sections |
-| Deployment to GitHub Pages itself | No GitHub account here | Follow the README's publish steps. The workflow was validated as YAML and its action versions checked, but it has not been run |
+| Diagrams | All 34 atlas plates; the 27 model-driven diagrams re-solved independently; lab, tool and calculation-board SVGs; repair shop | 35 |
+| Calculations | All 36 formulas at normal, zero, negative, decimal and extreme inputs; generated practice and marking tolerance (20,000 questions per issue); every quantitative tool and lab swept across its sliders | 34 |
+| Language | Dictionary, concepts, misconceptions, drills, flashcards, conditions library, model library, and a regex lint of the whole file (42,536 sentence fragments) | 36 |
+| Real World | All 203 cases and 12 deep cards read in full; 38 web searches on about 35 specific claims | 41 |
+| Mindmaps and policy | All 762 mindmap nodes, 88 spot-the-error items, 75 missing-link gaps, the ten *Economics in 60 Seconds* issues, the policy toolkit, model library, dossiers, 57 video checkpoints, the TOK section | 42 |
+| Assessment | Question bank, data response, drills, chains, paper labs, simulator, cockpit, exemplars, feedback bank, the IB reference layer; all 990 Exam DNA parts machine-checked | 35 |
+| **Total** | | **223** |
 
----
+Each finding came with the exact current text, the problem, the correct economics, a drop-in
+replacement and a confidence level. Each auditor then turned its findings into a patch and tested
+it against a copy of the current file. Every pair was read before it was applied, and the
+built-in self-tests were run after each patch.
 
-## 7. GitHub Pages compatibility
+## 5. What errors were found (representative, by kind)
 
-The site is published under a path, not at a domain root. This was tested by serving the exact final
-folder from a subdirectory and loading it at `http://127.0.0.1:8901/ib-economics/`.
+- **Economics that was wrong.** Market failure was defined as the price mechanism "allocating
+  efficiently". Monopolistic competition was said to lose its price-setting power in the long run.
+  The exchange-rate channel was said to *reverse* a rate rise. Welfare-loss triangles were placed
+  "between the two cost curves". An FDI enclave was said to raise GDP "while GNI does not". A
+  repair-shop item said dividing by MPC gives a number smaller than the injection (1 ÷ 0.8 = 1.25).
+  Supply shocks were said to "break" the Phillips relationship.
+- **Models whose output contradicted their own text.** The AD-AS lab's "Supply-side gain" preset
+  returned the starting point exactly while its note said output rises; the Keynesian mode could
+  put the price level below its own floor; What-if item 6 ("substantial spare capacity") showed
+  output unchanged and prices up 25%; the exchange-rate lab contradicted the Marshall-Lerner flag it
+  displayed in 142 of 6,640 slider positions; the Lorenz builder returned a Gini of −0.416 for shares
+  entered out of order; the multiplier lab accepted leakages summing to 1.8.
+- **Marking that rejected right answers.** PED given as a magnitude was always marked wrong;
+  correctly rounded answers were rejected in 40–47% of some generated question types; a typographic
+  minus sign was silently dropped, so −2 was read as 2; floor-surplus questions showed a negative
+  quantity demanded in 4.8% of cases, and the correct answer was marked wrong.
+- **Wrong keys and model answers.** A Paper 3 calculation asked for one ratio and keyed another
+  (2.27 against a correct 1.44); a Paper 2 model answer said supply moving into a segment raises its
+  price; a spot-the-error challenge marked a correct statement about actual growth as wrong.
+- **IB-specific.** Paper 1 timing taken from the previous guide ("twenty-five marks is about
+  forty-five minutes"; it is 75 minutes); HL-only content (the multiplier, Marshall-Lerner, the
+  J-curve, 2.10 to 2.12) served to, and in places required of, SL students; Paper 2 (g) answers
+  scored against the Paper 1 (b) strands; "Economics guide" text carrying the *Official IB TOK
+  information* badge; previous-guide sessions mixed into Exam DNA unlabelled.
+- **Diagrams.** Curves drawn outside the plot box on 11 plates; common-pool-resource markers 70 px
+  off their intersections; the business cycle's "peak" floating in empty space and its path sitting
+  almost entirely below trend; the energy-price-shock story illustrated with the demand-pull plate;
+  three concept pages whose diagram keys did not exist, so they showed no diagram.
+- **Real World.** Wrong years (Doi Moi 1986, not 1990; South Korea joined the OECD's Development
+  Assistance Committee in 2010, not 2000); the Berlin rent cap said to be voided "amid shortage
+  concerns" (it was voided because rent law is federal); the US Medicare insulin cap treated as a
+  price ceiling; causal overstatement ("It worked"); import-quota diagrams attached to an export
+  ban and a production quota; PDF-extraction debris shown to students ("PA P E R 3 ( H L )");
+  every one of 203 cases labelled *Verified historical* although no source had been opened.
+- **Platform defects found along the way.** Two buttons ("Search everything", "Open the global
+  search") called a function that did not exist, so they did nothing. A first visit showed a
+  "Confident" subtopic, a Paper 1 draft and a "QA task" the visitor never produced: the self-tests
+  rendered views from fixture data and the screen was never repainted from the restored profile.
 
-| Check | Result |
-|---|---|
-| Root-relative paths that would break at a subpath | **PASS** · 0 emitted link targets; the external links are all deliberate and absolute |
-| Requests escaping the subpath | **PASS** · 0 |
-| Failed local requests | **PASS** · 0 |
-| Service worker scope | **PASS** · registered at `/ib-economics/`, active |
-| Manifest and icons | **PASS** · manifest href relative, all 6 icons resolve |
-| Carousel PDFs | **PASS** · all 10 hrefs relative, all 10 resolve to 200 at the subpath |
-| Data files and parity | **PASS** · 203 cases and 212 Exam DNA records load from `assets/data`, hashes agree |
-| Offline at the subpath | **PASS** · reload with the network off renders the app, all 42 mindmaps and all 203 cases |
-| Workflow | **PASS** · `pages.yml` parses as valid YAML, triggers on push to main and manual dispatch, no build step and no dependencies |
+## 6. What errors were corrected
 
-The repository can be renamed without editing anything.
+| Audit | Pairs applied | Findings resolved in this release |
+|---|---|---|
+| Calculations | 62 | 34 of 34 (11 further design questions left to the author) |
+| Assessment | 69 | 34 of 35 (A7, the Exam DNA marks data, needs the source papers) |
+| Language | 80 (4 already fixed by another audit) | 32 of 36 (the case-data items went to the Real World patch; 2 are the author's call) |
+| Mindmaps and policy | 56 | 34 of 42 (8 need the author) |
+| Diagrams | 52, plus 4 follow-ups | 26 of 35 (9 need the author) |
+| Real World | 91 data fixes in both copies, 8 page fixes | 27 of 41 (14 need the author) |
 
----
+Duplicate findings across audits (for example the multiplier item, which three audits flagged) were
+applied once; a pair whose text had already been corrected by another audit was skipped, not forced.
 
-## 8. Performance
+**Follow-ups settled after the patches.** Six items the audits had deferred as small were settled:
+remittances are no longer called capital flows (they are secondary income); the euro-area
+negative-rates case says it is euro-area policy; the Berlin rent cap is typed as a policy, not a
+crisis; the balance-of-payments error item classifies by residency rather than citizenship; the
+Keynesian AS plate says which of the alternative views it shows; a Marshall-Lerner drill item is
+labelled HL. The business-cycle wave (now trend plus a cycle), the YED generator's zero case, the
+CPI builder's all-zero weights and the data hash's comment were also corrected.
 
-Measured as an interleaved A and B comparison in one session on one machine: the two builds
-alternate load by load, so drift in the machine's load hits both equally rather than only the build
-measured second. Nine cold loads of each, medians reported.
+**Defects found by the new checks** (section 9), none of them in any audit, all fixed:
 
-| | Previous release | This build | Change |
+| Where | Defect | Fix |
+|---|---|---|
+| Market lab, price floor | With a steep demand curve the default floor sat above the price at which anyone buys: quantity demanded was −8 to −60, producer surplus as low as −1,230, and the floor line was drawn above the plot | The floor now stops at the last half-dollar below that price (and at $18); quantity demanded cannot be negative |
+| Market lab, price floor | Under a high floor with elastic supply, the excess-supply bracket ran 120 px past the plot | The quantity axis stretches to hold it |
+| AD-AS lab | At large shifts SRAS and AD ran past the plot's right edge | Each curve is drawn only where its output lies on the axis |
+| PED plate | The *E elastic* label covered its own marker | Label moved clear |
+
+After the case corrections, the content hash that proves the two copies of the Real World corpus
+are identical was recomputed and written into both (`f217cb4cdc739883` → `a0d5194dda8d9800`). The
+new self-test recomputes that SHA-256 in the page on every run.
+
+### Which diagrams were corrected
+
+Common pool resource (markers on intersections, loss area bounded by MSC and MSB); business cycle
+(actual output now the trend plus a cycle; peak and trough on its turning points); multiplier
+schematic; calculation-board tax and producer-surplus diagrams (curves pass through the student's
+own points); market-lab subsidy curve; a new cost-push plate, now used by the energy-shock story;
+Phillips curve shift; supply-side and growth pages pointed at the right plates; three missing
+concept-page keys; flow diagrams without axes; label collisions; tax incidence areas shaded on the
+tax plate; a supply-plus-quota curve on the quota plate; renderer clipping of every curve to the
+plot box; the PED plate's label; the market lab under a high price floor; the AD-AS lab at large
+shifts.
+
+### Which examples were corrected
+
+See section 5 under *Real World*. In addition the status label on every case now reads
+*Historical, source not opened here* rather than claiming verification that did not happen.
+
+### Which formulas and calculations were corrected
+
+The formulas themselves were correct except floor surplus above the demand choke price. The
+corrections were to the models built on them (AD-AS, exchange rate, multiplier, Lorenz), to the
+interpretation text (revenue direction under PED, zero and index-100 cases, regressive schedules
+called progressive), to marking (magnitudes, precision stated, typographic minus), to units (the
+comparative-advantage plate's metres were a thousand times too large) and to labels (externality
+cost and benefit).
+
+## 7. Which sources were used
+
+For the new section, one register of 47 sources (`EE_SRC` in `index.html`), including the Reserve
+Bank of India, MoSPI, the US Bureau of Labor Statistics, the UK Office for National Statistics,
+Eurostat, the Federal Reserve, the Bank of England, the ECB, the IMF, the World Bank, the OECD,
+the WTO, ILOSTAT, UNDP, the NBER, the UK Low Pay Commission, the Competition Commission of India,
+the Government of Sweden, the European Commission, the German Federal Constitutional Court, the
+Nobel Prize site, CORE Econ, and a small number of papers and reputable reports.
+
+**How they were checked, and the limit of that check.** Shell access to the internet is blocked in
+the build environment, and the web-fetch tool was blocked by the network proxy for every domain
+tried. URLs and facts were therefore checked through a web search index: each URL was confirmed to
+be indexed at that exact address with the expected title, and each factual claim was confirmed from
+search results, with the supporting URL recorded. That proves the pages exist and say what is
+claimed in their indexed text; it does not prove that each page loads today. Six URLs in the first
+draft were wrong or not indexed and were replaced; four claims were reworded to what the sources
+support (the 1973 embargo was imposed by Arab producers in OAPEC and prices *nearly* quadrupled;
+Coase's lighthouse evidence covers England and Wales and was financed by compulsory dues; Tucker's
+story *gave the prisoner's dilemma its name*; South Korea was among the poorest countries in the
+1950s, not "low-income", a category the World Bank introduced later).
+
+## 8. What remains uncertain
+
+- **MIC-001 (India's GST) — reframed, no longer asserted.** The primary documents (the GST
+  Council's and PIB's records of the September 2025 rate rationalisation) could not be opened: both
+  sites, and the RBI's, are blocked by the network proxy in the build environment, and only
+  secondary summaries were reachable. The case's extension task no longer states the new rates; it
+  asks the student to find the GST Council's own record, note the slabs and the date they took
+  effect, and check the rates in force before citing any.
+- **DEV-047 (Kerala) — reframed, no longer asserted.** The claim that Kerala's income per head has
+  risen above the Indian average rested on secondary reports of RBI data and was removed. The case
+  keeps the historical point (high human development at modest incomes in the 1970s and 1980s) and
+  points to the per capita table in the most recent RBI *Handbook of Statistics on Indian States*
+  for the comparison. The evaluation line no longer asserts "slow income growth" after 1990.
+- **India's surge-pricing cap** (in the *Why do ride fares jump when it rains?* card) is sourced to
+  press reports of the 2020 and 2025 Motor Vehicle Aggregator Guidelines, not to the ministry's own
+  text. The card dates the figures and says they change.
+- **IB rules the guide could not be opened to confirm**: the "command term at the topic's AO level
+  or lower" rule, whether markband and IA descriptors shown as quoted match the guide word for word,
+  the Paper 3 "(a) up to 20 marks" wording, IA word-count exclusions, and the removal of XED and
+  linear functions from the course. These were left unchanged and are flagged, not asserted.
+- **HL-only status of comparative advantage and the Phillips curve** rests on the platform's own IB
+  reference layer, corroborated by secondary syllabus summaries found by search; the guide itself
+  could not be opened in this session.
+
+## 9. Tests executed, and the number of assertions
+
+Everything below was run on this release's final code unless it says otherwise. "Passed" means
+the check ran and passed; nothing is reported as passing that did not run.
+
+### Baseline, recorded before any change
+
+On the release as merged (`fc4684e`): the built-in self-test ran **1,659 checks, 0 failed**, and
+151 routes opened without a page error. That is the regression baseline.
+
+### What the old tests could not see
+
+The six content audits found 223 problems that all 1,659 checks passed over. Most of those checks
+compared the code with itself: a lab's output with the same lab's formula, a rendered page with
+the presence of a heading. Two of them could not fail at all, because they checked a literal sum
+typed into the test (`0.30*106+…` against 104.7) rather than anything read from the data. Both were
+replaced with recomputation from the platform's own data tables.
+
+### What was added to the quality-control system
+
+| Suite | Checks | What makes it a test of economics or content, not of the code against itself |
+|---|---|---|
+| **Audit checks** (`AUDITSUITE`, new) | 138 | Written from the six audits' findings. **113 of the 138 fail on the pre-audit release** (`fc4684e`), each on the error the audit found; the other 25 guard against regressions. Calculators against 14 textbook reference values worked by hand; 500 generated floor-surplus questions never counting a negative quantity; every AD-AS preset's note agreeing in direction with its own computed output and price level; the exchange-rate lab's current-account sign agreeing with its Marshall-Lerner flag at every slider position; the Gini within 0 to 0.8 across a 3⁵ grid of slider settings; markers on their curves and curves inside the plot on every plate, measured on the drawn SVG; HL content kept behind HL labels; the two copies of the Real World data identical, and their SHA-256 recomputed in the page; wording rules such as absolute values in the Marshall-Lerner condition. Items the author has still to decide are allow-listed by name, so anything new fails. |
+| **Economics, Everywhere** (`EESUITE`, new) | 28 content + 25 accuracy | Content: every piece has all its parts, every link resolves, every source is in the register, every figure has a claim layer, every lab renders at its extremes. Accuracy: the labs are checked against independent solutions: market clearing, incidence = PES / (PES + \|PED\|), the monopsony inverted U, the Marshall-Lerner switch, a loan instalment that repays the loan exactly over its term, a Pigouvian tax equal to the external cost removing the welfare loss, gains from trade existing exactly when the terms of trade lie between the opportunity costs, a dominant strategy in the pricing game whose Nash outcome both players could beat, the rule of 70 against the exact doubling time. |
+| **Platform integrity** (`INTEGRITYSUITE`, new) | 4 in the page, 7 in the report (3 audit checks share the prefix) | Every `onclick` on every route names a function that exists (on the pre-audit release it fails on the two search buttons that called a missing `openSearch()`), every navigation target exists, no route renders empty or throws. |
+
+The audit checks were verified independently of the agent that wrote them: the committed suite was
+injected into the pre-audit release and into this release. Pre-audit: 113 of 138 fail. This
+release: 0 of 138 fail, in 134 ms, with no change to saved data, the current view or any lab's
+state before and after.
+
+**Four defects that no audit had listed** were found by the new checks and fixed in this release
+(section 6). **Six further checks** (the Exam DNA mark data) fail on this release and were left out
+of the suite, because only the source papers can fix the data; they are listed in section 11.
+
+### Number of assertions
+
+**1,863 built-in checks, 0 failed, no page errors** (was 1,659). By report area (a check can count
+in more than one area; *Other* is checks whose names match no area):
+
+| Area | Checks | Area | Checks |
 |---|---|---|---|
-| DOMContentLoaded | 1,787 ms | 1,793 ms | +0.3% |
-| First contentful paint | 352 ms | 320 ms | -9.1% |
-| DOM nodes after home | 1,059 | 1,059 | none |
-| JS heap after home | 18 MB | 20 MB | measurement noise |
-| Heap growth over 200 navigations | 0 MB | 0 MB | none |
-| Stray iframes · timers · console errors | 0 | 0 | none |
+| Calculations | 491 | Learning content | 81 |
+| Diagram engine | 322 | Economics accuracy | 68 |
+| Economic models | 62 | Mindmaps | 58 |
+| Assessment tools | 44 | IB accuracy | 41 |
+| Content integrity | 38 | TOK | 38 |
+| Responsive | 36 | Video learning | 32 |
+| Economics, Everywhere | 28 | Branding | 23 |
+| Topic dossier | 23 | Reference layer | 21 |
+| Safety and shell | 20 | Navigation and shell | 20 |
+| Resource hub | 19 | Technical | 18 |
+| Diagrams and models | 17 | Accessibility | 16 |
+| Profiles and progress | 13 | Teacher tools | 12 |
+| Startup safety | 10 | Policy and cases | 10 |
+| Platform integrity | 7 | Printing | 2 |
+| Other | 316 | | |
 
-DOMContentLoaded is the figure to read. First contentful paint moved by roughly ten per cent in both
-directions across repeated runs on this machine, so no claim is made from it beyond the absence of a
-regression. The build carries a new route section, nine live verification records and ten more
-assertions at no measurable cost.
+A single copied `index.html`, with no `assets/` folder beside it, also runs all of its checks with
+none failing and all 203 cases present (tested by serving the file alone).
 
----
+### Browser tests (`tests/`, new)
 
-## 9. Copyright
+Run with `cd tests && npm install && npm test`. On this release's final code:
 
-| Check | Result |
-|---|---|
-| Official IB examination PDFs in the package | **PASS** · none |
-| Official markschemes | **PASS** · none |
-| Copied official question wording | **PASS** · Exam DNA holds metadata, marks, command terms and archetypes only |
-| Questions reworded and presented as original | **PASS** · all 110 bank items original; every generated pack labelled teacher-created practice |
-| Official IB logo or crest | **PASS** · none |
-| False endorsement | **PASS** · the independence statement appears in the footer, on About and on Settings; nothing is described as official, certified or endorsed |
-| Copied textbook passages | **PASS** · explanations original throughout |
-| Carousel attribution | **PASS** · all ten carry "Economics in 60 Seconds · Arjun Agrawal" and the non-endorsement note |
-| Videos | **PASS** · each labelled an external educational video with its channel; none called best; each verified to be the video the platform says it is |
-| Illustrative data | **PASS** · labelled wherever it appears, never presented as evidence |
-| Quotation from the IB's pages | **PASS** · the reference layer quotes short factual statements and links to the page each came from; no page is reproduced |
+| Suite | What it does | Result |
+|---|---|---|
+| `selftest.mjs` | Loads the page, reads the built-in self-test by area, and checks that the data files load from `assets/data`, that a first visit shows no self-test fixture data, and that there are no page errors | 1,863 checks ran, 0 failed; the three page checks passed |
+| `e2e.mjs` | 22 journeys: addresses and Back, reload, search and its filters (typed from the keyboard), an explainer's embedded lab, a slider keeping focus while the result redraws, *Show me why*, predictions, the level control, saving across a reload, *Continue exploring*, the Economist's eye, the pricing game to its debrief, an assignment link | 22 passed |
+| `pwa.mjs` | Service worker, precache, icons, a deep link offline | 4 passed |
+| `widths.mjs` | 21 routes at 8 widths (section 10) | 8 passed |
+| `routes.mjs` | 158 routes, cold, at 375 and 1366 px (section 10) | 2 passed |
 
----
+The five suites were run in full on the final code: 70 results, 0 failures.
 
-## 10. Hash chain
+### What the tests still do not prove
 
-The order was: build the folder, test that folder, hash its `index.html`, zip that folder, extract
-the zip to an empty directory, hash the extracted `index.html`, and require all three to agree.
+- The language rules are patterns. They catch the errors the audits found and their close
+  variants, not every way of saying something wrong.
+- Label overlap is measured with a fixed per-character width, so that the result is the same on
+  every device; it agrees with the browser's own measurement on the cases checked, but it is an
+  approximation.
+- No test can confirm that a source says what the platform says it does, or that an IB rule is
+  current; those limits are in sections 7, 8 and 11.
+- Passing every check is evidence against the errors the checks were written for. It is not a
+  claim that the platform is free of errors.
 
-```text
-tested index SHA-256    = 7815dd227c1f18d5775790e4720b15a8d3e5f87e0d2bca198145f1814d059829
-packaged index SHA-256  = 7815dd227c1f18d5775790e4720b15a8d3e5f87e0d2bca198145f1814d059829
-extracted index SHA-256 = 7815dd227c1f18d5775790e4720b15a8d3e5f87e0d2bca198145f1814d059829
-```
+## 10. Mobile, accessibility, performance and PWA/offline results
 
-The verification output is reproduced in the delivery message. No file was edited between the test
-and the packaging: the folder hashed above is the folder the archive was made from.
+All measured in headless Chromium 141 (Playwright 1.56.1) in the build container, on this release's
+final code unless stated.
 
----
+### Mobile tests
 
-## 11. Known limitations
+- **Width sweep** (`tests/widths.mjs`): 21 routes (the home page, the course, Learn, Real World,
+  the mindmaps, the diagram atlas, practice, the examiner, calculations, tools, and every kind of
+  *Economics, Everywhere* page) at **320, 375, 390, 412, 768, 1024, 1280 and 1440 px**. At every
+  width: no horizontal page overflow, no page errors, no control in the new section smaller than
+  28 px, and no sideways-scrolling table that a keyboard cannot reach. All 8 widths passed.
+- **Route sweep** (`tests/routes.mjs`): all **158 routes** opened cold from their address at
+  375 px and at 1366 px. Each landed on the right section and tab, with the self-test passing, no
+  page errors, no horizontal overflow and a non-empty page. Passed.
+- The built-in *Responsive* self-tests (36) passed.
+- **Not tested:** real phones, real touch input, iOS Safari and Firefox. Chromium's mobile
+  viewport is an approximation of a phone, not a phone.
 
-1. **The subject briefs were not read.** They are linked from the IB Economics page and could not be
-   retrieved on the verification date. Nothing in the platform depends on them.
-2. **Sign-in-only IB material was not read.** The teacher support material and the per-session
-   calculator list live in the Programme Resource Centre. The TSM held in this project was read
-   directly; no calculator model is named anywhere.
-3. **Three contact links could not be opened automatically.** LinkedIn, Instagram and WhatsApp
-   disallow automated retrieval. The identifiers are exactly the ones you supplied.
-4. **Seven subtopics hold no Real World case:** 1.1, 1.2, 2.2, 2.5, 2.12, 3.1 and 3.4. They are
-   listed with source guidance rather than filled with weak cases.
-5. **Nine diagram plates the guide names are not drawn,** including the money market, crowding out,
-   the J-curve and the 2.11 market structure cluster. They are declared as gaps in the atlas rather
-   than concealed.
-6. **No case carries a specific verified citation.** Each names the class of primary source that
-   holds the record and says plainly that the document has not been fetched.
-7. **Chromium only.** Safari and real mobile devices are untested here.
-8. **The platform is a single large file.** 3.8 MB parses in about 1.8 seconds on this machine. That
-   is the price of working from a memory stick, an email attachment and a `file://` path with no
-   server.
-9. **A verification date is a date, not a guarantee.** The reference layer records what was read on
-   22 September 2026. Re-check it before each examination session; the platform states plainly that
-   nothing on that page refreshes its own date.
+### Accessibility tests
+
+- **axe-core 4.13** (WCAG 2.0 A and AA, WCAG 2.1 AA rules) on 12 routes at 1366 px and at 375 px:
+  the home page, the market lab, the diagram atlas, Real World, and eight *Economics, Everywhere*
+  pages (landing, list, a big question, a real-life card, an idea, a lab, the Economist's eye and
+  *Where the numbers live*). **One violation was found and fixed:** at 375 px the diagram atlas's
+  subtopic table scrolled sideways but could not be reached from the keyboard (it had also been
+  there before this release). Tables that overflow now become a named tab stop, and the width sweep
+  now checks this at every width; the check fails on the previous release and passes on this one.
+  After the fix: **0 violations on all 24 page-and-width combinations.**
+- The built-in *Accessibility* self-tests (16) passed.
+- The new section's controls are real buttons and labelled range inputs (axe's button-name and
+  label rules pass on them), and they use the platform's burgundy focus outline. The search is
+  exercised from the keyboard in `tests/e2e.mjs`; the labs and the *Show me why* steps are
+  exercised with clicks, so their keyboard use rests on their being native controls.
+- **Not tested:** a walk-through with a real screen reader (NVDA, JAWS, VoiceOver). axe covers
+  the rules it can detect automatically, which is a minority of WCAG.
+
+### Performance results
+
+Median of five cold loads at 1366 px, no throttling, service worker blocked. *Before* is the
+release as merged (`fc4684e`).
+
+| Measure | Before | After | Change |
+|---|---|---|---|
+| First contentful paint | 344 ms | 332 ms | none measurable |
+| DOMContentLoaded (the page responds after this) | 2.43 s | 2.92 s | +0.50 s |
+| Self-test run | 1.40 s | 1.84 s | +0.44 s |
+| Checks in the self-test | 1,659 | 1,863 | +204 |
+| `index.html`, raw | 3,862,869 bytes | 4,217,123 bytes | +9.2% |
+| `index.html`, gzip -9 | 1,390,678 bytes | 1,513,074 bytes | +8.8% |
+| Home page, first visit | about 13,500 px tall, 993 elements | about 10,700 px, 821 elements | shorter |
+
+Almost all of the load-time increase is the larger self-test, which runs synchronously during
+start-up (the audit checks take about 130 ms of it). First paint is unaffected: it happens before
+the script that runs the self-test. The container is faster than a mid-range phone,
+so the absolute times will be longer on one; the relative change is the meaningful figure. See
+section 13 for the recommendation to run the self-test on demand.
+
+### PWA and offline results
+
+`tests/pwa.mjs`, on a local secure origin: the service worker registers; the platform's own **12
+files are precached**; every manifest icon resolves; **a deep link opens offline** once the
+platform has been visited. All passed. The cache version was bumped to `aa-ibdp-econ-v11`, so
+installed copies fetch this release. **Not tested:** installing to a home screen on a real device.
+
+## 11. Known limitations, and decisions left to the author
+
+Nothing below is hidden behind a passing test. Each item was found, and is listed here because
+fixing it needs the author's decision, the author's source material, or more than a reviewable
+change in this release.
+
+**Needs the author's source material**
+
+- **Exam DNA mark data (assessment finding A7).** 63 of the 212 analysed questions have part marks
+  that do not add up to the question total, and 2 more hold their (b) marks under a stray label.
+  The full diagnostic, record by record, is in
+  [`docs/exam-dna-mark-diagnostic.md`](docs/exam-dna-mark-diagnostic.md). The pattern (dropped
+  parts, invented parts, split labels) points to extraction errors rather than errors in the papers.
+  **No record was changed.** Correcting them needs the 38 source papers listed there; the marks
+  cannot be inferred without guessing.
+- **Paper 2 lab sets** total 33 or 34 marks and label the 15-mark part "(f)". The lab's note now
+  says so honestly; rebuilding the sets to 40 marks with a (g) part means writing new questions.
+
+**Needs the author's decision (economics or syllabus scope)**
+
+- **Settled before the pull request** (section 15): the AD-AS short run, supply responsiveness in
+  the market lab, linear functions, HL-only concepts for SL students, and the circular flow. The
+  *Supply-side gain* preset still moves the curves only if the student also raises potential
+  output; its note says so.
+- **Chain ch3** is tagged SL but contains an HL-only Marshall-Lerner link. Tag the chain HL, or the
+  link.
+- **The model essay's demerit-good definition** uses one limb (negative consumption externality),
+  as the guide does; the dictionary and one exemplar add the imperfect-information limb. Left as is.
+- **Tariff and quota reversibility** are rated "High" in the policy toolkit, which places them in
+  the "fast and reversible" cluster, while the platform's own text says their exit condition is
+  rarely enforced.
+
+**Diagrams not redrawn in this release**
+
+- The **interest-rate stories** (`r1`, `c2`) still show the AD-AS plate without a shift. No existing
+  plate shows a rate-driven fall in AD without implying something else; a new plate is needed.
+- **Minor layout:** the S + quota line crosses the quota-rent label; the country labels on the
+  comparative-advantage plate cross the lines; one curve crosses the deadweight-loss label on the
+  tax and negative-consumption plates; the asymmetric-information marker sits about 10 px right of
+  its intersection. The Lorenz builder's sliders are labelled in the order entered, although the
+  computation now sorts them.
+- **Legacy hand-drawn diagram code.** The 27 hand-drawn functions that the model-driven diagrams
+  replaced are unreachable but still in the file (and contain geometry errors). Deleting them would
+  save size; it was not done here to keep this release's diff reviewable.
+
+**Real World cases left for the author**
+
+- GLO-001 (US-China tariffs) stops before the 2025 escalation and the May 2025 Geneva agreement.
+- The three ECB cases carry the country value "European Union" for euro-area policy; MAC-044 is
+  now titled *Negative interest rates in the euro area*, but the filter value is unchanged.
+- Sixteen cases are generalised teaching frames rather than single episodes; they carry the honest
+  *Historical, source not opened here* label, but may deserve their own status.
+- No deep card has its own source field, so their provenance line is generic. Figures for five of
+  them were confirmed through search; none was added, because the primary documents were not opened.
+- DEV-023 carries a *Taxation* theme tag without tax content; MAC-005's PLI outlay may have been
+  revised since 2021.
+
+**Verification limits**
+
+- The IB guide could not be opened (the network proxy blocked ibo.org and copies of the guide), so
+  the IB rules listed in section 8 were neither changed nor asserted; nor was the TOK "minimum of
+  32 hours".
+- Source URLs were confirmed through a search index, not loaded (section 7).
+- **Current developments.** The brief asked for current developments separated from evergreen
+  content, with dates and sources. What was built is *Where the numbers live*: for each current
+  figure, what to look for, how to read it and which institution publishes it, with **no figures
+  held**. No dated current-developments items were added, because no primary source could be
+  opened in this environment, and a figure that cannot be dated and checked should not be shown as
+  current. The data model (claim layer, source key, date) is ready for them.
+
+**Platform costs**
+
+- **The self-test runs on every page load**, synchronously, before the page responds to input. That
+  was already the design; this release made the suite larger (section 10). On a first visit the
+  five-second opening sequence covers it. On a reload or a deep link, which skip that sequence, it
+  is the largest part of the wait before the page responds. See section 13.
+- The page is about 9% larger than before, compressed (section 10): the new section, and the 63 KB
+  audit suite, which every visitor downloads because the self-test runs in the page.
+
+## 12. GitHub and Vercel deployment considerations
+
+- The site remains static: no build step, no new runtime dependency. The only `package.json` is in
+  `tests/`, so Vercel's root build is unaffected; `tests/` is served as static files like everything
+  else and is harmless if left in the deployment.
+- No environment variables, secrets or deployment settings were added or changed.
+- `pages.yml` is still at the repository root, where it does nothing. Moving it into
+  `.github/workflows/` would start a GitHub Pages deployment alongside Vercel, so it was left alone.
+- The service worker cache was bumped to `aa-ibdp-econ-v11` so installed copies fetch the corrected
+  page and data.
+- There is no `vercel.json`; Vercel serves the repository root as static files, as before.
+- The test harness's `node_modules` is not committed (it is ignored). The harness needs no secrets,
+  so a CI job could run it once it installs Playwright's Chromium; no such job was added.
+- All work is on the branch `claude/upbeat-hawking-69d7gz`; `main` was not touched.
+
+## 13. Recommended next steps
+
+**Recommended for a future release** (none of these was done in this one):
+
+1. **Run the self-test on demand, not on every load.** Keep it for the first visit after a new
+   version (compare a stored build hash), for `?qa`/`#qa`, for the teacher's Quality report and for
+   the `tests/` harness; skip it otherwise. This would remove most of the start-up cost on a reload
+   or a deep link without weakening any check.
+2. **Re-extract the Exam DNA marks** from the 38 source papers listed in
+   `docs/exam-dna-mark-diagnostic.md`, then switch on the six held-back checks.
+3. **Make the *Supply-side gain* preset raise potential output** as well as SRAS.
+4. **Delete the unreachable hand-drawn diagram functions** in a change of their own, guarded by
+   a test that every one of the 27 model keys still renders from its declared model.
+5. **Add a rate-driven AD plate** for the interest-rate stories.
+6. **Open the IB guide** and confirm the rules listed in section 8, including the HL-only status of
+   comparative advantage and the Phillips curve.
+7. **Open the primary sources** for MIC-001 (GST Council or PIB) and DEV-047 (RBI *Handbook of
+   Statistics on Indian States*); if they confirm the figures, the dated statements can return with
+   their source attached. Add `src` fields to the deep cards once their documents have been read.
+8. **Add dated current-developments items** to *Economics, Everywhere* only when each can carry a
+   date, a named primary source and a claim layer, and a review date after which it is withdrawn.
+9. **Grow the section**: more big questions in the thinner categories (Environment, Development,
+   Global economy), and more *One economic idea* cards linked from the concept pages.
+10. **Social previews.** Add an `og:image` and canonical URL once the production domain is fixed
+    (a relative image URL is not read by most preview crawlers).
+11. **Run `tests/` in CI** (a GitHub Actions job with Playwright) once the author wants a check on
+    every push; it needs no secrets.
+
+## 14. Implemented now, and recommended for the future
+
+**Implemented in this release:** the *Economics, Everywhere* section (19 big questions, 12 real-life
+cards, 16 ideas, 15 labs, the Economist's eye, *Where the numbers live*); search filters; local
+personalisation for the section; the home-page tidy; about 195 audit corrections across diagrams,
+calculations, language, cases, mindmaps, policy and assessment; four further defects found by the
+new checks; one accessibility fix; the five decisions in section 15; 209 new built-in checks, 143
+of them in the audit suite; a browser test harness with five suites; the Exam DNA mark diagnostic.
+
+**Recommended, not done:** everything in sections 11 and 13, above all re-extracting the Exam DNA
+marks from the source papers, an on-demand self-test, reading the IB guide and the primary sources
+that could not be opened here, and dated current-developments items once they can be sourced
+properly.
+
+## 15. Decisions settled before the pull request
+
+Each was settled on the author's instruction, changed only what the decision needed, and is now held
+by a self-test that fails on the version before the change (checked by running the new checks against
+that version).
+
+| Decision | What changed | Check added |
+|---|---|---|
+| **AD-AS lab: show the short run** | The model is unchanged, and the reported result is still the long-run point. In the monetarist model, when demand pushes past potential, the diagram now also shows the short-run point beyond potential (hollow marker, labelled *short run*), the inflationary gap, and a dashed SRAS₁ shifted left through the long-run point. The note explains the two stages; the *What if … full employment?* answer says the same. Keynesian mode is unchanged. It is labelled as a stylised adjustment. | The short run lies on AD and the original SRAS beyond potential, the long run on LRAS at a higher price level, and Keynesian mode never shows one. The existing check that the marker sits on a drawn supply curve no longer needs its D6 allowance. |
+| **Market lab: supply responsiveness** | A new control sets where the straight supply line meets the axes: the price axis (PES above 1 everywhere), the origin (PES exactly 1), or the quantity axis (PES below 1 everywhere). The interface says that slope and elasticity are different measures, and that a line's elasticity is set by where it meets the axes, not by its steepness; the slope slider is labelled *extra units per $1, not the same as PES*, and the demand-slope hint, which said *higher b, flatter and more elastic*, now says higher b is flatter and, *at any given price and quantity*, more elastic. Surpluses and welfare loss are computed for the new lines. The *supply inelastic relative to demand* What-if now uses genuinely inelastic supply (PES 0.5, PED −1.5), with the same $1 / $3 split as before. Other presets still use supply through the origin and reset to it. | PES is below 1, exactly 1 or above 1 at every slope for the three positions, matching PES = dP/Q computed independently, and the market still clears. A tax splits exactly by PES / (PES + \|PED\|), and the marker sits on the drawn curves inside the plot. |
+| **Linear functions: keep, labelled** | Kept everywhere. Where a student meets them, they are now labelled a *stylised linear model*: the market lab (with a line saying real curves are rarely straight and the current course does not require linear functions), its scenario caption, the tax-shock simulator, the dossier question, the two price-control calculations and the two command-term examples. | The old check allow-listed one dossier question; it now requires every learner-facing text with a linear function to carry the label. |
+| **HL-only content for SL students** | Comparative advantage, the Phillips curve and the other HL-only concepts (the multiplier, asymmetric information, monopoly) are shown to SL students again in the Learn spine, in a separate *HL only · beyond the SL course* group under each unit, tagged *HL only*. Their pages say they are extension, not assessed at SL. SL practice, drills and assessment keep their SL-only filters. The HL-only status rests on the platform's IB reference layer (section 8). | Every HL concept appears for SL only in its unit's HL-only group, every SL concept in the core, and the concept page carries the extension note. |
+| **Circular flow: fix the concrete problem only** | The problem: the loop had no direction and no labels, so it did not show that spending flows to firms and incomes to households, and so could not show that withdrawals leave income and injections add to spending. Direction arrows and the two flow labels were added, and the description updated. Nothing else was redesigned. | The plate shows the direction arrows and both flow labels. |
+| **GST, Kerala and RBI data** | See section 8: the primary sources could not be opened, so the two unverified statements were reframed as tasks that point to the primary source, not asserted. Both copies of the case data were changed together and the content hash recomputed (`2736ac9981f85a39`). | The existing parity and SHA-256 checks cover the two copies. |
+| **Exam DNA marks** | **Nothing was changed.** The diagnostic is in `docs/exam-dna-mark-diagnostic.md`: all 63 mismatched records and the 2 mislabelled ones, with recorded total, recorded parts, their sum, the discrepancy and what is wrong; the evidence that this is an extraction problem; the remediation; and the 38 source papers needed. | None added: the six held-back checks are listed there, to switch on after re-extraction. |
+
+After these changes the self-test runs **1,868 checks** (the five above added to the 1,863 reported
+in section 9), with 0 failures.
+
+**Regression run after the decisions.** All five browser suites were run again: the self-test, the
+22 end-to-end journeys, the 4 offline checks, 21 routes at 8 widths, and 158 routes cold at 375 and
+1366 px. One route load failed once, on the built-in check *every session step renders without a
+placeholder*. The cause was the check, not the page: it searched each step for the word "undefined",
+and one real answer option reads "Is undefined below the midpoint", so about one generated step in a
+thousand failed at random, on the pre-audit release as well. The check now fails only on an
+occurrence the step's own content does not account for; it still fails on a genuinely missing
+option. After that fix, the self-test (1,868 checks, 0 failed) and the route sweep (158 routes at
+both widths) were run again and passed. axe-core found 0 violations on the market lab, the AD-AS lab,
+the concept spine and an HL concept page seen as an SL student, at 1366 and 375 px. A single copied
+`index.html` without `assets/` also runs all 1,868 checks with none failing.
