@@ -20,7 +20,7 @@ was built, the existing platform was put through an independent content audit in
 found **223 problems**, almost all of them in economics that the existing 1,659 self-tests could not
 see, because those tests mostly checked the code against itself. **About 195 were corrected** in
 this release; the rest need the author's decision or source material and are listed in section 11.
-The self-test system was then rebuilt around what the audits found: it now runs **1,863 checks**,
+The self-test system was then rebuilt around what the audits found: it now runs **1,868 checks**,
 including 138 written from the audit findings, of which 113 fail on the release before the audit.
 Those new checks found four more defects, which were fixed. A browser test harness was added under
 `tests/`.
@@ -243,12 +243,17 @@ story *gave the prisoner's dilemma its name*; South Korea was among the poorest 
 
 ## 8. What remains uncertain
 
-- **MIC-001 (India's GST).** The case now refers to the September 2025 rationalisation to two main
-  rates, 5 and 18 per cent. This was confirmed only through search results pointing to a PIB
-  document that could not be opened. **Open it before relying on the case.**
-- **DEV-047 (Kerala).** The statement that Kerala's income per head has risen above the Indian
-  average rests on secondary reports of RBI state data. Confirm against the RBI *Handbook of
-  Statistics on Indian States*.
+- **MIC-001 (India's GST) — reframed, no longer asserted.** The primary documents (the GST
+  Council's and PIB's records of the September 2025 rate rationalisation) could not be opened: both
+  sites, and the RBI's, are blocked by the network proxy in the build environment, and only
+  secondary summaries were reachable. The case's extension task no longer states the new rates; it
+  asks the student to find the GST Council's own record, note the slabs and the date they took
+  effect, and check the rates in force before citing any.
+- **DEV-047 (Kerala) — reframed, no longer asserted.** The claim that Kerala's income per head has
+  risen above the Indian average rested on secondary reports of RBI data and was removed. The case
+  keeps the historical point (high human development at modest incomes in the 1970s and 1980s) and
+  points to the per capita table in the most recent RBI *Handbook of Statistics on Indian States*
+  for the comparison. The evaluation line no longer asserts "slow income growth" after 1990.
 - **India's surge-pricing cap** (in the *Why do ride fares jump when it rains?* card) is sourced to
   press reports of the 2020 and 2025 Motor Vehicle Aggregator Guidelines, not to the ministry's own
   text. The card dates the figures and says they change.
@@ -256,6 +261,9 @@ story *gave the prisoner's dilemma its name*; South Korea was among the poorest 
   or lower" rule, whether markband and IA descriptors shown as quoted match the guide word for word,
   the Paper 3 "(a) up to 20 marks" wording, IA word-count exclusions, and the removal of XED and
   linear functions from the course. These were left unchanged and are flagged, not asserted.
+- **HL-only status of comparative advantage and the Phillips curve** rests on the platform's own IB
+  reference layer, corroborated by secondary syllabus summaries found by search; the guide itself
+  could not be opened in this session.
 
 ## 9. Tests executed, and the number of assertions
 
@@ -315,7 +323,7 @@ in more than one area; *Other* is checks whose names match no area):
 | Platform integrity | 7 | Printing | 2 |
 | Other | 316 | | |
 
-A single copied `index.html`, with no `assets/` folder beside it, also runs all 1,863 checks with
+A single copied `index.html`, with no `assets/` folder beside it, also runs all of its checks with
 none failing and all 203 cases present (tested by serving the file alone).
 
 ### Browser tests (`tests/`, new)
@@ -418,29 +426,21 @@ change in this release.
 **Needs the author's source material**
 
 - **Exam DNA mark data (assessment finding A7).** 63 of the 212 analysed questions have part marks
-  that do not add up to the question total. There are also impossible totals (41, 35, 32, 28),
-  Paper 2 (g) parts stored as 1 or 3 marks, definitions stored at 4 to 7 marks, and three empty
-  subtopic codes. Only the source papers can settle the right values. No record was changed; the
-  heatmap now says that some mark allocations are known to be incomplete and await re-extraction.
+  that do not add up to the question total, and 2 more hold their (b) marks under a stray label.
+  The full diagnostic, record by record, is in
+  [`docs/exam-dna-mark-diagnostic.md`](docs/exam-dna-mark-diagnostic.md). The pattern (dropped
+  parts, invented parts, split labels) points to extraction errors rather than errors in the papers.
+  **No record was changed.** Correcting them needs the 38 source papers listed there; the marks
+  cannot be inferred without guessing.
 - **Paper 2 lab sets** total 33 or 34 marks and label the 15-mark part "(f)". The lab's note now
   says so honestly; rebuilding the sets to 40 marks with a (g) part means writing new questions.
 
 **Needs the author's decision (economics or syllabus scope)**
 
-- **AD-AS lab, monetarist mode.** When demand pushes output past potential, the lab plots the
-  long-run point and never shows the short-run inflationary gap the atlas teaches; the text now
-  says "the point shown is the long-run outcome". The *Supply-side gain* preset only moves the
-  curves if the student also raises potential output, and its note now says that. Allowing a
-  short-run point beyond potential would change two narratives and one existing self-test.
-- **Market lab supply passes through the origin**, so price elasticity of supply is 1 at every
-  point and the lab cannot show inelastic supply. The wording no longer claims it does. A supply
-  intercept would be a model change.
-- **Linear demand and supply functions.** The platform's own reference layer says they are not in
-  the current guide, yet a dossier question, two generated calculation types and the market lab
-  use them. Keep them as tagged enrichment, or remove them: a syllabus-scope decision.
-- **Two concepts moved to HL.** Comparative advantage and the Phillips curve are now tagged HL, to
-  match the platform's own subtopic metadata and dictionary. As a consequence SL students no longer
-  see them in the Learn spine. Confirm that this is intended.
+- **Settled before the pull request** (section 15): the AD-AS short run, supply responsiveness in
+  the market lab, linear functions, HL-only concepts for SL students, and the circular flow. The
+  *Supply-side gain* preset still moves the curves only if the student also raises potential
+  output; its note says so.
 - **Chain ch3** is tagged SL but contains an HL-only Marshall-Lerner link. Tag the chain HL, or the
   link.
 - **The model essay's demerit-good definition** uses one limb (negative consumption externality),
@@ -451,8 +451,6 @@ change in this release.
 
 **Diagrams not redrawn in this release**
 
-- The **circular flow** needs a redesign rather than an edit (arrowheads and labels on the income
-  and expenditure arcs; withdrawals leaving household income, injections entering spending).
 - The **interest-rate stories** (`r1`, `c2`) still show the AD-AS plate without a shift. No existing
   plate shows a rate-driven fall in AD without implying something else; a new plate is needed.
 - **Minor layout:** the S + quota line crosses the quota-rent label; the country labels on the
@@ -521,19 +519,17 @@ change in this release.
    version (compare a stored build hash), for `?qa`/`#qa`, for the teacher's Quality report and for
    the `tests/` harness; skip it otherwise. This would remove most of the start-up cost on a reload
    or a deep link without weakening any check.
-2. **Re-extract the Exam DNA marks** from the source papers (limitation A7), then add a self-test
-   that every question's part marks sum to its total.
-3. **Decide the AD-AS short run** (show the inflationary gap in monetarist mode, and make the
-   *Supply-side gain* preset raise potential output), then update the one self-test that encodes
-   the current behaviour.
+2. **Re-extract the Exam DNA marks** from the 38 source papers listed in
+   `docs/exam-dna-mark-diagnostic.md`, then switch on the six held-back checks.
+3. **Make the *Supply-side gain* preset raise potential output** as well as SRAS.
 4. **Delete the unreachable hand-drawn diagram functions** in a change of their own, guarded by
    a test that every one of the 27 model keys still renders from its declared model.
-5. **Redesign the circular flow** and add a rate-driven AD plate for the interest-rate stories.
-6. **Open the IB guide** and settle the rules listed in section 8 (the AO-level rule, quoted
-   markband wording, Paper 3 (a), IA exclusions, XED and linear functions); then decide the
-   linear-functions content.
-7. **Open the primary sources** for MIC-001 (PIB, GST rates) and DEV-047 (RBI state data), and
-   add `src` fields to the deep cards once their documents have been read.
+5. **Add a rate-driven AD plate** for the interest-rate stories.
+6. **Open the IB guide** and confirm the rules listed in section 8, including the HL-only status of
+   comparative advantage and the Phillips curve.
+7. **Open the primary sources** for MIC-001 (GST Council or PIB) and DEV-047 (RBI *Handbook of
+   Statistics on Indian States*); if they confirm the figures, the dated statements can return with
+   their source attached. Add `src` fields to the deep cards once their documents have been read.
 8. **Add dated current-developments items** to *Economics, Everywhere* only when each can carry a
    date, a named primary source and a claim layer, and a review date after which it is withdrawn.
 9. **Grow the section**: more big questions in the thinner categories (Environment, Development,
@@ -549,9 +545,29 @@ change in this release.
 cards, 16 ideas, 15 labs, the Economist's eye, *Where the numbers live*); search filters; local
 personalisation for the section; the home-page tidy; about 195 audit corrections across diagrams,
 calculations, language, cases, mindmaps, policy and assessment; four further defects found by the
-new checks; one accessibility fix; 204 new built-in checks, 138 of them written from the audit
-findings; a browser test harness with five suites.
+new checks; one accessibility fix; the five decisions in section 15; 209 new built-in checks, 143
+of them in the audit suite; a browser test harness with five suites; the Exam DNA mark diagnostic.
 
-**Recommended, not done:** everything in sections 11 and 13, above all the Exam DNA mark data, the
-AD-AS short run, an on-demand self-test, reading the IB guide and the primary sources that could not
-be opened here, and dated current-developments items once they can be sourced properly.
+**Recommended, not done:** everything in sections 11 and 13, above all re-extracting the Exam DNA
+marks from the source papers, an on-demand self-test, reading the IB guide and the primary sources
+that could not be opened here, and dated current-developments items once they can be sourced
+properly.
+
+## 15. Decisions settled before the pull request
+
+Each was settled on the author's instruction, changed only what the decision needed, and is now held
+by a self-test that fails on the version before the change (checked by running the new checks against
+that version).
+
+| Decision | What changed | Check added |
+|---|---|---|
+| **AD-AS lab: show the short run** | The model is unchanged, and the reported result is still the long-run point. In the monetarist model, when demand pushes past potential, the diagram now also shows the short-run point beyond potential (hollow marker, labelled *short run*), the inflationary gap, and a dashed SRAS₁ shifted left through the long-run point. The note explains the two stages; the *What if … full employment?* answer says the same. Keynesian mode is unchanged. It is labelled as a stylised adjustment. | The short run lies on AD and the original SRAS beyond potential, the long run on LRAS at a higher price level, and Keynesian mode never shows one. The existing check that the marker sits on a drawn supply curve no longer needs its D6 allowance. |
+| **Market lab: supply responsiveness** | A new control sets where the straight supply line meets the axes: the price axis (PES above 1 everywhere), the origin (PES exactly 1), or the quantity axis (PES below 1 everywhere). The interface says that slope and elasticity are different measures, and that a line's elasticity is set by where it meets the axes, not by its steepness; the slope slider is labelled *extra units per $1, not the same as PES*, and the demand-slope hint, which said *higher b, flatter and more elastic*, now says higher b is flatter and, *at any given price and quantity*, more elastic. Surpluses and welfare loss are computed for the new lines. The *supply inelastic relative to demand* What-if now uses genuinely inelastic supply (PES 0.5, PED −1.5), with the same $1 / $3 split as before. Other presets still use supply through the origin and reset to it. | PES is below 1, exactly 1 or above 1 at every slope for the three positions, matching PES = dP/Q computed independently, and the market still clears. A tax splits exactly by PES / (PES + \|PED\|), and the marker sits on the drawn curves inside the plot. |
+| **Linear functions: keep, labelled** | Kept everywhere. Where a student meets them, they are now labelled a *stylised linear model*: the market lab (with a line saying real curves are rarely straight and the current course does not require linear functions), its scenario caption, the tax-shock simulator, the dossier question, the two price-control calculations and the two command-term examples. | The old check allow-listed one dossier question; it now requires every learner-facing text with a linear function to carry the label. |
+| **HL-only content for SL students** | Comparative advantage, the Phillips curve and the other HL-only concepts (the multiplier, asymmetric information, monopoly) are shown to SL students again in the Learn spine, in a separate *HL only · beyond the SL course* group under each unit, tagged *HL only*. Their pages say they are extension, not assessed at SL. SL practice, drills and assessment keep their SL-only filters. The HL-only status rests on the platform's IB reference layer (section 8). | Every HL concept appears for SL only in its unit's HL-only group, every SL concept in the core, and the concept page carries the extension note. |
+| **Circular flow: fix the concrete problem only** | The problem: the loop had no direction and no labels, so it did not show that spending flows to firms and incomes to households, and so could not show that withdrawals leave income and injections add to spending. Direction arrows and the two flow labels were added, and the description updated. Nothing else was redesigned. | The plate shows the direction arrows and both flow labels. |
+| **GST, Kerala and RBI data** | See section 8: the primary sources could not be opened, so the two unverified statements were reframed as tasks that point to the primary source, not asserted. Both copies of the case data were changed together and the content hash recomputed (`2736ac9981f85a39`). | The existing parity and SHA-256 checks cover the two copies. |
+| **Exam DNA marks** | **Nothing was changed.** The diagnostic is in `docs/exam-dna-mark-diagnostic.md`: all 63 mismatched records and the 2 mislabelled ones, with recorded total, recorded parts, their sum, the discrepancy and what is wrong; the evidence that this is an extraction problem; the remediation; and the 38 source papers needed. | None added: the six held-back checks are listed there, to switch on after re-extraction. |
+
+After these changes the self-test runs **1,868 checks** (the five above added to the 1,863 reported
+in section 9), with 0 failures.
