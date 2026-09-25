@@ -27001,8 +27001,10 @@ function SESSIONSUITE(){
    built.every((b,i)=>b.reduce((a,s)=>a+s.mins,0)===SESSLEN[i][0]),
    built.map((b,i)=>SESSLEN[i][0]+" min plan = "+b.reduce((a,s)=>a+s.mins,0)).join(", "));
  T("Sessions · every step kind renders without leaving a placeholder",
-   built.flat().every((s,i)=>{const h=sessStepHTML(s,0);
-     return h.length>120&&h.indexOf("undefined")<0&&h.indexOf("[object Object]")<0}));
+   built.flat().every((s,i)=>{const h=sessStepHTML(s,0),cnt=(x,w)=>x.split(w).length-1;
+     /* "undefined" may be the content itself (an option reads "Is undefined below the
+        midpoint"), so only an occurrence the step's own data does not account for fails */
+     return h.length>120&&cnt(h,"undefined")<=cnt(JSON.stringify(s),"undefined")&&h.indexOf("[object Object]")<0}));
  T("Sessions · every multiple-choice step has a valid answer index",
    built.flat().filter(s=>s.k==="mcq").every(s=>s.q&&s.q.opts&&s.q.a>=0&&s.q.a<s.q.opts.length));
  T("Sessions · every gap step resolves to a chain with a missing element",
