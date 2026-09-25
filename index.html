@@ -4544,6 +4544,10 @@ function whyMarks(){
 VIEWS.lab=()=>TAB===0?marketLab():TAB===1?adasLab():TAB===2?policySim():dgLibrary();
 const LABA=200;
 let LAB={B:10,D:10,mode:"none",t:3,s:3,pmax:7,pmin:13,pred:null};
+/* The highest minimum price the lab allows: $18, or the last half-dollar
+   below the price at which quantity demanded reaches zero (LABA / b) if that
+   is lower. Above it nobody buys, and the floor line would leave the diagram. */
+function mktFloorMax(B){return Math.min(18,Math.floor((LABA/B-.25)*2)/2)}
 function mkt(){
  const A=LABA,B=LAB.B,D=LAB.D,P0=A/(B+D),Q0=A-B*P0;
  const o={A,B,D,P0,Q0,ped:-Math.round(B*P0/Q0*1e9)/1e9,pes:Math.round(D*P0/Q0*1e9)/1e9,mode:LAB.mode};
@@ -4555,14 +4559,14 @@ function mkt(){
   o.cost=s*o.Q;o.wl=.5*s*(o.Q-Q0);
   o.cs=(A*o.Q-o.Q**2/2)/B-o.Pc*o.Q;o.ps=o.Pp*o.Q-o.Q**2/(2*D)}
  else if(LAB.mode==="ceil"||LAB.mode==="floor"){
-  const p=LAB.mode==="ceil"?Math.min(LAB.pmax,P0-.01):Math.max(LAB.pmin,P0+.01);
-  o.Pset=p;o.qs=D*p;o.qd=A-B*p;o.Q=Math.min(o.qs,o.qd);o.gap=Math.abs(o.qd-o.qs);
+  const p=LAB.mode==="ceil"?Math.min(LAB.pmax,P0-.01):Math.min(Math.max(LAB.pmin,P0+.01),mktFloorMax(B));
+  o.Pset=p;o.qs=D*p;o.qd=Math.max(0,A-B*p);o.Q=Math.min(o.qs,o.qd);o.gap=Math.abs(o.qd-o.qs);
   o.cs=(A*o.Q-o.Q**2/2)/B-p*o.Q;o.ps=p*o.Q-o.Q**2/(2*D);o.wl=.5*(Q0-o.Q)*(iD(o.Q)-iS(o.Q));o.Pc=p;o.Pp=p}
  else{o.Q=Q0;o.Pc=P0;o.Pp=P0;o.cs=(A*Q0-Q0**2/2)/B-P0*Q0;o.ps=P0*Q0-Q0**2/(2*D);o.wl=0}
  return o;
 }
 function mktSVG(o){
- const Pm=o.A/o.B*1.06,Qm=o.A*1.04;
+ const Pm=o.A/o.B*1.06,Qm=Math.max(o.A,o.mode==="floor"?o.qs:0)*1.04;
  const X=q=>G.L+(q/Qm)*(G.W-G.L-G.R-14), Y=p=>(G.H-G.B)-(p/Pm)*(G.H-G.T-G.B-10);
  let b="";
  if(o.mode==="tax"||o.mode==="sub"){
@@ -4630,7 +4634,7 @@ function marketLab(){
     ${LAB.mode==="tax"?`<label class="lb mt3">Specific tax · $${LAB.t}</label><input type="range" min="1" max="8" step="1" value="${LAB.t}" oninput="LAB.t=+this.value;render()">`:""}
     ${LAB.mode==="sub"?`<label class="lb mt3">Subsidy · $${LAB.s}</label><input type="range" min="1" max="8" step="1" value="${LAB.s}" oninput="LAB.s=+this.value;render()">`:""}
     ${LAB.mode==="ceil"?`<label class="lb mt3">Maximum price · $${LAB.pmax}</label><input type="range" min="1" max="${Math.max(2,Math.floor(o.P0))}" step="0.5" value="${LAB.pmax}" oninput="LAB.pmax=+this.value;render()">`:""}
-    ${LAB.mode==="floor"?`<label class="lb mt3">Minimum price · $${LAB.pmin}</label><input type="range" min="${Math.ceil(o.P0)}" max="18" step="0.5" value="${LAB.pmin}" oninput="LAB.pmin=+this.value;render()">`:""}
+    ${LAB.mode==="floor"?`<label class="lb mt3">Minimum price · $${+o.Pset.toFixed(2)}</label><input type="range" min="${Math.ceil(o.P0)}" max="${mktFloorMax(LAB.B)}" step="0.5" value="${Math.min(LAB.pmin,mktFloorMax(LAB.B))}" oninput="LAB.pmin=+this.value;render()">`:""}
    </div>
    <div class="panel q"><div class="eb g">Predict before you look</div>
     <p class="sm mt2">Make demand more elastic by raising b, with a tax applied. Does the consumer's share of the burden rise or fall?</p>
@@ -4663,12 +4667,17 @@ function adasSVG(r){
  const Ym=1600,Pl=60,Ph=160;
  const X=y=>G.L+(y/Ym)*(G.W-G.L-G.R-14), Y=p=>(G.H-G.B)-((p-Pl)/(Ph-Pl))*(G.H-G.T-G.B-10);
  const ad=p=>2000-10*p, ad1=p=>2000+ADAS.dAD-10*p, as1=p=>10*p+ADAS.dAS;
+ /* a straight curve given as output at each price level, drawn only over the
+    price range where that output lies on the axis (0 to Ym) */
+ const seg=(f,c,o)=>{let a=Pl,z=Ph;const s=(f(Ph)-f(Pl))/(Ph-Pl);
+  if(s){const p0=Pl-f(Pl)/s,p1=Pl+(Ym-f(Pl))/s;a=Math.max(a,Math.min(p0,p1));z=Math.min(z,Math.max(p0,p1))}
+  return z>a?P.ln(X(f(a)),Y(a),X(f(z)),Y(z),c,o):""};
  let b="";
- if(ADAS.dAD)b+=P.ln(X(ad(Pl)),Y(Pl),X(ad(Ph)),Y(Ph),G.C.d2,{dash:"6,4",w:2});
- b+=P.ln(X(ad1(Pl)),Y(Pl),X(ad1(Ph)),Y(Ph),G.C.d);
+ if(ADAS.dAD)b+=seg(ad,G.C.d2,{dash:"6,4",w:2});
+ b+=seg(ad1,G.C.d);
  if(ADAS.model==="k"){const yk=Math.min(900+ADAS.dAS,ADAS.Yf),pk=Math.max(90,(ADAS.Yf-ADAS.dAS)/10);b+=P.ln(G.L,Y(90),X(yk),Y(90),G.C.s)+P.ln(X(yk),Y(90),X(ADAS.Yf),Y(pk),G.C.s)+P.ln(X(ADAS.Yf),Y(pk),X(ADAS.Yf),Y(Ph),G.C.s)}
- else{if(ADAS.dAS)b+=P.ln(X(10*Pl),Y(Pl),X(10*Ph),Y(Ph),G.C.s2,{dash:"6,4",w:2});
-  b+=P.ln(X(as1(Pl)),Y(Pl),X(as1(Ph)),Y(Ph),G.C.s)}
+ else{if(ADAS.dAS)b+=seg(p=>10*p,G.C.s2,{dash:"6,4",w:2});
+  b+=seg(as1,G.C.s)}
  b+=P.ln(X(ADAS.Yf),G.T,X(ADAS.Yf),G.H-G.B,G.C.cap,{w:2,dash:"7,4"})
   +P.t(X(ADAS.Yf),G.T-4,"LRAS / Yf",{a:"middle",c:G.C.cap,sz:10.5});
  b+=P.ln(G.L,Y(r.P),X(r.Y),Y(r.P),G.C.gr2,{w:1.2,dash:"3,3"})+P.ln(X(r.Y),Y(r.P),X(r.Y),G.H-G.B,G.C.gr2,{w:1.2,dash:"3,3"});
@@ -12099,7 +12108,7 @@ defModel("ped",{sub:"2.5",t:"Price elasticity of demand",model:"Two linear deman
      {k:"S0",label:"S₀",c:S0,col:CS,q1:240},
      {k:"S1",label:"S₁",c:S1,col:CS,dash:"6,4",q1:240,labDy:-10}],
    points:[{k:"E0",label:"E₀",q:E0.q,p:E0.p,on:["De","Di","S0"]},
-     {k:"Ee",label:"E elastic",q:Ee.q,p:Ee.p,on:["De","S1"],col:CD,dx:8},
+     {k:"Ee",label:"E elastic",q:Ee.q,p:Ee.p,on:["De","S1"],col:CD,dx:-9,dy:16,a:"end"},
      {k:"Ei",label:"E inelastic",q:Ei.q,p:Ei.p,on:["Di","S1"],col:"#7B3FA0",dx:8,dy:-10}],
    guides:[{q:E0.q,p:E0.p,xLab:"Q₀",yLab:"P₀"},
      {q:Ee.q,p:Ee.p,xLab:"Q elastic",col:"#E4DED2",lc:CD},
@@ -33685,6 +33694,494 @@ QAREPORT.push(
   what:"That no button on any route calls a function that does not exist, that every navigation link leads to a section that exists, and that no route renders empty or throws."});
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   AUDIT CHECKS · the automated checks the six content audits recommended
+   (calculations, diagrams, language, mindmaps and policy, assessment, and
+   the Real World cases), gathered into one suite.
+   Each check runs in isolation: one that throws fails with the error as its
+   detail instead of taking the whole suite down. No check writes storage,
+   navigates, opens a dialogue or leaves VIEW, TAB or ARG changed, and any lab
+   state a check moves is put back. The rendered text of every route comes
+   from QASWEEP(), which the suites before this one have already cached, so no
+   route is rendered twice. Helpers carry the AUD_ prefix.
+   A check returns true or false, or a list of offenders (empty passes). Each
+   result also carries src (the audit finding it comes from) and ms. Where a
+   check names an item it lets through, that item is a known issue awaiting
+   the author (listed in audit-suite-report.md); delete the entry once fixed.
+   ═══════════════════════════════════════════════════════════════════════════ */
+function AUD_sortDeep(v){
+ return Array.isArray(v)?v.map(AUD_sortDeep)
+  :(v&&typeof v==="object")?Object.keys(v).sort().reduce((a,k)=>{a[k]=AUD_sortDeep(v[k]);return a},{})
+  :v;
+}
+/* SHA-256, synchronous, so the build's declared data hash can be recomputed
+   without Web Crypto's promise (the self-tests are synchronous). */
+function AUD_sha256(str){
+ const K=AUD_sha256.K||(AUD_sha256.K=new Int32Array([0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+  0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+  0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+  0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2]));
+ const u=new TextEncoder().encode(str),n=u.length,L=((n+9+63)>>6)<<6,m=new Uint8Array(L);
+ m.set(u);m[n]=0x80;const dv=new DataView(m.buffer);
+ dv.setUint32(L-4,(n*8)>>>0);dv.setUint32(L-8,Math.floor(n/0x20000000));
+ const H=new Int32Array([0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19]),w=new Int32Array(64);
+ for(let o=0;o<L;o+=64)AUD_sha256.block(m,o,H,w,K);
+ return [...H].map(x=>(x>>>0).toString(16).padStart(8,"0")).join("");
+}
+AUD_sha256.block=function(m,o,H,w,K){
+ for(let i=0;i<16;i++){const j=o+i*4;w[i]=(m[j]<<24)|(m[j+1]<<16)|(m[j+2]<<8)|m[j+3]}
+ for(let i=16;i<64;i++){const x=w[i-15],y=w[i-2];
+  w[i]=(w[i-16]+(((x>>>7)|(x<<25))^((x>>>18)|(x<<14))^(x>>>3))+w[i-7]+(((y>>>17)|(y<<15))^((y>>>19)|(y<<13))^(y>>>10)))|0}
+ let a=H[0],b=H[1],c=H[2],d=H[3],e=H[4],f=H[5],g=H[6],h=H[7];
+ for(let i=0;i<64;i++){
+  const t1=(h+(((e>>>6)|(e<<26))^((e>>>11)|(e<<21))^((e>>>25)|(e<<7)))+((e&f)^(~e&g))+K[i]+w[i])|0;
+  const t2=((((a>>>2)|(a<<30))^((a>>>13)|(a<<19))^((a>>>22)|(a<<10)))+((a&b)^(a&c)^(b&c)))|0;
+  h=g;g=f;f=e;e=(d+t1)|0;d=c;c=b;b=a;a=(t1+t2)|0}
+ H[0]=(H[0]+a)|0;H[1]=(H[1]+b)|0;H[2]=(H[2]+c)|0;H[3]=(H[3]+d)|0;H[4]=(H[4]+e)|0;H[5]=(H[5]+f)|0;H[6]=(H[6]+g)|0;H[7]=(H[7]+h)|0;
+};
+/* Runs a check that has to call a handler written for a click (it re-renders,
+   toasts or records evidence) with those three side effects switched off. */
+function AUD_quiet(fn){
+ const k={render:window.render,toast:window.toast,record:window.record};
+ window.render=()=>{};window.toast=()=>{};window.record=()=>{};
+ try{return fn()}finally{window.render=k.render;window.toast=k.toast;window.record=k.record}
+}
+/* Runs fn with an object's own fields restored afterwards, whatever fn does. */
+function AUD_keep(obj,fn){
+ const snap=JSON.stringify(obj);
+ try{return fn()}finally{const o=JSON.parse(snap);Object.keys(obj).forEach(k=>{if(!(k in o))delete obj[k]});Object.assign(obj,o)}
+}
+/* Points along an SVG path: M L H V C S Q T A Z, absolute or relative. */
+function AUD_pathPts(d){
+ const tk=String(d||"").match(/[MLHVCSQTAZmlhvcsqtaz]|-?(?:\d+\.?\d*|\.\d+)(?:e[-+]?\d+)?/g)||[];
+ const pts=[];let i=0,cmd="",x=0,y=0,sx=0,sy=0,cx=0,cy=0,qx=0,qy=0,prev="";
+ const num=()=>+tk[i++],isC=t=>/^[A-Za-z]$/.test(t);
+ const cub=(p0,p1,p2,p3)=>{for(let s=1;s<=16;s++){const t=s/16,u=1-t;
+  pts.push([u*u*u*p0[0]+3*u*u*t*p1[0]+3*u*t*t*p2[0]+t*t*t*p3[0],u*u*u*p0[1]+3*u*u*t*p1[1]+3*u*t*t*p2[1]+t*t*t*p3[1]])}};
+ const quad=(p0,p1,p2)=>{for(let s=1;s<=16;s++){const t=s/16,u=1-t;
+  pts.push([u*u*p0[0]+2*u*t*p1[0]+t*t*p2[0],u*u*p0[1]+2*u*t*p1[1]+t*t*p2[1]])}};
+ while(i<tk.length){
+  if(isC(tk[i]))cmd=tk[i++];else if(!cmd){i++;continue}
+  const rel=cmd!==cmd.toUpperCase(),C=cmd.toUpperCase(),ox=rel?x:0,oy=rel?y:0;
+  if(C==="Z"){x=sx;y=sy;pts.push([x,y]);prev=C;if(i<tk.length&&!isC(tk[i]))i++;continue}
+  if(C==="M"){x=ox+num();y=oy+num();sx=x;sy=y;pts.push([x,y]);cmd=rel?"l":"L";prev="M";continue}
+  if(C==="L"){x=ox+num();y=oy+num();pts.push([x,y])}
+  else if(C==="H"){x=ox+num();pts.push([x,y])}
+  else if(C==="V"){y=oy+num();pts.push([x,y])}
+  else if(C==="C"){const p1=[ox+num(),oy+num()],p2=[ox+num(),oy+num()],p3=[ox+num(),oy+num()];cub([x,y],p1,p2,p3);cx=p2[0];cy=p2[1];x=p3[0];y=p3[1]}
+  else if(C==="S"){const p1=(prev==="C"||prev==="S")?[2*x-cx,2*y-cy]:[x,y],p2=[ox+num(),oy+num()],p3=[ox+num(),oy+num()];cub([x,y],p1,p2,p3);cx=p2[0];cy=p2[1];x=p3[0];y=p3[1]}
+  else if(C==="Q"){const p1=[ox+num(),oy+num()],p2=[ox+num(),oy+num()];quad([x,y],p1,p2);qx=p1[0];qy=p1[1];x=p2[0];y=p2[1]}
+  else if(C==="T"){const p1=(prev==="Q"||prev==="T")?[2*x-qx,2*y-qy]:[x,y],p2=[ox+num(),oy+num()];quad([x,y],p1,p2);qx=p1[0];qy=p1[1];x=p2[0];y=p2[1]}
+  else if(C==="A"){i+=5;x=ox+num();y=oy+num();pts.push([x,y])}
+  else i++;
+  prev=C;
+ }
+ return pts.filter(p=>isFinite(p[0])&&isFinite(p[1]));
+}
+/* The drawn geometry of an SVG string: stroked curves (axes, dashed guide
+   lines and arrows flagged), marker circles, polygons and text anchors. Read
+   with attribute patterns rather than DOMParser, which is several times
+   slower; <defs> and <marker> contents are not drawn and are skipped. */
+function AUD_geo(svg){
+ const src=String(svg);
+ if(!/<svg[\s>]/.test(src))throw new Error("no SVG was drawn");
+ const body=src.replace(/<defs[\s\S]*?<\/defs>|<marker[\s\S]*?<\/marker>/g,"");
+ const at=a=>{const o={};a.replace(/([\w:-]+)\s*=\s*"([^"]*)"/g,(m,k,v)=>{o[k]=v;return ""});return o};
+ const ent=s=>s.replace(/<[^>]*>/g,"").replace(/&#x([0-9a-f]+);/gi,(m,h)=>String.fromCharCode(parseInt(h,16))).replace(/&#(\d+);/g,(m,d)=>String.fromCharCode(+d))
+   .replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&apos;|&#39;/g,"'").replace(/&amp;/g,"&");
+ const GUIDE=new Set([G.C.gr2,"#E4DED2","#CFC8B9","#B9B4AA","#EDE9E2","#D8D3CA","#16181C"]);
+ const pair=s=>{const a=String(s||"").trim().split(/[\s,]+/).map(Number),o=[];for(let i=0;i+1<a.length;i+=2)o.push([a[i],a[i+1]]);return o};
+ const curves=[],circles=[],polys=[],texts=[];
+ body.replace(/<(line|path|polyline|polygon|circle)\b([^>]*)>/g,(m,tag,a)=>{const e=at(a);
+  if(tag==="circle"){circles.push({x:+e.cx,y:+e.cy,r:+e.r,st:e.stroke||"",fill:e.fill||""});return ""}
+  if(tag==="polygon"){polys.push(pair(e.points));return ""}
+  const st=e.stroke;if(!st||st==="none"||st==="transparent")return "";
+  const pts=tag==="line"?[[+e.x1,+e.y1],[+e.x2,+e.y2]]:tag==="path"?AUD_pathPts(e.d):pair(e.points);
+  if(!pts.length)return "";
+  const axis=tag==="line"&&((pts[0][0]===G.L&&pts[1][0]===G.L)||(pts[0][1]===G.H-G.B&&pts[1][1]===G.H-G.B&&pts[0][0]===G.L));
+  curves.push({st,pts,axis,guide:GUIDE.has(st),arrow:!!e["marker-end"],dash:e["stroke-dasharray"]||"",tag});return ""});
+ body.replace(/<text\b([^>]*)>([\s\S]*?)<\/text>/g,(m,a,inner)=>{const e=at(a);
+  texts.push({s:ent(inner),x:+e.x,y:+e.y,fs:+(e["font-size"]||11),ff:e["font-family"]||"sans-serif",fw:e["font-weight"]||"400",an:e["text-anchor"]||"start",
+   tr:!!e.transform||/<tspan\b[^>]*\b(dy|y)=/.test(inner)});return ""});
+ return {curves,circles,polys,texts};
+}
+/* distance from (x,y) to a polyline */
+function AUD_dist(x,y,pts){
+ let best=Infinity;
+ if(pts.length===1)return Math.hypot(x-pts[0][0],y-pts[0][1]);
+ for(let i=1;i<pts.length;i++){const [x1,y1]=pts[i-1],[x2,y2]=pts[i],dx=x2-x1,dy=y2-y1,l2=dx*dx+dy*dy;
+  let t=l2?((x-x1)*dx+(y-y1)*dy)/l2:0;t=Math.max(0,Math.min(1,t));
+  best=Math.min(best,Math.hypot(x-(x1+t*dx),y-(y1+t*dy)))}
+ return best;
+}
+/* Text boxes from a fixed per-character metric rather than the fonts that
+   happen to be installed, so the result is the same on every device. */
+function AUD_boxes(texts){
+ const em=(ch,mono)=>mono?0.6:/[iljtfr.,:;'|!() ]/.test(ch)?0.3:/[mwMW@%]/.test(ch)?0.85:/[A-Z]/.test(ch)?0.66:/[0-9$]/.test(ch)?0.56:/[₀-₉]/.test(ch)?0.4:0.52;
+ return texts.filter(t=>t.s.trim()&&!t.tr).map(t=>{const mono=/mono/i.test(t.ff);let w=0;for(const ch of t.s)w+=em(ch,mono)*t.fs;
+  const x=t.an==="middle"?t.x-w/2:t.an==="end"?t.x-w:t.x;return {s:t.s,x,y:t.y-0.72*t.fs,w,h:0.9*t.fs}});
+}
+/* A worked line such as "540 ÷ 108.0 × 100 = $500bn": every "expression = value"
+   step whose left side is pure arithmetic must evaluate to the stated value. */
+function AUD_arith(s){
+ const bad=[],parts=String(s).replace(/−/g,"-").replace(/×/g,"*").replace(/÷/g,"/").split(/\s=\s/);
+ const expr=p=>{const e=p.replace(/^.*?[:;]\s*/,"").replace(/^[^0-9(.\-]*(?=[0-9(.\-])/,"").replace(/[.\s]+$/,"").replace(/\$/g,"").trim();
+  if(!/^[0-9().\-+*/ ,]+$/.test(e)||!/[-+*/]/.test(e.replace(/^-/,"")))return null;
+  try{const v=Function("return ("+e.replace(/(\d),(\d{3})/g,"$1$2")+")")();return isFinite(v)?{e,v}:null}catch(x){return null}};
+ for(let i=0;i+1<parts.length;i++){
+  const l=expr(parts[i]);if(!l)continue;
+  const r=expr(parts[i+1]);let a,dp;
+  if(r){a=r.v;dp=4}else{const m=parts[i+1].match(/^\s*(-)?\s*[$€£]?\s*(\d[\d,]*\.?\d*)/);if(!m)continue;
+   a=+m[2].replace(/,/g,"")*(m[1]?-1:1);dp=(m[2].split(".")[1]||"").length}
+  if(Math.abs(l.v-a)>Math.max(0.5*Math.pow(10,-dp)+1e-9,Math.abs(a)*0.006))bad.push(l.e+" = "+a+" (is "+(Math.round(l.v*1000)/1000)+")");
+ }
+ return bad;
+}
+
+function AUDITSUITE(){
+ const t0=performance.now(),out=[];
+ const T=(n,f,src)=>{let ok=false,detail="";const s0=performance.now();
+  try{const r=f();
+   if(Array.isArray(r)){ok=r.length===0;detail=r.slice(0,6).map(String).join(" | ")}
+   else if(r&&typeof r==="object"){ok=!!r.ok;detail=String(r.d||"")}
+   else ok=r===true}
+  catch(e){ok=false;detail="threw: "+String(e&&e.message||e)}
+  out.push({n,ok,detail,src:src||"",ms:performance.now()-s0})};
+ const keep={VIEW,TAB,ARG};
+ /* the text corpus: every rendered sentence on every route, plus the claim
+    and error corpora (diagram notes, models, policies, mindmaps, dossiers) */
+ let corpus=null,claims=null;
+ const CLAIMS=()=>claims||(claims=CLAIMCORPUS());
+ const CORPUS=()=>corpus||(corpus=(()=>{
+  const split=(id,s)=>String(s).replace(/<[^>]*>/g," ").split(/(?<=[.!?])\s+/).map(t=>({id,t:t.trim()})).filter(x=>x.t);
+  return [...QASENTENCES(),...CLAIMS().flatMap(([id,s])=>split(id,s)),...ERRORCORPUS().flatMap(([id,s])=>split(id,s))]})());
+ /* pre: a cheap pattern a sentence must match before the full rule is tried */
+ const LINT=(pre,re,need,ok)=>CORPUS().filter(x=>pre.test(x.t)&&re.test(x.t)&&!(need&&need.test(x.t))&&!(ok&&ok.test(x.t))).map(x=>x.id+": "+x.t.slice(0,90));
+ const plate=k=>{const r=DG[k]();return AUD_geo(frame(r.b,r.x,r.y,{}))};
+ let bundled=null;try{bundled=JSON.parse(__RW_FALLBACK__())}catch(e){}   /* the Real World copy inside this file */
+ const EC="Economics accuracy · ",DE="Diagram engine · ",LA="Language · ",IN="Integrity · ",RWP="Real world · ",AS="Assessment · ";
+ try{
+
+ /* ── 1 · CALCULATIONS: reference values (audit-calculations, test gaps 1 to 4) ── */
+ const C=CMAPC;
+ T(EC+"the calculators reproduce 14 textbook reference values (PED, YED, PES, multiplier, real GDP, terms of trade, unemployment, weighted index, indirect tax)",()=>[
+   ["PED from P 10→12 and Q 100→80 is −1.0",()=>Math.abs(C.ped.solve({p1:10,p2:12,q1:100,q2:80}).a-(-1))<1e-9],
+   ["PED from P 20→25 and Q 400→340 is −0.6",()=>C.ped.solve({p1:20,p2:25,q1:400,q2:340}).a===-0.6],
+   ["PED from P 10→8 and Q 100→130 is −1.5",()=>Math.abs(C.ped.solve({p1:10,p2:8,q1:100,q2:130}).a-(-1.5))<1e-9],
+   ["YED of −1 on a 10% income rise is described as an inferior good",()=>C.yed.solve({y1:20000,y2:22000,q1:50,q2:45}).a===-1&&/inferior/.test(C.yed.interp({y1:20000,y2:22000,q1:50,q2:45},-1))],
+   ["YED of 2 on a 10% income rise is described as a luxury",()=>C.yed.solve({y1:20000,y2:22000,q1:50,q2:60}).a===2&&/luxury/.test(C.yed.interp({y1:20000,y2:22000,q1:50,q2:60},2))],
+   ["PES of supply through the origin is 1",()=>C.pes.solve({p1:4,p2:5,q1:40,q2:50}).a===1],
+   ["multiplier with MPS 0.1, MPT 0.2, MPM 0.2 is 2",()=>C.mult.solve({mps:.1,mpt:.2,mpm:.2,inj:10}).a===2],
+   ["closed-economy multiplier with MPS 0.25 is 4",()=>C.mult.solve({mps:.25,mpt:0,mpm:0,inj:100}).a===4],
+   ["the multiplier calculation refuses withdrawals above 1",()=>isNaN(C.mult.solve({mps:.5,mpt:.3,mpm:.3,inj:10}).a)],
+   ["real GDP of 594 at a deflator of 110 is 540",()=>C.realgdp.solve({n:594,d:110}).a===540],
+   ["terms of trade 110 / 88 is 125",()=>C.tot.solve({x:110,m:88}).a===125],
+   ["unemployment 300 of 4,500 is 6.67%",()=>C.unemp.solve({u:300,l:4500}).a===6.67],
+   ["weighted index with weights 30/25/45 is 104.8",()=>C.wpi.solve({w1:30,i1:106,w2:25,i2:112,w3:45,i3:100}).a===104.8],
+   ["tax inside a tax-inclusive $1,200 at 20% is $200",()=>C.indtax.solve({exp:1200,rate:20,inc:30000}).a===200]].filter(([n,f])=>{try{return !f()}catch(e){return true}}).map(([n])=>n),"Calc test gap 1 (reference values)");
+ T(EC+"PED interpretation quotes the true revenue change ($1000 to $960) for the unit-elastic case",()=>/goes from \$1000 to \$960/.test(C.ped.interp({p1:10,p2:12,q1:100,q2:80},-1)),"Calc C12");
+ T(EC+"multiplier working and interpretation give the same change in GDP",()=>{const v={mps:.2,mpt:.15,mpm:0,inj:20},r=C.mult.solve(v);return r.steps[2].endsWith("$57.14bn")&&C.mult.interp(v,r.a).includes("$57.14bn")},"Calc C19");
+ T(EC+"real GDP at a deflator of 100 is not described as below the base year",()=>!/below the base year/.test(C.realgdp.interp({n:500,d:100},500)),"Calc C17");
+ T(EC+"a real value at an index of 100 is not described as below the base year",()=>!/below the base year/.test(C.realval.interp({nom:100,idx:100},100)),"Calc C17 / test gap 3");
+ T(EC+"floor surplus with the floor above the choke price (20, 300, 20, 20) is 400",()=>C.floorsur.solve({pmin:20,a:300,b:20,d:20}).a===400,"Calc C9");
+ T(EC+"floor surplus never counts a negative quantity demanded (500 generated questions)",()=>{const c=C.floorsur;for(let i=0;i<500;i++){const v=c.gen();if(Math.abs(c.solve(v).a-Math.round((v.d*v.pmin-Math.max(0,v.a-v.b*v.pmin))*100)/100)>0.011)return false}return true},"Calc C9 / test gap 2");
+ T(EC+"a ceiling above equilibrium gives a shortage of 0",()=>C.ceilshort.solve({pmax:9,a:300,b:20,d:20}).a===0,"Calc C10");
+ T(EC+"a floor below equilibrium gives a surplus of 0",()=>C.floorsur.solve({pmin:5,a:300,b:20,d:20}).a===0,"Calc C10");
+ T(EC+"a regressive schedule is not called progressive",()=>!/progressive schedule/.test(C.avgtax.interp({inc:60000,b1:30000,r1:40,b2:30000,r2r:20},30)),"Calc C11");
+ T(EC+"a zero change in the exchange rate is not called an appreciation",()=>!/appreciated by/.test(C.appdep.interp({r1:1.2,r2:1.2},0)),"Calc C18");
+ T(EC+"zero growth is not described as growth, and a zero balance not as a surplus",()=>!/\bgrew\b/.test(C.growth.interp({g1:100,g2:100},0))&&!/\bin surplus\b/.test(C.ca.interp({xg:100,mg:100,xs:0,ms:0,pi:0,si:0},0)),"Calc C18 / test gap 3");
+ T(EC+"the marker accepts −0.75, -0.75 and 0.75 for a PED of −0.75 and rejects 0.5",()=>AUD_quiet(()=>{const cb=CB;try{
+   CB={id:"ped",v:{},res:null,pq:{p1:10,p2:12,q1:100,q2:85},ans:"",chk:null,show:false};
+   const ok=["\u22120.75","-0.75","0.75"].every(a=>{CB.ans=a;cbCheck();return CB.chk===true});
+   CB.ans="0.5";cbCheck();return ok&&CB.chk===false}finally{CB=cb}}),"Calc C13 / C16 / test gap 4");
+ T(EC+"the calculator reads −2 (U+2212) as minus two: real rate 7",()=>AUD_quiet(()=>{const cb=CB;try{
+   CB={id:"realint",v:{nom:"5",inf:"\u22122"},res:null,pq:null,ans:"",chk:null,show:false};cbRun();return !!CB.res&&CB.res.a===7}finally{CB=cb}}),"Calc C16 / test gap 4");
+
+ /* ── 2 · CALCULATIONS: the tools compared with their own text ── */
+ T(EC+"Lorenz: shares entered out of order give the sorted Gini (0.416)",()=>{const s=LZ.sh;try{LZ.sh=[49,23,15,9,4];return Math.abs(lzCalc().gini-0.416)<1e-9}finally{LZ.sh=s}},"Calc C7");
+ T(EC+"Lorenz: the Gini stays within 0 to 0.8 at every slider setting (3⁵ grid)",()=>{const s=LZ.sh,v=[0,25,100];let bad=0;
+   try{for(const a of v)for(const b of v)for(const c of v)for(const d of v)for(const e of v){if(!(a+b+c+d+e))continue;LZ.sh=[a,b,c,d,e];const g=lzCalc().gini;if(!(g>=-1e-9&&g<=0.8+1e-9))bad++}}finally{LZ.sh=s}return bad===0},"Calc C7 / test gap 5");
+ T(EC+"FX lab: the sign of the current-account change agrees with the Marshall-Lerner flag everywhere",()=>AUD_keep(FX,()=>{let ok=true;
+   for(const [d,sh] of [[0,1],[-1,1],[1,0],[1,-1]])for(let a=0;a<=40;a+=2)for(let m=0;m<=40;m+=2){if(a+m===20)continue;
+    Object.assign(FX,{shiftD:d,shiftS:sh,ex:a/20,em:m/20});const f=fxCalc(),dCA=f.ca1-f.ca0;
+    if(Math.abs(f.dep)>5e-4&&Math.sign(dCA)!==Math.sign(f.dep)*(f.ml?1:-1))ok=false}return ok}),"Calc C4 / test gap 6");
+ T(EC+"FX lab: a rise in interest rates at the default elasticities worsens the current account",()=>AUD_keep(FX,()=>{const r=FXSHIFTS.find(x=>x.k==="rate");
+   Object.assign(FX,{shiftD:r.d,shiftS:r.s,ex:0.6,em:0.5});const f=fxCalc();return f.dep<0&&f.ca1<f.ca0}),"Calc C4 / test gap 6");
+ T(EC+"multiplier lab: MPS = MPT = MPM = 0.6 gives no finite multiplier",()=>AUD_keep(MUL,()=>{Object.assign(MUL,{mps:.6,mpt:.6,mpm:.6});return !isFinite(mulCalc().k)}),"Calc C5");
+ T(EC+"market lab: PES is exactly 1, and PED is −1 when the slopes match, at every setting",()=>AUD_keep(LAB,()=>{let ok=true;
+   for(let B=4;B<=20;B++)for(let D=4;D<=20;D++){Object.assign(LAB,{B,D,mode:"none"});const o=mkt();if(o.pes!==1||(B===D&&o.ped!==-1))ok=false}return ok}),"Calc C22");
+ T(EC+"market lab: a subsidy's welfare loss is not described as units no longer traded",()=>AUD_keep(LAB,()=>{Object.assign(LAB,{mode:"sub",s:4});return !/units no longer traded/.test(marketLab())}),"Calc C21 / test gap 8");
+ T(EC+"AD-AS: a preset that leaves output unchanged does not say output rises",()=>AUD_keep(ADAS,()=>{Object.assign(ADAS,{model:"m",dAD:0,dAS:150,Yf:1000});const x=adasSolve();return !(x.Y===1000&&x.P===100&&/Output rises/.test(x.note))}),"Calc C1");
+ T(EC+"AD-AS Keynesian: P never falls below 90, and P and Y never fall as AD rises",()=>AUD_keep(ADAS,()=>{let ok=true;
+   for(const Yf of [1000,1200]){let pv=null;for(let d=-400;d<=400;d+=25){Object.assign(ADAS,{model:"k",dAD:d,dAS:0,Yf});const x=adasSolve();
+    if(x.P<90-1e-9)ok=false;if(pv&&(x.Y<pv.Y-1e-9||x.P<pv.P-1e-9))ok=false;pv=x}}return ok}),"Calc C2");
+ T(EC+"AD-AS: the baseline note says 'at potential' only when output is at potential",()=>AUD_keep(ADAS,()=>{let bad=[];
+   for(const m of ["m","k"])for(const Yf of [900,1000,1100,1200]){Object.assign(ADAS,{model:m,dAD:0,dAS:0,Yf});const x=adasSolve();
+    if(/at potential/.test(x.note)&&Math.abs(x.Y-Yf)>1e-9)bad.push(m+" Yf "+Yf)}return bad}),"Calc test gap 9");
+ T(EC+"What if 'the economy already has spare capacity' actually raises output",()=>AUD_keep(ADAS,()=>{WHATIF.find(w=>/spare capacity/i.test(w.q)).set();return adasSolve().Y>1000}),"Calc C3");
+ T(EC+"What if 'the tax is doubled' doubles the tax",()=>AUD_keep(LAB,()=>{const w=WHATIF.find(x=>/tax is doubled/i.test(x.q));
+   return [1,2,3,4].every(t=>{Object.assign(LAB,{mode:"tax",t});w.set();return LAB.t===2*t})}),"Calc C25 / test gap 10");
+ T(EC+"What if items that call supply inelastic set a lab state where it is",()=>AUD_keep(LAB,()=>WHATIF.filter(w=>/supply (is|becomes) (price )?inelastic/i.test(w.q)).filter(w=>{
+   w.set();const o=mkt();return /relative/i.test(w.q)?!(o.pes<Math.abs(o.ped)):!(o.pes<1)}).map(w=>w.q)),"Calc C23 / test gap 10");
+ T(EC+"trade game: correct specialisation raises the value of output at a mid-range price, and the text does not deny that cloth falls",()=>AUD_keep(TG,()=>{
+   Object.assign(TG,{aw:100,ac:50,bw:40,bc:40,specA:"w",specB:"c"});const c=tgCalc(),t=(c.lo+c.hi)/2,h=tradeGame();
+   return c.correct&&t*c.gainW+c.gainC>0&&c.gainC<0&&!/rises without the other falling/.test(h)}),"Calc C8 / test gap 11");
+ T(EC+"housing scenario: the ceiling comparison with the luxury preset matches the shortages the lab computes",()=>{
+   const h=MKTSCEN.find(s=>s.k==="housing"),l=MKTSCEN.find(s=>s.k==="luxury"),m=h.watch.match(/far (larger|smaller)/);
+   /* at a ceiling Δ below equilibrium the shortage is (B + D)·Δ */
+   return !m||((m[1]==="larger")===((l.B+l.D)>(h.B+h.D)))},"Calc C24 / test gap 12");
+ T(EC+"atlas: a positive production externality is labelled an external benefit",()=>M2.posprod.build(Object.assign({},M2.posprod.par)).facts[2][0]==="External benefit per unit","Calc C26");
+ T(EC+"atlas: comparative-advantage opportunity costs carry the units of the axes (no 'thousand metres')",()=>!renderModel("compadv").facts.some(f=>/thousand/.test(f[1])),"Calc C27 / test gap 13");
+ T(EC+"data-lab and data-drill answers are recomputed from their own tables (real GDP 540, PED of d2)",()=>(Math.abs(DSETS[0].rows[1][1]/DSETS[0].rows[1][2]*100-540)<1e-9&&DSETS[0].q[0].a==="$540bn")&&(()=>{const d=DATA.find(x=>x.id==="d2"),t=d.tbl;const p1=+t[1][1],p2=+t[1][2],q1=+t[2][1],q2=+t[2][2];
+   return Math.abs(Math.abs(((q2-q1)/q1)/((p2-p1)/p1))-(+d.ans))<1e-9})(),"Calc test gap 14, deferred note 11");
+ T(EC+"every worked step in the data drills, data sets and Paper 2 sets agrees with its own arithmetic",()=>[
+   ...DATA.flatMap(d=>(d.steps||[]).flatMap(s=>AUD_arith(s).map(x=>d.id+": "+x))),
+   ...DSETS.flatMap((d,i)=>(d.q||[]).flatMap(q=>AUD_arith(q.w||"").map(x=>"set "+i+": "+x))),
+   ...P2SETS.flatMap((s,i)=>(s.parts||[]).flatMap(p=>AUD_arith([p.w,p.a,p.gd,p.m].filter(x=>typeof x==="string").join(" ")).map(x=>"P2 set "+i+": "+x)))],"Calc test gap 14 / Assessment test gap 7");
+
+ /* ── 3 · DIAGRAMS (audit-diagrams A1 to A23 and test gaps) ── */
+ /* the drawn geometry of every plate, parsed once and shared by the checks below */
+ const PL={};Object.keys(DG).forEach(k=>{try{PL[k]=plate(k)}catch(e){PL[k]={err:String(e&&e.message||e)}}});
+ T(DE+"every plate renders",()=>Object.entries(PL).filter(([k,v])=>v.err).map(([k,v])=>k+": "+v.err),"Diagrams test gap 1");
+ T(DE+"every straight model curve ends inside the plot, as rendered",()=>MODELKEYS.filter(k=>!PL[k]||PL[k].err||!PL[k].curves.filter(c=>c.tag==="line").every(l=>{
+   const y1=l.pts[0][1],y2=l.pts[1][1];return Math.min(y1,y2)>=G.T-12&&Math.max(y1,y2)<=G.H-G.B+1.5})),"Diagrams A1 (D13)");
+ T(DE+"externality facts name the effect by its sign",()=>["negprod","negcons","posprod","poscons"].every(k=>{const f=Object.fromEntries(renderModel(k).facts),neg=/negative/i.test(M2[k].t);
+   return neg?("External cost per unit" in f):("External benefit per unit" in f)}),"Diagrams A2 (D7)");
+ T(DE+"externality welfare triangle: apex at the social optimum, spanning Qopt to Qmarket, with its edge at Qmarket running from the private to the social curve",()=>(["negprod","negcons","posprod","poscons"].every(k=>{
+   const m=M2[k].build(M2[k].par),Em=m.points.find(p=>p.k==="Em"),Es=m.points.find(p=>p.k==="Es"),w=m.areas[0].pts,xs=w.map(p=>p[0]);
+   return Math.abs(w[0][0]-Es.q)<1e-9&&Math.abs(w[0][1]-Es.p)<1e-9&&Math.min(...xs)===Math.min(Em.q,Es.q)&&Math.max(...xs)===Math.max(Em.q,Es.q)}))&&(["negprod","negcons","posprod","poscons"].filter(k=>{
+   const m=M2[k].build(M2[k].par),Em=m.points.find(p=>p.k==="Em"),w=m.areas[0].pts.filter(p=>Math.abs(p[0]-Em.q)<1e-9).map(p=>p[1]).sort((a,b)=>a-b);
+   const ext=m.curves.find(c=>/^MS[CB]$/.test(c.k)).c;const ys=[Em.p,ext.p(Em.q)].sort((a,b)=>a-b);
+   return !(w.length===2&&Math.abs(w[0]-ys[0])<1e-9&&Math.abs(w[1]-ys[1])<1e-9)})).length===0,"Diagrams A3 / test gap 6");
+ T(DE+"Phillips: C keeps B's inflation, and SRPC₁ sits above SRPC₀ by B's rise in inflation",()=>{const m=M2.phillips.build(M2.phillips.par),P=k=>m.points.find(p=>p.k===k),c=k=>m.curves.find(x=>x.k===k).c;
+   return Math.abs(P("B").p-P("C").p)<1e-9&&Math.abs((c("SR1").a-c("SR0").a)-(P("B").p-P("A").p))<1e-9},"Diagrams A4 (D8) / test gap 7");
+ T(DE+"every shift is parallel and equal to its parameter (tax, subsidy, demand, supply)",()=>(()=>{const t=M2.tax.build(M2.tax.par),s=M2.subsidy.build(M2.subsidy.par),c=(m,k)=>m.curves.find(x=>x.k===k).c;
+   return c(t,"St").b===c(t,"S").b&&Math.abs(c(t,"St").a-c(t,"S").a-M2.tax.par.t)<1e-9&&c(s,"Ss").b===c(s,"S").b&&Math.abs(c(s,"S").a-c(s,"Ss").a-M2.subsidy.par.s)<1e-9})()&&(()=>{const d=M2.dshift.build(M2.dshift.par),s=M2.sshift.build(M2.sshift.par),c=(m,k)=>m.curves.find(x=>x.k===k).c,sh=M2.dshift.par.shift,ss=M2.sshift.par.shift;
+   return c(d,"D1").b===c(d,"D0").b&&c(d,"D2").b===c(d,"D0").b&&Math.abs(Math.abs(c(d,"D1").a-c(d,"D0").a)-sh)<1e-9&&Math.abs(Math.abs(c(d,"D2").a-c(d,"D0").a)-sh)<1e-9
+    &&c(s,"S1").b===c(s,"S0").b&&c(s,"S2").b===c(s,"S0").b&&Math.abs(Math.abs(c(s,"S1").a-c(s,"S0").a)-ss)<1e-9&&Math.abs(Math.abs(c(s,"S2").a-c(s,"S0").a)-ss)<1e-9})(),"Diagrams A5 / test gap 8");
+ T(DE+"monopoly MR has AR's intercept and twice its slope",()=>{const m=M2.monopoly.build(M2.monopoly.par),D=m.curves.find(c=>c.k==="D").c,MR=m.curves.find(c=>c.k==="MR").c;
+   return MR.a===D.a&&Math.abs(MR.b-2*D.b)<1e-12},"Diagrams A6");
+ T(DE+"macro axes read Real output and Price level; Phillips and forex axes follow convention",()=>["adas","defgap","infgap","growth","lras"].concat(M2.costpush?["costpush"]:[]).every(k=>/Real output/.test(M2[k].x)&&/Price level/.test(M2[k].y))
+   &&/Unemployment/.test(M2.phillips.x)&&/Inflation/.test(M2.phillips.y)&&/per 1 unit/.test(M2.fx.y)&&/currency/.test(M2.fx.x),"Diagrams A7 / test gap 9");
+ T(DE+"flow diagrams carry no axes",()=>!/<line/.test(frame("","","")),"Diagrams A8 (D15)");
+ T(DE+"every diagram key used by content resolves to a plate",()=>[...CONCEPTS,...POLICIES,...CASES,...REPAIRS,...Object.values(BUILDS),...DGERR].filter(x=>x.dg&&!DG[x.dg]).map(x=>x.dg)
+   .concat(RW.filter(r=>!DG[r.dgk]).map(r=>r.id+":"+r.dgk)),"Diagrams A9 (D14) / test gap 10");
+ T(DE+"cost-push stories never show a demand-pull or baseline plate",()=>RW.filter(r=>r.chain.some(c=>/SRAS shifts left/i.test(c))&&["infgap","adas"].includes(r.dgk)).map(r=>r.id),"Diagrams A10 (D10)");
+ T(DE+"content saying LRAS shifts right shows a plate with an LRAS shift",()=>POLICIES.filter(p=>/LRAS[^.]*shifts right/i.test((p.mech||[]).join(" "))&&!/LRAS₁/.test(DG[p.dg]().b)).map(p=>p.id||p.n),"Diagrams A11 (D12)");
+ T(DE+"Keynesian-range prediction sets are revealed against a plate with a Keynesian range",()=>Object.entries(DMPREDICT).filter(([k,q])=>q.some(x=>/Keynesian range/.test(x[1]))&&!/Keynesian range/.test(DG[k]().b)).map(([k])=>k),"Diagrams A12 (D26)");
+ /* one pool of generated calculation-board diagrams, shared by the checks that read them */
+ const CPOOL={};[["taxrev",8],["dwl",8],["ps",12],["cs",4]].forEach(([id,n])=>{CPOOL[id]=[];for(let i=0;i<n;i++){const v=C[id].gen();CPOOL[id].push({v,S:AUD_geo(calcSVG(C[id],v))})}});
+ T(DE+"calculation board tax: D, S and S+tax pass through the entered prices and quantities (16 random)",()=>{const bad=[];
+   for(const id of ["taxrev","dwl"])for(const {v,S} of CPOOL[id]){const tri=S.polys[0];
+    const D=S.curves.find(x=>x.st===G.C.d),Sd=S.curves.find(x=>x.st===G.C.s2),St=S.curves.find(x=>x.st===G.C.s);
+    if(!tri||!D||!Sd||!St){bad.push(id+" incomplete");continue}
+    const e=[AUD_dist(...tri[0],D.pts),AUD_dist(...tri[1],D.pts),AUD_dist(...tri[1],Sd.pts),AUD_dist(...tri[2],Sd.pts),AUD_dist(...tri[0],St.pts)];
+    if(e.some(x=>x>1))bad.push(id+" "+JSON.stringify(v))}return bad},"Diagrams A13 (D3) / test gap 4");
+ T(DE+"calculation board producer surplus: the triangle's apex is on the price line (12 random)",()=>{for(const {S} of CPOOL.ps){const t=S.polys[0];
+   if(!t||Math.abs(t[2][1]-t[0][1])>.5)return false}return true},"Diagrams A14 (D4) / test gap 4");
+ T(DE+"market lab: the subsidised supply curve is parallel to supply",()=>AUD_keep(LAB,()=>{Object.assign(LAB,{mode:"sub",B:4,D:16,s:6});const S=AUD_geo(mktSVG(mkt()));
+   const g=S.curves.find(l=>l.st===G.C.ok&&l.tag==="line"),o=S.curves.find(l=>l.st===G.C.s2&&l.tag==="line"),sl=l=>(l.pts[1][1]-l.pts[0][1])/(l.pts[1][0]-l.pts[0][0]);
+   return !!g&&!!o&&Math.abs(sl(g)-sl(o))<1e-6}),"Diagrams A15 (D5)");
+ /* one pool of market-lab diagrams (five modes at three slope pairs), shared by the checks that read them */
+ const MPOOL=AUD_keep(LAB,()=>{const o=[];for(const mode of ["none","tax","sub","ceil","floor"])for(const [B,D] of [[4,20],[20,4],[10,10]]){Object.assign(LAB,{mode,B,D});o.push({k:"market "+mode+" "+B+"/"+D,S:AUD_geo(mktSVG(mkt()))})}return o});
+ T(DE+"market lab: the equilibrium marker sits on two drawn curves in every mode (15 cases)",()=>MPOOL.filter(({k,S})=>{const mk=S.circles[S.circles.length-1];
+   return (!mk||S.curves.filter(v=>!v.axis&&!v.guide&&AUD_dist(mk.x,mk.y,v.pts)<=1).length<2)}).map(x=>x.k),"Diagrams D5 / test gap 5");
+ T(DE+"AD-AS lab: every preset's equilibrium solves the AD equation and its marker sits on the drawn AD line",()=>(AUD_keep(ADAS,()=>{let ok=true;
+   for(const m of ["m","k"])for(const [d,s] of [[200,0],[-200,0],[0,-200],[0,150]]){Object.assign(ADAS,{model:m,dAD:d,dAS:s,Yf:1000});const r=adasSolve();if(Math.abs((2000+d-10*r.P)-r.Y)>1e-6)ok=false}return ok}))&&(AUD_keep(ADAS,()=>{const bad=[];
+   for(const m of ["m","k"])for(const [d,s] of [[0,0],[200,0],[-200,0],[0,-200],[0,150]]){Object.assign(ADAS,{model:m,dAD:d,dAS:s,Yf:1000});
+    const S=AUD_geo(adasSVG(adasSolve())),ad=S.curves.find(c=>c.st===G.C.d),mk=S.circles[S.circles.length-1];
+    if(!ad||!mk||AUD_dist(mk.x,mk.y,ad.pts)>1)bad.push(m+" "+d+"/"+s)}return bad})).length===0,"Diagrams A16 (D6) / test gap 5");
+ const APRE=[[0,0],[200,0],[-200,0],[0,-200],[0,150],[400,0],[-400,0],[150,-150]];
+ T(DE+"AD-AS lab: the marker sits on a drawn supply curve for every preset",()=>AUD_keep(ADAS,()=>{const bad=[];
+   for(const m of ["m","k"])for(const [d,s] of APRE){Object.assign(ADAS,{model:m,dAD:d,dAS:s,Yf:1000});const x=adasSolve(),S=AUD_geo(adasSVG(x)),mk=S.circles[S.circles.length-1];
+    /* known issue (diagram audit D6, deferred): in the monetarist model a capped point is the long-run AD ∩ LRAS and no shifted SRAS is drawn through it, so only LRAS is required there */
+    const sup=S.curves.filter(c=>c.st===G.C.s||(x.cap&&m==="m"&&c.st===G.C.cap));
+    if(!mk||!sup.some(c=>AUD_dist(mk.x,mk.y,c.pts)<=1))bad.push(m+" "+d+"/"+s)}return bad}),"Diagrams test gap 5 (D6)");
+ T(EC+"AD-AS lab: the note's verbs agree with the computed change in output and the price level",()=>AUD_keep(ADAS,()=>{const bad=[];
+   for(const m of ["m","k"])for(const Yf of [1000,1200])for(const [d,s] of APRE){Object.assign(ADAS,{model:m,dAD:0,dAS:0,Yf});const b=adasSolve();Object.assign(ADAS,{dAD:d,dAS:s});const x=adasSolve(),n=x.note.split(/(?<=\.)\s+/).filter(t=>!/\b(if|would|as well|has to|raise Yf)\b/.test(t)).join(" ");   /* outcome sentences only, not hypotheticals */
+    const dy=x.Y-b.Y,dp=x.P-b.P,e=1e-9;
+    if((/Output rises|output rises|raises (real )?output/.test(n)&&!(dy>e))||(/Output falls|output falls/.test(n)&&!(dy<-e))||(/price level rises|raises the price level/.test(n)&&!(dp>e))||(/price level falls/.test(n)&&!(dp<-e)))bad.push(m+" Yf"+Yf+" "+d+"/"+s)}
+   return bad}),"Calc C1 / Diagrams test gap 5");
+ T(DE+"repair-shop and error texts contain no false multiplier arithmetic",()=>!/smaller than the injection/.test(JSON.stringify(REPAIRS)+JSON.stringify(DGERR)),"Diagrams A17 (D9) / Language R8");
+ T(DE+"the Economist's View never calls PES = 1 elastic",()=>!/while supply is elastic \(PES/.test(economistView.toString()),"Diagrams A18 (D30)");
+ T(DE+"HL-only plates are flagged (HL) in the atlas",()=>ATLAS.flatMap(g=>g.items).filter(i=>["phillips","multiplier","compadv"].includes(i[0])&&!/\(HL\)/.test(i[1])).map(i=>i[0]),"Diagrams A19 (D33)");
+ T(DE+"every model key routes to the engine, so the legacy hand-drawn plates are unreachable",()=>MODELKEYS.filter(k=>!/renderModel/.test(DG[k].toString())),"Diagrams A20");
+ T(DE+"every calculation the HL list names is tagged HL on the Calculation Board",()=>{
+   const need={cs:"2.3",ps:"2.3",taxrev:"2.7",subcost:"2.7",ceilshort:"2.7",floorsur:"2.7",dwl:"2.8",extwl:"2.8",profit:"2.11",mcmr:"2.11",wpi:"3.3",indtax:"3.4",avgtax:"3.4",mult:"3.6",compadv:"4.1",tradeflow:"4.1",tariffrev:"4.2",quotaeff:"4.2"};
+   return Object.entries(need).filter(([id,sub])=>{const c=CALC.find(x=>x.id===id);return c&&/Calculation/.test((SUBMETA[sub].hl||[]).join(" "))&&c.lvl!=="HL"}).map(([id])=>id)},"Diagrams test gap 13 (D33)");
+ const inBox=S=>S.curves.filter(c=>c.pts.some(([x,y])=>x<G.L-1.5||x>G.W-G.R+1.5||y<G.T-12||y>G.H-G.B+1.5)).map(c=>c.st);
+ T(DE+"no curve on any plate leaves the plot box",()=>Object.entries(PL).filter(([k,v])=>!v.err&&inBox(v).length).map(([k,v])=>k+" ("+inBox(v).join(",")+")"),"Diagrams A23 / test gap 1");
+ T(DE+"no curve in the market, AD-AS and calculation-board diagrams leaves the plot box",()=>{const bad=[];
+   MPOOL.forEach(({k,S})=>{if(inBox(S).length)bad.push(k)});
+   AUD_keep(ADAS,()=>{for(const m of ["m","k"])for(const [d,s] of [[0,0],[200,0],[-200,0],[0,-200],[0,150]]){Object.assign(ADAS,{model:m,dAD:d,dAS:s,Yf:1000});if(inBox(AUD_geo(adasSVG(adasSolve()))).length)bad.push("adas "+m+" "+d+"/"+s)}});
+   for(const id of ["cs","ps","taxrev","dwl"])for(const {v,S} of CPOOL[id])if(inBox(S).length)bad.push(id+" "+JSON.stringify(v));
+   return bad},"Diagrams A23 / test gap 1");
+ const onN=(c,S)=>S.curves.filter(v=>!v.axis&&!v.guide&&!v.arrow&&AUD_dist(c.x,c.y,v.pts)<=1.5).length;
+ /* a model may declare a point off every curve (the PPC's point of unemployment); its plate may show that many off-curve markers */
+ const offOK=k=>{try{return M2[k]?M2[k].build(M2[k].par).points.filter(p=>Array.isArray(p.on)&&p.on.length===0).length:0}catch(e){return 0}};
+ const twoOK=k=>{try{return M2[k]?M2[k].build(M2[k].par).points.filter(p=>Array.isArray(p.on)&&p.on.length>=2).length:0}catch(e){return 0}};
+ T(DE+"every marker on a plate sits on a drawn curve",()=>Object.entries(PL).filter(([k,v])=>!v.err).flatMap(([k,S])=>{const off=S.circles.filter(c=>c.r>=3&&onN(c,S)<1);
+   return off.length>offOK(k)?off.map(c=>k+"@"+Math.round(c.x)+","+Math.round(c.y)):[]}),"Diagrams A21 (D1 to D6) / test gap 3");
+ T(DE+"every intersection a model declares is drawn on two curves",()=>MODELKEYS.filter(k=>PL[k]&&!PL[k].err&&PL[k].circles.filter(c=>c.r>=3&&onN(c,PL[k])>=2).length<twoOK(k)).map(k=>k+" ("+PL[k].circles.filter(c=>c.r>=3&&onN(c,PL[k])>=2).length+" of "+twoOK(k)+")"),"Diagrams A21 / test gap 3");
+ const BX=S=>S.bx||(S.bx=AUD_boxes(S.texts));
+ T(DE+"no two labels on a plate overlap",()=>Object.entries(PL).filter(([k,v])=>!v.err).flatMap(([k,S])=>{const b=BX(S),o=[];
+   for(let i=0;i<b.length;i++)for(let j=i+1;j<b.length;j++){const a=b[i],c=b[j];if(Math.min(a.x+a.w,c.x+c.w)-Math.max(a.x,c.x)>1&&Math.min(a.y+a.h,c.y+c.h)-Math.max(a.y,c.y)>1)o.push(k+": "+a.s+" / "+c.s)}return o}),"Diagrams A22 (D15 to D21) / test gap 2");
+ T(DE+"no label covers a marker",()=>Object.entries(PL).filter(([k,v])=>!v.err).flatMap(([k,S])=>BX(S).filter(t=>S.circles.some(c=>Math.min(t.x+t.w,c.x+c.r)-Math.max(t.x,c.x-c.r)>2&&Math.min(t.y+t.h,c.y+c.r)-Math.max(t.y,c.y-c.r)>2)).map(t=>k+": "+t.s))
+,"Diagrams A22 / test gap 2");
+
+ /* ── 4 · LANGUAGE (audit-language R1 to R10) ── */
+ T(LA+"Marshall-Lerner is stated with absolute values",()=>LINT(/elastic|pedx/i,/(PEDx\s*\+\s*PEDm|elasticities (sum|add)|sum of (the )?(two |export and import |price )*(demand )?elasticities|combined elasticity)/i,/absolute|\|PED|magnitude/i,
+   /Sum = |The condition is that the two elasticities sum to more than one|sum of the two price elasticities in Year 3|The elasticities sum to 1\.0|No: the elasticities sum to less than one|The elasticities add up to|Elasticities sum/),"Language R1 (L10)");
+ T(LA+"the Marshall-Lerner definition and the misconception key use absolute values",()=>/absolute|\|/.test(DEFS.find(d=>d[0]==="Marshall-Lerner condition")[2])&&MISC.find(m=>m.id==="m7").apply.opts.find(o=>o.ok).t.includes("|"),"Language R1 (L10)");
+ T(LA+"after a price change it is quantity, not demand or supply, that moves",()=>LINT(/(supply|demand) (rises|falls|rose|fell|increases|decreases|expands|contracts)/i,/(tariff|tax|world price|price (rises|rose|falls|fell))[^.]{0,120}\b(?<!quantity )(?<!aggregate )(?<!labour )(domestic )?(supply|demand) (rises|falls|rose|fell|increases|decreases|expands|contracts)\b/i,null,
+   /claim:|shift|The price rises because supply falls|supply expands and demand contracts/i).concat(LINT(/domestic/i,/\bdomestic (supply|demand) (rises|falls)\b/i)),"Language R2 (L6)");
+ T(LA+"the tariff diagram and the trade model say domestic quantity supplied and demanded",()=>[renderModel("tariff").alt,(MLMAP.trade||{}).mech,...MODELS.filter(m=>/trade/i.test(m.n)).map(m=>m.mech)].filter(s=>/\bdomestic (supply|demand) (rises|falls)\b/i.test(String(s||""))).map(s=>String(s).slice(0,80)),"Language R2 (L6)");
+ T(LA+"tax incidence is stated relative to supply",()=>LINT(/inelastic/i,/((demand|buyers)[^.]{0,30}\binelastic\b[^.]{0,80}(burden|incidence|most of the tax|full tax))|((burden|incidence)[^.]{0,60}(where|when|because|if) demand is (price |relatively |highly )?inelastic)/i,
+   /relative|than supply|less elastic than|more inelastic than|ok:0|claim:/i,/harvest shortfall is transmitted into price|Who bears more|demand for tobacco is price inelastic, most of the tax is absorbed/),"Language R3 (L15)");
+ T(LA+"no economic claim is scoped as the only way, family or instrument",()=>LINT(/the only|raises only|not provided|neither/i,/\b(the only (shift|family|way|policy|instrument)|raises only the price level|not provided even when|public goods? (are|is) neither)\b/i,null,
+   /claim:|misconception|Claiming|The only instrument here|in the Keynesian range|in the classical range|Keynesian vertical|the only way to practise/),"Language R4 (L3, L8, L19)");
+ T(LA+"public goods are under-provided, not never provided",()=>LINT(/not provided|incentive to pay|supplies none/i,/not provided even when|nobody has an incentive to pay|supplies none/i,null,/claim:|free market supplies none of this good/),"Language R5 (L19)");
+ T(LA+"comparative advantage and the Phillips curve are tagged HL where the guide says so",()=>CMAP["c-cadv"].lvl==="HL"&&CMAP["c-phil"].lvl==="HL"&&GLOSSMAP["absolute advantage"][3].startsWith("HL"),"Language R6 (L33)");
+ T(LA+"concepts and dictionary entries for HL-only ideas are tagged HL",()=>{const HLT=/comparative advantage|absolute advantage|Phillips|multiplier|Marshall-Lerner|J-curve|money creation|crowding out/i;
+   return CONCEPTS.filter(c=>HLT.test(c.t||c.n||"")&&c.lvl!=="HL").map(c=>c.id).concat(GLOSS.filter(g=>HLT.test(g[0])&&!String(g[3]).startsWith("HL")).map(g=>g[0]))},"Language R6 (L33)");
+ T(LA+"nothing in a subtopic that is wholly HL is tagged for SL",()=>{const whole=Object.keys(SUBMETA).filter(k=>/whole subtopic/i.test((SUBMETA[k].hl||[]).join(" ")));
+   return [...CONCEPTS.map(x=>["concept "+x.id,x]),...CALC.map(x=>["calculation "+x.id,x]),...DATA.map(x=>["data "+x.id,x]),...QB.map(x=>["question "+x.sub,x]),...CHAINS.map(x=>["chain "+x.id,x])]
+    .filter(([n,x])=>whole.includes(x.sub)&&x.lvl!=="HL").map(([n])=>n)},"Language R6 / Assessment test gap 3");
+ const RWDEEP2=bundled&&bundled.RW_DEEP;
+ const deepLint=D=>Object.entries(D||{}).flatMap(([id,d])=>{const o=[],walk=(v,p)=>{if(typeof v==="string"){
+   if(/PA P E R|\( H L \)/.test(v))o.push(id+" "+p+": PDF heading");
+   if(/[a-z]- (?!and\b|or\b|vs\b|to\b)[a-z]/.test(v))o.push(id+" "+p+": broken hyphen");
+   if(/(^|\. )(?![AI] )[A-Z] [A-Z][a-z]|; [a-z] the |should [a-z] run/.test(v))o.push(id+" "+p+": stray letters")}
+   else if(Array.isArray(v))v.forEach((x,i)=>walk(x,p+"["+i+"]"));else if(v&&typeof v==="object")Object.entries(v).forEach(([k,x])=>walk(x,p+"."+k))};walk(d,"");
+   (d.stakeholders||[]).forEach((s,i)=>{if(/\.\s[a-z]+$/.test(s.what||""))o.push(id+" stakeholders["+i+"].what: orphan word");
+    if(/\b(and|or|ghost|digital|payment|poverty|Remittance-receiving|IT)$/.test(s.who||""))o.push(id+" stakeholders["+i+"].who: split label")});return o});
+ T(LA+"deep case text carries no PDF-extraction debris (loaded copy)",()=>deepLint(RW_DEEP),"Language R7 (L34) / Cases R40");
+ T(LA+"deep case text carries no PDF-extraction debris (bundled copy)",()=>RWDEEP2?deepLint(RWDEEP2):["bundled copy did not parse"],"Language R7 (L34) / Cases R40");
+ T(LA+"the minimum-wage detective case does not call a 10% rise in the wage bill 'either way'",()=>DETECTIVE.filter(x=>/minimum wage/i.test(x.t)).filter(x=>{const r=x.rows,a=r[0],b=r[r.length-1];
+   const p=(+b[1]/+a[1])*(+b[2]/+a[2])*(+b[3]/+a[3]);return x.claims.some(c=>/could go either way/.test(c.w||""))&&(p<0.98||p>1.02)}).map(x=>x.t),"Language R8 (L27)");
+ T(LA+"a fall in debt from GDP growth is described as a fall in the debt ratio",()=>LINT(/debt/i,/debt (falls|fell|declines)[^.]{0,80}GDP grows/i,/ratio/i),"Language R8 (L28)");
+ T(LA+"the growth definitions do not tie all growth in real output to a shift of the PPC or LRAS",()=>[DEFS.find(x=>x[0]==="Economic growth")[2],GLOSSMAP["economic growth"]&&GLOSSMAP["economic growth"][2]].filter(Boolean)
+   .filter(d=>!/actual|real output|real GDP/i.test(d)||(/production possibilit|PPC|LRAS/i.test(d)&&!/potential|capacity/i.test(d))).map(d=>d.slice(0,80)),"Language R9 (L17)");
+ T(LA+"no correction describes market failure as efficient allocation",()=>LINT(/efficient/i,/allocating efficiently|efficient(ly)? on incomplete/i),"Language R9 (M6)");
+ T(LA+"monopolistic competition keeps its price-setting power in the long run",()=>LINT(/competed away/i,/price-setting power[^.]*competed away/i),"Language R9 (M7)");
+ T(LA+"satisficing is not described as optimising",()=>LINT(/optimising/i,/satisfic\w*[^.]{0,20}\bis optimising\b|It is optimising under/i),"Language R9 (M10)");
+ T(LA+"the two multiplier forms are not described as disagreeing",()=>LINT(/MPC/,/1\/\(1\s*[−-]\s*MPC\)[^.]{0,80}(overstate|omits)/),"Language R9 (M11)");
+ T(LA+"the repair shop's positive-externality fix names a subsidy paid to consumers as a demand shift",()=>/paid to consumers/.test(REPAIRS.find(x=>x.dg==="poscons").fix),"Language R10 (L9)");
+ T(LA+"a subsidy is not said to be paid to producers as a rule",()=>LINT(/paid to producers/i,/subsidy is paid to producers/i,null,/claim:/),"Language R10 (L9)");
+
+ /* ── 5 · MINDMAPS, POLICY LABS, TOK (audit-maps-policy checks C1 to C13) ── */
+ T(EC+"the mindmaps and models use one multiplier convention",()=>JSON.stringify([MIND_MAPS,MODELS]).match(/Using 1\/\(1[−-]MPC\)/g)||[],"Maps C1b (M11)");
+ T(EC+"no sentence both reverses and reinforces the same movement",()=>CLAIMS().filter(([,t])=>/\b(reverses|offsets|counteracts)\b/i.test(t)&&/\b(further|reinforc\w*)\b/i.test(t)).map(x=>x[0]),"Maps C2 (M8, M34)");
+ T(EC+"no answer option rests on a wrong direction (appreciation, depreciation, MSC)",()=>{const F=[[/appreciat/i,/rais\w* import prices|import prices ris/i],[/depreciat/i,/lower\w* import prices|import prices fall/i],[/negative production externalit/i,/MSC (lies )?below MPC/i]];
+   const opts=[...MMKEYS().flatMap(k=>(MIND_MAPS[k].gaps||[]).flatMap(g=>g.opts)),...Object.values(TOPICS).flatMap(t=>t.quiz.flatMap(q=>q.opts)),...Object.values(VIDEO_CHECKS).flatMap(a=>a.flatMap(q=>q.opts))];
+   return opts.filter(o=>F.some(([a,b])=>a.test(o)&&b.test(o)))},"Maps C3 (M35)");
+ T(EC+"the externality welfare loss is placed between the social and private curves correctly",()=>[...CLAIMS(),...C60.flatMap(c=>c.audit.map(a=>["c60 "+c.id,a]))].filter(([,t])=>/welfare loss/i.test(t)&&/between (the two cost curves|MSC and MPC|MSB and MPB|the two curves)/i.test(t)).map(x=>x[0]),"Maps C4 (M3, M4)");
+ T(EC+"the current account is not described as the trade balance",()=>[...CLAIMS(),...MMKEYS().flatMap(k=>(MIND_MAPS[k].gaps||[]).map(g=>["gap "+k,g.seq.join(" | ")]))].filter(([,t])=>/current account/i.test(t)&&/(buy\w* more .{0,20}than .{0,15}sell|imports? more .{0,30}than .{0,10}exports?)/i.test(t)&&!/income/i.test(t)).map(x=>x[0]),"Maps C5 (M12)");
+ T(IN+"no new learner-facing text relies on linear demand and supply functions the guide dropped",()=>{if(!/absence of linear demand and supply functions/.test(IBREF.lastPass))return [];
+   const txt=[...CLAIMS().map(x=>x[1]),...Object.values(TOPICS).flatMap(t=>t.quiz.map(q=>q.q))];
+   return txt.filter(t=>/Q[ds]\s*=\s*\d+\s*[−+-]\s*\d*P|solved from the two equations/.test(t)&&!/^Equilibrium is solved from the two equations, not placed by eye|^Qd = 200 − 5P and Qs = 50 \+ 10P\. The equilibrium price is/.test(t)).map(t=>t.slice(0,60))},"Maps C6 (M2, M36)");
+ T(EC+"each comparison-matrix cluster holds only policies its label describes",()=>{const h=policyMatrix();const cap=(h.split("Slow but capacity-raising")[1]||"").split("</div>")[1]||"";
+   const fast=(h.split("Fast and reversible")[1]||"").split("Slow but")[0];
+   const badCap=POLICIES.filter(p=>cap.includes(p.n)&&!/capacity|potential output|LRAS/i.test(p.aim+" "+p.mech.join(" "))).map(p=>p.n);
+   const missFast=POLICIES.filter(p=>/Fast|Immediate/.test(p.speed)&&/high/i.test(p.rev)).slice(0,6).filter(p=>!fast.includes(p.n)).map(p=>"missing from fast: "+p.n);
+   return badCap.concat(missFast)},"Maps C7 (M26)");
+ T(LA+"policy conditions, limits, contexts and corrections carry no unreviewed absolute",()=>POLICIES.flatMap(p=>[["cond",p.n,p.cond],...p.lim.map(l=>["lim",p.n,l])]).concat(CONTEXTS.flatMap(c=>c.shifts.map(s=>["ctx",c.n,s])))
+   .concat(MMKEYS().flatMap(k=>(MIND_MAPS[k].errors||[]).map(e=>["right",k,e.right]))).filter(x=>/\b(the only|necessary for|opposite policy|no burden|structurally)\b/i.test(x[2])&&!/Growth is usually necessary for sustained development/.test(x[2])).map(x=>x[0]+" · "+x[1]),"Maps C8 (M13, M25, M27, M30, M32)");
+ T(EC+"stakeholder ratings are coherent: benefit spending that rises with job losses does not leave government better off",()=>Object.entries(STAKEIMP).filter(([k,v])=>v.Workers&&v.Workers[0]==="Mixed"&&/job|hours/i.test(v.Workers[1])&&["Government","Taxpayers"].some(s=>v[s]&&v[s][0]==="Better off"&&/benefit/i.test(v[s][1]))).map(([k])=>k),"Maps C9 (M30)");
+ T(EC+"the small-economy context and the size condition agree about retaliation",()=>{const small=((CONTEXTS.find(c=>c.k==="small")||{}).shifts||[]).join(" "),size=((CONDITIONS.find(c=>c.k==="size")||{}).says||[]).join(" ");
+   return !(/retaliat/i.test(small)&&/small ones often do not/i.test(size))},"Maps C10 (M31)");
+ T(IN+"TOK pages keep official IB text, Economics-guide facts and platform prose in their own registers",()=>{const o=[],ov=tokOverview();
+   TOKREF.place.forEach(([t,s])=>{if(!ov.includes(esc(TOKSRC[s].n)))o.push("overview does not cite "+s)});
+   [["concepts",tokConcepts()],["issues",tokIssues()]].forEach(([n,h])=>{if(/Official IB TOK information/.test(h))o.push(n+" uses the TOK badge for an Economics fact")});
+   const aok=tokAssessment().split("The areas of knowledge")[1]||"";if(/Several of the difficulties/.test(aok.split('<div class="panel int')[0]))o.push("platform prose inside the official panel");return o},"Maps C11 (M38)");
+ T(IN+"every mindmap path's stated step count matches its steps",()=>{const W={two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10};
+   return MMKEYS().flatMap(k=>(MIND_MAPS[k].paths||[]).filter(p=>{const m=String(p.d).match(/\b(two|three|four|five|six|seven|eight|nine|ten) steps\b/i);return m&&W[m[1].toLowerCase()]!==p.seq.length}).map(p=>k+"/"+p.id))},"Maps C12");
+ T(EC+"mindmap gaps and dossier quizzes agree with their own arithmetic",()=>{const bad=[],num=s=>(String(s).match(/-?\d+(\.\d+)?/g)||[]).map(Number);
+   const items=[...MMKEYS().flatMap(k=>(MIND_MAPS[k].gaps||[]).map(g=>({w:k,s:g.seq.join(" | ")+" | "+g.q,o:g.opts,a:g.a}))),...Object.entries(TOPICS).flatMap(([c,t])=>t.quiz.map(q=>({w:c,s:q.q,o:q.opts,a:q.a})))];
+   items.forEach(x=>{const s=x.s,ans=String(x.o[x.a]);let m;
+    if((m=s.match(/MPS is ([\d.]+), MPT is ([\d.]+), MPM is ([\d.]+)/))){const k=1/(+m[1]+ +m[2]+ +m[3]);if(Math.abs(+num(ans)[0]-k)>0.01)bad.push(x.w+": multiplier")}
+    if((m=s.match(/withdraw is ([\d.]+)/))){if(Math.abs(+num(ans)[0]-1/+m[1])>0.01)bad.push(x.w+": multiplier MPW")}
+    if((m=s.match(/Nominal GDP rises (\d+)%.*?(?:Inflation is|price level rises) (\d+)%/i))){if(Math.abs(num(ans)[0]-(m[1]-m[2]))>0.6)bad.push(x.w+": real growth")}
+    if((m=s.match(/rises from (\d+) to (\d+)/))&&/inflation rate/i.test(s)){if(Math.abs(num(ans)[0]-(m[2]-m[1])/m[1]*100)>0.05)bad.push(x.w+": index change")}
+    if(/revenue/i.test(s)&&(m=s.match(/Price rises (\d+)%.*?Quantity demanded falls (\d+)%/i))){if(((1+m[1]/100)*(1-m[2]/100)>1)!==/rises/i.test(ans))bad.push(x.w+": revenue direction")}});
+   return bad},"Maps C13");
+
+ /* ── 6 · ASSESSMENT (audit-assessment checks) ── */
+ const cur=s=>!/^\d\d[MN]$/.test(s)||+String(s).slice(0,2)>=22;   /* the specimen paper (SPM) is current-guide */
+ T(AS+"Exam DNA: every current-guide Paper 3 record has a 10-mark Recommend part (b)",()=>EXAM_DNA.filter(r=>r.p===3&&cur(r.s)&&!r.n.some(p=>p.pt==="b"&&p.m===10&&p.ct==="Recommend")).map(r=>r.r||r.s),"Assessment A7 (the part that holds)");
+ T(AS+"Exam DNA: every session before 22M is labelled as the previous guide",()=>[...new Set(EXAM_DNA.map(r=>r.s))].filter(s=>!cur(s)&&!/previous guide/.test(dnaSess(s))),"Assessment A8 / test gap 2");
+ T(AS+"an SL gym never serves HL items (40 builds)",()=>{const L=S.lvl;let bad=0;try{S.lvl="SL";for(let i=0;i<40;i++)gymBuild().forEach(it=>{
+   if(["monopoly","phillips"].includes(it.dg)||it.misc==="m7"||(it.ty==="Command drill"&&QB.some(q=>q.lvl==="HL"&&q.sub===it.tag))||(it.ty==="Data drill"&&DATA.some(d=>d.lvl==="HL"&&d.q===it.p)))bad++})}finally{S.lvl=L}return bad===0},"Assessment A9 to A12 / test gap 3");
+ T(AS+"at SL the data-response page never shows an HL data set",()=>{const L=S.lvl,d=PR.d,hl=DATA.filter(x=>x.lvl==="HL");if(!hl.length)return ["no data set is tagged HL"];
+   try{S.lvl="SL";const seen=[];for(let i=0;i<DATA.length;i++){PR.d=i;const h=dataResponse();hl.forEach(x=>{if(h.includes("<h2 class=\"mt3\">"+x.t+"</h2>"))seen.push(x.id)})}return [...new Set(seen)]}finally{S.lvl=L;PR.d=d}},"Assessment A9 to A12 / test gap 3");
+ T(AS+"multiplier and government-revenue data drills are tagged HL",()=>DATA.filter(d=>/multiplier|government revenue/i.test(d.q)&&d.lvl!=="HL").map(d=>d.id),"Assessment A11");
+ T(AS+"SL chains and SL question guidance keep HL mechanisms behind an 'At HL' label",()=>[...CHAINS.filter(c=>c.lvl!=="HL").flatMap(c=>[...c.pool.filter(p=>p.o>0).map(p=>p.t),...c.jud.filter(j=>j.g==="strong").map(j=>j.t)]),
+   ...QB.filter(q=>q.lvl!=="HL").flatMap(q=>[...q.a,...q.b].flatMap(x=>[x.gd,...x.cp]))].filter(s=>/Marshall-Lerner|J-curve|multiplier|Phillips/i.test(s)&&!/At HL/.test(s)).map(s=>String(s).slice(0,70)),"Assessment A10, A12, A34 / Language R6 (L33)");
+ T(AS+"the Paper 2 lab claims the mark architecture only if its sets total 40",()=>!/follows the mark architecture/.test(PLNOTE)||P2SETS.every(s=>s.parts.reduce((a,p)=>a+p.m,0)===40),"Assessment A16 / test gap 5");
+ T(AS+"Paper 1 timing agrees with the timing table (75 minutes, no 45-minute claim)",()=>TIMING.p1.mins===75&&!/Twenty-five marks is about forty-five minutes/.test(p1Lab()),"Assessment A6 / test gap 4");
+ T(AS+"no rendered 'N marks is about M minutes' contradicts the timing table",()=>{const W={ten:10,fifteen:15,twenty:20,"twenty-five":25,thirty:30,forty:40,"forty-five":45,fifty:50,sixty:60,"seventy-five":75,ninety:90};
+   const n=s=>W[String(s).toLowerCase()]||+s;const lo=Math.min(...["p1","p2","p3"].map(k=>(TIMING[k].mins-TIMING[k].read)/TIMING[k].marks)),hi=Math.max(...["p1","p2","p3"].map(k=>TIMING[k].mins/TIMING[k].marks));
+   return CORPUS().filter(x=>{if(!/ marks .* minutes/i.test(x.t))return false;const m=x.t.match(/\b([\w-]+) marks (?:is|are) (?:about|roughly) ([\w-]+) minutes/i);if(!m)return false;const r=n(m[2])/n(m[1]);return isFinite(r)&&(r<lo*0.8||r>hi*1.25)}).map(x=>x.id+": "+x.t.slice(0,80))},"Assessment A6 / test gap 4");
+ T(AS+"the Paper 2 (g) markband does not ask for a real-world example",()=>analyse(SAMPLE,"Discuss","p2g","2.7").band.d.every(x=>!/real-world example/i.test(x)),"Assessment A13 / test gap 6");
+ T(AS+"the question engine does not label a stem without an extract as Paper 2 (g)",()=>AUD_quiet(()=>{const P=PR.paper,q=PR.q,pl=PR.plan;try{PR.paper="p2";PR.q=null;prOpen(0);return !!PR.q&&PR.q.part!=="g"}finally{PR.paper=P;PR.q=q;PR.plan=pl}}),"Assessment A14 / test gap 6");
+ T(AS+"the exam cockpit does not label a Paper 2 stem without an extract as part (g)",()=>!/part:"g"/.test(String(ckQuestion)),"Assessment A14 / test gap 6");
+ T(AS+"the IA article test and assessment centre do not present teacher text as examiner instructions",()=>{const p=AC.paper;try{AC.paper="p1";return [iaArticleTest(),assessCentre()].every(h=>!/examiner instructions|examiner guidance/i.test(h))}finally{AC.paper=p}},"Assessment A19 / test gap 8");
+ T(AS+"the markband feedback does not claim a count of strands produces balance",()=>!/(four|two|three) or more [a-z ]*(dimensions|strands)[^."]*(is what|produces?) balance (means )?in the markband/i.test(exDiag.toString()+strResult.toString()),"Assessment A17 / test gap 9");
+ T(AS+"every Paper 3 worked calculation agrees with its answer",()=>P3CASES.flatMap(c=>c.calcs.filter(q=>{let v;try{v=Function("return "+q.w.replace(/×/g,"*").replace(/÷/g,"/").replace(/−/g,"-").replace(/(\d) (\d)/g,"$1$2"))()}catch(e){return false}
+   const a=parseFloat(q.a.replace(/−/g,"-").replace(/[^0-9.\-]/g,""));return !(Math.abs(v-a)<=Math.max(0.01,Math.abs(a)*0.005))}).map(q=>c.id+": "+q.w.slice(0,40))),"Assessment A2, A28 / test gap 7");
+ T(AS+"the retrieval explanation's interval arithmetic is right (skill at 90 after about sixteen days)",()=>{const m=retrievalQ().match(/skill at 90 after about (\w+)/);return !!m&&m[1]==="sixteen"&&Math.round(2+0.9*16)===16},"Assessment A28 / test gap 7");
+
+ /* ── 7 · REAL WORLD (apply-cases checks C1 to C18 and test gaps) ── */
+ const RWKEYS=["RW_CASES","RW_DEEP","RW_CONCEPT_INDEX","RW_SETS","RW_GAPS","RW_VERSION","RW_ANALYSED","RW_SOURCE_NOTE"];
+ const loaded={RW_CASES,RW_DEEP,RW_CONCEPT_INDEX,RW_SETS,RW_GAPS,RW_VERSION,RW_ANALYSED,RW_SOURCE_NOTE};
+ let canonB=null;
+ T(RWP+"the bundled copy parses and carries the eight datasets",()=>!!bundled&&RWKEYS.every(k=>k in bundled),"Cases C1 / test gap 1");
+ T(RWP+"the bundled copy and the loaded collection are identical when canonically serialised",()=>{canonB=JSON.stringify(AUD_sortDeep(bundled));
+   if(!(window.__RW_EXTERNAL__===true))return {ok:true,d:"only the bundled copy is present"};
+   const a=JSON.stringify(AUD_sortDeep(loaded));if(a===canonB)return true;
+   let i=0;while(i<a.length&&a[i]===canonB[i])i++;return {ok:false,d:"first difference at character "+i+": "+a.slice(Math.max(0,i-40),i+40)}},"Cases C1 / test gap 1");
+ T(RWP+"the declared hash literals agree (RW_DATA_HASH and __RW_HASH__)",()=>typeof __RW_HASH__==="function"&&(typeof RW_DATA_HASH==="undefined"?window.__RW_EXTERNAL__!==true:RW_DATA_HASH===__RW_HASH__()),"Cases C2 / test gap 1");
+ T(RWP+"the declared hash is the SHA-256 of the canonical data",()=>{const c=canonB||JSON.stringify(AUD_sortDeep(bundled));const h=AUD_sha256(c).slice(0,16);
+   return h===__RW_HASH__()?true:{ok:false,d:"computed "+h+", declared "+__RW_HASH__()}},"Cases C2 / test gap 1");
+ const TXT=c=>[c.is,c.tp,c.dgt,c.ev,c.u1,c.u2,c.ui,c.q,c.xp];
+ T(RWP+"no case uses undated 'now' language",()=>RW_CASES.filter(c=>["is","tp","dgt","ev","u1","u2","ui","q","xp"].some(k=>/\b(currently|nowadays|today|this (week|year)|recent(ly| years)|latest|to date|so far)\b/i.test(c[k])&&!/\b(19|20)\d\d\b/.test(c[k]))).map(c=>c.id),"Cases C3 (R13, R14) / test gap 2");
+ T(RWP+"no deep card uses undated 'now' language",()=>Object.entries(RW_DEEP).flatMap(([id,d])=>Object.entries(d).filter(([k,v])=>typeof v==="string"&&/\b(currently|nowadays|this (week|year)|to date|so far)\b/i.test(v)&&!/\b(19|20)\d\d\b/.test(v)).map(([k])=>id+"."+k)),"Cases test gap 2");
+ T(RWP+"no undated superlative appears in a case beyond the three awaiting review",()=>RW_CASES.filter(c=>/\b(world's|largest|top|first|record)\b/i.test(c.is)&&!/\b(19|20)\d\d\b/.test(c.is)&&!["MIC-009","MIC-041","MAC-036"].includes(c.id)).map(c=>c.id),"Cases C4 (review list, ratchet)");
+ T(RWP+"no deep card beyond the seven awaiting sources carries a figure without a source",()=>Object.entries(RW_DEEP).filter(([id,d])=>/\d[\d,.]*\s*(%|per ?cent|million|billion|lakh crore|crore)|[$€£₹]\s?\d/i.test(JSON.stringify(d))&&!d.src
+   &&!["MIC-001","MAC-001","MAC-005","MAC-012","GLO-003","GLO-014","DEV-007"].includes(id)).map(([id])=>id),"Cases C5 (review list, ratchet)");
+ T(RWP+"each case's diagram shows the mechanism the case describes",()=>RW_CASES.filter(c=>!(!c.dg.includes("quota")||/import|tariff-rate/i.test(c.tp+" "+c.dgt+" "+c.is))||!(!c.dg.includes("pubgood")||/non-?excludable|non-?rival/i.test(c.tp+" "+c.dgt))
+   ||!(!c.dg.includes("floor")||!/labour|wage/i.test(c.tp+" "+c.dgt)||c.dg.includes("labour"))||!(!c.dg.includes("ceiling")||!/out-of-pocket|cost-share/i.test(c.is+" "+c.dgt))).map(c=>c.id),"Cases C6 (R6, R7, R8) / test gap 4");
+ T(RWP+"no cartel case is taught with the kinked-demand model",()=>RW_CASES.filter(c=>/kinked/i.test(c.dgt)&&/cartel|collus/i.test(c.tp+" "+c.dgt+" "+c.is)).map(c=>c.id),"Cases C7 (R9) / test gap 5");
+ T(RWP+"a Veblen case never reads sales rising with price as a Veblen effect without the income explanation",()=>RW_CASES.filter(c=>/Veblen/i.test(c.t+" "+TXT(c).join(" "))).flatMap(c=>["is","tp","dgt","ev","u1","u2","ui","q","xp"]
+   .filter(k=>/\bsales (rise|rises|rising|rose) (with|alongside) (its |the )?prices?/i.test(c[k]||"")&&!/income|demand shift|shift in demand/i.test(c[k])).map(k=>c.id+"."+k)),"Cases R10 / test gap 5");
+ T(RWP+"'Developing economies' is not used for a named country",()=>{const Cn=[...new Set(RW_CASES.map(c=>c.c))].filter(x=>x!=="Developing economies"&&x!=="Cross-country");
+   return RW_CASES.filter(c=>c.c==="Developing economies"&&(Cn.some(n=>new RegExp("\\b"+n.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"(?![+\\w])").test(c.t))||/Cape Town|CPTPP/.test(c.t))).map(c=>c.id)},"Cases C8 / test gap 6");
+ T(RWP+"a case filed under the Cross-country region names more than one country",()=>{const single=new Set(RW_CASES.filter(c=>c.rg!=="Cross-country").map(c=>c.c));
+   ["Developing economies","Cross-country","European Union","Euro area","Global"].forEach(x=>single.delete(x));return RW_CASES.filter(c=>c.rg==="Cross-country"&&single.has(c.c)).map(c=>c.id+" ("+c.c+")")},"Cases test gap 6");
+ T(RWP+"'Taxation' is tagged only where the case involves a tax (DEV-023 awaiting a decision)",()=>RW_CASES.filter(c=>c.th.includes("Taxation")&&c.id!=="DEV-023"&&!/\btax|\blev(y|ies)\b|\bexcise|\bdut(y|ies)\b|\btariff|\bGST\b|\bVAT\b/i.test([c.t,...TXT(c)].join(" "))).map(c=>c.id),"Cases C9 (ratchet) / test gap 7");
+ T(RWP+"'Crisis' is tagged only where the case describes one",()=>RW_CASES.filter(c=>c.ty.includes("Crisis")&&!/crisis|collapse|default|hyperinflation|depression|crash|standoff|Day Zero|opioid|breakdown/i.test(c.t+" "+c.is+" "+c.ev+" "+c.dgt)).map(c=>c.id),"Cases C10 (R34)");
+ T(RWP+"deep cards are free of extraction debris and their related lists are real and short",()=>Object.entries(RW_DEEP).filter(([id,d])=>{const s=JSON.stringify(d);
+   return /P ?A ?P ?E ?R \d|\( ?H ?L ?\)/.test(s)||/\b\w+- (?!and\b|or\b|vs\b)\w/.test(s)||/\w\/ \w/.test(s)||(d.stakeholders||[]).some(x=>/\s(and|or)$/.test(x.who)||/\.\s+[a-z][^.]*$/.test(x.what))
+    ||(d.p3===""&&/Paper 3/i.test(d.p2))||d.related.length>12||d.related.includes(d.id)||!d.related.every(r=>RW_CASES.some(c=>c.id===r))}).map(([id])=>id),"Cases C11 (R40) / test gap 8");
+ T(RWP+"gap notes claim only secondary tags that exist",()=>RW_GAPS.filter(g=>/secondary tags/i.test(g.why)&&!RW_CASES.some(c=>(c.subs||[]).includes(g.sub))).map(g=>g.sub),"Cases C12 (R33) / test gap 9");
+ T(RWP+"no status claims a check the platform did not make",()=>!/verified/i.test(RW_STATUS.historical.n)&&!/verified/i.test(RW_STATUS.illustrative.n)&&rwStatusCounts().current===0,"Cases C13 (R34) / test gap 10");
+ T(RWP+"commodity presets use inelastic demand unless labelled as one origin",()=>MKTSCEN.filter(s=>/commodity|crop/i.test(s.n)&&!/one origin|one grower/i.test(s.n)&&Math.abs(s.B/s.D)>=1).map(s=>s.k),"Cases C14 (R37) / test gap 11");
+ T(RWP+"each market preset's elasticity wording agrees with its own PED",()=>MKTSCEN.filter(s=>{const w=s.why.split(". ")[0];return /elastic/i.test(w)&&(/\binelastic\b/i.test(w)!==(Math.abs(s.B/s.D)<1))}).map(s=>s.k),"Cases C15 (R37) / test gap 11");
+ T(RWP+"the case room names consumers and government for taxes and tariffs",()=>CASES.filter(c=>{const s=crStake(c);return /tax|tariff|levy/i.test(c.t)&&!(s.includes("Consumers")&&s.includes("Government"))}).map(c=>c.id||c.t),"Cases C16 (R36) / test gap 12");
+ T(RWP+"every worked case names its own case-room stakeholders rather than a hashed default",()=>CASES.filter(c=>!new RegExp("\\b"+c.id+":\\[").test(String(crStake))).map(c=>c.id),"Cases R36 / test gap 12");
+ T(RWP+"policy launch years match the record",()=>{const Y={"DEV-019":1986,"DEV-020":2010,"MIC-001":2017,"MAC-001":2016,"MIC-024":2003,"MIC-035":1991,"MAC-036":1990};
+   return Object.entries(Y).filter(([id,y])=>RW_CASES.find(c=>c.id===id).y!==y).map(([id])=>id)},"Cases C17 / test gap 13");
+ T(RWP+"the worked cases' fact layer makes no universal claim that central banks publish the vote",()=>!CASES.some(c=>c.fact.some(f=>/^Central banks publish[^;]*the vote/i.test(f))),"Cases C18");
+
+ }finally{VIEW=keep.VIEW;TAB=keep.TAB;ARG=keep.ARG}
+ AUDITSUITE.ms=Math.round((performance.now()-t0)*10)/10;
+ return out;
+}
+AUDITSUITE.suiteName="Audit checks";
+EXTRA_SUITES.push(AUDITSUITE);
+QAREPORT.push({area:"Content audit checks",re:/^(Diagram engine|Language|Assessment|Real world) · /,
+  what:"The checks the six content audits recommended, each written so that it fails on the error the audit found: calculators against textbook reference values, labs whose words agree with their own numbers at every setting, markers on their curves and curves inside the plot, labels clear of each other, HL content kept behind HL labels, the two copies of the Real World data identical and hashed, and wording rules such as absolute values in the Marshall-Lerner condition."});
+
+/* ═══════════════════════════════════════════════════════════════════════════
    PARTS 4, 39, 77, 110 · the navigation, settled after every section exists
    Sections register themselves throughout the build, so the order of the
    primary bar and of the mobile drawer is decided once, at the end, rather
@@ -34234,13 +34731,13 @@ function runQA(){
   ["Calculations",/^Calculation · |^Data lab · /],["IB accuracy",/^Guide|^IB|^Syllabus|^Reference|^Copy|^Diagnostic · is/],
   ["Learning content",/^Concepts|^Chains|^Misconceptions|^Evaluation|^Definitions|^Question bank|^Learn|^Real world|^Data|^Revision|^Daily|^Decision|^What if/],
   ["Diagrams and models",/^Diagrams|^Market model|^AD-AS|^Calculation Board/],
-  ["Assessment tools",/^Classifier|^Diagnostic|^Exam cockpit|^Timer|^Calculator|^Search/],
+  ["Assessment tools",/^Classifier|^Diagnostic|^Exam cockpit|^Timer|^Calculator|^Search|^Assessment · /],
   ["Profiles and progress",/^Profile|^Progress|^Study plan|^Mistake|^Flashcards|^Calculation history|^Exam drafts|^Timer log|^Export|^Import/],
   ["Teacher tools",/^Teacher tools|^IA ·|^Topic pack · /],
   ["Mindmaps",/^Mindmaps · |^Coverage · /],
   ["Topic dossier",/^Dossier · |^Masterclass · /],
   ["Video learning",/^Video · /],
-  ["Diagram engine",/^Engine · |^Diagram · /],
+  ["Diagram engine",/^Engine · |^Diagram · |^Diagram engine · /],
   ["TOK",/^TOK · /],
   ["Accessibility",/^Accessibility · /],
   ["Responsive",/^Mobile · |^Desktop · |^Performance · /],
