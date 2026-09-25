@@ -22,7 +22,7 @@ npm test               # runs every suite
 | `selftest.mjs` | The built-in suite passes in a real browser; data loads from `assets/data`; a first visit shows no test fixtures. |
 | `e2e.mjs` | Routing (Back, reload, deep links), search and its filters, Economics, Everywhere interactions, saving, remembered settings, assignment links. |
 | `pwa.mjs` | Service worker registration, precache, manifest icons, a deep link opened offline. |
-| `widths.mjs` | Major routes and every kind of Economics, Everywhere page at 320, 375, 390, 412, 768, 1024, 1280 and 1440 px. |
+| `widths.mjs` | Major routes and every kind of Economics, Everywhere page at 320, 375, 390, 412, 768, 1024, 1280 and 1440 px: no horizontal overflow, no page errors, usable touch targets, and no sideways-scrolling table a keyboard cannot reach. |
 | `routes.mjs` | Every section and tab opened cold at 375 px and 1366 px. |
 
 To use an existing Chromium instead of downloading one, set

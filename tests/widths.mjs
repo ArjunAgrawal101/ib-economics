@@ -1,6 +1,7 @@
 /* The major routes and every kind of Economics, Everywhere page at eight
    widths: no horizontal overflow, no page errors, no control smaller than a
-   usable touch target in the new section. */
+   usable touch target in the new section, and no sideways-scrolling table a
+   keyboard cannot reach. */
 import { serve, browser, open, check, done } from './lib.mjs';
 const { srv, base } = await serve();
 const b = await browser();
@@ -18,12 +19,15 @@ for (const w of WIDTHS) {
       const ov = document.documentElement.scrollWidth - innerWidth;
       const small = [...document.querySelectorAll('#view .ee-lab button, #view .ee-opt, #view .ee-chip, #view .ee-card')]
         .filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && (r.height < 28 || r.width < 28); }).length;
-      return { ov, small };
+      /* a table that scrolls sideways must be reachable from the keyboard */
+      const unreach = [...document.querySelectorAll('#view .scrollx')]
+        .filter(e => e.scrollWidth > e.clientWidth + 1 && e.tabIndex < 0 && !e.querySelector('a[href],button,input,select,textarea,[tabindex]')).length;
+      return { ov, small, unreach };
     });
-    if (m.ov > 1 || m.small || errors.length) bad.push(`${r || 'home'} ${JSON.stringify(m)} ${errors.join(' ')}`);
+    if (m.ov > 1 || m.small || m.unreach || errors.length) bad.push(`${r || 'home'} ${JSON.stringify(m)} ${errors.join(' ')}`);
     await p.close();
   }
-  check(bad.length === 0, `${ROUTES.length} routes at ${w}px: no overflow, no errors, usable targets`, bad.join('\n     '));
+  check(bad.length === 0, `${ROUTES.length} routes at ${w}px: no overflow, no errors, usable targets, scrolling tables reachable`, bad.join('\n     '));
   await ctx.close();
 }
 await b.close(); srv.close(); done();

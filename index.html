@@ -34373,6 +34373,19 @@ function a11yNormalise(){
     prev=want;
    } else prev=lvl;
   });
+  /* 6 · a table that scrolls sideways must be reachable from the keyboard, so
+     one that overflows and holds nothing focusable becomes a named tab stop.
+     One that fits is left out of the tab order. */
+  root.querySelectorAll(".scrollx").forEach(el=>{
+   const scrolls=el.scrollWidth>el.clientWidth+1;
+   if(!scrolls||el.querySelector("a[href],button,input,select,textarea,[tabindex]")){
+    if(el.dataset.kbscroll){["tabindex","role","aria-label"].forEach(a=>el.removeAttribute(a));delete el.dataset.kbscroll}
+    return}
+   if(el.hasAttribute("tabindex"))return;
+   const h=el.querySelector("caption,th");
+   el.tabIndex=0;el.setAttribute("role","region");el.dataset.kbscroll="1";
+   el.setAttribute("aria-label","Scrollable table"+(h&&h.textContent.trim()?": "+h.textContent.trim().slice(0,60):""));
+  });
  }catch(e){/* accessibility polish must never break a render */}
 }
 /* run after every render, including the first */
