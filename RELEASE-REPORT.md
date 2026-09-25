@@ -571,3 +571,15 @@ that version).
 
 After these changes the self-test runs **1,868 checks** (the five above added to the 1,863 reported
 in section 9), with 0 failures.
+
+**Regression run after the decisions.** All five browser suites were run again: the self-test, the
+22 end-to-end journeys, the 4 offline checks, 21 routes at 8 widths, and 158 routes cold at 375 and
+1366 px. One route load failed once, on the built-in check *every session step renders without a
+placeholder*. The cause was the check, not the page: it searched each step for the word "undefined",
+and one real answer option reads "Is undefined below the midpoint", so about one generated step in a
+thousand failed at random, on the pre-audit release as well. The check now fails only on an
+occurrence the step's own content does not account for; it still fails on a genuinely missing
+option. After that fix, the self-test (1,868 checks, 0 failed) and the route sweep (158 routes at
+both widths) were run again and passed. axe-core found 0 violations on the market lab, the AD-AS lab,
+the concept spine and an HL concept page seen as an SL student, at 1366 and 375 px. A single copied
+`index.html` without `assets/` also runs all 1,868 checks with none failing.
