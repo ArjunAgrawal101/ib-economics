@@ -1218,6 +1218,12 @@ table.heat th{white-space:nowrap}
 /* The main landmark receives focus after a route change so keyboard and
    screen-reader users continue from the new content; it needs no ring. */
 #main:focus{outline:none}
+/* The continue panel sits in a narrow sidebar on the home page and in wider
+   columns elsewhere. A fixed two-column grid left each card about 130px wide
+   in the sidebar, and the labels broke one letter per line; the grid now fits
+   as many columns as the space allows. */
+.contgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.contgrid>button{display:block;width:100%;min-width:0;overflow-wrap:break-word}
 .cpchips{display:flex;gap:6px;flex-wrap:wrap;padding:10px 18px;border-bottom:1px solid var(--hair);background:var(--chalk)}
 .cpchip{font-family:var(--ui);font-size:12px;font-weight:600;padding:5px 11px;min-height:30px;border:1px solid var(--hair-2);border-radius:999px;background:var(--white);color:var(--tx-2);cursor:pointer}
 .cpchip .mn{color:var(--tx-4);font-size:11px}
@@ -14284,7 +14290,7 @@ function continuePanel(){
   <p class="sm mt2">Nothing recorded yet. Anything you do here (a subtopic marked, a calculation attempted, an exam draft saved) appears in this panel next time.</p>
   <button class="btn sm mt3" onclick="nav('course',0)">Start with the course at a glance</button></div>`;
  return `<div class="panel"><div class="eb">Continue where you left off</div>
-  <div class="cols2 mt3" style="gap:8px">${items.map(i=>`<button class="lk" style="text-align:left;border:1px solid var(--hair);padding:12px 14px" onclick="${i.go}">
+  <div class="contgrid mt3">${items.map(i=>`<button class="lk" style="text-align:left;border:1px solid var(--hair);padding:12px 14px" onclick="${i.go}">
     <span class="eb" style="display:block">${i.k}</span>
     <strong class="sm" style="display:block;margin-top:3px">${esc(i.t)}</strong>
     <span class="xs">${esc(String(i.d))}</span></button>`).join("")}</div></div>`;
