@@ -10398,7 +10398,11 @@ function CALCTEST(){
  chk("floorsur",{pmin:10,a:300,b:20,d:20},100);
  /* the data lab sets must agree with their own stated answers */
  T("Data lab · real GDP in the nominal/real set is $540bn",Math.abs(594/110*100-540)<1e-9);
- T("Data lab · the weighted index is 104.7",Math.abs((0.30*106+0.25*112+0.20*97+0.25*102)-104.7)<1e-9);
+ T("Data lab · the weighted index answer is recomputed from the data set's own table",(()=>{
+   /* the previous form re-added four literals and could not fail if the table changed */
+   const d=DSETS.find(x=>/Consumer price index and weights/.test(x.n));if(!d)return false;
+   const idx=d.rows.reduce((a,r)=>a+r[1]/100*r[3],0),w=d.rows.reduce((a,r)=>a+r[1],0);
+   return w===100&&Math.abs(idx-parseFloat(d.q[0].a))<0.05&&Math.abs((idx-100)-parseFloat(d.q[1].a))<0.05})());
  T("Data lab · the unemployment rate is 6.7%",Math.abs(300/4500*100-6.666666666666667)<1e-9);
  T("Data lab · the current account balance is −$40m",(820-960)+(340-210)+(-70)+40===-40);
  T("Data lab · quintile shares sum to 100%",[5,10,16,24,45].reduce((a,b)=>a+b,0)===100);
@@ -33942,7 +33946,10 @@ function runQA(){
  A("Misconceptions · one correct option each",MISC.every(m=>m.apply.opts.filter(o=>o.ok).length===1));
  A("Evaluation · 14 dimensions, each with weak and strong versions",EVDIM.length===14&&EVDIM.every(d=>d.bad&&d.good&&d.t));
  A("Data · real growth set returns 0%",Math.abs((540/108*100)-(594/118.8*100))<1e-9);
- A("Data · PED set returns 0.5",Math.abs(Math.abs(-10/20)-.5)<1e-9);
+ A("Data · PED data drill's keyed answer is recomputed from its own table",(()=>{
+   const d=DATA.find(x=>x.id==="d2");if(!d)return false;const t=d.tbl,p1=+t[1][1],p2=+t[1][2],q1=+t[2][1],q2=+t[2][2];
+   const ped=((q2-q1)/q1)/((p2-p1)/p1),trUp=p2*q2>p1*q1;
+   return Math.abs(Math.abs(ped)-(+d.ans))<1e-9&&trUp===/revenue rises/.test(d.steps.join(" "))})());
  A("Data · multiplier set returns 2",Math.abs(1/(.2+.25+.05)-2)<1e-9);
  A("Data · current account set returns −31",(210-265)+(95-60)-18+7===-31);
  A("Data · tax revenue set returns 1020",3*340===1020);
