@@ -209,6 +209,11 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   themselves.
 - Every calculation is exercised on forty generated inputs and on zero, negative and decimal values,
   and its marking tolerance is checked to be tight enough to reject an answer that is out by half.
+- **Browser tests the page cannot run on itself** live in `tests/`: the self-test in a real browser,
+  end-to-end journeys (addresses, Back, search filters, the labs, saving), offline behaviour, every
+  major route at eight widths from 320 to 1440 px, and every route for page errors. They have their
+  own `package.json` (Playwright), so the site itself stays free of dependencies and build steps.
+  See `tests/README.md`.
 
 ## Mindmaps
 
