@@ -7747,9 +7747,12 @@ function teachCSV(){
  };
 })();
 
-/* A hash of the data actually held in memory, computed the same way the build
-   computes it, so a divergence between the shipped copies shows up as a
-   mismatch rather than as silently different content. */
+/* A hash of data held in memory, over the same canonical form (keys sorted at
+   every depth) that the build uses. It is not the build's algorithm: the build
+   writes the first 16 hex characters of a SHA-256 into RW_DATA_HASH and
+   __RW_HASH__(), while this is a fast FNV-1a, so its values are not comparable
+   with those literals. The parity of the two shipped copies is checked directly
+   by the audit suite, which compares their canonical forms. */
 function dataHash(obj){
  /* Object keys are sorted at every depth so that two structurally identical
     datasets hash alike. JSON.stringify's second argument is a key whitelist
@@ -24684,7 +24687,7 @@ function refCoverage(){
  const prev=exRef;
  exRef=function(){
   return prev()+`<div class="wrap sec tight">${refCoverage()}
-   <div class="panel ib mt5">${tokBadge("off")}
+   <div class="panel int mt5">${tokBadge("int")}
     <div class="eb mt3">Theory of knowledge</div>
     <p class="sm mt2">TOK is a separate Diploma Programme core element with its own guide, its own assessment and its own teachers. The official statements this platform makes about it are held in the TOK section, each with its source and the date it was verified.</p>
     <div class="row mt3" style="gap:8px">
@@ -31958,7 +31961,7 @@ const EEQ=[
  ex:{layer:"fact",src:["core"],t:"Fuel is heavily taxed in many countries. In India, petrol and diesel are outside the Goods and Services Tax: they carry central excise duty and state-level taxes, so the tax component of the retail price varies from state to state. How that tax is shared between motorists and fuel suppliers depends on elasticities, not on which firm hands the money to the government."},
  lab:{k:"tax",preset:{t:6,b:2,d:8},ask:"Keep the tax the same and make demand very inelastic, then very elastic. Watch who bears the tax each time."},
  think:{q:"Demand for a good is highly price inelastic and supply is price elastic. A tax per unit is imposed on sellers. Who bears most of it?",opts:["Mostly the buyers","Mostly the sellers, because they pay it","It is always split equally"],a:0,
-  why:"Incidence follows elasticity. Buyers with inelastic demand cannot easily reduce what they buy, so sellers can pass most of the tax on as a higher price."},
+  why:"Incidence follows relative elasticity. Buyers whose demand is less elastic than supply cannot easily reduce what they buy, so sellers can pass most of the tax on as a higher price."},
  lv:{student:"A tax drives a wedge between what buyers pay and what sellers receive. Suppose the tax is ₹10 per unit. If buyers barely change what they buy when the price rises, sellers can raise the price by nearly ₹10 without losing much custom, so buyers bear most of the tax. If buyers can easily switch to something else, sellers have to absorb most of it.",
   ib:"Subtopic 2.7. On the diagram, shift supply vertically up by the amount of the tax; read the price paid by consumers (Pc), the price received by producers (Pp, which is Pc minus the tax) and the new quantity (Qt). Consumer incidence is (Pc − Pe) × Qt; producer incidence is (Pe − Pp) × Qt; government revenue is the tax × Qt; the welfare loss is the triangle between Qt and Qe. HL students may be asked to calculate each area. Evaluate: taxes on goods with inelastic demand raise revenue reliably but change behaviour little, and indirect taxes are often regressive.",
   adv:"For small taxes, the share of the burden borne by consumers is approximately PES / (PES + |PED|), and the producers' share |PED| / (PES + |PED|), measured at the original equilibrium. The deadweight loss rises roughly with the square of the tax, one reason economists prefer broad bases and low rates. In an open economy where suppliers can sell elsewhere at a world price, supply to any one country is very elastic, so consumers bear most of a fuel tax. Pass-through also depends on market structure: under imperfect competition it can be more or less than 100%."},
