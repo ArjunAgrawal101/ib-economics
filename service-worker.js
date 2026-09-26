@@ -20,7 +20,7 @@
    Cache-first for the static assets, which change only when the version below
    changes.
    ═══════════════════════════════════════════════════════════════════════════ */
-const VERSION = "aa-ibdp-econ-v11";
+const VERSION = "aa-ibdp-econ-v12";
 const CACHE = VERSION + "-static";
 
 /* Relative to the service worker's own location, so the platform works from a
@@ -73,6 +73,27 @@ self.addEventListener("fetch", event => {
      image hosts, Google Fonts and Google Drive are never cached here, and a
      request to them is never answered from a stale copy. */
   if (url.origin !== self.location.origin) return;
+
+  /* The platform's own API (the YouTube feed): always ask the network first,
+     so new videos appear as soon as they are published; if there is no
+     connection, answer with the last good copy. Only complete, successful
+     answers are kept. */
+  if (url.pathname.includes("/api/")) {
+    event.respondWith((async () => {
+      const cache = await caches.open(CACHE);
+      try {
+        const fresh = await fetch(req);
+        if (fresh && fresh.ok) cache.put(req, fresh.clone()).catch(() => {});
+        return fresh;
+      } catch (e) {
+        return (await cache.match(req)) ||
+          new Response(JSON.stringify({ ok: false, status: "offline",
+            message: "No connection, and no saved copy of the video list on this device yet." }),
+            { headers: { "Content-Type": "application/json; charset=utf-8" }, status: 200 });
+      }
+    })());
+    return;
+  }
 
   /* The page itself: try the network, fall back to what was cached. */
   const isPage = req.mode === "navigate" ||
