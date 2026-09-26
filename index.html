@@ -1506,7 +1506,7 @@ const GUIDE = {
      {p:"Paper 2",dur:"1 h 45 min",w:30,marks:40,desc:"Data response. One question from a choice of two.",
       parts:"(a) 2+2 · (b) 5 · (c) 4 · (d) 4 · (e) 4 · (f) 4 · (g) 15",ao:"AO1 AO2 AO3 AO4",note:"Includes HL extension. Includes quantitative questions."},
      {p:"Paper 3",dur:"1 h 45 min",w:30,marks:60,desc:"Policy paper. Two compulsory questions, 30 marks each.",
-      parts:"(a) up to 20 marks · (b) 10 marks: Recommend",ao:"(a) AO1 · AO2 · AO4: (b) AO3",
+      parts:"(a) up to 20 marks · (b) 10 marks: Recommend",ao:"(a) AO1 · AO2 · AO4; (b) AO1 · AO2 · AO3 · AO4",
       note:"HL only. Calculators are permitted. Part (b) is the policy recommendation."}],
     ia:{w:20,marks:45,desc:"Portfolio of three commentaries, max 800 words each, on published news extracts."}}
  },
@@ -1560,8 +1560,8 @@ const GUIDE = {
   {r:"13-15",d:["Specific demands understood and addressed","Relevant economic theory fully explained","Relevant terms used appropriately throughout","Where appropriate, diagram(s) included and fully explained","Effective and balanced synthesis or evaluation","Real-world example identified and fully developed to support the argument"]},
   {r:"10-12",d:["Specific demands understood and addressed","Relevant economic theory explained","Relevant terms used mostly appropriately","Where appropriate, diagram(s) included and explained","Appropriate synthesis or evaluation that is mostly balanced","Real-world example identified and developed in context"]},
   {r:"7-9",d:["Demands only partially addressed","Relevant economic theory partly explained","Some relevant terms used appropriately","Where appropriate, diagram(s) included","Appropriate synthesis or evaluation but lacks balance","Real-world example identified and partly developed"]},
-  {r:"4-6",d:["Some understanding of the demands","Relevant economic theory described","Some relevant terms included","Diagram(s) may be absent","Superficial synthesis or evaluation","A relevant real-world example is identified"]},
-  {r:"1-3",d:["Little understanding of the demands","Theory stated but not relevant","Terms stated but not relevant","No diagram","No evidence of synthesis or evaluation","Example irrelevant or absent"]}
+  {r:"4-6",d:["Some understanding of the demands","Relevant economic theory described","Some relevant terms included","(No diagram strand at this level in the published markband)","Superficial synthesis or evaluation","A relevant real-world example is identified"]},
+  {r:"1-3",d:["Little understanding of the demands","Theory stated but not relevant","Terms stated but not relevant","(No diagram strand at this level in the published markband)","No evidence of synthesis or evaluation","A real-world example(s) is identified but it is irrelevant"]}
  ],
  bands10:[
   {r:"9-10",d:["Demands understood and addressed","Relevant economic theory fully explained","Relevant terms used appropriately throughout","Where appropriate, diagram(s) included and fully explained"]},
@@ -1572,17 +1572,17 @@ const GUIDE = {
  ],
  ia:{words:800,total:45,
   crit:[
-   {k:"A",n:"Diagrams",m:3,ao:"AO2 · AO4",d:["1: Relevant diagram(s) included but not explained, or explanations incorrect.","2: Relevant, accurate, correctly labelled diagram(s) with a limited explanation.","3: Relevant, accurate, correctly labelled diagram(s) with a full explanation."],
+   {k:"A",n:"Diagrams",m:3,ao:"AO2 · AO4",z:"0: The work does not reach a standard described by the descriptors below.",d:["1: Relevant diagram(s) are included but not explained, or the explanations are incorrect.","2: Relevant, accurate and correctly labelled diagram(s) are included, with a limited explanation.","3: Relevant, accurate and correctly labelled diagram(s) are included, with a full explanation."],
     tsm:"Axes must be labelled price of something and quantity of something. Generic downloaded diagrams that are not adapted to the article cannot reach the top level. Dynamic diagrams showing the change are usually more effective."},
-   {k:"B",n:"Terminology",m:2,ao:"AO1",d:["1: Economic terminology relevant to the article is included.","2: Economic terminology relevant to the article is used appropriately throughout."],
+   {k:"B",n:"Terminology",m:2,ao:"AO1",z:"0: The work does not reach a standard described by the descriptors below.",d:["1: Economic terminology relevant to the article is included in the commentary.","2: Economic terminology relevant to the article is used appropriately throughout the commentary."],
     tsm:"This criterion is about appropriate use, not a glossary. Not every term needs defining; key terms should be."},
-   {k:"C",n:"Application and analysis",m:3,ao:"AO2",d:["1: Relevant theory applied with limited analysis.","2: Relevant theory applied throughout with appropriate analysis.","3: Relevant theory applied throughout with effective analysis."],
+   {k:"C",n:"Application and analysis",m:3,ao:"AO2",z:"0: The work does not reach a standard described by the descriptors below.",d:["1: Relevant economic theory is applied to the article with limited analysis.","2: Relevant economic theory is applied to the article throughout the commentary with appropriate economic analysis.","3: Relevant economic theory is applied to the article throughout the commentary with effective economic analysis."],
     tsm:"Application is how tightly the analysis is tied to this specific article. Analysis adds value by explaining consequences of the extract, with assumptions stated."},
-   {k:"D",n:"Key concept",m:3,ao:"AO2",d:["1: A key concept is identified with an attempt to link it to the article.","2: Key concept identified and the link partially explained.","3: Key concept identified and the link fully explained."],
+   {k:"D",n:"Key concept",m:3,ao:"AO2",z:"0: Either the work does not reach a standard described by the descriptors below or the key concept identified has already been used in another commentary.",d:["1: A key concept is identified and there has been an attempt to link it to the article.","2: A key concept is identified and the link to the article is partially explained.","3: A key concept is identified and the link to the article is fully explained."],
     tsm:"Zero is awarded if the key concept has already been used in another commentary in the portfolio."},
-   {k:"E",n:"Evaluation",m:3,ao:"AO3",d:["1: Judgments supported by limited reasoning.","2: Judgments supported by appropriate reasoning.","3: Judgments supported by effective and balanced reasoning."],
-    tsm:"Evaluation is reasoned judgement, not a list of advantages and disadvantages appended at the end."},
-   {k:"F",n:"Rubric requirements (portfolio)",m:3,ao:"AO4",d:["Each article is based on a different unit of the syllabus.","Each article is from a different and appropriate source.","Each article published no earlier than one year before the commentary was written."],
+   {k:"E",n:"Evaluation",m:3,ao:"AO3",z:"0: The work does not reach a standard described by the descriptors below.",d:["1: Judgments are made that are supported by limited reasoning.","2: Judgments are made that are supported by appropriate reasoning.","3: Judgments are made that are supported by effective and balanced reasoning."],
+    tsm:"Students are expected to synthesize their analysis of the article, and then support this with reasoned arguments and justifications. When advantages and disadvantages are relevant, students could attempt to identify the most important advantage (or disadvantage) and then justify the reason for the choice."},
+   {k:"F",n:"Rubric requirements (portfolio)",m:3,ao:"AO4",d:["Each article is based on a different unit of the syllabus.","Each article is taken from a different and appropriate source.","Each article was published no earlier than one year before the writing of the commentary."],
     tsm:"Applied once to the whole portfolio: 14 × 3 + 3 = 45 marks."}
   ]},
  kc:[
@@ -1720,19 +1720,19 @@ const IBREF={
    verificationDate:"22 September 2026",status:"not_verified",
    note:"Both briefs are linked from the subject page, and neither file could be retrieved on this date. No claim anywhere in this system rests on their contents, and any earlier statement about the sessions they cover has been removed."}],
  sources:[
-  {id:"guide",n:"Economics guide",pub:"Published February 2020 \u00b7 updated May, August and October 2020",
+  {id:"guide",n:"Economics guide",pub:"Published February 2020 (the copy held in this project carries no later update line)",
    officialUrl:"https://www.ibo.org/programmes/diploma-programme/curriculum/individuals-and-societies/economics/",
    scope:"Syllabus structure, assessment outlines, markbands, internal assessment criteria, command term glossary, assessment objectives.",
    conf:"High: read directly from the guide held in this project.",
    check:"Read from the project copy on 22 September 2026. Confirmed current on the same date against the IB curriculum updates page, which announces no revised Economics course."},
-  {id:"tsm",n:"Economics teacher support material",pub:"2022",
+  {id:"tsm",n:"Economics teacher support material",pub:"Published February 2020 \u00b7 first assessment 2022",
    officialUrl:"",
    scope:"Guidance on applying the internal assessment criteria; frequently asked questions on diagrams, terminology and evaluation.",
    conf:"High: read directly from the TSM held in this project.",
    check:"Used only to interpret criteria, never to state a requirement the guide does not state. The TSM is published to schools through the Programme Resource Centre and has no public page to cite."},
   {id:"p3",n:"Paper 3 structure",pub:"Economics guide, first assessment 2022: \u201cExternal assessment details\u2014HL\u201d",
    officialUrl:"https://www.ibo.org/programmes/diploma-programme/curriculum/individuals-and-societies/economics/",
-   scope:"HL Paper 3: 1 h 45 min, 30% of the HL grade; two compulsory questions of 30 marks each; part (a) up to 20 marks with subparts; part (b) a 10-mark Recommend question assessing AO3; calculators permitted and GDCs allowed.",
+   scope:"HL Paper 3: 1 h 45 min, 30% of the HL grade; two compulsory questions of 30 marks each; part (a) up to 20 marks with subparts; part (b) a 10-mark question marked against the Recommend markband, and the only part of the paper that assesses AO3; calculators permitted and GDCs allowed.",
    conf:"High: read directly from the guide held in this project.",
    check:"Re-read on 22 September 2026. The IB subject page confirms that higher level candidates sit three examinations; it does not publish durations or mark totals, so those remain cited to the guide. Session instructions take precedence over any summary."},
   {id:"calc",n:"Calculator policy",pub:"Economics guide, \u201cUse of calculators\u201d",
@@ -1945,8 +1945,8 @@ const CONCEPTS=[
  why:"PED determines who actually bears a tax, whether a price cut raises revenue, and how far a supply shock moves price rather than quantity.",
  mech:["Price rises by a given percentage.","Consumers reconsider the purchase against available substitutes.","If close substitutes exist, a large proportion switch away; quantity demanded falls more than proportionately (|PED| > 1).","If the good is a necessity with few substitutes, most consumers continue buying; quantity demanded falls less than proportionately (|PED| < 1).","Total revenue therefore moves in the direction of quantity when demand is elastic, and in the direction of price when demand is inelastic."],
  dg:"ped",
- err:"Treating the slope of the demand curve as its elasticity. On a straight-line downward-sloping demand curve the slope is constant but PED falls continuously as you move down and to the right.",
- ex:"Examiners expect the sign convention to be handled explicitly. Either report PED as a negative value or state that the negative sign is ignored and the magnitude is used: do not silently drop it.",
+ err:"Treating the slope of the demand curve as its elasticity. On a straight-line downward-sloping demand curve the slope is constant but PED falls continuously as you move down and to the right. (Changing PED along a straight-line demand curve is HL only.)",
+ ex:"A strong answer handles the sign convention explicitly. Either report PED as a negative value or state that the negative sign is ignored and the magnitude is used: do not silently drop it.",
  rw:"Government tax design: excise duties are deliberately placed on goods with low PED (tobacco, fuel) because revenue is stable, which is exactly why they are weak instruments for reducing consumption in the short run.",
  lk:["2.7","2.8","3.6","4.5"]},
 
@@ -2076,7 +2076,7 @@ const CONCEPTS=[
  mech:["Each country calculates the opportunity cost of producing one good in terms of the other.","Each specialises in the good with the lower opportunity cost.","World output of both goods rises relative to autarky.","Trade occurs at terms of trade lying between the two countries' opportunity cost ratios.","Both countries can consume beyond their own production possibilities curve."],
  dg:"ppc",
  err:"Concluding that a country with an absolute advantage in both goods gains nothing from trade. Comparative advantage depends on relative, not absolute, cost.",
- ex:"Always show the opportunity cost calculation as a ratio, and state the range within which the terms of trade must lie. Assertion without the ratio does not earn AO4 credit.",
+ ex:"Always show the opportunity cost calculation as a ratio: the guide names 'opportunity costs from a set of data in order to identify comparative advantage' as an HL calculation. Stating the range of mutually beneficial terms of trade is useful enrichment, not a named requirement.",
  rw:"The theory assumes constant costs, perfect factor mobility and no transport costs. Evaluation that names which assumption fails in the given context is what lifts these answers.",
  lk:["4.3","1.2","4.10"]},
 
@@ -2418,7 +2418,7 @@ const MISC=[
         {t:"The burden is always split equally.",ok:0,w:"Only if PED and PES happen to be equal in magnitude."}]},
  recheck:"Whenever a tax appears, immediately ask which side of the market is less able to escape."},
 
-{id:"m4",sub:"4.1",t:"Absolute advantage decides the gains from trade",sk:["qnt","def"],
+{id:"m4",sub:"4.1",lvl:"HL",t:"Absolute advantage decides the gains from trade",sk:["qnt","def"],
  claim:"A country that produces both goods more efficiently than its partner has nothing to gain from trade.",
  verdict:false,
  why:"Trade is driven by comparative advantage: relative opportunity cost. Unless opportunity cost ratios are identical, specialisation and trade raise combined output.",
@@ -2430,7 +2430,7 @@ const MISC=[
         {t:"Neither, because opportunity costs differ.",ok:0,w:"Differing opportunity costs are precisely the condition that makes trade beneficial."}]},
  recheck:"Convert every trade question into opportunity cost ratios before drawing any conclusion."},
 
-{id:"m5",sub:"2.5",t:"The slope of the demand curve is its elasticity",sk:["qnt","dgc"],
+{id:"m5",sub:"2.5",lvl:"HL",t:"The slope of the demand curve is its elasticity",sk:["qnt","dgc"],
  claim:"A steep demand curve is inelastic and a flat one is elastic, everywhere along the curve.",
  verdict:false,
  why:"On a straight-line demand curve the slope is constant but PED varies continuously: elastic on the upper section, unit elastic at the midpoint, inelastic on the lower section. Slope and elasticity are different measures.",
@@ -4303,7 +4303,7 @@ function conceptPage(c){
      <button class="btn gh" onclick="nav('examiner',1)">Write an answer</button></div></div>
    <div class="panel q"><div class="kicker">Top band, 15 marks</div>
     <ul class="ls mt3">${GUIDE.bands15[0].d.map(d=>`<li class="sm">${d}</li>`).join("")}</ul>
-    <p class="xs mt3">Quoted from the published markbands in the IB DP Economics guide. See the IB reference layer for source and verification date.</p></div></div>`):""}
+    <p class="xs mt3">Condensed from the published markbands in the IB DP Economics guide (not verbatim). See the IB reference layer for source and verification date.</p></div></div>`):""}
  ${S9("09","Retrieval","Can you do it without support?",`<div class="split">
    <div>${retrieval(c)}</div>
    <div class="panel q"><div class="kicker">Then leave it alone</div>
@@ -5290,7 +5290,7 @@ function gymBuild(){
  const w=new Set(SKILLS.map(s=>({k:s.k,v:eff(s.k)})).sort((a,b)=>a.v-b.v).slice(0,5).map(x=>x.k));
  const it=[];
  const g={
- def:()=>{const d=pick(DEFS.filter(y=>S.lvl==="HL"||(!["2.10","2.11","2.12"].includes(y[1])&&!/Marshall-Lerner/.test(y[0]))),1)[0],x=pick(DEFS.filter(y=>y[0]!==d[0]),1)[0];
+ def:()=>{const d=pick(DEFS.filter(y=>S.lvl==="HL"||(!["2.10","2.11","2.12"].includes(y[1])&&!/Marshall-Lerner/.test(y[0])&&!/^(Comparative advantage|Crowding out|Automatic stabiliser)$/.test(y[0]))),1)[0],x=pick(DEFS.filter(y=>y[0]!==d[0]),1)[0];
   it.push({ty:"Definition drill",sk:["def"],p:`Which is the examinable definition of <strong>${d[0]}</strong>?`,tag:d[1],
    opts:shuf([{t:d[2],ok:1},{t:d[3],ok:0,w:"The everyday paraphrase. Not wrong in spirit, but it would not satisfy an examiner asking you to define."},
     {t:x[2],ok:0,w:`This defines ${x[0].toLowerCase()}, not ${d[0].toLowerCase()}.`}]),e:d[4]})},
@@ -5298,7 +5298,7 @@ function gymBuild(){
   const cor=c.pool.filter(p=>p.o>0).sort((a,b)=>a.o-b.o),i=1+Math.floor(Math.random()*(cor.length-1));
   it.push({ty:"Chain drill",sk:["chn"],tag:c.sub,p:`<span class="xs">${c.shock}</span><br><br>You have just written: “${cor[i-1].t}”<br><br>Which step follows?`,
    opts:shuf([{t:cor[i].t,ok:1},...pick(c.pool.filter(p=>p.o===0),2).map(b=>({t:b.t,ok:0,w:b.w}))]),e:cor[i].w})},
- dgc:()=>{const q=pick(DGQ.filter(x=>S.lvl==="HL"||!["monopoly","phillips"].includes(x[0])),1)[0];
+ dgc:()=>{const q=pick(DGQ.filter(x=>S.lvl==="HL"||!["monopoly","phillips","ped"].includes(x[0])),1)[0];
   it.push({ty:"Diagram drill",sk:["dgc","dge"],tag:"diagram",p:q[1],dg:q[0],opts:q[2].map((t,i)=>({t,ok:i===q[3]?1:0})),e:q[4]})},
  qnt:()=>{const d=pick(DATA.filter(x=>S.lvl==="HL"||x.lvl!=="HL"),1)[0];
   it.push({ty:"Data drill",sk:[d.sk],tag:d.sub,p:d.q,tbl:d.tbl,num:d.ans,tol:d.tol,steps:d.steps,e:d.note})},
@@ -5317,7 +5317,7 @@ function gymBuild(){
   it.push({ty:"Command drill",sk:["str"],tag:q.sub,p:`“${src.s}”<br><br>What does the command term <strong>${src.ct}</strong> (${ao}) require?`,
    opts:shuf([{t:GUIDE.ct[src.ct][1],ok:1},...pick(Object.entries(GUIDE.ct).filter(([k])=>k!==src.ct),2).map(([k,v])=>({t:v[1],ok:0,w:`That defines “${k}”.`}))]),
    e:ao==="AO3"?"An AO3 term requires a judgement. Explanation alone, however thorough, answers a different question.":"An AO2 term requires reasons and mechanisms. Evaluation earns nothing here."})},
- int:()=>{const m=pick(MISC.filter(x=>S.lvl==="HL"||x.id!=="m7"),1)[0];
+ int:()=>{const m=pick(MISC.filter(x=>S.lvl==="HL"||(x.id!=="m7"&&x.lvl!=="HL")),1)[0];
   it.push({ty:"Misconception drill",sk:m.sk,tag:m.sub,misc:m.id,p:`True or false: ${m.claim}`,
    opts:[{t:"True",ok:m.verdict?1:0},{t:"False",ok:m.verdict?0:1}],e:m.why})}};
  Object.entries(g).forEach(([k,f])=>{if(w.has(k))f()});
@@ -5419,8 +5419,9 @@ const STOP=new Set(("Qopt Qmarket Qm Qe Qs Qd Pe Pc Pp Pmax Pmin Pw Wmin Marshal
  "Firstly Secondly Finally Furthermore Moreover Nevertheless Consequently Thus Hence Economic Economics Government Governments Consumers Producers Firms Households "+
  "Workers Price Prices Demand Supply Market Markets Inflation Unemployment Growth Trade Tariff Tax Taxes Subsidy Policy Policies Aggregate Real Nominal Short Long One Two Three First Second Third").split(" "));
 function sentences(t){return t.replace(/\s+/g," ").split(/(?<=[.!?])\s+(?=[A-Z"“(])/).map(s=>s.trim()).filter(s=>s.length>3)}
-/* Paper 2 (g) is read against the same five strands as Paper 1 (b), but its sixth strand is the use of the text and data rather than a real-world example. The wording of that strand is this system's paraphrase. */
-function BANDS15G(){const s=["Information from the text/data used effectively throughout","Information from the text/data used appropriately","Information from the text/data used, but not consistently","Some reference to the text/data","No use of the text/data"];return GUIDE.bands15.map((b,i)=>({...b,d:b.d.slice(0,5).concat([s[i]])}))}
+/* Paper 2 (g) is read against the same five strands as Paper 1 (b), but its sixth strand is the use of the text and data rather than a real-world example. That strand is quoted from the guide's Paper 2 (g) markband, and the 10-12 terms strand uses the Paper 2 (g) wording ("used appropriately", not "mostly appropriately"). */
+function BANDS15G(){const s=["The use of information from the text/data is appropriate, relevant, and is used to formulate a reasoned argument supported by analysis/evaluation.","The use of information from the text/data is generally appropriate, relevant, and applied correctly.","The response includes some relevant information from the text/data.","The response contains limited use of text/data.","The response contains no use of text/data."];
+ return GUIDE.bands15.map((b,i)=>{const d=b.d.slice(0,5).concat([s[i]]);if(i===1)d[2]="Relevant economic terms are used appropriately.";return {...b,d}})}
 function analyse(txt,ct,qtype,topic){
  const t=" "+txt.replace(/\s+/g," ").trim()+" ",low=t.toLowerCase();
  const words=t.trim().split(/\s+/).filter(Boolean),wc=words.length;
@@ -5749,7 +5750,7 @@ function exRef(){
       <p class="xs mt2">${v.d}</p><div class="tags mt2">${v.terms.map(t=>`<span class="tag">${t}</span>`).join("")}</div></div>`).join("")}
     <div class="note g"><div class="t">The rule that catches people out</div>
      <p class="sm">A question may use a command term at the subtopic's assessment objective level, or a less demanding one from a lower level, but never a more demanding one from a higher level.</p></div></div>
-   <div>${H.head("07","Markbands","15-mark questions")}
+   <div>${H.head("07","Markbands","15-mark questions · condensed, not verbatim")}
     ${GUIDE.bands15.map((b,i)=>`<div class="block"><div class="row" style="justify-content:space-between"><h3 class="hsub">${b.r} marks</h3>
       ${i===0?'<span class="tag pos">Top band</span>':""}</div>
       <ul class="ls mt2">${b.d.map(d=>`<li class="xs">${d}</li>`).join("")}</ul></div>`).join("")}</div>
@@ -5997,7 +5998,7 @@ const CALC=[
  interp:(v,a)=>{const ob=r2(v.b2/v.b1),oa=r2(a);return oa===ob
    ?`A and B each give up ${oa} cloth per unit of wheat. The opportunity cost ratios are identical, so neither country holds a comparative advantage in either good and specialisation generates no gain. This is the limiting case of the theory, and identifying it is worth more than forcing a recommendation.`
    :`A gives up ${oa} cloth per unit of wheat; B gives up ${ob}. ${oa<ob?"A":"B"} should specialise in wheat and ${oa<ob?"B":"A"} in cloth, provided the terms of trade settle between the two ratios. Absolute advantage is irrelevant here: only the ratios matter.`},
- mist:["Comparing output levels instead of opportunity cost ratios.","Forgetting to state the range within which the terms of trade must lie.","Assuming a country with an absolute advantage in both goods gains nothing.","Recommending specialisation when the two opportunity cost ratios are equal: there is no comparative advantage to act on."],
+ mist:["Comparing output levels instead of opportunity cost ratios.","Stopping at the ratios without saying which country should specialise in which good.","Assuming a country with an absolute advantage in both goods gains nothing.","Recommending specialisation when the two opportunity cost ratios are equal: there is no comparative advantage to act on."],
  ib:"SL and HL, Unit 4. Always show the ratio; assertion without it earns no quantitative credit.",
  gen:()=>({a1:rnd(20,80,5),a2:rnd(20,80,5),b1:rnd(20,80,5),b2:rnd(20,80,5)}),tol:.03},
 {id:"realgdp",n:"Real GDP from nominal GDP",lvl:"Both",g:"Macroeconomics",f:"Real GDP = nominal GDP ÷ price deflator × 100",
@@ -7207,7 +7208,7 @@ function iaTeacher(){
    ${C.map(c=>`<div class="block mt3"><div class="row" style="justify-content:space-between">
      <h3>Criterion ${c.k} · ${c.n}</h3><span class="tag f">${c.m} marks</span></div>
      <div class="note"><div class="t">Published descriptors · official IB</div>
-      <ul class="ls mt2">${c.d.map(d=>`<li class="xs">${d}</li>`).join("")}</ul></div>
+      <ul class="ls mt2">${(c.z?[c.z]:[]).concat(c.d).map(d=>`<li class="xs">${d}</li>`).join("")}</ul></div>
      <div class="note g"><div class="t">Teacher prompts · not IB wording</div>
       <div class="mt2">${(IATP[c.k]||[]).map((t,i)=>`<label style="display:flex;gap:9px;align-items:flex-start;padding:5px 0;cursor:pointer">
         <input type="checkbox" ${TT.iaChk[c.k+i]?"checked":""} onchange="TT.iaChk['${c.k+i}']=this.checked" style="margin-top:4px">
@@ -7246,7 +7247,7 @@ function printIATeacher(opt){
   `<table>${pRow("Student",TT.iaName)}${pRow("Class",TT.iaClass)}${pRow("Article",TT.iaArticle)}${pRow("Source",TT.iaSource)}
     ${pRow("Article date",TT.iaDate)}${pRow("Syllabus unit",TT.iaUnit)}${pRow("Key concept",TT.iaKC)}</table>
    ${C.map(c=>`<h2>Criterion ${c.k} · ${c.n}: ${c.m} marks</h2>
-    <p style="font-size:10pt"><em>Published descriptors:</em> ${c.d.map(esc).join(" ")}</p>
+    <p style="font-size:10pt"><em>Published descriptors:</em> ${(c.z?[c.z]:[]).concat(c.d).map(esc).join(" ")}</p>
     <ul>${(IATP[c.k]||[]).map(pCheck).join("")}</ul>
     <table><tr><th style="width:22%">Mark awarded</th><td></td><th style="width:22%">Comment</th><td></td></tr></table>`).join("")}
    <h2>Teacher comment</h2><p>${esc(TT.iaComment)||'<span class="fill"></span><span class="fill"></span><span class="fill"></span>'}</p>
@@ -7539,7 +7540,7 @@ function iaStudent(){
    <p class="xs mt2">${done} of ${total} checks</p>
    <hr class="rule"><div class="kicker">The requirements</div>
    <p class="sm mt2">Three commentaries, maximum 800 words each, based on published news media articles, each from a different unit of the syllabus and each using a different key concept.</p>
-   <p class="xs mt2">Quoted from the Economics guide held in this project, see the IB reference layer for source and verification date.</p>
+   <p class="xs mt2">Summarised from the Economics guide held in this project; see the IB reference layer for source and verification date.</p>
    <hr class="rule"><button class="btn gh sm w" onclick="nav('ia',2)">Check an article →</button></div>
  </div></div>`;
 }
@@ -7676,7 +7677,7 @@ const IAGATE=[
   chk:["Published no earlier than one year before I write this commentary","From a different source than my other two commentaries",
    "Based on a different syllabus unit than my other two","Contains a single identifiable economic issue rather than a survey",
    "Gives enough context that a diagram can be adapted to it, not merely illustrated"],
-  note:"Criterion F applies to the whole portfolio, so an article failing any of the first three rules costs marks on every commentary, not only this one. Check before you write."},
+  note:"Criterion F is applied once to the whole portfolio. Each of its three rubric requirements (different units, different and appropriate sources, published no earlier than one year before writing) that is not met costs one of the 3 criterion F marks. Check before you write."},
  {k:"g2",n:"Issue",q:"Can I state the economic issue in one sentence?",
   chk:["I can name the issue without using the words “talks about” or “discusses”","The issue is economic, not merely political or corporate",
    "I can identify which economic agents are affected","It is narrow enough to analyse properly in 800 words"],
@@ -7735,7 +7736,7 @@ VIEWS.ia=()=>{
       <div class="row" style="justify-content:space-between"><h3 class="hsub">${c.k} · ${c.n}</h3><span class="tag f">${c.m}</span></div>
       <p class="xs mt1">${c.ao}</p>
       <details class="mt2"><summary class="eb" style="cursor:pointer">Descriptors</summary>
-       <ul class="ls mt2">${c.d.map(d=>`<li class="xs">${d}</li>`).join("")}</ul>
+       <ul class="ls mt2">${(c.z?[c.z]:[]).concat(c.d).map(d=>`<li class="xs">${d}</li>`).join("")}</ul>
        <div class="note mt2"><p class="xs">${c.tsm}</p></div></details></div>`).join("")}</div>
    <div class="panel q"><div class="eb g">Where students lose marks</div>
     <ul class="ls mt2"><li class="sm">A generic diagram not adapted to the article: caps criterion A.</li>
@@ -7761,7 +7762,7 @@ function iaFlags(kcDup){const f=[];
   if(age>365)f.push(["n",`Commentary ${i+1}: the article is about ${Math.round(age/30)} months old. It must have been published no earlier than one year before the commentary was written.`]);
   else if(age>300)f.push(["g",`Commentary ${i+1}: the article is close to the twelve-month limit. Confirm the writing date falls inside the window.`])}});
  S.ia.words.forEach((w,i)=>{if(w>800)f.push(["n",`Commentary ${i+1} is ${w-800} words over the 800-word maximum.`]);
-  else if(w>760&&w<=800)f.push(["g",`Commentary ${i+1} is within 40 words of the limit: check what your school counts towards it.`])});
+  else if(w>760&&w<=800)f.push(["g",`Commentary ${i+1} is within 40 words of the limit: check it against the guide's list of what is excluded from the count (diagrams, short labels, tables, equations, citations, references and so on).`])});
  if(!f.length&&u.length===3)f.push(["p","All three portfolio rules are satisfied on the information entered. Criterion F is available in full."]);
  return f.map(([c,t])=>`<div class="note ${c}"><p class="sm">${t}</p></div>`).join("")}
 /* ═══ TEACHER ══════════════════════════════════════════════ */
@@ -8455,7 +8456,7 @@ const SUBMETA={
   "Demand-pull inflation","Cost-push inflation","Deflation"],
  calc:["The rate of economic growth from data","The unemployment rate from data","The inflation rate from CPI data using quantities purchased as weights"],
  hl:["Sustainable level of government (national) debt: measurement as a percentage of GDP, its relationship to the budget deficit, and the costs of a high debt",
-  "The trade-off between unemployment and inflation, and the short-run and long-run Phillips curve, with the diagram",
+  "The trade-off between unemployment and inflation, and the short-run and long-run Phillips curve, with the diagram","Diagram: AD/AS curves showing the trade-off between unemployment and inflation",
   "Calculation: a weighted price index from a set of data"],
  kc:["Economic well-being","Sustainability","Equity","Change"],
  mis:["Treating falling inflation as falling prices",
@@ -8469,17 +8470,17 @@ const SUBMETA={
   "Absolute and relative poverty; international poverty lines, minimum income standards and the Multidimensional Poverty Index; difficulties of measurement",
   "Causes of inequality and poverty, including opportunity, resource ownership, human capital, discrimination, status and power, tax and benefit policy, globalisation and technological change, and market-based supply-side policy",
   "Impacts of inequality on growth, living standards and social stability",
-  "Taxation: progressive, regressive and proportional; average and marginal rates; direct and indirect taxes",
+  "Taxation: progressive, regressive and proportional; direct and indirect taxes (average and marginal tax rates: HL only)",
   "Further policies: investment in human capital, transfer payments, targeted spending, universal basic income, anti-discrimination policy, minimum wages"],
  able:["Read a Lorenz curve and relate its distance from the 45° line to the Gini coefficient",
   "Distinguish absolute from relative poverty and say what each measure misses",
-  "Classify a tax as progressive, regressive or proportional from average tax rates"],
+  "Classify a tax as progressive, regressive or proportional"],
  asked:["Paper 2 (d): Using the Lorenz curve, compare the two distributions.",
   "Paper 1 (b): Evaluate policies to reduce income inequality in a named economy.",
   "Paper 3 (a) HL: construct a Lorenz curve from quintile data and calculate average and total tax."],
  dg:["Lorenz curve showing the distribution of income and possible changes in it"],
  calc:[],
- hl:["Construction: a Lorenz curve from income quintile data",
+ hl:["Average and marginal tax rates","Construction: a Lorenz curve from income quintile data",
   "Calculation: indirect tax paid from a given level of expenditure and a given rate",
   "Calculation: total tax and average tax rates from data"],
  kc:["Equity","Economic well-being","Intervention"],
@@ -9174,7 +9175,7 @@ function courseKC(){
  const k=KCMAP[CX.kc]||KCX[0];
  const used=(S.ia&&S.ia.kcUsed)||["","",""];
  return H.pageHead("Course","The nine key concepts",
-  "The concepts are the thread through the content and the explicit lens of the internal assessment. Criterion D awards nothing if the same concept is used twice in one portfolio.")
+  "The concepts are the thread through the content and the explicit lens of the internal assessment. Criterion D awards zero to a commentary whose key concept has already been used in another commentary in the portfolio.")
  +`<section class="sec"><div class="wrap">
   <div class="chipgrid" style="grid-template-columns:repeat(3,1fr);gap:8px">
    ${KCX.map(x=>`<button onclick="CX.kc='${x.k}';render()" style="padding:14px 10px;${CX.kc===x.k?"border-color:"+x.c+";color:"+x.c+";background:var(--white)":""}">
@@ -9516,8 +9517,8 @@ function assessCentre(){
 const PAPERARCH={
  p1:{n:"Paper 1: extended response",
   shape:[["Choice","Three questions are set. You answer one. They may be drawn from any of the four units."],
-   ["Part (a), 10 marks","A single command term at AO1 or AO2, usually Explain. Knowledge, theory and, where appropriate, a diagram."],
-   ["Part (b), 15 marks","An AO3 command term: Discuss, Evaluate, Examine, To what extent. Synthesis, balance, a judgement and a developed real-world example."]],
+   ["Part (a), 10 marks","Assesses AO1, AO2 and AO4 (no AO3). Knowledge, theory and, where appropriate, a diagram. In practice the command term is often Explain (teacher observation)."],
+   ["Part (b), 15 marks","Assesses AO1 to AO4 and is the only part that assesses AO3, typically through an AO3 command term such as Discuss, Evaluate, Examine or To what extent. Synthesis, balance, a judgement and a developed real-world example."]],
   build:["Read all three questions in the reading time and choose on the strength of your part (b) material, not your part (a) material.",
    "Define the terms in the question in the first two sentences of part (a).",
    "Draw the diagram before writing about it, so the prose describes what is actually on the page.",
@@ -9528,7 +9529,7 @@ const PAPERARCH={
  p2:{n:"Paper 2: data response",
   shape:[["Choice","Two questions are set on stimulus material. You answer one."],
    ["(a)(i) and (a)(ii), 2 marks each","Definitions or short statements, usually of terms appearing in the extract."],
-   ["(b), 5 marks","Mostly quantitative (calculate, determine, sketch), often split into two or three subparts."],
+   ["(b), 5 marks","Mostly quantitative (calculate, determine, sketch); may be subdivided into (i) and (ii), with 3 marks in one and up to 2 in the other (maximum 5)."],
    ["(c) to (f), 4 marks each","Explanation, diagram work and use of the data."],
    ["(g), 15 marks","The evaluation question. Its markband requires the use of the text and data."]],
   build:["Use the reading time to mark up the extract: numbers, policy announcements, stakeholder names.",
@@ -9591,7 +9592,7 @@ const DSETS=[
  {n:"Consumer price index and weights",unit:3,sub:"3.3",
   cols:["Category","Weight (%)","Price index year 1","Price index year 2"],
   rows:[["Housing",30,100,106],["Food",25,100,112],["Transport",20,100,97],["Other",25,100,102]],
-  q:[{q:"Calculate the weighted price index in year 2.",a:"104.7",
+  q:[{q:"Calculate the weighted price index in year 2.",a:"104.7",lvl:"HL",
     w:"(0.30×106) + (0.25×112) + (0.20×97) + (0.25×102) = 31.8 + 28 + 19.4 + 25.5 = 104.7."},
    {q:"State the inflation rate over the period.",a:"4.7%",
     w:"The index rose from 100 to 104.7, so inflation was 4.7%."},
@@ -9629,11 +9630,11 @@ const DSETS=[
    {q:"What must be true of the rest of the accounts?",a:"They must sum to +$40m.",
     w:"The balance of payments sums to zero: the current account balance is matched by the capital and financial accounts, reserve assets included, with net errors and omissions closing any measurement gap."}],
   trap:"Debits are entered as negatives. Adding magnitudes without signs is the fastest way to lose the arithmetic mark."},
- {n:"Market for a taxed good",unit:2,sub:"2.7",
+ {n:"Market for a taxed good",unit:2,sub:"2.7",lvl:"HL",
   cols:["Price ($)","Quantity demanded","Quantity supplied"],
   rows:[[4,180,60],[6,140,100],[8,100,140],[10,60,180],[12,20,220]],
   q:[{q:"Identify the equilibrium price and quantity.",a:"$7 and 120 units",
-    w:"Qd = Qs between $6 and $8. Interpolating the linear schedules: Qd = 260 − 20P and Qs = 20P − 20, so 260 − 20P = 20P − 20, giving P = 7 and Q = 120."},
+    w:"Qd = Qs between $6 and $8. Using stylised linear schedules (a simplification; the current guide does not require linear functions): Qd = 260 − 20P and Qs = 20P − 20, so 260 − 20P = 20P − 20, giving P = 7 and Q = 120."},
    {q:"A specific tax of $2 per unit is imposed. Find the new price paid by consumers.",a:"$8",
     w:"Supply becomes Qs = 20(P−2) − 20 = 20P − 60. Setting 260 − 20P = 20P − 60 gives P = 8, Q = 100."},
    {q:"How is the $2 tax split between consumer and producer?",a:"$1 each.",
@@ -9645,11 +9646,11 @@ function dataLab(){
  return H.pageHead("Practise","The data lab",
   "Data response is a separate skill from theory. These sets rehearse the six things the papers test: deflating, weighting, defining the denominator, reading cumulative shares, carrying signs, and checking slopes before asserting incidence.")
  +`<section class="sec"><div class="wrap">
-  <div class="row" style="gap:6px">${DSETS.map((x,i)=>`<button class="btn xs ${DLAB.set===i?"":"gh"}" onclick="DLAB.set=${i};DLAB.show=false;render()">${x.n}</button>`).join("")}</div>
+  <div class="row" style="gap:6px">${DSETS.map((x,i)=>`<button class="btn xs ${DLAB.set===i?"":"gh"}" onclick="DLAB.set=${i};DLAB.show=false;render()">${x.n}${x.lvl==="HL"?" · HL":""}</button>`).join("")}</div>
   <div class="split mt4">
    <div>
     <div class="panel">
-     <div class="row" style="justify-content:space-between"><h3>${d.n}</h3>
+     <div class="row" style="justify-content:space-between"><h3>${d.n}${d.lvl==="HL"?' <span class="tag hl">HL only</span>':""}</h3>
       <button class="tag" style="cursor:pointer" onclick="CX.sub='${d.sub}';nav('course',3)">${d.sub}</button></div>
      <table class="t mt3"><tr>${d.cols.map(c=>`<th>${c}</th>`).join("")}</tr>
       ${d.rows.map(r=>`<tr>${r.map((c,i)=>`<td${i?' style="font-family:var(--mono)"':""}>${c}</td>`).join("")}</tr>`).join("")}</table>
@@ -9659,7 +9660,7 @@ function dataLab(){
    </div>
    <div>
     <div class="kicker">Work through it</div>
-    ${d.q.map((x,i)=>`<div class="panel mt2"><p class="sm"><strong>${i+1}.</strong> ${x.q}</p>
+    ${d.q.map((x,i)=>`<div class="panel mt2"><p class="sm"><strong>${i+1}.</strong> ${x.lvl==="HL"?'<span class="tag hl">HL only</span> ':""}${x.q}</p>
       ${DLAB.show?`<div class="note p mt2"><div class="t">${x.a}</div><p class="sm">${x.w}</p></div>`
         :'<p class="xs mt2">Work it out before revealing.</p>'}</div>`).join("")}
     <button class="btn ${DLAB.show?"gh":""} w mt3" onclick="DLAB.show=${!DLAB.show};render()">${DLAB.show?"Hide the working":"Reveal the working"}</button>
@@ -11074,11 +11075,11 @@ function moderationDesk(){
     ${crit.map(c=>{const k=modKey(st.n,ci,c.k),cur=MOD.marks[k];
       return `<div class="panel mt2"><div class="row" style="justify-content:space-between">
        <strong class="sm">Criterion ${c.k} · ${c.n}</strong><span class="tag">${c.m} marks · ${c.ao}</span></div>
-      <div class="mt3">${c.d.map((d,li)=>{const mark=c.k==="B"?li+1:li+1;
+      <div class="mt3"><button class="lk sm" style="display:block;text-align:left;width:100%;border:1px solid ${cur==0?"var(--bur)":"var(--hair)"};padding:9px 12px;margin-bottom:4px"
+         onclick="MOD.marks['${k}']=0;render()"><strong>0</strong>: ${esc((c.z||"The work does not reach a standard described by the descriptors below.").replace(/^\d+:\s*/,""))}</button>
+       ${c.d.map((d,li)=>{const mark=li+1;
         return `<button class="lk sm" style="display:block;text-align:left;width:100%;border:1px solid ${cur==mark?"var(--bur)":"var(--hair)"};padding:9px 12px;margin-bottom:4px"
-         onclick="MOD.marks['${k}']=${mark};render()"><strong>${mark}</strong>: ${esc(d)}</button>`}).join("")}
-       <button class="lk sm" style="display:block;text-align:left;width:100%;border:1px solid ${cur==0?"var(--bur)":"var(--hair)"};padding:9px 12px"
-         onclick="MOD.marks['${k}']=0;render()"><strong>0</strong>: The work does not reach a standard described by the descriptors above.</button></div>
+         onclick="MOD.marks['${k}']=${mark};render()"><strong>${mark}</strong>: ${esc(d.replace(/^\d+:\s*/,""))}</button>`}).join("")}</div>
       <div class="note mt3"><div class="t">Teacher support material</div><p class="xs">${c.tsm}</p></div>
       <textarea class="inp mt2" style="min-height:58px" placeholder="The evidence in this commentary that places it at this level…"
         onchange="MOD.notes['${k}']=this.value">${esc(MOD.notes[k]||"")}</textarea></div>`}).join("")}
@@ -14282,10 +14283,10 @@ const IADIAGRAM={
    "Incorrect essential labels affect criterion A directly. Check both axes, every curve, both equilibria and any area you have shaded."],
   ["dynamic","Does it show the change, or only the starting position?",
    "A dynamic diagram showing the before and after of what the article describes is usually more effective than a static one."]],
- caps:[["3 marks","Relevant, accurate and correctly labelled diagrams, with a full explanation."],
-  ["2 marks","Relevant, accurate and correctly labelled diagrams, with a limited explanation."],
-  ["1 mark","Relevant diagrams included but not explained, or explanations that are incorrect."],
-  ["0 marks","The work does not reach the standard described above."]]};
+ caps:[["0 marks","The work does not reach a standard described by the descriptors below."],
+  ["1 mark","Relevant diagram(s) are included but not explained, or the explanations are incorrect."],
+  ["2 marks","Relevant, accurate and correctly labelled diagram(s) are included, with a limited explanation."],
+  ["3 marks","Relevant, accurate and correctly labelled diagram(s) are included, with a full explanation."]]};
 const IAD={a:{}};
 function iaDiagramCheck(){
  const done=IADIAGRAM.q.filter(q=>(IAD.a[q[0]]||"").trim().length>12).length;
@@ -18751,11 +18752,11 @@ MIND_MAPS.policy={
  id:"policy",unit:3,lvl:"Both",order:8,cls:"core",
  title:"Macroeconomic objectives and policy",
  q:"What is macroeconomic policy trying to achieve, and what does pursuing one objective cost the others?",
- lede:"Five macroeconomic objectives in the course framework, three families of policy, and important policy-specific goals alongside them. The evaluation in this topic is usually a trade-off, and naming which one is what separates the bands.",
+ lede:"Four macroeconomic objectives under 3.3 (one of them HL only), three families of policy, and important policy-specific goals alongside them. The evaluation in this topic is usually a trade-off, and naming which one is what separates the bands.",
  subs:["3.3","3.4","3.5","3.6","3.7"],kc:["Intervention","Equity","Economic well-being","Sustainability"],mins:28,
  nodes:[
-  N("obj3",null,"concept","What is policy trying to achieve?","Five macroeconomic objectives in the course framework: economic growth, low unemployment, low and stable inflation, a sustainable level of government debt at HL, and equity in the distribution of income. Monetary and fiscal policy each carry further policy-specific goals.",{sub:"3.3"}),
-  N("polgoals","obj3","determinant","Policy-specific goals are not objectives","Reducing business cycle fluctuations, promoting a stable environment for long-term growth and external balance are listed in the guide as goals of monetary and fiscal policy. They sit alongside the macroeconomic objectives rather than counting as a sixth one.",{sub:"3.5"}),
+  N("obj3",null,"concept","What is policy trying to achieve?","Four macroeconomic objectives under 3.3 (economic growth, low unemployment, low and stable inflation, and at HL a sustainable level of government debt), with equity in income distribution treated in 3.3's potential conflicts, in 3.4 and as a fiscal policy goal. Monetary and fiscal policy each carry further policy-specific goals.",{sub:"3.3"}),
+  N("polgoals","obj3","determinant","Policy-specific goals are not objectives","Reducing business cycle fluctuations, promoting a stable environment for long-term growth and external balance are listed in the guide as goals of monetary and fiscal policy. They sit alongside the macroeconomic objectives rather than counting as a fifth one.",{sub:"3.5"}),
   N("unemp","obj3","concept","Low unemployment","Measured by a survey with three conditions, each of which excludes someone.",{sub:"3.3",dg:"labour"}),
   N("unempc","unemp","calculation","The unemployment rate","Unemployed as a share of the labour force, not of the population.",{sub:"3.3",calc:"unemp"}),
   N("unempt","unemp","determinant","Types of unemployment","Cyclical, structural, frictional and seasonal. The type decides which policy can touch it.",{sub:"3.3"}),
@@ -21227,7 +21228,7 @@ const VIDEO_CHECKS={
   VQ("Which of these is NOT one of the macroeconomic objectives named in the guide?",
    ["Low and stable rate of inflation","Sustainable level of government debt",
     "External balance","Low unemployment"],2,
-   "The guide's macroeconomic objectives are low unemployment, a low and stable rate of inflation, sustainable economic growth, an equitable distribution of income, and, at HL, a sustainable level of government debt. External balance appears in the guide as a goal of monetary and of fiscal policy, not in the list of macroeconomic objectives.","recall"),
+   "Under 3.3 the guide lists economic growth, low unemployment, a low and stable rate of inflation and, at HL only, a sustainable level of government (national) debt. Equity in income distribution appears among the potential conflicts between these objectives and as a goal of fiscal policy. External balance appears in the guide as a goal of monetary and of fiscal policy, not as a 3.3 macroeconomic objective.","recall"),
   VQ("Prices are still rising, but more slowly than last year. This is:",
    ["Deflation","Disinflation","Stagflation","Hyperinflation"],1,
    "Disinflation is a fall in the rate of inflation. Deflation is a fall in the price level itself, so the inflation rate is negative. Students lose marks by treating the two as the same event.","recall"),
@@ -30523,7 +30524,7 @@ const C60=[
   pages:["Cover","Two suspects, two rooms","Why betrayal looks smart","The payoff matrix: four outcomes, one trap",
    "The paradox: two rational choices, an outcome neither wanted","The same trap, everywhere","What changes the game",
    "It was never really about prisoners","Over to you","Next issue"],
-  why:"This is enrichment rather than a named part of the 2022 core, but it is the cleanest way into HL 2.11 collusion, into why cartels are unstable, and into why a common pool resource is overused when each user reasons alone.",
+  why:"The payoff matrix itself is named in HL 2.11 ('simple game theory payoff matrix'); the prisoner's dilemma framing used here is enrichment, and is the cleanest way into HL 2.11 collusion, into why cartels are unstable, and into why a common pool resource is overused when each user reasons alone.",
   audit:["The matrix is internally consistent. With both silent at minus one each, betrayal against silence at zero and minus ten, and both betraying at minus six each, betraying is a dominant strategy for each player and the Nash equilibrium is mutual betrayal, which is worse for both than mutual silence.",
    "This is a simplified game-theory model, not a law about human behaviour. It is one round, with two players, fixed payoffs and no communication.",
    "Change those conditions and the result changes: repetition, reputation, enforceable agreements and the ability to communicate all make cooperation sustainable. Do not write that every strategic situation ends in the worst outcome."],
@@ -34278,7 +34279,7 @@ function AUDITSUITE(){
  T(AS+"Exam DNA: every current-guide Paper 3 record has a 10-mark Recommend part (b)",()=>EXAM_DNA.filter(r=>r.p===3&&cur(r.s)&&!r.n.some(p=>p.pt==="b"&&p.m===10&&p.ct==="Recommend")).map(r=>r.r||r.s),"Assessment A7 (the part that holds)");
  T(AS+"Exam DNA: every session before 22M is labelled as the previous guide",()=>[...new Set(EXAM_DNA.map(r=>r.s))].filter(s=>!cur(s)&&!/previous guide/.test(dnaSess(s))),"Assessment A8 / test gap 2");
  T(AS+"an SL gym never serves HL items (40 builds)",()=>{const L=S.lvl;let bad=0;try{S.lvl="SL";for(let i=0;i<40;i++)gymBuild().forEach(it=>{
-   if(["monopoly","phillips"].includes(it.dg)||it.misc==="m7"||(it.ty==="Command drill"&&QB.some(q=>q.lvl==="HL"&&q.sub===it.tag))||(it.ty==="Data drill"&&DATA.some(d=>d.lvl==="HL"&&d.q===it.p)))bad++})}finally{S.lvl=L}return bad===0},"Assessment A9 to A12 / test gap 3");
+   if(["monopoly","phillips","ped"].includes(it.dg)||it.misc==="m7"||MISC.some(m=>m.lvl==="HL"&&m.id===it.misc)||(it.ty==="Definition drill"&&/<strong>(Comparative advantage|Crowding out|Automatic stabiliser)<\/strong>/.test(it.p))||(it.ty==="Command drill"&&QB.some(q=>q.lvl==="HL"&&q.sub===it.tag))||(it.ty==="Data drill"&&DATA.some(d=>d.lvl==="HL"&&d.q===it.p)))bad++})}finally{S.lvl=L}return bad===0},"Assessment A9 to A12 / test gap 3");
  T(AS+"at SL the data-response page never shows an HL data set",()=>{const L=S.lvl,d=PR.d,hl=DATA.filter(x=>x.lvl==="HL");if(!hl.length)return ["no data set is tagged HL"];
    try{S.lvl="SL";const seen=[];for(let i=0;i<DATA.length;i++){PR.d=i;const h=dataResponse();hl.forEach(x=>{if(h.includes("<h2 class=\"mt3\">"+x.t+"</h2>"))seen.push(x.id)})}return [...new Set(seen)]}finally{S.lvl=L;PR.d=d}},"Assessment A9 to A12 / test gap 3");
  T(AS+"multiplier and government-revenue data drills are tagged HL",()=>DATA.filter(d=>/multiplier|government revenue/i.test(d.q)&&d.lvl!=="HL").map(d=>d.id),"Assessment A11");
@@ -36041,7 +36042,7 @@ function runQA(){
  A("Learn · concept pages run all nine stages",STAGES.length===9&&/Retrieval/.test(STAGES.join()));
  A("IB · HL Paper 3 is two compulsory 30-mark questions, (a) up to 20 and (b) 10 marks",
    (()=>{const p=GUIDE.assessment.HL.papers[2];return p.marks===60&&/up to 20/.test(p.parts)&&/10 marks/.test(p.parts)&&/Recommend/.test(p.parts)})());
- A("IB · Paper 3 part (a) is AO1/AO2/AO4 and part (b) is AO3",/\(a\) AO1 · AO2 · AO4/.test(GUIDE.assessment.HL.papers[2].ao)&&/\(b\) AO3/.test(GUIDE.assessment.HL.papers[2].ao));
+ A("IB · Paper 3 part (a) is AO1/AO2/AO4 and part (b) is AO1 to AO4 (the only part assessing AO3)",/\(a\) AO1 · AO2 · AO4;/.test(GUIDE.assessment.HL.papers[2].ao)&&/\(b\) AO1 · AO2 · AO3 · AO4/.test(GUIDE.assessment.HL.papers[2].ao));
  A("IB · calculators noted as permitted in Paper 3",/[Cc]alculators are permitted/.test(GUIDE.assessment.HL.papers[2].note));
  A("IB · Recommend is an AO3 command term",GUIDE.ct.Recommend[0]==="AO3");
  A("IB · every reference source carries scope, confidence and a check note",IBREF.sources.every(x=>x.scope&&x.conf&&x.check&&x.pub));
