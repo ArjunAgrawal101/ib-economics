@@ -236,13 +236,56 @@ The existing `homeTidy` pass still runs last.
 
 ## 11. Results
 
-See the table below. No test was skipped.
+| Suite | Checks | Passed | Failed |
+|---|---|---|---|
+| In-page self-test | 1,870 | 1,870 | 0 |
+| `api-youtube` | 21 | 21 | 0 |
+| `selftest` (harness wrapper around the in-page self-test) | 37 | 37 | 0 |
+| `e2e` | 22 | 22 | 0 |
+| `ecosystem` | 30 | 30 | 0 |
+| `pwa` | 4 | 4 | 0 |
+| `widths` (one check per width, each covering 33 routes) | 9 | 9 | 0 |
+| `routes` | 2 | 2 | 0 |
+| axe-core | 27 routes × 2 widths | 0 violations after the badge fix | see section 13 |
 
-<!-- RESULTS -->
+The harness was run as one full pass (`node tests/run-all.mjs`, exit code 0, "every suite passed")
+on the committed code of this release.
+
+- **Before this release,** `main` (00b46da) passed 70 of 70 harness checks and 1,868 in-page checks.
+- **Why the self-test count is 1,870, not higher.** Two suites shared the name `FINALSUITE`, so
+  "Release gates" (83 checks) was counted twice and "final release" (33 checks) never ran. With the
+  shadowing fixed, the count is 1,870 and every check runs once.
+- **What failed on the way, and was fixed before this pass:**
+  - five new self-test rules on first integration;
+  - the revived dictionary check;
+  - the amber badge contrast;
+  - two widths routes with wrong slugs in the test itself.
+
+  Each is described in sections 9 and 13.
 
 ## 12. Performance
 
-<!-- PERF -->
+Measured in headless Chromium at 1366 × 900, service worker blocked, local server, median of 5
+runs each, on the same machine:
+
+| | `main` (00b46da) | This release | Change |
+|---|---|---|---|
+| `index.html` | 4,227,498 B | 4,531,980 B | +7.2% |
+| `index.html`, gzip -9 | 1,516,912 B | 1,610,234 B | +6.2% |
+| First contentful paint | 316 ms | 328 ms | +12 ms |
+| DOMContentLoaded | 2,503 ms | 2,674 ms | +171 ms |
+| Full self-test run | 1,515 ms | 1,558 ms | +43 ms |
+| JS heap after load | 123 MB | 123 MB | none |
+| DOM elements on the home page | 969 | 987 | +18 |
+
+**How to read these numbers**
+
+- **Parsing is the main cost.** DOMContentLoaded is dominated by parsing the single inline script.
+  The added 171 ms is roughly in proportion to the 7% more code.
+- **These are local timings.** They are not field measurements, and a slower phone will see a
+  larger absolute difference.
+- **What is new beyond the page.** The function (`api/youtube.js`, 11.8 kB) and
+  `lib/youtube-categories.js` (4.1 kB) run on the server and add nothing to the page.
 
 The new sections render only when opened: no EE Studio, video or educator markup is built for the
 home page beyond the two small bands. Video thumbnails use `loading="lazy"` with fixed dimensions. The feed is requested at most once every
