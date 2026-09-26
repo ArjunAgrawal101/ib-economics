@@ -7667,10 +7667,9 @@ VIEWS.master=()=>{
     <input class="inp" value="${esc(S.name)}" onchange="S.name=this.value||'Student';save();render()"></div>
   </div></div></div>`;
 };
-function expJSON(){const b=new Blob([JSON.stringify(S,null,1)],{type:"application/json"});
- const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="ib-economics-progress-"+nowd()+".json";a.click();toast("Exported")}
-function impJSON(el){const f=el.files[0];if(!f)return;const r=new FileReader();
- r.onload=()=>{try{const j=JSON.parse(r.result);if(j.v!==2)throw 0;S=j;save();toast("Imported");nav("home")}catch(e){toast("That file could not be read")}};r.readAsText(f)}
+/* The export and import used everywhere are defined once, with the workspace
+   backup above: a second, older pair here used to replace them (the later
+   declaration wins), and it refused every file that was not version 2. */
 /* ═══ IA STUDIO ════════════════════════════════════════════ */
 const IAGATE=[
  {k:"g1",n:"Article",q:"Is this article usable?",
@@ -14496,7 +14495,7 @@ function contentIntegrity(){
   ["Every subtopic in the explorer maps to a syllabus entry",SUBMETAKEYS.every(k=>!!SUBMAP[k])&&SUBTOPICS.every(s=>!!SUBMETA[s.code])],
   ["Every diagram maps to a subtopic",DGKEYS.every(k=>!!DGSUB[k]&&!!SUBMAP[DGSUB[k]])],
   ["Every calculation maps to a subtopic or is flagged as enrichment",CALC.every(c=>(!!c.sub&&!!SUBMAP[c.sub])||c.lvl==="Enrichment")],
-  ["Every dictionary entry maps to a subtopic",GLOSS.every(g=>!!SUBMAP[g[1]])],
+  ["Every dictionary entry maps to a subtopic or is flagged as enrichment",GLOSS.every(g=>!!SUBMAP[g[1]]||(g[1]===""&&/Enrichment:/.test(g[2])))],
   ["Every policy maps to a subtopic and a diagram",POLICIES.every(p=>!!SUBMAP[p.sub]&&!!DG[p.dg])],
   ["Every case maps to subtopics that exist",CASES.every(c=>c.subs.every(s=>!!SUBMAP[s]))],
   ["Every model in the library maps to a subtopic",MODELS.every(m=>!!SUBMAP[m.sub])],
@@ -14781,7 +14780,7 @@ function ENGINESUITE(){
 }
 ENGINESUITE.suiteName="diagram engine 2.0";
 
-function FINALSUITE(){
+function RELEASESUITE(){
  const out=[];const T=(n,ok,d)=>out.push({n,ok:!!ok,detail:d||""});
  /* PART 88 · routes, links, assets, printables */
  const A=linkAudit();
@@ -14856,8 +14855,9 @@ function FINALSUITE(){
    !/content check(s)? failing/.test(contentIntegrity()));
  return out;
 }
-FINALSUITE.suiteName="final release";
-EXTRA_SUITES.push(ENGINESUITE,FINALSUITE);
+/* named apart from the later "Release gates" suite, which used to replace it */
+RELEASESUITE.suiteName="final release";
+EXTRA_SUITES.push(ENGINESUITE,RELEASESUITE);
 
 /* ═══════════════════════════════════════════════════════════════════════════
    TOK × ECONOMICS
