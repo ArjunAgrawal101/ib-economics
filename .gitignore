@@ -23,3 +23,8 @@ tmp/
 
 # Local student data exports (never commit a student's progress file)
 *progress*.json
+
+# Environment files (vercel env pull writes .env.local); keys live in Vercel only
+.env
+.env.*
+.vercel
