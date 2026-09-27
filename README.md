@@ -18,8 +18,11 @@ actually assesses:
 
 > cause → behaviour → market effect → second-round effect → wider consequence → evaluation → judgement
 
-Everything runs in the browser. There is no account, no server, no tracking, and no AI API.
-A student can download `index.html`, double-click it, and work offline.
+Everything runs in the browser. There is no account, no tracking, and no AI API. A student can
+download `index.html`, double-click it, and work offline. The one piece that runs on a server is
+optional: the video studio reads the channel's public uploads through a small Vercel function
+(`api/youtube.js`), which holds the YouTube key and receives nothing about the reader. Without it,
+the video studio says so and everything else works exactly as before.
 
 ## Who it is for
 
@@ -66,6 +69,9 @@ A student can download `index.html`, double-click it, and work offline.
 | **Economics in 60 Seconds** | Ten original visual essays inside Learn, each one idea taken from the story to the syllabus. Every issue carries its real cover, a ten-page outline, the syllabus link, why it matters for IB Economics, a page-by-page accuracy note and original retrieval questions with answers. The ten-page file opens only when it is asked for. |
 | **About** | An editorial educator profile rather than a résumé: three photographs at their own aspect ratios with a lightbox, three roles, an interactive five-stage academic timeline, the teaching philosophy, a six-part teaching portfolio, the UPSC CSE mentorship, and why the platform exists. |
 | **Economics, Everywhere** | The public-facing layer: *the economics behind the world around us*. Nineteen big questions (why flights cost more tomorrow, why queues exist, how an app can be free), each with a short answer, the economic idea, the mechanism revealed a step at a time, a labelled real example, a lab or sorting task, a prediction to commit to, an explanation at four levels from beginner to university, the confusion to avoid, links into the rest of the platform, a pathway onward and sources. Twelve *Economics in real life* cards, sixteen *One economic idea* cards, fifteen interactive labs, the *Economist's eye* game, and *Where the numbers live*, which routes current figures to the institutions that publish them. |
+| **Economics EE Studio** | A research workspace for the Economics extended essay, in nineteen areas: what the essay is (every statement labelled by its source), the journey, a topic explorer across twenty areas of economics, a research question lab that diagnoses twelve dimensions and asks questions rather than writing a question, a model lab, sources, a data lab that separates what data show, suggest and do not establish, an evidence matrix, an argument map, a diagram studio, an evaluation lab, writing and structure, a reflection studio, academic integrity and AI, an EE red team, supervisor mode, a qualitative quality check and resources. It approves nothing and predicts no mark. |
+| **Arjun Agrawal · Video studio** | *Economics. Politics. International Relations.* The channel's own videos, read automatically from YouTube: featured, latest, by category, Shorts and playlists. Kept separate from the curated videos by other creators. |
+| **Educator Studio** | A professional handbook for new and experienced Economics teachers, extended essay supervisors and DP coordinators: role pathways into what the platform already holds, ten handbook modules with page citations to the guide and teacher support material, and coordinator notes. |
 | **Tutorials** | One-to-one IB DP Economics sessions with Arjun Agrawal. |
 
 ## Economics, Everywhere
@@ -100,6 +106,58 @@ the terms of trade lie between the two opportunity costs.
 **It remembers, on this device only.** Saved pieces join the platform's single saved list; recently
 opened pieces appear under *Continue exploring* and in the home page's continue-learning record; the
 chosen explanation level is remembered. Nothing is transmitted.
+
+## Economics EE Studio
+
+A workspace for the Economics extended essay: *Research Economics. Build an argument. Think like an
+economist.* It works as diagnose → question → refine → test again. It never writes, approves or
+grades anything, and everything a student enters stays in their own browser.
+
+**Source discipline.** Every statement about the essay carries one of five labels: *Official IB
+requirement* (read first-hand in the Economics guide or its teacher support material, with the
+page); *Official IB requirement · reported* (from the Extended essay guide for first assessment
+2027, which was not supplied to this project, via the author's Extended Essay Navigator: to be
+confirmed in the guide); *Professional interpretation*; *Pedagogical suggestion*; *Teacher-created
+tool*. Where the sources disagree, both are shown: the Economics guide (2022, p. 8) says the issue
+"must have taken place up to five years prior to the beginning of the research process", while the
+Navigator reports no recency rule in the 2027 Extended essay guide. The studio says the current
+Extended essay guide governs and sends the student to check it with their supervisor.
+
+## Arjun Agrawal · Video studio and the YouTube feed
+
+The video studio (`#/arjun`) lists the channel's videos automatically. No video is written into the
+page: a new upload appears on its own.
+
+**How it works.** The page calls `/api/youtube`, a Vercel serverless function in `api/youtube.js`.
+With a key it reads the channel's uploads playlist, durations (to identify Shorts) and playlists
+through the YouTube Data API v3, resolving the channel from its handle; without a key but with a
+channel ID it reads the channel's public RSS feed (the latest 15 uploads, no playlists or
+durations). The answer is cached in the function's memory for 30 minutes and at Vercel's edge for
+an hour, so YouTube is not called on every page view; if YouTube fails, the last good answer is
+served and marked as stale. Every call to YouTube has a timeout and one retry. Categories come from,
+in order: manual overrides, playlist titles, then words in each video's title and description
+(`lib/youtube-categories.js`; add a category by adding one entry there).
+
+**Setting it up (Vercel).** In the Vercel dashboard open the project → **Settings** →
+**Environment Variables**, add the following, then redeploy:
+
+| Variable | Required | What it is |
+|---|---|---|
+| `YOUTUBE_API_KEY` | Recommended | A YouTube Data API v3 key. Create it in the Google Cloud console (APIs & Services → Credentials), enable "YouTube Data API v3" for the project, and restrict the key to that API. It is read only by the server function and never sent to the browser. |
+| `YOUTUBE_CHANNEL_HANDLE` | No | Defaults to `@arjunagrawal5724`. |
+| `YOUTUBE_CHANNEL_ID` | No | The channel's `UC…` ID. With a key, it skips the handle lookup. Without a key, it switches on the keyless RSS fallback. |
+| `YOUTUBE_TIMEOUT_MS` | No | Timeout for each call to YouTube; default 8000. |
+
+With neither a key nor a channel ID, `/api/youtube` answers "not configured", and the studio shows
+a short note with a link to the channel instead of breaking. Quota use is small: one refresh costs
+about four units plus one per playlist, against the free daily allowance of 10,000 units.
+
+**The channel ID was not verified when this was built**: YouTube could not be reached from the build
+environment, so the function resolves the channel from the handle at run time. Once deployed, open
+`/api/youtube` and check that `channel.title` is correct; setting `YOUTUBE_CHANNEL_ID` then pins it.
+
+**Privacy.** The page requests only `/api/youtube`, without cookies or any information about the
+reader, and never during the self-test. Videos open on YouTube, under YouTube's own terms.
 
 ## Educational philosophy
 
@@ -157,7 +215,7 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   required, and neither can leave a gap. Both also travel inside `index.html`, as JSON held in
   function bodies the engine skips until they are called. If the copy in `assets/data` loads, the
   bundled copy is never read; if it does not, the platform adopts the bundled copy and nothing on
-  the screen changes. A single copied `index.html` runs the full 1,868 checks with nothing failing
+  the screen changes. A single copied `index.html` runs the full 1,870 checks with nothing failing
   and has all 203 cases, all 212 analysed questions and all ten carousels.
 - **Diagram Engine 2.0.** Every quantitative diagram is generated from a declared model:
   equations, parameters, an equilibrium solver, then curves plotted from those same equations.
@@ -190,7 +248,7 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   five-second opening sequence; a fresh visit still plays it.
 - A command palette opens on `/` or `Ctrl`/`Cmd` + `K` and reaches every section, every printable and
   every indexed item of content.
-- The build includes a self-test of **1,868 checks** reported across every area of the build: startup, printing,
+- The build includes a self-test of **1,870 checks** reported across every area of the build: startup, printing,
   navigation, mobile, desktop, resources, Google Drive, IB Economics, TOK, economics theory, calculations,
   diagrams, mindmap integrity, topic architecture, assessment, IA, student features, teacher features,
   progress, storage, export and import, contact links, tutorials, branding, accessibility, performance,
@@ -210,8 +268,10 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
 - Every calculation is exercised on forty generated inputs and on zero, negative and decimal values,
   and its marking tolerance is checked to be tight enough to reject an answer that is out by half.
 - **Browser tests the page cannot run on itself** live in `tests/`: the self-test in a real browser,
-  end-to-end journeys (addresses, Back, search filters, the labs, saving), offline behaviour, every
-  major route at eight widths from 320 to 1440 px, and every route for page errors. They have their
+  end-to-end journeys (addresses, Back, search filters, the labs, saving, the EE Studio's tools, the
+  video studio against a stubbed feed in every state), offline behaviour, every major route at nine
+  widths from 320 to 1440 px, every route for page errors, and the YouTube function itself against a
+  stubbed YouTube (including missing credentials, timeouts and malformed answers). They have their
   own `package.json` (Playwright), so the site itself stays free of dependencies and build steps.
   See `tests/README.md`.
 

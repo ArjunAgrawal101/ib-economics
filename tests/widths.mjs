@@ -1,15 +1,17 @@
-/* The major routes and every kind of Economics, Everywhere page at eight
+/* The major routes and every kind of Economics, Everywhere page at nine
    widths: no horizontal overflow, no page errors, no control smaller than a
    usable touch target in the new section, and no sideways-scrolling table a
    keyboard cannot reach. */
 import { serve, browser, open, check, done } from './lib.mjs';
 const { srv, base } = await serve();
 const b = await browser();
-const WIDTHS = [320, 375, 390, 412, 768, 1024, 1280, 1440];
+const WIDTHS = [320, 375, 390, 412, 430, 768, 1024, 1280, 1440];
 const ROUTES = ['', '#/course', '#/learn', '#/world', '#/mind', '#/lab/diagram-atlas', '#/practise', '#/examiner', '#/calculate', '#/tools',
   '#/everywhere', '#/everywhere/big-questions', '#/everywhere/big-questions/q-flights', '#/everywhere/big-questions/q-unemployment',
   '#/everywhere/in-real-life/r-surge', '#/everywhere/one-idea/i-externality', '#/everywhere/labs/trade', '#/everywhere/labs/adas',
-  '#/everywhere/labs/game', '#/everywhere/economist-s-eye', '#/everywhere/where-the-numbers-live'];
+  '#/everywhere/labs/game', '#/everywhere/economist-s-eye', '#/everywhere/where-the-numbers-live',
+  '#/ees', '#/ees/research-question-lab', '#/ees/find-your-topic/microeconomics', '#/ees/theory-and-models/fx', '#/ees/data-lab', '#/ees/evidence-matrix',
+  '#/ees/academic-integrity-and-ai', '#/ees/quality-check', '#/ees/supervisor-mode', '#/arjun', '#/educator', '#/educator/handbook'];
 for (const w of WIDTHS) {
   const ctx = await b.newContext({ viewport: { width: w, height: 800 } });
   const bad = [];
@@ -17,7 +19,7 @@ for (const w of WIDTHS) {
     const { p, errors } = await open(ctx, base + r);
     const m = await p.evaluate(() => {
       const ov = document.documentElement.scrollWidth - innerWidth;
-      const small = [...document.querySelectorAll('#view .ee-lab button, #view .ee-opt, #view .ee-chip, #view .ee-card')]
+      const small = [...document.querySelectorAll('#view .ee-lab button, #view .ee-opt, #view .ee-chip, #view .ee-card, #view .es-tile, #view .es-opt, #view .pw-w, #view .edu-toc button')]
         .filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && (r.height < 28 || r.width < 28); }).length;
       /* a table that scrolls sideways must be reachable from the keyboard */
       const unreach = [...document.querySelectorAll('#view .scrollx')]
