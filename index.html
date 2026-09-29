@@ -1367,7 +1367,7 @@ svg text[font-family*="Georgia"]{font-family:var(--ser)}
 .hero.slim .rn-plot{width:min(38vw,500px)}
 .rn-plot svg{width:100%;height:100%;display:block;overflow:visible}
 .rn-cap::after{content:attr(data-cap)}
-.rn-cap{position:absolute;right:0;top:-18px;max-width:100%;text-align:right;font-family:var(--mono);font-size:10.5px;
+.rn-cap{position:absolute;right:0;top:2px;max-width:100%;text-align:right;font-family:var(--mono);font-size:10.5px;
   letter-spacing:.03em;color:rgba(255,255,255,.46);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (max-width:1279px){.hero .rn-plot{width:min(40vw,470px);opacity:.62}}
 @media (max-width:999px){.hero .rn-plot,.hero.slim .rn-plot{top:18px;right:-36px;transform:none;width:380px;opacity:.26}.rn-cap{display:none}}
@@ -1651,6 +1651,7 @@ footer.ft{padding-top:0}
 
 .ld-m{display:block;aspect-ratio:3/2}.ld-m .motif{width:100%;height:auto;display:block}
 @media(max-width:520px){.plate{padding:10px 4px 10px}}
+.rn-tlae .kc{max-width:880px;margin-top:var(--s4)}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -36452,6 +36453,16 @@ function randomOpen(type){
 /* the toolkit joins Think as its last tab, so every existing tab keeps its place */
 (function(){const s=SECTIONS.find(x=>x.v==="think");if(s&&s.tabs&&!s.tabs.includes(TLAE_TAB))s.tabs.push(TLAE_TAB);
  const prev=VIEWS.think;VIEWS.think=function(){const t=SECTIONS.find(x=>x.v==="think");return t&&t.tabs[TAB]===TLAE_TAB?toolkitView():prev.apply(this,arguments)}})();
+/* the lens questions appear where a student is already thinking: on every
+   concept page (before the related-content panel) and every Real World case */
+(function(){
+ if(typeof conceptPage==="function"){const prev=conceptPage;conceptPage=function(c){const h=prev.apply(this,arguments);
+  if(!c||!c.sub)return h;const box=`<div class="wrap full rn-tlae">${tlaeBox(c.sub)}</div>`;
+  const k=h.lastIndexOf('<div class="wrap full"><section class="kg');return k>0?h.slice(0,k)+box+h.slice(k):h+box}}
+ if(typeof rwCasePage==="function"){const prev=rwCasePage;rwCasePage=function(){const h=prev.apply(this,arguments);
+  let c=null;try{c=RW_CASES.find(x=>x.id===ARG)}catch(e){}if(!c||!c.sub)return h;
+  return h+`<section class="sec t rn-tlae"><div class="wrap full">${tlaeBox(c.sub)}</div></section>`}}
+})();
 
 /* ═══════════════════════════════════════════════════════════════════════════
    RENAISSANCE · 4 · the home page as an editorial sequence
