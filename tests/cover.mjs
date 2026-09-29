@@ -19,8 +19,9 @@ for (const [w, h] of [[1440, 900], [1024, 768], [390, 844], [320, 640]]) {
   check(!txt.some(r => meet(r, por)), `${w}px · no cover text runs over the portrait`);
   check(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `${w}px · the cover causes no sideways scroll`);
   await p.goto(base + '#/about'); await p.waitForTimeout(400);
-  const ap = await box(p, '.ab-portrait'), pn = await box(p, '.ab-panel');
-  check(ap && pn && !meet(ap, pn), `${w}px · on About, the portrait and the economics panel never overlap`);
+  const ap = await box(p, '.ab-portrait');
+  const abt = await p.evaluate(() => [...document.querySelectorAll('.ab-copy h1, .ab-copy p, .ab-copy li, .ab-copy .btn')].map(e => e.getBoundingClientRect().toJSON()));
+  check(ap && abt.length > 4 && !abt.some(r => meet(r, ap)), `${w}px · on About, no text or control runs over the portrait`);
   check(await p.evaluate(() => { const f = document.querySelector('.ab-portrait').getBoundingClientRect();
     return ![...document.querySelectorAll('#view svg')].some(s => { const r = s.getBoundingClientRect(); return r.width > 0 && r.x < f.right && f.x < r.right && r.y < f.bottom && f.y < r.bottom }) }),
     `${w}px · no figure is drawn over or under the About portrait`);

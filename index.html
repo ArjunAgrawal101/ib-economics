@@ -1970,6 +1970,81 @@ body[data-sec="home"] #view .shead > .n{display:none}
 @media (prefers-reduced-motion:reduce){.spnet line,.spnet-l span{animation:none;opacity:1}}
 /* the welcome dialogue: at 190px the full logo's tagline cannot be read, so the dialogue carries the monogram, which the name beneath it completes */
 .ob .lg{width:72px;height:55px;background-image:var(--mk);background-position:left center}
+/* ═══ ABOUT · an intellectual biography ═══════════════════════════════════ */
+.ab-cover{background:var(--obs);color:#fff;position:relative;overflow:hidden}
+.ab-cover::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg,transparent,rgba(248,246,241,.06));pointer-events:none}
+.ab-cover .ab-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:clamp(28px,5vw,88px);align-items:stretch;
+ padding-block:clamp(44px,5vw,88px) 0}
+.ab-copy{align-self:center;padding-bottom:clamp(32px,4vw,64px)}
+.ab-cover .eb{color:var(--brs-l)}
+.ab-cover h1.ab-h{font-family:var(--dsp);font-weight:400;font-size:clamp(52px,7.4vw,124px);line-height:.9;letter-spacing:-.03em;color:#fff}
+.ab-pos{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,max-content));gap:0 28px}
+.ab-pos li{font-family:var(--ui);font-size:12.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.86);padding:9px 0;border-top:1px solid rgba(201,174,114,.4)}
+.ab-lede{font-family:var(--ser);font-weight:300;font-size:clamp(19px,1.7vw,24px);line-height:1.45;color:rgba(255,255,255,.86);max-width:36ch}
+.ab-meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:rgba(255,255,255,.58)}
+.ab-meta span+span::before{content:"·";margin-right:14px;color:rgba(255,255,255,.3)}
+.ab-cover .btn.gh{color:#fff;border-color:rgba(255,255,255,.34);background:transparent}
+.ab-cover .abfig.ab-portrait{margin:0;align-self:end;max-width:none}
+.ab-cover .ab-portrait .abimgbtn{display:block;width:100%;padding:0;border:0;background:none;position:relative}
+.ab-cover .ab-portrait .abimgbtn::after{content:"";position:absolute;inset:0;border:1px solid rgba(201,174,114,.45);pointer-events:none}
+.ab-cover .ab-portrait img{display:block;width:100%;height:auto;max-height:78vh;object-fit:cover}
+.ab-cover .ab-portrait figcaption{display:flex;gap:10px;align-items:baseline;padding:10px 0 14px;color:rgba(255,255,255,.6)}
+.ab-cover .ab-portrait figcaption .kicker{color:var(--brs-l)}
+/* credentials as data */
+.abf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 clamp(18px,2.4vw,40px)}
+.abf{padding:16px 0 18px;border-top:1px solid var(--obs)}
+.abf dt{font-family:var(--ui);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--bur)}
+.abf dd{margin:6px 0 0;display:flex;flex-direction:column;gap:3px}
+.abf dd b{font-family:var(--dsp);font-weight:400;font-size:clamp(20px,1.7vw,26px);line-height:1.15;color:var(--tx)}
+.abf dd span{font-size:14px;line-height:1.45;color:var(--tx-2)}
+/* the journey map */
+.abj-track{list-style:none;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));position:relative}
+.abj-track::before{content:"";position:absolute;left:0;right:0;top:39px;height:1px;background:var(--hair-3)}
+.abj-stop{display:flex;flex-direction:column;align-items:flex-start;gap:4px;width:100%;text-align:left;padding:0 12px 12px 0;min-height:44px;color:var(--tx)}
+.abj-st{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx-3);min-height:26px}
+.abj-dot{width:13px;height:13px;border-radius:50%;background:var(--chalk);border:2px solid var(--hair-3);margin:0 0 8px;position:relative;z-index:1;transition:background .2s,border-color .2s}
+.abj-stop strong{font-family:var(--ser);font-size:16px;line-height:1.25}
+.abj-w{font-size:12.5px;line-height:1.4;color:var(--tx-3)}
+.abj-stop:hover .abj-dot,.abj-stop:focus-visible .abj-dot{border-color:var(--bur)}
+.abj-stop.on .abj-dot{background:var(--bur);border-color:var(--bur)}
+.abj-stop.on strong{color:var(--bur)}
+.abj-detail{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,36px);padding:18px 20px;background:var(--white);border:1px solid var(--hair);border-left:3px solid var(--bur)}
+/* the classroom, in two photographs */
+.abr-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:clamp(20px,3vw,48px);align-items:start}
+.abr-cell .abfig{margin:0}.abr-cell .abimgbtn{display:block;width:100%;padding:0;border:0;background:none}
+.abr-cell img{display:block;width:100%;height:auto;object-fit:cover}
+.abr-cell figcaption{display:flex;gap:10px;align-items:baseline;margin-top:8px}
+.abr-line{font-family:var(--ser);font-size:clamp(18px,1.5vw,22px);line-height:1.4;color:var(--tx);margin-top:12px;max-width:40ch}
+/* what I believe */
+.abb-grid{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,40px) clamp(18px,2.4vw,40px)}
+.abb-grid li{border-top:1px solid var(--obs);padding-top:14px}
+.abb-n{font-family:var(--mono);font-size:11px;color:#76592a}
+.abb-h{font-family:var(--dsp);font-size:clamp(22px,2vw,30px);line-height:1.12;letter-spacing:-.01em;color:var(--tx);margin-top:6px}
+.abb-d{font-size:14px;line-height:1.5;color:var(--tx-2);margin-top:8px;max-width:38ch}
+/* the platform story */
+.abs-flow{list-style:none;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0}
+.abs-flow li{display:flex;flex-direction:column;gap:4px;padding:14px 16px 14px 0;border-top:2px solid var(--obs);position:relative}
+.abs-flow li:not(:last-child)::after{content:"→";position:absolute;right:10px;top:10px;color:var(--brs);font-size:16px}
+.abs-n{font-family:var(--mono);font-size:11px;color:#76592a}
+.abs-flow strong{font-family:var(--dsp);font-weight:400;font-size:clamp(22px,1.9vw,28px);line-height:1.1}
+.abs-flow span:last-child{font-size:13.5px;line-height:1.45;color:var(--tx-2)}
+.abs-q{font-family:var(--ser);font-style:italic;font-size:clamp(20px,1.9vw,27px);line-height:1.4;color:var(--tx);max-width:48ch;border-left:3px solid var(--brs);padding-left:18px;margin:0}
+.abs-doors{gap:0 24px}
+/* the longer version */
+.ab-more summary{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;cursor:pointer;padding:14px 0;border-top:1px solid var(--obs);border-bottom:1px solid var(--hair-2);min-height:44px}
+.ab-more summary::marker{color:var(--bur)}
+.ab-more-in{padding-top:18px}
+.ab-method{padding-left:20px}.ab-method li{margin:6px 0;font-size:15px}
+.ab-close .fn-h{font-family:var(--dsp);font-size:clamp(30px,3.6vw,56px);line-height:1.08;max-width:22ch;color:#fff}
+@media (max-width:1100px){.abj-track{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:22px}.abj-track::before{display:none}
+ .abf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.abb-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .abs-flow{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:12px}}
+@media (max-width:820px){.ab-cover .ab-grid{grid-template-columns:minmax(0,1fr)}.ab-copy{padding-bottom:0}
+ .ab-cover .abfig.ab-portrait{max-width:520px}.abr-grid{grid-template-columns:minmax(0,1fr)}.abj-detail{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.ab-pos{grid-template-columns:minmax(0,1fr)}.abf-grid,.abb-grid{grid-template-columns:minmax(0,1fr)}
+ .abj-track{grid-template-columns:repeat(2,minmax(0,1fr))}.abs-flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .abs-flow li:not(:last-child)::after{display:none}}
+.ab-cover .ab-portrait figcaption .cap{color:rgba(255,255,255,.74);font-family:var(--ser);font-size:15px}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -3248,7 +3323,7 @@ const DATA=[
  tbl:[["","Before","After"],["Price ($)","20","24"],["Quantity (000 units)","500","450"]],
  q:"Calculate the price elasticity of demand and state what happens to total revenue.",
  steps:["%ΔQd = (450 − 500) ÷ 500 × 100 = −10%","%ΔP = (24 − 20) ÷ 20 × 100 = +20%","PED = −10 ÷ 20 = −0.5 (magnitude 0.5, inelastic)","TR before = 20 × 500 = $10,000k; TR after = 24 × 450 = $10,800k: revenue rises"],
- ans:"0.5",tol:0.05,
+ ans:"0.5",tol:0.05,abs:1,
  note:"Because demand is inelastic, the proportionate price rise exceeds the proportionate quantity fall, so total revenue rises. Report the magnitude and state the sign convention you are using."},
 {id:"d3",sub:"3.6",lvl:"HL",sk:"qnt",t:"The multiplier",
  tbl:[["Marginal propensity","Value"],["Save (MPS)","0.20"],["Tax (MPT)","0.25"],["Import (MPM)","0.05"]],
@@ -5949,7 +6024,7 @@ function gymBuild(){
  dgc:()=>{const q=pick(DGQ.filter(x=>S.lvl==="HL"||!["monopoly","phillips","ped"].includes(x[0])),1)[0];
   it.push({ty:"Diagram drill",sk:["dgc","dge"],tag:"diagram",p:q[1],dg:q[0],opts:q[2].map((t,i)=>({t,ok:i===q[3]?1:0})),e:q[4]})},
  qnt:()=>{const d=pick(DATA.filter(x=>S.lvl==="HL"||x.lvl!=="HL"),1)[0];
-  it.push({ty:"Data drill",sk:[d.sk],tag:d.sub,p:d.q,tbl:d.tbl,num:d.ans,tol:d.tol,steps:d.steps,e:d.note})},
+  it.push({ty:"Data drill",sk:[d.sk],tag:d.sub,p:d.q,tbl:d.tbl,num:d.ans,tol:d.tol,abs:d.abs,steps:d.steps,e:d.note})},
  evl:()=>{const m=pick(EVDIM,3),t=m[0];
   it.push({ty:"Evaluation drill",sk:["evl"],tag:"AO3",p:`Which sentence performs the evaluation move <strong>${t.k}</strong>?`,
    opts:shuf([{t:t.good,ok:1},...m.slice(1).map(x=>({t:x.good,ok:0,w:`This is the ${x.k.toLowerCase()} move.`}))]),e:t.e})},
@@ -6031,8 +6106,8 @@ function gymStart(){GYM={items:gymBuild(),i:0,ans:[],pick:null,val:"",saved:fals
 function gymPick(i){const it=GYM.items[GYM.i];GYM.pick=i;GYM.ans[GYM.i]=!!it.opts[i].ok;
  if(it.misc&&!it.opts[i].ok){S.misc[it.misc]=S.misc[it.misc]||{};S.misc[it.misc].wrong=true;save()}render()}
 function gymNum(){const it=GYM.items[GYM.i],el=document.getElementById("gymnum");GYM.val=el.value;
- const v=parseFloat((el.value||"").replace(/[^0-9.\-]/g,""));
- const ok=!isNaN(v)&&Math.abs(v-parseFloat(it.num))<=it.tol;GYM.pick=ok?1:0;GYM.ans[GYM.i]=ok;render()}
+ const v=numIn(el.value),t=parseFloat(it.num);
+ const ok=!isNaN(v)&&(Math.abs(v-t)<=it.tol||(it.abs&&Math.abs(Math.abs(v)-Math.abs(t))<=it.tol));GYM.pick=ok?1:0;GYM.ans[GYM.i]=ok;render()}
 function gymNext(){GYM.i++;GYM.pick=null;GYM.val="";render()}
 function gymResult(){
  const right=GYM.ans.filter(Boolean).length,score=Math.round(right/GYM.items.length*100);
@@ -6559,10 +6634,10 @@ const CALC=[
  solve:v=>{const dq=(v.q2-v.q1)/v.q1*100,dp=(v.p2-v.p1)/v.p1*100,a=dq/dp;
   return{a:r2(a),u:"",steps:[`%ΔQd = (${v.q2} − ${v.q1}) ÷ ${v.q1} × 100 = ${r2(dq)}%`,
    `%ΔP = (${v.p2} − ${v.p1}) ÷ ${v.p1} × 100 = ${r2(dp)}%`,`PED = ${r2(dq)} ÷ ${r2(dp)} = ${r2(a)}`]}},
- interp:(v,a)=>{const m=Math.abs(a);return `PED is ${r2(a)}. Ignoring the sign, |PED| = ${r2(m)}, so demand is ${m>1?"elastic: quantity responds more than proportionately, and total revenue moves with quantity":m<1?"inelastic: quantity responds less than proportionately, and total revenue moves with price":"unit elastic, so total revenue is unchanged"}. That revenue rule holds exactly only for small changes: over this change, measured from the original values, total revenue goes from $${r2(v.p1*v.q1)} to $${r2(v.p2*v.q2)}.`},
+ interp:(v,a)=>{const m=Math.abs(a);return `PED is ${r2(a)}. Ignoring the sign, |PED| = ${r2(m)}, so demand is ${m===0?"perfectly inelastic: quantity does not respond at all, so total revenue moves in proportion to price":m>1?"elastic: quantity responds more than proportionately, and total revenue moves with quantity":m<1?"inelastic: quantity responds less than proportionately, and total revenue moves with price":"unit elastic, so total revenue is unchanged"}. That revenue rule holds exactly only for small changes: over this change, measured from the original values, total revenue goes from $${r2(v.p1*v.q1)} to $${r2(v.p2*v.q2)}.`},
  mist:["Dropping the negative sign without saying you are using the magnitude.","Using absolute changes rather than percentage changes.","Treating the slope of the demand curve as its elasticity."],
  ib:"Required at SL and HL. Expect it in Paper 2 with a follow-up on total revenue or tax incidence.",
- gen:()=>{const p1=rnd(10,40,2),q1=rnd(200,900,20);return{p1,p2:p1+rnd(2,8,1),q1,q2:q1-rnd(20,180,10)}},tol:.03},
+ gen:()=>{const p1=rnd(10,40,2),q1=rnd(200,900,20);return{p1,p2:p1+rnd(2,8,1),q1,q2:q1-rnd(20,180,10)}},tol:.03,tolRel:.01},
 {id:"yed",n:"Income elasticity of demand",lvl:"Both",g:"Microeconomics",f:"YED = %ΔQd ÷ %ΔY",
  m:"How responsive quantity demanded is to a change in consumer income.",
  inp:[["y1","Original income","$"],["y2","New income","$"],["q1","Original quantity",""],["q2","New quantity",""]],
@@ -6572,16 +6647,16 @@ const CALC=[
  mist:["Classifying by size before checking the sign.","Calling any positive YED a luxury: it must exceed one.","Confusing YED with PED because both use %ΔQd."],
  ib:"Required at SL and HL. Often paired with a question on sectoral change as an economy develops.",
  gen:()=>{const y1=rnd(20000,60000,1000),q1=rnd(100,600,10);
-  return{y1,y2:y1+rnd(2000,9000,500),q1,q2:q1+(rnd(-90,140,5)||20)}},tol:.03},
+  return{y1,y2:y1+rnd(2000,9000,500),q1,q2:q1+(rnd(-90,140,5)||20)}},tol:.03,tolRel:.01},
 {id:"pes",n:"Price elasticity of supply",lvl:"Both",g:"Microeconomics",f:"PES = %ΔQs ÷ %ΔP",
  m:"How responsive quantity supplied is to a change in price.",
  inp:[["p1","Original price","$"],["p2","New price","$"],["q1","Original quantity supplied",""],["q2","New quantity supplied",""]],
  solve:v=>{const dq=(v.q2-v.q1)/v.q1*100,dp=(v.p2-v.p1)/v.p1*100,a=dq/dp;
   return{a:r2(a),u:"",steps:[`%ΔQs = ${r2(dq)}%`,`%ΔP = ${r2(dp)}%`,`PES = ${r2(dq)} ÷ ${r2(dp)} = ${r2(a)}`]}},
- interp:(v,a)=>`PES is ${r2(a)}, so supply is ${a>1?"elastic: producers can expand output more than proportionately, which typically means spare capacity, storable output or a long time horizon":a<1?"inelastic: output cannot expand proportionately, which typically means a fixed factor or a short time horizon":"unit elastic"}.`,
+ interp:(v,a)=>`PES is ${r2(a)}${a<0?". A negative value means quantity supplied fell as price rose, which the law of supply does not predict: check the data, or look for something else that changed at the same time.":`, so supply is ${a===0?"perfectly inelastic: quantity supplied cannot respond to price at all":a>1?"elastic: producers can expand output more than proportionately, which typically means spare capacity, storable output or a long time horizon":a<1?"inelastic: output cannot expand proportionately, which typically means a fixed factor or a short time horizon":"unit elastic"}.`}`,
  mist:["Expecting a negative value: PES is normally positive.","Assuming a steep curve is always inelastic regardless of where it cuts the axes.","Forgetting that a straight line through the origin has PES = 1 everywhere."],
  ib:"Required at SL and HL. Combines with PED to determine tax incidence.",
- gen:()=>{const p1=rnd(8,30,1),q1=rnd(200,800,20);return{p1,p2:p1+rnd(2,8,1),q1,q2:q1+rnd(20,220,10)}},tol:.03},
+ gen:()=>{const p1=rnd(8,30,1),q1=rnd(200,800,20);return{p1,p2:p1+rnd(2,8,1),q1,q2:q1+rnd(20,220,10)}},tol:.03,tolRel:.01},
 {id:"tr",n:"Total revenue",lvl:"Both",g:"Microeconomics",f:"TR = P × Q",
  m:"The money producers receive from selling a given quantity at a given price.",
  inp:[["p","Price","$"],["q","Quantity sold",""]],
@@ -6800,11 +6875,36 @@ function calcSVG(c,v){
 let CB={id:null,v:{},res:null,pq:null,ans:"",chk:null,show:false};
 function cbOpen(id){const c=CMAPC[id];CB={id,v:Object.fromEntries(c.inp.map(([k])=>[k,""])),res:null,pq:null,ans:"",chk:null,show:false};render()}
 function cbSet(k,val){CB.v[k]=val}
+/* One parser for every answer and input box (calculation board, revision run,
+   gym). It reads a Unicode minus or en dash as a minus sign, a single comma
+   followed by other than three digits as a decimal comma ("0,75" is 0.75),
+   and other commas as thousands separators ("1,020" is 1020). */
+function numIn(x){let t=String(x==null?"":x).trim().replace(/[\u2212\u2013]/g,"-").replace(/[\s\u00a0\u202f]/g,"");
+ if(t.includes(",")){if(!t.includes(".")&&(t.match(/,/g)||[]).length===1&&!/,\d{3}$/.test(t))t=t.replace(",",".");else t=t.replace(/,/g,"")}
+ return parseFloat(t.replace(/[^0-9.\-]/g,""))}
+/* Inputs that no economy can produce get a reason, not a confident number
+   (unemployment above the labour force, a negative surplus, a leakage below
+   zero, a percentage change from a zero base). */
+const CALCGUARD={
+ ped:v=>!(v.p1>0&&v.q1>0)?"The starting price and quantity must be above zero: a percentage change needs a base.":v.p1===v.p2?"The price did not change, so there is no elasticity to measure.":null,
+ yed:v=>!(v.y1>0&&v.q1>0)?"The starting income and quantity must be above zero: a percentage change needs a base.":v.y1===v.y2?"Income did not change, so there is no elasticity to measure.":null,
+ pes:v=>!(v.p1>0&&v.q1>0)?"The starting price and quantity must be above zero: a percentage change needs a base.":v.p1===v.p2?"The price did not change, so there is no elasticity to measure.":null,
+ unemp:v=>!(v.l>0)||v.u<0?"The labour force must be positive and unemployment cannot be negative.":v.u>v.l?"The number unemployed cannot exceed the labour force.":null,
+ cs:v=>v.p>v.wtp?"The price is above what consumers were willing to pay, so none of these units would be bought.":v.q<0?"Quantity cannot be negative.":null,
+ ps:v=>v.min>v.p?"The price is below the lowest price producers would accept, so none of these units would be sold.":v.q<0?"Quantity cannot be negative.":null,
+ taxrev:v=>v.t<0?"A tax cannot be negative (that would be a subsidy).":v.q1>v.q0?"After a tax the quantity traded falls: the new quantity should be below the old one.":null,
+ dwl:v=>v.t<0?"A tax cannot be negative (that would be a subsidy).":v.q1>v.q0?"After a tax the quantity traded falls: the new quantity should be below the old one.":null,
+ tariffrev:v=>v.qs>v.qd?"Domestic supply exceeds domestic demand at this price, so nothing is imported and no tariff revenue arises.":v.t<0?"A tariff cannot be negative.":null,
+ quotaeff:v=>v.pd<v.pw?"With a binding quota the domestic price rises above the world price.":null,
+ mult:v=>[v.mps,v.mpt,v.mpm].some(x=>x<0)?"Marginal propensities cannot be negative.":v.mps+v.mpt+v.mpm>=1?"Leakages of 1 or more would leave nothing to be spent at home: check the propensities.":null,
+ avgtax:v=>v.b1+v.b2>v.inc+1e-9?"The income in the two bands adds up to more than total income.":null};
+function calcGuard(c,v){try{const g=CALCGUARD[c.id];return g?g(v):null}catch(e){return null}}
 function cbRun(){
  const c=CMAPC[CB.id],v={};let bad=null;
- c.inp.forEach(([k,l])=>{const n=parseFloat(String(CB.v[k]).replace(/\u2212/g,"-").replace(/[^0-9.\-]/g,""));
+ c.inp.forEach(([k,l])=>{const n=numIn(CB.v[k]);
   if(isNaN(n))bad=bad||l;v[k]=n});
  if(bad){toast("Enter a value for "+bad);return}
+ const why=calcGuard(c,v);if(why){CB.res=null;toast(why);render();return}
  try{const r=c.solve(v);if(!isFinite(r.a))throw 0;CB.res={v,...r}}catch(e){CB.res=null;toast("Those values do not produce a valid result: check them.")}
  render();
 }
@@ -6812,9 +6912,9 @@ function cbExample(){const c=CMAPC[CB.id];CB.v=c.gen();CB.res=null;render();setT
 function cbNewQ(){const c=CMAPC[CB.id];CB.pq=c.gen();CB.ans="";CB.chk=null;CB.show=false;render()}
 function cbCheck(){
  const c=CMAPC[CB.id],r=c.solve(CB.pq);
- const g=parseFloat(String(CB.ans).replace(/\u2212/g,"-").replace(/[^0-9.\-]/g,""));
+ const g=numIn(CB.ans);
  if(isNaN(g)){toast("Enter your answer first");return}
- const tol=Math.max(c.tol,Math.abs(r.a)*0.001);
+ const tol=Math.max(c.tol,Math.abs(r.a)*(c.tolRel||0.001));
  CB.chk=Math.abs(g-r.a)<=tol||(c.id==="ped"&&Math.abs(Math.abs(g)-Math.abs(r.a))<=tol);CB.show=true;
  record("Calculation Board · "+c.n,{qnt:CB.chk?90:42},CB.chk?"Correct to within tolerance":"Answer outside tolerance: working revealed");
  render();
@@ -6862,7 +6962,7 @@ function cbDetail(c){
  <div class="wrap full sec t">${H.head("02","Work it through","Enter values and see the steps")}
   <div class="split">
    <div><div class="cols2">${c.inp.map(([k,l,u])=>`<div><label class="lb">${l}${u?" ("+u+")":""}</label>
-     <input class="inp" inputmode="decimal" value="${esc(CB.v[k]||"")}" oninput="cbSet('${k}',this.value)" aria-label="${esc(l)}"></div>`).join("")}</div>
+     <input class="inp" inputmode="text" enterkeyhint="done" autocomplete="off" value="${esc(CB.v[k]||"")}" oninput="cbSet('${k}',this.value)" aria-label="${esc(l)}"></div>`).join("")}</div>
     <div class="row mt3"><button class="btn" onclick="cbRun()" ${ready?"":"disabled"}>Calculate →</button>
      <button class="btn gh" onclick="cbExample()">Load a worked example</button>
      <button class="btn gh" onclick="calcPop()">Calculator</button></div>
@@ -6895,7 +6995,7 @@ function cbDetail(c){
      </tbody></table></div>
      <div class="row mt3" style="align-items:flex-end;gap:12px">
       <div style="flex:1;min-width:180px"><label class="lb">Your answer${pr.u?" ("+pr.u+")":""}</label>
-       <input class="inp" inputmode="decimal" value="${esc(CB.ans)}" oninput="CB.ans=this.value" aria-label="Your answer"></div>
+       <input class="inp" inputmode="text" enterkeyhint="done" autocomplete="off" value="${esc(CB.ans)}" oninput="CB.ans=this.value" aria-label="Your answer"></div>
       <button class="btn a" onclick="cbCheck()">Check</button>
       <button class="btn gh" onclick="cbNewQ()">New question</button></div>
      ${CB.show?`<div class="note ${CB.chk?"p":"n"} mt3"><div class="t">${CB.chk?"Correct":"Not yet"}</div>
@@ -7227,9 +7327,9 @@ function rrBuild(unit){
   e:"Full mechanism: "+c.mech.join(" → ")});
  const dq=pick(DGQ,1)[0];
  it.push({st:2,sk:["dgc","dge"],p:dq[1],dg:dq[0],opts:dq[2].map((t,i)=>({t,ok:i===dq[3]?1:0})),e:dq[4]});
- const cal=pick(CALC.filter(x=>S.lvl==="HL"||x.lvl!=="HL"),1)[0],cv=cal.gen(),cr=cal.solve(cv);
- it.push({st:3,sk:["qnt"],p:`Calculate <strong>${cal.n.toLowerCase()}</strong>.`,tbl:cal.inp.map(([k,l,u])=>[l,(u==="$"?"$":"")+cv[k]+(u&&u!=="$"?" "+u:"")]),
-  num:cr.a,tol:Math.max(cal.tol,Math.abs(cr.a)*.01),steps:cr.steps,e:cal.interp(cv,cr.a)});
+ const cal=pick(CALC.filter(x=>(S.lvl==="HL"||x.lvl!=="HL")&&x.lvl!=="Enrichment"),1)[0],cv=cal.gen(),cr=cal.solve(cv);
+ it.push({st:3,sk:["qnt"],p:`Calculate <strong>${cal.ask||cal.n.toLowerCase()}</strong>.`,abs:cal.id==="ped",tbl:cal.inp.map(([k,l,u])=>[l,(u==="$"?"$":"")+cv[k]+(u&&u!=="$"?" "+u:"")]),
+  num:cr.a,tol:Math.max(cal.tol,Math.abs(cr.a)*(cal.tolRel||.001)),steps:cr.steps,e:cal.interp(cv,cr.a)});
  const r=pick(RW,1)[0];
  it.push({st:4,sk:["app"],p:`Story: <strong>${r.t}</strong><br><br>Which step belongs in the middle of this mechanism?`,
   opts:shuf([{t:r.chain[2],ok:1},...pick(RW.filter(x=>x.id!==r.id),2).map(x=>({t:x.chain[2],ok:0,w:"From a different story."}))]),
@@ -7242,8 +7342,8 @@ function rrBuild(unit){
 function rrStart(u){RR={topic:u,items:rrBuild(u),i:0,pick:null,val:"",right:0,saved:false};tmrSet(10);render()}
 function rrPick(i){const it=RR.items[RR.i];RR.pick=i;if(it.opts[i].ok)RR.right++;render()}
 function rrNum(){const it=RR.items[RR.i],el=document.getElementById("rrNum");RR.val=el.value;
- const g=parseFloat(String(el.value).replace(/[^0-9.\-]/g,""));
- const ok=!isNaN(g)&&Math.abs(g-it.num)<=it.tol;RR.pick=ok?1:0;if(ok)RR.right++;render()}
+ const g=numIn(el.value);
+ const ok=!isNaN(g)&&(Math.abs(g-it.num)<=it.tol||(it.abs&&Math.abs(Math.abs(g)-Math.abs(it.num))<=it.tol));RR.pick=ok?1:0;if(ok)RR.right++;render()}
 function rrNext(){RR.i++;RR.pick=null;RR.val="";render()}
 function revisionRun(){
  if(!RR.items)return `<div class="wrap full sec t">${H.head("","Ten-minute revision","Recall · Concept · Diagram · Calculation · Application · Evaluation")}
@@ -7282,7 +7382,7 @@ function revisionRun(){
   <div class="split mt4"><div>
    ${it.tbl?`<table class="t" style="max-width:400px;margin-bottom:18px"><tbody>${it.tbl.map(([a,b])=>`<tr><td>${a}</td><td class="mn">${b}</td></tr>`).join("")}</tbody></table>`:""}
    ${it.num!==undefined?`<div style="max-width:280px"><label class="lb">Your answer</label>
-     <input class="inp" id="rrNum" inputmode="decimal" value="${esc(RR.val)}" ${RR.pick!==null?"disabled":""}></div>
+     <input class="inp" id="rrNum" inputmode="text" enterkeyhint="done" autocomplete="off" value="${esc(RR.val)}" ${RR.pick!==null?"disabled":""}></div>
      ${RR.pick===null?`<button class="btn mt3" onclick="rrNum()">Check →</button>`
       :`<div class="note ${RR.pick?"p":"n"} mt3"><div class="t">${RR.pick?"Correct":"Answer: "+it.num}</div>
         <ol class="ns mt2">${it.steps.map(s=>`<li class="mn" style="font-size:13px">${esc(s)}</li>`).join("")}</ol>
@@ -7981,14 +8081,15 @@ function rsGen(){
  const cs=CONCEPTS.filter(c=>(u==="all"||c.sub.startsWith(u))&&(lv==="Both"||c.lvl===lv||c.lvl!=="HL"));
  const c=pick(cs.length?cs:CONCEPTS,1)[0];
  const d=DEFS.filter(x=>u==="all"||x[1].startsWith(u));const dd=pick(d.length?d:DEFS,1)[0];
- const cal=pick(CALC.filter(x=>lv==="Both"||x.lvl===lv||x.lvl==="Both"),1)[0];const cv=cal.gen(),cr=cal.solve(cv);
+ const cpool=CALC.filter(x=>(lv==="Both"||x.lvl===lv||x.lvl==="Both")&&x.lvl!=="Enrichment"),cu=cpool.filter(x=>u==="all"||String(x.sub||CALCSUB[x.id]||"").startsWith(u));
+ const cal=pick(cu.length?cu:cpool,1)[0];const cv=cal.gen(),cr=cal.solve(cv);
  const ev=pick(EVDIM,1)[0];
  const dq=pick(DGQ,1)[0];
  TT.rs={label:(u==="all"?"Mixed":"Unit "+u)+" · "+lv,items:[
   {q:"Define "+dd[0]+".",a:dd[2]},
   {q:c.mech[0]+" What happens next?",a:c.mech[1]},
   {q:dq[1],a:dq[2][dq[3]]},
-  {q:"Calculate "+cal.n.toLowerCase()+": "+cal.inp.map(([k,l,un])=>l+" = "+(un==="$"?"$":"")+cv[k]).join(", ")+".",a:cr.a+(cr.u?" "+cr.u:"")},
+  {q:"Calculate "+(cal.ask||cal.n.toLowerCase())+": "+cal.inp.map(([k,l,un])=>l+" = "+(un==="$"?"$":"")+cv[k]).join(", ")+".",a:cr.a+(cr.u?" "+cr.u:"")},
   {q:ev.q,a:"Model answer shape: "+ev.t}]};
  render();
 }
@@ -10916,7 +11017,7 @@ const NEWCALC=[
  solve:v=>{const nx=v.x-v.mm,a=v.c+v.i+v.g+nx;
   return{a:r2(a),u:"$bn",steps:[`Net exports = ${v.x} − ${v.mm} = ${r2(nx)}`,
    `GDP = ${v.c} + ${v.i} + ${v.g} + (${r2(nx)})`,`GDP = ${r2(a)} $bn`]}},
- interp:(v,a)=>`Nominal GDP is $${a}bn. Net exports ${v.x-v.mm<0?"subtract from":"add to"} domestic output here, which is why imports enter with a negative sign.`,
+ interp:(v,a)=>`Nominal GDP is $${a}bn. Net exports ${v.x-v.mm<0?"subtract from":v.x-v.mm>0?"add to":"neither add to nor subtract from"} domestic output here, which is why imports enter with a negative sign.`,
  mist:["Adding imports instead of subtracting them.","Including transfer payments in government spending: they are not payments for output.","Reporting the figure without saying it is nominal."],
  ib:"Named in the guide as a required calculation at both levels. Expect it in Paper 2 with a follow-up on real GDP.",
  gen:()=>({c:rnd(300,700,10),i:rnd(60,200,5),g:rnd(80,250,5),x:rnd(80,300,5),mm:rnd(80,320,5)}),tol:.01},
@@ -10927,7 +11028,7 @@ const NEWCALC=[
  solve:v=>{const net=v.inflow-v.outflow,a=v.gdp+net;
   return{a:r2(a),u:"$bn",steps:[`Net property income = ${v.inflow} − ${v.outflow} = ${r2(net)}`,
    `GNI = ${v.gdp} + (${r2(net)})`,`GNI = ${r2(a)} $bn`]}},
- interp:(v,a)=>`GNI is $${a}bn against GDP of $${v.gdp}bn. ${v.inflow-v.outflow<0?"More property income leaves than arrives, so residents receive less than is produced here: typical of an economy with substantial foreign ownership.":"More property income arrives than leaves, so residents receive more than is produced within the borders."}`,
+ interp:(v,a)=>`GNI is $${a}bn against GDP of $${v.gdp}bn. ${v.inflow===v.outflow?"Net property income from abroad is zero, so GNI equals GDP.":v.inflow-v.outflow<0?"More property income leaves than arrives, so residents receive less than is produced here: typical of an economy with substantial foreign ownership.":"More property income arrives than leaves, so residents receive more than is produced within the borders."}`,
  mist:["Confusing GDP, which is about location, with GNI, which is about ownership.","Using the gross flows rather than the net figure.","Assuming GNI is always larger than GDP."],
  ib:"Named in the guide as a required calculation at both levels.",
  gen:()=>({gdp:rnd(400,900,10),inflow:rnd(10,90,5),outflow:rnd(10,120,5)}),tol:.01},
@@ -23822,14 +23923,15 @@ function cpbShock(k){
    examinable and because the number would otherwise be wrong. */
 const LZ={sh:[4,9,15,23,49]};
 function lzCalc(){
- const tot=LZ.sh.reduce((a,b)=>a+b,0)||1;
+ const raw=LZ.sh.reduce((a,b)=>a+b,0),tot=raw||1;
  const shares=LZ.sh.map(s=>s/tot).sort((a,b)=>a-b);
  const cum=[0];shares.forEach(s=>cum.push(cum[cum.length-1]+s));
  /* Gini by the trapezium rule on five equal population groups */
  let sum=0;for(let i=1;i<cum.length;i++)sum+=(cum[i]+cum[i-1]);
  const gini=1-0.2*sum;
- const ratio=shares[4]/(shares[0]||1e-9);
- return {tot,shares,cum,gini,ratio};
+ /* with no income in the poorest fifth the ratio is undefined, not a billion; with no income at all there is no distribution to measure */
+ const ratio=shares[0]>0?shares[4]/shares[0]:null;
+ return {tot,raw,shares,cum,gini:raw>0?gini:null,ratio};
 }
 function lorenzSVG(){
  const c=lzCalc(), W=460,HGT=430,PL=64,PR=26,PT=26,PB=52;
@@ -23837,7 +23939,7 @@ function lorenzSVG(){
  const X=v=>PL+v*SW, Y=v=>HGT-PB-v*SH;
  const pts=c.cum.map((v,i)=>`${X(i/5)},${Y(v)}`).join(" ");
  return `<svg viewBox="0 0 ${W} ${HGT}" style="width:100%;height:auto;display:block" role="img"
-   aria-label="Lorenz curve with a Gini coefficient of ${c.gini.toFixed(3)}">
+   aria-label="${c.gini===null?"Lorenz curve: no income entered":"Lorenz curve with a Gini coefficient of "+c.gini.toFixed(3)}">
   <rect x="${PL}" y="${PT}" width="${SW}" height="${SH}" fill="none" stroke="#D8D3CA"/>
   ${[0.2,0.4,0.6,0.8].map(g=>`<line x1="${X(g)}" y1="${PT}" x2="${X(g)}" y2="${HGT-PB}" stroke="#EDE9E2"/>
     <line x1="${PL}" y1="${Y(g)}" x2="${W-PR}" y2="${Y(g)}" stroke="#EDE9E2"/>`).join("")}
@@ -23883,10 +23985,10 @@ function lorenzBuilder(){
     ${names.map((n,j)=>`<label class="lb mt3">${n} · ${r(LZ.sh[j]/c.tot*100,1)}% of income</label>
       <input type="range" aria-label="Income share of the ${esc(n.toLowerCase())}" min="0" max="80" step="1" value="${LZ.sh[j]}" oninput="LZ.sh[${j}]=+this.value;render()">`).join("")}
     <div class="statrow mt4">
-     <div class="stat"><span class="k">Gini coefficient</span><span class="v">${r(c.gini,3)}</span>
-      <span class="d">${c.gini<0.3?"relatively equal":c.gini<0.4?"moderate":c.gini<0.5?"high":"very high"}</span></div>
-     <div class="stat"><span class="k">Richest fifth to poorest fifth</span><span class="v">${r(c.ratio,1)}×</span>
-      <span class="d">a second way of saying the same thing</span></div>
+     <div class="stat"><span class="k">Gini coefficient</span><span class="v">${c.gini===null?"—":r(c.gini,3)}</span>
+      <span class="d">${c.gini===null?"enter some income to measure its distribution":c.gini<0.3?"relatively equal":c.gini<0.4?"moderate":c.gini<0.5?"high":"very high"}</span></div>
+     <div class="stat"><span class="k">Richest fifth to poorest fifth</span><span class="v">${c.ratio===null?"undefined":r(c.ratio,1)+"×"}</span>
+      <span class="d">${c.ratio===null?"the poorest fifth has no income, so the ratio has no finite value":"a second way of saying the same thing"}</span></div>
      <div class="stat"><span class="k">Shares entered</span><span class="v">${r(c.tot,1)}</span>
       <span class="d">${Math.abs(c.tot-100)<0.5?"sum to 100":"normalised to 100 before plotting"}</span></div></div>
     <div class="row mt3" style="gap:6px">
@@ -23901,7 +24003,7 @@ function lorenzBuilder(){
     <p class="sm mt2">The Gini coefficient is the area between the line of perfect equality and the Lorenz curve, divided by the whole area beneath the line of perfect equality.</p>
     <p class="sm mt3">With five equal population groups each step is 0.2 wide, so the area under the curve is the sum of five trapezia:</p>
     <p class="xs mn mt2">Area under curve = 0.2 × Σ (y·i + y·i−1) ÷ 2 = ${r(0.1*c.cum.reduce((a,v,i)=>i?a+(v+c.cum[i-1]):a,0),4)}</p>
-    <p class="xs mn mt1">Gini = 1 − 2 × area under curve = ${r(c.gini,4)}</p>
+    <p class="xs mn mt1">Gini = 1 − 2 × area under curve = ${c.gini===null?"—":r(c.gini,4)}</p>
     <p class="xs mt3">Cumulative income shares: ${c.cum.map(v=>r(v,3)).join(", ")}.</p></div>
    <div class="panel warn"><div class="eb">What grouped data costs you</div>
     <p class="sm mt2">Joining five points with straight lines assumes income is distributed evenly inside each fifth. It is not, so this understates the true coefficient. With five groups the largest value obtainable is 0.8, reached when the top fifth holds everything, even though the true coefficient in that case approaches 1.</p>
@@ -37187,35 +37289,112 @@ function rnChapter(n,t){
  return `${RN_HZ[n]?`<div class="wrap full">${rnHorizon(RN_HZ[n])}</div>`:""}<div class="wrap full rn-chap"><span class="ch-n">${n}</span><span class="ch-t">${esc(t)}</span></div>`}
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   ABOUT · a profile composed, not layered
-   The opener used to draw the section's economics figure behind the
-   portrait, so the axis and curves ran under the photograph and stopped at
-   its edge. The profile is now three cells that cannot touch: the text, the
-   portrait in its own frame, and an economics panel of its own. No figure is
-   drawn behind the photograph at any width.
+   ABOUT · an intellectual biography, not a CV
+   Read in under a minute: a cover with the name, the portrait and four
+   positions; the credentials as data; the journey as a map; the classroom in
+   two photographs; six principles; and the story of the platform. The long
+   prose the page used to carry is kept, folded, under "The longer version",
+   so nothing is lost and nothing has to be read.
+   Every fact comes from the supplied profile (ABOUT, ABOUT2). No degree, date,
+   title or result is added, and no institution is described as a current
+   workplace. The portrait sits in its own grid cell; nothing is drawn over it.
    ═══════════════════════════════════════════════════════════════════════════ */
+const AB_POS=["Economics educator","IB DP practitioner","Academic mentor","Resource creator"];
+/* the credentials, as data blocks */
+const AB_FACTS=()=>[
+ ["Education","Economics","St. Stephen's College, University of Delhi"],
+ ["Higher education","Assistant Professor","Fergusson College, Pune · undergraduate Economics"],
+ ["IB Diploma Programme","Teaching and academic work","BLISS International School, Pune · Symbiosis International School, Pune"],
+ ["Subjects","Economics · Business Management · Global Politics","SL and HL"],
+ ["Mentorship","UPSC Civil Services","Economics, for aspirants preparing for a different examination in the same subject"],
+ ["Resource design","Handbooks · presentations · Economics in 60 Seconds","and this platform"]];
+/* the journey, as stages on a line; the last is the platform itself */
+const AB_STAGE=["Academia","Higher education","IB Diploma Programme","IB Diploma Programme","Mentorship"];
+const AB_PRINCIPLES=[["Models should explain, not decorate.","A diagram is an argument; if it is never referred to, it has earned nothing."],
+ ["Real-world evidence should challenge theory.","A model is tested where it meets something that happened."],
+ ["Diagrams should carry analytical weight.","Draw it, then use it: every label is a claim."],
+ ["Students should question assumptions.","Naming what a model assumes is the difference between using it and believing it."],
+ ["Understand before memorising.","Ask what happens next and you find out whether the concept or only the sentence is there."],
+ ["Judge, and state the condition.","A judgement says what the answer is and what would reverse it."]];
+const AB_STORY=[["Classroom","A problem noticed in a real lesson."],["Idea","A way to make the reasoning visible."],
+ ["Resource","A handbook, a slide, a question."],["Interaction","A model a student can move and question."],["Platform","All of it connected, in one place."]];
+
 function abCover(){const A=ABOUT;
  return `<section class="ab-cover" aria-labelledby="ab-h"><div class="wrap full ab-grid">
   <div class="ab-copy">
    <div class="eb a">About</div>
    <h1 class="ab-h mt2" id="ab-h">${esc(A.name)}</h1>
-   <p class="ab-role mt2">${esc(A.role)} · Economics educator and resource creator</p>
-   <div class="row mt3 ab-tags">${A.subjects.map(s=>`<span class="tag">${esc(s)}</span>`).join("")}</div>
+   <ul class="ab-pos mt3">${AB_POS.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>
    <p class="ab-lede mt4">${esc(A.lede)}</p>
-   <p class="sm mt3">Teacher · Economics educator · Mentor · Resource creator</p>
-   <div class="row mt4"><button class="btn a" onclick="nav('tutorials')">Learn with Arjun →</button><a class="btn gh" href="mailto:${A.email}">Email</a></div></div>
-  <div class="ab-media">
-   ${abFigure("hero","ab-portrait")}
-   <aside class="ab-panel" aria-label="What the teaching is built around">
-    <div class="kicker">What the teaching is built around</div>
-    <figure class="rn-fig mt2">${motifSVG("sd",{cls:"on-paper"})}</figure>
-    <p class="sm mt2">Models students can move, cases they can question and arguments they have to defend.</p>
-    <button class="lnk mt2" onclick="nav('lab')">Open the lab →</button></aside>
-  </div></div></section>`}
-(function(){if(typeof aboutPage!=="function")return;const prev=aboutPage;
- aboutPage=function(){const h=prev.apply(this,arguments);
-  const i=h.indexOf('<section class="hero"');if(i<0)return h;const j=h.indexOf("</section>",i);if(j<0)return h;
-  return h.slice(0,i)+abCover()+h.slice(j+10)}})();
+   <p class="ab-meta mt3"><span>${esc(A.role)}</span>${A.subjects.map(s=>`<span>${esc(s)}</span>`).join("")}</p>
+   <div class="row mt4"><button class="btn a" onclick="nav('tutorials')">Learn with Arjun →</button><a class="btn gh" href="mailto:${A.email}">Email</a>
+    <button class="btn gh" onclick="nav('home')">Explore the platform</button></div></div>
+  ${abFigure("hero","ab-portrait")}
+ </div></section>`}
+
+function abFacts(){return `<section class="sec ab-facts" aria-labelledby="ab-f"><div class="wrap full">
+  <div class="rn-chap"><span class="ch-n">01</span><span class="ch-t" id="ab-f">At a glance</span></div>
+  <dl class="abf-grid mt3">${AB_FACTS().map(([k,a,b])=>`<div class="abf"><dt>${esc(k)}</dt><dd><b>${esc(a)}</b><span>${esc(b)}</span></dd></div>`).join("")}</dl>
+ </div></section>`}
+
+function abJourney(){const T=ABOUT2.timeline,i=Math.min(ABTL,T.length);const cur=T[i];
+ const stops=T.map((t,k)=>[AB_STAGE[k]||"",t.k,t.w]).concat([["Digital education","This platform","Economics made visible, connected and testable"]]);
+ return `<section class="sec t ab-journey" aria-labelledby="ab-j"><div class="wrap full">
+  <div class="rn-chap"><span class="ch-n">02</span><span class="ch-t" id="ab-j">The journey</span></div>
+  <ol class="abj-track mt4">${stops.map(([st,k,w],n)=>`<li><button class="abj-stop${n===i?" on":""}" aria-pressed="${n===i}" onclick="ABTL=${n};render()">
+    <span class="abj-st">${esc(st)}</span><span class="abj-dot" aria-hidden="true"></span><strong>${esc(k)}</strong><span class="abj-w">${esc(w)}</span></button></li>`).join("")}</ol>
+  ${cur?`<div class="abj-detail mt3"><div><span class="kicker">What was taught</span><p class="sm mt1">${esc(cur.taught)}</p></div>
+    <div><span class="kicker">What it taught me</span><p class="sm mt1">${esc(cur.learned)}</p></div>
+    <div><span class="kicker">What it changed here</span><p class="sm mt1">${esc(cur.shaped)}</p></div></div>`
+   :`<div class="abj-detail mt3"><div><span class="kicker">Why it exists</span><p class="sm mt1">${esc(ABOUT2.why)}</p></div>
+    <div><span class="kicker">What it is for</span><p class="sm mt1">Concepts, diagrams, calculations, real-world cases and exam thinking in one place, rather than in separate places.</p></div>
+    <div><span class="kicker">What it will not do</span><p class="sm mt1">Write a student's work for them. It reads work closely and says where it stops short.</p></div></div>`}
+  <p class="xs mt2">Academic background and professional experience as supplied; the order is presentational, not a claim about exact chronology, and none of these is described as a current post.</p>
+ </div></section>`}
+
+function abClassroom(){return `<section class="sec ab-room" aria-labelledby="ab-c"><div class="wrap full">
+  <div class="rn-chap"><span class="ch-n">03</span><span class="ch-t" id="ab-c">In the classroom</span></div>
+  <div class="abr-grid mt4">
+   <div class="abr-cell">${abFigure("students","abr-fig")}<p class="abr-line">Students argue a side they did not choose, until somebody finds the condition under which it fails.</p>
+    <button class="lnk mt2" onclick="nav('tools')">Open the debate room →</button></div>
+   <div class="abr-cell">${abFigure("teaching","abr-fig")}<p class="abr-line">A budget line, an interest rate or a tariff: where a model finally meets something that happened.</p>
+    <button class="lnk mt2" onclick="nav('world')">Open Real World →</button></div></div>
+ </div></section>`}
+
+function abPrinciples(){return `<section class="sec t ab-believe" aria-labelledby="ab-b"><div class="wrap full">
+  <div class="rn-chap"><span class="ch-n">04</span><span class="ch-t" id="ab-b">What I believe</span></div>
+  <ol class="abb-grid mt4">${AB_PRINCIPLES.map(([h,d],i)=>`<li><span class="abb-n">${String(i+1).padStart(2,"0")}</span><p class="abb-h">${esc(h)}</p><p class="abb-d">${esc(d)}</p></li>`).join("")}</ol>
+ </div></section>`}
+
+function abStory(){return `<section class="sec ab-story" aria-labelledby="ab-s"><div class="wrap full">
+  <div class="rn-chap"><span class="ch-n">05</span><span class="ch-t" id="ab-s">The platform story</span></div>
+  <ol class="abs-flow mt4">${AB_STORY.map(([h,d],i)=>`<li><span class="abs-n">${String(i+1).padStart(2,"0")}</span><strong>${esc(h)}</strong><span>${esc(d)}</span></li>`).join("")}</ol>
+  <blockquote class="abs-q mt4">“${esc(ABOUT2.why)}”</blockquote>
+  <div class="cols2 abs-doors mt4">${ABOUT2.teaches.map(([n,d,go])=>`<button class="sp-room" onclick="${go}"><span class="sp-t">${esc(n)}</span><span class="sp-d">${esc(d)}</span></button>`).join("")}</div>
+ </div></section>`}
+
+function abLonger(){const A=ABOUT,B=ABOUT2;
+ return `<section class="sec t ab-longer"><div class="wrap full">
+  <details class="ab-more"><summary><span class="ch-t">The longer version</span><span class="xs">The full statement, the four positions, the portfolio and the method</span></summary>
+   <div class="ab-more-in">
+    <div class="split"><div><h2 class="h3">The educator</h2>${A.who.map(p=>`<p class="ed mt3">${esc(p)}</p>`).join("")}
+      <p class="ed mt3">Alongside Diploma Programme teaching, I mentor UPSC Civil Services aspirants in Economics, and I build the resources the teaching needs. No claim is made here about ranks, selections or results.</p></div>
+     <div class="panel q"><div class="eb">Four positions</div>${B.roles.map(([n,s,d])=>`<div class="mt3"><strong>${esc(n)}</strong><div class="xs">${esc(s)}</div><p class="sm mt1">${esc(d)}</p></div>`).join("")}</div></div>
+    <h2 class="h3 mt5">Teaching philosophy</h2>${A.approach.map(p=>`<p class="ed mt3" style="max-width:70ch">${esc(p)}</p>`).join("")}
+    <h2 class="h3 mt5">Why I built this</h2>${A.why.map(p=>`<p class="ed mt3" style="max-width:70ch">${esc(p)}</p>`).join("")}
+    <h2 class="h3 mt5">Technology and AI</h2>${A.tech.map(p=>`<p class="ed mt3" style="max-width:70ch">${esc(p)}</p>`).join("")}
+    <h2 class="h3 mt5">Teaching portfolio</h2><div class="cols3 mt3">${B.portfolio.map(([n,d])=>`<div class="panel"><div class="eb">${esc(n)}</div><p class="sm mt2">${esc(d)}</p></div>`).join("")}</div>
+    <h2 class="h3 mt5">The method</h2><ol class="ab-method mt3">${A.method.map(([n,d])=>`<li><strong>${esc(n)}</strong> ${esc(d)}</li>`).join("")}</ol>
+    <p class="xs mt4">${esc(A.disclosure)}</p></div></details>
+ </div></section>`}
+
+function abClose(){const A=ABOUT;return `<section class="sec rn-final bg-ink ab-close"><div class="wrap full fn-in">
+  <p class="fn-h">${esc(A.sig)}</p>
+  <div class="row fn-row"><button class="btn lg a" onclick="nav('tutorials')">Learn with Arjun</button><a class="btn lg on-ink" href="mailto:${A.email}">${esc(A.email)}</a>
+   <button class="btn lg gh on-ink" onclick="nav('learn')">Start learning</button></div></div></section>`}
+
+(function(){if(typeof aboutPage!=="function")return;
+ aboutPage=function(){return abCover()+abFacts()+abJourney()+abClassroom()+abPrinciples()+abStory()+abLonger()+abClose()+abLightboxMarkup()}})();
 
 /* ═══════════════════════════════════════════════════════════════════════════
    RENAISSANCE · 9 · the self-tests for this release
@@ -37455,8 +37634,10 @@ function COVSUITE(){
    return ["cases","maps","diagrams","calcs","dna"].every(k=>typeof n[k]!=="number"||h.includes(`<b>${fmtN(n[k])}</b>`))&&(h.match(/class="cv-sig"/g)||[]).length>=4});
  T("Cover frame · the portrait sits in its own frame, which holds no figure",()=>{const h=VIEWS.home();const i=h.indexOf('<figure class="cv-portrait"');if(i<0)return false;
    const f=h.slice(i,h.indexOf("</figure>",i));return !/<svg|data-motif/.test(f)&&/<img/.test(f)});
- T("Profile frame · the portrait frame holds no figure, and the economics panel is a separate cell",()=>{const h=abCover();const i=h.indexOf('ab-portrait');const j=h.indexOf('<aside class="ab-panel"');
-   return i>0&&j>i&&!/<svg/.test(h.slice(i,j))});
+ T("Profile frame · the About portrait is its own cell, and the cover draws no figure that could sit over it",()=>{const h=abCover();
+   const i=h.indexOf('class="abfig ab-portrait');return i>0&&!/<svg|data-motif|rn-plot/.test(h)&&h.split('class="abfig').length===2});
+ T("Profile frame · About reads as a biography: credentials, journey, classroom, principles, story, and the longer version folded",()=>{const h=aboutPage();
+   return ["At a glance","The journey","In the classroom","What I believe","The platform story","The longer version"].every(x=>h.includes(x))&&/<details class="ab-more"/.test(h)});
  /* the elasticity lab against worked cases */
  const W=[[{up:true,p:10,q:5},-0.5,"price inelastic",1],[{up:true,p:10,q:20},-2,"price elastic",-1],[{up:false,p:10,q:10},-1,"unit elastic",-1],
   [{up:true,p:20,q:0},0,"perfectly inelastic",1],[{up:false,p:20,q:40},-2,"price elastic",1]];
@@ -37477,11 +37658,26 @@ function COVSUITE(){
  T("Mindmap links · the explore mode, as the map page calls it, shows the links for a focused node",()=>{const k=MM.focus;
    try{const m=mmGet("market");MM.focus="dem";return !!m&&MMBODY.explore(m).includes("mm-further")}finally{MM.focus=k}});
  T("Mindmap links · a node with a subtopic offers links that run to real handlers",()=>{const h=mmFurther({sub:"2.5"});return /Go further/.test(h)&&(h.match(/<dd>/g)||[]).length>=2&&!/onclick=""/.test(h)});
+ /* calculation audit, round 3 */
+ T("Calc r3 · one parser reads a Unicode minus, a decimal comma and a thousands comma",()=>numIn("−31")===-31&&numIn("0,75")===0.75&&numIn("2,5")===2.5&&numIn("1,020")===1020&&numIn("1,234.5")===1234.5&&numIn(" -0.5 ")===-0.5);
+ T("Calc r3 · the gym credits the signed PED (−0.5) as well as its magnitude",()=>{const d=DATA.find(x=>x.id==="d2");const it={num:d.ans,tol:d.tol,abs:d.abs};
+   const ok=v=>Math.abs(v-parseFloat(it.num))<=it.tol||(it.abs&&Math.abs(Math.abs(v)-Math.abs(parseFloat(it.num)))<=it.tol);return ok(-0.5)&&ok(0.5)&&!ok(-1)&&!ok(0.25)});
+ T("Calc r3 · the revision run and the teacher starter ask for what they mark",()=>!/Calculate <strong>\$\{cal\.n\.toLowerCase/.test(rrBuild.toString())&&/cal\.ask/.test(rrBuild.toString())&&/cal\.ask/.test(rsGen.toString()));
+ T("Calc r3 · impossible inputs are refused with a reason",()=>{const c=id=>CALC.find(x=>x.id===id);
+   return !!calcGuard(c("unemp"),{u:500,l:400})&&!!calcGuard(c("cs"),{wtp:10,p:12,q:5})&&!!calcGuard(c("mult"),{mps:-.2,mpt:.3,mpm:.1,inj:10})
+    &&!!calcGuard(c("ped"),{p1:0,p2:2,q1:100,q2:90})&&calcGuard(c("unemp"),{u:30,l:400})===null&&calcGuard(c("mult"),{mps:.2,mpt:.2,mpm:.1,inj:10})===null});
+ T("Calc r3 · a large elasticity worked from rounded percentages is credited, and one out by half is not",()=>{const c=CALC.find(x=>x.id==="ped");const a=-10.91,t=Math.max(c.tol,Math.abs(a)*(c.tolRel||.001));
+   return Math.abs(-10.83-a)<=t&&Math.abs(-5.45-a)>t});
+ T("Calc r3 · zero net property income and zero net exports are described as zero",()=>{const g=CALC.find(x=>x.id==="gni"),e=CALC.find(x=>x.id==="gdpexp");
+   return /GNI equals GDP/.test(g.interp({gdp:100,inflow:10,outflow:10},100))&&/neither add to nor subtract from/.test(e.interp({c:50,i:20,g:30,x:40,mm:40},140))});
+ T("Calc r3 · the Lorenz tool reports an undefined ratio, not a billion, when the poorest fifth has nothing",()=>{const k=LZ.sh.slice();try{LZ.sh=[0,0,0,0,100];const a=lzCalc();LZ.sh=[0,0,0,0,0];const b=lzCalc();return a.ratio===null&&b.gini===null}finally{LZ.sh=k}});
+ T("Calc r3 · zero quantity response reads as perfectly inelastic, and a negative PES is flagged",()=>{const p=CALC.find(x=>x.id==="ped"),s2=CALC.find(x=>x.id==="pes");
+   return /perfectly inelastic/.test(p.interp({p1:10,p2:12,q1:100,q2:100},0))&&/law of supply does not predict/.test(s2.interp({p1:10,p2:12,q1:100,q2:90},-0.5))});
  return out;
 }
 COVSUITE.suiteName="Cover and composition";
 EXTRA_SUITES.push(COVSUITE);
-QAREPORT.push({area:"Cover, profile, cases and rooms",re:/^(Cover model|Cover frame|Profile frame|Elasticity lab|Exam rooms|Case links|Case intelligence|Mindmap links) · /,
+QAREPORT.push({area:"Cover, profile, cases and rooms",re:/^(Calc r3|Cover model|Cover frame|Profile frame|Elasticity lab|Exam rooms|Case links|Case intelligence|Mindmap links) · /,
  what:"That the cover's movable market stays in equilibrium at every position and explains the shift correctly, the scale signals are counted from data, the portrait never shares a frame with a figure, the elasticity lab's arithmetic matches worked cases, every exam room opens a real tab and only official material is labelled official, and case links open the case."});
 
 /* ═══════════════════════════════════════════════════════════════════════════
