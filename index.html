@@ -1654,9 +1654,7 @@ footer.ft{padding-top:0}
 .rn-tlae .kc{max-width:880px;margin-top:var(--s4)}
 .dg-read-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.dg-read-grid .kc{margin:10px 0}@media(max-width:760px){.dg-read-grid{grid-template-columns:minmax(0,1fr)}}
 /* ═══ COVER · the home page opening ═══════════════════════════════════════ */
-.cv .in.cv-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.3fr);gap:clamp(28px,4vw,72px);align-items:center;
-  padding-block:clamp(40px,4.4vw,76px) clamp(40px,4.4vw,72px)}
-.cv h1.cv-h{font-family:var(--dsp);font-weight:400;font-size:clamp(42px,4.6vw,74px);line-height:.98;letter-spacing:-.022em;color:#fff;max-width:14ch}
+
 .cv-h em{font-style:italic;color:var(--brs-l)}
 .cv-think{font-family:var(--ser);font-size:clamp(18px,1.5vw,21px);font-style:italic;color:rgba(255,255,255,.9)}
 .cv-lede{font-family:var(--ser);font-weight:300;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:rgba(255,255,255,.76);max-width:42ch}
@@ -1694,10 +1692,6 @@ footer.ft{padding-top:0}
 .cv-portrait figcaption b{font-family:var(--ser);font-size:17px;color:#fff}.cv-portrait figcaption span{font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.62)}
 .cv-portrait .lnk{color:var(--brs-l);font-size:13px;align-self:flex-start}
 body.rn-anim .cv-svg .m-c:not(.dsh){animation:rnDraw 1.4s var(--ez) both}
-@media (max-width:1279px){.cv .in.cv-grid{grid-template-columns:minmax(0,1fr)}.cv h1.cv-h{max-width:16ch}}
-@media (max-width:640px){.cv-lab{grid-template-columns:minmax(0,1fr)}
- .cv-portrait{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;align-items:center;order:-1}
- .cv-portrait figcaption{margin-top:0}.cv-scale{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* the hinge: the cover's dark fades into the page */
 .rn-hinge{background:linear-gradient(180deg,var(--obs) 0,var(--obs) 8px,var(--chalk) 120px);padding:clamp(56px,6vw,96px) 0 clamp(8px,1vw,16px)}
 .hg-h{font-family:var(--dsp);font-size:clamp(38px,5vw,76px);line-height:1;letter-spacing:-.02em;color:var(--tx);margin-top:14px}
@@ -1837,6 +1831,128 @@ body.rn-anim .cv-svg .m-c:not(.dsh){animation:rnDraw 1.4s var(--ez) both}
 /* the opener figure's caption sat on the figure's top edge and ran across the
    y-axis title; it now sits just below the figure */
 .hero .rn-plot .rn-cap{top:calc(100% + 4px)}
+
+/* ═══ COVER 2 · "Think like an economist." as the signature ════════════════
+   Four areas that never overlap: the statement, the live model, the author
+   in a tall editorial panel of their own, and the platform in numbers along
+   the foot. The portrait sits in its own column at every width; nothing is
+   drawn behind it. */
+.cv .in.cv-grid{display:grid;gap:clamp(24px,3vw,56px) clamp(24px,2.8vw,52px);align-items:start;
+  grid-template-columns:minmax(0,1.12fr) minmax(0,1fr) minmax(250px,.62fr);
+  grid-template-areas:"copy lab por" "stat stat por";padding-block:clamp(40px,4.4vw,76px) clamp(36px,3.6vw,60px)}
+.cv-copy{grid-area:copy;min-width:0}.cv-lab{grid-area:lab;display:block;min-width:0}
+.cv-portrait{grid-area:por;align-self:stretch;display:flex;flex-direction:column}
+.cv-scale{grid-area:stat;max-width:none;grid-template-columns:repeat(6,minmax(0,1fr));gap:0 clamp(12px,1.6vw,24px);align-self:end}
+.cv h1.cv-h{font-family:var(--dsp);font-weight:400;font-size:clamp(46px,5.6vw,96px);line-height:.94;letter-spacing:-.028em;color:#fff;max-width:11ch}
+.cv h1.cv-h em{font-style:italic;color:var(--brs-l)}
+.cv-lede{max-width:40ch}
+.cv-verbs{display:flex;flex-wrap:wrap;align-items:center;gap:2px 10px;font-family:var(--ui);color:rgba(255,255,255,.4)}
+.cv-verb{font-size:12.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.86);padding:10px 0;min-height:44px;
+  border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.cv-verb:hover,.cv-verb:focus-visible{color:var(--brs-l);border-bottom-color:var(--brs-l)}
+.cv-cta{gap:10px}
+.cv-verbs{row-gap:0}@media (max-width:420px){.cv-verbs{gap:0 8px}.cv-verb{letter-spacing:.1em;font-size:12px}}
+/* the author panel: tall, framed, captioned like a plate in a journal */
+.cv-frame{flex:1;min-height:320px;aspect-ratio:auto;padding:0;border:0;position:relative;background:#0f1114}
+.cv-frame::after{content:"";position:absolute;inset:0;border:1px solid rgba(201,174,114,.45);pointer-events:none}
+.cv-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cv-portrait figcaption{gap:4px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.16)}
+.cv-role{font-family:var(--ui);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--brs-l)}
+.cv-portrait figcaption b{font-family:var(--dsp);font-weight:400;font-size:clamp(24px,2vw,30px);line-height:1.05}
+.cv-auth{display:grid;gap:6px;margin:8px 0 6px}
+.cv-auth div{display:grid;grid-template-columns:62px minmax(0,1fr);gap:8px;align-items:baseline}
+.cv-auth dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.cv-auth dd{margin:0;font-size:13px;line-height:1.4;color:rgba(255,255,255,.8)}
+/* the platform in numbers: editorial data, set in the data face */
+.cv-sig{border-top:1px solid rgba(255,255,255,.22);padding:12px 0 6px}
+.cv-sig b{font-family:var(--mono);font-weight:500;font-size:clamp(22px,2vw,32px);letter-spacing:-.02em;color:#fff}
+.cv-sig span{font-family:var(--ui);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-top:6px}
+/* a definition on hover or focus: the chip teaches before it is clicked */
+.cv-chip{position:relative}
+.cv-chip[data-def]:not([data-def=""])::after{content:attr(data-def);position:absolute;left:0;bottom:calc(100% + 8px);width:max-content;max-width:260px;white-space:normal;
+  font-family:var(--ser);font-weight:400;font-size:13.5px;line-height:1.4;text-align:left;color:var(--tx);background:var(--chalk);padding:9px 11px;
+  border-left:3px solid var(--brs);box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;transform:translateY(4px);pointer-events:none;transition:opacity .18s,transform .18s;z-index:5}
+.cv-chip:hover::after,.cv-chip:focus-visible::after{opacity:1;transform:none}
+/* below 1280px economics still comes first: the statement and the live model share the first row, and the author becomes a wide card */
+@media (max-width:1279px){
+ .cv .in.cv-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"copy lab" "por por" "stat stat"}
+ .cv-portrait{display:grid;grid-template-columns:minmax(170px,.42fr) minmax(0,1fr);gap:clamp(18px,2.4vw,32px);align-items:stretch;
+  border-top:1px solid rgba(255,255,255,.14);padding-top:clamp(18px,2vw,26px)}
+ .cv-frame{min-height:250px}
+ .cv-portrait figcaption{margin-top:0;border-top:0;padding-top:0;justify-content:center}
+ .cv-auth{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px}
+ .cv-auth div{grid-template-columns:minmax(0,1fr);gap:2px}}
+@media (max-width:999px){.cv .in.cv-grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "lab" "por" "stat"}.cv-lab{max-width:680px}}
+@media (max-width:760px){
+ .cv-portrait{grid-template-columns:minmax(120px,.8fr) minmax(0,1.2fr);gap:16px}
+ .cv-auth{grid-template-columns:minmax(0,1fr)}
+ .cv-frame{min-height:220px}.cv-portrait figcaption{margin-top:0;border-top:0;padding-top:0}
+ .cv-scale{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:420px){.cv-portrait{grid-template-columns:minmax(0,1fr)}.cv-frame{min-height:0;aspect-ratio:4/5;flex:none}.cv-scale{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){.cv-chip::after{transition:none}}
+/* the cover fits the first screen at 1280-1440 x 900: statement, model, author and numbers */
+@media (min-width:1280px){
+ .cv .in.cv-grid{grid-template-columns:minmax(0,1.22fr) minmax(0,1fr) minmax(240px,.56fr);padding-block:clamp(32px,3vw,52px) clamp(28px,2.6vw,44px);row-gap:clamp(18px,2vw,32px)}
+ .cv h1.cv-h{font-size:clamp(52px,5.2vw,88px)}
+ .cv-lede{font-size:clamp(16px,1.25vw,19px);max-width:44ch}
+ .cv-cta .btn.lg{padding-inline:17px;font-size:15px}
+ .cv-more{display:none}
+ .cv-frame{min-height:0}}
+.cv-cta .btn.gh.on-ink{border-color:rgba(255,255,255,.3)}
+/* ═══ ECONOMICS BACKGROUND SYSTEM ═════════════════════════════════════
+   Six families of faint economic drawing, used as texture and never behind
+   the reading measure at full strength: micro (supply, demand, a tax wedge),
+   macro (AD, AS, LRAS, a cycle around trend), global (a trade network and a
+   rate series), development (Lorenz curves), research (estimates with
+   intervals) and markets (a price series). Paper and ink variants. */
+:root{--bgx-micro:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' fill='none' stroke='%231A1C20' stroke-width='1.3' stroke-linecap='round'%3E%3Cline x1='60' y1='60' x2='960' y2='560'/%3E%3Cline x1='160' y1='60' x2='980' y2='560'/%3E%3Cline x1='260' y1='60' x2='1000' y2='560'/%3E%3Cline x1='80' y1='560' x2='600' y2='80'/%3E%3Cline x1='200' y1='560' x2='720' y2='80'/%3E%3Cline x1='320' y1='560' x2='840' y2='80'/%3E%3Cline x1='560' y1='250' x2='560' y2='330' stroke-dasharray='4 5'/%3E%3Cpath d='M60 300 L420 300 L60 60 Z' stroke-dasharray='2 6'/%3E%3C/svg%3E");--bgx-micro-i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' fill='none' stroke='%23F8F6F1' stroke-width='1.3' stroke-linecap='round'%3E%3Cline x1='60' y1='60' x2='960' y2='560'/%3E%3Cline x1='160' y1='60' x2='980' y2='560'/%3E%3Cline x1='260' y1='60' x2='1000' y2='560'/%3E%3Cline x1='80' y1='560' x2='600' y2='80'/%3E%3Cline x1='200' y1='560' x2='720' y2='80'/%3E%3Cline x1='320' y1='560' x2='840' y2='80'/%3E%3Cline x1='560' y1='250' x2='560' y2='330' stroke-dasharray='4 5'/%3E%3Cpath d='M60 300 L420 300 L60 60 Z' stroke-dasharray='2 6'/%3E%3C/svg%3E")}
+:root{--bgx-macro:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' fill='none' stroke='%231A1C20' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M100 90 C 260 300, 380 420, 640 520'/%3E%3Cpath d='M220 90 C 380 300, 500 420, 760 520'/%3E%3Cpath d='M340 90 C 500 300, 620 420, 880 520'/%3E%3Cpath d='M120 520 C 420 500, 620 380, 820 90'/%3E%3Cline x1='560' y1='60' x2='560' y2='560'/%3E%3Cline x1='700' y1='60' x2='700' y2='560' stroke-dasharray='5 6'/%3E%3Cpolyline points='0,440 20,450 40,459 60,466 80,472 100,476 120,477 140,475 160,470 180,462 200,452 220,439 240,424 260,408 280,391 300,375 320,358 340,343 360,330 380,319 400,310 420,304 440,302 460,302 480,305 500,310 520,317 540,326 560,336 580,345 600,354 620,363 640,369 660,373 680,375 700,374 720,370 740,363 760,353 780,341 800,327 820,311 840,294 860,277 880,261 900,245 920,231 940,220 960,210 980,204 1000,200 1020,200 1040,202 1060,207 1080,213 1100,222 1120,231 1140,241 1160,250 1180,259 1200,266'/%3E%3Cline x1='0' y1='440' x2='1200' y2='224' stroke-dasharray='3 7'/%3E%3C/svg%3E");--bgx-macro-i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' fill='none' stroke='%23F8F6F1' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M100 90 C 260 300, 380 420, 640 520'/%3E%3Cpath d='M220 90 C 380 300, 500 420, 760 520'/%3E%3Cpath d='M340 90 C 500 300, 620 420, 880 520'/%3E%3Cpath d='M120 520 C 420 500, 620 380, 820 90'/%3E%3Cline x1='560' y1='60' x2='560' y2='560'/%3E%3Cline x1='700' y1='60' x2='700' y2='560' stroke-dasharray='5 6'/%3E%3Cpolyline points='0,440 20,450 40,459 60,466 80,472 100,476 120,477 140,475 160,470 180,462 200,452 220,439 240,424 260,408 280,391 300,375 320,358 340,343 360,330 380,319 400,310 420,304 440,302 460,302 480,305 500,310 520,317 540,326 560,336 580,345 600,354 620,363 640,369 660,373 680,375 700,374 720,370 740,363 760,353 780,341 800,327 820,311 840,294 860,277 880,261 900,245 920,231 940,220 960,210 980,204 1000,200 1020,200 1040,202 1060,207 1080,213 1100,222 1120,231 1140,241 1160,250 1180,259 1200,266'/%3E%3Cline x1='0' y1='440' x2='1200' y2='224' stroke-dasharray='3 7'/%3E%3C/svg%3E")}
+:root{--bgx-global:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' fill='none' stroke='%231A1C20' stroke-width='1.3' stroke-linecap='round'%3E%3Ccircle cx='120' cy='420' r='4'/%3E%3Ccircle cx='260' cy='200' r='4'/%3E%3Ccircle cx='420' cy='330' r='4'/%3E%3Ccircle cx='560' cy='150' r='4'/%3E%3Ccircle cx='700' cy='380' r='4'/%3E%3Ccircle cx='860' cy='220' r='4'/%3E%3Ccircle cx='1010' cy='340' r='4'/%3E%3Ccircle cx='1120' cy='160' r='4'/%3E%3Cpath d='M120 420 Q 270.0 240 420 330'/%3E%3Cpath d='M260 200 Q 410.0 60 560 150'/%3E%3Cpath d='M420 330 Q 560.0 240 700 380'/%3E%3Cpath d='M560 150 Q 710.0 60 860 220'/%3E%3Cpath d='M700 380 Q 855.0 250 1010 340'/%3E%3Cpath d='M860 220 Q 990.0 70 1120 160'/%3E%3Cpath d='M120 420 Q 410.0 290 700 380'/%3E%3Cpath d='M260 200 Q 560.0 110 860 220'/%3E%3Cpath d='M420 330 Q 715.0 240 1010 340'/%3E%3Cpath d='M560 150 Q 840.0 60 1120 160'/%3E%3Cpolyline points='0,530 12,532 24,528 36,526 48,529 60,537 72,544 84,544 96,534 108,520 120,508 132,505 144,509 156,513 168,512 180,505 192,498 204,497 216,506 228,520 240,533 252,538 264,535 276,529 288,528 300,533 312,539 324,541 336,534 348,520 360,506 372,500 384,502 396,509 408,512 420,509 432,504 444,501 456,507 468,520 480,534 492,542 504,540 516,534 528,528 540,528 552,533 564,536 576,532 588,520 600,506 612,497 624,497 636,504 648,512 660,513 672,510 684,507 696,509 708,520 720,534 732,544 744,545 756,538 768,529 780,525 792,527 804,530 816,529 828,520 840,506 852,495 864,494 876,501 888,511 900,517 912,517 924,513 936,513 948,521 960,533 972,544 984,547 996,541 1008,530 1020,522 1032,520 1044,523 1056,524 1068,519 1080,507 1092,496 1104,492 1116,498 1128,509 1140,519 1152,523 1164,521 1176,518 1188,522 1200,532'/%3E%3C/svg%3E");--bgx-global-i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' fill='none' stroke='%23F8F6F1' stroke-width='1.3' stroke-linecap='round'%3E%3Ccircle cx='120' cy='420' r='4'/%3E%3Ccircle cx='260' cy='200' r='4'/%3E%3Ccircle cx='420' cy='330' r='4'/%3E%3Ccircle cx='560' cy='150' r='4'/%3E%3Ccircle cx='700' cy='380' r='4'/%3E%3Ccircle cx='860' cy='220' r='4'/%3E%3Ccircle cx='1010' cy='340' r='4'/%3E%3Ccircle cx='1120' cy='160' r='4'/%3E%3Cpath d='M120 420 Q 270.0 240 420 330'/%3E%3Cpath d='M260 200 Q 410.0 60 560 150'/%3E%3Cpath d='M420 330 Q 560.0 240 700 380'/%3E%3Cpath d='M560 150 Q 710.0 60 860 220'/%3E%3Cpath d='M700 380 Q 855.0 250 1010 340'/%3E%3Cpath d='M860 220 Q 990.0 70 1120 160'/%3E%3Cpath d='M120 420 Q 410.0 290 700 380'/%3E%3Cpath d='M260 200 Q 560.0 110 860 220'/%3E%3Cpath d='M420 330 Q 715.0 240 1010 340'/%3E%3Cpath d='M560 150 Q 840.0 60 1120 160'/%3E%3Cpolyline points='0,530 12,532 24,528 36,526 48,529 60,537 72,544 84,544 96,534 108,520 120,508 132,505 144,509 156,513 168,512 180,505 192,498 204,497 216,506 228,520 240,533 252,538 264,535 276,529 288,528 300,533 312,539 324,541 336,534 348,520 360,506 372,500 384,502 396,509 408,512 420,509 432,504 444,501 456,507 468,520 480,534 492,542 504,540 516,534 528,528 540,528 552,533 564,536 576,532 588,520 600,506 612,497 624,497 636,504 648,512 660,513 672,510 684,507 696,509 708,520 720,534 732,544 744,545 756,538 768,529 780,525 792,527 804,530 816,529 828,520 840,506 852,495 864,494 876,501 888,511 900,517 912,517 924,513 936,513 948,521 960,533 972,544 984,547 996,541 1008,530 1020,522 1032,520 1044,523 1056,524 1068,519 1080,507 1092,496 1104,492 1116,498 1128,509 1140,519 1152,523 1164,521 1176,518 1188,522 1200,532'/%3E%3C/svg%3E")}
+:root{--bgx-dev:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' fill='none' stroke='%231A1C20' stroke-width='1.3' stroke-linecap='round'%3E%3Crect x='300' y='60' width='500' height='500'/%3E%3Cline x1='300' y1='560' x2='800' y2='60'/%3E%3Cpolyline points='300,560 312,559 325,556 338,552 350,547 362,542 375,536 388,529 400,522 412,514 425,506 438,497 450,487 462,477 475,467 488,456 500,445 512,433 525,421 538,408 550,395 562,382 575,368 588,354 600,339 612,324 625,309 638,293 650,277 662,261 675,244 688,227 700,210 712,192 725,174 738,156 750,138 762,119 775,99 788,80 800,60'/%3E%3Cpolyline points='300,560 312,560 325,560 338,559 350,558 362,557 375,555 388,552 400,549 412,546 425,542 438,537 450,532 462,526 475,520 488,513 500,505 512,496 525,486 538,476 550,465 562,453 575,441 588,428 600,413 612,398 625,382 638,365 650,348 662,329 675,309 688,289 700,267 712,245 725,221 738,197 750,172 762,145 775,118 788,89 800,60'/%3E%3Cpolyline points='300,560 312,560 325,560 338,560 350,560 362,560 375,559 388,559 400,558 412,558 425,557 438,555 450,553 462,551 475,549 488,545 500,542 512,537 525,532 538,526 550,519 562,511 575,502 588,492 600,481 612,468 625,454 638,439 650,422 662,403 675,383 688,360 700,336 712,310 725,281 738,251 750,218 762,182 775,144 788,104 800,60'/%3E%3C/svg%3E");--bgx-dev-i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' fill='none' stroke='%23F8F6F1' stroke-width='1.3' stroke-linecap='round'%3E%3Crect x='300' y='60' width='500' height='500'/%3E%3Cline x1='300' y1='560' x2='800' y2='60'/%3E%3Cpolyline points='300,560 312,559 325,556 338,552 350,547 362,542 375,536 388,529 400,522 412,514 425,506 438,497 450,487 462,477 475,467 488,456 500,445 512,433 525,421 538,408 550,395 562,382 575,368 588,354 600,339 612,324 625,309 638,293 650,277 662,261 675,244 688,227 700,210 712,192 725,174 738,156 750,138 762,119 775,99 788,80 800,60'/%3E%3Cpolyline points='300,560 312,560 325,560 338,559 350,558 362,557 375,555 388,552 400,549 412,546 425,542 438,537 450,532 462,526 475,520 488,513 500,505 512,496 525,486 538,476 550,465 562,453 575,441 588,428 600,413 612,398 625,382 638,365 650,348 662,329 675,309 688,289 700,267 712,245 725,221 738,197 750,172 762,145 775,118 788,89 800,60'/%3E%3Cpolyline points='300,560 312,560 325,560 338,560 350,560 362,560 375,559 388,559 400,558 412,558 425,557 438,555 450,553 462,551 475,549 488,545 500,542 512,537 525,532 538,526 550,519 562,511 575,502 588,492 600,481 612,468 625,454 638,439 650,422 662,403 675,383 688,360 700,336 712,310 725,281 738,251 750,218 762,182 775,144 788,104 800,60'/%3E%3C/svg%3E")}
+:root{--bgx-research:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' fill='none' stroke='%231A1C20' stroke-width='1.3' stroke-linecap='round'%3E%3Cline x1='100' y1='424' x2='100' y2='468'/%3E%3Ccircle cx='100' cy='446' r='3.5'/%3E%3Cline x1='94' y1='424' x2='106' y2='424'/%3E%3Cline x1='94' y1='468' x2='106' y2='468'/%3E%3Cline x1='166' y1='434' x2='166' y2='474'/%3E%3Ccircle cx='166' cy='454' r='3.5'/%3E%3Cline x1='160' y1='434' x2='172' y2='434'/%3E%3Cline x1='160' y1='474' x2='172' y2='474'/%3E%3Cline x1='232' y1='399' x2='232' y2='455'/%3E%3Ccircle cx='232' cy='427' r='3.5'/%3E%3Cline x1='226' y1='399' x2='238' y2='399'/%3E%3Cline x1='226' y1='455' x2='238' y2='455'/%3E%3Cline x1='298' y1='338' x2='298' y2='403'/%3E%3Ccircle cx='298' cy='371' r='3.5'/%3E%3Cline x1='292' y1='338' x2='304' y2='338'/%3E%3Cline x1='292' y1='403' x2='304' y2='403'/%3E%3Cline x1='364' y1='321' x2='364' y2='381'/%3E%3Ccircle cx='364' cy='351' r='3.5'/%3E%3Cline x1='358' y1='321' x2='370' y2='321'/%3E%3Cline x1='358' y1='381' x2='370' y2='381'/%3E%3Cline x1='430' y1='315' x2='430' y2='356'/%3E%3Ccircle cx='430' cy='336' r='3.5'/%3E%3Cline x1='424' y1='315' x2='436' y2='315'/%3E%3Cline x1='424' y1='356' x2='436' y2='356'/%3E%3Cline x1='496' y1='305' x2='496' y2='387'/%3E%3Ccircle cx='496' cy='346' r='3.5'/%3E%3Cline x1='490' y1='305' x2='502' y2='305'/%3E%3Cline x1='490' y1='387' x2='502' y2='387'/%3E%3Cline x1='562' y1='280' x2='562' y2='328'/%3E%3Ccircle cx='562' cy='304' r='3.5'/%3E%3Cline x1='556' y1='280' x2='568' y2='280'/%3E%3Cline x1='556' y1='328' x2='568' y2='328'/%3E%3Cline x1='628' y1='282' x2='628' y2='371'/%3E%3Ccircle cx='628' cy='326' r='3.5'/%3E%3Cline x1='622' y1='282' x2='634' y2='282'/%3E%3Cline x1='622' y1='371' x2='634' y2='371'/%3E%3Cline x1='694' y1='275' x2='694' y2='333'/%3E%3Ccircle cx='694' cy='304' r='3.5'/%3E%3Cline x1='688' y1='275' x2='700' y2='275'/%3E%3Cline x1='688' y1='333' x2='700' y2='333'/%3E%3Cline x1='760' y1='299' x2='760' y2='337'/%3E%3Ccircle cx='760' cy='318' r='3.5'/%3E%3Cline x1='754' y1='299' x2='766' y2='299'/%3E%3Cline x1='754' y1='337' x2='766' y2='337'/%3E%3Cline x1='826' y1='265' x2='826' y2='317'/%3E%3Ccircle cx='826' cy='291' r='3.5'/%3E%3Cline x1='820' y1='265' x2='832' y2='265'/%3E%3Cline x1='820' y1='317' x2='832' y2='317'/%3E%3Cline x1='892' y1='194' x2='892' y2='237'/%3E%3Ccircle cx='892' cy='216' r='3.5'/%3E%3Cline x1='886' y1='194' x2='898' y2='194'/%3E%3Cline x1='886' y1='237' x2='898' y2='237'/%3E%3Cline x1='958' y1='170' x2='958' y2='252'/%3E%3Ccircle cx='958' cy='211' r='3.5'/%3E%3Cline x1='952' y1='170' x2='964' y2='170'/%3E%3Cline x1='952' y1='252' x2='964' y2='252'/%3E%3Cline x1='1024' y1='148' x2='1024' y2='217'/%3E%3Ccircle cx='1024' cy='182' r='3.5'/%3E%3Cline x1='1018' y1='148' x2='1030' y2='148'/%3E%3Cline x1='1018' y1='217' x2='1030' y2='217'/%3E%3Cline x1='1090' y1='173' x2='1090' y2='230'/%3E%3Ccircle cx='1090' cy='201' r='3.5'/%3E%3Cline x1='1084' y1='173' x2='1096' y2='173'/%3E%3Cline x1='1084' y1='230' x2='1096' y2='230'/%3E%3Cline x1='80' y1='480' x2='1120' y2='190' stroke-dasharray='6 6'/%3E%3Ctext x='180' y='120' font-family='Georgia,serif' font-size='22'%3E%E2%80%A0%3C/text%3E%3Ctext x='520' y='120' font-family='Georgia,serif' font-size='22'%3E%E2%80%A0%3C/text%3E%3Ctext x='900' y='120' font-family='Georgia,serif' font-size='22'%3E%E2%80%A0%3C/text%3E%3C/svg%3E");--bgx-research-i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' fill='none' stroke='%23F8F6F1' stroke-width='1.3' stroke-linecap='round'%3E%3Cline x1='100' y1='424' x2='100' y2='468'/%3E%3Ccircle cx='100' cy='446' r='3.5'/%3E%3Cline x1='94' y1='424' x2='106' y2='424'/%3E%3Cline x1='94' y1='468' x2='106' y2='468'/%3E%3Cline x1='166' y1='434' x2='166' y2='474'/%3E%3Ccircle cx='166' cy='454' r='3.5'/%3E%3Cline x1='160' y1='434' x2='172' y2='434'/%3E%3Cline x1='160' y1='474' x2='172' y2='474'/%3E%3Cline x1='232' y1='399' x2='232' y2='455'/%3E%3Ccircle cx='232' cy='427' r='3.5'/%3E%3Cline x1='226' y1='399' x2='238' y2='399'/%3E%3Cline x1='226' y1='455' x2='238' y2='455'/%3E%3Cline x1='298' y1='338' x2='298' y2='403'/%3E%3Ccircle cx='298' cy='371' r='3.5'/%3E%3Cline x1='292' y1='338' x2='304' y2='338'/%3E%3Cline x1='292' y1='403' x2='304' y2='403'/%3E%3Cline x1='364' y1='321' x2='364' y2='381'/%3E%3Ccircle cx='364' cy='351' r='3.5'/%3E%3Cline x1='358' y1='321' x2='370' y2='321'/%3E%3Cline x1='358' y1='381' x2='370' y2='381'/%3E%3Cline x1='430' y1='315' x2='430' y2='356'/%3E%3Ccircle cx='430' cy='336' r='3.5'/%3E%3Cline x1='424' y1='315' x2='436' y2='315'/%3E%3Cline x1='424' y1='356' x2='436' y2='356'/%3E%3Cline x1='496' y1='305' x2='496' y2='387'/%3E%3Ccircle cx='496' cy='346' r='3.5'/%3E%3Cline x1='490' y1='305' x2='502' y2='305'/%3E%3Cline x1='490' y1='387' x2='502' y2='387'/%3E%3Cline x1='562' y1='280' x2='562' y2='328'/%3E%3Ccircle cx='562' cy='304' r='3.5'/%3E%3Cline x1='556' y1='280' x2='568' y2='280'/%3E%3Cline x1='556' y1='328' x2='568' y2='328'/%3E%3Cline x1='628' y1='282' x2='628' y2='371'/%3E%3Ccircle cx='628' cy='326' r='3.5'/%3E%3Cline x1='622' y1='282' x2='634' y2='282'/%3E%3Cline x1='622' y1='371' x2='634' y2='371'/%3E%3Cline x1='694' y1='275' x2='694' y2='333'/%3E%3Ccircle cx='694' cy='304' r='3.5'/%3E%3Cline x1='688' y1='275' x2='700' y2='275'/%3E%3Cline x1='688' y1='333' x2='700' y2='333'/%3E%3Cline x1='760' y1='299' x2='760' y2='337'/%3E%3Ccircle cx='760' cy='318' r='3.5'/%3E%3Cline x1='754' y1='299' x2='766' y2='299'/%3E%3Cline x1='754' y1='337' x2='766' y2='337'/%3E%3Cline x1='826' y1='265' x2='826' y2='317'/%3E%3Ccircle cx='826' cy='291' r='3.5'/%3E%3Cline x1='820' y1='265' x2='832' y2='265'/%3E%3Cline x1='820' y1='317' x2='832' y2='317'/%3E%3Cline x1='892' y1='194' x2='892' y2='237'/%3E%3Ccircle cx='892' cy='216' r='3.5'/%3E%3Cline x1='886' y1='194' x2='898' y2='194'/%3E%3Cline x1='886' y1='237' x2='898' y2='237'/%3E%3Cline x1='958' y1='170' x2='958' y2='252'/%3E%3Ccircle cx='958' cy='211' r='3.5'/%3E%3Cline x1='952' y1='170' x2='964' y2='170'/%3E%3Cline x1='952' y1='252' x2='964' y2='252'/%3E%3Cline x1='1024' y1='148' x2='1024' y2='217'/%3E%3Ccircle cx='1024' cy='182' r='3.5'/%3E%3Cline x1='1018' y1='148' x2='1030' y2='148'/%3E%3Cline x1='1018' y1='217' x2='1030' y2='217'/%3E%3Cline x1='1090' y1='173' x2='1090' y2='230'/%3E%3Ccircle cx='1090' cy='201' r='3.5'/%3E%3Cline x1='1084' y1='173' x2='1096' y2='173'/%3E%3Cline x1='1084' y1='230' x2='1096' y2='230'/%3E%3Cline x1='80' y1='480' x2='1120' y2='190' stroke-dasharray='6 6'/%3E%3Ctext x='180' y='120' font-family='Georgia,serif' font-size='22'%3E%E2%80%A0%3C/text%3E%3Ctext x='520' y='120' font-family='Georgia,serif' font-size='22'%3E%E2%80%A0%3C/text%3E%3Ctext x='900' y='120' font-family='Georgia,serif' font-size='22'%3E%E2%80%A0%3C/text%3E%3C/svg%3E")}
+:root{--bgx-markets:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' fill='none' stroke='%231A1C20' stroke-width='1.3' stroke-linecap='round'%3E%3Cline x1='40' y1='331' x2='40' y2='372'/%3E%3Crect x='34' y='346' width='12' height='14'/%3E%3Cline x1='65' y1='330' x2='65' y2='357'/%3E%3Crect x='59' y='346' width='12' height='4'/%3E%3Cline x1='90' y1='305' x2='90' y2='360'/%3E%3Crect x='84' y='325' width='12' height='25'/%3E%3Cline x1='115' y1='289' x2='115' y2='338'/%3E%3Crect x='109' y='310' width='12' height='14'/%3E%3Cline x1='140' y1='297' x2='140' y2='343'/%3E%3Crect x='134' y='310' width='12' height='16'/%3E%3Cline x1='165' y1='292' x2='165' y2='346'/%3E%3Crect x='159' y='308' width='12' height='18'/%3E%3Cline x1='190' y1='290' x2='190' y2='325'/%3E%3Crect x='184' y='308' width='12' height='3'/%3E%3Cline x1='215' y1='267' x2='215' y2='323'/%3E%3Crect x='209' y='285' width='12' height='23'/%3E%3Cline x1='240' y1='268' x2='240' y2='305'/%3E%3Crect x='234' y='274' width='12' height='11'/%3E%3Cline x1='265' y1='254' x2='265' y2='294'/%3E%3Crect x='259' y='272' width='12' height='3'/%3E%3Cline x1='290' y1='251' x2='290' y2='294'/%3E%3Crect x='284' y='272' width='12' height='10'/%3E%3Cline x1='315' y1='268' x2='315' y2='317'/%3E%3Crect x='309' y='282' width='12' height='14'/%3E%3Cline x1='340' y1='288' x2='340' y2='322'/%3E%3Crect x='334' y='296' width='12' height='18'/%3E%3Cline x1='365' y1='277' x2='365' y2='327'/%3E%3Crect x='359' y='298' width='12' height='15'/%3E%3Cline x1='390' y1='288' x2='390' y2='318'/%3E%3Crect x='384' y='298' width='12' height='5'/%3E%3Cline x1='415' y1='285' x2='415' y2='319'/%3E%3Crect x='409' y='297' width='12' height='7'/%3E%3Cline x1='440' y1='277' x2='440' y2='317'/%3E%3Crect x='434' y='297' width='12' height='3'/%3E%3Cline x1='465' y1='281' x2='465' y2='343'/%3E%3Crect x='459' y='300' width='12' height='20'/%3E%3Cline x1='490' y1='312' x2='490' y2='348'/%3E%3Crect x='484' y='321' width='12' height='8'/%3E%3Cline x1='515' y1='308' x2='515' y2='366'/%3E%3Crect x='509' y='328' width='12' height='22'/%3E%3Cline x1='540' y1='341' x2='540' y2='380'/%3E%3Crect x='534' y='351' width='12' height='10'/%3E%3Cline x1='565' y1='350' x2='565' y2='370'/%3E%3Crect x='559' y='360' width='12' height='3'/%3E%3Cline x1='590' y1='341' x2='590' y2='387'/%3E%3Crect x='584' y='363' width='12' height='17'/%3E%3Cline x1='615' y1='367' x2='615' y2='402'/%3E%3Crect x='609' y='380' width='12' height='14'/%3E%3Cline x1='640' y1='364' x2='640' y2='414'/%3E%3Crect x='634' y='382' width='12' height='11'/%3E%3Cline x1='665' y1='343' x2='665' y2='389'/%3E%3Crect x='659' y='359' width='12' height='24'/%3E%3Cline x1='690' y1='347' x2='690' y2='389'/%3E%3Crect x='684' y='359' width='12' height='10'/%3E%3Cline x1='715' y1='354' x2='715' y2='413'/%3E%3Crect x='709' y='368' width='12' height='23'/%3E%3Cline x1='740' y1='374' x2='740' y2='407'/%3E%3Crect x='734' y='381' width='12' height='11'/%3E%3Cline x1='765' y1='347' x2='765' y2='393'/%3E%3Crect x='759' y='357' width='12' height='24'/%3E%3Cline x1='790' y1='348' x2='790' y2='368'/%3E%3Crect x='784' y='357' width='12' height='5'/%3E%3Cline x1='815' y1='350' x2='815' y2='400'/%3E%3Crect x='809' y='361' width='12' height='17'/%3E%3Cline x1='840' y1='366' x2='840' y2='411'/%3E%3Crect x='834' y='378' width='12' height='19'/%3E%3Cline x1='865' y1='381' x2='865' y2='413'/%3E%3Crect x='859' y='397' width='12' height='3'/%3E%3Cline x1='890' y1='381' x2='890' y2='420'/%3E%3Crect x='884' y='397' width='12' height='3'/%3E%3Cline x1='915' y1='386' x2='915' y2='417'/%3E%3Crect x='909' y='399' width='12' height='3'/%3E%3Cline x1='940' y1='374' x2='940' y2='420'/%3E%3Crect x='934' y='384' width='12' height='14'/%3E%3Cline x1='965' y1='370' x2='965' y2='391'/%3E%3Crect x='959' y='384' width='12' height='3'/%3E%3Cline x1='990' y1='364' x2='990' y2='391'/%3E%3Crect x='984' y='379' width='12' height='5'/%3E%3Cline x1='1015' y1='363' x2='1015' y2='391'/%3E%3Crect x='1009' y='379' width='12' height='5'/%3E%3Cline x1='1040' y1='371' x2='1040' y2='406'/%3E%3Crect x='1034' y='384' width='12' height='5'/%3E%3Cline x1='1065' y1='364' x2='1065' y2='407'/%3E%3Crect x='1059' y='381' width='12' height='8'/%3E%3Cline x1='1090' y1='349' x2='1090' y2='398'/%3E%3Crect x='1084' y='356' width='12' height='25'/%3E%3Cline x1='1115' y1='346' x2='1115' y2='392'/%3E%3Crect x='1109' y='356' width='12' height='22'/%3E%3Cline x1='1140' y1='367' x2='1140' y2='394'/%3E%3Crect x='1134' y='378' width='12' height='4'/%3E%3Cline x1='1165' y1='360' x2='1165' y2='398'/%3E%3Crect x='1159' y='372' width='12' height='10'/%3E%3Cpolyline points='40,346 65,348 90,340 115,333 140,332 165,328 190,321 215,310 240,302 265,296 290,288 315,286 340,287 365,289 390,294 415,298 440,301 465,306 490,308 515,317 540,326 565,337 590,350 615,363 640,372 665,373 690,374 715,379 740,379 765,373 790,369 815,373 840,378 865,379 890,382 915,389 940,393 965,394 990,391 1015,388 1040,387 1065,384 1090,379 1115,378 1140,379 1165,376' stroke-dasharray='1 0'/%3E%3C/svg%3E");--bgx-markets-i:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' fill='none' stroke='%23F8F6F1' stroke-width='1.3' stroke-linecap='round'%3E%3Cline x1='40' y1='331' x2='40' y2='372'/%3E%3Crect x='34' y='346' width='12' height='14'/%3E%3Cline x1='65' y1='330' x2='65' y2='357'/%3E%3Crect x='59' y='346' width='12' height='4'/%3E%3Cline x1='90' y1='305' x2='90' y2='360'/%3E%3Crect x='84' y='325' width='12' height='25'/%3E%3Cline x1='115' y1='289' x2='115' y2='338'/%3E%3Crect x='109' y='310' width='12' height='14'/%3E%3Cline x1='140' y1='297' x2='140' y2='343'/%3E%3Crect x='134' y='310' width='12' height='16'/%3E%3Cline x1='165' y1='292' x2='165' y2='346'/%3E%3Crect x='159' y='308' width='12' height='18'/%3E%3Cline x1='190' y1='290' x2='190' y2='325'/%3E%3Crect x='184' y='308' width='12' height='3'/%3E%3Cline x1='215' y1='267' x2='215' y2='323'/%3E%3Crect x='209' y='285' width='12' height='23'/%3E%3Cline x1='240' y1='268' x2='240' y2='305'/%3E%3Crect x='234' y='274' width='12' height='11'/%3E%3Cline x1='265' y1='254' x2='265' y2='294'/%3E%3Crect x='259' y='272' width='12' height='3'/%3E%3Cline x1='290' y1='251' x2='290' y2='294'/%3E%3Crect x='284' y='272' width='12' height='10'/%3E%3Cline x1='315' y1='268' x2='315' y2='317'/%3E%3Crect x='309' y='282' width='12' height='14'/%3E%3Cline x1='340' y1='288' x2='340' y2='322'/%3E%3Crect x='334' y='296' width='12' height='18'/%3E%3Cline x1='365' y1='277' x2='365' y2='327'/%3E%3Crect x='359' y='298' width='12' height='15'/%3E%3Cline x1='390' y1='288' x2='390' y2='318'/%3E%3Crect x='384' y='298' width='12' height='5'/%3E%3Cline x1='415' y1='285' x2='415' y2='319'/%3E%3Crect x='409' y='297' width='12' height='7'/%3E%3Cline x1='440' y1='277' x2='440' y2='317'/%3E%3Crect x='434' y='297' width='12' height='3'/%3E%3Cline x1='465' y1='281' x2='465' y2='343'/%3E%3Crect x='459' y='300' width='12' height='20'/%3E%3Cline x1='490' y1='312' x2='490' y2='348'/%3E%3Crect x='484' y='321' width='12' height='8'/%3E%3Cline x1='515' y1='308' x2='515' y2='366'/%3E%3Crect x='509' y='328' width='12' height='22'/%3E%3Cline x1='540' y1='341' x2='540' y2='380'/%3E%3Crect x='534' y='351' width='12' height='10'/%3E%3Cline x1='565' y1='350' x2='565' y2='370'/%3E%3Crect x='559' y='360' width='12' height='3'/%3E%3Cline x1='590' y1='341' x2='590' y2='387'/%3E%3Crect x='584' y='363' width='12' height='17'/%3E%3Cline x1='615' y1='367' x2='615' y2='402'/%3E%3Crect x='609' y='380' width='12' height='14'/%3E%3Cline x1='640' y1='364' x2='640' y2='414'/%3E%3Crect x='634' y='382' width='12' height='11'/%3E%3Cline x1='665' y1='343' x2='665' y2='389'/%3E%3Crect x='659' y='359' width='12' height='24'/%3E%3Cline x1='690' y1='347' x2='690' y2='389'/%3E%3Crect x='684' y='359' width='12' height='10'/%3E%3Cline x1='715' y1='354' x2='715' y2='413'/%3E%3Crect x='709' y='368' width='12' height='23'/%3E%3Cline x1='740' y1='374' x2='740' y2='407'/%3E%3Crect x='734' y='381' width='12' height='11'/%3E%3Cline x1='765' y1='347' x2='765' y2='393'/%3E%3Crect x='759' y='357' width='12' height='24'/%3E%3Cline x1='790' y1='348' x2='790' y2='368'/%3E%3Crect x='784' y='357' width='12' height='5'/%3E%3Cline x1='815' y1='350' x2='815' y2='400'/%3E%3Crect x='809' y='361' width='12' height='17'/%3E%3Cline x1='840' y1='366' x2='840' y2='411'/%3E%3Crect x='834' y='378' width='12' height='19'/%3E%3Cline x1='865' y1='381' x2='865' y2='413'/%3E%3Crect x='859' y='397' width='12' height='3'/%3E%3Cline x1='890' y1='381' x2='890' y2='420'/%3E%3Crect x='884' y='397' width='12' height='3'/%3E%3Cline x1='915' y1='386' x2='915' y2='417'/%3E%3Crect x='909' y='399' width='12' height='3'/%3E%3Cline x1='940' y1='374' x2='940' y2='420'/%3E%3Crect x='934' y='384' width='12' height='14'/%3E%3Cline x1='965' y1='370' x2='965' y2='391'/%3E%3Crect x='959' y='384' width='12' height='3'/%3E%3Cline x1='990' y1='364' x2='990' y2='391'/%3E%3Crect x='984' y='379' width='12' height='5'/%3E%3Cline x1='1015' y1='363' x2='1015' y2='391'/%3E%3Crect x='1009' y='379' width='12' height='5'/%3E%3Cline x1='1040' y1='371' x2='1040' y2='406'/%3E%3Crect x='1034' y='384' width='12' height='5'/%3E%3Cline x1='1065' y1='364' x2='1065' y2='407'/%3E%3Crect x='1059' y='381' width='12' height='8'/%3E%3Cline x1='1090' y1='349' x2='1090' y2='398'/%3E%3Crect x='1084' y='356' width='12' height='25'/%3E%3Cline x1='1115' y1='346' x2='1115' y2='392'/%3E%3Crect x='1109' y='356' width='12' height='22'/%3E%3Cline x1='1140' y1='367' x2='1140' y2='394'/%3E%3Crect x='1134' y='378' width='12' height='4'/%3E%3Cline x1='1165' y1='360' x2='1165' y2='398'/%3E%3Crect x='1159' y='372' width='12' height='10'/%3E%3Cpolyline points='40,346 65,348 90,340 115,333 140,332 165,328 190,321 215,310 240,302 265,296 290,288 315,286 340,287 365,289 390,294 415,298 440,301 465,306 490,308 515,317 540,326 565,337 590,350 615,363 640,372 665,373 690,374 715,379 740,379 765,373 790,369 815,373 840,378 865,379 890,382 915,389 940,393 965,394 990,391 1015,388 1040,387 1065,384 1090,379 1115,378 1140,379 1165,376' stroke-dasharray='1 0'/%3E%3C/svg%3E")}
+/* each section's opener carries its family on the ink, very faint and weighted to the lower left, away from the page figure */
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:.07;background:var(--bgx) left -4% bottom -18%/min(1100px,86%) auto no-repeat}
+.hero.paper::after{opacity:.05}
+.hero > .wrap,.hero > .in{position:relative;z-index:1}
+body[data-sec="course"],body[data-sec="learn"],body[data-sec="think"],body[data-sec="everywhere"],body[data-sec="tok"]{--bgx:var(--bgx-micro-i)}
+body[data-sec="lab"],body[data-sec="calculate"],body[data-sec="tools"],body[data-sec="arjun"],body[data-sec="video"]{--bgx:var(--bgx-markets-i)}
+body[data-sec="world"],body[data-sec="mind"]{--bgx:var(--bgx-global-i)}
+body[data-sec="examiner"],body[data-sec="papers"],body[data-sec="dna"],body[data-sec="practise"],body[data-sec="ees"],body[data-sec="ia"],body[data-sec="educator"],body[data-sec="teacher"]{--bgx:var(--bgx-research-i)}
+body[data-sec="syllabus"],body[data-sec="resources"]{--bgx:var(--bgx-macro-i)}
+.hero.paper{--bgx:var(--bgx-research)}
+body[data-sec="home"] .hero.cv::after,body[data-sec="about"] .hero::after{display:none}
+/* home bands: the family that belongs to the chapter, on paper, drawn from the far edge */
+.rn-band{position:relative;isolation:isolate}
+.rn-band.sp-learn::before,.rn-band.sp-lab::before,.rn-band.sp-exam::before,.rn-band.sp-research::before,.rn-band.sp-edu::before,.rn-glance::before{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.055;background:var(--bgx-b) right -6% center/min(980px,78%) auto no-repeat}
+.rn-band.sp-learn{--bgx-b:var(--bgx-micro)}.rn-band.sp-lab{--bgx-b:var(--bgx-markets)}.rn-band.sp-exam{--bgx-b:var(--bgx-research)}
+.rn-band.sp-research{--bgx-b:var(--bgx-research)}.rn-band.sp-edu{--bgx-b:var(--bgx-macro)}.rn-glance{--bgx-b:var(--bgx-dev)}
+.rn-final::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.07;background:var(--bgx-macro-i) center bottom -30%/min(1200px,100%) auto no-repeat}
+.rn-final{position:relative;isolation:isolate}.rn-final > *{position:relative}
+@media (max-width:760px){.rn-band.sp-learn::before,.rn-band.sp-lab::before,.rn-band.sp-exam::before,.rn-band.sp-research::before,.rn-band.sp-edu::before,.rn-glance::before{background-position:right -40% top 20px;opacity:.04}}
+/* ═══ ECONOMIC HORIZONS · a transition that is itself economics ═══════
+   The dark cover dissolves into paper through the hinge. Between later
+   chapters a few transitions take an economic form: two curves meeting at an
+   equilibrium, a cycle around its trend, and a data grid thinning into paper. */
+.hz{height:60px;margin-top:clamp(28px,3vw,44px);position:relative}
+.hz svg{width:100%;height:100%;display:block;overflow:visible}
+.hz path,.hz line{fill:none;stroke:var(--hair-3);stroke-width:1;vector-effect:non-scaling-stroke}
+.hz-eqm path:first-child{stroke:var(--sup);opacity:.55}.hz-eqm path:nth-child(2){stroke:var(--dem);opacity:.55}
+.hz-eqm circle{fill:var(--brs)}
+.hz-curve path{stroke:var(--brs);opacity:.7}.hz-curve line{stroke-dasharray:3 6}
+.hz-grid{height:44px;background-image:linear-gradient(90deg,rgba(26,28,32,.10) 1px,transparent 1px),linear-gradient(0deg,rgba(26,28,32,.10) 1px,transparent 1px);
+ background-size:24px 24px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent),linear-gradient(0deg,transparent,#000);
+ mask-image:linear-gradient(180deg,#000,transparent)}
+.hz + .rn-chap{padding-top:10px}
+body.rn-anim .hz-eqm path,body.rn-anim .hz-curve path{stroke-dasharray:1400;stroke-dashoffset:1400;animation:hzDraw 1.8s var(--ez) .1s forwards}
+@keyframes hzDraw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.hz path{animation:none!important;stroke-dashoffset:0!important}}
+/* the hinge: the brand's first idea, on the horizon where the cover's dark meets the paper */
+.rn-hinge{background:linear-gradient(180deg,var(--obs) 0,var(--obs) 6px,#3a3530 40px,var(--chalk) 150px)}
+/* on the home page the chapter marks carry the numbering; a band's own running number would be a second, competing sequence */
+body[data-sec="home"] #view .shead > .n{display:none}
+.rn-band.sp-lab::before{opacity:.035}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -36763,13 +36879,20 @@ function rnGlance(){const n=rnCount();
  </div></section>`}
 function rnDivider(t,s){return `<div class="wrap full rn-divider"><span class="rn-dv-t">${esc(t)}</span><span class="rn-dv-s">${esc(s)}</span></div>`}
 /* the order the home page reads in; bands are matched by their heading */
-/* the home page reads as a story in chapters: the platform, today, the world,
-   the theory, the lab, the exam, the research, the media, the educator, the
-   creator, and an invitation to start. "#n|Title" marks a chapter opener. */
-const RN_ORDER=["#01|The platform","Start your journey","@atlas","@today","#02|The world","@lead","Economics, right now",
- "#03|The theory","@mind","#04|The lab","What happens next?","#05|The exam","@exam","Today's challenge",
- "#06|The research","@research","#07|The media","Economics, Everywhere","Timeless ideas","Inflation targeting","Latest from Arjun",
- "#08|The educator","@educator","#09|The creator","@creator","Work through the platform",
+/* the home page reads as a story in eleven chapters, one verb each: think,
+   learn, see, interact, connect, practise, research, explore, watch, teach,
+   and the person behind it. "#n|Title" marks a chapter opener. */
+const RN_ORDER=["#01|Think","Start your journey","@atlas","@today",
+ "#02|Learn","@learn","Timeless ideas","Inflation targeting",
+ "#03|See","@lead","Economics, right now",
+ "#04|Interact","@labs","What happens next?",
+ "#05|Connect","@mind",
+ "#06|Practise","@exam","Today's challenge",
+ "#07|Research","@research",
+ "#08|Explore","Economics, Everywhere",
+ "#09|Watch","Latest from Arjun",
+ "#10|Teach","@educator",
+ "#11|About","@creator","Work through the platform",
  "@desk","One next step","Continue where you left off","What should I do next?","Six ways in","The Arjun method","@glance","@final"];
 function rnHome(html){
  if(typeof document==="undefined")return html;
@@ -36779,7 +36902,7 @@ function rnHome(html){
  const hero=kids.find(el=>el.matches("section.hero"));
  const rest=kids.filter(el=>el!==hero);
  const NEW={"@atlas":rnAtlas,"@today":rnToday,"@lead":rnLead,"@mind":rnMind,"@glance":rnGlance,
-  "@exam":rnExamBand,"@research":rnResearchBand,"@educator":rnEducatorBand,"@creator":rnCreatorBand,"@final":rnFinalBand,
+  "@exam":rnExamBand,"@learn":rnLearnBand,"@labs":rnLabsBand,"@research":rnResearchBand,"@educator":rnEducatorBand,"@creator":rnCreatorBand,"@final":rnFinalBand,
   "@desk":()=>"\u0001DESK\u0001"};
  const used=new Set();let out=rnCover(hero);
  for(const k of RN_ORDER){
@@ -36930,18 +37053,23 @@ function cvScale(){const n=rnCount();
   ["calcs","calculations","nav('calculate')"],["dna","Exam DNA questions","nav('dna')"]].filter(([k])=>typeof n[k]==="number")
   .map(([k,l,go])=>`<li><button class="cv-sig" onclick="${go}"><b>${fmtN(n[k])}</b><span>${esc(l)}</span></button></li>`).join("")
   +`<li><button class="cv-sig" onclick="nav('ees')"><b>IA · EE</b><span>research studios</span></button></li>`}
+/* the verbs of the cover, each a door: see it, learn it, move it, question it, master it */
+const CV_VERBS=[["Explore","nav('world')","Real World: economics happening now"],["Learn","nav('learn')","Concepts, models and the course"],
+ ["Apply","nav('lab')","Labs where the model moves"],["Question",null,"The economist's toolkit"],["Master","nav('practise')","Practice, exam rooms and Exam DNA"]];
+/* who the author is, stated only from the supplied profile (ABOUT, ABOUT2): no degree, date or title is added */
+const CV_AUTHOR=[["Studied","Economics, St. Stephen's College, University of Delhi"],["Taught","Undergraduate Economics, Fergusson College, Pune"],
+ ["Teaches","IB DP Economics, Business Management and Global Politics"],["Mentors","UPSC Civil Services aspirants in Economics"]];
 function rnCover(old){
  const kept=old?[...old.querySelectorAll(".in > *")].filter(e=>!e.matches(".eb,.kicker,h1,.lede,.row")).map(e=>e.outerHTML).join(""):"";
  const m=PHOTOMETA.hero;
  return `<section class="hero rn-home cv" aria-labelledby="cv-h"><div class="wrap full in cv-grid">
   <div class="cv-copy">
-   <div class="eb">IB DP Economics · Arjun Agrawal</div>
-   <h1 class="cv-h mt2" id="cv-h">Economics is a way of <em>seeing</em>.</h1>
-   <p class="cv-think mt3">Think like an economist.</p>
-   <p class="cv-lede mt2">Choices, incentives, institutions and the world around us, learned through models you can move, cases you can question and exams you can read.</p>
-   <div class="row mt4 cv-cta"><button class="btn lg a" onclick="nav('learn')">Start learning →</button><button class="btn lg on-ink" onclick="nav('world')">Explore Real World</button></div>
+   <div class="eb">IB DP Economics</div>
+   <h1 class="cv-h mt2" id="cv-h">Think like an <em>economist</em>.</h1>
+   <p class="cv-lede mt3">A laboratory, a textbook and a research studio for IB Diploma Programme Economics: see a model move, question what it assumes, and test it against the world.</p>
+   <nav class="cv-verbs mt3" aria-label="Five ways in">${CV_VERBS.map(([t,go,d])=>`<button class="cv-verb" onclick="${go||goTab("think",TLAE_TAB)}" title="${esA(d)}">${esc(t)}</button>`).join('<span aria-hidden="true">·</span>')}</nav>
+   <div class="row mt4 cv-cta"><button class="btn lg a" onclick="nav('learn')">Start learning →</button><button class="btn lg on-ink" onclick="nav('world')">Explore Real World</button><button class="btn lg gh on-ink" onclick="nav('lab')">Explore the Lab</button></div>
    <p class="cv-more mt3">Or go straight to <button class="lnk" onclick="nav('practise',0)">the question bank</button> or <button class="lnk" onclick="nav('learn',1)">the curriculum</button>.</p>
-   <ul class="cv-scale mt4" aria-label="What the platform holds">${cvScale()}</ul>
    <div class="rn-kept">${kept}</div></div>
   <div class="cv-lab">
    <div class="cv-plate"><div class="cv-plate-h"><span class="kicker">The model, live</span><span class="cv-note">tap a marked point · illustrative units</span></div>
@@ -36949,10 +37077,16 @@ function rnCover(old){
      ${CV_SPOTS.map(([t,f,go,d],i)=>{const [x,y]=cvPos(f);return `<button class="cv-spot" id="cv-spot-${i}" style="left:${x}%;top:${y}%" onclick="${go}" aria-label="${esc(t)}: ${esc(d)}. Open it"><span class="cv-dot" aria-hidden="true"></span><span class="cv-tip"><b>${esc(t)}</b>${esc(d)} →</span></button>`}).join("")}</div>
     <label class="cv-ctl" for="cv-shift"><span>Move demand</span><input id="cv-shift" type="range" min="-2" max="2" step="0.5" value="${CV.s}" oninput="cvSet(this.value)" aria-describedby="cv-read"></label>
     <p class="cv-read" id="cv-read" aria-live="polite">${esc(cvRead())}</p>
-    <div class="cv-chips" role="group" aria-label="Explore a concept">${CV_CHIPS.map(([t,go])=>`<button class="cv-chip" onclick="${go}">${esc(t)}</button>`).join("")}</div></div>
-   <figure class="cv-portrait"><div class="cv-frame"><img src="${photoURL("hero")}" alt="${esc(m.alt)}" width="${m.w}" height="${m.h}" style="object-position:${m.pos}" decoding="async"></div>
-    <figcaption><b>Arjun Agrawal</b><span>IB DP Economics educator and resource creator</span><button class="lnk" onclick="nav('about')">About →</button></figcaption></figure>
-  </div></div></section>`}
+    <div class="cv-chips" role="group" aria-label="Explore a concept">${CV_CHIPS.map(([t,go])=>`<button class="cv-chip" onclick="${go}" data-def="${esA(cvDef(go))}">${esc(t)}</button>`).join("")}</div></div></div>
+  <figure class="cv-portrait"><div class="cv-frame"><img src="${photoURL("hero")}" alt="${esc(m.alt)}" width="${m.w}" height="${m.h}" style="object-position:${m.pos}" decoding="async"></div>
+   <figcaption><span class="cv-role">Author and guide</span><b>Arjun Agrawal</b>
+    <dl class="cv-auth">${CV_AUTHOR.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+    <button class="lnk" onclick="nav('about')">The academic behind the platform →</button></figcaption></figure>
+  <ul class="cv-scale" aria-label="What the platform holds">${cvScale()}</ul>
+ </div></section>`}
+/* the definition a chip reveals on hover or focus, taken from the concept page it opens */
+function cvDef(go){const m=/'(c-[a-z0-9-]+)'/.exec(go);const c=m&&typeof CONCEPTS!=="undefined"?CONCEPTS.find(x=>x.id===m[1]):null;
+ return c?String(c.def).split(/(?<=\.)\s/)[0]:""}
 /* ── the story continues: chapters and the bands they need ─────────────── */
 function goTab(v,name){const s=SECTIONS.find(x=>x.v===v);const i=s&&s.tabs?s.tabs.indexOf(name):-1;return `nav('${v}',${i<0?0:i})`}
 function rnBand(o){return `<section class="sec rn-band rn-split ${o.cls||""}"><div class="wrap full"><div class="sp-grid">
@@ -36960,6 +37094,25 @@ function rnBand(o){return `<section class="sec rn-band rn-split ${o.cls||""}"><d
    <p class="ed mt2">${o.lede}</p>${o.label?`<p class="xs mt2"><span class="tag">${esc(o.label)}</span></p>`:""}
    <ul class="sp-rooms mt3">${o.items.map(([t,d,go,tag])=>`<li><button class="sp-room" onclick="${go}"><span class="sp-t">${esc(t)}${tag?` <span class="sp-tag">${esc(tag)}</span>`:""}</span><span class="sp-d">${esc(d)}</span></button></li>`).join("")}</ul></div>
   <figure class="rn-fig sp-fig">${o.fig}</figure></div></div></section>`}
+function rnLearnBand(){return rnBand({h:"Concepts, models and the course",aside:"The core, with depth when you want it",cls:"sp-learn",
+ lede:"Every concept is stored as a mechanism, not a definition: what happens, what happens next, and who is affected. Open the core idea first; go deeper only when you choose to.",
+ fig:`<span data-motif="flow"></span><figcaption>${esc(motifCap("flow"))}</figcaption>`,
+ items:[["Concept spine","Twenty concepts, each told as a chain of cause and effect",goTab("learn","Concept spine"),""],
+  ["The course at a glance","Units, real-world issues and the key concepts",goTab("course","At a glance"),""],
+  ["Misconception lab","The mistakes that cost marks, and the correct idea",goTab("learn","Misconception lab"),""],
+  ["Dictionary","Terms with their mechanism, not only their wording",goTab("course","Dictionary"),""],
+  ["Command terms","What each instruction word asks you to do",goTab("course","Command terms"),""],
+  ["Economics in 60 Seconds","One idea, one minute",goTab("learn","Economics in 60 Seconds"),""]]})}
+function rnLabsBand(){return rnBand({h:"The laboratory",aside:"Every interaction teaches one thing",cls:"sp-lab",
+ lede:"Move a curve and read what happens. Each lab is built from stated equations, so the diagram and the numbers cannot disagree, and each one names the idea it is there to teach.",
+ fig:`<span data-motif="tax"></span><figcaption>${esc(motifCap("tax"))}</figcaption>`,
+ items:[["Supply and demand","Shifts, movements, shortage and surplus",goTab("lab","Market lab"),""],
+  ["Elasticity","PED, its sign and what happens to revenue",goTab("lab","Elasticity lab"),""],
+  ["Indirect tax","The wedge, incidence, revenue and welfare loss","nav('everywhere',4,'tax')",""],
+  ["Externalities","Private and social costs, and the output gap between them","nav('everywhere',4,'ext')",""],
+  ["AD–AS","Output gaps, and what a shift does to prices and output",goTab("lab","AD-AS lab"),""],
+  ["Trade","Opportunity cost, comparative advantage and the gains","nav('everywhere',4,'trade')",""],
+  ["Exchange rates","Demand and supply of a currency; appreciation and depreciation","nav('everywhere',4,'fx')",""]]})}
 function rnExamBand(){return rnBand({h:"The exam room",aside:"Assessment, read closely",cls:"sp-exam",
  lede:"Three papers, their markbands and the habits that earn marks. Practise under time, read your answer against the published framework, and study how past papers are built.",
  fig:`<span data-motif="markbands"></span><figcaption>${esc(motifCap("markbands"))}</figcaption>`,
@@ -36993,7 +37146,7 @@ function rnCreatorBand(){const m=PHOTOMETA.teaching||PHOTOMETA.students,k=PHOTOM
  return `<section class="sec rn-band rn-creator"><div class="wrap full"><div class="cr-grid">
   <figure class="cr-fig"><div class="cr-frame"><img src="${photoURL(k)}" alt="${esc(m.alt)}" width="${m.w}" height="${m.h}" style="object-position:${m.pos}" loading="lazy" decoding="async"></div>
    <figcaption>${esc(m.cap)}</figcaption></figure>
-  <div class="cr-copy"><div class="shead fx"><span class="n">00</span><h2>The educator behind it</h2></div>
+  <div class="cr-copy"><div class="shead fx"><span class="n">00</span><h2>The academic behind the platform</h2></div>
    <p class="cr-quote mt3">“${esc(ABOUT.lede)}”</p>
    <p class="ed mt3">Every model, case, question and tool here was written and drawn for this platform, and every statement about the IB course names the document it comes from.</p>
    <div class="row mt4"><button class="btn" onclick="nav('about')">About Arjun Agrawal</button><button class="btn gh" onclick="nav('arjun')">Watch the videos</button><button class="btn gh" onclick="nav('tutorials')">Learn with Arjun</button></div></div>
@@ -37003,11 +37156,18 @@ function rnFinalBand(){return `<section class="sec rn-final bg-ink"><div class="
   <p class="fn-l">Pick a door. Every one of them leads to the rest.</p>
   <div class="row fn-row"><button class="btn lg a" onclick="nav('learn')">Start learning</button><button class="btn lg on-ink" onclick="randomOpen('')">Surprise me</button>
    <button class="btn lg gh on-ink" onclick="cpOpen()">Search the platform</button></div></div></section>`}
+/* chapter marks, and the "economic horizon": the transition between chapters
+   takes a different economic form at a few chosen points instead of the same
+   rule everywhere. 01 is the hinge from the dark cover into the paper. */
+const RN_HZ={"03":"grid","05":"eqm","07":"curve","09":"grid","11":"eqm"};
+function rnHorizon(kind){
+ if(kind==="eqm")return `<div class="hz hz-eqm" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 52 C 300 50, 500 36, 600 30 S 900 10, 1200 8"/><path d="M0 8 C 300 10, 500 24, 600 30 S 900 50, 1200 52"/><circle cx="600" cy="30" r="3.2"/></svg></div>`;
+ if(kind==="curve")return `<div class="hz hz-curve" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0 44 C 150 44, 200 16, 300 16 S 450 44, 600 44 S 750 16, 900 16 S 1050 44, 1200 44"/><line x1="0" y1="30" x2="1200" y2="30"/></svg></div>`;
+ return `<div class="hz hz-grid" aria-hidden="true"></div>`}
 function rnChapter(n,t){
- /* the first chapter is the hinge between the cover and the page: the dark of the cover fades into the paper beneath it */
  if(n==="01")return `<div class="rn-hinge"><div class="wrap full"><div class="rn-chap"><span class="ch-n">${n}</span><span class="ch-t">${esc(t)}</span></div>
-  <p class="hg-h">See the world <em>differently</em>.</p><p class="hg-l">Real World, mindmaps, labs, the exam and the research studios: every door below opens onto the same economics.</p></div></div>`;
- return `<div class="wrap full rn-chap"><span class="ch-n">${n}</span><span class="ch-t">${esc(t)}</span></div>`}
+  <p class="hg-h">Economics is a way of <em>seeing</em>.</p><p class="hg-l">Choices, incentives, institutions and the world around us. Learn a concept, see it happen, move the model, connect it, test it, research it: every door below opens onto the same economics.</p></div></div>`;
+ return `${RN_HZ[n]?`<div class="wrap full">${rnHorizon(RN_HZ[n])}</div>`:""}<div class="wrap full rn-chap"><span class="ch-n">${n}</span><span class="ch-t">${esc(t)}</span></div>`}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    ABOUT · a profile composed, not layered
@@ -37080,8 +37240,8 @@ function RENSUITE(){
  T("Identity · every paper section exists",()=>[...RN_PAPER].every(v=>SECTIONS.some(s=>s.v===v)));
  /* ── the front page ── */
  T("Front page · no band the home page had before is dropped",()=>{const t=h=>{const d=document.createElement("template");d.innerHTML=h;return [...d.content.children].map(e=>{const x=e.querySelector(".shead h2")||e.querySelector("h1,h2");return x?x.textContent.trim():""}).filter(Boolean)};
-   const before=t(RN.homePrev()),after=HOME();const miss=before.filter(x=>!after.includes(esc(x).slice(0,30))&&!after.includes(x.slice(0,30)));return miss.length===0?true:{ok:false,d:miss.join(" | ")}});
- T("Front page · the gateway, the daily page, the lead story, the network and the figures are present",()=>{const h=HOME();return ["Explore Economics","Today in Economics","Real World","See the whole idea","Economics at a glance","Think like an economist."].every(x=>h.includes(x))});
+   const before=t(RN.homePrev()),after=HOME()+" "+HOME().replace(/<[^>]+>/g,"");const miss=before.filter(x=>!after.includes(esc(x).slice(0,30))&&!after.includes(x.slice(0,30)));return miss.length===0?true:{ok:false,d:miss.join(" | ")}});
+ T("Front page · the gateway, the daily page, the lead story, the network and the figures are present",()=>{const h=HOME().replace(/<[^>]+>/g,"");return ["Explore Economics","Today in Economics","Real World","See the whole idea","Economics at a glance","Think like an economist."].every(x=>h.includes(x))});
  T("Front page · every gateway destination is a registered section",()=>{const h=rnAtlas();const v=[...h.matchAll(/onclick="nav\('([a-z]+)'\)"/g)].map(m=>m[1]);return v.length>=8&&v.every(x=>SECTIONS.some(s=>s.v===x))});
  T("Front page · the figures shown are the platform's own counts",()=>{const n=rnCount();return n.cases===RW_CASES.length&&n.maps===MMKEYS().length&&n.diagrams===DGKEYS.length&&n.calcs===CALC.length&&n.terms===GLOSS.length});
  T("Front page · the daily page is the same all day and changes across days",()=>{const d=new Date(2026,8,29,9),e=new Date(2026,8,29,22);const a=dailyItems(d),b=dailyItems(e);

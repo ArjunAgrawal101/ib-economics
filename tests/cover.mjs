@@ -44,7 +44,7 @@ check((await st(p)).v !== 'home', 'Start learning leaves the cover');
 await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
 check(await p.locator('.rn-hinge').count() === 1 && await p.locator('.rn-final').count() === 1, 'the home page runs from the hinge to the closing invitation');
 const order = await p.evaluate(() => [...document.querySelectorAll('.rn-chap .ch-t, .rn-hinge .ch-t')].map(e => e.textContent.trim()));
-check(order.join('|').startsWith('The platform|The world|The theory|The lab|The exam|The research|The media|The educator|The creator'), 'the chapters run in the narrative order', order.join('|'));
+check([...new Set(order)].join('|').startsWith('Think|Learn|See|Interact|Connect|Practise|Research|Explore|Watch|Teach|About'), 'the chapters run in the narrative order', order.join('|'));
 /* case links */
 const id = await p.evaluate(() => RW_CASES[3].id);
 await p.evaluate(i => nav('world', 0, i), id); await p.waitForTimeout(300);
