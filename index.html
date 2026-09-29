@@ -36240,8 +36240,6 @@ function motifSVG(key,opt){
 function motifCap(key){return (MOTIFS[key]||MOTIFS.sd).cap}
 /* The opener every page shares, now drawn for the page it opens. */
 heroPlot=function(){
- /* the self-test sweep paints every route to read its text; the figure is decoration, so the sweep skips drawing it (the motif suite checks the figures themselves) */
- if(typeof QARUNNING!=="undefined"&&QARUNNING)return `<div class="plot rn-plot" aria-hidden="true"></div>`;
  const k=motifFor();
  return `<div class="plot rn-plot" aria-hidden="true">${motifSVG(k)}<div class="rn-cap" data-cap="${esA(motifCap(k))}"></div></div>`};
 
