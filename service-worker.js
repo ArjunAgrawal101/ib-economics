@@ -20,7 +20,7 @@
    Cache-first for the static assets, which change only when the version below
    changes.
    ═══════════════════════════════════════════════════════════════════════════ */
-const VERSION = "aa-ibdp-econ-v12";
+const VERSION = "aa-ibdp-econ-v13";
 const CACHE = VERSION + "-static";
 
 /* Relative to the service worker's own location, so the platform works from a

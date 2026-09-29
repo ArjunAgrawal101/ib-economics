@@ -11,7 +11,8 @@ const ROUTES = ['', '#/course', '#/learn', '#/world', '#/mind', '#/lab/diagram-a
   '#/everywhere/in-real-life/r-surge', '#/everywhere/one-idea/i-externality', '#/everywhere/labs/trade', '#/everywhere/labs/adas',
   '#/everywhere/labs/game', '#/everywhere/economist-s-eye', '#/everywhere/where-the-numbers-live',
   '#/ees', '#/ees/research-question-lab', '#/ees/find-your-topic/microeconomics', '#/ees/theory-and-models/fx', '#/ees/data-lab', '#/ees/evidence-matrix',
-  '#/ees/academic-integrity-and-ai', '#/ees/quality-check', '#/ees/supervisor-mode', '#/arjun', '#/educator', '#/educator/handbook'];
+  '#/ees/academic-integrity-and-ai', '#/ees/quality-check', '#/ees/supervisor-mode', '#/arjun', '#/educator', '#/educator/handbook',
+  '#/think/economist-s-toolkit', '#/lab/diagram-atlas/tax', '#/learn/concept-spine/c-cadv', '#/world/real-world-economics/MIC-001'];
 for (const w of WIDTHS) {
   const ctx = await b.newContext({ viewport: { width: w, height: 800 } });
   const bad = [];
@@ -19,7 +20,7 @@ for (const w of WIDTHS) {
     const { p, errors } = await open(ctx, base + r);
     const m = await p.evaluate(() => {
       const ov = document.documentElement.scrollWidth - innerWidth;
-      const small = [...document.querySelectorAll('#view .ee-lab button, #view .ee-opt, #view .ee-chip, #view .ee-card, #view .es-tile, #view .es-opt, #view .pw-w, #view .edu-toc button')]
+      const small = [...document.querySelectorAll('#view .ee-lab button, #view .ee-opt, #view .ee-chip, #view .ee-card, #view .es-tile, #view .es-opt, #view .pw-w, #view .edu-toc button, #view .atl, #view .atx, #view .tk-lens, #view .td-card .lnk, #view .mn-node')]
         .filter(e => { const r = e.getBoundingClientRect(); return r.width > 0 && (r.height < 28 || r.width < 28); }).length;
       /* a table that scrolls sideways must be reachable from the keyboard */
       const unreach = [...document.querySelectorAll('#view .scrollx')]

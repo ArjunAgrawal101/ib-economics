@@ -41,8 +41,8 @@ the video studio says so and everything else works exactly as before.
 |---|---|
 | **Course** | The reference layer: the course at a glance, the six real-world issues, the nine key concepts, a complete curriculum explorer reading every subtopic three ways, an SL/HL difference explorer, a visual knowledge map, a 157-term economist's dictionary and a command term lab covering all 33 terms in the guide's glossary. |
 | **Learn** | Every concept in nine stages: the idea, intuition, the model, the diagram, the chain, the application, the stress test, the IB connection, retrieval. Plus a curriculum map and a misconception lab. |
-| **Think** | The Economic Chain: build a mechanism link by link against a live shock, then survive a conditionality test and choose between four judgements. Plus an evaluation stress test across fourteen dimensions, a concept-connection exercise, and a conditions library of the twelve conditions that carry almost every "it depends" in the course, with an assumptions lab and a "when does the model break?" lab beside it. |
-| **Lab** | Computed market and AD-AS models you can move, a transparent policy simulator, a 34-plate diagram atlas, a counterfactual "What if?" lab, a policy Decision Room, a "build it yourself" diagram builder, a 20-policy toolkit with a comparison matrix and a two-policy comparator, a Recommend-a-policy lab for HL Paper 3 part (b), an 11-model library stating assumptions before diagrams, a stakeholder / time-horizon / context lab, a predict-before-reveal mode for the diagrams, a "check my diagram" error detector, and three live integrity dashboards: model, content and links. |
+| **Think** | The Economic Chain: build a mechanism link by link against a live shock, then survive a conditionality test and choose between four judgements. Plus an evaluation stress test across fourteen dimensions, a concept-connection exercise, and a conditions library of the twelve conditions that carry almost every "it depends" in the course, with an assumptions lab and a "when does the model break?" lab beside it. Last, the economist's toolkit: eighteen lenses (incentives to institutions), each with its questions and links into the platform's own material. |
+| **Lab** | Computed market and AD-AS models you can move, a transparent policy simulator, a 35-plate diagram atlas (each plate with a reading guide: what changes, why, what the diagram does not show and the common mistake), a counterfactual "What if?" lab, a policy Decision Room, a "build it yourself" diagram builder, a 20-policy toolkit with a comparison matrix and a two-policy comparator, a Recommend-a-policy lab for HL Paper 3 part (b), an 11-model library stating assumptions before diagrams, a stakeholder / time-horizon / context lab, a predict-before-reveal mode for the diagrams, a "check my diagram" error detector, and three live integrity dashboards: model, content and links. |
 | **Calculate** | The calculation centre: 36 calculations with live working, units, interpretation, common mistakes, linked diagrams and generated practice that hides the solution until you attempt it: plus a printable calculation sheet for the student's own level. |
 | **Real World** | The largest section on the platform. 203 real-world cases remapped to the 2022 guide, each carrying its subtopic, level, papers, key concepts, diagram and evaluation, searchable and filterable by topic, concept, assessment, place, theme, level and case type; twelve of them worked to a full teaching standard. Around them: a twelve-zone case reader, a case-connection graph, Find me an example, Build an evaluation, Compare two cases, Use this case, three transfer challenges, My casebook, a syllabus atlas, a concept index, an assessment matrix and a sources-and-method page. The earlier surfaces are all still here: six recurring economic events, the eight worked cases split into verified fact, interpretation and inference, a data sources library, and an "Economics now" page that states plainly that this platform holds no live data. |
 | **Mindmaps** | Forty-two interactive maps of how an economist moves through a topic, in three classes: ten core maps for the strands of the course, twenty-two topic maps for individual syllabus subtopics, and ten synthesis maps that cross topics deliberately. All are built from the same eighteen-type visual language: concept, determinant, mechanism, model, diagram, calculation, application, evaluation, stakeholder, judgement, TOK, exam, assumption, formula, misconception, evidence, real-world case and policy. Thirteen modes per map, from exploring a node to repairing a claim that is nearly right, to building a chain into another part of the course, to asking what would change the result, to a revision pass, to projecting it in a classroom. Plus a pooled challenge set: find the missing link, spot the economic error, connect two ideas, and build from memory. |
@@ -73,6 +73,34 @@ the video studio says so and everything else works exactly as before.
 | **Arjun Agrawal · Video studio** | *Economics. Politics. International Relations.* The channel's own videos, read automatically from YouTube: featured, latest, by category, Shorts and playlists. Kept separate from the curated videos by other creators. |
 | **Educator Studio** | A professional handbook for new and experienced Economics teachers, extended essay supervisors and DP coordinators: role pathways into what the platform already holds, ten handbook modules with page citations to the guide and teacher support material, and coordinator notes. |
 | **Tutorials** | One-to-one IB DP Economics sessions with Arjun Agrawal. |
+
+## Design and discovery
+
+The platform reads as an economics publication rather than a long page of cards.
+
+- **An opener that is about the page.** Every page opens with a figure drawn for what it covers:
+  comparative advantage on the comparative advantage page, a Lorenz curve for inequality, markbands
+  in the exam room, and a case's own diagram on each Real World case. The 28 figures are built from
+  stated functions, so their intersections, wedges and shaded areas are where the economics puts
+  them, and the self-test recomputes them.
+- **A register for each section.** Journal paper for the course, Learn, the IA, the EE Studio, TOK
+  and Educators; a newsroom for Real World; graph paper for the labs; ruled paper for the exam room;
+  a field of nodes for mindmaps; a magazine for Economics, Everywhere. These are one system with one
+  palette (obsidian, burgundy, chalk, and brass for rules and ornaments). Semantic colour stays
+  inside diagrams.
+- **The home page.** A drawn model under "Think like an economist", a two-tier *Explore Economics*
+  gateway, *Today in Economics* (an idea, a case, a question and a word, chosen by the date, the
+  same for everyone and nothing recorded), a Real World lead story, the core mindmaps as a network,
+  and *Economics at a glance*, counted from the data as the page is drawn. The reader's own desk
+  folds on a first visit and opens once there is something on it. No band was removed.
+- **Discovery.**
+  - *Random Economics* surfaces a concept, case, diagram, mindmap, calculation, video, question,
+    puzzle, idea or term.
+  - Search ranks a term at the start of a word above the same letters inside one, and knows common
+    abbreviations (PED, GDP, LRAS, PPC).
+  - Every concept page and case ends with lens questions from the economist's toolkit.
+- **Motion.** Curves draw themselves once, the equilibrium breathes and figures count up. All of it
+  stops under `prefers-reduced-motion`, and none of it runs while the self-test paints the views.
 
 ## Economics, Everywhere
 
@@ -215,7 +243,7 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   required, and neither can leave a gap. Both also travel inside `index.html`, as JSON held in
   function bodies the engine skips until they are called. If the copy in `assets/data` loads, the
   bundled copy is never read; if it does not, the platform adopts the bundled copy and nothing on
-  the screen changes. A single copied `index.html` runs the full 1,870 checks with nothing failing
+  the screen changes. A single copied `index.html` runs the full 1,923 checks with nothing failing
   and has all 203 cases, all 212 analysed questions and all ten carousels.
 - **Diagram Engine 2.0.** Every quantitative diagram is generated from a declared model:
   equations, parameters, an equilibrium solver, then curves plotted from those same equations.
@@ -248,7 +276,7 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   five-second opening sequence; a fresh visit still plays it.
 - A command palette opens on `/` or `Ctrl`/`Cmd` + `K` and reaches every section, every printable and
   every indexed item of content.
-- The build includes a self-test of **1,870 checks** reported across every area of the build: startup, printing,
+- The build includes a self-test of **1,923 checks** reported across every area of the build: startup, printing,
   navigation, mobile, desktop, resources, Google Drive, IB Economics, TOK, economics theory, calculations,
   diagrams, mindmap integrity, topic architecture, assessment, IA, student features, teacher features,
   progress, storage, export and import, contact links, tutorials, branding, accessibility, performance,
@@ -269,7 +297,7 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   and its marking tolerance is checked to be tight enough to reject an answer that is out by half.
 - **Browser tests the page cannot run on itself** live in `tests/`: the self-test in a real browser,
   end-to-end journeys (addresses, Back, search filters, the labs, saving, the EE Studio's tools, the
-  video studio against a stubbed feed in every state), offline behaviour, every major route at nine
+  video studio against a stubbed feed in every state, the home page's gateway, daily page and folded desk, Random Economics, the toolkit, section openers and reduced motion), offline behaviour, every major route at nine
   widths from 320 to 1440 px, every route for page errors, and the YouTube function itself against a
   stubbed YouTube (including missing credentials, timeouts and malformed answers). They have their
   own `package.json` (Playwright), so the site itself stays free of dependencies and build steps.

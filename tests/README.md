@@ -25,6 +25,7 @@ npm test               # runs every suite
 | `widths.mjs` | Major routes and every kind of Economics, Everywhere page at 320, 375, 390, 412, 430, 768, 1024, 1280 and 1440 px: no horizontal overflow, no page errors, usable touch targets, and no sideways-scrolling table a keyboard cannot reach. |
 | `routes.mjs` | Every section and tab opened cold at 375 px and 1366 px. |
 | `ecosystem.mjs` | The Economics EE Studio (research question lab, evidence matrix, argument map, data lab, quality check), the video studio against a stubbed `/api/youtube` in every state (working, not configured, failing, error page, offline, empty, malformed, stale), the Educator Studio and the home pathways. |
+| `renaissance.mjs` | The home page's drawn opener, two-tier gateway, *Today in Economics* and folded desk; Random Economics (filtered, opened); the economist's toolkit and its links; paper openers and concept-specific figures; the diagram reading guide; abbreviation search; the footer index; and reduced motion switching every animation off. |
 | `api-youtube.mjs` | The `/api/youtube` function run in Node against a stubbed YouTube: setup messages, the Data API and RSS paths, caching, stale fallback, timeouts, malformed answers, and that the key is never returned. |
 
 To use an existing Chromium instead of downloading one, set
