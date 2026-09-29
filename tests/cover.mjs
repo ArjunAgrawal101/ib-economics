@@ -57,7 +57,7 @@ const hasFurther = await p.evaluate(async () => { const n = document.querySelect
 check(hasFurther === true, 'a mindmap node offers ways to go further', String(hasFurther));
 /* exam rooms */
 await p.evaluate(() => nav('examiner', 0)); await p.waitForTimeout(300);
-check(await p.locator('.rooms .room').count() === 10 && await p.locator('.rooms .room[aria-current="page"]').count() === 1, 'the exam area names its rooms and marks the current one');
+check(await p.locator('.rooms .room').count() === 14 && await p.locator('.rooms .room[aria-current="page"]').count() === 1, 'the exam area names its rooms and marks the current one');
 await p.locator('.rooms .room', { hasText: 'Paper 2 room' }).click(); await p.waitForTimeout(300);
 check(await p.evaluate(() => VIEW === 'papers' && SECTIONS.find(s => s.v === 'papers').tabs[TAB] === 'Paper 2 data lab'), 'a room opens its tab');
 /* the elasticity lab */
