@@ -1,368 +1,449 @@
 # Release report
 
-**Arjun Agrawal · IB DP Economics** · release 2026.09-c, *the Economics ecosystem*
+**Arjun Agrawal · IB DP Economics** · release 2026.09-d, *the renaissance*
 
-Written on 26 September 2026. Every number here comes from running something, and the report says
-what was run. Anything that could not be checked is listed in sections 14 and 15. The previous
-reports are kept in [`docs/releases/`](docs/releases/):
+Written on 29 September 2026. Every number here was produced by running something, and the report
+says what was run. What could not be checked is listed in sections 15 and 16.
 
-- [2026-09-25](docs/releases/2026-09-25-release-report.md): *Economics, Everywhere* and the content audit.
-- [2026-09-22](docs/releases/2026-09-22-release-report.md): the live verification of nine IB claims.
+Earlier reports are kept in [`docs/releases/`](docs/releases/):
+
+- [2026-09-26](docs/releases/2026-09-26-release-report.md): the ecosystem.
+- [2026-09-25](docs/releases/2026-09-25-release-report.md): *Economics, Everywhere* and the first
+  content audit.
+- [2026-09-22](docs/releases/2026-09-22-release-report.md): live IB verification.
+
+The visual audit that came before this work is in
+[`docs/visual-audit.md`](docs/visual-audit.md). The five content audits and what was done with each
+finding are in [`docs/audits/2026-09-29/`](docs/audits/2026-09-29/).
+
+The platform was not rebuilt:
+
+- It is still one static `index.html` with the same router, storage, service worker and self-test.
+- No route, tab, storage key, section or content record was removed.
+- Everything new is one spliced module (JavaScript and CSS) that wraps existing functions, plus
+  corrections to existing content.
 
 ---
 
-## 1. What changed
+## 1. Visual redesign
 
-The platform was extended rather than rebuilt. It is still one static `index.html`, with the same
-router, storage, service worker, self-test system, and obsidian/burgundy/chalk design. Three new
-sections sit alongside what was there:
+The audit found five structural reasons the site felt plain. Each was addressed:
 
-- **Economics EE Studio** (`#/ees`): 19 areas that take a student from "what is an Economics EE?"
-  to a pre-submission check. The studio diagnoses, questions and organises; it never writes the
-  essay, the research question or the reflection.
-- **Arjun Agrawal · Video studio** (`#/arjun`): fills itself from the YouTube channel through a
-  server-side function. No video is written into the page.
-- **Educator Studio** (`#/educator`): role-based pathways into the existing teaching material,
-  a ten-module handbook and a coordinator page.
-
-The rest of the platform now leads into these sections:
-
-- The home page has a *Start your journey* band and a latest-video band.
-- Every concept page has a *Related* panel built from a content graph.
-- Search gains *EE research* and *Teaching* filters.
-- *My Economics* surfaces EE work in progress.
-
-The IB claims were checked against the two IB documents supplied with this brief (the Economics
-guide and TSM, first assessment 2022). **26 corrections** followed. Two latent bugs (shadowed
-declarations) were found and fixed.
-
-## 2. New sections and routes
-
-| Route | What it is |
+| Finding | What changed |
 |---|---|
-| `#/ees` … `#/ees/resources-and-sources` | Economics EE Studio. There are 19 tabs in 8 groups: Understand, Design, Research, Argue, Write and reflect, Check, Lead, Reference. |
-| `#/ees/find-your-topic/<area>` | One of 20 topic areas, as a deep link. |
-| `#/ees/theory-and-models/<model>` | One of 24 models, as a deep link. |
-| `#/arjun` | The video studio. The nav label is "Videos". |
-| `#/educator`, `#/educator/handbook`, `#/educator/for-coordinators` | The Educator Studio. |
+| **One opener for every page.** About 190 heroes shared one dark band and one decorative cross, which was economically empty (the same supply-and-demand cross sat above *comparative advantage*, *inequality* and *exam technique*). | A **motif engine** draws a real, labelled diagram for what each page is about. Concept pages draw their subtopic's model, cases draw the case's own diagram, and sections draw their subject. |
+| **No section identity.** | Section registers: journal paper, newsroom, graph paper, ruled exam paper, node field, magazine, research notebook, slate workspace. |
+| **One container for every idea.** The home page was 14 equal-weight bands, mostly card grids, 11,417 px long. | An editorial sequence with a change of scale: a drawn opener, a two-tier gateway, a daily front page, a lead story, a dark network band and counted figures. The desk folds on a first visit, and the first-visit home page is now about **9,960 px**. |
+| **Chart labels in fonts the page never loads.** Inter, Helvetica, IBM Plex Mono and Georgia fell back to system faces. | One CSS rule maps them to the loaded faces (CSS outranks SVG presentation attributes). |
+| **A flat rhythm.** | Feature headings in the display face with a brass rule, a heading rule that extends as the section arrives, small-capital eyebrows, and a colophon footer. |
 
-The navigation order and the mobile groups were extended; no existing route was removed or renamed.
-The existing curated video library (`#/video`) keeps its place, now labelled *Curated videos* so
-it is not confused with Arjun's own channel.
+## 2. The design system
 
-## 3. The tools
+**Colour.**
 
-All state is stored on the device (`localStorage`, inside the existing profile under `S.ees`).
-There is no login, and a sandboxed or private window works without saving.
+- The existing obsidian, burgundy, chalk and ivory remain the foundation.
+- New tokens:
+  - **brass** (`--brs`, from the logo's gold) for rules, ornaments and figure accents;
+  - **ivory paper** (`--paper`) for scholarly openers;
+  - **graphite** for the exam room;
+  - **slate** for the professional register.
+- Semantic diagram colours (demand blue, supply copper, loss red, policy gold) are unchanged, and
+  brand burgundy never enters a figure; a self-test enforces this.
 
-| Tool | What it does | What it deliberately does not do |
-|---|---|---|
-| Research question lab | Diagnoses a draft question on 12 dimensions: scope, specificity, economic relevance, analytical potential, evidence availability, theoretical grounding, causal clarity, time and place, feasibility, potential for evaluation, risk of description, risk of a generic policy essay. Each dimension gets a rating in words, the reason and a question back. Every diagnosis is kept as a version. The loop is *diagnose → question → refine → test again*. | It does not suggest or rewrite a research question. |
-| Topic explorer | Covers 20 areas. Each gives phenomena, possible directions, the data a student would need and common traps. | It does not provide ready-made questions. |
-| Theory and models | Covers 24 models. Each gives assumptions, mechanism, variables, what the model explains and cannot explain, when it becomes less useful, a diagram, an application and evaluation questions. Every model links to the existing diagram atlas where one exists. | |
-| Data lab | Nine calculations: % change, index numbers, growth and CAGR, real values, moving average, correlation with a scatter plot, simple regression, before and after, and comparing two series. Each result is split into **What the data shows / What it suggests / What it does not establish**, with method warnings (for example, correlation is not causation, and a before/after comparison has no counterfactual). Constructed practice data is labelled as such. | It does not infer causation. |
-| Evidence matrix | One row per source, with 13 fields: source, date, author, type, claim, evidence, method, variable, finding, limitation, relevance, direction (supports, challenges, mixed or context only) and reliability. Rows can be edited, searched, filtered by type and direction, and exported to CSV or JSON. It warns when nothing challenges the argument. | |
-| Argument map | Nine node types, from research question through claim, theory, evidence, analysis, counter-evidence, alternative explanation and evaluation to conclusion. Nodes can be added, edited and reordered, and each type carries a prompt. | |
-| Diagram and model studio | Planning notes for each diagram, plus the check *Does this diagram actually help answer my research question?* | |
-| Evaluation lab | Hypothetical sentences to classify, and critical-dimension prompts. | |
-| EE red team | Ten challenges to put to one's own essay. | |
-| Reflection studio | Eight prompts. Each has four steps: *prompt → the student's own response → self-diagnosis → improvement prompts*. A heuristic flags responses that describe the process rather than reflect on it. | It never generates reflection text. |
-| Academic integrity and AI | A nine-row grid of AI uses and their risk, a transparency checklist, and a log of the student's own AI use. The IB Academic integrity policy is named as the authority. | It gives no advice on disguising AI use, and is written so that AI does not write the essay. |
-| Quality check | Eleven areas, each read as **Ready / Needs attention / High risk** in words. | It shows no score, no grade and no mark out of 30. |
-| Supervisor mode | Session plans, questions to ask and a supervision checklist. | |
+**Typography.**
 
-## 4. YouTube architecture
+- The pairing already loaded was kept: Bodoni Moda (display), Source Serif 4 (editorial), Manrope
+  (interface) and JetBrains Mono (data).
+- They are premium faces, already cached by returning visitors. Replacing them would have added
+  weight and changed every page for no gain in hierarchy.
+- The fixes are in roles:
+  - display serif for openers and feature headings;
+  - mono for data and figure captions;
+  - small-capital sans for eyebrows (`font-variant-caps`, so the underlying text is unchanged for
+    search and assistive technology);
+  - SVG labels mapped to the loaded faces.
 
-```
-browser (#/arjun, home band)
-   │  fetch /api/youtube   (no cookies, no reader data; never during the self-test)
-   ▼
-api/youtube.js  (Vercel serverless function, Node, CommonJS)
-   │  1. memory cache, 30 min  →  2. YouTube Data API v3  →  3. RSS fallback
-   │  Cache-Control: s-maxage=3600, stale-while-revalidate
-   ▼
-lib/youtube-categories.js   manual overrides → playlist titles → words in title/description
-```
+**Spacing.** The existing scale (`--s1` to `--s7`) is kept. The home page uses a tighter band rhythm.
 
-**How the function works**
+**Cards.** Two tiers on the home page: a feature card with a full figure, and a compact index row
+with a thumbnail. The existing panels are unchanged elsewhere.
 
-- **Channel lookup.** The channel is resolved from the handle `@arjunagrawal5724`
-  (`channels?forHandle=`), or from `YOUTUBE_CHANNEL_ID` when that is set. Nothing about the channel
-  is hard-coded beyond the default handle.
-- **What it fetches.** The uploads playlist, the durations and the playlists.
-- **Shorts.** A video is treated as a Short when it runs ≤ 60 s, or ≤ 180 s and is tagged `#shorts`.
-- **Failure handling.**
-  - Every call to YouTube has a timeout (`AbortController`) and one retry.
-  - When YouTube fails, the last good answer is served and marked `stale: true`.
-  - With no key, the channel's RSS feed is used.
-  - With nothing configured, the function answers `status: "not-configured"`.
-  - The key is stripped from every error message.
+**Buttons.** The existing styles, plus an `on-ink` variant for dark bands.
 
-**The page**
+**Icons.** Thirteen line glyphs for the named teaching components, stroked in each component's
+colour.
 
-- **States.** The page has loading (skeleton), ready, empty, unavailable and not-configured states.
-- **Stale copy.** It keeps the last good list on the device (`AA_YT_LAST`) and shows it, labelled,
-  when the feed later fails.
-- **Safety.** It validates every video ID and URL before rendering, and escapes all text.
-- **Service worker (v12).** `/api/` requests go network-first, with an offline JSON answer, so the
-  PWA never serves a frozen feed.
-- **Prominence.** Arjun's own videos come first, with featured, latest, category, Shorts and
-  playlist sections. The existing third-party library stays separate, under *Curated videos*, with
-  its existing note that inclusion is not endorsement.
+**Data visualisation.**
 
-## 5. API and environment setup
+- Every figure has labelled axes, labelled curves, a caption (figure number style) and the
+  equilibrium at the true intersection.
+- Illustrative data is labelled as such. No figure presents a real statistic.
 
-Set these in Vercel → Project → Settings → Environment Variables, then redeploy:
+**Sections.** The registers listed in section 4.
 
-| Variable | Required | Purpose |
-|---|---|---|
-| `YOUTUBE_API_KEY` | Recommended | YouTube Data API v3 key. Restrict it to that API. Server-side only. |
-| `YOUTUBE_CHANNEL_HANDLE` | No | Default `@arjunagrawal5724`. |
-| `YOUTUBE_CHANNEL_ID` | No | `UC…` ID. Pins the channel; without a key it enables the RSS fallback. |
-| `YOUTUBE_TIMEOUT_MS` | No | Timeout per call to YouTube, default 8000. |
+**Animation.**
 
-**Quota.** One refresh costs about four units, plus one per playlist, against a free daily
-allowance of 10,000. The edge cache keeps refreshes to about one an hour.
+- Curves draw on once, the equilibrium pulses gently and figures count up.
+- Gateway figures draw on hover.
+- Everything stops under `prefers-reduced-motion`, and the motion layer is not switched on at all.
 
-**Keeping the key out of the repository**
+**Mobile.**
 
-- No key is committed.
-- `.gitignore` now excludes `.env`, `.env.*` and `.vercel`, because `vercel env pull` writes
-  `.env.local`.
-- A search of the repository for key-shaped strings (`AIza…`, `ghp_…`, `sk-…`, private keys) found
-  nothing.
-- The only Google hosts the client references are the font hosts.
+- Below 1,000 px the figure becomes a faint watermark behind the opener text.
+- The gateway, daily page and lead story collapse to one column.
+- The mindmap network becomes a wrapped list.
 
-## 6. EE features and source discipline
+## 3. New graphics
 
-Every factual statement about the EE carries one of five labels:
+There are **28 original SVG motifs**, each built from stated functions:
 
-| Label | Meaning |
-|---|---|
-| **Official IB** | Read first-hand in a supplied IB document, with the page given. This is the Economics guide, p. 8, for the Economics-specific statements. |
-| **Reported from the 2027 EE guide** | Taken from the Extended Essay Navigator supplied with this brief. The 2027 *Extended essay guide* itself was **not** supplied, so each of these tells the student to confirm it in the guide. |
-| **Professional interpretation** | A reading of the official material. |
-| **Pedagogical suggestion** | Teaching advice, not a requirement. |
-| **Teacher-created tool** | One of the platform's own tools. |
+- **Markets:** supply and demand, demand shift, indirect tax, subsidy, maximum price, minimum price,
+  PED comparison.
+- **Market failure and the firm:**
+  - negative production externality;
+  - costs and revenue (MC through minimum AC, MR twice as steep as AR);
+  - labour market with a minimum wage;
+  - goods classified by rivalry and excludability;
+  - a pricing game with its Nash equilibrium.
+- **Macroeconomics:** AD–AS with LRAS, short- and long-run Phillips curves, the business cycle (with
+  its true turning points), the circular flow, the Lorenz curve.
+- **The global economy:** PPC with growth, comparative advantage (linear PPCs), tariff, exchange
+  rate, trade network (schematic).
+- **Development:** the poverty cycle, a diagram the coverage audit found missing.
+- **Other:** scatter with a fitted OLS line (illustrative data), Paper 1 (b) markbands (from the
+  guide, p. 63), the nine key concepts as a network, a research page, and model versus observation.
 
-**Conflict shown, not resolved.**
+Each motif is used in three ways:
 
-- The Economics guide (2022, p. 8) says the issue "must have taken place up to five years prior to
-  the beginning of the research process".
-- The Navigator reports no recency rule for economics in the 2027 EE guide.
+- in page openers;
+- in the home gateway, on paper;
+- in the toolkit and lead story, as figures with captions.
 
-Both are shown side by side. The studio says the current EE guide governs, and asks the student to
-check with their supervisor.
+The footer carries a small supply-and-demand rule.
 
-The Navigator's structure was adapted, not copied. Its reported facts were rewritten in original
-wording, with their layer shown.
+## 4. New backgrounds
 
-## 7. Educator features
+Textures are drawn in CSS at 3–6 % opacity, with one texture per register:
 
-- An audience selector: new teacher, experienced teacher, EE supervisor, DP coordinator, student.
-  Each role gets a pathway of steps that open **existing** content.
-- A handbook of ten modules: planning, real-world teaching, diagrams, assessment design, the IA,
-  EE supervision, classroom reasoning, research literacy, TOK links, and reflective practice.
-- *For coordinators*: every item is page-cited to the guide or TSM, or marked as a school decision.
+- **Analytical grid:** every dark opener.
+- **Journal paper with a warm vignette:** Course, Learn, TOK and Educators.
+- **Research notebook** (ruled lines and a red margin): EE Studio and IA.
+- **Newsroom column rules with a double head rule:** Real World.
+- **Fine graph paper:** Lab, Calculate and Tools.
+- **Ruled answer paper on graphite:** Exam, Exam DNA, Papers, Practise and Timed sessions.
+- **Node field:** Mindmaps.
+- **Magazine dot screen on burgundy-black:** Economics, Everywhere.
+- **Diagonal field on slate-black:** Think.
+- **Slate:** Teacher tools.
 
-## 8. Home page
+The CSS classes `.bg-grid`, `.bg-ledger`, `.bg-dots`, `.bg-margin`, `.bg-paper` and `.bg-ink` are
+available to any band.
 
-The order is now:
+An opener turns to paper only when it holds nothing but its heading and lede, so no control designed
+for the dark band is ever placed on ivory.
 
-1. The hero (unchanged).
-2. **Start your journey**, with a choice of *student / teacher / EE supervisor / curious*. It offers
-   nine pathways, for example "I want to start my EE", "I want to master diagrams" and "I'm a new
-   IB Economics teacher". Each pathway is a short sequence of links into existing content, so no
-   content is duplicated.
-3. **Latest from Arjun**, which appears only once a video list has loaded (or a stored one exists).
-4. The existing bands.
+## 5. New content
 
-The existing `homeTidy` pass still runs last.
+- **The economist's toolkit** (Think, last tab, `#/think/economist-s-toolkit`).
+  - It has 18 lenses: incentives, opportunity cost, marginal thinking, trade-offs, elasticity,
+    equilibrium, efficiency, equity, externalities, information, market power, interdependence,
+    expectations, time, risk, uncertainty, institutions and behaviour.
+  - Each lens has a one-line idea, three questions, its own figure, and links into the platform
+    found through the search index.
+  - The toolkit also sets out fourteen questions for any economic claim.
+  - It is labelled as a teaching frame. The IB's nine key concepts are shown as the IB's own.
+- **Lens questions on every concept page and every Real World case**, chosen for the page's
+  subtopic.
+- **A reading guide for all 35 diagram plates**, answering four questions: *What changes? Why does
+  it change? What the diagram does not show. Common mistake.* Each guide is written from the plate's
+  own labels and numbers and labelled teacher-created.
+- **Home bands:**
+  - *Explore Economics*;
+  - *Today in Economics* (the economic idea of the day, a case, a question and a word);
+  - the Real World lead story;
+  - the mindmap network;
+  - *Economics at a glance*.
 
-## 9. Data and content changes
+## 6. Content corrections
 
-**New content modules** (in `index.html`):
+All of these came from the five read-only audits in `docs/audits/2026-09-29/`.
 
-- `EES_TOPICS` (20), `EES_MODELS` (24), `EES_PITFALLS` (12);
-- `EDU_ROLES` (5), `EDU_MODULES` (10), `EDU_COORD`;
-- `PWAYS` (9).
+**Terminology (20 changes).**
 
-**IB corrections, from checking against the supplied guide and TSM.** There were 26 (C1–C26):
+- Demand vs quantity demanded: the bag charge, the Veblen effect, automation.
+- Rent caps and quantity supplied.
+- The subsidy drill now names its recipient.
+- Inflation rate vs price level.
+- Evidence described as "consistent with", not as proof.
+- Tax incidence by *relative* elasticities.
+- "The only route" and "entirely" withdrawn.
+- The monopsony minimum-wage sentence.
+- Financial (not capital) account.
+- Customs union vs single market.
+- Devaluation of a controlled rate.
+- Marshall–Lerner stated "in absolute value".
 
-- Paper 3 part (b) now shows AO1 · AO2 · AO3 · AO4, not AO3 alone. The test that encoded the old
-  claim was corrected.
-- The markband and IA descriptors are now verbatim where they are labelled "quoted", or relabelled
-  "condensed" where they are not.
-- Three invented markband strands were removed.
-- The publication lines for the guide and TSM were corrected.
-- HL-only tags were added from the guide's bold type:
-  - PED along a linear demand curve;
-  - 3.4 average and marginal tax rates;
-  - the 3.3 HL diagram;
-  - the misconception `m4` and the SL definition drill;
-  - two data-lab sets.
-- The macroeconomic objectives went from "five" to the guide's four.
-- The moderation desk no longer prints the mark twice.
-- The word-count and criterion D wording was aligned with the guide.
+**Real World (37 changes, both copies, data hash recomputed to `67ae660860fd08eb`).**
 
-**Latent bugs fixed**
+- Confident corrections:
+  - Singapore's COEs are auctioned, not tradable.
+  - Bretton Woods broke down in 1971–73.
+  - HIPC dates from 1996.
+  - Korea's industrial drive dates from 1973.
+  - China's poverty figure now names its line.
+  - The DEV-007 deep card's residual "1978".
+- Softened causation: Energiewende, ECB quantitative easing, Weimar, the UK mini-budget.
+- Precise terms: plastics directive, deemed consent, EU ETS coverage, CBAM, TCA, RCEP.
+- Dated wording given a date: EEG levy, California, IRA, Argentina, Australia–China, Chile,
+  Stability and Growth Pact, China youth unemployment.
+- One unsourced figure removed (the GLO-003 "more than a third").
 
-- **Import rejected older files.** A second, older `expJSON`/`impJSON` pair silently replaced the
-  workspace backup and restore, and its import rejected every file that was not version 2. It was
-  removed.
-- **A self-test suite never ran.** Two self-test suites were both called `FINALSUITE`, so
-  "Release gates" ran twice and "final release" never ran.
-  - The fix: the first suite was renamed.
-  - What the revived suite found: the dictionary check rejected *Terms of trade*, which is
-    deliberately unmapped and labelled enrichment.
-  - The check now accepts flagged enrichment, as the calculation check already did.
+**Definitions (11 changes).**
 
-**Exam DNA part marks.** No values were changed. The diagnostic in
-`docs/exam-dna-mark-diagnostic.md` still needs the 38 source papers it lists.
+- Growth is usually necessary for sustained development but not sufficient (two surfaces had said
+  otherwise).
+- Supply-side is the family aimed at capacity, not the only thing that raises it.
+- The Keynesian AS has its upward-sloping range.
+- A subsidy may be paid to consumers.
+- Choice architecture vs nudge.
+- The PED quiz keeps the sign.
+- Community surplus is maximised at the free-market outcome only without externalities.
+- Merit goods are filed under 2.8.
+- Allocative efficiency is stated in social terms.
 
-## 10. Tests performed
+**Diagrams.**
 
-| Suite | What it covers |
-|---|---|
-| In-page self-test (`runQA`) | 1,870 checks across 32 categories. The new *Economics EE Studio* (35), *Video studio* (7) and *Educator Studio and ecosystem* (10) suites include no-grade, no-fetch-during-test, source-label and no-workplace-framing rules. |
-| `tests/api-youtube.mjs` | The function with `fetch` stubbed: not configured, misconfigured, API success, Shorts detection, categories, RSS fallback, timeout and retry, stale cache after a failure, a malformed response, and the key never appearing in any output. |
-| `tests/ecosystem.mjs` | Real browser journeys. The research question lab diagnoses and keeps versions across a reload. The matrix adds, persists and flags missing challenges. The argument map adds and reorders nodes. The data lab shows/suggests/does not establish. The quality check reads High risk and Ready. The video studio is run against a stubbed endpoint in every state: working, not configured, YouTube failing, an HTML error page, offline, empty and malformed. The stale device copy, the home band, educator pathways and home pathways are also covered. |
-| `tests/e2e.mjs` | The existing end-to-end journeys. |
-| `tests/pwa.mjs` | Service worker, offline and manifest. |
-| `tests/widths.mjs` | 33 routes (12 of them new) at 320, 375, 390, 412, 430, 768, 1024, 1280 and 1440 px. Checks for no overflow, no page errors, touch targets and keyboard-reachable scrolling tables. |
-| `tests/routes.mjs` | Every navigation route for page errors. |
-| axe-core (WCAG 2.0 A/AA and 2.1 AA) | Each of the 19 EE Studio tabs by its own route, two deep links, the video studio, the three Educator pages, the home page and *My Economics*, at 1366 and 375 px. The research question lab and data lab were run with results showing. |
-| Performance | The home page against `main` (00b46da), median of 5 runs. See section 12. |
+- *Wrong economics:*
+  - The market lab's tax could push output below zero; it is now capped.
+  - The Everywhere AD–AS "before" SRAS was drawn 50 points too low.
+  - The monetarist AD–AS marker sat off the drawn SRAS.
+- *Misleading:*
+  - The Lorenz builder shaded B instead of A.
+  - The subsidy lab cropped the producer price and mislabelled the curve.
+- *Cosmetic:* PPC chord, cycle markers, the Phillips duplicate label, the Lorenz label, label halos,
+  tick collisions, and plate padding on phones.
 
-## 11. Results
+**Deliberately not applied.**
 
-| Suite | Checks | Passed | Failed |
-|---|---|---|---|
-| In-page self-test | 1,870 | 1,870 | 0 |
-| `api-youtube` | 21 | 21 | 0 |
-| `selftest` (harness wrapper around the in-page self-test) | 37 | 37 | 0 |
-| `e2e` | 22 | 22 | 0 |
-| `ecosystem` | 30 | 30 | 0 |
-| `pwa` | 4 | 4 | 0 |
-| `widths` (one check per width, each covering 33 routes) | 9 | 9 | 0 |
-| `routes` | 2 | 2 | 0 |
-| axe-core | 27 routes × 2 widths | 0 violations after the badge fix | see section 13 |
+- The definitions audit proposed "primary and secondary income" for the current account. The
+  guide's own list says "income" and "current transfers", which the site already uses.
+- One case change that could not be confirmed (MGNREGA's replacement) is worded as a check, not
+  asserted.
 
-The harness was run as one full pass (`node tests/run-all.mjs`, exit code 0, "every suite passed")
-on the committed code of this release.
+## 7. New features
 
-- **Before this release,** `main` (00b46da) passed 70 of 70 harness checks and 1,868 in-page checks.
-- **Why the self-test count is 1,870, not higher.** Two suites shared the name `FINALSUITE`, so
-  "Release gates" (83 checks) was counted twice and "final release" (33 checks) never ran. With the
-  shadowing fixed, the count is 1,870 and every check runs once.
-- **What failed on the way, and was fixed before this pass:**
-  - five new self-test rules on first integration;
-  - the revived dictionary check;
-  - the amber badge contrast;
-  - two widths routes with wrong slugs in the test itself.
+- *Random Economics*: a filterable, editorial "surprise me" across ten kinds of content. It is in
+  the home gateway and the footer.
+- *Today in Economics*: date-deterministic and server-free.
+- The economist's toolkit.
+- Named teaching components (`KC()`, 13 types).
+- Search ranking by word start, record type and abbreviation.
+- The diagram reading guides.
+- The folding desk.
+- The colophon footer, with an Explore index.
 
-  Each is described in sections 9 and 13.
+## 8. New interactions
+
+- **Curves:** draw on in openers and on gateway hover, and the equilibrium pulse runs slowly.
+- **Figures:** count up in *Economics at a glance*. The final value is in the markup from the start
+  and in `aria-label`.
+- **Headings:** the rule extends as the section scrolls in.
+- **Lenses and chips:** state is shown with `aria-pressed`.
+- **Opener steps:** the four data–theory–evidence–decision steps fade in.
+- **Performance:** below-the-fold figures are drawn only as they approach.
+- **During the self-test:** none of this runs while the self-test paints views.
+
+## 9. Knowledge relationships
+
+The existing related-content graph (`kgPanel`: concepts, cases, diagrams, videos, practice,
+mindmaps, Everywhere and EE research, by subtopic) is unchanged, and it still sits on every concept
+page.
+
+This release adds three kinds of link:
+
+- **Lens links:** 18 lenses, each linking to up to six existing records through the search index.
+- **Case figures:** every case's figure follows its own recorded diagram (`dg`).
+- **Daily page:** the date-chosen items link into existing content.
+
+No content was duplicated: every link resolves to an existing record, and the self-test checks this.
+
+## 10. Mobile
+
+- The opener figure becomes a watermark below 1,000 px.
+- The gateway goes to one column; the index rows shrink their thumbnails.
+- The daily page stacks.
+- The lead story drops to one column.
+- The network becomes a wrapped list.
+- The footer colophon stacks.
+- `tests/widths.mjs` now covers 37 routes, including the toolkit, a plate, a concept page and a case,
+  at 320, 375, 390, 412, 430, 768, 1024, 1280 and 1440 px. It checks overflow, page errors, target
+  sizes (including the new gateway, index, lens, daily and network controls) and keyboard-reachable
+  scrolling tables.
+
+<!-- MOBILE-RESULT -->
+
+## 11. Accessibility
+
+- **axe-core (WCAG 2.0 A/AA, 2.1 AA).** 18 routes were scanned, whole document including header and
+  footer, at 1366 and 375 px:
+  - home;
+  - course, learn, a concept page;
+  - toolkit;
+  - lab, a plate;
+  - Real World, a case;
+  - mindmaps, exam, Everywhere, EE Studio, IA, TOK, educator, video, about.
+
+  One issue was found and fixed: the toolkit's lens buttons carried `role="listitem"` alongside
+  `aria-pressed`. The same pattern on the home mindmap nodes, which silently removed their button
+  role, was also fixed.
+- **Figures.** Every figure is `aria-hidden`, because the heading carries the meaning. Captions are
+  CSS-generated, so they are not repeated to screen readers or to search.
+- **Contrast.** New text on paper and ink meets AA. Brass eyebrows on dark use `#C9AE72`.
+- **Controls.** The desk is a native `<details>`. The lens grid is a labelled group. Every new
+  control is a native button.
+- **Colour and motion.** No verdict relies on colour. Motion stops under `prefers-reduced-motion`,
+  which is tested in the browser.
+
+<!-- AXE-RESULT -->
 
 ## 12. Performance
 
-Measured in headless Chromium at 1366 × 900, service worker blocked, local server, median of 5
-runs each, on the same machine:
+<!-- PERF -->
 
-| | `main` (00b46da) | This release | Change |
-|---|---|---|---|
-| `index.html` | 4,227,498 B | 4,531,980 B | +7.2% |
-| `index.html`, gzip -9 | 1,516,912 B | 1,610,234 B | +6.2% |
-| First contentful paint | 316 ms | 328 ms | +12 ms |
-| DOMContentLoaded | 2,503 ms | 2,674 ms | +171 ms |
-| Full self-test run | 1,515 ms | 1,558 ms | +43 ms |
-| JS heap after load | 123 MB | 123 MB | none |
-| DOM elements on the home page | 969 | 987 | +18 |
+**What was done to contain the cost.**
 
-**How to read these numbers**
+- Below-the-fold figures draw only as they approach.
+- The layout-measuring reveal and the `<body>` register change are skipped while the self-test
+  paints views.
+- The motifs are small SVG strings with no images, fonts or libraries added.
 
-- **Parsing is the main cost.** DOMContentLoaded is dominated by parsing the single inline script.
-  The added 171 ms is roughly in proportion to the 7% more code.
-- **These are local timings.** They are not field measurements, and a slower phone will see a
-  larger absolute difference.
-- **What is new beyond the page.** The function (`api/youtube.js`, 11.8 kB) and
-  `lib/youtube-categories.js` (4.1 kB) run on the server and add nothing to the page.
+The page is heavier by the size of the module and the 35 reading guides.
 
-The new sections render only when opened: no EE Studio, video or educator markup is built for the
-home page beyond the two small bands. Video thumbnails use `loading="lazy"` with fixed dimensions. The feed is requested at most once every
-ten minutes, when the home page or the video studio is shown, never during the self-test, and
-never in a sandboxed window.
+**One thing was tried and reverted.** Skipping the opener figure during the self-test saved about
+200 ms. It also changed what one existing check measured: an Everywhere tab had passed its size
+threshold only because of the old decorative graphic. The figure is therefore drawn in the
+self-test exactly as a reader sees it.
 
-## 13. Accessibility
+## 13. Accuracy verification
 
-- **axe.** The first axe run found one issue: the amber *Needs work / Needs attention* badges had a
-  contrast of 4.44:1 at 12 px. Only those two badges were darkened, to 5.48:1; the global token was
-  not changed. After that, axe found **no violations** on any page tested. One scan flagged
-  contrast on the page behind the first-visit welcome dialogue while it was still closing. The same
-  page scanned with the dialogue closed was clean, so this is recorded here as a test-timing
-  artefact, not a defect.
-- **Controls.** All new controls are native buttons, inputs, selects and fieldsets with legends and
-  labels. The research question diagnosis is a description list, so a screen reader reads each
-  dimension with its rating. The new buttons, options and tiles have a 44 px minimum height, and the widths test checks that none renders below 28 px at any width.
-- **Motion and colour.** `prefers-reduced-motion` switches off the thumbnail zoom and the loading
-  pulse. Ratings are always given in words, never by colour alone.
+- **Motif geometry.** Every motif's geometry is recomputed independently in the self-test:
+  - equilibria on both curves;
+  - the tax wedge equal to the tax;
+  - welfare-loss vertices at the intersections;
+  - MR twice as steep as AR;
+  - MC through the minimum of AC;
+  - the Lorenz curve below equality;
+  - SRPC downward;
+  - the cycle's turning points at zero slope;
+  - Nash at (Low, Low);
+  - markbands and key concepts equal to the guide's.
 
-## 14. Known limitations
+  One of these checks is paired with a deliberately wrong input that must fail.
+- **Round-2 corrections.** These are held in place by named checks (*Accuracy r2 · …*).
+- **Reading guides.** They were written from each plate's own numbers and screened for absolute
+  claims by the self-test.
+- **Real World hash.** The data was re-hashed, and both copies were verified identical under the
+  canonical serialisation.
 
-- **The channel ID was not verified.** YouTube is blocked from the build environment. The function
-  resolves the channel from the handle when it runs.
-  - After deploying, open `/api/youtube` and check `channel.title`.
-  - Then set `YOUTUBE_CHANNEL_ID` to pin it.
-- **The live YouTube API was never called.** The function was tested only against stubs.
-- **Hosting.** The function needs Vercel (or any host that runs `api/*.js`).
-  - On a static-only host, `/api/youtube` returns 404 and the studio shows its "could not be
-    loaded" state with a link to the channel. That state is tested.
-  - The root `pages.yml` (a GitHub Pages workflow) is not in `.github/workflows/`, so it is not
-    active.
-- **Category overrides are empty.** `OVERRIDES` in `lib/youtube-categories.js` has no entries, so
-  categories rely on playlists and keywords until overrides are added.
-- **Work is stored on one device.** EE work lives in that browser's storage. It is included in the
-  existing workspace export and import, but it does not sync.
-- **Heuristics.** The research question diagnosis and the reflection heuristic are rule-based. They
-  prompt thinking and do not assess quality. The studio says so.
-- **Page size.** `index.html` grew by about 7% (section 12).
+## 14. Sources consulted
 
-## 15. Items needing source verification
+**Official IB (supplied, read directly).** These documents were the authority for curriculum,
+assessment and requirement statements:
 
-1. **The 2027 *Extended essay guide* was not supplied.** Every "Reported from the 2027 EE guide"
-   item came through the Navigator and must be checked against the guide on the Programme Resource
-   Centre. This covers:
-   - the word limit;
-   - the criteria and marks;
-   - the reflection sessions and RPF;
-   - the 500-word reflective statement;
-   - the one-draft rule;
-   - the supervision hours;
-   - the D-grade requirement;
-   - the absence of a recency rule.
-2. **The recency conflict:** the five-year rule (guide 2022, p. 8) against no rule (as reported for
-   the 2027 EE guide).
-3. **The IB *Academic integrity policy* and its AI guidance were not supplied.** The studio names
-   the policy as the authority and quotes nothing from it. The supplied guide and TSM do not
-   mention AI.
-4. **The *DP Assessment procedures* were not supplied.** No deadlines or registration rules are
-   stated.
-5. **Current PRC copies.** The guide's "updated May, August and October 2020" line could not be
-   confirmed from the supplied copy, so it was replaced (C2). A current copy may carry it.
-6. **Exam DNA part marks.** 63 mismatched records and 2 mislabelled ones are waiting on the 38 past
-   papers listed in the diagnostic.
-7. **Brad Cartwright's site** was not fetched. Only the principles given in the brief were used, as
-   inspiration.
+- the *Economics guide*, first assessment 2022, published February 2020, cited by printed page
+  (markbands p. 63; BoP components; the nine key concepts);
+- the *Economics teacher support material*.
 
-## 16. Deployment
+**IB, not accessible.** `ibo.org` is blocked from this environment, so current official pages were
+not re-read in this release. The reference layer's previous live check (22 September 2026) stands.
+It found the course first assessed in 2022 to be current.
 
-1. Merge the pull request into `main` after review. This release does not touch `main` directly.
-2. In Vercel, add the environment variables in section 5 and redeploy. No build step and no
-   framework preset are needed: Vercel detects `api/youtube.js` as a function.
-3. Open `/api/youtube`. Expect `"ok": true` and the right `channel.title`, then set
-   `YOUTUBE_CHANNEL_ID`.
-4. Open `#/arjun` and the home page, and check that the videos appear.
-5. The service worker version moved to `v12`, so returning visitors pick up the new files on their
-   next visit.
+**Case facts.**
 
-**Rollback.** Revert the merge commit. The new storage keys (`S.ees`, `AA_YT_LAST`) are ignored by
-the older build and do not interfere with it.
+- The Real World auditor used its own knowledge plus nine web searches (result summaries only),
+  including:
+  - LTA OneMotoring on COEs;
+  - ICAP on California;
+  - MercoPress on Argentina and Chile;
+  - Business Standard on RBI;
+  - The Tribune on Punjab power;
+  - KPMG on Chile's pension reform.
+- The *Four Decades of Poverty Reduction in China* report (World Bank and DRC, 2022) is now named in
+  the DEV-007 case.
+
+**Design.** No third-party design or wording was copied. All graphics are original SVG and CSS. No
+external images or stock art were added.
+
+## 15. Known limitations
+
+- **Coverage gaps remain.** The coverage matrix (`docs/audits/2026-09-29/coverage.md`) lists:
+  - 17 guide diagrams with no atlas plate:
+    - constant PED, revenue under elastic and inelastic demand, the Engel curve;
+    - perfect competition (three plates), natural monopoly, collusive oligopoly, monopolistic
+      competition (two plates);
+    - a fall in labour demand;
+    - the money market;
+    - crowding out;
+    - free trade with exports;
+    - fixed and managed exchange rates;
+    - the J-curve;
+    - the poverty cycle (drawn as a motif only);
+  - 10 concepts, including Say's law, the circular economy, the Happiness Index, money creation by
+    commercial banks and social enterprise.
+
+  These are the next content phase; nothing was invented to fill them in this release.
+- **Not redesigned in this release:**
+  - Exam DNA, the mindmap canvas and the video studio's layout keep their existing designs. They
+    gained the section register, not a new layout.
+  - The mindmaps were judged already strong: typed node shapes, colour by role, and explain,
+    connect and exam modes.
+- **Data visualisation uses no live statistics.** This is by design, and consistent with the
+  platform's rule that it holds no live data. Illustrative figures are labelled.
+- **Graph audit G14 (curve labels on the calculation board's tax diagram) is deferred.**
+- **An existing Everywhere tab** (*Economist's eye*) renders about 1,100 characters of markup. It
+  passed its size check only because of the old decorative graphic; the game shell is legitimately
+  small.
+- **Duplicate declaration.** `conceptPage` is declared twice (the second wins, so the first is dead
+  code), which is the same kind of shadowing fixed last release. It was left alone to avoid
+  behavioural change.
+- **Performance cost.** See section 12.
+
+## 16. Unverified claims
+
+- **Guide edition.** A copy of the Economics guide titled "first assessment 2024" is referenced
+  online. It could not be retrieved, so the platform's guide-based claims and the coverage matrix
+  rest on the 2022 guide. The reference layer now says so.
+- **Recent events in Real World cases.** The following rest on the auditor's search summaries and
+  my own knowledge, and are dated in the text so they can be checked:
+  - MIC-013 (2025 extension);
+  - MAC-011 (2025 curtailment);
+  - GLO-023 (April 2025);
+  - GLO-032 (2023–24);
+  - DEV-023 (2025 reform);
+  - GLO-034 (2026 phase).
+- **DEV-003 (MGNREGA)** is worded as "check whether it remains in force"; its replacement is
+  reported but not confirmed.
+- **GLO-033.** The status of the Airbus–Boeing tariff suspension after 2021 is left for checking.
+- **Figures still needing a source.** The earlier release's unverified deep-card figures and the
+  Exam DNA part marks (38 source papers) remain open, as recorded before.
+
+## 17. Tests
+
+<!-- TESTS -->
+
+## 18. Before and after
+
+<!-- BEFOREAFTER -->
+
+---
+
+## Deployment
+
+1. Review and merge the pull request into `main`. This release does not touch `main` directly.
+2. Nothing new is needed in Vercel: no new environment variables, and the YouTube function is
+   unchanged.
+3. The service worker moved to **v13**, so returning visitors pick up the new files on their next
+   visit.
+4. **Rollback.** Revert the merge commit. The module is self-contained between
+   `RENAISSANCE:BEGIN/END` and `REN-CSS:BEGIN/END`. The content corrections are ordinary text
+   changes, and the Real World hash reverts with its data.
