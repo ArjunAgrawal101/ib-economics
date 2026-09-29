@@ -2178,6 +2178,8 @@ body[data-sec="home"] #view .shead > .n{display:none}
 .ls-sec{margin-top:var(--s5);padding-top:var(--s3);border-top:2px solid var(--lf);scroll-margin-top:calc(var(--top) + 12px)}
 .ls-sh{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:var(--s3)}
 .ls-sk{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lf)}
+/* brass is too light for 11px text on paper: its darker ink keeps 4.5:1 */
+.lf-connect .ls-sk{color:#6E5423}
 .ls-h{font-family:var(--ser);font-weight:600;font-size:clamp(24px,2.6vw,32px);margin:0;letter-spacing:-.01em}
 .ls-h:focus{outline:none}
 .ls-plain{padding:var(--s3);background:var(--dem-w);border-left:3px solid var(--dem);margin-bottom:var(--s3);max-width:76ch}
@@ -2339,6 +2341,7 @@ body[data-sec="home"] #view .shead > .n{display:none}
 /* snapshot maps */
 .snap-idx .snap-codes{display:grid;grid-template-columns:repeat(auto-fill,minmax(58px,1fr));gap:5px}
 .snap-screen{overflow-x:auto}
+.snap-screen:focus-visible{outline:2px solid var(--brs);outline-offset:3px}
 .snap{background:var(--white);border:1px solid var(--hair-2);padding:18px;min-width:760px;color:var(--tx)}
 .snap-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr) minmax(0,1fr);grid-auto-flow:column;grid-template-rows:repeat(3,auto);gap:12px}
 .snap-sub .snap-c{grid-column:2;grid-row:1/4}
@@ -2385,19 +2388,49 @@ body[data-sec="home"] #view .shead > .n{display:none}
  .ls-tools{align-items:flex-start}.ls-hrow{align-items:flex-start}.mdb-t{grid-template-columns:minmax(0,1fr);grid-template-areas:"i" "t" "w" "s"}
  .hc-units{grid-template-columns:minmax(0,1fr)}.lens-ol{columns:1}}
 @media (prefers-reduced-motion:reduce){.ls-card,.kcchip,.ls-case,.kcw-w{transition:none}.ls-card:hover{transform:none}}
+
+/* atlas 2.0 and the calculation card */
+.atl2-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.atl2-c{padding:var(--s3);border:1px solid var(--hair);background:var(--white);border-top:3px solid var(--cap)}
+.atl2-c:nth-child(2){border-top-color:var(--bur)}.atl2-c:nth-child(3){border-top-color:var(--loss)}.atl2-c:nth-child(4){border-top-color:var(--evl)}
+.at-build{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:var(--s3);align-items:start}
+.at-fig{margin:0;border:1px solid var(--hair);background:var(--white)}.at-fig svg{width:100%;height:auto;display:block}
+.at-steps{list-style:none;padding:0;margin:0;display:grid;gap:4px}
+.at-steps button{display:flex;flex-direction:column;gap:2px;width:100%;text-align:left;padding:9px 12px;border:1px solid var(--hair);background:var(--white);cursor:pointer;font:inherit;color:inherit}
+.at-steps li.on button{border-color:var(--obs);box-shadow:inset 3px 0 0 var(--cap)}.at-steps li.done button{color:var(--tx-3)}
+@media (max-width:760px){.at-build{grid-template-columns:minmax(0,1fr)}}
+@media print{.pdg-fig svg{width:100%;max-height:120mm}.pdg-blank{height:90mm;border:0.8pt solid #999;margin-top:4pt}}
+
+/* inquiry tools */
+.iq-head{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap}.iq-head h2{font-family:var(--ser);font-size:26px;margin:0}
+.iq-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s3);align-items:start}
+.iq-list{padding-left:20px}.iq-list li{margin:8px 0}
+.iq-svg{width:100%;height:auto;display:block}.iq-svg .ax{stroke:var(--tx-2);stroke-width:1.4}.iq-svg circle{fill:var(--bur)}.iq-svg text{font-family:var(--ui);font-size:12px;fill:var(--tx-2)}
+.iq-rate{max-height:520px;overflow:auto}.iq-n{width:64px;padding:4px 6px}
+.iq-t td{vertical-align:top;min-width:180px}.iq-t textarea{min-width:170px}
+.fr{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:10px;position:relative}
+.fr-b{padding:12px;border:1px solid var(--hair-2);background:var(--white)}
+.fr-c{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;padding:14px 18px;background:var(--obs);color:#fff;font-family:var(--ser);font-weight:600;border-radius:50%;
+ min-width:140px;min-height:140px;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 0 0 6px var(--chalk)}
+.cont-ends{display:flex;justify-content:space-between;font-family:var(--ui);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--tx-3)}
+.cont-line{position:relative;height:28px;margin-top:8px;border-top:2px solid var(--obs)}
+.cont-dot{position:absolute;top:-8px;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--sup);border:2px solid var(--white)}.cont-dot.mine{background:var(--bur)}
+.cont-list{list-style:none;padding:0;margin:0;display:grid;gap:6px}.cont-list li{display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,280px) auto;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--hair)}
+@media (max-width:760px){.iq-g{grid-template-columns:minmax(0,1fr)}.fr{grid-template-columns:minmax(0,1fr)}.fr-c{position:static;transform:none;border-radius:4px;min-height:0;box-shadow:none}.cont-list li{grid-template-columns:minmax(0,1fr)}}
 /* ═══ print: dedicated sheets ═══ */
 @media print{
  #printroot.p-map .pdoc.pmap{font-family:"Manrope",system-ui,sans-serif;color:#111}
  .pmap-h{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.5pt solid #111;padding-bottom:4pt;margin-bottom:6pt}
  .pmap-h .brand{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:14pt}.pmap-h .sub{font-size:8pt;color:#444;text-transform:uppercase;letter-spacing:.1em}
  #printroot .snap{border:none;padding:0;min-width:0;background:#fff}
- #printroot .snap-g{gap:5pt}
+ #printroot .snap-g{gap:4pt}
+ #printroot .pmap-h{margin-bottom:4pt;padding-bottom:3pt}
  #printroot .snap-c{background:#fff!important;color:#111!important;border:1.5pt solid #111;padding:10pt}
  #printroot .snap-c h2{color:#111!important;font-size:18pt}#printroot .snap-c .snap-q{color:#111!important;font-size:11pt}#printroot .snap-i{color:#333!important;font-size:8.5pt}
  #printroot .snap-k{color:#7A2436!important}#printroot .snap-kcs span{border-color:#999;color:#111}
- #printroot .snap-b,#printroot .snap-u{border:0.8pt solid #999;border-top:2pt solid #333;padding:5pt 6pt;break-inside:avoid}
+ #printroot .snap-b,#printroot .snap-u{border:0.8pt solid #999;border-top:2pt solid #333;padding:4pt 5pt;break-inside:avoid}
  #printroot .snap-b h3,#printroot .snap-u h3{font-size:7.5pt;margin-bottom:3pt;color:#111!important}
- #printroot .snap-b li,#printroot .snap-u p,#printroot .snap-rw li{font-size:7.6pt;line-height:1.32;margin-bottom:2pt}
+ #printroot .snap-b li,#printroot .snap-u p,#printroot .snap-rw li{font-size:7.2pt;line-height:1.26;margin-bottom:1.6pt}
  #printroot .snap-unit .snap-u p{font-size:7.2pt}#printroot .snap-u h3{font-size:8pt}
  #printroot .snap-ft{font-size:7pt;color:#555;border-top:0.6pt solid #999;margin-top:6pt;padding-top:3pt}
  #printroot .snap-sub .snap-b::after{display:none}
@@ -7109,7 +7142,7 @@ const CALC=[
    `%ΔP = (${v.p2} − ${v.p1}) ÷ ${v.p1} × 100 = ${r2(dp)}%`,`PED = ${r2(dq)} ÷ ${r2(dp)} = ${r2(a)}`]}},
  interp:(v,a)=>{const m=Math.abs(a);return `PED is ${r2(a)}. Ignoring the sign, |PED| = ${r2(m)}, so demand is ${m===0?"perfectly inelastic: quantity does not respond at all, so total revenue moves in proportion to price":m>1?"elastic: quantity responds more than proportionately, and total revenue moves with quantity":m<1?"inelastic: quantity responds less than proportionately, and total revenue moves with price":"unit elastic, so total revenue is unchanged"}. That revenue rule holds exactly only for small changes: over this change, measured from the original values, total revenue goes from $${r2(v.p1*v.q1)} to $${r2(v.p2*v.q2)}.`},
  mist:["Dropping the negative sign without saying you are using the magnitude.","Using absolute changes rather than percentage changes.","Treating the slope of the demand curve as its elasticity."],
- ib:"Required at SL and HL. Expect it in Paper 2 with a follow-up on total revenue or tax incidence.",
+ ib:"Required at SL and HL. In data response it can lead into total revenue or tax incidence.",
  gen:()=>{const p1=rnd(10,40,2),q1=rnd(200,900,20);return{p1,p2:p1+rnd(2,8,1),q1,q2:q1-rnd(20,180,10)}},tol:.03,tolRel:.01},
 {id:"yed",n:"Income elasticity of demand",lvl:"Both",g:"Microeconomics",f:"YED = %ΔQd ÷ %ΔY",
  m:"How responsive quantity demanded is to a change in consumer income.",
@@ -7118,7 +7151,7 @@ const CALC=[
   return{a:r2(a),u:"",steps:[`%ΔQd = ${r2(dq)}%`,`%ΔY = ${r2(dy)}%`,`YED = ${r2(dq)} ÷ ${r2(dy)} = ${r2(a)}`]}},
  interp:(v,a)=>`YED is ${r2(a)}. ${a<0?"Negative, so the good is inferior: demand falls as income rises.":a>1?"Greater than one, so the good is a normal luxury: demand rises more than proportionately with income.":a===1?"Exactly one, the unit-elastic boundary: demand rises in the same proportion as income, so the good keeps its share of spending. This is the dividing line between necessity and luxury rather than a case of either.":a===0?"Zero, so demand does not respond to income at all over this range.":"Positive but below one, so the good is a normal necessity: demand rises less than proportionately with income."}`,
  mist:["Classifying by size before checking the sign.","Calling any positive YED a luxury: it must exceed one.","Confusing YED with PED because both use %ΔQd."],
- ib:"Required at SL and HL. Often paired with a question on sectoral change as an economy develops.",
+ ib:"Required at SL and HL. It connects to sectoral change as an economy develops (HL).",
  gen:()=>{const y1=rnd(20000,60000,1000),q1=rnd(100,600,10);
   return{y1,y2:y1+rnd(2000,9000,500),q1,q2:q1+(rnd(-90,140,5)||20)}},tol:.03,tolRel:.01},
 {id:"pes",n:"Price elasticity of supply",lvl:"Both",g:"Microeconomics",f:"PES = %ΔQs ÷ %ΔP",
@@ -7145,7 +7178,7 @@ const CALC=[
   return{a:r2(a),u:"$",steps:[`Height = ${v.wtp} − ${v.p} = $${r2(h)}`,`CS = ½ × ${v.q} × ${r2(h)}`,`CS = $${r2(a)}`]}},
  interp:(v,a)=>`Consumers collectively gain $${a.toLocaleString()} of surplus, because their willingness to pay exceeds the market price of $${v.p}. On the diagram this is the area between the demand curve and the price line, up to the equilibrium quantity. It is a triangle, and the half base times height shortcut is exact, because the guide draws the demand curve as a straight line.`,
  mist:["Using the wrong height: it is the choke price minus the market price, not the price itself.","Forgetting the ½ and reporting the whole rectangle.","Omitting the unit and what the figure represents.","Applying half times base times height to a curved demand or supply line. The triangle formula is exact only where the line is straight; against a genuinely curved function the area is an integral and the triangle is an approximation whose error grows with the curvature. IB diagrams are drawn linear, so the formula holds in this course, and saying why it holds is what separates a calculation from a recipe."],
- ib:"HL quantitative. Expect it alongside producer surplus, tax revenue and welfare loss.",
+ ib:"HL quantitative. It sits alongside producer surplus, tax revenue and welfare loss.",
  gen:()=>{const p=rnd(8,30,1);return{p,wtp:p+rnd(6,25,1),q:rnd(100,800,20)}},tol:1},
 {id:"ps",n:"Producer surplus",lvl:"HL",g:"Microeconomics",f:"PS = ½ × base × height, for a linear supply curve",dg:"surp",
  m:"The gain producers receive above the minimum price at which they would have supplied.",
@@ -7162,7 +7195,7 @@ const CALC=[
  solve:v=>({a:r2(v.t*v.q1),u:"$",steps:[`Revenue uses the post-tax quantity, ${v.q1}, not ${v.q0}`,`Revenue = ${v.t} × ${v.q1}`,`Revenue = $${r2(v.t*v.q1)}`]}),
  interp:(v,a)=>`Government collects $${a.toLocaleString()}. Note that the quantity fell from ${v.q0} to ${v.q1}: the tax base shrinks as the tax rises, which is why revenue and the behavioural objective pull against each other.`,
  mist:["Multiplying by the original quantity.","Confusing revenue with the burden on either side: the split follows relative elasticities.","Forgetting that the quantity used is the one where the new supply curve meets demand."],
- ib:"HL quantitative. Usually paired with incidence and welfare loss.",
+ ib:"HL quantitative. It connects to incidence and welfare loss.",
  gen:()=>{const q0=rnd(300,900,20);return{t:rnd(2,8,1),q0,q1:q0-rnd(30,180,10)}},tol:1},
 {id:"subcost",n:"Cost of a subsidy",lvl:"HL",g:"Microeconomics",f:"Cost = subsidy per unit × quantity traded after the subsidy",
  m:"The total amount the government pays, borne by taxpayers.",
@@ -7170,7 +7203,7 @@ const CALC=[
  solve:v=>({a:r2(v.s*v.q1),u:"$",steps:[`Cost = ${v.s} × ${v.q1}`,`Cost = $${r2(v.s*v.q1)}`]}),
  interp:(v,a)=>`The subsidy costs $${a.toLocaleString()}. Its real cost is the alternative public spending it displaces, which is the opportunity cost point most answers omit.`,
  mist:["Using the pre-subsidy quantity.","Assuming producers receive the whole subsidy: part passes to consumers as a lower price.","Treating the cash figure as the full economic cost."],
- ib:"HL quantitative. Expect a follow-up on who gains and on opportunity cost.",
+ ib:"HL quantitative. Follow the number with who gains and at what opportunity cost.",
  gen:()=>({s:rnd(1,6,1),q1:rnd(300,1200,20)}),tol:1},
 {id:"dwl",n:"Welfare loss from a tax",lvl:"HL",g:"Microeconomics",f:"Welfare loss = ½ × tax × (Q before − Q after)",dg:"tax",
  m:"The value society loses because units that were worth more than they cost are no longer traded.",
@@ -7195,7 +7228,7 @@ const CALC=[
    ?`A and B each give up ${oa} cloth per unit of wheat. The opportunity cost ratios are identical, so neither country holds a comparative advantage in either good and specialisation generates no gain. This is the limiting case of the theory, and identifying it is worth more than forcing a recommendation.`
    :`A gives up ${oa} cloth per unit of wheat; B gives up ${ob}. ${oa<ob?"A":"B"} should specialise in wheat and ${oa<ob?"B":"A"} in cloth, provided the terms of trade settle between the two ratios. Absolute advantage is irrelevant here: only the ratios matter.`},
  mist:["Comparing output levels instead of opportunity cost ratios.","Stopping at the ratios without saying which country should specialise in which good.","Assuming a country with an absolute advantage in both goods gains nothing.","Recommending specialisation when the two opportunity cost ratios are equal: there is no comparative advantage to act on."],
- ib:"SL and HL, Unit 4. Always show the ratio; assertion without it earns no quantitative credit.",
+ ib:"SL and HL, Unit 4. Show the ratio: an assertion without it is not a calculation.",
  gen:()=>({a1:rnd(20,80,5),a2:rnd(20,80,5),b1:rnd(20,80,5),b2:rnd(20,80,5)}),tol:.03},
 {id:"realgdp",n:"Real GDP from nominal GDP",lvl:"Both",g:"Macroeconomics",f:"Real GDP = nominal GDP ÷ price deflator × 100",
  m:"Output measured at constant prices, stripping out the effect of inflation.",
@@ -7203,7 +7236,7 @@ const CALC=[
  solve:v=>({a:r2(v.n/v.d*100),u:"$bn",steps:[`Real GDP = ${v.n} ÷ ${v.d} × 100`,`Real GDP = $${r2(v.n/v.d*100)}bn`]}),
  interp:(v,a)=>`Real GDP is $${a}bn at base-year prices, against nominal GDP of $${v.n}bn. ${v.d>100?"Prices have risen since the base year, so nominal output overstates the volume of goods and services produced.":v.d<100?"Prices are below the base year, so nominal output understates the volume produced.":"The deflator is at its base value of 100, so nominal and real GDP coincide in this year."}`,
  mist:["Multiplying by the deflator instead of dividing.","Comparing nominal figures across years and calling the difference growth.","Forgetting the ×100 when the deflator is indexed to 100."],
- ib:"SL and HL, subtopic 3.1. The most common quantitative trap in Paper 2.",
+ ib:"SL and HL, subtopic 3.1. Keep nominal and real values apart: mixing them can reverse a conclusion.",
  gen:()=>({n:rnd(300,900,10),d:rnd(96,135,1)}),tol:.5},
 {id:"growth",n:"Economic growth rate",lvl:"Both",g:"Macroeconomics",f:"Growth = (real GDP₂ − real GDP₁) ÷ real GDP₁ × 100",
  m:"The percentage increase in the volume of output between two periods.",
@@ -7221,7 +7254,7 @@ const CALC=[
   return{a:r2(a),u:"%",steps:[`Change in index = ${v.c2} − ${v.c1} = ${r2(v.c2-v.c1)}`,`Inflation = ${r2(v.c2-v.c1)} ÷ ${v.c1} × 100 = ${r2(a)}%`]}},
  interp:(v,a)=>`Inflation is ${r2(a)}%. ${a>0?"The price level rose. If this rate is lower than the previous period's, that is disinflation: prices are still rising, only more slowly.":a<0?"The index fell, so this is deflation, not disinflation.":"The price level is unchanged."}`,
  mist:["Reading a falling inflation rate as falling prices.","Dividing by the later index.","Treating a rise in one price as inflation."],
- ib:"SL and HL, subtopic 3.3. Expect a follow-up asking what happened to prices, not to the rate.",
+ ib:"SL and HL, subtopic 3.3. Be ready to say what happened to prices, not only to the rate.",
  gen:()=>{const c1=rnd(95,140,1);return{c1,c2:c1+rnd(1,12,1)}},tol:.05},
 {id:"unemp",n:"Unemployment rate",lvl:"Both",g:"Macroeconomics",f:"Rate = unemployed ÷ labour force × 100",
  m:"The share of people willing and able to work who are without work and actively seeking it.",
@@ -7229,7 +7262,7 @@ const CALC=[
  solve:v=>({a:r2(v.u/v.l*100),u:"%",steps:[`Rate = ${v.u} ÷ ${v.l} × 100`,`Rate = ${r2(v.u/v.l*100)}%`]}),
  interp:(v,a)=>`The unemployment rate is ${a}%. The denominator is the labour force, not the population: discouraged workers who have stopped searching leave the labour force and the measured rate falls without anyone finding work.`,
  mist:["Dividing by total population instead of the labour force.","Ignoring hidden unemployment and underemployment when evaluating the figure.","Assuming a falling rate always means rising employment."],
- ib:"SL and HL, subtopic 3.3. The limitations of the measure are a standard evaluation point.",
+ ib:"SL and HL, subtopic 3.3. The limitations of the measure are a natural evaluation point.",
  gen:()=>{const l=rnd(2000,9000,100);return{l,u:rnd(80,700,10)}},tol:.05},
 {id:"realval",n:"Real value of a nominal figure",lvl:"Both",g:"Macroeconomics",f:"Real value = nominal value ÷ price index × 100",
  m:"What a wage, income or benefit is actually worth once prices are accounted for.",
@@ -7237,7 +7270,7 @@ const CALC=[
  solve:v=>({a:r2(v.nom/v.idx*100),u:"$ at base-year prices",steps:[`Real = ${v.nom} ÷ ${v.idx} × 100`,`Real = $${r2(v.nom/v.idx*100)}`]}),
  interp:(v,a)=>`In base-year prices the figure is worth $${a}. ${v.idx>100?"Because prices have risen, purchasing power is lower than the nominal figure suggests: a nominal pay rise below the inflation rate is a real pay cut.":v.idx<100?"Prices are below the base year, so real purchasing power exceeds the nominal figure.":"The index is at its base value of 100, so the real and nominal figures coincide."}`,
  mist:["Comparing nominal wages across years without deflating.","Multiplying instead of dividing.","Treating a nominal increase as an increase in living standards."],
- ib:"SL and HL. Appears in data response on inflation and on inequality.",
+ ib:"SL and HL. Useful in data response on inflation and on inequality.",
  gen:()=>({nom:rnd(20000,70000,500),idx:rnd(98,145,1)}),tol:1},
 {id:"mult",n:"The multiplier",lvl:"HL",g:"Macroeconomics",f:"k = 1 ÷ MPW, where MPW = MPS + MPT + MPM",
  m:"How much national income eventually changes for a given injection.",
@@ -11492,7 +11525,7 @@ const NEWCALC=[
    `GDP = ${v.c} + ${v.i} + ${v.g} + (${r2(nx)})`,`GDP = ${r2(a)} $bn`]}},
  interp:(v,a)=>`Nominal GDP is $${a}bn. Net exports ${v.x-v.mm<0?"subtract from":v.x-v.mm>0?"add to":"neither add to nor subtract from"} domestic output here, which is why imports enter with a negative sign.`,
  mist:["Adding imports instead of subtracting them.","Including transfer payments in government spending: they are not payments for output.","Reporting the figure without saying it is nominal."],
- ib:"Named in the guide as a required calculation at both levels. Expect it in Paper 2 with a follow-up on real GDP.",
+ ib:"Named in the guide as a required calculation at both levels. It leads naturally into real GDP.",
  gen:()=>({c:rnd(300,700,10),i:rnd(60,200,5),g:rnd(80,250,5),x:rnd(80,300,5),mm:rnd(80,320,5)}),tol:.01},
 {id:"gni",n:"Nominal GNI from GDP",lvl:"Both",g:"Macroeconomics",sub:"3.1",
  f:"GNI = GDP + net property income from abroad",
@@ -11633,7 +11666,7 @@ const NEWCALC=[
  gen:()=>{const b=rnd(4,20,2),d=rnd(4,20,2),a=rnd(180,400,20);const pe=a/(b+d);
   return{a,b,d,pmin:Math.max(1,Math.round(pe*1.35))}},tol:.02},
 {id:"extwl",n:"Welfare loss from an externality",lvl:"HL",g:"Microeconomics",sub:"2.8",
- f:"Welfare loss = ½ × (Qmarket − Qopt) × external cost per unit",
+ f:"Welfare loss = ½ × |Qmarket − Qopt| × marginal external cost (or benefit) at Qmarket",
  m:"The value society loses on the units produced or consumed beyond the social optimum.",
  inp:[["qm","Market quantity","units"],["qo","Socially optimal quantity","units"],["mev","External cost per unit at the market quantity","$"]],
  solve:v=>{const base=Math.abs(v.qm-v.qo),a=.5*base*v.mev;
@@ -37776,7 +37809,7 @@ function rnChapter(n,t){
    title or result is added, and no institution is described as a current
    workplace. The portrait sits in its own grid cell; nothing is drawn over it.
    ═══════════════════════════════════════════════════════════════════════════ */
-const AB_POS=["Economics educator","IB DP practitioner","Academic mentor","Resource creator"];
+const AB_POS=["Economics educator","IB DP educator","Teacher and mentor","Academic resource creator","Research-oriented educator"];
 /* the credentials, as data blocks */
 const AB_FACTS=()=>[
  ["Education","Economics","St. Stephen's College, University of Delhi"],
@@ -37928,7 +37961,7 @@ function RENSUITE(){
  T("Toolkit · eighteen distinct lenses, each with questions and a motif that exists",()=>LENSES.length===18&&new Set(LENSES.map(l=>l.k)).size===18&&LENSES.every(l=>l.ask.length>=3&&l.ask.every(q=>/\?$/.test(q))&&!!MOTIFS[l.m]&&l.line.length>40));
  T("Toolkit · every lens leads into content that exists on the platform",()=>LENSES.every(l=>lensLinks(l,3).length>=1),LENSES.filter(l=>!lensLinks(l,3).length).map(l=>l.k).join(", "));
  T("Toolkit · every lens's subtopics exist",()=>LENSES.every(l=>l.subs.every(s=>!!SUBMAP[s])));
- T("Toolkit · the toolkit is the last tab of Think, so every earlier tab keeps its place",()=>{const s=SECTIONS.find(x=>x.v==="think");return s.tabs[s.tabs.length-1]===TLAE_TAB});
+ T("Toolkit · the toolkit keeps its place after the six earlier tabs of Think; tabs added later come after it",()=>{const s=SECTIONS.find(x=>x.v==="think");return s.tabs.indexOf(TLAE_TAB)===6&&s.tabs.slice(0,6).join("|")==="The Economic Chain|Evaluation stress test|Dimension library|Concept connections|Conditions & assumptions|Concept network"});
  T("Toolkit · concept pages and cases carry the lens questions",()=>{const c=CONCEPTS[0];const a=conceptPage(c);const k=[VIEW,TAB,ARG];let b="";try{VIEW="world";TAB=0;ARG=RW_CASES[0].id;b=rwCasePage()}finally{VIEW=k[0];TAB=k[1];ARG=k[2]}return /Think like an economist/.test(a)&&/Think like an economist/.test(b)});
  /* ── search ranking ── */
  T("Search rank · an abbreviation finds its concept before a word that merely contains it",()=>{const r=cpScore(buildIndex().map(x=>({k:x.k,t:x.t,d:x.d,s:x.s})),["ped"],3,1);
@@ -38323,6 +38356,7 @@ function miscBox(id){const m=MISC_BOX[id];if(!m)return "";
 const COURSE=(()=>{const c=(typeof window!=="undefined"&&window.__COURSE__)||null;
  return c&&c.spines?c:{meta:{sources:[],counts:{},unavailable:[]},spines:{},misc:[],gloss:[],compare:[],ct:[],writing:{},papers:{},
   checklists:[],integrity:{},concepts:[],lens:{qs:[],groups:[]},intel:[]}})();
+const COURSE_OK=!!(typeof window!=="undefined"&&window.__COURSE__&&window.__COURSE__.spines);
 const SPINE=COURSE.spines;
 const MISCDB=COURSE.misc||[];
 const MISCBY=Object.fromEntries(MISCDB.map(m=>[m.id,m]));
@@ -38392,6 +38426,8 @@ function practiseTab(n){const s=SECTIONS.find(x=>x.v==="practise");const i=s&&s.
 /* ═══ the course map: four units, thirty-one lessons ═══ */
 function courseTopics(){
  const a=ARG;
+ if(!COURSE_OK)return H.pageHead("Course","Topics","The lessons live in a file beside this page.")
+  +`<section class="sec"><div class="wrap"><div class="note n"><span class="t">The course layer is not here</span> The thirty-one lessons, the glossary, the misconception database and the snapshot maps are read from <span class="mn">assets/data/course.js</span>. This copy of the page was opened without it. Keep the folder together, or open the platform from its website, and they return. Everything else on the platform works as usual.</div></div></section>`;
  if(a&&/^unit-[1-4]$/.test(a))return lsUnit(+a.slice(5));
  if(a&&SPINE[a])return lsLesson(a);
  const vis=lsVisible();
@@ -38818,13 +38854,13 @@ function snapSub(c){const s=SPINE[c],t=SUBMAP[c]||{};if(!s)return null;
  const lim=[].concat(...(s.models||[]).map(m=>(m.limitations||[]).slice(0,2))).slice(0,3);
  return {id:c,kind:"sub",title:`${c} ${t.title||""}`,unit:t.unit,lvl:t.lvl,core:s.big.q,idea:s.big.idea,
   branches:{
-   concept:[...(s.kc||[]).map(k=>({h:k.c,t:snapCut(k.here,90)})),...terms.map(g=>({h:g.term,t:snapCut(g.plain||g.def,80)}))],
+   concept:[...(s.kc||[]).slice(0,3).map(k=>({h:k.c,t:snapCut(k.here,85)})),...terms.slice(0,4).map(g=>({h:g.term,t:snapCut(g.plain||g.def,75)}))],
    theory:[...(s.blocks||[]).slice(0,4).map(b=>({h:b.h,t:""})),...(s.mech||[]).slice(0,2).map(x=>({h:"Mechanism",t:snapCut(x.t,90)}))],
-   model:[...(s.models||[]).map(m=>({h:m.model,t:snapCut(m.prediction,90)})),...dg.filter(x=>!(s.models||[]).some(m=>m.dg&&DG[m.dg]&&DG[m.dg]().t===x)).slice(0,3).map(x=>({h:"Diagram",t:x})),
-     ...cal.slice(0,3).map(x=>({h:x.n+(x.lvl==="HL"?" (HL)":""),t:x.f,mono:1}))],
+   model:[...(s.models||[]).slice(0,3).map(m=>({h:m.model,t:snapCut(m.prediction,80)})),...dg.filter(x=>!(s.models||[]).slice(0,3).some(m=>m.dg&&DG[m.dg]&&DG[m.dg]().t===x)).slice(0,2).map(x=>({h:"Diagram",t:x})),
+     ...cal.slice(0,2).map(x=>({h:x.n+(x.lvl==="HL"?" (HL)":""),t:x.f,mono:1}))],
    application:[...cases.map(x=>({h:`${x.c}, ${x.y}`,t:x.t})),...(s.models||[]).slice(0,Math.max(0,3-cases.length)).map(m=>({h:"Real world",t:snapCut(m.real,110)})),
      {h:"Policy",t:snapCut(s.inquiry.policy,110)}],
-   evaluation:[...lim.map(x=>({h:"Limitation",t:snapCut(x,95)})),...mis.map(x=>({h:"Watch out",t:snapCut(x.student.watch,95)})),{h:"Interpretation",t:snapCut(s.tei.interp,110)}],
+   evaluation:[...lim.map(x=>({h:"Limitation",t:snapCut(x,90)})),...mis.map(x=>({h:"Watch out",t:snapCut(x.student.watch,90)})),{h:"Interpretation",t:snapCut(s.tei.interp,105)}],
    exam:[...(s.exam.types||[]).slice(0,2).map(x=>({h:"Question type",t:snapCut(x,95)})),{h:"Command terms",t:(s.exam.ct||[]).join(", ")},
      ...(s.exam.strong||[]).slice(0,1).map(x=>({h:"Strong answers",t:snapCut(x,95)})),{h:"Connects to",t:(s.connect||[]).map(x=>x.sub).join(" · ")}]
   },
@@ -38880,7 +38916,7 @@ function snapView(id){const d=snapData(id);if(!d)return H.pageHead("Mindmaps","S
    <button class="btn sm gh" onclick="snapPrint('${d.id}')">Print or save as PDF</button>
    ${d.kind!=="course"?`<button class="btn sm gh" onclick="snapPrint('${d.id}',1)">Print the last-night version</button>`:""}
    <button class="btn sm gh" onclick="SNAPN=!SNAPN;render()">${SNAPN?"Full snapshot":"Last-night view"}</button></div>
-  <div class="snap-screen mt4">${snapHtml(d.id,{night:SNAPN&&d.kind!=="course"})}</div>
+  <div class="snap-screen mt4" tabindex="0" role="region" aria-label="The snapshot map (scrolls sideways on a narrow screen)">${snapHtml(d.id,{night:SNAPN&&d.kind!=="course"})}</div>
   ${d.kind==="unit"?`<div class="snap-sublinks mt4">${lsVisible().filter(s=>"u"+s.unit===d.id).map(s=>`<button class="btn xs gh" onclick="snapOpen('${s.code}')">${esc(s.code)}</button>`).join("")}</div>`:""}
   <p class="xs mt3">Generated from the lesson data, so it changes when the lesson does. On paper it prints A4 landscape with nothing but the map.</p>
  </div></section>`}
@@ -38913,14 +38949,17 @@ let PRINTOPT={};
   printPreparedDocument();return html};
  /* Printing without choosing a sheet: a clean copy of the page, not the interface */
  let fallback=false;
- window.addEventListener("beforeprint",()=>{const r=document.getElementById("printroot");if(!r||r.innerHTML.trim())return;
-  const v=document.getElementById("view");if(!v)return;const c=v.cloneNode(true);
+ window.printFallbackPrepare=function(){const r=document.getElementById("printroot");if(!r||r.innerHTML.trim())return false;
+  const v=document.getElementById("view");if(!v)return false;const c=v.cloneNode(true);
   c.querySelectorAll("button,input,select,textarea,nav,.ls-loop,.ls-tools,.subnav,.no-print,.motif,.hero svg,.sp-cover-fig,dialog,[aria-hidden='true']").forEach(e=>{
    if(e.tagName==="BUTTON"&&e.closest(".ls-mo,.gl-t,.ls-card,.ls-case,.ls-pt")){const s=document.createElement("span");s.textContent=e.textContent;e.replaceWith(s)}else e.remove()});
   c.querySelectorAll("details").forEach(d=>d.setAttribute("open",""));
   PRINTOPT={kind:"page"};_prep(document.title.replace(/ · Arjun Agrawal · IB DP Economics$/,""),`<div class="pview">${c.innerHTML}</div>`,"Printed from the platform");
-  r.className="p-page";fallback=true});
- window.addEventListener("afterprint",()=>{if(!fallback)return;fallback=false;const r=document.getElementById("printroot");if(r){r.innerHTML="";r.className=""}PRINTOPT={}});
+  r.className="p-page";fallback=true;
+  let st=document.getElementById("pgsz");if(!st){st=document.createElement("style");st.id="pgsz";document.head.appendChild(st)}st.textContent="@media print{@page{size:A4;margin:14mm}}";return true};
+ window.printFallbackClear=function(){if(!fallback)return;fallback=false;const r=document.getElementById("printroot");if(r){r.innerHTML="";r.className=""}PRINTOPT={};const st=document.getElementById("pgsz");if(st)st.textContent=""};
+ window.addEventListener("beforeprint",()=>printFallbackPrepare());
+ window.addEventListener("afterprint",()=>printFallbackClear());
 })();
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -38985,7 +39024,7 @@ function conceptNet(sel){const C=COURSE.concepts||[];if(!C.length)return "";
  const W=640,Hh=420,cx=W/2,cy=Hh/2,R=160,pos=Object.fromEntries(KCN.map((k,i)=>{const a=-Math.PI/2+i*2*Math.PI/KCN.length;return [k,[cx+R*1.35*Math.cos(a),cy+R*Math.sin(a)]]}));
  const seen=new Set(),edges=[];C.forEach(k=>(k.links||[]).forEach(l=>{if(!pos[l]||!pos[k.c])return;const e=[k.c,l].sort(),key=e.join("|");
   if(!seen.has(key)){seen.add(key);edges.push(e)}}));
- return `<svg class="kcnet" viewBox="0 0 ${W} ${Hh}" role="img" aria-label="The nine key concepts and the links between them">${edges.map(([a,b])=>{const on=sel===a||sel===b;
+ return `<svg class="kcnet" viewBox="0 0 ${W} ${Hh}" role="group" aria-label="The nine key concepts and the links between them">${edges.map(([a,b])=>{const on=sel===a||sel===b;
   return `<line x1="${pos[a][0].toFixed(1)}" y1="${pos[a][1].toFixed(1)}" x2="${pos[b][0].toFixed(1)}" y2="${pos[b][1].toFixed(1)}" class="${on?"on":""}"/>`}).join("")}
   ${KCN.map(k=>`<g class="kcn${k===sel?" sel":""}" tabindex="0" role="button" aria-label="${esc(k)}" onclick="CX.kc='${esc(k)}';render()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();CX.kc='${esc(k)}';render()}">
    <circle cx="${pos[k][0].toFixed(1)}" cy="${pos[k][1].toFixed(1)}" r="${k===sel?40:34}"/><text x="${pos[k][0].toFixed(1)}" y="${(pos[k][1]+4).toFixed(1)}" text-anchor="middle">${esc(k.replace("Economic well-being","Well-being"))}</text></g>`).join("")}</svg>`}
@@ -39006,7 +39045,7 @@ function conceptWorlds(){const k=(COURSE.concepts||[]).find(x=>x.c===CX.kc);if(!
 /* ── Economics Intelligence: each real-world issue as a path ── */
 function intelPath(){const r=(COURSE.intel||[]).find(x=>x.id===CX.rwi);if(!r)return "";
  return `<section class="sec intel" aria-labelledby="intel-h"><div class="wrap"><div class="kicker">Economics Intelligence</div>
-  <h2 class="mt1" id="intel-h">Follow the issue from concept to exam</h2><p class="ls-q mt2">${esc(r.q)}</p>
+  <h2 class="mt1" id="intel-h">Follow the issue from concept to exam</h2><p class="ls-q mt2">${esc(r.q)}</p><p class="xs mt1">${srcTag("guide")} The real-world issue as the guide words it. ${srcTag("platform")} The path below is original.</p>
   <ol class="intel-path mt4">${(r.path||[]).map((p,i)=>`<li class="ip-${esc(p.stage.toLowerCase().replace(/\s+/g,"-"))}"><span class="ip-n">${String(i+1).padStart(2,"0")}</span><div><div class="eb">${esc(p.stage)}</div>
    <p class="sm mt1">${esc(p.t)}</p><div class="row mt1" style="gap:5px;flex-wrap:wrap">${(p.subs||[]).map(s=>`<button class="kcchip" onclick="${lsGoSub(s)}">${esc(s)}</button>`).join("")}
    ${p.dg&&DG[p.dg]?`<button class="kcchip" onclick="nav('lab',3,'${p.dg}')">${esc(DG[p.dg]().t)}</button>`:""}
@@ -39166,22 +39205,23 @@ const afterHead=(h,band)=>{const i=String(h).indexOf("</section>");return i<0?ba
  const wrap=(v,fn)=>{const prev=VIEWS[v];if(typeof prev!=="function")return;VIEWS[v]=function(){const r=fn(prev,this,arguments);return r===undefined?prev.apply(this,arguments):r}};
  wrap("course",()=>{
   if(TAB===tab("course","Topics"))return courseTopics();
+  if(!COURSE_OK)return undefined;          /* without the data file the earlier pages stand */
   if(TAB===tab("course","Dictionary"))return glossary2();
   if(TAB===tab("course","Command terms"))return commandTerms2();
   if(TAB===tab("course","Checklists"))return checklistsView();
   if(TAB===tab("course","Key concepts")){if(ARG&&KCN.includes(ARG)){CX.kc=ARG;ARG=null}return courseKC()+conceptWorlds()}
   if(TAB===tab("course","Real-world issues")){if(ARG&&/^rw[1-6]$/.test(ARG)){CX.rwi=ARG;ARG=null}return afterHead(courseRWI(),"")+intelPath()}
  });
- wrap("learn",(prev,self,args)=>TAB===tab("learn","Misconception lab")?afterHead(prev.apply(self,args),miscDb()):undefined);
+ wrap("learn",(prev,self,args)=>COURSE_OK&&TAB===tab("learn","Misconception lab")?afterHead(prev.apply(self,args),miscDb()):undefined);
  wrap("think",(prev,self,args)=>TAB===tab("think","Economist's toolkit")?afterHead(prev.apply(self,args),lensView()):undefined);
  wrap("practise",(prev,self,args)=>TAB===tab("practise","Ten-minute revision")?afterHead(prev.apply(self,args),revView()):undefined);
  wrap("papers",(prev,self,args)=>{const n=[tab("papers","Paper 1 workshop"),tab("papers","Paper 2 data lab"),tab("papers","Paper 3 recommendation lab")].indexOf(TAB);
   return n>=0?afterHead(prev.apply(self,args),paperGuide(n+1)):undefined});
- wrap("ia",(prev,self,args)=>{if(TAB===tab("ia","Academic integrity"))return integrityView();
+ wrap("ia",(prev,self,args)=>{if(TAB===tab("ia","Academic integrity"))return integrityView()||H.pageHead("IA","Academic integrity","This guidance is read from assets/data/course.js, which this copy of the page was opened without.");
   return afterHead(prev.apply(self,args),`<div class="wrap"><p class="ls-support mt3"><strong>Learning support.</strong> Everything in this section helps you learn to write a commentary; the commentary itself must be your own work. <button class="lnk" onclick="nav('ia',${tab("ia","Academic integrity")})">Academic integrity</button></p></div>`)});
  wrap("mind",(prev,self,args)=>{if(TAB!==0)return undefined;
   if(ARG&&/^snap-/.test(ARG))return snapView(ARG.slice(5));
-  return afterHead(prev.apply(self,args),snapIndexBand())});
+  return COURSE_OK?afterHead(prev.apply(self,args),snapIndexBand()):undefined});
  wrap("tok",(prev,self,args)=>TAB===tab("tok","Knowledge questions")?afterHead(prev.apply(self,args),tokByTopic()):undefined);
 })();
 function tokByTopic(){return `<section class="sec"><div class="wrap"><div class="kicker">One question for every lesson</div>
@@ -39194,7 +39234,7 @@ function tokByTopic(){return `<section class="sec"><div class="wrap"><div class=
  const prev=buildIndex;
  buildIndex=function(){
   if(SIDX)return SIDX;
-  const I=prev().filter(x=>x.k!=="Topic dossier");
+  const I=prev().filter(x=>!["Topic dossier","Dictionary","Command term"].includes(x.k));   /* replaced by richer records below */
   const T=TOPICS_TAB(),kc=c=>((SPINE[c]||{}).kc||[]).map(k=>k.c).join(", ");
   lsCodes().forEach(c=>{const s=SPINE[c];if(!s)return;const t=SUBMAP[c]||{};
    I.push({k:"Lesson",t:`${c} ${t.title}`,d:`Unit ${t.unit} · ${kc(c)} · ${s.big.q}`,go:`nav('course',${T},'${c}')`,s:[c,t.title,"lesson topic",s.big.idea,s.big.q,kc(c)].join(" ")});
@@ -39206,7 +39246,7 @@ function tokByTopic(){return `<section class="sec"><div class="wrap"><div class=
    I.push({k:"Mindmap",t:`Snapshot · Unit ${u} map`,d:`${LSUNIT[u]} on one page`,go:`snapOpen('u${u}')`,s:["unit map snapshot",u,LSUNIT[u]].join(" ")})});
   I.push({k:"Mindmap",t:"Snapshot · the course map",d:"Four units, thirty-one lessons, on one page",go:`snapOpen('course')`,s:"course map snapshot one page syllabus"});
   const D=courseTab("Dictionary");
-  (COURSE.gloss||[]).forEach((g,gi)=>I.push({k:"Term",t:g.term,d:`${g.sub||""}${/HL only/.test(g.ib||"")?" · HL":""} · ${g.plain||g.def}`,go:`glOpen(${gi})`,
+  (COURSE.gloss||[]).forEach((g,gi)=>I.push({k:"Dictionary",t:g.term,d:`${g.sub||""}${/HL only/.test(g.ib||"")?" · HL":""} · ${g.plain||g.def}`,go:`glOpen(${gi})`,
    s:[g.term,[].concat(g.alias||[]).join(" "),g.def,g.plain,g.sub,"glossary definition term"].join(" ")}));
   (COURSE.compare||[]).forEach(c=>I.push({k:"Compare",t:c.terms.join(" vs "),d:c.key,go:`GX.cset='${c.id}';nav('course',${D})`,s:[c.terms.join(" "),c.key,"compare versus difference"].join(" ")}));
   const L=tab0("learn","Misconception lab");
@@ -39217,6 +39257,8 @@ function tokByTopic(){return `<section class="sec"><div class="wrap"><div class=
   (COURSE.concepts||[]).forEach(k=>I.push({k:"Key concept",t:k.c,d:k.q,go:`nav('course',${K},'${k.c}')`,s:[k.c,k.core,k.q,"key concept one concept many worlds"].join(" ")}));
   const CL=courseTab("Checklists");
   clAll().forEach(c=>I.push({k:"Checklist",t:c.name+" checklist",d:c.for||"",go:`CLX='${c.id}';nav('course',${CL})`,s:[c.name,"checklist",c.for].join(" ")}));
+  [["Concept diary","diary"],["Concept graph","graph"],["Frayer model","frayer"],["Cross-comparison chart","cross"],["Continuum of examples","cont"],["Real-world case comparison","cases"]].forEach(([t,k])=>
+   I.push({k:"Tool",t,d:"Inquiry tools · think with the key concepts",go:`IQ.tool='${k}';nav('think',${thinkTab("Inquiry tools")})`,s:[t,"inquiry tool concept"].join(" ")}));
   I.push({k:"Tool",t:"The Economist's Lens",d:"Seventeen questions for any economic issue",go:`nav('think',${thinkTab("Economist's toolkit")})`,s:"economist's lens seventeen questions framework think"});
   I.push({k:"Tool",t:"Revision mode",d:"15, 30 or 60 minutes, a unit, or the whole course",go:`nav('practise',${practiseTab("Ten-minute revision")})`,s:"revision mode review revise 15 30 60 minutes unit course"});
   I.push({k:"Tool",t:"Academic integrity",d:"Authenticity, citation, AI use and the checklists before you submit",go:`nav('ia',${iaTab("Academic integrity")})`,s:"academic integrity plagiarism citation referencing ai use before i submit"});
@@ -39225,10 +39267,12 @@ function tokByTopic(){return `<section class="sec"><div class="wrap"><div class=
   return SIDX;
  };
  function tab0(v,n){const s=SECTIONS.find(x=>x.v===v);const i=s&&s.tabs?s.tabs.indexOf(n):-1;return i<0?0:i}
+ if(typeof RN_KIND_W!=="undefined")Object.assign(RN_KIND_W,{"Lesson":3,"Dictionary":2.5,"Command term":2.2,"Key concept":2,"Model card":1.6,"Compare":1.5,"Checklist":1,"Tool":1.4,"TOK":0.4});
+ if(typeof RAND_TYPES!=="undefined"&&!RAND_TYPES.some(t=>t[0]==="Lesson"))RAND_TYPES.unshift(["Lesson",["Lesson"]]);
  if(typeof CPGROUPS!=="undefined"){
   CPGROUPS.splice(1,0,["lessons","Lessons",/^(Lesson|Model card)$/]);
   const g=k=>CPGROUPS.find(x=>x[0]===k);
-  if(g("concepts"))g("concepts")[2]=/^(Concept|Key concept|Dictionary|Definition|Term|Compare|Misconception|Mechanism|Syllabus|Curriculum|Command term|Chain|Evaluation|Economics in 60 Seconds|Real-world issue)$/;
+  if(g("concepts"))g("concepts")[2]=/^(Concept|Key concept|Dictionary|Definition|Compare|Misconception|Mechanism|Syllabus|Curriculum|Command term|Chain|Evaluation|Economics in 60 Seconds|Real-world issue)$/;
   if(g("exam"))g("exam")[2]=/^(Question|Question architecture|Exam archetype|What earns marks|Paper [123] practice|Exam simulator|Transfer task|Drill|Checklist)$/;
   if(g("tok"))g("tok")[2]=/^(TOK|Knowledge question|Model epistemology|TOK activity)$/;
  }
@@ -39246,6 +39290,336 @@ function rnCourseBand(){const vis=lsVisible(),n=lsNext();
   <div class="hc-units">${[1,2,3,4].map(u=>`<div class="hc-u"><button class="hc-un" onclick="nav('course',${TOPICS_TAB()},'unit-${u}')"><span>Unit ${u}</span>${esc(LSUNIT[u])}</button>
    <div class="hc-cs">${vis.filter(s=>s.unit===u).map(s=>`<button class="${lsDone(s.code)?"done":lsStarted(s.code)?"started":""}" onclick="${lsGoSub(s.code)}" title="${esc(s.title)}">${esc(s.code)}</button>`).join("")}</div></div>`).join("")}</div>
  </div></div></section>`}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DIAGRAM ATLAS 2.0 · THE CALCULATION CENTRE
+   Every plate gains eight views: Explore (the plate and its interactive lab),
+   Build (the plate assembled layer by layer from its own geometry, so nothing
+   drawn can drift from the model), Explain, Exam (what must be labelled, read
+   from the plate itself), Common mistake, Limitations, Real world (the cases
+   that use the plate) and Print (a clean sheet).
+   Every calculation gains the fields it lacked: when to use it, the lesson it
+   belongs to, the related diagrams and concept, an exam-style question, a
+   real-world use and a retrieval question. The live check was already there.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const ATX={step:{}};
+const DGLAB={ds:[0,"Market lab"],dshift:[0,"Market lab"],sshift:[0,"Market lab"],tax:[0,"Market lab"],subsidy:[0,"Market lab"],ceiling:[0,"Market lab"],floor:[0,"Market lab"],
+ adas:[1,"AD-AS lab"],defgap:[1,"AD-AS lab"],infgap:[1,"AD-AS lab"],lras:[1,"AD-AS lab"],growth:[1,"AD-AS lab"],costpush:[1,"AD-AS lab"],ped:[-1,"Elasticity lab"],pes:[-1,"Elasticity lab"]};
+const DGBUILD={tax:"tax",negcons:"ext",defgap:"adas",tariff:"tariff"};
+const ATSTEPS=[["Axes","Draw and name both axes: the variable and its units, not only “price” and “quantity”."],
+ ["Curves","Add the curves the model starts from, then any shifted curve, with its direction."],
+ ["Guides","Drop dashed guides from each point to both axes, so every value can be read."],
+ ["Points","Mark each equilibrium or reference point where two curves meet."],
+ ["Areas","Shade the areas the question is about: revenue, surplus, burden or welfare loss."],
+ ["Labels","Label every curve, point and value. An unlabelled line is not yet an argument."]];
+function atLayers(k){const d=DG[k]();let els=[];
+ try{const doc=new DOMParser().parseFromString(`<svg xmlns="http://www.w3.org/2000/svg"><g>${d.b}</g></svg>`,"image/svg+xml");
+  els=[...doc.documentElement.firstChild.children].map(e=>{const s=new XMLSerializer().serializeToString(e).replace(/ xmlns="http:\/\/www\.w3\.org\/2000\/svg"/g,"");
+   const tag=e.tagName.toLowerCase(),first=tag==="g"&&e.firstElementChild?e.firstElementChild:e,ft=first.tagName.toLowerCase();
+   const dash=(first.getAttribute("stroke-dasharray")||"")!==""||/dash/.test(first.getAttribute("class")||"");
+   const op=parseFloat(first.getAttribute("fill-opacity")||first.getAttribute("opacity")||"1");
+   /* a long dashed line is a shifted curve, not a guide to an axis */
+   const span=(()=>{if(ft==="line"){const a=+first.getAttribute("x1"),b=+first.getAttribute("x2"),c=+first.getAttribute("y1"),e2=+first.getAttribute("y2");return Math.min(Math.abs(a-b),Math.abs(c-e2))}
+     const n=(first.getAttribute("d")||"").match(/-?\d+(\.\d+)?/g)||[];if(n.length<4)return 0;const xs=n.filter((_,i)=>i%2===0).map(Number),ys=n.filter((_,i)=>i%2===1).map(Number);
+     return Math.min(Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys))})();
+   let kind=ft==="text"||(tag==="g"&&[...e.children].every(x=>/text|rect/.test(x.tagName)))?5
+    :ft==="circle"?3:(ft==="polygon"||(ft==="path"&&first.getAttribute("fill")&&first.getAttribute("fill")!=="none"&&op<1))?4:dash&&span<60?2:1;
+   return {s,kind,txt:e.textContent.trim()}})}catch(e){}
+ return {d,els}}
+function atBuildHtml(k){const {d,els}=atLayers(k),n=ATX.step[k]||0;
+ const body=els.filter(e=>e.kind<=n).map(e=>e.s).join("");
+ return `<div class="at-build"><figure class="at-fig">${frame(body,d.x,d.y,{alt:`${d.t}: step ${n+1} of 6, ${ATSTEPS[n][0].toLowerCase()}`})}</figure>
+  <div><ol class="at-steps">${ATSTEPS.map(([h,t],i)=>`<li class="${i===n?"on":i<n?"done":""}"><button onclick="ATX.step['${k}']=${i};lsSwap('at-build',atBuildHtml('${k}'))"><strong>${i+1}. ${h}</strong><span class="xs">${t}</span></button></li>`).join("")}</ol>
+  <div class="row mt3" style="gap:6px"><button class="btn xs gh" ${n===0?"disabled":""} onclick="ATX.step['${k}']=${Math.max(0,n-1)};lsSwap('at-build',atBuildHtml('${k}'))">← Back</button>
+   <button class="btn xs" ${n===5?"disabled":""} onclick="ATX.step['${k}']=${Math.min(5,n+1)};lsSwap('at-build',atBuildHtml('${k}'))">Next step →</button></div>
+  <p class="xs mt2">Built from the plate's own geometry, in the order an answer should draw it. Draw each step on paper before you reveal it.</p></div></div>`}
+function atLabels(k){const {d,els}=atLayers(k);
+ const t=[...new Set(els.filter(e=>e.kind===5||/text/.test(e.s)).map(e=>e.txt).filter(x=>x&&x.length<=34))];
+ return {axes:[d.y,d.x].filter(Boolean),labels:t}}
+function atlasPlus(k){if(!DG[k])return "";const d=DG[k](),R=(typeof DG_READ!=="undefined"&&DG_READ[k])||{},L=atLabels(k),lab=DGLAB[k];
+ const cases=(typeof RW_CASES!=="undefined"?RW_CASES:[]).filter(c=>(c.dg||[]).includes(k)).slice(0,6);
+ const lim=(typeof GD!=="undefined"&&GD[k]&&GD[k].limit)||R.notShown||"";
+ const sub=DGSUB[k],sp=SPINE[sub]||{},md=(sp.models||[]).find(m=>m.dg===k);
+ return `<section class="sec atl2" aria-labelledby="atl2-h"><div class="wrap md"><div class="shead"><span class="n">··</span><h2 id="atl2-h">Explore, build, explain</h2><span class="aside">Atlas 2.0 · ${esc(d.t)}</span></div>
+  <div class="atl2-g">
+   <div class="atl2-c"><div class="eb">Explore</div><p class="sm mt1">The plate above is drawn from its equations, and every point is checked to sit on its curve.</p>
+    ${lab?`<button class="btn xs mt2" onclick="${lab[0]<0?`nav('lab',SECTIONS.find(s=>s.v==='lab').tabs.indexOf('Elasticity lab'))`:`nav('lab',${lab[0]})`}">Move it in the ${esc(lab[1])} →</button>`:""}
+    ${sub?`<button class="btn xs gh mt2" onclick="${lsGoSub(sub)}">The lesson: ${esc(sub)} ${esc(lsTitle(sub))}</button>`:""}</div>
+   <div class="atl2-c"><div class="eb">Exam: what must be labelled</div><p class="sm mt1"><strong>Axes:</strong> ${esc(L.axes.join(" · "))}</p>
+    <p class="sm mt1"><strong>On the plate:</strong> ${esc(L.labels.slice(0,14).join(" · "))}</p>
+    ${md?`<p class="xs mt2">${esc(md.exam)}</p>`:""}</div>
+   <div class="atl2-c"><div class="eb">Common mistake</div><p class="sm mt1">${esc(R.mistake||(md&&md.misconception)||"")}</p></div>
+   <div class="atl2-c"><div class="eb">Limitations</div><p class="sm mt1">${esc(lim)}</p>${md&&(md.limitations||[]).length?`<ul class="ls-list mt1">${md.limitations.slice(0,3).map(x=>`<li class="xs">${esc(x)}</li>`).join("")}</ul>`:""}</div>
+  </div>
+  <h3 class="ls-h3 ls-gap">Build it, step by step</h3><div id="at-build">${atBuildHtml(k)}</div>
+  ${(DGBUILD[k])?`<p class="xs mt2">This plate also has a decision-by-decision builder: <button class="lnk" onclick="DB.model='${DGBUILD[k]}';nav('lab',6)">build it by making the choices</button>.</p>`:""}
+  <h3 class="ls-h3 ls-gap">Real world</h3>${cases.length?`<div class="ls-cases">${cases.map(x=>`<button class="ls-case" onclick="rwOpen('${x.id}')"><span class="ls-cy">${esc(x.c)} · ${esc(String(x.y))}</span><strong>${esc(x.t)}</strong></button>`).join("")}</div>`
+   :`<p class="sm">${md?esc(md.real):"No Real World case uses this plate yet."}</p>`}
+  <div class="row mt4" style="gap:8px"><button class="btn sm" onclick="dgPrint('${k}')">Print the diagram sheet</button></div>
+ </div></section>`}
+function dgPrint(k){const d=DG[k](),R=(typeof DG_READ!=="undefined"&&DG_READ[k])||{},L=atLabels(k);
+ printDoc(d.t,`<div class="psheet pdg"><div class="pdg-fig">${frame(d.b,d.x,d.y,{alt:d.alt})}</div>
+  ${(d.facts||[]).length?`<table class="ptbl"><tbody>${d.facts.map(([a,b])=>`<tr><td>${esc(a)}</td><td>${esc(b)}</td></tr>`).join("")}</tbody></table>`:""}
+  <h2>Label</h2><p>${esc(L.axes.join(" · "))} · ${esc(L.labels.join(" · "))}</p>
+  ${R.changes?`<h2>What changes</h2><p>${esc(R.changes)}</p><h2>Why</h2><p>${esc(R.why)}</p><h2>What it does not show</h2><p>${esc(R.notShown)}</p><h2>The common mistake</h2><p>${esc(R.mistake)}</p>`:""}
+  <h2>Draw it yourself</h2><div class="pdg-blank"></div></div>`,`Diagram sheet${DGSUB[k]?" · "+DGSUB[k]:""}`,{kind:"sheet"})}
+(function(){if(typeof dgLibrary!=="function")return;const prev=dgLibrary;dgLibrary=function(){const h=prev.apply(this,arguments);return ARG&&DG[ARG]?h+atlasPlus(ARG):h}})();
+
+/* ── the calculation card ── */
+function calcPlus(c){const sub=c.sub,sp=SPINE[sub]||{},dgs=sub?lsDiagrams(sub):[];
+ const pq=((sp.exam||{}).practice||[]).find(q=>/calculat|%|\$|data|table/i.test(q.q))||((sp.exam||{}).practice||[])[0];
+ const rq=(sp.retrieve||[]).find(r=>/calculat|%|formula|rate|ratio|\d/.test(r.q))||(sp.retrieve||[])[0];
+ const md=(sp.models||[])[0];
+ return `<div class="wrap full sec t calc2"><div class="shead"><span class="n">··</span><h2>The calculation card</h2><span class="aside">When, where and why it is used</span></div>
+  <div class="atl2-g">
+   <div class="atl2-c"><div class="eb">When to use it</div><p class="sm mt1">${esc(c.m)} ${esc((sp.exam||{}).calc||"")}</p></div>
+   <div class="atl2-c"><div class="eb">Units</div><p class="sm mt1">${c.inp.map(([k,n,u])=>`${esc(n)}${u?` (${esc(u)})`:""}`).join(" · ")}. The live check above states the unit of the answer with the answer.</p></div>
+   ${sub?`<div class="atl2-c"><div class="eb">In the course</div><p class="sm mt1"><button class="lnk" onclick="${lsGoSub(sub)}">${esc(sub)} ${esc(lsTitle(sub))}</button></p>
+    ${(sp.kc||[]).length?`<p class="xs mt1">Key concept: ${(sp.kc||[]).map(k=>esc(k.c)).join(", ")}</p>`:""}
+    ${dgs.length?`<p class="xs mt1">Diagram: ${dgs.slice(0,2).map(k=>`<button class="lnk" onclick="nav('lab',3,'${k}')">${esc(DG[k]().t)}</button>`).join(", ")}</p>`:""}</div>`:""}
+   ${md?`<div class="atl2-c"><div class="eb">Real-world use</div><p class="sm mt1">${esc(md.real)}</p></div>`:""}
+  </div>
+  ${pq?`<div class="panel mt4"><div class="eb">An exam-style question ${srcTag("platform")}</div><p class="sm mt2"><span class="tag">${esc(pq.p)}</span> ${esc(pq.q)}</p><p class="xs mt1">Original practice question; not a past paper, and no mark allocation is implied.</p></div>`:""}
+  ${rq?`<details class="panel mt3"><summary><strong>Retrieve it:</strong> ${esc(rq.q)}</summary><p class="sm mt2">${esc(rq.a)}</p></details>`:""}
+ </div>`}
+(function(){if(typeof cbDetail!=="function")return;const prev=cbDetail;cbDetail=function(c){const h=prev.apply(this,arguments);try{return h+calcPlus(c)}catch(e){return h}}})();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE SELF-TESTS FOR THE COURSE LAYER
+   Structure (every lesson has every part of the template, every link lands),
+   IB claims (official command-term wording unchanged, AO3 command terms only
+   where the guide sets AO3 content, paper facts carry page references),
+   language (no absolutes in the platform's voice, no claims about how often a
+   topic is examined), integrity (no page writes or disguises assessed work),
+   and behaviour (rendering at every depth, snapshots, printing without a
+   dialogue, search, revision, what-next).
+   ═══════════════════════════════════════════════════════════════════════════ */
+function COURSESUITE(){
+ if(!COURSE_OK){VIEW="course";const a=ARG;ARG=null;const h=courseTopics();ARG=a;
+  return [{n:"Lessons · without assets/data/course.js the course pages say so plainly",ok:h.includes("assets/data/course.js"),detail:"single-file copy"}]}
+ const out=[];const T=(n,f,d)=>{let ok=false,det=d||"";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){ok=false;det=e.message}out.push({n,ok:!!ok,detail:det})};
+ const keep={VIEW,TAB,ARG,depth:LS.depth,ex:LS.explain,teacher:LS.teacher,lesson:JSON.stringify(S.lesson||{}),gx:JSON.stringify(GX),rev:JSON.stringify(REV),calls:PRINTGUARD.totalCalls,cset:GX.cset};
+ const codes=lsCodes(),txt=h=>String(h).replace(/<[^>]+>/g," ");
+ const walk=(x,f,p)=>{p=p||[];if(typeof x==="string")f(x,p);else if(Array.isArray(x))x.forEach((v,i)=>walk(v,f,p.concat(i)));else if(x&&typeof x==="object")Object.entries(x).forEach(([k,v])=>walk(v,f,p.concat(k)))};
+ const AO3=/^(evaluate|discuss|compare|compare and contrast|contrast|to what extent|examine|justify|recommend)\b/i;
+ const ABS=/\b(always|never|guarantees?|inevitabl\w*|invariably|in every case|without exception|proves?|automatically|certainly|definitely)\b/i;
+ const QUOTED=/[‘“"][^’”"]*[’”"]/g;
+ const FREQ=/\b(frequently (examined|asked|tested|appears)|often comes up|comes up (every|often)|a favourite|examined every year|always comes up|most frequently)\b/i;
+
+ /* ── the data layer ── */
+ T("Lessons · the course data loaded, with a version and six named sources",()=>!!COURSE.meta&&/^course-/.test(COURSE.meta.version)&&(COURSE.meta.sources||[]).length===6);
+ T("Lessons · a lesson for every one of the 31 subtopics in the guide",()=>codes.length===31&&codes.every(c=>!!SPINE[c]),codes.filter(c=>!SPINE[c]).join(","));
+ T("Lessons · every lesson has every part of the template",()=>{const bad=codes.filter(c=>{const s=SPINE[c];
+   return !(s.big&&s.big.idea&&s.big.why&&s.big.q&&(s.before||[]).length>=3&&["know","understand","apply","analyse","evaluate"].every(k=>(s.obj[k]||[]).length)
+    &&(s.blocks||[]).length>=4&&(s.mech||[]).length>=1&&(s.models||[]).length>=1&&s.tei&&s.tei.theory&&s.tei.evidence&&s.tei.interp&&(s.deeper||[]).length>=1
+    &&["simple","exam","deep"].every(k=>s.explain[k])&&(s.kc||[]).length>=1&&["q","expect","model","evidence","match","assume","change","policy"].every(k=>s.inquiry[k])
+    &&(s.selfexp||[]).length>=2&&s.selfexp.every(x=>x.check.length>=3)&&(s.retrieve||[]).length>=5&&(s.mcq||[]).length>=3&&s.exam&&(s.exam.practice||[]).length
+    &&(s.connect||[]).length>=2&&s.next&&s.ia&&s.tok&&s.teach&&(s.after||[]).length>=5)});return{ok:!bad.length,d:bad.join(",")}});
+ T("Lessons · every link in a lesson lands on a real subtopic",()=>codes.every(c=>{const s=SPINE[c];
+   return (s.before||[]).every(b=>!b.sub||!!SUBMAP[b.sub])&&(s.connect||[]).every(x=>!!SUBMAP[x.sub])&&(!s.next.sub||!!SUBMAP[s.next.sub])}));
+ T("Lessons · every model card's diagram exists and draws",()=>codes.every(c=>SPINE[c].models.every(m=>!m.dg||(DG[m.dg]&&DG[m.dg]().b.length>50))));
+ T("Lessons · every misconception check has one keyed answer among its options",()=>codes.every(c=>SPINE[c].mcq.every(q=>q.a>=0&&q.a<q.opts.length&&q.why)));
+ T("Lessons · every key concept named is one of the guide's nine",()=>codes.every(c=>SPINE[c].kc.every(k=>KCN.includes(k.c))));
+ T("Lessons · the HL-only subtopics say so at the start",()=>["2.10","2.11","2.12"].every(c=>/HL only/.test(SPINE[c].big.idea+" "+SPINE[c].blocks[0].p+" "+SPINE[c].blocks[0].h)));
+ T("Lessons · no lesson claims how often something is examined",()=>{const bad=[];walk(COURSE.spines,(s,p)=>{if(FREQ.test(s))bad.push(p.join("/"))});return{ok:!bad.length,d:bad.slice(0,3).join(" ")}});
+ T("Lessons · no absolute claim in the platform's own voice",()=>{const bad=[];walk(COURSE.spines,(s,p)=>{if(ABS.test(s.replace(QUOTED,"")))bad.push(p.join("/"))});return{ok:!bad.length,d:bad.slice(0,3).join(" ")}});
+ T("Lessons · an AO3 command term appears only where the guide sets AO3 content",()=>{const bad=[];codes.forEach(c=>{const ao3=/AO3/.test((SUBMETA[c]||{}).ao||"");
+   (SPINE[c].exam.practice||[]).forEach(q=>{const a3=AO3.test(q.q.trim());
+    if(a3&&!ao3)bad.push(c+": "+q.q.slice(0,40));
+    if(a3&&/Paper 2 \([a-f]\)/.test(q.p))bad.push(c+" "+q.p)})});return{ok:!bad.length,d:bad.slice(0,3).join(" | ")}});
+ /* the guide sets HL-only content in bold (PDF p. 30); where an SL lesson teaches it, the part that does says HL */
+ T("Lessons · HL-only content inside an SL lesson is labelled HL where it is taught",()=>{const bad=[];
+   const HLX={"2.1":/income (and|&) substitution effect|diminishing marginal utility/i,"2.2":/diminishing marginal returns|increasing marginal cost/i,
+    "2.5":/primary commodit/i,"2.6":/primary commodit/i,"3.3":/phillips curve|weighted price index/i,"3.6":/multiplier|crowding[- ]out|automatic stabili[sz]/i,"4.6":/marshall|j-curve/i};
+   const txt=o=>typeof o==="string"?o:Array.isArray(o)?o.map(txt).join(" "):o&&typeof o==="object"?Object.values(o).map(txt).join(" "):"";
+   Object.keys(HLX).forEach(c=>{const sp=SPINE[c];if(!sp)return;Object.keys(sp).forEach(k=>{const v=sp[k];
+     (Array.isArray(v)?v:[v]).forEach((u,i)=>{const t=txt(u);if(HLX[c].test(t)&&!/\bHL\b/.test(t))bad.push(c+" "+k+(Array.isArray(v)?"/"+i:""))})})});
+   return{ok:!bad.length,d:bad.slice(0,4).join(" | ")}});
+ T("Lessons · every lesson renders in full, with the loop in order and nothing undefined",()=>{const bad=[];
+   codes.forEach(c=>{VIEW="course";TAB=TOPICS_TAB();ARG=c;LS.depth="core";const h=VIEWS.course();
+    const ids=["learn","see","try","explain","apply","evaluate","exam","retrieve","connect"].map(k=>h.indexOf('id="ls-'+k+'"'));
+    if(ids.some(i=>i<0)||ids.some((v,i)=>i&&v<ids[i-1])||/\bundefined\b|\bNaN\b|\[object Object\]/.test(txt(h)))bad.push(c)});return{ok:!bad.length,d:bad.join(",")}});
+ T("Lessons · Foundation and Deeper choose content without losing the core",()=>["1.1","2.8","4.6"].every(c=>{VIEW="course";TAB=TOPICS_TAB();ARG=c;
+   LS.depth="foundation";const f=VIEWS.course();LS.depth="deeper";const d=VIEWS.course();LS.depth="core";
+   return f.includes('id="ls-learn"')&&f.includes('id="ls-retrieve"')&&!f.includes('id="ls-exam"')&&d.includes('id="ls-exam"')&&(d.match(/<details class="gd mt3" open>/g)||[]).length>=1}));
+ T("Lessons · the old dossier address opens the lessons",()=>{const r=routeParse("#/course/topic-dossier/2.5");return !!r&&r.v==="course"&&r.t===TOPICS_TAB()&&r.a==="2.5"});
+ T("Lessons · what to study next follows written prerequisite links only",()=>{S.lesson={};const a=lsNext();
+   S.lesson={"2.5":{rate:Object.fromEntries(lsNeeds("2.5").map(k=>[k,true])),doneAt:"2026-01-01"}};const b=lsNext();
+   const n=SPINE["2.5"].next.sub,pre=(SPINE[n].before||[]).map(x=>x.sub);
+   return {ok:!!(a&&a.c===lsVisible()[0].code&&b&&(b.c===n||pre.includes(b.c))&&b.why),d:JSON.stringify({a,b,n})}});
+ T("Lessons · the self-check counts only the checks that apply",()=>{const c=codes.find(x=>!lsDiagrams(x).length&&!CALC.some(k=>k.sub===x)&&!((SUBMETA[x]||{}).calc||[]).length);return !c||lsNeeds(c).length===5});
+
+ /* ── misconceptions ── */
+ T("Misconception DB · 51 entries, unique ids, a student and a teacher view each",()=>MISCDB.length===51&&new Set(MISCDB.map(m=>m.id)).size===51&&MISCDB.every(m=>m.student&&m.teacher&&m.student.watch&&m.student.right&&m.teacher.root));
+ T("Misconception DB · every check has one keyed answer and feedback",()=>MISCDB.every(m=>{const q=m.student.check;return q.a>=0&&q.a<q.opts.length&&q.why}));
+ T("Misconception DB · every entry maps to a 2022 subtopic or says it lies beyond the guide",()=>MISCDB.every(m=>(m.subs||[]).every(s=>!!SUBMAP[s])&&((m.subs||[]).length||m.beyond)));
+ T("Misconception DB · no teacher observation is presented as an IB examiner finding",()=>MISCDB.every(m=>!/(IB|official) (examiner|subject) report/i.test(m.teacher.examiner+" "+m.student.exam)));
+ T("Misconception DB · a lesson shows the entries filed under it",()=>{VIEW="course";TAB=TOPICS_TAB();ARG="2.1";const h=VIEWS.course();return lsMisc("2.1").length>0&&lsMisc("2.1").every(m=>h.includes(m.id))});
+
+ /* ── glossary and command terms ── */
+ T("Glossary 2.0 · every term has plain English, a definition, why, an example, a confusion and a status",()=>GLOSS2.length>=240&&GLOSS2.every(g=>g.term&&g.plain&&g.def&&g.why&&g.ex&&g.confusion&&g.ib&&g.diff));
+ T("Glossary 2.0 · no duplicate terms, and every related term resolves",()=>new Set(GLOSS2.map(g=>g.term.toLowerCase())).size===GLOSS2.length&&GLOSS2.every(g=>(g.related||[]).every(r=>!!GLBY[r.toLowerCase()])));
+ T("Glossary 2.0 · every comparison aligns its rows with its terms",()=>(COURSE.compare||[]).length>=20&&COURSE.compare.every(c=>c.rows.every(r=>r.vals.length===c.terms.length)&&c.key&&c.trap));
+ T("Glossary 2.0 · the unit filter keeps only that unit",()=>{const g=JSON.stringify(GX);GX.u="3";GX.q="";GX.sub="";GX.diff="";GX.ib="";GX.letter="";const l=glFilter();Object.assign(GX,JSON.parse(g));return l.length>10&&l.every(x=>String(x.sub).startsWith("3."))});
+ T("Command terms 2.0 · every official definition and AO is identical to the guide's glossary held here",()=>CT2.length===33&&CT2.every(c=>GUIDE.ct[c.term]&&GUIDE.ct[c.term][1]===c.def&&GUIDE.ct[c.term][0]===c.ao));
+ T("Command terms 2.0 · the page labels official wording and teacher guidance separately",()=>{VIEW="course";TAB=courseTab("Command terms");ARG=null;const h=VIEWS.course();return h.includes("IB OFFICIAL")&&h.includes("Teacher guidance")});
+
+ /* ── snapshots and printing ── */
+ T("Snapshot · a map for the course, every unit and every subtopic, each subtopic with six branches",()=>!!snapData("course")&&[1,2,3,4].every(u=>snapData("u"+u).subs.length)&&codes.every(c=>{const d=snapData(c);return d&&SNAPBR.every(([k])=>(d.branches[k]||[]).length)}));
+ T("Snapshot · every map prepares an A4 landscape sheet with the restrained footer, and nothing prints",()=>{const before=PRINTGUARD.totalCalls;
+   const ok=["course","u2","2.5"].every(id=>{const h=printDoc("t",snapHtml(id,{}),"s",{landscape:true,kind:"map",autoPrint:false});const st=document.getElementById("pgsz");
+    return h.includes("Arjun Agrawal | IB DP Economics")&&st&&/A4 landscape/.test(st.textContent)});
+   const r=document.getElementById("printroot");if(r){r.innerHTML="";r.className=""}const st=document.getElementById("pgsz");if(st)st.textContent="";
+   return ok&&PRINTGUARD.totalCalls===before});
+ T("Print system · a lesson summary, the glossary, command terms, a checklist, the lens card and a diagram sheet each prepare without printing",()=>{const before=PRINTGUARD.totalCalls;
+   const docs=[printDoc("a",lsPrintBody("2.7"),"s",{kind:"sheet",autoPrint:false}),printDoc("b",`<div class="psheet pgl">x</div>`,"s",{kind:"sheet",autoPrint:false})];
+   const r=document.getElementById("printroot");if(r){r.innerHTML="";r.className=""}
+   return docs.every(d=>d.length>200)&&typeof glPrint==="function"&&typeof ctPrint==="function"&&typeof clPrint==="function"&&typeof lensPrint==="function"&&typeof dgPrint==="function"&&PRINTGUARD.totalCalls===before});
+ T("Print system · printing the screen without choosing a sheet yields a clean copy, then clears it",()=>{const r=document.getElementById("printroot");if(!r)return true;
+   r.innerHTML="";VIEW="course";TAB=TOPICS_TAB();ARG="3.2";render();
+   printFallbackPrepare();const h=r.innerHTML;printFallbackClear();
+   return /class="pview"/.test(h)&&!/<button/.test(h)&&!/<input/.test(h)&&r.innerHTML===""});
+
+ /* ── search ── */
+ T("Course search · lessons, terms, misconceptions, command terms, model cards and checklists are all searchable",()=>{SIDX=null;const k={};buildIndex().forEach(x=>k[x.k]=(k[x.k]||0)+1);
+   return k.Lesson>=35&&k.Dictionary>=240&&k.Misconception>=51&&k["Command term"]>=33&&k["Model card"]>=31&&k.Checklist>=12&&!k["Topic dossier"]});
+ T("Course search · a lesson is found by its title",()=>cpMatch("elasticities of demand").some(x=>x.k==="Lesson"&&/^2\.5 /.test(x.t)));
+ T("Course search · no action can break out of its own quotes",()=>buildIndex().filter(x=>/^(Lesson|Dictionary|Misconception|Command term|Model card|Checklist|Compare|Key concept|Question|TOK)$/.test(x.k)).every(x=>!/"/.test(x.go)&&(()=>{try{new Function(x.go);return true}catch(e){return false}})()));
+
+ /* ── papers, integrity, lens, concepts, intelligence ── */
+ T("Paper guidance · every stated paper fact carries a page reference",()=>["p1","p2","p3"].every(k=>(PP[k].facts||[]).length&&PP[k].facts.every(f=>/(guide|TSM) PDF p/.test(f.src))));
+ T("Paper guidance · the Paper 2 exercise follows the published parts and totals 40 marks",()=>{const q=PP.p2.exercise.questions;return q.reduce((a,x)=>a+x.marks,0)===40&&q[q.length-1].marks===15});
+ T("Paper guidance · both practice exercises say their data are invented",()=>/invented/i.test(PP.p2.exercise.label)&&/invented/i.test(PP.p3.scenario.label));
+ T("Integrity · every IA page carries the learning-support line",()=>{VIEW="ia";const ia=SECTIONS.find(s=>s.v==="ia");return ia.tabs.every((t,i)=>{TAB=i;ARG=null;const h=VIEWS.ia();return t==="Academic integrity"?h.includes("Before I submit"):h.includes("Learning support.")})});
+ T("Integrity · nothing offers to write, finish or disguise assessed work",()=>{let bad=0;const R=/(we|the platform|this tool) (will )?(write|finish|complete)s? (your|the) (ia|commentary|essay|ee)|undetectable|bypass (ai )?detect|humani[sz]e (your|the) (text|essay)/i;
+   walk(COURSE,(s)=>{if(R.test(s))bad++});return bad===0});
+ T("Integrity · policy detail that could not be checked is marked for verification",()=>/Verification required/.test(JSON.stringify(COURSE.integrity)));
+ T("Lens · seventeen questions in groups, each placed once",()=>{const L=COURSE.lens;const ids=[].concat(...L.groups.map(g=>g.ids));return L.qs.length===17&&ids.length===17&&new Set(ids).size===17});
+ T("Concept network · nine concepts, each with at least six worlds across three units",()=>COURSE.concepts.length===9&&COURSE.concepts.every(k=>KCN.includes(k.c)&&k.worlds.length>=6&&new Set(k.worlds.map(w=>w.sub.split(".")[0])).size>=3&&k.worlds.every(w=>!!SUBMAP[w.sub])));
+ T("Intelligence · each real-world issue has an eight-stage path whose cases and diagrams exist",()=>COURSE.intel.length===6&&COURSE.intel.every(r=>r.path.length===8&&r.path.every(p=>(!p.dg||!!DG[p.dg])&&(p.cases||[]).every(id=>RW_CASES.some(c=>c.id===id)))));
+ T("Intelligence · each issue's question is the guide's own",()=>COURSE.intel.every(r=>RWI.some(x=>x.id===r.id&&x.q===r.q)));
+
+ /* ── revision, checklists ── */
+ T("Revision mode · 15, 30 and 60 minutes pick one, two and four lessons, least secure first",()=>{S.lesson={};REV.kind="time";const n=[15,30,60].map(m=>{REV.mins=m;return revPick().length});return n.join()==="1,2,4"});
+ T("Revision mode · a unit review covers every lesson in the unit",()=>{REV.kind="unit";REV.arg=3;return revPick().length===lsVisible().filter(s=>s.unit===3).length});
+ T("Checklists · every checklist has items, and Can I actually do this? has seven",()=>{const a=clAll();return a.length>=13&&a.every(c=>c.items.length)&&a.find(c=>c.id==="can-i-do-this").items.length===7});
+
+ /* ── atlas and the calculation card ── */
+ T("Atlas 2.0 · every plate builds in six steps from its own elements, and the last step holds them all",()=>{const bad=[];DGKEYS.forEach(k=>{const {els}=atLayers(k);if(!els.length||els.some(e=>e.kind<1||e.kind>5))bad.push(k)});return{ok:!bad.length,d:bad.join(",")}});
+ T("Atlas 2.0 · every plate names its axes (where it has axes) and at least one label for the exam view",()=>DGKEYS.every(k=>{const L=atLabels(k),d=DG[k]();return (L.axes.length===2||!(d.x||d.y))&&L.labels.length>=1}));
+ T("Calculation card · every calculation filed under a subtopic links to its lesson",()=>CALC.filter(c=>c.sub&&SPINE[c.sub]).every(c=>calcPlus(c).includes(`'${c.sub}')`)));
+
+ T("Inquiry tools · six tools render, and a diary entry is stored in the profile and nowhere else",()=>{const iq=JSON.stringify(S.iq||{});
+   const ok=IQTOOLS.every(([k])=>{IQ.tool=k;return inquiryTools().length>1000});
+   S.iq={};iqS().diary.Equity=[{d:"2026-01-01",sub:"3.4",t:"x"}];const stored=S.iq.diary.Equity.length===1;S.iq=JSON.parse(iq);IQ.tool="diary";return ok&&stored});
+ T("Inquiry tools · the case comparison starts from cases that exist",()=>IQ.cases.every(id=>RW_CASES.some(c=>c.id===id)));
+ /* restore */
+ VIEW=keep.VIEW;TAB=keep.TAB;ARG=keep.ARG;LS.depth=keep.depth;LS.explain=keep.ex;LS.teacher=keep.teacher;S.lesson=JSON.parse(keep.lesson);
+ Object.assign(GX,JSON.parse(keep.gx));Object.assign(REV,JSON.parse(keep.rev));SIDX=null;
+ return out;
+}
+COURSESUITE.suiteName="The course layer";
+EXTRA_SUITES.push(COURSESUITE);
+QAREPORT.push({area:"The course layer",re:/^(Lessons|Inquiry tools|Misconception DB|Glossary 2\.0|Command terms 2\.0|Snapshot|Print system|Course search|Paper guidance|Integrity|Lens|Concept network|Intelligence|Revision mode|Checklists|Atlas 2\.0|Calculation card) · /,
+ what:"That every one of the 31 subtopics has a complete lesson whose links land, whose checks have one keyed answer and whose practice questions use AO3 command terms only where the guide sets AO3 content; that the official command-term wording is unchanged; that no lesson claims how often a topic is examined or states an absolute in its own voice; that the misconception database, glossary, comparisons, lens, concept network and real-world paths are complete; that every snapshot map and printable sheet prepares without printing; that search reaches it all; and that nothing offers to write assessed work."});
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONCEPT-BASED INQUIRY TOOLS
+   Six tools from the concept-based pedagogy the guide and its teacher support
+   material describe, built as working pages rather than worksheets: a concept
+   diary, a concept graph, a Frayer model, a cross-comparison chart, a
+   continuum of examples and a real-world case comparison. What a student
+   writes is stored in their own profile on this device and prints cleanly.
+   The platform's own notes (a lesson's line on a concept, a case's facts)
+   are shown beside the student's work and labelled as the platform's.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const IQ={tool:"diary",kc:"Intervention",x:"Efficiency",y:"Equity",term:"Price elasticity of demand",cont:0,cases:["MIC-015","MIC-004","MIC-025"]};
+const IQTOOLS=[["diary","Concept diary"],["graph","Concept graph"],["frayer","Frayer model"],["cross","Cross-comparison chart"],["cont","Continuum of examples"],["cases","Case comparison"]];
+const IQCONT=[["Price inelastic","Price elastic",[["Insulin",8],["Petrol, this week",20],["Petrol, over five years",45],["One brand of trainers",85]]],
+ ["Public good","Private good",[["Lighthouse signal",8],["Street lighting",15],["A toll road",55],["A sandwich",95]]],
+ ["Market-based policy","Interventionist policy",[["Deregulation",10],["Tradable permits",35],["A carbon tax",45],["State-owned energy firm",90]]],
+ ["Absolute poverty","Relative poverty",[["Income below a fixed international line",10],["Unable to meet basic needs",15],["Income below 60% of the median",80]]],
+ ["Demand-side policy","Supply-side policy",[["Cutting the policy interest rate",8],["A temporary tax rebate",20],["Infrastructure spending",55],["Training subsidies",85]]]];
+function iqS(){S.iq=S.iq&&typeof S.iq==="object"?S.iq:{};["diary","graph","frayer","cross","cont","cases"].forEach(k=>{if(!S.iq[k]||typeof S.iq[k]!=="object")S.iq[k]={}});return S.iq}
+function inquiryTools(){iqS();const cur=IQTOOLS.find(t=>t[0]===IQ.tool)||IQTOOLS[0];
+ return H.pageHead("Think","Inquiry tools","Six ways to think with the key concepts rather than about them. Your work is kept on this device, in your profile, and prints on its own.")
+ +`<section class="sec"><div class="wrap"><div class="cl-tabs" role="tablist" aria-label="Inquiry tools">${IQTOOLS.map(([k,n])=>`<button role="tab" aria-selected="${IQ.tool===k}" class="${IQ.tool===k?"on":""}" onclick="IQ.tool='${k}';render()">${n}</button>`).join("")}</div>
+  <div class="iq mt4">${({diary:iqDiary,graph:iqGraph,frayer:iqFrayer,cross:iqCross,cont:iqCont,cases:iqCases})[cur[0]]()}</div>
+  <p class="xs mt3">${srcTag("tsm","Concept-based tools of the kind the teacher support material describes; built for this platform")} ${srcTag("platform")} Prompts and the platform's own notes are original.</p></div></section>`}
+const iqKcSel=(id,val,on)=>`<select id="${id}" class="inp" onchange="${on}">${KCN.map(k=>`<option ${k===val?"selected":""}>${esc(k)}</option>`).join("")}</select>`;
+/* 1 · concept diary */
+function iqDiary(){const d=iqS().diary[IQ.kc]||[],here=lsCodes().filter(c=>SPINE[c]&&SPINE[c].kc.some(k=>k.c===IQ.kc));
+ return `<div class="iq-head"><div><h2>Concept diary</h2><p class="sm mt1">After each lesson, write one sentence on what it showed you about a key concept. Over a year the entries become your own account of the concept.</p></div>
+  <div class="gl-f"><label class="eb" for="iqkc">Concept</label>${iqKcSel("iqkc",IQ.kc,"IQ.kc=this.value;render()")}</div></div>
+ <div class="iq-g mt3"><div class="ls-panel"><div class="eb">A new entry</div>
+   <label class="eb mt2" for="iqsub">Lesson</label><select id="iqsub" class="inp mt1">${lsVisible().map(s=>`<option value="${s.code}">${esc(s.code+" "+s.title)}</option>`).join("")}</select>
+   <label class="eb mt2" for="iqtxt">What this lesson showed me about ${esc(IQ.kc)}</label><textarea id="iqtxt" class="inp mt1" rows="3"></textarea>
+   <button class="btn sm mt2" onclick="iqDiaryAdd()">Add to the diary</button>
+   ${here.length?`<details class="mt3"><summary>The platform's notes on ${esc(IQ.kc)} (${here.length} lessons)</summary><ul class="ls-list mt2">${here.map(c=>`<li><strong>${esc(c)}</strong> ${esc(SPINE[c].kc.find(k=>k.c===IQ.kc).here)}</li>`).join("")}</ul></details>`:""}</div>
+  <div class="ls-panel"><div class="row" style="justify-content:space-between"><div class="eb">Your entries (${d.length})</div>${d.length?`<button class="btn xs gh" onclick="iqPrint('diary')">Print</button>`:""}</div>
+   ${d.length?`<ol class="iq-list mt2">${d.map((e,i)=>`<li><span class="xs">${esc(e.d)} · ${esc(e.sub)}</span><p class="sm">${esc(e.t)}</p><button class="lnk xs" onclick="iqS().diary['${esc(IQ.kc)}'].splice(${i},1);save();render()">Remove</button></li>`).join("")}</ol>`:`<p class="sm mt2">No entries yet.</p>`}</div></div>`}
+function iqDiaryAdd(){const t=(document.getElementById("iqtxt")||{}).value||"",sub=(document.getElementById("iqsub")||{}).value||"";if(!t.trim())return toast("Write the entry first");
+ const D=iqS().diary;D[IQ.kc]=D[IQ.kc]||[];D[IQ.kc].push({d:nowd(),sub,t:t.trim()});save();render()}
+/* 2 · concept graph: place lessons on two concepts at once */
+function iqGraph(){const G=iqS().graph,key=IQ.x+"|"+IQ.y,pts=G[key]=G[key]||{};const W=560,H2=420,P=48;
+ const pos=v=>P+(v/10)*(W-2*P),posY=v=>H2-P-(v/10)*(H2-2*P);
+ return `<div class="iq-head"><div><h2>Concept graph</h2><p class="sm mt1">Rate how strongly each lesson turns on two concepts, from 0 to 10. The plot shows where the course pulls them together and where it forces a choice between them.</p></div>
+  <div class="row" style="gap:10px"><div class="gl-f"><label class="eb" for="iqx">Across</label>${iqKcSel("iqx",IQ.x,"IQ.x=this.value;render()")}</div><div class="gl-f"><label class="eb" for="iqy">Up</label>${iqKcSel("iqy",IQ.y,"IQ.y=this.value;render()")}</div></div></div>
+ <div class="iq-g mt3"><figure class="ls-panel"><svg viewBox="0 0 ${W} ${H2}" class="iq-svg" role="img" aria-label="Lessons placed by ${esc(IQ.x)} across and ${esc(IQ.y)} up">
+   <line x1="${P}" y1="${H2-P}" x2="${W-P}" y2="${H2-P}" class="ax"/><line x1="${P}" y1="${P}" x2="${P}" y2="${H2-P}" class="ax"/>
+   <text x="${W-P}" y="${H2-P+30}" text-anchor="end">${esc(IQ.x)} →</text><text x="${P-8}" y="${P-14}" text-anchor="start">↑ ${esc(IQ.y)}</text>
+   ${Object.entries(pts).filter(([,v])=>v&&v.x!==undefined&&v.y!==undefined).map(([c,v])=>`<g><circle cx="${pos(v.x).toFixed(1)}" cy="${posY(v.y).toFixed(1)}" r="5"/><text x="${(pos(v.x)+8).toFixed(1)}" y="${(posY(v.y)+4).toFixed(1)}">${esc(c)}</text></g>`).join("")}</svg></figure>
+  <div class="ls-panel iq-rate"><table class="t"><thead><tr><th>Lesson</th><th>${esc(IQ.x)}</th><th>${esc(IQ.y)}</th></tr></thead><tbody>${lsVisible().map(s=>{const v=pts[s.code]||{};
+   return `<tr><td>${esc(s.code)} <span class="xs">${esc(s.title)}</span></td>${["x","y"].map(a=>`<td><input class="inp iq-n" type="number" min="0" max="10" step="1" aria-label="${esc(s.code)} ${a==="x"?esc(IQ.x):esc(IQ.y)}" value="${v[a]===undefined?"":v[a]}"
+    onchange="const g=iqS().graph['${esc(key)}']=iqS().graph['${esc(key)}']||{};g['${s.code}']=g['${s.code}']||{};const n=this.value===''?undefined:Math.max(0,Math.min(10,+this.value));g['${s.code}'].${a}=n;save();render()"></td>`).join("")}</tr>`}).join("")}</tbody></table></div></div>`}
+/* 3 · Frayer model */
+function iqFrayer(){const g=GLBY[String(IQ.term).toLowerCase()]||GLOSS2[0]||{term:""},F=iqS().frayer[g.term]=iqS().frayer[g.term]||{},show=F.show;
+ const box=(k,h,ph)=>`<div class="fr-b"><label class="eb" for="fr-${k}">${h}</label><textarea id="fr-${k}" class="inp mt1" rows="4" placeholder="${ph}" onchange="iqS().frayer[${esc(JSON.stringify(g.term))}].${k}=this.value;save()">${esc(F[k]||"")}</textarea></div>`;
+ return `<div class="iq-head"><div><h2>Frayer model</h2><p class="sm mt1">Four boxes around one term: a definition in your words, its essential characteristics, examples and, hardest, non-examples that look similar but are not.</p></div>
+  <div class="gl-f"><label class="eb" for="frterm">Term</label><select id="frterm" class="inp" onchange="IQ.term=this.value;render()">${GLOSS2.map(x=>`<option ${x.term===g.term?"selected":""}>${esc(x.term)}</option>`).join("")}</select></div></div>
+ <div class="fr mt3">${box("def","Definition, in your words","Say it without looking")}${box("char","Essential characteristics","What must be true for something to count?")}
+  <div class="fr-c"><span>${esc(g.term)}</span></div>${box("ex","Examples","Two or three, from different markets or countries")}${box("non","Non-examples","Close cases that do not count, and why")}</div>
+ <div class="row mt3" style="gap:8px"><button class="btn sm gh" onclick="iqS().frayer[${esc(JSON.stringify(g.term))}].show=!${!!show};save();render()">${show?"Hide":"Compare with"} the glossary</button><button class="btn sm gh" onclick="iqPrint('frayer')">Print</button></div>
+ ${show?`<div class="ls-panel mt3"><div class="eb">The glossary ${srcTag("platform")}</div><p class="sm mt1"><strong>Definition:</strong> ${esc(g.def)}</p><p class="sm mt1"><strong>Example:</strong> ${esc(g.ex||"")}</p><p class="sm mt1"><strong>Common confusion:</strong> ${esc(g.confusion||"")}</p></div>`:""}`}
+/* 4 · cross-comparison chart: one concept across the lessons that use it */
+function iqCross(){const here=lsCodes().filter(c=>SPINE[c]&&SPINE[c].kc.some(k=>k.c===IQ.kc)),C=iqS().cross[IQ.kc]=iqS().cross[IQ.kc]||{};
+ return `<div class="iq-head"><div><h2>Cross-comparison chart</h2><p class="sm mt1">One concept, read across every lesson that uses it: how it appears, where it creates a tension, and your own example. Patterns across the rows are what a strong evaluation draws on.</p></div>
+  <div class="gl-f"><label class="eb" for="iqck">Concept</label>${iqKcSel("iqck",IQ.kc,"IQ.kc=this.value;render()")}</div></div>
+ <div class="scrollx mt3"><table class="t iq-t"><thead><tr><th>Lesson</th><th>How ${esc(IQ.kc)} appears <span class="xs">(platform)</span></th><th>Where it creates a tension <span class="xs">(platform)</span></th><th>Your example</th></tr></thead>
+  <tbody>${here.map(c=>{const k=SPINE[c].kc.find(x=>x.c===IQ.kc);return `<tr><td><button class="lnk" onclick="${lsGoSub(c)}">${esc(c)}</button></td><td>${esc(k.here)}</td><td>${esc(k.tension)}</td>
+   <td><textarea class="inp" rows="2" aria-label="Your example for ${esc(c)}" onchange="iqS().cross['${esc(IQ.kc)}']['${c}']=this.value;save()">${esc(C[c]||"")}</textarea></td></tr>`}).join("")}</tbody></table></div>
+ <button class="btn sm gh mt3" onclick="iqPrint('cross')">Print</button>`}
+/* 5 · continuum of examples */
+function iqCont(){const [L,R,seed]=IQCONT[IQ.cont]||IQCONT[0],K=iqS().cont[IQ.cont]=iqS().cont[IQ.cont]||{items:seed.map(([t,v])=>({t,v,mine:false}))};
+ return `<div class="iq-head"><div><h2>Continuum of examples</h2><p class="sm mt1">Most economic categories are ends of a scale, not boxes. Place examples along it, add your own, and defend each position in a sentence.</p></div>
+  <div class="gl-f"><label class="eb" for="iqcn">Continuum</label><select id="iqcn" class="inp" onchange="IQ.cont=+this.value;render()">${IQCONT.map((c,i)=>`<option value="${i}" ${IQ.cont===i?"selected":""}>${esc(c[0])} ↔ ${esc(c[1])}</option>`).join("")}</select></div></div>
+ <div class="cont mt4"><div class="cont-ends"><span>${esc(L)}</span><span>${esc(R)}</span></div><div class="cont-line">${K.items.map(it=>`<span class="cont-dot${it.mine?" mine":""}" style="left:${it.v}%" title="${esc(it.t)}"></span>`).join("")}</div></div>
+ <ul class="cont-list mt3">${K.items.map((it,i)=>`<li><span>${esc(it.t)}${it.mine?"":` <span class="xs">(starting position)</span>`}</span>
+   <input type="range" min="0" max="100" value="${it.v}" aria-label="Position of ${esc(it.t)}" onchange="iqS().cont[${IQ.cont}].items[${i}].v=+this.value;save();render()">
+   <button class="lnk xs" onclick="iqS().cont[${IQ.cont}].items.splice(${i},1);save();render()">Remove</button></li>`).join("")}</ul>
+ <div class="row mt3" style="gap:8px"><input id="iqci" class="inp" style="max-width:320px" placeholder="Add an example…" aria-label="A new example"><button class="btn sm" onclick="iqContAdd()">Add</button>
+  <button class="btn sm gh" onclick="iqPrint('cont')">Print</button></div>`}
+function iqContAdd(){const e=document.getElementById("iqci");const t=e&&e.value.trim();if(!t)return;iqS().cont[IQ.cont].items.push({t,v:50,mine:true});save();render()}
+/* 6 · real-world case comparison */
+const IQCOLS=[["policy","Policy"],["objective","Objective"],["conditions","Conditions at the time"],["expected","Expected effect"],["observed","Observed effect"],["stakeholders","Stakeholders"],["evidence","Evidence"],["limits","Limitations"],["judgement","Evaluation"]];
+function iqCases(){const X=iqS().cases,sel=IQ.cases.map(id=>(typeof RW_CASES!=="undefined"?RW_CASES:[]).find(c=>c.id===id)).filter(Boolean);
+ return `<div class="iq-head"><div><h2>Real-world case comparison</h2><p class="sm mt1">Three cases side by side on the same questions; the starting set is three price floors in three countries and three markets. The case's own facts are shown for reference; the analysis is yours. Where evidence is mixed, say so.</p></div></div>
+ <div class="row mt3" style="gap:8px;flex-wrap:wrap">${[0,1,2].map(i=>`<select class="inp" style="max-width:300px" aria-label="Case ${i+1}" onchange="IQ.cases[${i}]=this.value;render()">${(typeof RW_CASES!=="undefined"?RW_CASES:[]).map(c=>`<option value="${c.id}" ${IQ.cases[i]===c.id?"selected":""}>${esc(c.c+" · "+c.t)}</option>`).join("")}</select>`).join("")}</div>
+ <div class="scrollx mt3"><table class="t iq-t"><thead><tr><th></th>${sel.map(c=>`<th><button class="lnk" onclick="rwOpen('${c.id}')">${esc(c.t)}</button><span class="xs"> ${esc(c.c)}, ${esc(String(c.y))}</span></th>`).join("")}</tr></thead>
+  <tbody><tr><th scope="row">The issue <span class="xs">(case)</span></th>${sel.map(c=>`<td class="sm">${esc(c.is||"")}</td>`).join("")}</tr>
+  ${IQCOLS.map(([k,n])=>`<tr><th scope="row">${n}</th>${sel.map(c=>`<td><textarea class="inp" rows="2" aria-label="${n}: ${esc(c.t)}" onchange="const X=iqS().cases;X['${c.id}']=X['${c.id}']||{};X['${c.id}'].${k}=this.value;save()">${esc((X[c.id]||{})[k]||"")}</textarea></td>`).join("")}</tr>`).join("")}</tbody></table></div>
+ <button class="btn sm gh mt3" onclick="iqPrint('cases')">Print</button>`}
+function iqPrint(k){const Q=iqS();let body="",title="";
+ if(k==="diary"){title=`Concept diary · ${IQ.kc}`;body=`<ol class="pl">${(Q.diary[IQ.kc]||[]).map(e=>`<li><strong>${esc(e.sub)}</strong> (${esc(e.d)}) ${esc(e.t)}</li>`).join("")}</ol>`}
+ else if(k==="frayer"){const F=Q.frayer[IQ.term]||{};title=`Frayer model · ${IQ.term}`;body=`<table class="ptbl"><tbody><tr><td><strong>Definition</strong><br>${esc(F.def||"")}</td><td><strong>Characteristics</strong><br>${esc(F.char||"")}</td></tr><tr><td><strong>Examples</strong><br>${esc(F.ex||"")}</td><td><strong>Non-examples</strong><br>${esc(F.non||"")}</td></tr></tbody></table>`}
+ else if(k==="cross"){title=`Cross-comparison · ${IQ.kc}`;const C=Q.cross[IQ.kc]||{};body=`<table class="ptbl"><thead><tr><th>Lesson</th><th>How it appears</th><th>Tension</th><th>My example</th></tr></thead><tbody>${lsCodes().filter(c=>SPINE[c]&&SPINE[c].kc.some(x=>x.c===IQ.kc)).map(c=>{const x=SPINE[c].kc.find(y=>y.c===IQ.kc);return `<tr><td>${esc(c)}</td><td>${esc(x.here)}</td><td>${esc(x.tension)}</td><td>${esc(C[c]||"")}</td></tr>`}).join("")}</tbody></table>`}
+ else if(k==="cont"){const [L,R]=IQCONT[IQ.cont],K=Q.cont[IQ.cont]||{items:[]};title=`Continuum · ${L} to ${R}`;body=`<table class="ptbl"><tbody>${K.items.slice().sort((a,b)=>a.v-b.v).map(it=>`<tr><td>${esc(it.t)}</td><td>${it.v}/100 towards ${esc(R)}</td></tr>`).join("")}</tbody></table>`}
+ else if(k==="cases"){title="Real-world case comparison";const sel=IQ.cases.map(id=>RW_CASES.find(c=>c.id===id)).filter(Boolean);
+  body=`<table class="ptbl"><thead><tr><th></th>${sel.map(c=>`<th>${esc(c.t)}</th>`).join("")}</tr></thead><tbody>${IQCOLS.map(([kk,n])=>`<tr><td><strong>${n}</strong></td>${sel.map(c=>`<td>${esc(((Q.cases||{})[c.id]||{})[kk]||"")}</td>`).join("")}</tr>`).join("")}</tbody></table>`}
+ printDoc(title,`<div class="psheet">${body}</div>`,"Inquiry tool · student work",{kind:"sheet"})}
+(function(){const t=SECTIONS.find(s=>s.v==="think");if(t&&t.tabs&&!t.tabs.includes("Inquiry tools"))t.tabs.push("Inquiry tools");
+ const prev=VIEWS.think;if(typeof prev!=="function")return;
+ VIEWS.think=function(){const s=SECTIONS.find(x=>x.v==="think");if(s&&TAB===s.tabs.indexOf("Inquiry tools"))return COURSE_OK?inquiryTools():H.pageHead("Think","Inquiry tools","These tools read the lessons from assets/data/course.js, which this copy of the page was opened without.");return prev.apply(this,arguments)}})();
 
 /* ▓▓ RENAISSANCE:END ▓▓ */
 /* ═══════════════════════════════════════════════════════════════════════════
