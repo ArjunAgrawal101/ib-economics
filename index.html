@@ -1827,6 +1827,16 @@ body.rn-anim .cv-svg .m-c:not(.dsh){animation:rnDraw 1.4s var(--ez) both}
 /* contrast (axe): the case reader's zone numbers were faded to 3.7:1, the chapter numbers were 4.47:1 */
 .rwzonenav button:not(.on) .n{opacity:1;color:var(--tx-2)}
 .rn-chap .ch-n{color:#76592a}
+/* a slim opener is shorter than its figure at the width the figure takes, so
+   the figure's top labels and caption were cut off by the band (measured by
+   the overlap audit's clipping check). From 1000px it is sized by the band's
+   height too: never taller than the band allows, never larger than the width
+   rule gave it, and it stays inside the band. */
+@media (min-width:1000px){.hero.slim .rn-plot{width:auto;height:min(calc(100% - 40px),25.33vw,333px)}}
+@media (min-width:1000px) and (max-width:1279px){.hero.slim .rn-plot{height:min(calc(100% - 40px),20vw,280px)}}
+/* the opener figure's caption sat on the figure's top edge and ran across the
+   y-axis title; it now sits just below the figure */
+.hero .rn-plot .rn-cap{top:calc(100% + 4px)}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>

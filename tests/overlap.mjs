@@ -73,9 +73,26 @@ function audit() {
   for (const s of document.querySelectorAll('svg')) {
     if (!shown(s) || !s.getBoundingClientRect().width) continue;
     const t = [...s.querySelectorAll('text')].filter(x => x.textContent.trim() && vis(x)).map(x => { const r = x.getBoundingClientRect(); return { x, r: { l: r.left, t: r.top, r: r.right, b: r.bottom } } });
+    /* a caption drawn by CSS (its text is generated content, so it has no text node) counts as a label of the figure beside it */
+    const cap = s.parentElement && s.parentElement.querySelector(':scope > .rn-cap');
+    if (cap && vis(cap) && getComputedStyle(cap, '::after').content.length > 2) { const r = cap.getBoundingClientRect(); const g = document.createElement('canvas').getContext('2d'); const cs = getComputedStyle(cap);
+      g.font = `${cs.fontSize} ${cs.fontFamily}`; const w = Math.min(r.width, g.measureText(getComputedStyle(cap, '::after').content.slice(1, -1)).width);
+      const l = cs.textAlign === 'right' ? r.right - w : r.left; if (r.height) t.push({ x: cap, r: { l, t: r.top, r: l + w, b: r.bottom } }) }
     for (let i = 0; i < t.length; i++) for (let j = i + 1; j < t.length; j++)
       if (Math.min(t[i].r.r, t[j].r.r) - Math.max(t[i].r.l, t[j].r.l) > 1 && Math.min(t[i].r.b, t[j].r.b) - Math.max(t[i].r.t, t[j].r.t) > 1)
         found.push({ kind: 'figure labels collide', a: name(t[i].x), c: name(t[j].x) + ' in ' + name(s) });
+  }
+  /* a figure label cut off by a container that clips without scrolling */
+  for (const s of document.querySelectorAll('svg')) {
+    if (!shown(s) || !s.getBoundingClientRect().width) continue;
+    let c = s.parentElement; while (c && c !== document.body && !/(hidden|clip)/.test(getComputedStyle(c).overflowX + getComputedStyle(c).overflowY)) c = c.parentElement;
+    if (!c || c === document.body) continue;
+    const cs = getComputedStyle(c); if (/(auto|scroll)/.test(cs.overflowX + cs.overflowY)) continue;
+    const k = c.getBoundingClientRect();
+    for (const x of s.querySelectorAll('text')) { if (!x.textContent.trim() || !vis(x)) continue; const r = x.getBoundingClientRect();
+      if (r.top < k.top - 1 || r.bottom > k.bottom + 1 || r.left < k.left - 1 || r.right > k.right + 1) found.push({ kind: 'figure label clipped', a: name(x), c: 'by ' + name(c) }) }
+    const cap = s.parentElement && s.parentElement.querySelector(':scope > .rn-cap');
+    if (cap && vis(cap)) { const r = cap.getBoundingClientRect(); if (r.width && (r.top < k.top - 1 || r.bottom > k.bottom + 1)) found.push({ kind: 'figure label clipped', a: 'figure caption', c: 'by ' + name(c) }) }
   }
   return { n: atoms.length, found, ov: document.documentElement.scrollWidth - innerWidth };
 }
@@ -98,11 +115,13 @@ fs.writeFileSync(out, JSON.stringify(report, null, 1));
 const rows = report.filter(x => x.found);
 const by = k => rows.reduce((n, x) => n + x.found.filter(f => f.kind === k).length, 0);
 console.log(`atoms measured: ${rows.reduce((n, x) => n + x.atoms, 0)} over ${rows.length} route-widths`);
-for (const k of ['content over content', 'figure labels collide', 'decorative figure under content']) console.log(`${k}: ${by(k)}`);
+for (const k of ['content over content', 'figure labels collide', 'figure label clipped', 'decorative figure under content']) console.log(`${k}: ${by(k)}`);
 check(by('content over content') === 0, 'no two pieces of content overlap on any audited route at any width',
   rows.flatMap(x => x.found.filter(f => f.kind === 'content over content').map(f => `${x.w} ${x.route}: ${f.a} ∩ ${f.c}`)).slice(0, 40).join('\n     '));
 check(by('figure labels collide') === 0, 'no labels collide inside any figure',
   rows.flatMap(x => x.found.filter(f => f.kind === 'figure labels collide').map(f => `${x.w} ${x.route}: ${f.a} ∩ ${f.c}`)).slice(0, 40).join('\n     '));
+check(by('figure label clipped') === 0, 'no figure label is cut off by the band it sits in',
+  rows.flatMap(x => x.found.filter(f => f.kind === 'figure label clipped').map(f => `${x.w} ${x.route}: ${f.a} ${f.c}`)).slice(0, 40).join('\n     '));
 check(by('decorative figure under content') === 0, 'no figure is drawn under text or controls',
   rows.flatMap(x => x.found.filter(f => f.kind === 'decorative figure under content').map(f => `${x.w} ${x.route}: ${f.a} ∩ ${f.c}`)).slice(0, 40).join('\n     '));
 check(rows.every(x => x.overflow <= 1), 'no audited route scrolls sideways at any width', rows.filter(x => x.overflow > 1).map(x => `${x.w} ${x.route} +${x.overflow}`).join(', '));
