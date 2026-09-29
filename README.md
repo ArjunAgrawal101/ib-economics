@@ -88,17 +88,49 @@ The platform reads as an economics publication rather than a long page of cards.
   a field of nodes for mindmaps; a magazine for Economics, Everywhere. These are one system with one
   palette (obsidian, burgundy, chalk, and brass for rules and ornaments). Semantic colour stays
   inside diagrams.
-- **The home page.** A drawn model under "Think like an economist", a two-tier *Explore Economics*
-  gateway, *Today in Economics* (an idea, a case, a question and a word, chosen by the date, the
-  same for everyone and nothing recorded), a Real World lead story, the core mindmaps as a network,
-  and *Economics at a glance*, counted from the data as the page is drawn. The reader's own desk
-  folds on a first visit and opens once there is something on it. No band was removed.
+- **The home page.** It opens on a cover and a working model.
+  - **The cover.** "Economics is a way of seeing", with *Start learning* and *Explore Real World*.
+  - **A market you can move.** A slider shifts demand; the plate redraws, and one sentence explains
+    the shortage or surplus that moves price. Six concept chips lead into the platform.
+  - **The portrait.** It sits in its own frame, in a grid cell of its own, so no figure or label can
+    touch it at any width.
+  - **Scale signals** (cases, mindmaps, diagram plates, calculations, Exam DNA questions) are
+    counted from the data as the page is drawn, and each one opens what it counts.
+  - **The chapters.** After a hinge ("See the world differently") the page runs in nine: the
+    platform, the world, the theory, the lab, the exam, the research, the media, the educator and
+    the creator. It ends on "Start exploring."
+  - **Nothing removed.** Every earlier band is still there: the gateway, *Today in Economics*, the
+    Real World lead, the mindmap network, the reader's folded desk and *Economics at a glance*.
+- **Real World case intelligence.** Each case opens with a one-screen brief compiled only from its
+  own record:
+  - the event and the economic question;
+  - why it matters, the model and the theory;
+  - who gains and who loses, and the case against, where the deep card records them;
+  - the exam connection.
+
+  Links to a case now open the case.
+- **Mindmap connections.** A focused node offers *go further* links (a real case, practice, a
+  video, an everyday question, EE research) drawn from the related-content graph for its subtopic.
+- **The exam rooms.** The exam, papers and Exam DNA sections share a bar of ten named rooms. Each
+  room says what it holds: official IB information, teacher-created practice, analysed metadata or
+  your own work.
+- **The elasticity lab** (Lab, last tab).
+  - Choose a price change and how strongly quantity responds.
+  - The lab reports PED with its sign, classifies it by its absolute value, and draws total revenue
+    before and after as two rectangles.
+  - It is labelled as a teacher-created tool.
 - **Discovery.**
   - *Random Economics* surfaces a concept, case, diagram, mindmap, calculation, video, question,
     puzzle, idea or term.
   - Search ranks a term at the start of a word above the same letters inside one, and knows common
     abbreviations (PED, GDP, LRAS, PPC).
   - Every concept page and case ends with lens questions from the economist's toolkit.
+- **Nothing overlaps.** Below 1000 px a page opener's figure follows the text instead of sitting
+  under it. `tests/overlap.mjs` measures every rendered element on twenty key routes at fifteen
+  widths, and fails on any overlap it finds:
+  - text over text;
+  - labels colliding inside a figure;
+  - a figure under text.
 - **Motion.** Curves draw themselves once, the equilibrium breathes and figures count up. All of it
   stops under `prefers-reduced-motion`, and none of it runs while the self-test paints the views.
 
@@ -297,8 +329,8 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   and its marking tolerance is checked to be tight enough to reject an answer that is out by half.
 - **Browser tests the page cannot run on itself** live in `tests/`: the self-test in a real browser,
   end-to-end journeys (addresses, Back, search filters, the labs, saving, the EE Studio's tools, the
-  video studio against a stubbed feed in every state, the home page's gateway, daily page and folded desk, Random Economics, the toolkit, section openers and reduced motion), offline behaviour, every major route at nine
-  widths from 320 to 1440 px, every route for page errors, and the YouTube function itself against a
+  video studio against a stubbed feed in every state, the home page's gateway, daily page and folded desk, Random Economics, the toolkit, section openers and reduced motion; the cover's movable market, case links, the exam rooms and the elasticity lab), offline behaviour, every major route at fifteen
+  widths from 320 to 2560 px, a rendered-box overlap audit, every route for page errors, and the YouTube function itself against a
   stubbed YouTube (including missing credentials, timeouts and malformed answers). They have their
   own `package.json` (Playwright), so the site itself stays free of dependencies and build steps.
   See `tests/README.md`.
@@ -829,6 +861,14 @@ file was not supplied, and nothing was invented in its place.
 ## The About page
 
 An editorial profile rather than a resume, built around the three supplied photographs.
+
+- **The portrait is never overlapped.** The profile opens with three cells that cannot touch:
+  - the text;
+  - the portrait, in its own frame;
+  - an economics panel of its own.
+
+  No figure is drawn behind the photograph at any width, and a test measures the rendered boxes to
+  hold it there.
 
 - **No current-employer framing anywhere.** Fergusson College, BLISS International School and
   Symbiosis International School are presented as professional experience, with no institution

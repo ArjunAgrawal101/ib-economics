@@ -28,3 +28,6 @@ tmp/
 .env
 .env.*
 .vercel
+
+# Test output
+tests/overlap-report.json

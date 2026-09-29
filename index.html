@@ -1807,6 +1807,23 @@ body.rn-anim .cv-svg .m-c:not(.dsh){animation:rnDraw 1.4s var(--ez) both}
 @media (max-width:900px){.el-grid{grid-template-columns:minmax(0,1fr)}}
 .el-pt{fill:var(--bur);stroke:var(--white);stroke-width:2}.el-svg .m-tick{font-weight:700}
 .el-lb{font-family:var(--ui);font-size:13px;fill:var(--tx-2)}.el-pl{font-weight:800;fill:var(--bur)}.el-d{font-weight:800;fill:#24557F}
+/* ═══ section openers below 1000px ═══════════════════════════════════
+   The overlap audit found each opener's figure sitting, faded, under the
+   heading and lede at tablet and phone widths. Below 1000px the figure
+   leaves the text: it follows the lede as a small plate of its own. */
+@media (max-width:999px){
+ section.hero:has(> .rn-plot){display:flex;flex-direction:column}
+ section.hero > .rn-plot,section.hero.slim > .rn-plot{position:relative;order:2;top:auto;right:auto;transform:none;
+  width:min(300px,calc(100% - 2 * var(--pad)));margin:4px var(--pad) 22px;align-self:flex-start;opacity:.72;z-index:1}
+ section.hero > .rn-plot + *{order:1}
+}
+@media (max-width:560px){section.hero > .rn-plot,section.hero.slim > .rn-plot{width:min(230px,calc(100% - 2 * var(--pad)));margin-bottom:18px}}
+/* between 1000 and 1279px the figure narrows so it clears the lede (measured: at 40vw it reached up to 60px into the text; at 30vw the gap is 20px or more) */
+@media (min-width:1000px) and (max-width:1279px){.hero .rn-plot,.hero.slim .rn-plot{width:min(30vw,420px)}}
+/* the phone rules collapse .split and .split.flip but not .split.even, whose
+   two-column rule is more specific: the About contact card and the note beside
+   it stayed side by side at 390px, and the email address ran into the note */
+@media (max-width:700px){.split.even{grid-template-columns:minmax(0,1fr)}}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -36309,7 +36326,8 @@ const MOTIFS={
    +P.map(([x,y],i)=>`<circle class="m-node" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${i===0?8:6}"/><text class="m-t m-note" x="${x.toFixed(1)}" y="${(y+(y<195?-14:24)).toFixed(1)}" text-anchor="middle">${K[i]}</text>`).join("")}},
  markbands:{cap:"Fig. Paper 1 (b) markbands, 0 to 15 (Economics guide, first assessment 2022, p. 63)",draw(){
   const B=[["0",0],["1–3",3],["4–6",6],["7–9",9],["10–12",12],["13–15",15]];
-  return mAxes("Markband","Marks")+B.map(([l,m],i)=>{const x=MF.x0+14+i*75,h=m/15*MF.h*.92,y=MF.y0-h;
+  /* the axis title takes its own row under the band labels, which fill the axis */
+  return mAxes("","Marks")+`<text class="m-t m-axl" x="${MF.x0+MF.w+12}" y="${MF.y0+46}" text-anchor="end">Markband</text>`+B.map(([l,m],i)=>{const x=MF.x0+14+i*75,h=m/15*MF.h*.92,y=MF.y0-h;
    return `<rect class="${i===5?"m-nash":"m-cell"}" x="${x}" y="${y.toFixed(1)}" width="60" height="${h.toFixed(1)}"/><text class="m-t m-tick" x="${x+30}" y="${MF.y0+18}" text-anchor="middle">${l}</text>`}).join("")}},
  research:{cap:"Fig. A research page: question, evidence, annotation",draw(){
   const lines=Array.from({length:11},(_,i)=>`<line class="m-edge" x1="150" y1="${70+i*24}" x2="${i%4===3?390:470}" y2="${70+i*24}"/>`).join("");
