@@ -1335,6 +1335,323 @@ textarea.es-in{resize:vertical;min-height:64px}
 }
 @media (prefers-reduced-motion:reduce){.es-tile,.yt-th img{transition:none}.yt-card.skel .yt-th{animation:none}}
 
+/* ▓▓ REN-CSS:BEGIN ▓▓ */
+/* ═══ RENAISSANCE · the design system, second edition ══════════════════════
+   New tokens: brass (from the logo's gold), ivory paper, graphite and slate.
+   Burgundy stays the signature; brass carries rules and ornaments; slate is
+   the professional register. Semantic diagram colours are untouched.        */
+:root{
+  --brs:#8C6D2F; --brs-l:#C9AE72; --brs-w:#F3EBDA;
+  --ivory:#FBF8F1; --paper:#F2EDE2; --paper-2:#E9E2D3;
+  --graphite:#23272E; --slate:#3E4A57; --slate-l:#6B7785; --slate-w:#E8ECEF;
+  --grid-d:rgba(255,255,255,.045); --grid-l:rgba(22,24,28,.05);
+}
+/* Chart and diagram labels asked for faces the page never loads (Inter, IBM
+   Plex Mono, Helvetica, Georgia), so every chart fell back to a different
+   system font. CSS outranks SVG presentation attributes, so one rule maps
+   them to the loaded faces: sans to the UI face, mono to the data face. */
+svg text[font-family*="Inter"],svg text[font-family*="Helvetica"],svg text[font-family*="Arial"],svg text[font-family*="sans-serif"]{font-family:var(--ui)}
+svg text[font-family*="Mono"],svg text[font-family*="monospace"]{font-family:var(--mono)}
+svg text[font-family*="Georgia"]{font-family:var(--ser)}
+/* Eyebrows: a signpost, not metadata. Small capitals keep the text itself as
+   written, so nothing that reads the page sees a changed string. */
+.eb{font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:.12em;font-variant-caps:all-small-caps;font-variant-numeric:lining-nums}
+.hero .eb{display:inline-flex;align-items:center;gap:12px;font-size:13px;color:var(--brs-l)}
+.hero .eb::before{content:"";width:28px;height:1px;background:currentColor;opacity:.8}
+/* ── the opener ─────────────────────────────────────────────────────────── */
+.hero{background-color:var(--obs);
+  background-image:linear-gradient(var(--grid-d) 1px,transparent 1px),linear-gradient(90deg,var(--grid-d) 1px,transparent 1px);
+  background-size:56px 56px;background-position:-1px -1px}
+.hero .rn-plot{position:absolute;inset:auto;right:max(var(--pad),calc((100vw - var(--full))/2 + var(--pad)));top:50%;
+  transform:translateY(-50%);width:min(44vw,590px);aspect-ratio:3/2;opacity:1;z-index:1;pointer-events:none}
+.hero.slim .rn-plot{width:min(38vw,500px)}
+.rn-plot svg{width:100%;height:100%;display:block;overflow:visible}
+.rn-cap::after{content:attr(data-cap)}
+.rn-cap{position:absolute;right:0;top:-18px;max-width:100%;text-align:right;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.03em;color:rgba(255,255,255,.46);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1279px){.hero .rn-plot{width:min(40vw,470px);opacity:.62}}
+@media (max-width:999px){.hero .rn-plot,.hero.slim .rn-plot{top:18px;right:-36px;transform:none;width:380px;opacity:.26}.rn-cap{display:none}}
+@media (max-width:560px){.hero .rn-plot,.hero.slim .rn-plot{width:280px;right:-54px;top:10px;opacity:.2}}
+/* ── the motif language (dark openers) ──────────────────────────────────── */
+.motif .m-ax line{stroke:rgba(255,255,255,.5);stroke-width:1.5}
+.motif .m-c{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.motif .m-c.dem{stroke:#8FB6DE}.motif .m-c.sup{stroke:#E3A778}.motif .m-c.pol{stroke:#D9BE7C}.motif .m-c.ink{stroke:#EDE6D8}
+.motif .m-c.dsh{stroke-dasharray:8 7}
+.motif .m-c.m-thin{stroke:rgba(255,255,255,.28);stroke-width:1}
+.motif .m-t{font-family:var(--ui);font-size:14px;font-weight:700;fill:rgba(255,255,255,.82)}
+.motif .m-dem{fill:#8FB6DE}.motif .m-sup{fill:#E3A778}.motif .m-pol{fill:#D9BE7C}.motif .m-ink{fill:#EDE6D8}
+.motif .m-axl{font-size:12px;font-weight:600;fill:rgba(255,255,255,.58);letter-spacing:.02em}
+.motif .m-tick{font-family:var(--mono);font-size:12px;font-weight:500;fill:rgba(255,255,255,.66)}
+.motif .m-note{font-size:12.5px;font-weight:600;fill:rgba(255,255,255,.74)}
+.motif .m-pay{font-family:var(--mono);font-size:18px;font-weight:500;fill:#EDE6D8}
+.motif .m-drop line{stroke:rgba(255,255,255,.36);stroke-width:1;stroke-dasharray:3 4}
+.motif .m-pt{fill:#D9BE7C}.motif .m-ring{fill:none;stroke:#D9BE7C;stroke-opacity:.5;stroke-width:1.5}
+.motif .m-loss{fill:rgba(226,112,98,.3)}.motif .m-soft{fill:rgba(217,190,124,.15)}
+.motif .m-arr line,.motif .m-arr polyline,.motif .m-arrh{fill:none;stroke:rgba(255,255,255,.72);stroke-width:1.6;stroke-linecap:round}
+.motif .m-cell{fill:rgba(255,255,255,.04);stroke:rgba(255,255,255,.3)}
+.motif .m-nash{fill:rgba(217,190,124,.2);stroke:#D9BE7C;stroke-width:2}
+.motif .m-edge{stroke:rgba(255,255,255,.22);stroke-width:1.2}.motif .m-node{fill:#EDE6D8}
+.motif .m-dot{fill:rgba(143,182,222,.78)}.motif .m-grat{fill:none;stroke:rgba(255,255,255,.12)}
+.motif .m-sheet{fill:rgba(255,255,255,.04);stroke:rgba(255,255,255,.3)}.motif .m-rule{stroke:rgba(226,112,98,.55)}
+/* the same language on paper and on white */
+.hero.paper .motif .m-ax line,.motif.on-paper .m-ax line{stroke:var(--tx-3)}
+.hero.paper .motif .m-c.dem,.motif.on-paper .m-c.dem{stroke:var(--dem)}
+.hero.paper .motif .m-c.sup,.motif.on-paper .m-c.sup{stroke:var(--sup)}
+.hero.paper .motif .m-c.pol,.motif.on-paper .m-c.pol{stroke:var(--pol)}
+.hero.paper .motif .m-c.ink,.motif.on-paper .m-c.ink{stroke:var(--graphite)}
+.hero.paper .motif .m-c.m-thin,.motif.on-paper .m-c.m-thin{stroke:var(--hair-2)}
+.hero.paper .motif .m-t,.motif.on-paper .m-t{fill:var(--tx-2)}
+.hero.paper .motif .m-dem,.motif.on-paper .m-dem{fill:var(--dem)}
+.hero.paper .motif .m-sup,.motif.on-paper .m-sup{fill:var(--sup)}
+.hero.paper .motif .m-pol,.motif.on-paper .m-pol{fill:var(--pol)}
+.hero.paper .motif .m-ink,.motif.on-paper .m-ink,.hero.paper .motif .m-pay,.motif.on-paper .m-pay{fill:var(--graphite)}
+.hero.paper .motif .m-axl,.motif.on-paper .m-axl,.hero.paper .motif .m-tick,.motif.on-paper .m-tick{fill:var(--tx-3)}
+.hero.paper .motif .m-note,.motif.on-paper .m-note{fill:var(--tx-2)}
+.hero.paper .motif .m-drop line,.motif.on-paper .m-drop line{stroke:var(--hair-3)}
+.hero.paper .motif .m-pt,.motif.on-paper .m-pt{fill:var(--brs)}
+.hero.paper .motif .m-ring,.motif.on-paper .m-ring{stroke:var(--brs)}
+.hero.paper .motif .m-loss,.motif.on-paper .m-loss{fill:rgba(176,58,46,.16)}
+.hero.paper .motif .m-soft,.motif.on-paper .m-soft{fill:rgba(140,109,47,.12)}
+.hero.paper .motif .m-arr line,.hero.paper .motif .m-arr polyline,.hero.paper .motif .m-arrh,
+.motif.on-paper .m-arr line,.motif.on-paper .m-arr polyline,.motif.on-paper .m-arrh{stroke:var(--tx-2)}
+.hero.paper .motif .m-cell,.motif.on-paper .m-cell,.hero.paper .motif .m-sheet,.motif.on-paper .m-sheet{fill:rgba(255,255,255,.6);stroke:var(--hair-2)}
+.hero.paper .motif .m-nash,.motif.on-paper .m-nash{fill:var(--brs-w);stroke:var(--brs)}
+.hero.paper .motif .m-edge,.motif.on-paper .m-edge,.hero.paper .motif .m-grat,.motif.on-paper .m-grat{stroke:var(--hair-2)}
+.hero.paper .motif .m-node,.motif.on-paper .m-node{fill:var(--graphite)}
+.hero.paper .motif .m-dot,.motif.on-paper .m-dot{fill:rgba(36,85,127,.55)}
+/* draw-on: curves draw themselves once, the equilibrium breathes */
+.motif .m-c:not(.dsh){stroke-dasharray:1;stroke-dashoffset:0}
+body.rn-anim .motif .m-c:not(.dsh){animation:rnDraw 1.5s var(--ez) both}
+body.rn-anim .motif .m-c.sup:not(.dsh){animation-delay:.18s}
+body.rn-anim .motif .m-c.pol:not(.dsh),body.rn-anim .motif .m-c.ink:not(.dsh){animation-delay:.3s}
+body.rn-anim .motif .m-t,body.rn-anim .motif .m-pt,body.rn-anim .motif .m-loss,body.rn-anim .motif .m-soft,body.rn-anim .motif .m-drop{animation:rnFade .8s ease-out .9s both}
+body.rn-anim .motif .m-ring{transform-box:fill-box;transform-origin:center;animation:rnPulse 3.2s ease-in-out 1.4s infinite}
+@keyframes rnDraw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes rnFade{from{opacity:0}to{opacity:1}}
+@keyframes rnPulse{0%,100%{transform:scale(1);opacity:.55}50%{transform:scale(1.35);opacity:.12}}
+@media (prefers-reduced-motion:reduce){body.rn-anim .motif *{animation:none!important}}
+/* ── section identities ─────────────────────────────────────────────────── */
+/* Paper openers: the scholarly sections open on ivory, like a journal page. */
+.hero.paper{background-color:var(--paper);color:var(--tx);
+  background-image:linear-gradient(var(--grid-l) 1px,transparent 1px),linear-gradient(90deg,var(--grid-l) 1px,transparent 1px);
+  border-bottom:1px solid var(--hair-2)}
+.hero.paper::before{background:radial-gradient(90% 80% at 85% 10%,rgba(140,109,47,.10),transparent 62%)}
+.hero.paper h1,.hero.paper h2,.hero.paper h3{color:var(--tx)}
+.hero.paper .lede{color:var(--tx-2)}.hero.paper .eb{color:var(--bur)}.hero.paper .kicker{color:var(--bur)}
+.hero.paper .sm{color:var(--tx-2)}.hero.paper .xs{color:var(--tx-3)}
+.hero.paper .stat .k{color:var(--tx-3)}.hero.paper .stat .v{color:var(--tx)}.hero.paper .stat .d{color:var(--tx-3)}
+.hero.paper .statrow>*{border-color:var(--hair-2)}
+.hero.paper .rn-cap{color:var(--tx-3)}
+/* research notebook: ruled lines and a margin, for the IA and the EE */
+body[data-sec="ees"] .hero.paper,body[data-sec="ia"] .hero.paper{
+  background-image:linear-gradient(90deg,transparent 46px,rgba(176,58,46,.28) 46px,rgba(176,58,46,.28) 47px,transparent 47px),
+   repeating-linear-gradient(180deg,transparent 0 31px,rgba(36,85,127,.09) 31px 32px);background-size:auto}
+/* philosophical: TOK opens quieter, with a single horizon line */
+body[data-sec="tok"] .hero.paper{background-image:linear-gradient(180deg,transparent 72%,rgba(22,24,28,.08) 72%,rgba(22,24,28,.08) calc(72% + 1px),transparent calc(72% + 1px))}
+body[data-sec="tok"] .hero.paper h1{font-style:italic}
+/* professional workspace: slate */
+body[data-sec="educator"] .hero.paper,body[data-sec="teacher"] .hero:not(.paper){--grid-l:rgba(62,74,87,.07)}
+body[data-sec="teacher"] .hero:not(.paper){background-color:var(--slate)}
+/* newsroom: column rules and a double rule at the head */
+body[data-sec="world"] .hero:not(.paper){background-image:linear-gradient(90deg,var(--grid-d) 1px,transparent 1px);background-size:calc((100% - 2px)/6) 100%;
+  box-shadow:inset 0 3px 0 rgba(255,255,255,.08),inset 0 6px 0 var(--obs),inset 0 7px 0 rgba(255,255,255,.08)}
+/* laboratory: fine graph paper */
+body[data-sec="lab"] .hero:not(.paper),body[data-sec="calculate"] .hero:not(.paper),body[data-sec="tools"] .hero:not(.paper){
+  background-image:linear-gradient(var(--grid-d) 1px,transparent 1px),linear-gradient(90deg,var(--grid-d) 1px,transparent 1px),
+   linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:80px 80px,80px 80px,16px 16px,16px 16px}
+/* exam room: graphite, ruled like answer paper */
+body[data-sec="examiner"] .hero:not(.paper),body[data-sec="dna"] .hero:not(.paper),body[data-sec="papers"] .hero:not(.paper),body[data-sec="session"] .hero:not(.paper),body[data-sec="practise"] .hero:not(.paper){
+  background-color:var(--graphite);background-image:repeating-linear-gradient(180deg,transparent 0 35px,rgba(255,255,255,.05) 35px 36px)}
+/* concept network: a field of nodes */
+body[data-sec="mind"] .hero:not(.paper){background-image:radial-gradient(rgba(255,255,255,.12) 1.2px,transparent 1.6px);background-size:28px 28px}
+/* magazine: Economics, Everywhere opens on deep burgundy-black */
+body[data-sec="everywhere"] .hero:not(.paper){background-color:#1B1417;background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1.4px);background-size:22px 22px}
+body[data-sec="everywhere"] .hero h1{letter-spacing:-.03em}
+/* strategic thinking: slate-black with a diagonal field */
+body[data-sec="think"] .hero:not(.paper){background-color:#1C2229;background-image:repeating-linear-gradient(135deg,transparent 0 22px,rgba(255,255,255,.03) 22px 23px)}
+/* ── section headings: the rule extends as the section arrives ──────────── */
+body.rn-anim .shead::after{transition:width .9s var(--ez)}
+body.rn-anim .shead.rn-wait::after{width:0}
+.shead .n{font-variant-numeric:tabular-nums}
+.shead.fx{border-bottom-color:var(--hair-3)}
+.shead.fx h2{font-family:var(--dsp);font-weight:400;font-size:clamp(30px,3.6vw,54px);letter-spacing:-.02em}
+.shead.fx::after{background:var(--brs);width:96px}
+/* ── background system: textures at 3–6 %, one per register ─────────────── */
+.bg-grid{background-image:linear-gradient(var(--grid-l) 1px,transparent 1px),linear-gradient(90deg,var(--grid-l) 1px,transparent 1px);background-size:40px 40px}
+.bg-ledger{background-image:repeating-linear-gradient(180deg,transparent 0 27px,rgba(36,85,127,.07) 27px 28px)}
+.bg-dots{background-image:radial-gradient(rgba(22,24,28,.11) 1px,transparent 1.4px);background-size:22px 22px}
+.bg-margin{background-image:linear-gradient(90deg,transparent 30px,rgba(176,58,46,.22) 30px,rgba(176,58,46,.22) 31px,transparent 31px)}
+.bg-paper{background-color:var(--paper)}
+.bg-ink{background-color:var(--obs);color:#fff}
+/* ── a figure frame for motifs placed in the page ───────────────────────── */
+.rn-fig{position:relative;margin:0}
+.rn-fig .motif{width:100%;height:auto;display:block}
+.rn-fig figcaption{font-family:var(--mono);font-size:11px;color:var(--tx-3);margin-top:8px;letter-spacing:.02em}
+.bg-ink .rn-fig figcaption{color:rgba(255,255,255,.5)}
+/* ── the named teaching components ──────────────────────────────────────── */
+.kc{--kc:var(--brs);position:relative;background:var(--white);border:1px solid var(--hair);border-left:3px solid var(--kc);padding:18px 20px 18px 22px;margin:18px 0}
+.kc-c-brs{--kc:var(--brs)}.kc-c-dem{--kc:var(--dem)}.kc-c-loss{--kc:var(--loss)}.kc-c-bur{--kc:var(--bur)}.kc-c-dat{--kc:var(--dat)}
+.kc-c-obs{--kc:var(--obs)}.kc-c-slate{--kc:var(--slate)}.kc-c-pol{--kc:var(--pol)}.kc-c-evl{--kc:var(--evl)}.kc-c-cop{--kc:var(--cop)}
+.kc-h{display:flex;align-items:center;gap:10px}
+.kc-g{width:20px;height:20px;flex:none;fill:none;stroke:var(--kc);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.kc-l{font-family:var(--ui);font-size:12px;font-weight:800;letter-spacing:.1em;font-variant-caps:all-small-caps;color:var(--kc)}
+.kc-tag{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--tx-3);border:1px solid var(--hair-2);padding:2px 7px}
+.kc-t{font-family:var(--ser);font-size:19px;font-weight:600;line-height:1.3;margin-top:10px;color:var(--tx)}
+.kc-b{margin-top:8px;font-size:15px;line-height:1.6;color:var(--tx-2)}
+.kc-q{margin:6px 0 0;padding-left:22px}.kc-q li{margin:6px 0;font-family:var(--ser);font-size:17px;color:var(--tx)}
+.kc-link{font:inherit;color:var(--bur);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;min-height:0;padding:0}
+.kc-tlae{background:linear-gradient(180deg,var(--ivory),var(--white))}
+/* ── the toolkit ────────────────────────────────────────────────────────── */
+.tk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+.tk-lens{display:flex;align-items:baseline;gap:10px;padding:12px 14px;min-height:48px;border:1px solid var(--hair-2);background:var(--white);text-align:left;transition:border-color .2s,background .2s}
+.tk-lens:hover{border-color:var(--brs)}.tk-lens.on{background:var(--obs);border-color:var(--obs);color:#fff}
+.tk-n{font-family:var(--mono);font-size:11px;color:var(--brs)}.tk-lens.on .tk-n{color:var(--brs-l)}
+.tk-t{font-family:var(--ser);font-size:17px;font-weight:600}
+.tk-card{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start;padding:clamp(20px,3vw,40px);background:var(--paper);border:1px solid var(--hair-2)}
+.tk-links{list-style:none;padding:0;display:grid;gap:4px}.tk-links .lnk{text-align:left;font-size:15px}
+.tk-k{font-family:var(--mono);font-size:10.5px;color:var(--tx-3);border:1px solid var(--hair-2);padding:1px 6px;margin-right:8px;white-space:nowrap}
+.tk-qs{columns:2;column-gap:40px;padding-left:24px}.tk-qs li{break-inside:avoid;margin:0 0 10px;font-family:var(--ser);font-size:18px}
+@media (max-width:860px){.tk-card{grid-template-columns:minmax(0,1fr)}.tk-qs{columns:1}}
+/* ── Random Economics ───────────────────────────────────────────────────── */
+.rnd-chips{display:flex;flex-wrap:wrap;gap:6px}
+.rnd-chips .chip{font-family:var(--ui);font-size:13px;font-weight:600;padding:8px 12px;min-height:40px;border:1px solid var(--hair-2);background:var(--white);color:var(--tx-2)}
+.rnd-chips .chip.on{background:var(--obs);border-color:var(--obs);color:#fff}
+.rnd-card{border-top:3px solid var(--brs);padding-top:18px}
+.rnd-k{font-family:var(--ui);font-size:12px;font-weight:800;letter-spacing:.1em;font-variant-caps:all-small-caps;color:var(--brs)}
+.rnd-t{font-family:var(--dsp);font-weight:400;font-size:clamp(26px,3.2vw,40px);line-height:1.08;margin-top:8px}
+/* ── the home page ──────────────────────────────────────────────────────── */
+.rn-home .in.rn-hgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(24px,4vw,72px);align-items:center;
+  padding-block:clamp(52px,6.5vw,112px) clamp(44px,5vw,88px)}
+.rn-home h1{font-size:clamp(52px,7.4vw,118px);line-height:.94;max-width:10ch}
+.rn-home .lede{max-width:34ch;color:rgba(255,255,255,.86);font-size:clamp(20px,1.8vw,26px)}
+.rn-method{font-family:var(--ui);font-size:14px;letter-spacing:.01em;color:rgba(255,255,255,.58);max-width:52ch}
+.rn-kept>*{margin-top:26px}
+.rn-hfig{margin:0;position:relative}
+.rn-hfig .motif{width:100%;height:auto;display:block}
+.rn-steps{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:10px;border-top:1px solid rgba(255,255,255,.18)}
+.rn-steps li{padding:12px 12px 4px 0;display:flex;flex-direction:column;gap:4px}
+.rn-steps b{font-family:var(--ser);font-size:17px;font-weight:600;color:#fff}
+.rn-steps span{font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.62)}
+.rn-steps .rn-sn{font-family:var(--mono);font-size:10.5px;color:var(--brs-l)}
+body.rn-anim .rn-steps li{animation:rnStep .7s var(--ez) both;animation-delay:calc(1.1s + var(--i)*.28s)}
+body.rn-anim .rn-steps li b{animation:rnGlow 6.4s ease-in-out infinite;animation-delay:calc(2.6s + var(--i)*1.6s)}
+@keyframes rnStep{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes rnGlow{0%,20%,100%{color:#fff}8%{color:var(--brs-l)}}
+@media (max-width:999px){.rn-home .in.rn-hgrid{grid-template-columns:minmax(0,1fr)}.rn-hfig{max-width:620px}}
+@media (max-width:560px){.rn-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.rn-home h1{font-size:clamp(46px,14vw,64px)}}
+.rn-band .shead{margin-top:0}
+/* gateway */
+.rn-atlas{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:minmax(0,auto);gap:14px}
+.atl{grid-column:span 3;display:flex;flex-direction:column;text-align:left;background:var(--white);border:1px solid var(--hair);min-height:44px;
+  transition:border-color .25s var(--ez),transform .25s var(--ez),box-shadow .25s var(--ez);overflow:hidden}
+.atl:hover,.atl:focus-visible,.atx:hover,.atx:focus-visible{border-color:var(--brs);transform:translateY(-2px);box-shadow:var(--sh)}
+.atl-lead{grid-column:span 6;grid-row:span 2}
+.atl:nth-child(2){grid-column:span 6}
+.atl-fig{display:block;background:var(--ivory);border-bottom:1px solid var(--hair);padding:8px 12px 2px;height:150px;overflow:hidden}
+.atl-fig .motif{width:100%;height:100%;display:block}
+.atl-lead .atl-fig{height:auto;flex:1;min-height:260px}
+.atl-tx{display:flex;flex-direction:column;gap:5px;padding:14px 16px 16px}
+.atl-n{font-family:var(--mono);font-size:10.5px;color:var(--brs)}
+.atl-t{font-family:var(--ser);font-size:21px;font-weight:600;line-height:1.15;color:var(--tx)}
+.atl-lead .atl-t{font-family:var(--dsp);font-weight:400;font-size:clamp(32px,3.2vw,48px)}
+.atl-l{font-size:14px;line-height:1.5;color:var(--tx-2)}
+.atl-m{margin-top:auto;padding-top:8px;font-family:var(--mono);font-size:11px;color:var(--tx-3)}
+.atl-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px;margin-top:22px;border-top:1px solid var(--obs)}
+.atx{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px;align-items:center;text-align:left;padding:14px 0;border-bottom:1px solid var(--hair-2);min-height:44px;
+  transition:transform .25s var(--ez)}
+.atx:hover,.atx:focus-visible{box-shadow:none;border-color:var(--hair-2)}
+.atx-fig{display:block;background:var(--ivory);border:1px solid var(--hair);height:64px;padding:2px}
+.atx-fig .motif{width:100%;height:100%;display:block}
+.atx-fig .m-t{display:none}
+.atx-tx{display:flex;flex-direction:column;gap:2px}
+.atx-t{font-family:var(--ser);font-size:18px;font-weight:600;color:var(--tx)}.atx-l{font-size:13.5px;line-height:1.45;color:var(--tx-2)}
+.atx .atl-m{padding-top:4px}
+body.rn-anim .atl .motif .m-c:not(.dsh),body.rn-anim .atx .motif .m-c:not(.dsh){animation:none}
+body.rn-anim .atl:hover .motif .m-c:not(.dsh),body.rn-anim .atl:focus-visible .motif .m-c:not(.dsh){animation:rnDraw 1.1s var(--ez) both}
+body.rn-anim .atl .motif .m-t,body.rn-anim .atl .motif .m-pt,body.rn-anim .atl .motif .m-loss,body.rn-anim .atl .motif .m-soft,body.rn-anim .atl .motif .m-drop,
+body.rn-anim .atx .motif *{animation:none}
+@media (max-width:1100px){.atl,.atl:nth-child(2){grid-column:span 6}.atl-lead{grid-column:span 12;grid-row:auto}.atl-lead .atl-fig{min-height:0;height:220px}.atl-index{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.rn-atlas{grid-template-columns:minmax(0,1fr)}.atl,.atl:nth-child(2),.atl-lead{grid-column:auto}.atl-fig,.atl-lead .atl-fig{height:130px}.atl-index{grid-template-columns:minmax(0,1fr)}.atx{grid-template-columns:76px minmax(0,1fr)}}
+/* the desk folds */
+.rn-desk>summary{list-style:none;cursor:pointer;min-height:44px}
+.rn-desk>summary::-webkit-details-marker{display:none}
+.rn-dv-x{margin-left:auto;font-family:var(--ui);font-size:13px;font-weight:600;color:var(--bur)}
+.rn-dv-x::after{content:"Open ▾"}.rn-desk[open] .rn-dv-x::after{content:"Fold ▴"}
+.rn-desk>summary:hover .rn-dv-t{color:var(--bur)}
+.rn-desk:not([open]){margin-bottom:var(--s4)}
+.rn-disc{gap:10px}
+/* daily front page */
+.rn-today{border-block:1px solid var(--hair-2)}
+.td-grid{display:grid;grid-template-columns:minmax(0,1.5fr) repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--obs)}
+.td-card{padding:18px 20px 20px;border-right:1px solid var(--hair-2);display:flex;flex-direction:column}
+.td-card:last-child{border-right:0}
+.td-big{padding-left:0}
+.td-k{font-family:var(--ui);font-size:12px;font-weight:800;letter-spacing:.1em;font-variant-caps:all-small-caps;color:var(--bur)}
+.td-t{font-family:var(--ser);font-size:19px;line-height:1.28;margin-top:8px}
+.td-big .td-t{font-family:var(--dsp);font-weight:400;font-size:clamp(30px,3vw,44px);line-height:1.05}
+.td-meta{font-family:var(--mono);font-size:11px;color:var(--tx-3);margin-top:6px}
+.td-card .lnk{margin-top:auto;padding-top:12px}
+@media (max-width:1000px){.td-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.td-card{border-bottom:1px solid var(--hair-2)}.td-big{grid-column:1/-1;padding-left:0;border-right:0}}
+@media (max-width:560px){.td-grid{grid-template-columns:minmax(0,1fr)}.td-card{border-right:0;padding-inline:0}}
+/* lead story */
+.ld-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) minmax(0,.7fr);gap:clamp(20px,3vw,48px);align-items:start}
+.ld-k{font-family:var(--mono);font-size:11.5px;color:var(--tx-3);letter-spacing:.03em}
+.ld-t{font-family:var(--dsp);font-weight:400;font-size:clamp(34px,3.6vw,56px);line-height:1.02;letter-spacing:-.02em;margin-top:10px}
+.ld-s{font-family:var(--ser);font-size:clamp(18px,1.5vw,21px);line-height:1.5;color:var(--tx-2);margin-top:14px}
+.ld-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px;padding-top:16px;border-top:1px solid var(--hair-2)}
+.ld-fig{background:var(--ivory);border:1px solid var(--hair);padding:14px}
+.ld-side{display:flex;flex-direction:column;border-top:1px solid var(--obs)}
+.ld-o{display:flex;flex-direction:column;gap:6px;text-align:left;padding:14px 0;border-bottom:1px solid var(--hair-2);min-height:44px}
+.ld-o:hover .ld-ot{color:var(--bur)}
+.ld-ok{font-family:var(--mono);font-size:10.5px;color:var(--tx-3)}.ld-ot{font-family:var(--ser);font-size:17px;font-weight:600;line-height:1.3}
+@media (max-width:1100px){.ld-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ld-side{grid-column:1/-1}}
+@media (max-width:700px){.ld-grid,.ld-cols{grid-template-columns:minmax(0,1fr)}}
+/* mindmap network */
+.rn-mind h2{color:#fff;font-family:var(--dsp);font-weight:400;font-size:clamp(34px,3.6vw,54px);line-height:1.04}
+.rn-mind .lede{color:rgba(255,255,255,.74)}.rn-mind .eb{color:var(--brs-l)}
+.mn-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,64px);align-items:center}
+.mn-net{position:relative;aspect-ratio:4/3;min-height:360px}
+.mn-edges{position:absolute;inset:0;width:100%;height:100%}.mn-edges line{stroke:rgba(217,190,124,.28);stroke-width:1;vector-effect:non-scaling-stroke}
+.mn-node{position:absolute;transform:translate(-50%,-50%);max-width:152px;padding:7px 10px;min-height:40px;font-family:var(--ui);font-size:12px;font-weight:600;line-height:1.3;
+  text-align:center;color:#fff;background:#262A31;border:1px solid rgba(255,255,255,.2);transition:border-color .2s,background .2s,transform .2s}
+.mn-node:hover,.mn-node:focus-visible{border-color:var(--brs-l);background:#30353D;transform:translate(-50%,-50%) scale(1.04)}
+.mn-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-family:var(--dsp);font-size:clamp(22px,2.4vw,34px);color:var(--brs-l)}
+.btn.on-ink{background:#fff;color:var(--obs);border-color:#fff}.btn.gh.on-ink{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+@media (max-width:1000px){.mn-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:700px){.mn-net{aspect-ratio:auto;min-height:0;display:flex;flex-wrap:wrap;gap:8px}.mn-edges,.mn-core{display:none}.mn-node{position:static;transform:none;max-width:none}.mn-node:hover{transform:none}}
+/* at a glance */
+.gl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:0;border-top:1px solid var(--obs)}
+.gl{padding:16px 18px 18px 0;border-bottom:1px solid var(--hair)}
+.gl dt{font-size:13px;line-height:1.35;color:var(--tx-3)}
+.gl-v{font-family:var(--dsp);font-size:clamp(34px,3.4vw,52px);line-height:1;margin:0 0 6px;font-variant-numeric:tabular-nums;color:var(--tx)}
+.gl{display:flex;flex-direction:column}.gl .gl-v{order:-1}
+/* the desk divider */
+.rn-divider{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;padding-top:var(--s5);border-top:0}
+.rn-dv-t{font-family:var(--dsp);font-size:clamp(28px,3vw,42px);color:var(--tx)}
+.rn-dv-s{font-size:14px;color:var(--tx-3)}
+.rn-divider::after{content:"";flex:1 0 100%;height:1px;background:var(--hair-3)}
+/* a tighter rhythm on the home page, so new bands do not simply add length */
+body[data-sec="home"] .sec{padding-block:clamp(40px,4.6vw,64px)}
+body[data-sec="home"] .sec.t{padding-block:clamp(32px,3.6vw,52px)}
+/* ── the footer as a colophon ───────────────────────────────────────────── */
+.ft-top{background:var(--obs);color:#fff;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:var(--s5);
+  background-image:linear-gradient(var(--grid-d) 1px,transparent 1px),linear-gradient(90deg,var(--grid-d) 1px,transparent 1px);background-size:56px 56px}
+.ft-topin{display:grid;grid-template-columns:minmax(0,1.2fr) 160px minmax(0,1.3fr);gap:clamp(24px,4vw,64px);align-items:center;padding-block:clamp(36px,4vw,60px)}
+.ft-word{font-family:var(--dsp);font-size:clamp(34px,4vw,60px);line-height:1;letter-spacing:-.02em;color:#fff}
+.ft-ideas{font-family:var(--ser);font-size:16px;color:rgba(255,255,255,.66);margin-top:14px;max-width:44ch}
+.ft-mark{width:160px;height:auto;color:rgba(255,255,255,.7)}
+.ft-explore{display:flex;flex-wrap:wrap;gap:6px 18px;align-content:flex-start}
+.ft-explore .kicker{flex-basis:100%;color:var(--brs-l)}
+.ft-explore .lnk{color:rgba(255,255,255,.86);font-size:15px}.ft-explore .lnk:hover{color:#fff;text-decoration:underline}
+.ft-base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;margin-top:var(--s5);padding-block:18px 26px;border-top:1px solid var(--hair);
+  font-size:12.5px;color:var(--tx-3)}
+@media (max-width:900px){.ft-topin{grid-template-columns:minmax(0,1fr)}.ft-mark{display:none}}
+footer.ft{padding-top:0}
+
+.ld-m{display:block;aspect-ratio:3/2}.ld-m .motif{width:100%;height:auto;display:block}
+
+/* ▓▓ REN-CSS:END ▓▓ */
 </style>
 </head>
 <body>
@@ -1376,7 +1693,17 @@ textarea.es-in{resize:vertical;min-height:64px}
 <div class="subnav hid" id="subnav"><div class="wrap full in" id="subnavin"></div></div>
 <div id="printroot" aria-hidden="true"></div>
 <main id="main"><div id="view" class="view"></div></main>
-<footer class="ft"><div class="wrap full in">
+<footer class="ft"><div class="ft-top"><div class="wrap full ft-topin">
+  <div class="ft-prop"><div class="ft-word">Think like an economist.</div>
+   <p class="ft-ideas">Economics is about ideas, evidence, models, people, choices, trade-offs and the world.</p></div>
+  <svg class="ft-mark" viewBox="0 0 160 90" aria-hidden="true" focusable="false"><path d="M14 8V82H152" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".5"/><path d="M24 14L146 76" stroke="#8FB6DE" stroke-width="2" fill="none"/><path d="M24 76L146 14" stroke="#E3A778" stroke-width="2" fill="none"/><circle cx="85" cy="45" r="3.6" fill="#D9BE7C"/><circle cx="85" cy="45" r="9" fill="none" stroke="#D9BE7C" stroke-opacity=".5"/></svg>
+  <nav class="ft-explore" aria-label="Explore the platform"><div class="kicker">Explore</div>
+   <button class="lnk" onclick="nav('learn')">Learn</button><button class="lnk" onclick="nav('world')">Real World</button>
+   <button class="lnk" onclick="nav('mind')">Mindmaps</button><button class="lnk" onclick="nav('lab')">Labs</button>
+   <button class="lnk" onclick="nav('everywhere')">Economics, Everywhere</button><button class="lnk" onclick="nav('ees')">EE Studio</button>
+   <button class="lnk" onclick="nav('arjun')">Videos</button><button class="lnk" onclick="nav('educator')">Teacher Studio</button>
+   <button class="lnk" onclick="randomOpen('')">Random Economics</button><button class="lnk" onclick="nav('about')">About</button></nav>
+ </div></div><div class="wrap full in">
   <div class="ftbrand">
    <div style="width:230px;height:70px;max-width:100%;background:var(--lg) left center/contain no-repeat" role="img" aria-label="Arjun Agrawal: Knowledge. Insight. Impact."></div>
    <p class="ed mt3" style="max-width:48ch;font-size:16px">Arjun Agrawal · IB DP Economics. An independent learning environment for IB Diploma Programme Economics, built by an IB DP Economics teacher and resource creator.</p>
@@ -1412,7 +1739,7 @@ textarea.es-in{resize:vertical;min-height:64px}
     <div class="kicker mt4">The method</div>
     <p class="xs mt2" style="max-width:26ch">Understand · Visualise · Connect · Analyse · Stress-test · Judge · Apply</p></div>
   </nav>
-</div></footer>
+</div><div class="wrap full ft-base"><span>© Arjun Agrawal. Explanations, diagrams and tools written and drawn for this platform.</span><span>An independent platform: no IB endorsement is claimed or implied.</span></div></footer>
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" aria-live="polite"></aside>
 <div id="toast" role="status"></div>
@@ -35682,6 +36009,603 @@ QAREPORT.push(
  {area:"Educator Studio and ecosystem",re:/^(Educator|Ecosystem) · /,what:"That official statements cite a page, every pathway and link leads somewhere real, related content resolves, and search reaches the new sections."});
 
 
+/* ▓▓ RENAISSANCE:BEGIN ▓▓ */
+/* ═══════════════════════════════════════════════════════════════════════════
+   RENAISSANCE · 1 · the economic motif engine
+   Every page opener used to carry the same decorative cross. The opener now
+   draws a real diagram for what the page is about: comparative advantage on
+   the comparative advantage page, a Lorenz curve for inequality, markbands in
+   the exam room. Each motif is built from stated functions, so its labels,
+   intersections and shaded areas are where the economics puts them; the self
+   tests recompute them. Motifs are decorative for assistive technology (the
+   page's own heading carries the meaning) and carry a visible figure caption.
+   Semantic colour is kept: demand is blue, supply copper, loss red, policy
+   brass; brand burgundy never enters a diagram.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const MF={x0:70,y0:340,w:470,h:290};             /* plot box in a 600 × 400 frame */
+const mX=q=>+(MF.x0+q/10*MF.w).toFixed(1), mY=p=>+(MF.y0-p/10*MF.h).toFixed(1);
+function mLine(f,a,b,cls,lbl,lq,n){                 /* p=f(q) from q=a to q=b */
+ n=n||2;const pts=[];for(let i=0;i<=n;i++){const q=a+(b-a)*i/n;pts.push(mX(q)+","+mY(f(q)))}
+ let s=`<polyline class="m-c ${cls}" points="${pts.join(" ")}" pathLength="1"/>`;
+ if(lbl){const q=lq===undefined?b:lq,x=mX(q),y=mY(f(q));
+  /* near the right edge a label is set inward, below a falling line and above a rising one, so it never leaves the frame */
+  if(x>470){const fall=f(q)<f(q-0.4);s+=`<text class="m-t m-${cls.split(" ")[0]}" x="${x-2}" y="${fall?y+20:y-9}" text-anchor="end">${lbl}</text>`}
+  else s+=`<text class="m-t m-${cls.split(" ")[0]}" x="${x+6}" y="${y-6}">${lbl}</text>`}
+ return s}
+function mVert(q,a,b,cls,lbl){return `<line class="m-c ${cls}" x1="${mX(q)}" y1="${mY(a)}" x2="${mX(q)}" y2="${mY(b)}" pathLength="1"/>`
+ +(lbl?`<text class="m-t m-${cls.split(" ")[0]}" x="${mX(q)+6}" y="${mY(b)+4}">${lbl}</text>`:"")}
+function mHorz(p,a,b,cls,lbl){return `<line class="m-c ${cls}" x1="${mX(a)}" y1="${mY(p)}" x2="${mX(b)}" y2="${mY(p)}" pathLength="1"/>`
+ +(lbl?`<text class="m-t m-${cls.split(" ")[0]}" x="${mX(b)+6}" y="${mY(p)+4}">${lbl}</text>`:"")}
+function mAxes(xl,yl){return `<g class="m-ax"><line x1="${MF.x0}" y1="${MF.y0}" x2="${MF.x0}" y2="${MF.y0-MF.h-12}"/><line x1="${MF.x0}" y1="${MF.y0}" x2="${MF.x0+MF.w+12}" y2="${MF.y0}"/></g>
+ <text class="m-t m-axl" x="${MF.x0-8}" y="${MF.y0-MF.h-20}">${yl}</text><text class="m-t m-axl" x="${MF.x0+MF.w+12}" y="${MF.y0+22}" text-anchor="end">${xl}</text>`}
+function mDrop(q,p,ql,pl){return `<g class="m-drop"><line x1="${mX(q)}" y1="${mY(p)}" x2="${mX(q)}" y2="${MF.y0}"/><line x1="${mX(q)}" y1="${mY(p)}" x2="${MF.x0}" y2="${mY(p)}"/></g>`
+ +(ql?`<text class="m-t m-tick" x="${mX(q)}" y="${MF.y0+18}" text-anchor="middle">${ql}</text>`:"")
+ +(pl?`<text class="m-t m-tick" x="${MF.x0-8}" y="${mY(p)+4}" text-anchor="end">${pl}</text>`:"")}
+function mDot(q,p,pulse){return `<circle class="m-pt${pulse?" m-pulse":""}" cx="${mX(q)}" cy="${mY(p)}" r="5"/>`
+ +(pulse?`<circle class="m-ring" cx="${mX(q)}" cy="${mY(p)}" r="14"/>`:"")}
+function mPoly(pts,cls){return `<polygon class="${cls}" points="${pts.map(([q,p])=>mX(q)+","+mY(p)).join(" ")}"/>`}
+function mArrow(q1,p1,q2,p2){const x1=mX(q1),y1=mY(p1),x2=mX(q2),y2=mY(p2),a=Math.atan2(y2-y1,x2-x1),h=9;
+ return `<g class="m-arr"><line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/><polyline points="${(x2-h*Math.cos(a-.45)).toFixed(1)},${(y2-h*Math.sin(a-.45)).toFixed(1)} ${x2},${y2} ${(x2-h*Math.cos(a+.45)).toFixed(1)},${(y2-h*Math.sin(a+.45)).toFixed(1)}"/></g>`}
+function mBrace(qa,qb,p,lbl){return `<g class="m-arr"><line x1="${mX(qa)}" y1="${mY(p)+14}" x2="${mX(qb)}" y2="${mY(p)+14}"/><line x1="${mX(qa)}" y1="${mY(p)+9}" x2="${mX(qa)}" y2="${mY(p)+19}"/><line x1="${mX(qb)}" y1="${mY(p)+9}" x2="${mX(qb)}" y2="${mY(p)+19}"/></g>`
+ +`<text class="m-t m-note" x="${(mX(qa)+mX(qb))/2}" y="${mY(p)+34}" text-anchor="middle">${lbl}</text>`}
+
+/* The functions each motif is drawn from, kept apart so the self-test can
+   recompute every intersection independently of the drawing code. */
+const MOTIFFN={
+ D:q=>9-0.8*q, S:q=>1+0.8*q, D1:q=>10.6-0.8*q, ST:q=>3+0.8*q,
+ MPC:q=>1+0.6*q, MSC:q=>3+0.6*q,
+ AC:q=>12/q+1+0.35*q, MC:q=>1+0.7*q, AR:q=>9.5-0.5*q, MR:q=>9.5-q,
+ SRPC:u=>-1+14/(u+0.5), LOR:x=>10*Math.pow(x/10,2.2)
+};
+const MOTIFS={
+ sd:{cap:"Fig. Market equilibrium: demand meets supply at E",draw(){const F=MOTIFFN;
+  return mAxes("Quantity","Price")+mLine(F.D,0.6,10,"dem","D")+mLine(F.S,0.6,10,"sup","S")+mDrop(5,5,"Qe","Pe")+mDot(5,5,1)}},
+ shift:{cap:"Fig. An increase in demand: D shifts to D₁, price and quantity rise",draw(){const F=MOTIFFN;
+  return mAxes("Quantity","Price")+mLine(F.D,0.6,10,"dem","D",10)+mLine(F.D1,2.6,10,"dem dsh","D₁")+mLine(F.S,0.6,10,"sup","S")
+   +mDrop(5,5,"Q","P")+mDrop(6,5.8,"Q₁","P₁")+mArrow(3.6,6.12,5.3,6.12)+mDot(5,5)+mDot(6,5.8,1)}},
+ tax:{cap:"Fig. An indirect tax: the wedge between the price paid and the price received",draw(){const F=MOTIFFN;
+  return mAxes("Quantity","Price")+mPoly([[3.75,6],[3.75,4],[5,5]],"m-loss")+mLine(F.D,0.6,10,"dem","D")+mLine(F.S,0.6,10,"sup","S")
+   +mLine(F.ST,0.6,7.5,"pol","S + tax")+mDrop(3.75,6,"Q₁","Pc")+mDrop(3.75,4,"","Pp")+mDot(5,5)+mDot(3.75,6,1)
+   +`<text class="m-t m-note" x="${mX(3.75)+8}" y="${(mY(6)+mY(4))/2+4}">tax</text>`}},
+ ceiling:{cap:"Fig. A maximum price below equilibrium creates a shortage",draw(){const F=MOTIFFN;
+  return mAxes("Quantity","Price")+mLine(F.D,0.6,10,"dem","D")+mLine(F.S,0.6,10,"sup","S")+mHorz(3.4,0,9.2,"pol","Pmax")
+   +mDot(3,3.4)+mDot(7,3.4)+mBrace(3,7,3.4,"shortage")+mDot(5,5,1)}},
+ ext:{cap:"Fig. A negative production externality: output exceeds the social optimum",draw(){const F=MOTIFFN,qm=8/1.4,qs=6/1.4;
+  return mAxes("Quantity","Costs, benefits")+mPoly([[qs,F.D(qs)],[qm,F.MSC(qm)],[qm,F.D(qm)]],"m-loss")
+   +mLine(F.D,0.6,10,"dem","D = MPB = MSB",9.2)+mLine(F.MPC,0,10,"sup","S = MPC")+mLine(F.MSC,0,10,"sup dsh","MSC",9.4)
+   +mDrop(qm,F.D(qm),"Qm","")+mDrop(qs,F.D(qs),"Q*","")+mDot(qs,F.D(qs),1)+mDot(qm,F.D(qm))}},
+ elastic:{cap:"Fig. Two demand curves through one point: responsiveness differs",draw(){
+  return mAxes("Quantity","Price")+mLine(q=>5-2.2*(q-5),3.2,7.1,"dem","relatively inelastic",3.2)+mLine(q=>5-0.35*(q-5),0.5,10,"dem dsh","relatively elastic",10)+mDot(5,5,1)}},
+ ppc:{cap:"Fig. The production possibility curve: scarcity, choice and opportunity cost",draw(){
+  const arc=(r,cls)=>`<polyline class="m-c ${cls}" pathLength="1" points="${Array.from({length:25},(_,i)=>{const t=i/24*Math.PI/2;return mX(r*Math.cos(t))+","+mY(r*Math.sin(t))}).join(" ")}"/>`;
+  const a=0.8;
+  return mAxes("Good X","Good Y")+arc(8.4,"ink")+arc(9.6,"ink dsh")
+   +mDot(8.4*Math.cos(a),8.4*Math.sin(a),1)+`<text class="m-t m-note" x="${mX(8.4*Math.cos(a))+10}" y="${mY(8.4*Math.sin(a))-8}">A · efficient</text>`
+   +mDot(3.4,3.2)+`<text class="m-t m-note" x="${mX(3.4)+10}" y="${mY(3.2)+4}">B · unused resources</text>`
+   +mDot(7.3,7.3)+`<text class="m-t m-note" x="${mX(7.3)+10}" y="${mY(7.3)-6}">C · unattainable today</text>`
+   +mArrow(6.8,4.93,7.75,5.62)}},
+ cadv:{cap:"Fig. Comparative advantage: A gives up less Y for each unit of X",draw(){
+  return mAxes("Good X","Good Y")+mLine(q=>4-0.5*q,0,8,"ink","A: 1X costs ½Y",8)+mLine(q=>6-2*q,0,3,"ink dsh","B: 1X costs 2Y",3)
+   +`<text class="m-t m-note" x="${mX(3.6)}" y="${mY(7.4)}">A specialises in X, B in Y</text>`}},
+ adas:{cap:"Fig. AD–AS: long-run equilibrium at full-employment output Yf",draw(){const F=MOTIFFN;
+  return mAxes("Real GDP","Average price level")+mLine(F.D,0.6,10,"dem","AD")+mLine(F.S,0.6,10,"sup","SRAS")+mVert(5,0,9.6,"ink","LRAS")
+   +mDrop(5,5,"Yf","Pe")+mDot(5,5,1)}},
+ phillips:{cap:"Fig. Short-run and long-run Phillips curves",draw(){const F=MOTIFFN;
+  return mAxes("Unemployment rate","Inflation rate")+mLine(F.SRPC,1.2,9.6,"ink","SRPC",9.6,24)+mVert(5,0,9.6,"ink dsh","LRPC")
+   +`<text class="m-t m-tick" x="${mX(5)}" y="${MF.y0+18}" text-anchor="middle">NRU</text>`+mDot(5,F.SRPC(5),1)}},
+ lorenz:{cap:"Fig. The Lorenz curve: Gini coefficient = A ÷ (A + B)",draw(){const F=MOTIFFN;
+  const L=Array.from({length:21},(_,i)=>[i/2,F.LOR(i/2)]);
+  return mAxes("Cumulative % of population","Cumulative % of income")
+   +mPoly([[0,0]].concat(L.slice().reverse().map(([x,y])=>[x,y]).reverse()).concat([[10,10]]),"m-soft")
+   +`<polyline class="m-c ink" pathLength="1" points="${L.map(([x,y])=>mX(x)+","+mY(y)).join(" ")}"/>`
+   +mLine(q=>q,0,10,"ink dsh","line of equality",6.4)
+   +`<text class="m-t m-note" x="${mX(6.2)}" y="${mY(4.4)}">A</text><text class="m-t m-note" x="${mX(8.2)}" y="${mY(1.6)}">B</text>`
+   +mVert(10,0,10,"m-thin","")+mHorz(10,0,10,"m-thin","")}},
+ cycle:{cap:"Fig. The business cycle: actual output around the trend",draw(){
+  const tr=t=>2+0.55*t, ac=t=>tr(t)+1.15*Math.sin(t*1.25);
+  /* turning points where the slope of actual output is zero: 0.55 + 1.4375·cos(1.25t) = 0 */
+  const pk=(Math.PI-Math.acos(0.55/1.4375))/1.25, tg=(Math.PI+Math.acos(0.55/1.4375))/1.25;
+  return mAxes("Time","Real GDP")+mLine(tr,0,10,"ink dsh","trend (potential) output",4.6)+mLine(ac,0,10,"ink","actual output",10,60)
+   +mDot(pk,ac(pk))+`<text class="m-t m-note" x="${mX(pk)}" y="${mY(ac(pk))-14}" text-anchor="middle">peak</text>`
+   +mDot(tg,ac(tg))+`<text class="m-t m-note" x="${mX(tg)}" y="${mY(ac(tg))+24}" text-anchor="middle">trough</text>`}},
+ costs:{cap:"Fig. Profit maximisation where MC = MR; MC cuts AC at its minimum",draw(){const F=MOTIFFN;
+  return mAxes("Quantity","Costs, revenue")+mPoly([[0,7],[5,7],[5,F.AC(5)],[0,F.AC(5)]],"m-soft")
+   +mLine(F.AC,1.45,9.8,"sup","AC",9.8,40)+mLine(F.MC,0,9.8,"sup dsh","MC",9.8)+mLine(F.AR,0,10,"dem","AR = D",10)+mLine(F.MR,0,9.3,"dem dsh","MR",9.3)
+   +mDrop(5,7,"Qm","Pm")+mDot(5,F.MC(5))+mDot(5,7,1)}},
+ labour:{cap:"Fig. A minimum wage above equilibrium: a surplus of labour",draw(){const F=MOTIFFN;
+  return mAxes("Quantity of labour","Wage rate")+mLine(F.D,0.6,10,"dem","D labour")+mLine(F.S,0.6,10,"sup","S labour")+mHorz(6.6,0,9.2,"pol","Wmin")
+   +mDot(3,6.6)+mDot(7,6.6)+mBrace(3,7,6.6,"surplus of labour")+mDot(5,5,1)}},
+ tariff:{cap:"Fig. A tariff raises the domestic price and cuts imports",draw(){const F=MOTIFFN;
+  return mAxes("Quantity","Price")+mPoly([[3.5,3.8],[6.5,3.8],[6.5,2.6],[3.5,2.6]],"m-soft")+mPoly([[2,2.6],[3.5,3.8],[3.5,2.6]],"m-loss")+mPoly([[6.5,3.8],[8,2.6],[6.5,2.6]],"m-loss")
+   +mLine(F.D,0.6,10,"dem","D domestic",10)+mLine(F.S,0.6,10,"sup","S domestic",10)+mHorz(2.6,0,9.4,"pol","Pw")+mHorz(3.8,0,9.4,"pol dsh","Pw + tariff")
+   +mDot(3.5,3.8)+mDot(6.5,3.8,1)}},
+ fx:{cap:"Fig. An exchange rate is a price: set by the demand for and supply of a currency",draw(){const F=MOTIFFN;
+  return mAxes("Quantity of the currency","Exchange rate")+mLine(F.D,0.6,10,"dem","D currency",9.4)+mLine(F.S,0.6,10,"sup","S currency",9.4)
+   +mDrop(5,5,"Qe","e")+mDot(5,5,1)}},
+ subsidy:{cap:"Fig. A subsidy: consumers pay less, producers receive more, at a cost to government",draw(){const F=MOTIFFN,SS=q=>-1+0.8*q;
+  return mAxes("Quantity","Price")+mPoly([[0,6],[6.25,6],[6.25,4],[0,4]],"m-soft")+mLine(F.D,0.6,10,"dem","D")+mLine(F.S,0.6,10,"sup","S",9.2)
+   +mLine(SS,1.5,10,"pol","S − subsidy",10)+mDrop(6.25,6,"","Pp")+mDrop(6.25,4,"Q₁","Pc")+mDot(5,5)+mDot(6.25,4,1)}},
+ floor:{cap:"Fig. A minimum price above equilibrium creates a surplus",draw(){const F=MOTIFFN;
+  return mAxes("Quantity","Price")+mLine(F.D,0.6,10,"dem","D")+mLine(F.S,0.6,10,"sup","S")+mHorz(6.6,0,9.2,"pol","Pmin")
+   +mDot(3,6.6)+mDot(7,6.6)+mBrace(3,7,6.6,"surplus")+mDot(5,5,1)}},
+ scatter:{cap:"Fig. A fitted line shows association, not causation (illustrative data)",draw(){
+  let s=13;const r=()=>(s=(s*9301+49297)%233280)/233280;
+  const pts=Array.from({length:26},(_,i)=>{const x=0.6+i*0.35;return [x,1.2+0.72*x+(r()-.5)*2.4]});
+  const n=pts.length,mx=pts.reduce((a,p)=>a+p[0],0)/n,my=pts.reduce((a,p)=>a+p[1],0)/n;
+  const b=pts.reduce((a,p)=>a+(p[0]-mx)*(p[1]-my),0)/pts.reduce((a,p)=>a+(p[0]-mx)**2,0),a=my-b*mx;
+  MOTIFS.scatter.fit={a,b};
+  return mAxes("Variable X","Variable Y")+pts.map(([x,y])=>`<circle class="m-dot" cx="${mX(x)}" cy="${mY(y)}" r="4"/>`).join("")+mLine(q=>a+b*q,0.3,9.8,"ink","fitted line",9.8)}},
+ game:{cap:"Fig. A pricing game: both firms choosing Low is the Nash equilibrium (illustrative payoffs)",draw(){
+  const cell=(x,y,t,nash)=>`<rect class="${nash?"m-nash":"m-cell"}" x="${x}" y="${y}" width="170" height="92"/><text class="m-t m-pay" x="${x+85}" y="${y+54}" text-anchor="middle">${t}</text>`;
+  return `<text class="m-t m-axl" x="330" y="46" text-anchor="middle">Firm B</text><text class="m-t m-axl" x="84" y="190" text-anchor="middle" transform="rotate(-90 84 190)">Firm A</text>`
+   +`<text class="m-t m-tick" x="245" y="74" text-anchor="middle">High price</text><text class="m-t m-tick" x="415" y="74" text-anchor="middle">Low price</text>`
+   +`<text class="m-t m-tick" x="152" y="136" text-anchor="end">High</text><text class="m-t m-tick" x="152" y="228" text-anchor="end">Low</text>`
+   +cell(160,86,"6 , 6")+cell(330,86,"1 , 8")+cell(160,178,"8 , 1")+cell(330,178,"3 , 3",1)
+   +`<text class="m-t m-note" x="415" y="298" text-anchor="middle">Nash equilibrium</text>`}},
+ network:{cap:"Fig. The nine key concepts of the course, as a network",draw(){
+  const K=["Scarcity","Choice","Efficiency","Equity","Economic well-being","Sustainability","Change","Interdependence","Intervention"];
+  const P=K.map((k,i)=>{const t=-Math.PI/2+i/K.length*2*Math.PI;return [300+205*Math.cos(t),195+140*Math.sin(t)]});
+  const E=[[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8],[8,0],[0,2],[1,4],[3,8],[5,7],[2,6],[4,8]];
+  return E.map(([a,b])=>`<line class="m-edge" x1="${P[a][0].toFixed(1)}" y1="${P[a][1].toFixed(1)}" x2="${P[b][0].toFixed(1)}" y2="${P[b][1].toFixed(1)}"/>`).join("")
+   +P.map(([x,y],i)=>`<circle class="m-node" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${i===0?8:6}"/><text class="m-t m-note" x="${x.toFixed(1)}" y="${(y+(y<195?-14:24)).toFixed(1)}" text-anchor="middle">${K[i]}</text>`).join("")}},
+ markbands:{cap:"Fig. Paper 1 (b) markbands, 0 to 15 (Economics guide, first assessment 2022, p. 63)",draw(){
+  const B=[["0",0],["1–3",3],["4–6",6],["7–9",9],["10–12",12],["13–15",15]];
+  return mAxes("Markband","Marks")+B.map(([l,m],i)=>{const x=MF.x0+14+i*75,h=m/15*MF.h*.92,y=MF.y0-h;
+   return `<rect class="${i===5?"m-nash":"m-cell"}" x="${x}" y="${y.toFixed(1)}" width="60" height="${h.toFixed(1)}"/><text class="m-t m-tick" x="${x+30}" y="${MF.y0+18}" text-anchor="middle">${l}</text>`}).join("")}},
+ research:{cap:"Fig. A research page: question, evidence, annotation",draw(){
+  const lines=Array.from({length:11},(_,i)=>`<line class="m-edge" x1="150" y1="${70+i*24}" x2="${i%4===3?390:470}" y2="${70+i*24}"/>`).join("");
+  return `<rect class="m-sheet" x="120" y="30" width="380" height="340"/><line class="m-rule" x1="140" y1="30" x2="140" y2="370"/>`+lines
+   +`<polyline class="m-c ink" pathLength="1" points="170,330 220,300 270,312 320,270 370,262 420,226 460,214"/>`
+   +`<circle class="m-ring" cx="320" cy="270" r="18"/><text class="m-t m-note" x="520" y="96">question</text><text class="m-t m-note" x="520" y="196">evidence</text><text class="m-t m-note" x="520" y="276">limitation?</text>`
+   +mLineRaw(505,92,470,70)+mLineRaw(505,192,470,166)+mLineRaw(505,272,340,270)}},
+ model:{cap:"Fig. A model simplifies what we observe",draw(){
+  let s=7;const r=()=>(s=(s*9301+49297)%233280)/233280;const f=q=>8.6-7.2/(1+Math.exp(-(q-5)*0.9));
+  return mAxes("What we change","What we observe")+Array.from({length:24},(_,i)=>{const q=0.5+i*0.4;return `<circle class="m-dot" cx="${mX(q)}" cy="${mY(f(q)+(r()-.5)*2)}" r="4"/>`}).join("")
+   +mLine(f,0.3,9.8,"ink","model",9.8,40)}},
+ trade:{cap:"Fig. Schematic: trade links between economies",draw(){
+  const N=[[110,150],[170,210],[230,120],[300,170],[330,250],[390,130],[450,190],[500,120],[470,280],[250,290]];
+  const E=[[0,2],[2,3],[3,5],[5,7],[3,6],[6,8],[1,4],[4,8],[2,5],[9,4],[1,9],[0,3],[6,7]];
+  const arc=(a,b)=>{const[x1,y1]=N[a],[x2,y2]=N[b],mx=(x1+x2)/2,my=Math.min(y1,y2)-40;return `<path class="m-c ink" pathLength="1" d="M${x1} ${y1} Q${mx} ${my} ${x2} ${y2}"/>`};
+  return `<ellipse class="m-grat" cx="300" cy="200" rx="250" ry="150"/><ellipse class="m-grat" cx="300" cy="200" rx="150" ry="150"/><ellipse class="m-grat" cx="300" cy="200" rx="60" ry="150"/>`
+   +`<line class="m-grat" x1="50" y1="200" x2="550" y2="200"/><line class="m-grat" x1="80" y1="130" x2="520" y2="130"/><line class="m-grat" x1="80" y1="270" x2="520" y2="270"/>`
+   +E.map(([a,b])=>arc(a,b)).join("")+N.map(([x,y],i)=>`<circle class="${i%3?"m-node":"m-pt"}" cx="${x}" cy="${y}" r="${i%3?4:6}"/>`).join("")}},
+ goods:{cap:"Fig. Goods classified by rivalry and excludability: public goods are neither",draw(){
+  const cell=(x,y,t,sub,hi)=>`<rect class="${hi?"m-nash":"m-cell"}" x="${x}" y="${y}" width="180" height="110"/><text class="m-t m-pay" x="${x+90}" y="${y+50}" text-anchor="middle">${t}</text><text class="m-t m-note" x="${x+90}" y="${y+76}" text-anchor="middle">${sub}</text>`;
+  return `<text class="m-t m-axl" x="300" y="40" text-anchor="middle">Rival</text><text class="m-t m-axl" x="480" y="40" text-anchor="middle">Non-rival</text>`
+   +`<text class="m-t m-axl" x="198" y="120" text-anchor="end">Excludable</text><text class="m-t m-axl" x="198" y="230" text-anchor="end">Non-excludable</text>`
+   +cell(210,56,"Private goods","markets provide")+cell(390,56,"Club goods","charge to enter")
+   +cell(210,168,"Common pool","risk of overuse")+cell(390,168,"Public goods","free-rider problem",1)}},
+ poverty:{cap:"Fig. The poverty cycle: low income reinforces itself unless the cycle is broken",draw(){
+  const L=["Low income","Low saving","Low investment","Low productivity"];
+  const P=[[300,70],[480,200],[300,330],[120,200]];
+  /* each link is a quadratic curve; its arrowhead follows the curve's end tangent (end minus control point) */
+  const arc=(a,b)=>{const[x1,y1]=P[a],[x2,y2]=P[b];const mx=(x1+x2)/2+(y2-y1)*.28,my=(y1+y2)/2-(x2-x1)*.28;
+   const sx=x1+(x2-x1)*.22,sy=y1+(y2-y1)*.22,ex=x1+(x2-x1)*.78,ey=y1+(y2-y1)*.78;
+   return `<path class="m-c ink" pathLength="1" d="M${sx.toFixed(1)} ${sy.toFixed(1)} Q${mx.toFixed(1)} ${my.toFixed(1)} ${ex.toFixed(1)} ${ey.toFixed(1)}"/>`+mArrowRaw(+(ex-(ex-mx)*.12).toFixed(1),+(ey-(ey-my)*.12).toFixed(1),+ex.toFixed(1),+ey.toFixed(1))};
+  return [0,1,2,3].map(i=>arc(i,(i+1)%4)).join("")
+   +P.map(([x,y],i)=>`<rect class="m-cell" x="${x-78}" y="${y-20}" width="156" height="40"/><text class="m-t m-pay" x="${x}" y="${y+6}" text-anchor="middle" style="font-size:15px">${L[i]}</text>`).join("")}},
+ flow:{cap:"Fig. The circular flow of income: real flows and money flows",draw(){
+  return `<rect class="m-cell" x="60" y="160" width="140" height="70"/><text class="m-t m-pay" x="130" y="202" text-anchor="middle">Households</text>`
+   +`<rect class="m-cell" x="400" y="160" width="140" height="70"/><text class="m-t m-pay" x="470" y="202" text-anchor="middle">Firms</text>`
+   +`<path class="m-c ink" pathLength="1" d="M130 158 C130 60 470 60 470 158"/><path class="m-c ink dsh" pathLength="1" d="M150 158 C160 95 440 95 450 158"/>`
+   +`<path class="m-c ink" pathLength="1" d="M470 232 C470 330 130 330 130 232"/><path class="m-c ink dsh" pathLength="1" d="M450 232 C440 295 160 295 150 232"/>`
+   +`<text class="m-t m-note" x="300" y="70" text-anchor="middle">expenditure (money)</text><text class="m-t m-note" x="300" y="130" text-anchor="middle">goods and services (real)</text>`
+   +`<text class="m-t m-note" x="300" y="266" text-anchor="middle">factors of production (real)</text><text class="m-t m-note" x="300" y="338" text-anchor="middle">incomes: wages, rent, interest, profit (money)</text>`
+   +mArrowRaw(462,120,470,156)+mArrowRaw(157,122,150,156)+mArrowRaw(138,270,130,234)+mArrowRaw(443,268,450,234)}}
+};
+function mLineRaw(x1,y1,x2,y2){return `<line class="m-edge" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`}
+function mArrowRaw(x1,y1,x2,y2){const a=Math.atan2(y2-y1,x2-x1),h=10;
+ return `<polyline class="m-arrh" points="${(x2-h*Math.cos(a-.5)).toFixed(1)},${(y2-h*Math.sin(a-.5)).toFixed(1)} ${x2},${y2} ${(x2-h*Math.cos(a+.5)).toFixed(1)},${(y2-h*Math.sin(a+.5)).toFixed(1)}"/>`}
+
+/* One motif per syllabus subtopic, chosen for what the subtopic is about. */
+const MOTIF_SUB={"1.1":"ppc","1.2":"model","2.1":"shift","2.2":"sd","2.3":"sd","2.4":"model","2.5":"elastic","2.6":"elastic",
+ "2.7":"tax","2.8":"ext","2.9":"goods","2.10":"model","2.11":"costs","2.12":"lorenz","3.1":"cycle","3.2":"adas","3.3":"phillips",
+ "3.4":"lorenz","3.5":"adas","3.6":"adas","3.7":"adas","4.1":"cadv","4.2":"tariff","4.3":"tariff","4.4":"trade","4.5":"fx",
+ "4.6":"fx","4.7":"ppc","4.8":"lorenz","4.9":"poverty","4.10":"ppc"};
+/* One motif per section, for pages that are not about a single subtopic. */
+/* A case names the diagram it is analysed with; the header draws that diagram
+   where a motif exists for it, so a case about a subsidy never shows a tax. */
+const MOTIF_DG={ds:"sd",dshift:"shift",sshift:"sd",ped:"elastic",pes:"sd",tax:"tax",subsidy:"subsidy",ceiling:"ceiling",floor:"floor",
+ negprod:"ext",negcons:"sd",poscons:"sd",posprod:"sd",monopoly:"costs",labour:"labour",lorenz:"lorenz",adas:"adas",defgap:"adas",infgap:"adas",
+ lras:"adas",costpush:"adas",multiplier:"adas",phillips:"phillips",cycle:"cycle",circular:"flow",tariff:"tariff",quota:"sd",fx:"fx",bop:"fx",
+ ppc:"ppc",pubgood:"goods",cpr:"goods",asym:"model",growth:"ppc",compadv:"cadv"};
+const MOTIF_SEC={home:"sd",course:"flow",learn:"ppc",think:"game",lab:"scatter",world:"trade",practise:"costs",examiner:"markbands",
+ mind:"network",everywhere:"shift",ees:"research",arjun:"cycle",master:"cycle",ia:"tax",educator:"ppc",about:"sd",tutorials:"sd",
+ session:"markbands",video:"cycle",dna:"markbands",papers:"markbands",calculate:"elastic",resources:"flow",syllabus:"network",
+ saved:"network",tools:"elastic",tok:"model",workspace:"network",teacher:"ppc",settings:"flow"};
+/* A tab can name its own motif where the tab is about one model. */
+const MOTIF_TAB=[[/AD-?AS/i,"adas"],[/market lab|market/i,"sd"],[/policy|tax|recommend/i,"tax"],[/lorenz|inequal/i,"lorenz"],
+ [/trade|tariff/i,"tariff"],[/exchange|currency/i,"fx"],[/phillips/i,"phillips"],[/game/i,"game"],[/cost|firm|structure/i,"costs"],
+ [/externalit/i,"ext"],[/data|numbers|statistic/i,"scatter"],[/mindmap|network|map|graph/i,"network"],[/exam|paper|mark/i,"markbands"],
+ [/research|source|reflection|integrity/i,"research"],[/case|world|issue/i,"trade"],[/elastic/i,"elastic"],[/circular|flow/i,"flow"]];
+function caseMotif(k){return (k.dg||[]).map(d=>MOTIF_DG[d]).find(Boolean)||MOTIF_SUB[k.sub]||"sd"}
+function motifFor(v,t,a){
+ v=v||VIEW;t=t===undefined?TAB:t;a=a===undefined?ARG:a;
+ try{
+  if(a){
+   const c=(typeof CONCEPTS!=="undefined")&&CONCEPTS.find(x=>x.id===a);if(c&&MOTIF_SUB[c.sub])return MOTIF_SUB[c.sub];
+   const k=(typeof RW_CASES!=="undefined"&&Array.isArray(RW_CASES))?RW_CASES.find(x=>x.id===a):null;if(k)return caseMotif(k);
+   if(/^\d\.\d+$/.test(a)&&MOTIF_SUB[a])return MOTIF_SUB[a];
+  }
+  const sec=SECTIONS.find(s=>s.v===v);const tab=sec&&sec.tabs?sec.tabs[t]:"";
+  if(tab&&t>0){const m=MOTIF_TAB.find(([re])=>re.test(tab));if(m)return m[1]}
+ }catch(e){}
+ return MOTIF_SEC[v]||"sd"}
+function motifSVG(key,opt){
+ const M=MOTIFS[key]||MOTIFS.sd;opt=opt||{};
+ let body="";try{body=M.draw()}catch(e){body=MOTIFS.sd.draw();key="sd"}
+ /* a dashed curve keeps its dashes: pathLength is only for the curves that draw on */
+ body=body.replace(/(<(?:polyline|line|path)[^>]*class="[^"]*\bdsh\b[^"]*"[^>]*?) pathLength="1"/g,"$1");
+ return `<svg class="motif mf-${key}${opt.cls?" "+opt.cls:""}" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">${body}</svg>`}
+function motifCap(key){return (MOTIFS[key]||MOTIFS.sd).cap}
+/* The opener every page shares, now drawn for the page it opens. */
+heroPlot=function(){
+ /* the self-test sweep paints every route to read its text; the figure is decoration, so the sweep skips drawing it (the motif suite checks the figures themselves) */
+ if(typeof QARUNNING!=="undefined"&&QARUNNING)return `<div class="plot rn-plot" aria-hidden="true"></div>`;
+ const k=motifFor();
+ return `<div class="plot rn-plot" aria-hidden="true">${motifSVG(k)}<div class="rn-cap" data-cap="${esA(motifCap(k))}"></div></div>`};
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RENAISSANCE · 2 · section identities and the motion layer
+   Each section keeps one system but its own register: journal paper for the
+   scholarly sections, a newsroom for Real World, graph paper for the labs,
+   answer paper for the exam room, a node field for mindmaps, a magazine for
+   Economics, Everywhere. The register is set on <body data-sec> after every
+   paint. An opener turns to paper only when it holds nothing but a heading and
+   its lede, so no control designed for the dark band is ever put on ivory.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const RN_PAPER=new Set(["course","learn","ia","ees","tok","educator","syllabus"]);
+const RN={io:null,reduced:false};
+try{RN.reduced=!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches)}catch(e){}
+function rnPaperOk(h){return !h.querySelector("button,a[href],img,input,select,textarea,video,iframe,.stat")}
+function rnDecorate(){
+ if(typeof document==="undefined"||!document.body)return;
+ /* a change on <body> restyles the whole document; the self-test sweep paints ~150
+    views it never shows, so the register is applied on the paints a reader sees */
+ if(typeof QARUNNING!=="undefined"&&QARUNNING)return;
+ if(document.body.dataset.sec!==VIEW)document.body.dataset.sec=VIEW;
+ const v=document.getElementById("view");if(!v)return;
+ v.querySelectorAll("section.hero").forEach(h=>{if(RN_PAPER.has(VIEW)&&rnPaperOk(h))h.classList.add("paper")});
+ /* figures below the fold are drawn as they approach, not all at once */
+ const fill=el=>{if(!el.firstChild)el.innerHTML=motifSVG(el.dataset.motif,{cls:"on-paper"})};
+ const figs=v.querySelectorAll("[data-motif]");
+ if(figs.length&&!(typeof QARUNNING!=="undefined"&&QARUNNING)){
+  if(typeof IntersectionObserver==="undefined")figs.forEach(fill);
+  else{if(RN.fo)RN.fo.disconnect();RN.fo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){fill(e.target);RN.fo.unobserve(e.target)}}),{rootMargin:"400px 0px"});figs.forEach(el=>RN.fo.observe(el))}}
+ /* the reveal measures layout, so it never runs while the self-test paints views */
+ if(!document.body.classList.contains("rn-anim")||typeof IntersectionObserver==="undefined"||(typeof QARUNNING!=="undefined"&&QARUNNING))return;
+ if(RN.io)RN.io.disconnect();
+ RN.io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove("rn-wait");RN.io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
+ v.querySelectorAll(".shead").forEach(s=>{const r=s.getBoundingClientRect();if(r.top>innerHeight){s.classList.add("rn-wait");RN.io.observe(s)}});
+ v.querySelectorAll("[data-count]").forEach(el=>RN.io.observe(el));
+}
+(function(){
+ const prev=render;
+ render=function(){const r=prev.apply(this,arguments);try{rnDecorate()}catch(e){}return r};
+ /* motion is switched on once, never while the self-test paints views */
+ if(!RN.reduced&&typeof document!=="undefined"&&document.body)document.body.classList.add("rn-anim");
+})();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RENAISSANCE · 3 · Think like an economist, as a system
+   The tagline becomes a toolkit: eighteen lenses, each a short idea, the
+   questions an economist asks through it, and links into content that already
+   exists on the platform (found through the search index, never duplicated).
+   A teaching frame by Arjun Agrawal, labelled as such wherever it appears.
+   Also here: the named teaching components (Key idea, Misconception, Exam
+   connection …), the economic idea of the day and Random Economics.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const TLAE_Q=["What is the incentive?","What is the opportunity cost?","Who gains?","Who loses?","What changes?",
+ "What remains constant?","What assumption are we making?","What does the model predict?","What happened in reality?",
+ "What evidence supports the claim?","What evidence challenges it?","What are the unintended consequences?",
+ "What would happen if one variable changed?","What does the model fail to capture?"];
+const LENSES=[
+ {k:"incentives",n:"Incentives",m:"shift",line:"People respond to what they gain or lose from a choice, so a change in costs or rewards changes behaviour.",
+  ask:["Whose incentive changes, and by how much?","Is the response likely to be large or small, and over what time?","Could the response defeat the purpose of the policy?"],
+  q:["incentive","subsidy","tax"],subs:["2.1","2.7","3.7"]},
+ {k:"oppcost",n:"Opportunity cost",m:"ppc",line:"The real cost of a choice is the next best alternative given up, whether or not money changes hands.",
+  ask:["What is the next best alternative?","Who bears that cost: the chooser, or someone else?","Does the cost appear now or later?"],
+  q:["opportunity cost","scarcity","production possibility"],subs:["1.1"]},
+ {k:"margin",n:"Marginal thinking",m:"costs",line:"Decisions are made at the margin: one more unit is worth producing or buying if its extra benefit exceeds its extra cost.",
+  ask:["What does one more unit add to benefit and to cost?","Where does the extra benefit equal the extra cost?","Is an average being mistaken for a margin?"],
+  q:["marginal","profit maximisation","MC = MR"],subs:["2.11","2.1"]},
+ {k:"tradeoffs",n:"Trade-offs",m:"phillips",line:"Most goals compete for the same resources or the same instrument, so gaining on one usually means giving ground on another.",
+  ask:["Which objectives pull against each other here?","Is the trade-off permanent or only short-run?","Who decides the weight given to each side?"],
+  q:["trade-off","conflict between objectives","Phillips"],subs:["3.3","1.1"]},
+ {k:"elasticity",n:"Elasticity",m:"elastic",line:"How strongly quantity responds to price or income decides who bears a tax, whether revenue rises, and how far prices move.",
+  ask:["How easily can buyers or sellers switch?","How much time has passed since the change?","What share of income is involved?"],
+  q:["elasticity","PED","PES"],subs:["2.5","2.6"]},
+ {k:"equilibrium",n:"Equilibrium",m:"sd",line:"Where plans to buy and plans to sell are consistent, there is no pressure for price to change until something shifts.",
+  ask:["What would move the market away from this point?","How quickly does it adjust, and what happens meanwhile?","Is the equilibrium desirable, or just stable?"],
+  q:["equilibrium","shortage","surplus"],subs:["2.3"]},
+ {k:"efficiency",n:"Efficiency",m:"ppc",line:"Resources are used efficiently when no one can be made better off without making someone else worse off, and output matches what society values.",
+  ask:["Is output where marginal social benefit equals marginal social cost?","Are resources idle or misallocated?","Efficient for whom, and measured how?"],
+  q:["allocative efficiency","productive efficiency","welfare loss"],subs:["2.3","2.8","2.11"]},
+ {k:"equity",n:"Equity",m:"lorenz",line:"Fairness in how income, wealth and opportunity are shared: a question of values that economics can inform but not settle.",
+  ask:["How is the gain or loss distributed?","Is the outcome fair, or only efficient?","Which measure of inequality is being used?"],
+  q:["equity","inequality","Gini","poverty"],subs:["2.12","3.4"]},
+ {k:"externalities",n:"Externalities",m:"ext",line:"When a choice imposes costs or benefits on third parties who are not paid or charged, the market produces the wrong quantity.",
+  ask:["Who is the third party, and what do they bear?","Is the external effect on production or on consumption?","Which intervention corrects it, and at what cost?"],
+  q:["externality","MSC","carbon tax"],subs:["2.8"]},
+ {k:"information",n:"Information",m:"model",line:"Markets work less well when one side knows more than the other, or when buyers cannot judge quality before they buy.",
+  ask:["Who knows more, buyer or seller?","Can the better-informed side exploit it?","What would reveal the information?"],
+  q:["asymmetric information","adverse selection","moral hazard"],subs:["2.10"]},
+ {k:"power",n:"Market power",m:"costs",line:"A firm that can set its price restricts output and raises price above marginal cost, transferring surplus and losing some altogether.",
+  ask:["How easily can rivals enter?","What does the firm do with its profit?","Would regulation or competition work better here?"],
+  q:["monopoly","market power","oligopoly"],subs:["2.11"]},
+ {k:"interdependence",n:"Interdependence",m:"trade",line:"Economies, markets and people are linked, so a shock in one place travels through trade, prices, finance and expectations.",
+  ask:["Through which channel does the effect travel?","Who is exposed, and who is insulated?","Does the link amplify or dampen the shock?"],
+  q:["interdependence","trade","exchange rate"],subs:["4.1","4.4","4.5"]},
+ {k:"expectations",n:"Expectations",m:"phillips",line:"What people expect about prices, policy and income shapes what they do today, and can make forecasts partly self-fulfilling.",
+  ask:["What do firms and households expect to happen?","How credible is the policy-maker?","What happens if expectations change first?"],
+  q:["expectations","inflation targeting","credibility"],subs:["3.3","3.5"]},
+ {k:"time",n:"Time",m:"cycle",line:"Short-run and long-run effects often differ in size and even in direction, so the time horizon changes the verdict.",
+  ask:["What happens in the first year, and in the tenth?","Which effects take longest to appear?","Is the policy judged too early?"],
+  q:["short run","long run","time lag"],subs:["2.5","3.2","3.6"]},
+ {k:"risk",n:"Risk",m:"scatter",line:"When outcomes can be described by probabilities, people and firms can price, pool and share the chance of loss.",
+  ask:["Who bears the risk, and are they paid for it?","Can the risk be insured or diversified?","Does protection against risk change behaviour?"],
+  q:["risk","insurance","moral hazard"],subs:["2.10"]},
+ {k:"uncertainty",n:"Uncertainty",m:"model",line:"Some futures cannot be assigned probabilities at all, so decisions rest on judgement, rules of thumb and the option to wait.",
+  ask:["What could not have been forecast?","How robust is the conclusion if the key assumption fails?","Is waiting itself a choice with a cost?"],
+  q:["uncertainty","confidence","investment"],subs:["3.2","2.4"]},
+ {k:"institutions",n:"Institutions",m:"flow",line:"Laws, property rights, central banks, courts and norms set the rules within which every market and policy operates.",
+  ask:["Which rules make this market possible?","Who enforces them, and how well?","Would the same policy work under different institutions?"],
+  q:["institutions","property rights","central bank"],subs:["4.9","3.5"]},
+ {k:"behaviour",n:"Behaviour",m:"game",line:"Real people are boundedly rational, influenced by defaults, framing and others, which can make simple models predict poorly.",
+  ask:["Which bias or rule of thumb might be at work?","Would a change in default or framing alter the outcome?","Does the rational-choice prediction still hold?"],
+  q:["behavioural","nudge","bounded rationality"],subs:["2.4"]}
+];
+/* links for a lens: the best matches in the platform's own search index */
+function lensLinks(L,n){
+ let I=[];try{I=buildIndex()}catch(e){return []}
+ const want=["Concept","Real world","Case study","Mindmap","Diagram","Calculation","Question","Everywhere · question","Everywhere · one idea","Dictionary"];
+ const seen=new Set(),out=[];
+ for(const term of L.q){const t=term.toLowerCase();
+  const hits=I.filter(x=>want.includes(x.k)&&(x.t||"").toLowerCase().includes(t)).concat(I.filter(x=>want.includes(x.k)&&!(x.t||"").toLowerCase().includes(t)&&(x.s||"").includes(t)));
+  for(const h of hits){const key=h.k+"|"+h.t;if(seen.has(key))continue;seen.add(key);out.push(h);if(out.length>=(n||6))return out}}
+ return out}
+/* the named teaching components: one treatment each, one glyph each */
+const KC_T={key:["Key idea","brs"],model:["Model","dem"],misc:["Common misconception","loss"],exam:["Exam connection","bur"],
+ real:["Real-world connection","dat"],tlae:["Think like an economist","obs"],source:["Source note","slate"],policy:["Policy note","pol"],
+ data:["Data point","dat"],puzzle:["Economic puzzle","evl"],snapshot:["Economic snapshot","cop"],case:["Case study","cop"],deeper:["Deeper dive","evl"]};
+const KC_G={key:'<circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>',
+ model:'<path d="M4 20V4M4 20h16M6 6l12 12M6 18L18 6"/>',misc:'<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>',
+ exam:'<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+ real:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+ tlae:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 1 4 10.5c-1 1-1.5 2-1.5 3.5h-5c0-1.5-.5-2.5-1.5-3.5A6 6 0 0 1 12 3z"/>',
+ source:'<path d="M6 3h9l3 3v15H6z"/><path d="M9 11h6M9 15h6"/>',policy:'<path d="M4 21h16M6 18V9M10 18V9M14 18V9M18 18V9M3 9l9-6 9 6z"/>',
+ data:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',puzzle:'<path d="M9 9a3 3 0 1 1 4.2 2.7c-.8.4-1.2 1-1.2 1.8V15M12 18v.5"/><circle cx="12" cy="12" r="10"/>',
+ snapshot:'<rect x="3" y="6" width="18" height="14" rx="1"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/>',
+ case:'<rect x="3" y="7" width="18" height="13" rx="1"/><path d="M9 7V4h6v3M3 12h18"/>',deeper:'<path d="M12 3v18M6 15l6 6 6-6"/>'};
+function KC(type,title,body,opt){const t=KC_T[type]||KC_T.key;opt=opt||{};
+ return `<aside class="kc kc-${type} kc-c-${t[1]}${opt.cls?" "+opt.cls:""}" aria-label="${esc(t[0])}">
+  <div class="kc-h"><svg class="kc-g" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${KC_G[type]||KC_G.key}</svg><span class="kc-l">${esc(t[0])}</span>${opt.tag?`<span class="kc-tag">${esc(opt.tag)}</span>`:""}</div>
+  ${title?`<div class="kc-t">${title}</div>`:""}<div class="kc-b">${body||""}</div></aside>`}
+/* a lens chooses its questions for a subtopic */
+function lensesFor(sub){return LENSES.filter(L=>L.subs.includes(sub))}
+function tlaeBox(sub,ctx){
+ const Ls=lensesFor(sub);const L=Ls[0]||LENSES[0];
+ const qs=[...L.ask.slice(0,2),TLAE_Q[(sub||"").length%TLAE_Q.length],"What does the model fail to capture?"].filter((x,i,a)=>a.indexOf(x)===i).slice(0,4);
+ return KC("tlae",`Through the lens of <button class="kc-link" onclick="openToolkit('${L.k}')">${esc(L.n)}</button>${Ls[1]?` and <button class="kc-link" onclick="openToolkit('${Ls[1].k}')">${esc(Ls[1].n)}</button>`:""}`,
+  `<ol class="kc-q">${qs.map(q=>`<li>${esc(q)}</li>`).join("")}</ol>`,{tag:"Teaching frame",cls:ctx||""})}
+const TLAE_TAB="Economist's toolkit";
+function openToolkit(k){if(k)TLAE.k=k;const s=SECTIONS.find(x=>x.v==="think");nav("think",s&&s.tabs?Math.max(0,s.tabs.indexOf(TLAE_TAB)):0)}
+/* ── the toolkit page (a tab in Think) ──────────────────────────────────── */
+const TLAE={k:"incentives"};
+function toolkitView(){
+ const L=LENSES.find(x=>x.k===TLAE.k)||LENSES[0];const links=lensLinks(L,6);
+ return H.pageHead("Think","The economist's toolkit","Eighteen lenses an economist uses on any question, from a price rise to a trade war. Pick one, ask its questions, then open the platform's own material through it.")
+ +`<section class="sec"><div class="wrap full">
+  <p class="xs"><span class="tag">Teaching frame</span> A way of organising economic thinking by Arjun Agrawal, not an IB list. The nine key concepts of the course are the IB's own; these lenses sit alongside them.</p>
+  <div class="tk-grid mt4" role="list">${LENSES.map((x,i)=>`<button role="listitem" class="tk-lens${x.k===L.k?" on":""}" aria-pressed="${x.k===L.k}" onclick="TLAE.k='${x.k}';render()"><span class="tk-n">${String(i+1).padStart(2,"0")}</span><span class="tk-t">${esc(x.n)}</span></button>`).join("")}</div>
+  <div class="tk-card mt5">
+   <figure class="rn-fig">${motifSVG(L.m,{cls:"on-paper"})}<figcaption>${esc(motifCap(L.m))}</figcaption></figure>
+   <div><div class="eb a">Lens ${LENSES.indexOf(L)+1} of ${LENSES.length}</div><h2 class="mt2">${esc(L.n)}</h2>
+    <p class="ed mt3">${esc(L.line)}</p>
+    ${KC("tlae","Ask",`<ol class="kc-q">${L.ask.map(q=>`<li>${esc(q)}</li>`).join("")}</ol>`)}
+    <h3 class="mt4">Through this lens, on the platform</h3>
+    ${links.length?`<ul class="tk-links mt2">${links.map(h=>`<li><button class="lnk" onclick="${esA(h.go)}"><span class="tk-k">${esc(h.k)}</span> ${esc(h.t)}</button></li>`).join("")}</ul>`:`<p class="sm mt2">Search the platform for ${esc(L.q[0])}.</p>`}
+   </div></div>
+  <h3 class="mt5">Fourteen questions, for any economic claim</h3>
+  <ol class="tk-qs mt3">${TLAE_Q.map(q=>`<li>${esc(q)}</li>`).join("")}</ol>
+ </div></section>`}
+/* ── the economic idea of the day: chosen from the corpus by the date ──── */
+function rnDay(d){d=d||new Date();return Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/864e5)}
+function rnPick(arr,day,salt){if(!arr||!arr.length)return null;return arr[((day*2654435761+salt*40503)>>>0)%arr.length]}
+function dailyItems(d){
+ const day=rnDay(d),out={};
+ try{const pool=[].concat((typeof CONCEPTS!=="undefined"?CONCEPTS:[]).map(c=>({k:"Concept",t:c.t,d:c.def,go:`nav('learn',0,'${c.id}')`})),
+   (typeof EEID!=="undefined"?EEID:[]).map(x=>({k:"One economic idea",t:x.n,d:x.line,go:`nav('everywhere',3,'${x.id}')`})));
+  out.idea=rnPick(pool,day,1)}catch(e){}
+ try{const C=(typeof RW_CASES!=="undefined"&&Array.isArray(RW_CASES))?RW_CASES:[];const c=rnPick(C,day,2);
+  if(c)out.case={k:"Real World",t:c.t,d:c.is,meta:[c.c,c.y].filter(Boolean).join(" · "),go:`nav('world',0,'${c.id}')`,sub:c.sub}}catch(e){}
+ try{const Q=(typeof QB!=="undefined"?QB:[]).flatMap(g=>(g.a||[]).map(a=>({k:"Question",t:a.s,d:g.n+" · "+a.ct,sub:g.sub})));const q=rnPick(Q,day,3);
+  if(q)out.q=Object.assign(q,{go:"nav('practise',0)"})}catch(e){}
+ try{const G=(typeof GLOSS!=="undefined"?GLOSS:[]);const g=rnPick(G,day,4);if(g)out.term={k:"Dictionary",t:g[0],d:g[2],go:"nav('course',6)"}}catch(e){}
+ return out}
+/* ── Random Economics: an editorial discovery engine over the search index ─ */
+const RAND_TYPES=[["Concept",["Concept"]],["Case",["Real world","Case study"]],["Diagram",["Diagram"]],["Mindmap",["Mindmap"]],
+ ["Calculation",["Calculation"]],["Video",["Video"]],["Question",["Question","Paper 1 practice","Paper 2 practice","Paper 3 practice"]],
+ ["Puzzle",["Everywhere · question","Economic puzzle"]],["Idea",["Everywhere · one idea","Economics in 60 Seconds"]],["Dictionary",["Dictionary"]]];
+const RAND={type:"",hist:[]};
+function randomItem(type){
+ let I=[];try{I=buildIndex()}catch(e){return null}
+ const types=type?RAND_TYPES.filter(t=>t[0]===type):RAND_TYPES;
+ for(let tries=0;tries<12;tries++){
+  const T=types[Math.floor(Math.random()*types.length)];const pool=I.filter(x=>T[1].includes(x.k)&&x.go);
+  if(!pool.length)continue;const it=pool[Math.floor(Math.random()*pool.length)];
+  if(RAND.hist.includes(it.t)&&tries<10)continue;RAND.hist=RAND.hist.concat(it.t).slice(-12);return Object.assign({type:T[0]},it)}
+ return null}
+function randomOpen(type){
+ if(type!==undefined)RAND.type=type;const it=randomItem(RAND.type);
+ const chips=[["","Anything"]].concat(RAND_TYPES.map(t=>[t[0],t[0]]));
+ drawer(`<div class="rnd"><div class="eb a">Random Economics</div>
+  <h2 class="mt2" style="font-size:clamp(24px,3vw,34px)">Something you may not have met yet</h2>
+  <div class="rnd-chips mt3" role="group" aria-label="What kind of thing">${chips.map(([k,l])=>`<button class="chip${RAND.type===k?" on":""}" aria-pressed="${RAND.type===k}" onclick="randomOpen('${k}')">${l}</button>`).join("")}</div>
+  ${it?`<article class="rnd-card mt4"><div class="rnd-k">${esc(it.type)}${it.k!==it.type?` · ${esc(it.k)}`:""}</div>
+   <h3 class="rnd-t">${esc(it.t)}</h3>${it.d?`<p class="sm mt2">${esc(String(it.d).slice(0,280))}${String(it.d).length>280?"…":""}</p>`:""}
+   <div class="row mt4"><button class="btn" onclick="closeDrawer();${esA(it.go)}">Open it →</button><button class="btn gh" onclick="randomOpen()">Another</button></div></article>`
+   :`<p class="sm mt4">Nothing of that kind is indexed yet.</p>`}
+  <p class="xs mt4">Drawn at random from ${(()=>{try{return buildIndex().length.toLocaleString("en-GB")}catch(e){return "the"}})()} indexed items on this platform. Nothing is recorded.</p></div>`)}
+
+/* the toolkit joins Think as its last tab, so every existing tab keeps its place */
+(function(){const s=SECTIONS.find(x=>x.v==="think");if(s&&s.tabs&&!s.tabs.includes(TLAE_TAB))s.tabs.push(TLAE_TAB);
+ const prev=VIEWS.think;VIEWS.think=function(){const t=SECTIONS.find(x=>x.v==="think");return t&&t.tabs[TAB]===TLAE_TAB?toolkitView():prev.apply(this,arguments)}})();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RENAISSANCE · 4 · the home page as an editorial sequence
+   Nothing on the home page is withdrawn. The bands the platform already had
+   are regrouped into an order with rhythm (a gateway, a daily front page, a
+   lead story, a network, then the reader's own desk), and a few new bands are
+   added where the page had no visual gateway at all. Every number shown is
+   counted from the platform's own data when the page is drawn.
+   ═══════════════════════════════════════════════════════════════════════════ */
+function rnCount(){const n={};
+ try{n.cases=RW_CASES.length;n.economies=new Set(RW_CASES.map(c=>c.c).filter(Boolean)).size}catch(e){}
+ try{n.maps=MMKEYS().length;n.nodes=MMKEYS().reduce((a,k)=>a+((MIND_MAPS[k].nodes||[]).length),0)}catch(e){}
+ try{n.diagrams=DGKEYS.length}catch(e){}try{n.calcs=CALC.length}catch(e){}
+ try{n.dna=EXAM_DNA.length}catch(e){}try{n.terms=GLOSS.length}catch(e){}
+ try{n.subtopics=SUBTOPICS.length}catch(e){}try{n.questions=QB.reduce((a,g)=>a+(g.a||[]).length,0)}catch(e){}
+ try{n.big=EEQ.length}catch(e){}try{n.index=buildIndex().length}catch(e){}
+ return n}
+const fmtN=v=>typeof v==="number"?v.toLocaleString("en-GB"):"";
+/* ── the opener ─────────────────────────────────────────────────────────── */
+const RN_STEPS=[["Data","What do we observe?"],["Theory","Which model explains it?"],["Evidence","Does the evidence agree?"],["Decision","What should be done, and for whom?"]];
+function rnHomeHero(old){
+ const kept=old?[...old.querySelectorAll(".in > *")].filter(e=>!e.matches(".eb,.kicker,h1,.lede")).map(e=>e.outerHTML).join(""):"";
+ const eb=old&&old.querySelector(".eb,.kicker")?old.querySelector(".eb,.kicker").textContent:"Arjun Agrawal · IB DP Economics";
+ const method=old&&old.querySelector(".lede")?old.querySelector(".lede").innerHTML:"";
+ return `<section class="hero rn-home"><div class="wrap full in rn-hgrid">
+  <div class="rn-hcopy"><div class="eb">${esc(eb)}</div>
+   <h1 class="mt2">Think like an economist.</h1>
+   <p class="lede mt3">Understand the forces behind prices, markets, policy and the world around you.</p>
+   ${method?`<p class="rn-method mt2">${method}</p>`:""}
+   <div class="rn-kept">${kept}</div></div>
+  <figure class="rn-hfig" aria-hidden="true">${motifSVG("sd")}
+   <ol class="rn-steps">${RN_STEPS.map(([a,b],i)=>`<li style="--i:${i}"><span class="rn-sn">0${i+1}</span><b>${a}</b><span>${b}</span></li>`).join("")}</ol>
+  </figure></div></section>`}
+/* ── Explore Economics: the gateway, in two tiers ─────────────────────────
+   Four destinations carry a full motif; the other six sit in a compact index
+   with a thumbnail of their own diagram, so hierarchy replaces a card wall. */
+function rnAtlas(){const n=rnCount();
+ const A=[["world","Real World","Policies, shocks and markets across the world, each read through a model.","trade",`${fmtN(n.cases)} cases · ${fmtN(n.economies)} economies`],
+  ["lab","The lab","Move a parameter, predict the result, and watch the model answer.","sd",`${fmtN(n.diagrams)} diagrams · ${fmtN(n.calcs)} calculations`],
+  ["mind","Mindmaps","How an economist moves through a topic, node by node.","network",`${fmtN(n.maps)} maps · ${fmtN(n.nodes)} nodes`],
+  ["everywhere","Economics, Everywhere","Questions from ordinary life, answered with economics.","shift",`${fmtN(n.big)} big questions`]];
+ const B=[["course","The course","Four units, nine key concepts, one syllabus map.","flow",`${fmtN(n.subtopics)} subtopics`],
+  ["examiner","Exam room","Papers, markbands and the habits that earn marks.","markbands",`${fmtN(n.dna)} Exam DNA questions`],
+  ["ees","EE Studio","Research like an economist, from question to reflection.","research","19 areas"],
+  ["arjun","Video studio","Economics, politics and international relations, on film.","cycle","From the channel"],
+  ["educator","Educators","A studio for teachers, supervisors and coordinators.","ppc","5 roles · 10 modules"],
+  ["tok","TOK × Economics","What economic knowledge is, and how it is made.","model","Knowledge questions"]];
+ const has=v=>SECTIONS.some(s=>s.v===v);
+ return `<section class="sec rn-band rn-atlas-band"><div class="wrap full">
+  <div class="shead fx"><span class="n">01</span><h2>Explore Economics</h2><span class="aside">What can I do here?</span></div>
+  <div class="rn-atlas">${A.filter(d=>has(d[0])).map((d,i)=>`<button class="atl${i===0?" atl-lead":""}" onclick="nav('${d[0]}')">
+   <span class="atl-fig" data-motif="${d[3]}"></span>
+   <span class="atl-tx"><span class="atl-n">${String(i+1).padStart(2,"0")}</span><span class="atl-t">${esc(d[1])}</span>
+   <span class="atl-l">${esc(d[2])}</span><span class="atl-m">${esc(d[4])}</span></span></button>`).join("")}</div>
+  <div class="atl-index">${B.filter(d=>has(d[0])).map((d,i)=>`<button class="atx" onclick="nav('${d[0]}')">
+   <span class="atx-fig" data-motif="${d[3]}"></span>
+   <span class="atx-tx"><span class="atx-t">${esc(d[1])}</span><span class="atx-l">${esc(d[2])}</span><span class="atl-m">${esc(d[4])}</span></span></button>`).join("")}</div>
+  <div class="row mt4 rn-disc"><button class="btn" onclick="randomOpen('')">Surprise me: Random Economics</button>
+   <button class="btn gh" onclick="cpOpen()">Find a topic</button>
+   <button class="btn gh" onclick="openToolkit()">The economist's toolkit</button></div>
+ </div></section>`}
+/* ── Today in Economics: a daily front page, chosen by the date ─────────── */
+function rnToday(){const t=dailyItems();const d=new Date();
+ const date=d.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+ const card=(x,lbl,big)=>x?`<article class="td-card${big?" td-big":""}"><div class="td-k">${esc(lbl)}</div><h3 class="td-t">${esc(x.t)}</h3>
+   ${x.meta?`<div class="td-meta">${esc(x.meta)}</div>`:""}${x.d?`<p class="sm mt2">${esc(String(x.d).slice(0,big?260:170))}${String(x.d).length>(big?260:170)?"…":""}</p>`:""}
+   <button class="lnk mt3" onclick="${esA(x.go)}">Read it →</button></article>`:"";
+ return `<section class="sec rn-band rn-today bg-paper"><div class="wrap full">
+  <div class="shead fx"><span class="n">02</span><h2>Today in Economics</h2><span class="aside">${esc(date)}</span></div>
+  <div class="td-grid">${card(t.idea,"Economic idea of the day",1)}${card(t.case,"Case of the day")}${card(t.q,"Question to think about")}${card(t.term,"Word of the day")}</div>
+  <p class="xs mt3">Chosen from the platform by today's date, so everyone sees the same page today and a new one tomorrow. Nothing is recorded.</p>
+ </div></section>`}
+/* ── Real World: a lead story, set like a magazine ──────────────────────── */
+function rnLead(){
+ let C=[];try{C=RW_CASES}catch(e){}if(!C.length)return "";
+ const wk=Math.floor(rnDay()/7);const deepIds=(typeof RW_DEEP!=="undefined")?Object.keys(RW_DEEP):[];
+ const leadId=deepIds.length?deepIds[wk%deepIds.length]:C[wk%C.length].id;const L=C.find(c=>c.id===leadId)||C[0];
+ const others=[1,2,3].map(i=>C[(wk*37+i*61)%C.length]).filter(c=>c.id!==L.id);
+ const m=caseMotif(L);
+ return `<section class="sec rn-band rn-lead"><div class="wrap full">
+  <div class="shead fx"><span class="n">03</span><h2>Real World</h2><span class="aside">The lead story this week</span></div>
+  <div class="ld-grid"><article class="ld-main">
+   <div class="ld-k">${esc([L.c,L.y,L.pv].filter(Boolean).join(" · "))}</div>
+   <h3 class="ld-t">${esc(L.t)}</h3><p class="ld-s">${esc(L.is||"")}</p>
+   <div class="ld-cols">${L.tp?`<div><div class="kicker">The economics</div><p class="sm mt1">${esc(L.tp)}</p></div>`:""}
+    ${L.q?`<div><div class="kicker">The question</div><p class="sm mt1">${esc(L.q)}</p></div>`:""}</div>
+   <div class="row mt4"><button class="btn" onclick="nav('world',0,'${esA(L.id)}')">Read the case →</button><button class="btn gh" onclick="nav('world',1)">All ${fmtN(C.length)} cases</button></div></article>
+   <figure class="rn-fig ld-fig"><span class="ld-m" data-motif="${m}"></span><figcaption>${esc(motifCap(m))}</figcaption></figure>
+   <div class="ld-side">${others.map(o=>`<button class="ld-o" onclick="nav('world',0,'${esA(o.id)}')"><span class="ld-ok">${esc([o.c,o.y].filter(Boolean).join(" · "))}</span><span class="ld-ot">${esc(o.t)}</span></button>`).join("")}</div></div>
+ </div></section>`}
+/* ── Mindmaps: the core maps, drawn as the network they are ─────────────── */
+function rnMind(){
+ let K=[];try{K=MMKEYS().filter(k=>MIND_MAPS[k].cls==="core")}catch(e){}if(!K.length)return "";
+ K=K.slice(0,10);const P=K.map((k,i)=>{const a=-Math.PI/2+i/K.length*2*Math.PI;return [50+37*Math.cos(a),50+41*Math.sin(a)]});
+ const edges=K.map((_,i)=>[i,(i+1)%K.length]).concat(K.map((_,i)=>[i,(i+3)%K.length]));
+ return `<section class="sec rn-band rn-mind bg-ink"><div class="wrap full"><div class="mn-grid">
+  <div><div class="eb">Mindmaps</div><h2 class="mt2">See the whole idea, not just the chapter.</h2>
+   <p class="lede mt3">Each map follows an economist through one topic: from the concept to the mechanism, the model and the judgement, with every step testable.</p>
+   <div class="row mt4"><button class="btn on-ink" onclick="nav('mind')">Open the mindmaps</button><button class="btn gh on-ink" onclick="nav('mind',2)">Connect two ideas</button></div></div>
+  <div class="mn-net" role="list" aria-label="Core mindmaps">
+   <svg class="mn-edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${edges.map(([a,b])=>`<line x1="${P[a][0].toFixed(1)}" y1="${P[a][1].toFixed(1)}" x2="${P[b][0].toFixed(1)}" y2="${P[b][1].toFixed(1)}"/>`).join("")}</svg>
+   ${K.map((k,i)=>`<button role="listitem" class="mn-node" style="left:${P[i][0].toFixed(1)}%;top:${P[i][1].toFixed(1)}%" onclick="nav('mind',0,'${esA(k)}')">${esc(MIND_MAPS[k].title)}</button>`).join("")}
+   <span class="mn-core" aria-hidden="true">Economics</span></div></div>
+ </div></section>`}
+/* ── Economics at a glance: counted, not asserted ──────────────────────── */
+function rnGlance(){const n=rnCount();
+ const S=[["cases","Real World cases"],["economies","economies in the cases"],["maps","mindmaps"],["nodes","mindmap nodes"],["diagrams","diagram plates"],
+  ["calcs","calculations"],["dna","Exam DNA questions"],["terms","dictionary terms"],["index","searchable items"]].filter(([k])=>typeof n[k]==="number");
+ return `<section class="sec rn-band rn-glance"><div class="wrap full">
+  <div class="shead fx"><span class="n">00</span><h2>Economics at a glance</h2><span class="aside">Counted from the platform as this page was drawn</span></div>
+  <dl class="gl-grid">${S.map(([k,l])=>`<div class="gl"><dt>${esc(l)}</dt><dd class="gl-v" data-count="${n[k]}">${fmtN(n[k])}</dd></div>`).join("")}</dl>
+ </div></section>`}
+function rnDivider(t,s){return `<div class="wrap full rn-divider"><span class="rn-dv-t">${esc(t)}</span><span class="rn-dv-s">${esc(s)}</span></div>`}
+/* the order the home page reads in; bands are matched by their heading */
+const RN_ORDER=["Start your journey","@atlas","@today","@lead","Economics, right now","@mind","What happens next?","Economics, Everywhere",
+ "Timeless ideas","Inflation targeting","Latest from Arjun","Today's challenge","@desk","One next step","Continue where you left off",
+ "What should I do next?","Six ways in","The Arjun method","@glance","Work through the platform"];
+function rnHome(html){
+ if(typeof document==="undefined")return html;
+ const t=document.createElement("template");t.innerHTML=html;
+ const kids=[...t.content.children];
+ const title=el=>{const h=el.querySelector(".shead h2")||el.querySelector("h1,h2");return h?h.textContent.trim():""};
+ const hero=kids.find(el=>el.matches("section.hero"));
+ const rest=kids.filter(el=>el!==hero);
+ const NEW={"@atlas":rnAtlas,"@today":rnToday,"@lead":rnLead,"@mind":rnMind,"@glance":rnGlance,
+  "@desk":()=>"\u0001DESK\u0001"};
+ const used=new Set();let out=rnHomeHero(hero);
+ for(const k of RN_ORDER){
+  if(NEW[k]){try{out+=NEW[k]()}catch(e){}continue}
+  rest.forEach(el=>{if(!used.has(el)&&title(el).startsWith(k)){used.add(el);out+=el.outerHTML}})}
+ /* anything this list does not name keeps its place at the end: nothing is dropped */
+ rest.forEach(el=>{if(!used.has(el))out+=el.outerHTML});
+ /* the reader's own desk: open once there is something on it, folded for a first visit */
+ const di=out.indexOf("\u0001DESK\u0001");
+ if(di>=0){const gi=out.indexOf('<section class="sec rn-band rn-glance"');const end=gi>di?gi:out.length;
+  let act=false;try{act=(S.activity&&S.activity.length>0)||evidenced().length>0}catch(e){}
+  const open=RN.desk===undefined?act:RN.desk;
+  out=out.slice(0,di)+`<details class="rn-desk"${open?" open":""}><summary class="wrap full rn-divider" onclick="RN.desk=!this.parentNode.open"><span class="rn-dv-t">Your desk</span><span class="rn-dv-s">Progress, practice and the next step, kept on this device</span><span class="rn-dv-x" aria-hidden="true"></span></summary>`
+   +out.slice(di+6,end)+`</details>`+out.slice(end)}
+ const t2=document.createElement("template");t2.innerHTML=out;let n=0;
+ t2.content.querySelectorAll(".shead .n").forEach(x=>{if(/^\d+$/.test(x.textContent.trim())){n++;x.textContent=String(n).padStart(2,"0")}});
+ return t2.innerHTML}
+(function(){const prev=VIEWS.home;VIEWS.home=function(){return rnHome(prev.apply(this,arguments))}})();
+/* count-up for the glance figures: the final value is in the markup from the
+   start (and read by assistive technology); the animation only replays it */
+function rnCountUp(el){
+ if(!document.body.classList.contains("rn-anim")||(typeof QARUNNING!=="undefined"&&QARUNNING))return;
+ const v=+el.dataset.count;if(!(v>0)||el._done)return;el._done=true;
+ el.setAttribute("aria-label",fmtN(v));const t0=performance.now(),D=1100;
+ const step=t=>{const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);el.textContent=fmtN(Math.round(v*e));if(k<1)requestAnimationFrame(step);else el.textContent=fmtN(v)};
+ requestAnimationFrame(step)}
+(function(){const prev=rnDecorate;rnDecorate=function(){prev.apply(this,arguments);
+ try{if(RN.io)document.querySelectorAll("#view [data-count]").forEach(el=>{const o=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){rnCountUp(e.target);o.disconnect()}}));o.observe(el)})}catch(e){}}})();
+
+/* ▓▓ RENAISSANCE:END ▓▓ */
 /* ═══════════════════════════════════════════════════════════════════════════
    PARTS 4, 39, 77, 110 · the navigation, settled after every section exists
    Sections register themselves throughout the build, so the order of the
