@@ -88,21 +88,47 @@ The platform reads as an economics publication rather than a long page of cards.
   a field of nodes for mindmaps; a magazine for Economics, Everywhere. These are one system with one
   palette (obsidian, burgundy, chalk, and brass for rules and ornaments). Semantic colour stays
   inside diagrams.
+- **The brand, in vector.** The logo, reversed logo, monogram, wordmark, favicon and app icons are
+  SVG masters in `assets/brand/`, crisp at any size.
+  - **Monogram:** traced from the supplied artwork and fitted to straight lines and curves.
+  - **Wordmark:** set in Cinzel (SIL Open Font License), converted to outlines on the original
+    letter positions.
+  - **In the page:** the embedded vectors replaced the PNGs, and the PWA icons are rendered from
+    the masters.
+- **The opening.** The brand line, *Think like an economist.*, is the typographic signature.
+  - Behind the logo, seven ideas (price, quantity, incentives; markets, trade, money, policy) are
+    linked by lines that fade in once.
+  - It is static under reduced motion and left out on phones.
 - **The home page.** It opens on a cover and a working model.
-  - **The cover.** "Economics is a way of seeing", with *Start learning* and *Explore Real World*.
+  - **The cover.** *Think like an economist.* leads, with a one-line statement, five verbs
+    (Explore, Learn, Apply, Question, Master) and three actions.
   - **A market you can move.** A slider shifts demand; the plate redraws, and one sentence explains
-    the shortage or surplus that moves price. Six concept chips lead into the platform.
-  - **The portrait.** It sits in its own frame, in a grid cell of its own, so no figure or label can
-    touch it at any width.
-  - **Scale signals** (cases, mindmaps, diagram plates, calculations, Exam DNA questions) are
-    counted from the data as the page is drawn, and each one opens what it counts.
-  - **The chapters.** After a hinge ("See the world differently") the page runs in nine: the
-    platform, the world, the theory, the lab, the exam, the research, the media, the educator and
-    the creator. It ends on "Start exploring."
-  - **Nothing removed.** Every earlier band is still there: the gateway, *Today in Economics*, the
-    Real World lead, the mindmap network, the reader's folded desk and *Economics at a glance*.
+    the shortage or surplus that moves price. Six concept chips show their definition on hover or
+    focus.
+  - **The author.** A tall editorial panel in its own column, with an author line taken only from
+    the supplied profile. Nothing is drawn behind the photograph at any width.
+  - **The platform in numbers.** Cases, mindmaps, plates, calculations and Exam DNA questions, set
+    in the data face along the foot. They are counted from the data, and each opens what it counts.
+  - **Eleven chapters, one verb each:** Think, Learn, See, Interact, Connect, Practise, Research,
+    Explore, Watch, Teach and About.
+    - "Economics is a way of seeing." opens chapter 01.
+    - Between some chapters the transition is itself economic: two curves meeting at equilibrium,
+      a cycle around trend, or a data grid thinning into paper.
+  - **Nothing removed.** Every earlier band is still there.
+- **A background system.** Six faint families of economic drawing texture section openers and home
+  bands: micro, macro, global, development, research and markets.
+- **Go deeper.** Beneath the core of thirteen models and eleven concept pages, a folded
+  *economist's note* covers:
+  - what the model assumes;
+  - what the evidence shows (named published studies);
+  - measurement;
+  - where economists disagree.
+
+  Misconception boxes pair a common wrong idea with the correct one. Both are labelled as original
+  commentary, not IB material.
 - **Real World case intelligence.** Each case opens with a one-screen brief compiled only from its
-  own record:
+  own record, each part labelled by what kind of statement it is (fact, interpretation, model,
+  inference, evaluation, teacher guidance):
   - the event and the economic question;
   - why it matters, the model and the theory;
   - who gains and who loses, and the case against, where the deep card records them;
@@ -111,9 +137,12 @@ The platform reads as an economics publication rather than a long page of cards.
   Links to a case now open the case.
 - **Mindmap connections.** A focused node offers *go further* links (a real case, practice, a
   video, an everyday question, EE research) drawn from the related-content graph for its subtopic.
-- **The exam rooms.** The exam, papers and Exam DNA sections share a bar of ten named rooms. Each
+- **The exam rooms.** The exam, papers and Exam DNA sections share a bar of fourteen named rooms. Each
   room says what it holds: official IB information, teacher-created practice, analysed metadata or
   your own work.
+- **The IA studio.** A research-notebook rail across the IA pages, in nine steps from article check
+  to final quality check. Each step opens a tool the platform already has. The studio asks
+  questions and checks; it never writes the commentary.
 - **The elasticity lab** (Lab, last tab).
   - Choose a price change and how strongly quantity responds.
   - The lab reports PED with its sign, classifies it by its absolute value, and draws total revenue
@@ -860,7 +889,18 @@ file was not supplied, and nothing was invented in its place.
 
 ## The About page
 
-An editorial profile rather than a resume, built around the three supplied photographs.
+An intellectual biography rather than a CV, read in under a minute:
+
+- **The cover:** the name, four positions and one statement, with the portrait in its own cell.
+- **Credentials as data:** education, higher education, IB Diploma Programme, subjects, mentorship
+  and resource design.
+- **The journey as a map,** ending in this platform, each stage opening what it taught.
+- **The classroom** in two photographs.
+- **Six principles.**
+- **The platform story:** classroom, idea, resource, interaction, platform.
+
+The earlier long prose is kept, folded, under *The longer version*. Every fact comes from the
+supplied profile.
 
 - **The portrait is never overlapped.** The profile opens with three cells that cannot touch:
   - the text;

@@ -82,6 +82,13 @@ function audit() {
       if (Math.min(t[i].r.r, t[j].r.r) - Math.max(t[i].r.l, t[j].r.l) > 1 && Math.min(t[i].r.b, t[j].r.b) - Math.max(t[i].r.t, t[j].r.t) > 1)
         found.push({ kind: 'figure labels collide', a: name(t[i].x), c: name(t[j].x) + ' in ' + name(s) });
   }
+  /* a figure label that runs past the edge of its own figure (an SVG clips what falls outside its box) */
+  for (const s of document.querySelectorAll('svg')) {
+    if (!shown(s) || getComputedStyle(s).overflow === 'visible') continue;
+    const k = s.getBoundingClientRect(); if (!k.width) continue;
+    for (const x of s.querySelectorAll('text')) { if (!x.textContent.trim() || !vis(x)) continue; const r = x.getBoundingClientRect();
+      if (r.width && (r.left < k.left - 1 || r.right > k.right + 1 || r.top < k.top - 1 || r.bottom > k.bottom + 1)) found.push({ kind: 'figure label clipped', a: name(x), c: 'by its own figure ' + name(s) }) }
+  }
   /* a figure label cut off by a container that clips without scrolling */
   for (const s of document.querySelectorAll('svg')) {
     if (!shown(s) || !s.getBoundingClientRect().width) continue;
@@ -110,6 +117,27 @@ for (const w of WIDTHS) {
   report.push({ w, errors });
   await ctx.close();
 }
+/* every opener figure and every diagram plate, drawn on its own at three sizes: labels must not collide or run past the figure */
+const figs = [];
+{
+  const ctx = await b.newContext({ viewport: { width: 1200, height: 900 } });
+  const { p } = await open(ctx, base);
+  for (const wpx of [620, 420, 300]) {
+    const r = await p.evaluate(async (wpx) => {
+      const host = document.createElement('div'); host.style.cssText = `position:fixed;left:0;top:0;width:${wpx}px;z-index:99999;background:#fff`; document.body.appendChild(host);
+      const out = []; const hit = (a, c) => Math.min(a.right, c.right) - Math.max(a.left, c.left) > 1 && Math.min(a.bottom, c.bottom) - Math.max(a.top, c.top) > 1;
+      const check = (label, html) => { host.innerHTML = html; const s = host.querySelector('svg'); if (!s) return; const k = s.getBoundingClientRect();
+        const t = [...s.querySelectorAll('text')].filter(x => x.textContent.trim()).map(x => [x, x.getBoundingClientRect()]);
+        for (const [x, r] of t) if (getComputedStyle(s).overflow !== 'visible' && (r.left < k.left - 1 || r.right > k.right + 1 || r.top < k.top - 1 || r.bottom > k.bottom + 1)) out.push(`${label}: "${x.textContent.trim()}" runs past the figure`);
+        for (let i = 0; i < t.length; i++) for (let j = i + 1; j < t.length; j++) if (hit(t[i][1], t[j][1])) out.push(`${label}: "${t[i][0].textContent.trim()}" ∩ "${t[j][0].textContent.trim()}"`); };
+      for (const k of Object.keys(MOTIFS)) check('motif ' + k, motifSVG(k, { cls: 'on-paper' }));
+      for (const k of DGKEYS) { try { const d = DG[k](); check('plate ' + k, frame(d.b, d.x, d.y, { alt: d.alt })) } catch (e) { out.push('plate ' + k + ' failed to draw') } }
+      host.remove(); return out }, wpx);
+    figs.push(...r.map(x => `${wpx}px ${x}`));
+  }
+  await ctx.close();
+}
+check(figs.length === 0, 'every opener figure and diagram plate, drawn alone at 620, 420 and 300 px, keeps its labels apart and inside the figure', figs.slice(0, 40).join('\n     '));
 const out = process.env.OUT || 'overlap-report.json';
 fs.writeFileSync(out, JSON.stringify(report, null, 1));
 const rows = report.filter(x => x.found);

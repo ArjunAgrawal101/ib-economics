@@ -19,8 +19,9 @@ for (const [w, h] of [[1440, 900], [1024, 768], [390, 844], [320, 640]]) {
   check(!txt.some(r => meet(r, por)), `${w}px · no cover text runs over the portrait`);
   check(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `${w}px · the cover causes no sideways scroll`);
   await p.goto(base + '#/about'); await p.waitForTimeout(400);
-  const ap = await box(p, '.ab-portrait'), pn = await box(p, '.ab-panel');
-  check(ap && pn && !meet(ap, pn), `${w}px · on About, the portrait and the economics panel never overlap`);
+  const ap = await box(p, '.ab-portrait');
+  const abt = await p.evaluate(() => [...document.querySelectorAll('.ab-copy h1, .ab-copy p, .ab-copy li, .ab-copy .btn')].map(e => e.getBoundingClientRect().toJSON()));
+  check(ap && abt.length > 4 && !abt.some(r => meet(r, ap)), `${w}px · on About, no text or control runs over the portrait`);
   check(await p.evaluate(() => { const f = document.querySelector('.ab-portrait').getBoundingClientRect();
     return ![...document.querySelectorAll('#view svg')].some(s => { const r = s.getBoundingClientRect(); return r.width > 0 && r.x < f.right && f.x < r.right && r.y < f.bottom && f.y < r.bottom }) }),
     `${w}px · no figure is drawn over or under the About portrait`);
@@ -44,7 +45,7 @@ check((await st(p)).v !== 'home', 'Start learning leaves the cover');
 await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
 check(await p.locator('.rn-hinge').count() === 1 && await p.locator('.rn-final').count() === 1, 'the home page runs from the hinge to the closing invitation');
 const order = await p.evaluate(() => [...document.querySelectorAll('.rn-chap .ch-t, .rn-hinge .ch-t')].map(e => e.textContent.trim()));
-check(order.join('|').startsWith('The platform|The world|The theory|The lab|The exam|The research|The media|The educator|The creator'), 'the chapters run in the narrative order', order.join('|'));
+check([...new Set(order)].join('|').startsWith('Think|Learn|See|Interact|Connect|Practise|Research|Explore|Watch|Teach|About'), 'the chapters run in the narrative order', order.join('|'));
 /* case links */
 const id = await p.evaluate(() => RW_CASES[3].id);
 await p.evaluate(i => nav('world', 0, i), id); await p.waitForTimeout(300);
@@ -56,7 +57,7 @@ const hasFurther = await p.evaluate(async () => { const n = document.querySelect
 check(hasFurther === true, 'a mindmap node offers ways to go further', String(hasFurther));
 /* exam rooms */
 await p.evaluate(() => nav('examiner', 0)); await p.waitForTimeout(300);
-check(await p.locator('.rooms .room').count() === 10 && await p.locator('.rooms .room[aria-current="page"]').count() === 1, 'the exam area names its rooms and marks the current one');
+check(await p.locator('.rooms .room').count() === 14 && await p.locator('.rooms .room[aria-current="page"]').count() === 1, 'the exam area names its rooms and marks the current one');
 await p.locator('.rooms .room', { hasText: 'Paper 2 room' }).click(); await p.waitForTimeout(300);
 check(await p.evaluate(() => VIEW === 'papers' && SECTIONS.find(s => s.v === 'papers').tabs[TAB] === 'Paper 2 data lab'), 'a room opens its tab');
 /* the elasticity lab */
