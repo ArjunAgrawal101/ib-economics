@@ -1,0 +1,96 @@
+/* The opening sequence: exactly five seconds from the first frame the reader
+   sees, at the six widths the brief names, plus Skip, reduced motion, a deep
+   link and a reload. Timing is read from the overlay's own record
+   (window.__INTRO), which the browser fills from requestAnimationFrame and
+   Paint Timing, both on the performance.now() timeline. */
+import { serve, browser, check, done } from './lib.mjs';
+const { srv, base } = await serve();
+const b = await browser();
+const SIZES = [[360, 780], [390, 844], [768, 1024], [1024, 768], [1440, 900], [1920, 1080]];
+const FRAME = 50;                      /* the node is removed on the first frame at or after the exit: up to three frames at 60 Hz */
+const rec = () => { const I = window.__INTRO; return { mode: I.mode, how: I.how, late: I.late, t0: I.t0, start: I.start, fp: I.fp,
+  end: I.end, exitAt: I.exitAt, fadeEnd: I.fadeEnd, state: I.state, skipAt: I.skipAt || null, plan: I.PLAN.map(p => [p[0], p[1], p[2]]) }; };
+const finished = p => p.waitForFunction(() => window.__INTRO && window.__INTRO.state === 'done', null, { timeout: 40000 });
+
+for (const [w, h] of SIZES) {
+  const ctx = await b.newContext({ viewport: { width: w, height: h } });
+  const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
+  await p.goto(base, { waitUntil: 'commit' });
+  await finished(p);
+  const r = await p.evaluate(rec);
+  check(r.mode === 'play' && r.how === 'timer' && !r.late, `${w}px · the sequence plays in full and ends on its own clock`, JSON.stringify({ mode: r.mode, how: r.how, late: r.late }));
+  check(Math.abs(r.exitAt - r.start - 5000) < 0.5, `${w}px · the exit is scheduled at exactly start + 5000 ms`, (r.exitAt - r.start).toFixed(2));
+  check(Math.abs(r.fadeEnd - r.start - 5000) < 0.5, `${w}px · the exit fade reaches full transparency at exactly start + 5000 ms`, String(r.fadeEnd - r.start));
+  const vis = r.end - r.start;
+  check(vis >= 5000 - 0.5 && vis <= 5000 + FRAME, `${w}px · the overlay node leaves ${vis.toFixed(1)} ms after the start (invisible from 5000 ms, removed on the next frame)`);
+  check(r.fp === null || Math.abs(r.start - r.fp) < 0.5 || Math.abs(r.fp - r.t0) <= 4, `${w}px · the start is the first presented frame`, JSON.stringify({ t0: r.t0, fp: r.fp, start: r.start }));
+  check(errs.length === 0, `${w}px · no page errors during the opening`, errs.join(' | '));
+  await ctx.close();
+
+  /* geometry: hold the overlay, set every stage to its steady moment, measure */
+  const c2 = await b.newContext({ viewport: { width: w, height: h } });
+  const q = await c2.newPage();
+  await q.goto(base, { waitUntil: 'commit' });
+  await q.waitForFunction(() => window.__APP_READY === true && window.__INTRO && window.__INTRO.anims.length > 5, null, { timeout: 40000 });
+  await q.evaluate(() => { window.__APP_READY = false; window.__INTRO.anchored = true; });   /* hold, and keep the clock from re-anchoring what the test pauses */
+  const bad = [];
+  for (const [t, sel] of [[1250, '.ia-logo'], [2000, '.ia-logo'], [2800, '.ia-ib'], [3800, '.ia-tg'], [4600, '.ia-vb']]) {
+    await q.evaluate(t => __INTRO.anims.forEach(a => { a.pause(); a.currentTime = t; }), t);
+    await q.waitForTimeout(60);
+    const g = await q.evaluate(sel => {
+      const e = document.querySelector('#splash ' + sel), r = e.getBoundingClientRect(), k = document.getElementById('splashskip').getBoundingClientRect();
+      const o = +getComputedStyle(sel === '.ia-tg' ? e.parentElement : e).opacity;
+      const hit = !(r.right <= k.left || r.left >= k.right || r.bottom <= k.top || r.top >= k.bottom);
+      return { l: r.left, r: r.right, t: r.top, b: r.bottom, vw: innerWidth, vh: innerHeight, o, hit, sw: document.getElementById('splash').scrollWidth };
+    }, sel);
+    if (g.l < 0 || g.r > g.vw || g.t < 0 || g.b > g.vh || g.hit || g.o < 0.95 || g.sw > g.vw) bad.push(`${sel}@${t}: ${JSON.stringify(g)}`);
+  }
+  check(bad.length === 0, `${w}px · every stage sits inside the screen, clear of Skip, fully visible at its moment`, bad.join(' | '));
+  await c2.close();
+}
+
+/* Skip: one press, a clean exit */
+{
+  const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
+  const p = await ctx.newPage();
+  await p.goto(base, { waitUntil: 'commit' });
+  await p.waitForFunction(() => window.__INTRO && window.__INTRO.state === 'playing', null, { timeout: 20000 });
+  await p.click('#splashskip');
+  await finished(p);
+  const r = await p.evaluate(rec);
+  check(r.how === 'skipped' && r.end - r.skipAt <= 260, `Skip leaves within ${Math.round(r.end - r.skipAt)} ms of the press`);
+  await p.waitForTimeout(300);
+  check(await p.evaluate(() => !document.getElementById('splash') && typeof bootOnboarding === 'function'), 'after Skip the overlay is gone from the document');
+  await ctx.close();
+}
+/* reduced motion: the same hierarchy at once, no five-second hold */
+{
+  const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
+  const p = await ctx.newPage();
+  await p.goto(base, { waitUntil: 'commit' });
+  /* measured inside the page on the first frame the clock runs, before the overlay can leave */
+  await p.waitForFunction(() => { const I = window.__INTRO; if (!I || I.state === 'waiting') return false;
+    window.__RM = ['.ia-logo', '.ia-ib', '.ia-tg', '.ia-vb'].every(s => { const e = document.querySelector('#splash ' + s); return !!e && +getComputedStyle(e).opacity === 1 && e.getBoundingClientRect().height > 0; });
+    return true; }, null, { timeout: 20000, polling: 'raf' });
+  const still = await p.evaluate(() => window.__RM);
+  await finished(p);
+  const r = await p.evaluate(rec);
+  check(r.mode === 'still' && still, 'reduced motion shows the monogram, name, course, tagline and verbs at once');
+  check(r.how === 'still' && r.end - r.start >= 1500 - 0.5 && r.end - r.start < 5000, `reduced motion leaves after ${Math.round(r.end - r.start)} ms, without the five-second hold`);
+  await ctx.close();
+}
+/* a link to one page, and a reload, do not replay the sequence */
+{
+  const ctx = await b.newContext({ viewport: { width: 1024, height: 768 } });
+  const p = await ctx.newPage();
+  await p.goto(base + '#/course', { waitUntil: 'commit' });
+  await finished(p);
+  let r = await p.evaluate(rec);
+  check(r.mode === 'cover' && r.how === 'cover' && r.end - r.start < 5000, `a deep link shows the identity still and leaves when ready (${Math.round(r.end - r.start)} ms)`);
+  await p.goto(base, { waitUntil: 'commit' }); await p.reload({ waitUntil: 'commit' });
+  await finished(p);
+  r = await p.evaluate(rec);
+  check(r.mode === 'cover', 'a reload does not replay the sequence');
+  await ctx.close();
+}
+await b.close(); srv.close(); done();
