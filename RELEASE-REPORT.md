@@ -280,7 +280,14 @@ No content was duplicated: every link resolves to an existing record, and the se
   sizes (including the new gateway, index, lens, daily and network controls) and keyboard-reachable
   scrolling tables.
 
-<!-- MOBILE-RESULT -->
+**Result.**
+
+- `widths` passed on all 37 routes at all nine widths.
+- `routes` opened all 182 section/tab routes cold at 375 px and 1366 px, and each ran the self-test
+  with no failures.
+- **One failure along the way.** The first harness run found two routes failing at 375 px. The phone
+  watermark figure was offset past the right edge; it was clipped, so nothing scrolled, but the
+  element still extended beyond the document. It now stays inside the edge.
 
 ## 11. Accessibility
 
@@ -304,7 +311,8 @@ No content was duplicated: every link resolves to an existing record, and the se
 - **Colour and motion.** No verdict relies on colour. Motion stops under `prefers-reduced-motion`,
   which is tested in the browser.
 
-<!-- AXE-RESULT -->
+**Result after the fix.** No axe violations on any scanned page, at either width, with reduced motion
+on and off.
 
 ## 12. Performance
 
@@ -457,11 +465,58 @@ external images or stock art were added.
 
 ## 17. Tests
 
-<!-- TESTS -->
+**The full harness** (`node tests/run-all.mjs`) ran on the final commit: exit code 0, "every suite
+passed".
+
+| Suite | Checks | Passed | Failed |
+|---|---|---|---|
+| In-page self-test | 1,923 (was 1,870; +53 in the new *Renaissance* suite) | 1,923 | 0 |
+| `api-youtube` | 21 | 21 | 0 |
+| `selftest` (the self-test in a real browser) | 37 | 37 | 0 |
+| `e2e` | 22 | 22 | 0 |
+| `ecosystem` | 30 | 30 | 0 |
+| `renaissance` (new) | 25 | 25 | 0 |
+| `pwa` | 4 | 4 | 0 |
+| `widths` (37 routes × 9 widths) | 9 | 9 | 0 |
+| `routes` (182 routes × 2 widths, cold) | 2 | 2 | 0 |
+| axe-core (18 routes × 2 widths) | – | no violations after one fix | – |
+
+**Baseline.** `main` passed every suite before work began (harness exit 0; self-test 1,870 / 0).
+
+**Failures found and fixed during the release.** Each was fixed before the final run:
+
+- A splice that put the module inside the stylesheet, caught at once by the self-test.
+- A figure caption merging into the next heading and tripping the duplicate-passage check.
+- The desk recording the self-test's own toggle as the reader's choice.
+- An attempt to skip figures during the self-test, reverted because it changed what one check
+  measured.
+- Two test bugs in the new suite: the key-concept field name, and a negated absolute ("rather than
+  an inevitable outcome").
+- The phone watermark crossing the edge.
+- Two ARIA misuses.
+
+**Commit hygiene.** One commit went in with a failing self-test, and the next commit fixed it.
+Every commit since has been checked first.
+
+**Not tested.** The live YouTube API and the deployed site: this environment cannot reach YouTube,
+Vercel or ibo.org.
 
 ## 18. Before and after
 
-<!-- BEFOREAFTER -->
+| | Before (`main`, d8efb20) | After |
+|---|---|---|
+| Page openers | One decorative cross, identical on about 190 pages | A labelled, accurate figure for each page's subject (28 motifs) |
+| Section identity | None | Ten registers in one system |
+| Home page, first visit | 14 equal bands, 11,417 px | A drawn opener, a two-tier gateway, a daily page, a lead story, a network band and counted figures; desk folded; about 9,960 px |
+| Chart typography | Four unloaded fonts falling back | Mapped to the loaded faces |
+| Discovery | Search only | Search with better ranking, Random Economics, Today in Economics, the toolkit, lens questions |
+| Diagram plates | "Reading it" and alt text | Plus four reading-guide questions on all 35 plates |
+| Content corrections (this release) | – | 20 terminology, 37 case, 11 definition, 3 wrong-economics diagram fixes |
+| Self-test | 1,870 | 1,923 |
+| Harness checks | 125 | 150 |
+| gzip size of `index.html` | 1,610 KB | 1,657 KB (+2.9%) |
+| First contentful paint | 408 ms | 456 ms |
+| DOMContentLoaded (includes the startup self-test) | 2,722 ms | 3,374 ms |
 
 ---
 
