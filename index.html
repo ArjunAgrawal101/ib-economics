@@ -1953,6 +1953,23 @@ body.rn-anim .hz-eqm path,body.rn-anim .hz-curve path{stroke-dasharray:1400;stro
 /* on the home page the chapter marks carry the numbering; a band's own running number would be a second, competing sequence */
 body[data-sec="home"] #view .shead > .n{display:none}
 .rn-band.sp-lab::before{opacity:.035}
+/* ═══ THE OPENING ═══════════════════════════════════════════════════════ */
+#splash{overflow:hidden}
+#splash .sp{position:relative;z-index:1}
+.spnet{position:absolute;inset:6% 4%;width:92%;height:88%;pointer-events:none}
+.spnet line{stroke:rgba(201,174,114,.2);stroke-width:1;vector-effect:non-scaling-stroke;opacity:0;animation:spFade 1.6s var(--ez) forwards}
+.spnet-l{position:absolute;inset:6% 4%;pointer-events:none}
+.spnet-l span{position:absolute;transform:translate(-50%,-100%);padding-bottom:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;
+ color:rgba(248,246,241,.34);opacity:0;animation:spFade 1s ease-out forwards;white-space:nowrap}
+@keyframes spFade{to{opacity:1}}
+.spnet-l span::after{content:"";position:absolute;left:50%;bottom:0;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:rgba(201,174,114,.7);transform:translateY(50%)}
+/* the brand line becomes the opening's typographic signature */
+#splash .tg{font-family:var(--dsp);font-style:normal;font-weight:400;font-size:clamp(30px,4vw,54px);line-height:1.05;letter-spacing:-.02em;color:#fff}
+@media (max-width:640px){.spnet,.spnet-l{display:none}}
+@media (max-height:520px){.spnet,.spnet-l{display:none}}
+@media (prefers-reduced-motion:reduce){.spnet line,.spnet-l span{animation:none;opacity:1}}
+/* the welcome dialogue: at 190px the full logo's tagline cannot be read, so the dialogue carries the monogram, which the name beneath it completes */
+.ob .lg{width:72px;height:55px;background-image:var(--mk);background-position:left center}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -37466,6 +37483,24 @@ COVSUITE.suiteName="Cover and composition";
 EXTRA_SUITES.push(COVSUITE);
 QAREPORT.push({area:"Cover, profile, cases and rooms",re:/^(Cover model|Cover frame|Profile frame|Elasticity lab|Exam rooms|Case links|Case intelligence|Mindmap links) · /,
  what:"That the cover's movable market stays in equilibrium at every position and explains the shift correctly, the scale signals are counted from data, the portrait never shares a frame with a figure, the elasticity lab's arithmetic matches worked cases, every exam room opens a real tab and only official material is labelled official, and case links open the case."});
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE OPENING · a quiet network of economic relationships
+   Behind the logo, seven ideas an economist starts from are linked by thin
+   lines that fade in once: price, quantity, incentives, markets,
+   trade, money and policy. The figure is decorative (aria-hidden), sits
+   outside the reading column, and is static under reduced motion. The five
+   stages of the opening, their order and their timing are unchanged.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const SP_NET=[["Price",14,30],["Quantity",24,72],["Incentives",8,52],["Markets",86,26],["Trade",93,58],["Money",78,80],["Policy",63,12]];
+const SP_EDGES=[[0,1],[0,2],[1,2],[0,6],[3,4],[3,5],[4,5],[3,6]];   /* two clusters, micro and macro, joined across the top by price and policy; no link crosses the centre */
+function spNet(){
+ const P=SP_NET;
+ return `<svg class="spnet" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  ${SP_EDGES.map(([a,b],i)=>`<line style="animation-delay:${(0.3+i*0.12).toFixed(2)}s" x1="${P[a][1]}" y1="${P[a][2]}" x2="${P[b][1]}" y2="${P[b][2]}"/>`).join("")}
+</svg>
+  <div class="spnet-l" aria-hidden="true">${P.map(([t,x,y],i)=>`<span style="left:${x}%;top:${y}%;animation-delay:${(0.4+i*0.12).toFixed(2)}s">${esc(t)}</span>`).join("")}</div>`}
+(function(){try{const sp=document.getElementById("splash");if(sp&&!sp.querySelector(".spnet"))sp.insertAdjacentHTML("afterbegin",spNet())}catch(e){}})();
 
 /* ▓▓ RENAISSANCE:END ▓▓ */
 /* ═══════════════════════════════════════════════════════════════════════════
