@@ -1,532 +1,493 @@
 # Release report
 
-**Arjun Agrawal · IB DP Economics** · release 2026.09-d, *the renaissance*
+**Arjun Agrawal · IB DP Economics** · release 2026.09-e, *cover and composition*
 
-Written on 29 September 2026. Every number here was produced by running something, and the report
-says what was run. What could not be checked is listed in sections 15 and 16.
+Written on 29 September 2026.
 
-Earlier reports are kept in [`docs/releases/`](docs/releases/):
+- **Every number here was produced by running something**, and each section says what was run.
+- **What was not done, or could not be checked**, is listed in sections 19 and 20. Some of the
+  brief is not in this release, and section 19 says which parts.
+- **Earlier reports** are in [`docs/releases/`](docs/releases/). The one this replaces is
+  [2026-09-29](docs/releases/2026-09-29-release-report.md), *the renaissance*.
+- **The audit written before any code changed** is
+  [`docs/product-audit.md`](docs/product-audit.md). It covers items A to M of the brief.
 
-- [2026-09-26](docs/releases/2026-09-26-release-report.md): the ecosystem.
-- [2026-09-25](docs/releases/2026-09-25-release-report.md): *Economics, Everywhere* and the first
-  content audit.
-- [2026-09-22](docs/releases/2026-09-22-release-report.md): live IB verification.
+**The platform was not rebuilt:**
 
-The visual audit that came before this work is in
-[`docs/visual-audit.md`](docs/visual-audit.md). The five content audits and what was done with each
-finding are in [`docs/audits/2026-09-29/`](docs/audits/2026-09-29/).
-
-The platform was not rebuilt:
-
-- It is still one static `index.html` with the same router, storage, service worker and self-test.
-- No route, tab, storage key, section or content record was removed.
-- Everything new is one spliced module (JavaScript and CSS) that wraps existing functions, plus
-  corrections to existing content.
+- It is still one static `index.html`, with the same router, storage, service worker, import and
+  export, print, search and self-test.
+- No route, tab, storage key, section, content record or earlier home-page band was removed.
+- Everything new is added by wrapping existing functions (the new JavaScript and CSS are spliced
+  in between markers). A few existing CSS rules were corrected where the audit found defects.
 
 ---
 
-## 1. Visual redesign
+## 1. What changed
 
-The audit found five structural reasons the site felt plain. Each was addressed:
+Nine commits on `claude/upbeat-hawking-69d7gz` since `main` (50767be), including this report.
 
-| Finding | What changed |
+| Area | Change |
 |---|---|
-| **One opener for every page.** About 190 heroes shared one dark band and one decorative cross, which was economically empty (the same supply-and-demand cross sat above *comparative advantage*, *inequality* and *exam technique*). | A **motif engine** draws a real, labelled diagram for what each page is about. Concept pages draw their subtopic's model, cases draw the case's own diagram, and sections draw their subject. |
-| **No section identity.** | Section registers: journal paper, newsroom, graph paper, ruled exam paper, node field, magazine, research notebook, slate workspace. |
-| **One container for every idea.** The home page was 14 equal-weight bands, mostly card grids, 11,417 px long. | An editorial sequence with a change of scale: a drawn opener, a two-tier gateway, a daily front page, a lead story, a dark network band and counted figures. The desk folds on a first visit, and the first-visit home page is now about **9,960 px**. |
-| **Chart labels in fonts the page never loads.** Inter, Helvetica, IBM Plex Mono and Georgia fell back to system faces. | One CSS rule maps them to the loaded faces (CSS outranks SVG presentation attributes). |
-| **A flat rhythm.** | Feature headings in the display face with a brass rule, a heading rule that extends as the section arrives, small-capital eyebrows, and a colophon footer. |
-
-## 2. The design system
-
-**Colour.**
-
-- The existing obsidian, burgundy, chalk and ivory remain the foundation.
-- New tokens:
-  - **brass** (`--brs`, from the logo's gold) for rules, ornaments and figure accents;
-  - **ivory paper** (`--paper`) for scholarly openers;
-  - **graphite** for the exam room;
-  - **slate** for the professional register.
-- Semantic diagram colours (demand blue, supply copper, loss red, policy gold) are unchanged, and
-  brand burgundy never enters a figure; a self-test enforces this.
-
-**Typography.**
-
-- The pairing already loaded was kept: Bodoni Moda (display), Source Serif 4 (editorial), Manrope
-  (interface) and JetBrains Mono (data).
-- They are premium faces, already cached by returning visitors. Replacing them would have added
-  weight and changed every page for no gain in hierarchy.
-- The fixes are in roles:
-  - display serif for openers and feature headings;
-  - mono for data and figure captions;
-  - small-capital sans for eyebrows (`font-variant-caps`, so the underlying text is unchanged for
-    search and assistive technology);
-  - SVG labels mapped to the loaded faces.
-
-**Spacing.** The existing scale (`--s1` to `--s7`) is kept. The home page uses a tighter band rhythm.
-
-**Cards.** Two tiers on the home page: a feature card with a full figure, and a compact index row
-with a thumbnail. The existing panels are unchanged elsewhere.
-
-**Buttons.** The existing styles, plus an `on-ink` variant for dark bands.
-
-**Icons.** Thirteen line glyphs for the named teaching components, stroked in each component's
-colour.
-
-**Data visualisation.**
-
-- Every figure has labelled axes, labelled curves, a caption (figure number style) and the
-  equilibrium at the true intersection.
-- Illustrative data is labelled as such. No figure presents a real statistic.
-
-**Sections.** The registers listed in section 4.
-
-**Animation.**
-
-- Curves draw on once, the equilibrium pulses gently and figures count up.
-- Gateway figures draw on hover.
-- Everything stops under `prefers-reduced-motion`, and the motion layer is not switched on at all.
-
-**Mobile.**
-
-- Below 1,000 px the figure becomes a faint watermark behind the opener text.
-- The gateway, daily page and lead story collapse to one column.
-- The mindmap network becomes a wrapped list.
-
-## 3. New graphics
-
-There are **28 original SVG motifs**, each built from stated functions:
-
-- **Markets:** supply and demand, demand shift, indirect tax, subsidy, maximum price, minimum price,
-  PED comparison.
-- **Market failure and the firm:**
-  - negative production externality;
-  - costs and revenue (MC through minimum AC, MR twice as steep as AR);
-  - labour market with a minimum wage;
-  - goods classified by rivalry and excludability;
-  - a pricing game with its Nash equilibrium.
-- **Macroeconomics:** AD–AS with LRAS, short- and long-run Phillips curves, the business cycle (with
-  its true turning points), the circular flow, the Lorenz curve.
-- **The global economy:** PPC with growth, comparative advantage (linear PPCs), tariff, exchange
-  rate, trade network (schematic).
-- **Development:** the poverty cycle, a diagram the coverage audit found missing.
-- **Other:** scatter with a fitted OLS line (illustrative data), Paper 1 (b) markbands (from the
-  guide, p. 63), the nine key concepts as a network, a research page, and model versus observation.
-
-Each motif is used in three ways:
-
-- in page openers;
-- in the home gateway, on paper;
-- in the toolkit and lead story, as figures with captions.
-
-The footer carries a small supply-and-demand rule.
-
-## 4. New backgrounds
-
-Textures are drawn in CSS at 3–6 % opacity, with one texture per register:
-
-- **Analytical grid:** every dark opener.
-- **Journal paper with a warm vignette:** Course, Learn, TOK and Educators.
-- **Research notebook** (ruled lines and a red margin): EE Studio and IA.
-- **Newsroom column rules with a double head rule:** Real World.
-- **Fine graph paper:** Lab, Calculate and Tools.
-- **Ruled answer paper on graphite:** Exam, Exam DNA, Papers, Practise and Timed sessions.
-- **Node field:** Mindmaps.
-- **Magazine dot screen on burgundy-black:** Economics, Everywhere.
-- **Diagonal field on slate-black:** Think.
-- **Slate:** Teacher tools.
-
-The CSS classes `.bg-grid`, `.bg-ledger`, `.bg-dots`, `.bg-margin`, `.bg-paper` and `.bg-ink` are
-available to any band.
-
-An opener turns to paper only when it holds nothing but its heading and lede, so no control designed
-for the dark band is ever placed on ivory.
-
-## 5. New content
-
-- **The economist's toolkit** (Think, last tab, `#/think/economist-s-toolkit`).
-  - It has 18 lenses: incentives, opportunity cost, marginal thinking, trade-offs, elasticity,
-    equilibrium, efficiency, equity, externalities, information, market power, interdependence,
-    expectations, time, risk, uncertainty, institutions and behaviour.
-  - Each lens has a one-line idea, three questions, its own figure, and links into the platform
-    found through the search index.
-  - The toolkit also sets out fourteen questions for any economic claim.
-  - It is labelled as a teaching frame. The IB's nine key concepts are shown as the IB's own.
-- **Lens questions on every concept page and every Real World case**, chosen for the page's
-  subtopic.
-- **A reading guide for all 35 diagram plates**, answering four questions: *What changes? Why does
-  it change? What the diagram does not show. Common mistake.* Each guide is written from the plate's
-  own labels and numbers and labelled teacher-created.
-- **Home bands:**
-  - *Explore Economics*;
-  - *Today in Economics* (the economic idea of the day, a case, a question and a word);
-  - the Real World lead story;
-  - the mindmap network;
-  - *Economics at a glance*.
-
-## 6. Content corrections
-
-All of these came from the five read-only audits in `docs/audits/2026-09-29/`.
-
-**Terminology (20 changes).**
-
-- Demand vs quantity demanded: the bag charge, the Veblen effect, automation.
-- Rent caps and quantity supplied.
-- The subsidy drill now names its recipient.
-- Inflation rate vs price level.
-- Evidence described as "consistent with", not as proof.
-- Tax incidence by *relative* elasticities.
-- "The only route" and "entirely" withdrawn.
-- The monopsony minimum-wage sentence.
-- Financial (not capital) account.
-- Customs union vs single market.
-- Devaluation of a controlled rate.
-- Marshall–Lerner stated "in absolute value".
-
-**Real World (37 changes, both copies, data hash recomputed to `67ae660860fd08eb`).**
-
-- Confident corrections:
-  - Singapore's COEs are auctioned, not tradable.
-  - Bretton Woods broke down in 1971–73.
-  - HIPC dates from 1996.
-  - Korea's industrial drive dates from 1973.
-  - China's poverty figure now names its line.
-  - The DEV-007 deep card's residual "1978".
-- Softened causation: Energiewende, ECB quantitative easing, Weimar, the UK mini-budget.
-- Precise terms: plastics directive, deemed consent, EU ETS coverage, CBAM, TCA, RCEP.
-- Dated wording given a date: EEG levy, California, IRA, Argentina, Australia–China, Chile,
-  Stability and Growth Pact, China youth unemployment.
-- One unsourced figure removed (the GLO-003 "more than a third").
-
-**Definitions (11 changes).**
-
-- Growth is usually necessary for sustained development but not sufficient (two surfaces had said
-  otherwise).
-- Supply-side is the family aimed at capacity, not the only thing that raises it.
-- The Keynesian AS has its upward-sloping range.
-- A subsidy may be paid to consumers.
-- Choice architecture vs nudge.
-- The PED quiz keeps the sign.
-- Community surplus is maximised at the free-market outcome only without externalities.
-- Merit goods are filed under 2.8.
-- Allocative efficiency is stated in social terms.
-
-**Diagrams.**
-
-- *Wrong economics:*
-  - The market lab's tax could push output below zero; it is now capped.
-  - The Everywhere AD–AS "before" SRAS was drawn 50 points too low.
-  - The monetarist AD–AS marker sat off the drawn SRAS.
-- *Misleading:*
-  - The Lorenz builder shaded B instead of A.
-  - The subsidy lab cropped the producer price and mislabelled the curve.
-- *Cosmetic:* PPC chord, cycle markers, the Phillips duplicate label, the Lorenz label, label halos,
-  tick collisions, and plate padding on phones.
-
-**Deliberately not applied.**
-
-- The definitions audit proposed "primary and secondary income" for the current account. The
-  guide's own list says "income" and "current transfers", which the site already uses.
-- One case change that could not be confirmed (MGNREGA's replacement) is worded as a check, not
-  asserted.
-
-## 7. New features
-
-- *Random Economics*: a filterable, editorial "surprise me" across ten kinds of content. It is in
-  the home gateway and the footer.
-- *Today in Economics*: date-deterministic and server-free.
-- The economist's toolkit.
-- Named teaching components (`KC()`, 13 types).
-- Search ranking by word start, record type and abbreviation.
-- The diagram reading guides.
-- The folding desk.
-- The colophon footer, with an Explore index.
-
-## 8. New interactions
-
-- **Curves:** draw on in openers and on gateway hover, and the equilibrium pulse runs slowly.
-- **Figures:** count up in *Economics at a glance*. The final value is in the markup from the start
-  and in `aria-label`.
-- **Headings:** the rule extends as the section scrolls in.
-- **Lenses and chips:** state is shown with `aria-pressed`.
-- **Opener steps:** the four data–theory–evidence–decision steps fade in.
-- **Performance:** below-the-fold figures are drawn only as they approach.
-- **During the self-test:** none of this runs while the self-test paints views.
-
-## 9. Knowledge relationships
-
-The existing related-content graph (`kgPanel`: concepts, cases, diagrams, videos, practice,
-mindmaps, Everywhere and EE research, by subtopic) is unchanged, and it still sits on every concept
-page.
-
-This release adds three kinds of link:
-
-- **Lens links:** 18 lenses, each linking to up to six existing records through the search index.
-- **Case figures:** every case's figure follows its own recorded diagram (`dg`).
-- **Daily page:** the date-chosen items link into existing content.
-
-No content was duplicated: every link resolves to an existing record, and the self-test checks this.
-
-## 10. Mobile
-
-- The opener figure becomes a watermark below 1,000 px.
-- The gateway goes to one column; the index rows shrink their thumbnails.
-- The daily page stacks.
-- The lead story drops to one column.
-- The network becomes a wrapped list.
-- The footer colophon stacks.
-- `tests/widths.mjs` now covers 37 routes, including the toolkit, a plate, a concept page and a case,
-  at 320, 375, 390, 412, 430, 768, 1024, 1280 and 1440 px. It checks overflow, page errors, target
-  sizes (including the new gateway, index, lens, daily and network controls) and keyboard-reachable
-  scrolling tables.
-
-**Result.**
-
-- `widths` passed on all 37 routes at all nine widths.
-- `routes` opened all 182 section/tab routes cold at 375 px and 1366 px, and each ran the self-test
-  with no failures.
-- **One failure along the way.** The first harness run found two routes failing at 375 px. The phone
-  watermark figure was offset past the right edge; it was clipped, so nothing scrolled, but the
-  element still extended beyond the document. It now stays inside the edge.
-
-## 11. Accessibility
-
-- **axe-core (WCAG 2.0 A/AA, 2.1 AA).** 18 routes were scanned, whole document including header and
-  footer, at 1366 and 375 px:
-  - home;
-  - course, learn, a concept page;
-  - toolkit;
-  - lab, a plate;
-  - Real World, a case;
-  - mindmaps, exam, Everywhere, EE Studio, IA, TOK, educator, video, about.
-
-  One issue was found and fixed: the toolkit's lens buttons carried `role="listitem"` alongside
-  `aria-pressed`. The same pattern on the home mindmap nodes, which silently removed their button
-  role, was also fixed.
-- **Figures.** Every figure is `aria-hidden`, because the heading carries the meaning. Captions are
-  CSS-generated, so they are not repeated to screen readers or to search.
-- **Contrast.** New text on paper and ink meets AA. Brass eyebrows on dark use `#C9AE72`.
-- **Controls.** The desk is a native `<details>`. The lens grid is a labelled group. Every new
-  control is a native button.
-- **Colour and motion.** No verdict relies on colour. Motion stops under `prefers-reduced-motion`,
-  which is tested in the browser.
-
-**Result after the fix.** No axe violations on any scanned page, at either width, with reduced motion
-on and off.
-
-## 12. Performance
-
-Measured in headless Chromium at 1366 × 900, service worker blocked, on a local server. Each figure
-is the median of 5 runs on the same machine, `main` (d8efb20) against this release:
-
-| | `main` | This release | Change |
-|---|---|---|---|
-| `index.html` | 4,531,980 B | 4,678,265 B | +146 KB (+3.2%) |
-| `index.html`, gzip -9 | 1,610,234 B | 1,657,100 B | +47 KB (+2.9%) |
-| `assets/data/real-world.js`, gzip | 71,488 B | 72,441 B | +1 KB |
-| First contentful paint | 408 ms | 456 ms | +48 ms |
-| DOMContentLoaded | 2,722 ms | 3,374 ms | +652 ms |
-| Full in-page self-test | 1,628 ms | 1,902 ms | +274 ms (53 more checks) |
-| DOM elements on the home page (first visit) | 1,002 | 1,265 | +263 |
-| Home page length at 1440 px (first visit) | 11,417 px | about 9,960 px | −13% |
-
-**How to read these numbers.**
-
-- **First paint barely moved.** First contentful paint, the moment a reader first sees the page,
-  moved by about 50 ms.
-- **What DOMContentLoaded includes.** It also covers the platform's synchronous startup self-test,
-  and it grew for four reasons:
-  - the self-test now has 53 more checks (about 110 ms);
-  - every view the self-test paints now carries its figure (about 150–250 ms, spread across the
-    existing suites);
-  - the script is 108 KB larger, 37 KB of which is the 35 reading guides;
-  - the home page has more elements.
-- **These are local timings, not field measurements.** A slower phone will see a larger absolute
-  difference.
-- **The module's size.** It is 108.5 KB of JavaScript (including the reading guides) and 28.6 KB of
-  CSS, before compression.
-
-**What was done to contain the cost.**
-
-- Below-the-fold figures draw only as they approach.
-- The layout-measuring reveal and the `<body>` register change are skipped while the self-test
-  paints views.
-- The motifs are small SVG strings with no images, fonts or libraries added.
-
-The page is heavier by the size of the module and the 35 reading guides.
-
-**One thing was tried and reverted.** Skipping the opener figure during the self-test saved about
-200 ms. It also changed what one existing check measured: an Everywhere tab had passed its size
-threshold only because of the old decorative graphic. The figure is therefore drawn in the
-self-test exactly as a reader sees it.
-
-## 13. Accuracy verification
-
-- **Motif geometry.** Every motif's geometry is recomputed independently in the self-test:
-  - equilibria on both curves;
-  - the tax wedge equal to the tax;
-  - welfare-loss vertices at the intersections;
-  - MR twice as steep as AR;
-  - MC through the minimum of AC;
-  - the Lorenz curve below equality;
-  - SRPC downward;
-  - the cycle's turning points at zero slope;
-  - Nash at (Low, Low);
-  - markbands and key concepts equal to the guide's.
-
-  One of these checks is paired with a deliberately wrong input that must fail.
-- **Round-2 corrections.** These are held in place by named checks (*Accuracy r2 · …*).
-- **Reading guides.** They were written from each plate's own numbers and screened for absolute
-  claims by the self-test.
-- **Real World hash.** The data was re-hashed, and both copies were verified identical under the
-  canonical serialisation.
-
-## 14. Sources consulted
-
-**Official IB (supplied, read directly).** These documents were the authority for curriculum,
-assessment and requirement statements:
-
-- the *Economics guide*, first assessment 2022, published February 2020, cited by printed page
-  (markbands p. 63; BoP components; the nine key concepts);
-- the *Economics teacher support material*.
-
-**IB, not accessible.** `ibo.org` is blocked from this environment, so current official pages were
-not re-read in this release. The reference layer's previous live check (22 September 2026) stands.
-It found the course first assessed in 2022 to be current.
-
-**Case facts.**
-
-- The Real World auditor used its own knowledge plus nine web searches (result summaries only),
-  including:
-  - LTA OneMotoring on COEs;
-  - ICAP on California;
-  - MercoPress on Argentina and Chile;
-  - Business Standard on RBI;
-  - The Tribune on Punjab power;
-  - KPMG on Chile's pension reform.
-- The *Four Decades of Poverty Reduction in China* report (World Bank and DRC, 2022) is now named in
-  the DEV-007 case.
-
-**Design.** No third-party design or wording was copied. All graphics are original SVG and CSS. No
-external images or stock art were added.
-
-## 15. Known limitations
-
-- **Coverage gaps remain.** The coverage matrix (`docs/audits/2026-09-29/coverage.md`) lists:
-  - 17 guide diagrams with no atlas plate:
-    - constant PED, revenue under elastic and inelastic demand, the Engel curve;
-    - perfect competition (three plates), natural monopoly, collusive oligopoly, monopolistic
-      competition (two plates);
-    - a fall in labour demand;
-    - the money market;
-    - crowding out;
-    - free trade with exports;
-    - fixed and managed exchange rates;
-    - the J-curve;
-    - the poverty cycle (drawn as a motif only);
-  - 10 concepts, including Say's law, the circular economy, the Happiness Index, money creation by
-    commercial banks and social enterprise.
-
-  These are the next content phase; nothing was invented to fill them in this release.
-- **Not redesigned in this release:**
-  - Exam DNA, the mindmap canvas and the video studio's layout keep their existing designs. They
-    gained the section register, not a new layout.
-  - The mindmaps were judged already strong: typed node shapes, colour by role, and explain,
-    connect and exam modes.
-- **Data visualisation uses no live statistics.** This is by design, and consistent with the
-  platform's rule that it holds no live data. Illustrative figures are labelled.
-- **Graph audit G14 (curve labels on the calculation board's tax diagram) is deferred.**
-- **An existing Everywhere tab** (*Economist's eye*) renders about 1,100 characters of markup. It
-  passed its size check only because of the old decorative graphic; the game shell is legitimately
-  small.
-- **Duplicate declaration.** `conceptPage` is declared twice (the second wins, so the first is dead
-  code), which is the same kind of shadowing fixed last release. It was left alone to avoid
-  behavioural change.
-- **Performance cost.** See section 12.
-
-## 16. Unverified claims
-
-- **Guide edition.** A copy of the Economics guide titled "first assessment 2024" is referenced
-  online. It could not be retrieved, so the platform's guide-based claims and the coverage matrix
-  rest on the 2022 guide. The reference layer now says so.
-- **Recent events in Real World cases.** The following rest on the auditor's search summaries and
-  my own knowledge, and are dated in the text so they can be checked:
-  - MIC-013 (2025 extension);
-  - MAC-011 (2025 curtailment);
-  - GLO-023 (April 2025);
-  - GLO-032 (2023–24);
-  - DEV-023 (2025 reform);
-  - GLO-034 (2026 phase).
-- **DEV-003 (MGNREGA)** is worded as "check whether it remains in force"; its replacement is
-  reported but not confirmed.
-- **GLO-033.** The status of the Airbus–Boeing tariff suspension after 2021 is left for checking.
-- **Figures still needing a source.** The earlier release's unverified deep-card figures and the
-  Exam DNA part marks (38 source papers) remain open, as recorded before.
-
-## 17. Tests
-
-**The full harness** (`node tests/run-all.mjs`) ran on the final commit: exit code 0, "every suite
-passed".
-
-| Suite | Checks | Passed | Failed |
-|---|---|---|---|
-| In-page self-test | 1,923 (was 1,870; +53 in the new *Renaissance* suite) | 1,923 | 0 |
-| `api-youtube` | 21 | 21 | 0 |
-| `selftest` (the self-test in a real browser) | 37 | 37 | 0 |
-| `e2e` | 22 | 22 | 0 |
-| `ecosystem` | 30 | 30 | 0 |
-| `renaissance` (new) | 25 | 25 | 0 |
-| `pwa` | 4 | 4 | 0 |
-| `widths` (37 routes × 9 widths) | 9 | 9 | 0 |
-| `routes` (182 routes × 2 widths, cold) | 2 | 2 | 0 |
-| axe-core (18 routes × 2 widths) | – | no violations after one fix | – |
-
-**Baseline.** `main` passed every suite before work began (harness exit 0; self-test 1,870 / 0).
-
-**Failures found and fixed during the release.** Each was fixed before the final run:
-
-- A splice that put the module inside the stylesheet, caught at once by the self-test.
-- A figure caption merging into the next heading and tripping the duplicate-passage check.
-- The desk recording the self-test's own toggle as the reader's choice.
-- An attempt to skip figures during the self-test, reverted because it changed what one check
-  measured.
-- Two test bugs in the new suite: the key-concept field name, and a negated absolute ("rather than
-  an inevitable outcome").
-- The phone watermark crossing the edge.
-- Two ARIA misuses.
-
-**Commit hygiene.** One commit went in with a failing self-test, and the next commit fixed it.
-Every commit since has been checked first.
-
-**Not tested.** The live YouTube API and the deployed site: this environment cannot reach YouTube,
-Vercel or ibo.org.
-
-## 18. Before and after
-
-| | Before (`main`, d8efb20) | After |
+| Home | A new cover: a movable market, a separate portrait, clickable scale signals and six concept chips. After it, a hinge and nine named chapters, ending on "Start exploring." |
+| About | The opener rebuilt as three cells that cannot touch: text, portrait, economics panel. |
+| Real World | A *case intelligence* brief heads every case. Links to a case now open the case. |
+| Mindmaps | A focused node offers *go further* links drawn from the related-content graph. |
+| Exam | A bar of ten named rooms across Exam, Papers and Exam DNA, each labelled by source type. |
+| Lab | A new last tab, the *Elasticity lab*: PED with its sign, and total revenue drawn as rectangles. |
+| Layout | Opener figures never sit under text, and are never cut off by their band. The header no longer breaks between 881 and 1180 px. `.split.even` collapses on phones. |
+| Tests | 18 new in-page checks. New Playwright suites `cover.mjs` and `overlap.mjs`. `widths.mjs` goes from 9 widths to 15 and from 37 routes to 42. |
+
+## 2. New design system
+
+The existing system (obsidian, burgundy, chalk and brass; the display serif; one register per
+section) was **extended, not replaced**. Replacing it would have discarded the section identities
+the last release built.
+
+**Additions**
+
+- **Cover grammar.** A text column and a lab column, with the portrait in its own grid cell. There
+  are responsive steps at 1279 and 640 px.
+- **Chapter marks.** Mono numerals in brass, a serif title, and a hinge band between the cover and
+  the chapters.
+- **Split bands.** A text column beside a figure, a room list or a photograph. These replace card
+  grids for the exam, research, educator and creator chapters.
+- **Two new components.**
+  - The rooms bar: a horizontal rail with 44 px targets and a source label under each name.
+  - The case-intelligence grid: three columns, with small-caps labels in burgundy.
+- **One slider style.** A custom track and thumb, used by the cover and the elasticity lab.
+
+**Rules the release enforces with tests**
+
+- A figure's labels may not collide.
+- A figure may not be cut off by its band.
+- Nothing may be drawn under text.
+- Text must meet 4.5:1 contrast.
+
+## 3. Homepage changes
+
+**The cover**
+
+- **Text.** An eyebrow ("IB DP Economics · Arjun Agrawal"), then "Economics is a way of *seeing*."
+  and "Think like an economist.", then a lede.
+- **Actions.** *Start learning →* is primary and *Explore Real World* secondary. Quieter links go
+  to the question bank and the curriculum.
+- **Scale signals.** Five counts (Real World cases, mindmaps, diagram plates, calculations, Exam DNA
+  questions) plus *IA · EE research studios*.
+  - The counts are read from the data as the page is drawn. None is typed.
+  - Each count is a button that opens what it counts.
+- **The lab plate: a market you can move.**
+  - A slider shifts demand from −2 to +2. The plate redraws and three hotspots follow it: demand,
+    supply and equilibrium.
+  - One live sentence explains the result: "Demand rises: at the old price there is a shortage, so
+    price rises … until quantity supplied meets quantity demanded."
+  - Six chips open concept pages: elasticity, inflation, trade, externalities, inequality and
+    exchange rates.
+- **The portrait** is its own grid cell. It is never a background, and nothing is drawn over it.
+
+**Below the cover**
+
+- **The hinge.** "See the world *differently*" leads into nine chapters: the platform, the world,
+  the theory, the lab, the exam, the research, the media, the educator and the creator.
+- **New bands:**
+  - an exam band, with eight rooms and their source tags;
+  - a research band, for the IA and EE;
+  - an educator band;
+  - a creator band, with the teaching photograph;
+  - a closing band, "Start exploring."
+- **Every earlier band is still on the page**, placed in the chapter it belongs to. That includes
+  the gateway, *Today in Economics*, the Real World lead, the mindmap network, *Economics,
+  Everywhere*, the 60-second pieces, the folded desk and *Economics at a glance*.
+
+**Performance.** The photographs are served to the home page as blob URLs decoded once from the
+embedded images. Inlining them as data URIs had added 314 KB to the home page's HTML.
+
+## 4. About page changes
+
+- **The opener was the collision the brief describes.** It drew the section's supply-and-demand
+  figure behind the portrait, so axis lines and curves ran under the photograph and ended at its
+  edge.
+- **It is now three cells that cannot touch:**
+  - the text: name, positions, subjects, lede, *Learn with Arjun* and *Email*;
+  - the portrait, at 3:4 in its own frame;
+  - a separate panel, "What the teaching is built around", with its own figure and a link to the
+    lab.
+- **The rest of the page is unchanged.** The two contextual photographs keep their places. Each of
+  the three photographs still appears exactly once (an existing self-test holds this).
+- **No current employer is named.** The earlier self-test that scans for current-employer framing
+  still passes.
+- **How it is verified:**
+  - `cover.mjs` measures rendered boxes at 1440, 1024, 390 and 320 px. The portrait never meets the
+    panel, and no `svg` on the page intersects the portrait.
+  - `overlap.mjs` checks the whole page at 15 widths.
+- **A second, older defect was found and fixed.** At 390 and 320 px the contact card and the
+  independence note beside it stayed in two columns, and the email address ran into the note.
+  `.split.even` never collapsed on phones; it now does at 700 px and below.
+
+## 5. Interactive features
+
+| Feature | Where | What it does |
 |---|---|---|
-| Page openers | One decorative cross, identical on about 190 pages | A labelled, accurate figure for each page's subject (28 motifs) |
-| Section identity | None | Ten registers in one system |
-| Home page, first visit | 14 equal bands, 11,417 px | A drawn opener, a two-tier gateway, a daily page, a lead story, a network band and counted figures; desk folded; about 9,960 px |
-| Chart typography | Four unloaded fonts falling back | Mapped to the loaded faces |
-| Discovery | Search only | Search with better ranking, Random Economics, Today in Economics, the toolkit, lens questions |
-| Diagram plates | "Reading it" and alt text | Plus four reading-guide questions on all 35 plates |
-| Content corrections (this release) | – | 20 terminology, 37 case, 11 definition, 3 wrong-economics diagram fixes |
-| Self-test | 1,870 | 1,923 |
-| Harness checks | 125 | 150 |
-| gzip size of `index.html` | 1,610 KB | 1,657 KB (+2.9%) |
-| First contentful paint | 408 ms | 456 ms |
-| DOMContentLoaded (includes the startup self-test) | 2,722 ms | 3,374 ms |
+| Movable market | Home cover | Shifts demand. The equilibrium moves, the explanation updates (`aria-live`), and the hotspots follow. |
+| Scale signals | Home cover | Counted from data; each opens its section. |
+| Concept chips | Home cover | Six concept pages. |
+| Case intelligence | Every Real World case | A one-screen brief. Buttons open the case's diagram plates. |
+| Go further | Mindmap explore mode | Up to five groups of real links for the node's subtopic: a case, practice, a video, an everyday question, EE research. |
+| Exam rooms | Exam, Papers, Exam DNA | Ten rooms. `aria-current` marks the room you are in. |
+| Elasticity lab | Lab, last tab | Price rises or falls (1–40%) with a quantity response (0–60%). Shows PED with its sign, the \|PED\| class, and revenue before and after as rectangles. |
 
----
+**What already existed.** Supply and demand, tax, externality and AD-AS labs were already on the
+platform: the market lab, policy simulator, AD-AS lab and the *Economics, Everywhere* labs. They
+were kept as they are. The gap in the brief's list was elasticity, so that is what was built.
 
-## Deployment
+## 6. Content enrichment
 
-1. Review and merge the pull request into `main`. This release does not touch `main` directly.
-2. Nothing new is needed in Vercel: no new environment variables, and the YouTube function is
-   unchanged.
-3. The service worker moved to **v13**, so returning visitors pick up the new files on their next
-   visit.
-4. **Rollback.** Revert the merge commit. The module is self-contained between
-   `RENAISSANCE:BEGIN/END` and `REN-CSS:BEGIN/END`. The content corrections are ordinary text
-   changes, and the Real World hash reverts with its data.
+No new cases, concepts or statistics were written in this release. The enrichment reorganises what
+the platform already holds:
+
+- **Case intelligence** is compiled from each case's own fields:
+  - the event, the question, why it matters;
+  - the diagram and its caption, the theory;
+  - the exam connection, and "useful for" papers.
+  - Where one of the 12 deep cards exists, it also draws on the card's stakeholders and
+    counter-arguments.
+  - When a field is empty, the part is left out. A self-test renders all 203 cases and checks that
+    none shows an empty paragraph, `undefined` or `null`.
+- **Mindmap connections** come from the related-content graph (`kgBuild`) for the node's subtopic.
+  A connection exists only where the metadata links the two items.
+- **The elasticity lab's teaching text**, which is original:
+  - three "read it like an economist" questions;
+  - a note that the lab uses the simple percentage-change formula;
+  - an explanation, shown when the case is unit elastic over a large change, of why revenue still
+    moves slightly.
+
+## 7. Economic accuracy audit
+
+Each new model was checked against its own algebra in the self-test.
+
+- **Cover market.** D: P = 9 − 0.8(Q − s); S: P = 1 + 0.8Q; equilibrium Q = 5 + s/2,
+  P = 5 + 0.4s.
+  - At nine slider positions the drawn equilibrium lies on both curves (tolerance 10⁻⁹).
+  - More demand raises both price and quantity.
+  - The explanation names a shortage when demand rises and a surplus when it falls.
+  - A check rejects the classic error of "price rises causes demand to rise".
+- **Elasticity lab.** Five worked cases are checked for PED, its class and the direction of revenue:
+  - +10% price, −5% quantity: −0.5, inelastic, revenue up;
+  - +10%, −20%: −2, elastic, revenue down;
+  - −10%, +10%: −1, unit elastic, revenue down 1%;
+  - +20%, 0: perfectly inelastic, revenue up;
+  - −20%, +40%: −2, elastic, revenue up.
+
+  Two further checks:
+  - Revenue is P × Q at both points.
+  - PED is never positive across 18 combinations.
+- **Found in review.** The unit-elastic case reads "revenue falls 1%". That is arithmetically right
+  for a discrete 10% change, but it contradicts the rule students learn, so an explanation was
+  added. A self-test requires the explanation for that case and forbids it for the others.
+- **Language.** The existing language rule caught "Quantity always moves against price" in the
+  lab's note: a contingent claim stated as an absolute. It was rewritten as a statement about what
+  the tool does.
+
+## 8. IB accuracy audit
+
+- **Source labels in the exam rooms:**
+  - *Official IB information* for the IB reference only;
+  - *Teacher-created practice* for the Paper 1, 2 and 3 workshops and the timed simulator;
+  - *Teacher-created tool* for the cockpit and *Why did I lose marks?*;
+  - *Analysed metadata* for Exam DNA;
+  - *Your own work* for the mistake book.
+
+  A self-test requires exactly one room labelled official, and requires that it is the IB
+  reference. This follows the rule "never imply teacher-created material is official IB material".
+- **Paper 3 is marked HL**, which is correct.
+- **The markband figure** is captioned "Economics guide, first assessment 2022, p. 63". It cites
+  the guide the reference layer rests on.
+- **The guide edition is still open.** A "first assessment 2024" copy is referenced online but could
+  not be retrieved, because ibo.org is blocked from this environment. This is recorded in
+  `IBREF.limits` and was not resolved in this release.
+- **The elasticity lab uses the simple percentage-change formula**, and says so. It notes that a
+  midpoint calculation gives a different answer for large changes.
+- **No IB logo is used, and no grade is predicted.**
+
+## 9. Diagram audit
+
+The overlap audit measured every figure on 20 routes at 15 widths.
+
+**Defects found in existing figures, all fixed**
+
+1. **Markband figure.** The axis title "Markband" collided with the last band label "13–15", on
+   every page that shows it. The title now has its own row.
+2. **Opener figures on phones and tablets.** Below 1000 px each section's figure sat, faded, under
+   the heading and lede. Below 1000 px it now follows the text as a small plate.
+3. **Opener figures at 1000–1279 px.** The figure reached up to 60 px into the lede (measured). It
+   now narrows to 30vw, which leaves a gap of at least 20 px.
+4. **Slim openers at 1280–1440 px.** The figure was taller than its band, so its top labels
+   ("Scarcity", "Marks") and caption were cut off. It is now sized by the band's height as well as
+   the page width.
+5. **Opener captions.** The caption sat on the figure's top edge and ran across the y-axis title.
+   It now sits just below the figure.
+
+**The new figures**
+
+- **Elasticity lab.** Its points and labels at first did not draw, because they relied on
+  animation classes. They now have their own styles, and a screenshot confirmed them.
+- **Cover plate.** Its hotspots are placed from the same functions that draw the curves.
+
+## 10. Calculation audit
+
+No existing calculation was changed. The existing calculation suite still passes: 491 checks,
+including forty generated inputs per calculation.
+
+The new arithmetic:
+
+- the elasticity lab (section 7);
+- the cover's equilibrium (section 7);
+- the scale-signal counts, which a self-test compares with the data they name.
+
+## 11. Responsive audit
+
+- **Widths.** `widths.mjs` now runs 42 routes at 15 widths: 320, 360, 375, 390, 414, 430, 768, 834,
+  1024, 1280, 1366, 1440, 1600, 1920 and 2560 px, four widths at a time.
+  - It checks horizontal overflow, page errors, touch targets and reachable scrolling tables.
+  - All 15 width checks pass (12 min 20 s).
+- **Header.** Between 881 and 1180 px the menu button wrapped above the brand, because both sat in
+  the same grid column. The header now uses flex at 1180 px and below. This was checked at 881,
+  1024, 1180 and 1181 px.
+- **Cover.** At 1279 px and below the lab stacks under the text. At 640 px and below the portrait
+  narrows and the hotspots shrink. At 320 and 390 px, `cover.mjs` confirms no sideways scroll and
+  no text over the portrait.
+
+## 12. Overflow and overlap audit
+
+`tests/overlap.mjs` is the audit the brief asks for in section 29.
+
+**What it measures**
+
+- It collects every visible atomic element on the page:
+  - text, measured by its line boxes rather than its block;
+  - images, figures and controls.
+- Each box is clipped to the scroll and clip containers it sits in.
+- Every pair where neither element contains the other is compared, with a 3 px tolerance.
+
+**What it reports**
+
+- content over content;
+- colliding labels inside a figure, including CSS-drawn captions;
+- a figure label cut off by its band;
+- a figure drawn under text;
+- sideways scroll.
+
+**Scope.** 20 routes at 15 widths (300 route-width combinations, 63,573 elements measured). The
+routes: home, About, Real World (landing and a case), a mindmap, the market lab, the elasticity
+lab, a diagram plate, exam, papers, Exam DNA, a concept page, *Economics, Everywhere*, the EE
+Studio, videos, the Educator Studio, the toolkit, calculate, the course and tutorials.
+
+**Deliberate exemptions**
+
+- A mindmap's connector layer (`svg.*edges*`), which is drawn under its nodes by design.
+- The sticky header, which is layered over content by design.
+- Text inside an `svg` is compared with text in the same figure, not with the page.
+
+**Issues found and fixed, in the order the audit found them**
+
+| # | Issue | Routes and widths | Fix |
+|---|---|---|---|
+| 1 | Opener figure under the heading and lede | Every opener, below 1000 px | The figure follows the text |
+| 2 | Opener figure overlapping the lede | 1000–1279 px | Narrowed to 30vw |
+| 3 | "Markband" colliding with "13–15" | Home, papers, Exam DNA; all widths | The axis title gets its own row |
+| 4 | Email running into the independence note | About, 390 and 320 px | `.split.even` collapses at 700 px and below |
+| 5 | Figure labels and caption cut off by the band | Slim openers, 1280–1440 px | Sized by the band's height |
+| 6 | Caption across the y-axis title | Papers and lab openers, 1024–2560 px | Caption below the figure |
+
+**False positives removed by improving the audit, not by exempting the elements**
+
+- A kicker's full-width block box touched a card's arrow.
+- An "AO4" tag's block touched the text beside it.
+
+In both cases measuring line boxes instead of block boxes removed the finding.
+
+**Final run:** 0 findings in every category, and no page errors.
+
+## 13. Accessibility audit
+
+- **axe-core** (WCAG 2 A, AA and 2.1 AA) on 22 routes at 1366 and 375 px, with reduced motion.
+  - **First run:** two contrast failures.
+    - The case reader's zone numbers were 3.7:1, faded by opacity. This predates the release.
+    - The new chapter numbers were 4.47:1.
+  - **Both fixed.** The final run reports **no violations** on any of the 44 page runs.
+- **The cover slider** is a labelled `input[type=range]`, and its explanation is `aria-live`.
+- **The Elasticity lab.** Its explanation is `aria-live`. Its direction buttons use
+  `aria-pressed`, and its figure has a `role="img"` label that states both prices, quantities and
+  revenues.
+- **The rooms bar** is a `nav` with an `aria-label`, and marks the room you are in with
+  `aria-current="page"`.
+- **Reduced motion.** It still switches the motion layer off (`renaissance.mjs`).
+
+## 14. Performance audit
+
+These are the median of five cold loads at 1366 px, with service workers blocked.
+
+**Timing**
+
+| | main (50767be) | this release |
+|---|---|---|
+| First contentful paint | 444 ms | 436 ms |
+| DOMContentLoaded | 3,275 ms | 3,429 ms (+154 ms, +4.7%) |
+| Start-up self-test | 1,888 ms | 2,017 ms (+129 ms) |
+| Home DOM nodes | 1,265 | 1,495 |
+| JS heap | 167 MB | 157 MB |
+
+**Page size**
+
+| | main (50767be) | this release |
+|---|---|---|
+| `index.html` | 4,678,265 bytes | 4,734,139 bytes (+55,874, +1.2%) |
+| gzip | 1,661,571 bytes | 1,676,731 bytes (+15,160, +0.9%) |
+
+**Why DOMContentLoaded grew.** Nearly all the increase is the start-up self-test: 18 new checks,
+some of which render views. First paint is unchanged.
+
+**The live figures redraw only themselves.** The cover plate and the elasticity figure replace
+their own SVG, not the page.
+
+## 15. Source and copyright audit
+
+- **Figures.** Every new one is original SVG built from stated functions.
+- **Photographs.** The three are the author's own, already embedded. None was added.
+- **Text.** All new text is original. Nothing was copied from IB documents.
+- **Exam DNA** still holds metadata only.
+- **No IB logo or protected branding** is used.
+- **Secret scan** of the whole diff against `main` (API keys, tokens, private keys, passwords):
+  - no matches;
+  - no `.env` or credential files tracked.
+
+## 16. Test counts
+
+| Suite | Before | After | Result on the final commit |
+|---|---|---|---|
+| In-page self-test | 1,923 | 1,941 | 1,941 passed, 0 failed |
+| `api-youtube.mjs` | 21 | 21 | 21 passed |
+| `selftest.mjs` | 37 | 37 | 37 passed |
+| `e2e.mjs` | 22 | 22 | 22 passed |
+| `ecosystem.mjs` | 30 | 30 | 30 passed |
+| `renaissance.mjs` | 25 | 25 (the two outdated hero checks were replaced) | 25 passed |
+| `cover.mjs` (new) | — | 33 | 33 passed |
+| `pwa.mjs` | 4 | 4 | 4 passed |
+| `widths.mjs` | 9 (9 widths × 37 routes) | 15 (15 widths × 42 routes) | 15 passed |
+| `overlap.mjs` (new) | — | 6 (over 300 route-widths) | 6 passed |
+| `routes.mjs` | 2 (every tab, cold, at two widths) | 2 | 2 passed |
+
+**The Playwright harness** (`node tests/run-all.mjs`) went from 150 checks in 8 suites to **195 checks in 10 suites**. Every suite passed on the final commit, `bc3e8e9`.
+
+**The new in-page checks:**
+
+- the cover model (4);
+- the portrait frames (2);
+- the elasticity lab (5);
+- the exam rooms (2);
+- case links (2);
+- case intelligence (1);
+- mindmap links (2).
+
+**Every new check can fail, and did:**
+
+- The overlap audit found the six issues in section 12 before they were fixed.
+- `cover.mjs` found the mindmap defect in section 17.
+- The language rule caught the absolute claim in section 7.
+
+## 17. Defects found
+
+*Pre-existing* means the defect is on `main`; *this release* means it was introduced and caught
+during this work.
+
+| # | Defect | Origin |
+|---|---|---|
+| 1 | The About opener drew a figure behind the portrait | Pre-existing |
+| 2 | Header: the menu button wrapped above the brand at 881–1180 px | Pre-existing |
+| 3 | Links of the form `nav('world',0,id)` landed on the Real World overview instead of the case | Pre-existing |
+| 4 | Opener figures under the heading and lede below 1000 px | Pre-existing |
+| 5 | Opener figures overlapping the lede at 1000–1279 px | Pre-existing |
+| 6 | Markband figure: axis title colliding with a band label | Pre-existing |
+| 7 | `.split.even` never collapsed on phones (About: the email ran into the note) | Pre-existing |
+| 8 | Slim openers cut off their figure's labels and caption at 1280–1440 px | Pre-existing |
+| 9 | Opener captions ran across the y-axis title | Pre-existing |
+| 10 | Case reader zone numbers at 3.7:1 contrast | Pre-existing |
+| 11 | Mindmap *go further* links never rendered on the map page (the mode table held the unwrapped function) | This release |
+| 12 | Chapter numbers at 4.47:1 contrast | This release |
+| 13 | Home HTML 314 KB heavier from the photograph data URIs | This release |
+| 14 | The cover heading was sized by an older, more specific rule, and the slider inherited a heavy global style | This release |
+| 15 | A case-intelligence button read "Open the an indirect tax plate" | This release |
+| 16 | The case-intelligence model panel stretched to the height of the row | This release |
+| 17 | Elasticity lab: the points and labels did not draw | This release |
+| 18 | Elasticity lab: an absolute claim in the note ("always") | This release |
+| 19 | Elasticity lab: a unit-elastic case showed revenue falling, with no explanation | This release |
+
+## 18. Defects fixed
+
+All 19. Each fix is described where it is discussed:
+
+| Defects | Where |
+|---|---|
+| 1, 7 | Section 4 |
+| 2 | Section 11 |
+| 3 | The world-view wrapper opens a case or a worked story from the argument |
+| 4–9 | Sections 9 and 12 |
+| 10, 12 | Section 13 |
+| 11 | The mode table now points at the wrapper; a self-test renders through the table |
+| 13 | Blob URLs |
+| 14 | A more specific rule, and a custom slider style |
+| 15 | "Diagram plate: \<title>" |
+| 16 | `align-self: start` |
+| 17 | Explicit point and label styles |
+| 18 | Reworded |
+| 19 | An explanation, plus a self-test |
+
+## 19. Remaining limitations
+
+**Parts of the brief not done in this release.** The brief is larger than one release. These
+parts are **not** in it:
+
+- The IA and EE "studio" redesigns (brief sections 14–15). The existing EE Studio and the five IA
+  tabs are unchanged. A home-page research band now leads to them.
+- The video studio (section 17), *Economics, Everywhere* (section 16), teacher experience (section
+  38) and *My Economics* (section 37) are unchanged.
+- The knowledge graph (sections 11–12) appears as *go further* links on mindmap nodes and as the
+  existing related-content panels. There is no new graph view.
+- No new cases, concepts or statistics were written (sections 19–24). Case intelligence reorganises
+  existing records.
+- No new economic or IB red-team was run over existing content. The last release ran five audits,
+  whose open items are listed in `docs/audits/2026-09-29/`. This release audited only its own new
+  models and text.
+
+**Limits of the testing**
+
+- **Browser and devices.** Only Chromium was tested. Safari, Firefox and real phones were not.
+- **Overlap audit coverage.** It covers 20 routes, not every one of the roughly 150 tabs. The
+  width test and the route test cover more routes, but check less.
+- **Guide edition.** Unresolved (section 8).
+- **Start-up time.** The start-up self-test is still synchronous. DOMContentLoaded grew by 154 ms.
+- **Visual-regression percentages overstate change** on some pages. The before-screenshots were
+  captured while the display font was still loading on some routes. The mindmap and Real World
+  pages at 1440 px changed mainly in type rendering, which was checked by eye.
+
+## 20. Manual tests you still need to perform
+
+1. **Real phones.** Open the home page on an iPhone (Safari) and an Android phone (Chrome). Drag
+   the cover slider with a finger, and tap each hotspot and chip.
+2. **Screen reader.** Use VoiceOver or NVDA on the cover slider and the elasticity lab. The
+   explanation should be read after each change.
+3. **Keyboard only.** Tab through the cover, the rooms bar and the elasticity lab. Check that
+   focus is visible and that the arrow keys move the sliders.
+4. **Your portrait.** Look at it on the cover and on About, at your usual screen sizes. Confirm the
+   crop and position are ones you are happy with.
+5. **Wording.** Confirm the cover wording ("Economics is a way of seeing", "Think like an
+   economist") and the About panel title.
+6. **Source labels.** Confirm the exam room labels match how you want each tool described.
+7. **Print.** Print About and one case. Check that case intelligence prints sensibly.
+8. **Offline.** Install the app, go offline, and open the home page, a case and the elasticity lab.
+9. **Other browsers.** Firefox and Safari on a laptop: the cover, About, a case and a slim opener
+   (Exam DNA) at 1280 px.
+10. **Deployment.** On the Vercel preview, check that `YOUTUBE_API_KEY` is still set and that the
+    video studio loads the feed.
+11. **Guide edition.** Confirm which Economics guide edition is current for your students. If it is
+    the 2024 edition, tell me, so that the reference layer and the markband caption can be checked
+    against it.
