@@ -337,13 +337,13 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   five-second opening sequence; a fresh visit still plays it.
 - A command palette opens on `/` or `Ctrl`/`Cmd` + `K` and reaches every section, every printable and
   every indexed item of content.
-- The build includes a self-test of **1,923 checks** reported across every area of the build: startup, printing,
+- The build includes a self-test of **2,019 checks** reported across every area of the build: startup, printing,
   navigation, mobile, desktop, resources, Google Drive, IB Economics, TOK, economics theory, calculations,
   diagrams, mindmap integrity, topic architecture, assessment, IA, student features, teacher features,
   progress, storage, export and import, contact links, tutorials, branding, accessibility, performance,
   content integrity, video learning, tools, timed sessions, my economics, the opening sequence,
   installability and offline behaviour, Exam DNA, the paper labs, the analytical layers, the
-  independent-platform statement and the real-world collection. Open the browser console for the category report, or read it on
+  independent-platform statement, the real-world collection and the course layer. Open the browser console for the category report, or read it on
   the page at **About → Quality report**, with the counted content report at **About → Content report**.
   An area with no assertions behind it is reported as untested rather than as a pass. In this release
   every area has assertions behind it and **every check passes**.
@@ -695,21 +695,39 @@ offering to open the assignment, and nothing about what they then do is reported
 
 ## The opening sequence
 
-Five seconds on a fresh page load, in five stages one second apart: the logo, "IB DP Economics",
-"Think like an economist.", "Learn. Think. Calculate." and "Practise. Evaluate. Prepare."
+Exactly five seconds, on one clock. The sequence runs:
 
-The name is set once, not twice. The supplied logo already carries it, so it is not repeated in
-type beneath the mark: one identity, stated once. A **Skip intro** control sits in the corner from
-the first frame and ends the sequence immediately.
+| Time | Stage |
+|---|---|
+| 0–0.8 s | an obsidian field with a faint grid, a market and a frontier |
+| 0.7 s | the monogram |
+| 1.4 s | the name and "Knowledge. Insight. Impact.", assembled from the brand vectors rather than set again in type |
+| 2.2 s | "IB DP Economics", with the economics figure brought into focus behind it |
+| 3.1 s | "Think like an economist.", the peak |
+| 4.0 s | "Learn. Think. Calculate." |
+| 4.7–5.0 s | the exit fade into the page |
 
-Every stage animates opacity and transform only and occupies its final space from the first
-frame, so the sequence cannot shift the layout. The overlay is fixed, so it is outside the
-document flow; it stops intercepting clicks as it fades and is then removed from the document
-rather than left invisible over the page. It locks no scrolling, writes no storage, opens no
-dialogue and prints nothing, and the application has already rendered and self-tested behind it,
-so it delays nothing. Under a reduced-motion preference the sequence is skipped rather than played
-slowly, and the welcome sequence is scheduled after the overlay has gone rather than beside it.
-Skipping takes the same exit path as finishing, so nothing can be left behind by leaving early.
+**One start timestamp.** The start is the first frame the reader sees. It is taken from
+`requestAnimationFrame` and re-anchored to the browser's reported first paint during a still passage
+of the sequence. Every stage is a Web Animation scheduled from that timestamp, not a chain of timers.
+
+**Nothing can lengthen it.** The stages animate opacity and transform only, so they run on the
+compositor while the start-up self-test occupies the main thread. The exit fade reaches full
+transparency at exactly start + 5000 ms, and the overlay is removed on the next frame.
+
+**Fallbacks rather than delays.**
+- The font stylesheet no longer blocks the first frame; a late font is swapped in, not waited for.
+- On a device slow enough that the platform is not ready at 4.7 s, the final frame holds rather than
+  uncovering an unfinished page, and the timing record says so.
+
+**Skip, reduced motion, reloads and deep links.**
+- **Skip intro** fades out over about 170 ms and leaves through the same exit.
+- Reduced motion shows the same hierarchy at once and leaves after 1.5 s.
+- A reload, a Back/Forward step or a link to one page shows the identity still and leaves as soon as
+  the platform is ready.
+
+`tests/intro.mjs` measures the timing at 360, 390, 768, 1024, 1440 and 1920 px, from the record the
+page keeps in `window.__INTRO`.
 
 ## Installable, and honest about offline
 
@@ -778,32 +796,63 @@ The TOK section links to the official IB material for anything administrative ra
 reproducing it. What it teaches is the habit of asking what a claim rests on, which is the same
 skill the highest evaluation band in Economics describes.
 
-## Topic dossiers and the learning architecture
+## The course: thirty-one lessons
 
-Every major topic now follows the same recurring shape, which is what makes the platform feel
-like one system rather than a set of tools:
+Every subtopic in the Economics guide (first assessment 2022) is a complete lesson at
+**Course › Topics**. The earlier topic dossier became the lesson, and its old address still works.
+Each lesson follows one loop: **Learn → See → Try → Explain → Apply → Evaluate → Retrieve**, then
+**Connect**.
 
-**Conceptual core → learning objectives → before you start → mindmap → key terms → theory →
-diagram → calculation → common traps → real world → TOK lens → evaluation → exam practice →
-test yourself → inquiry and reflection → progress.**
+- **The big idea**, why it matters and one real-world question.
+- **Before you start**: the prerequisites, each a link to the lesson that teaches it.
+- **Objectives** as things you can observe yourself doing: know, understand, apply, analyse and
+  evaluate, plus calculate, draw, interpret and recommend where they apply. Where the guide sets a
+  subtopic only at AO2, no AO3 practice question is attached to it.
+- **The core explanation** in short blocks, with "because" chains, tables and a key-terms rail.
+- **The mechanism**: cause → mechanism → immediate → secondary → long-run effect, and what it
+  depends on.
+- **Model cards**: purpose, assumptions, mechanism, prediction, application, limitations, real
+  world, common misconception, exam use and a "Go deeper" note. Each is drawn with its plate.
+- **Try it**: misconception checks with feedback, the calculations and the diagrams to explore.
+- **Explain it to me** (simple, exam, deep) and **Can I explain it?**: you write first, then see
+  what a complete explanation mentions.
+- **Apply it**: the Real World cases filed under the subtopic, an inquiry lab, and an IA angle that
+  is learning support, not a model commentary.
+- **Evaluate it**: theory, evidence and interpretation kept apart; "Watch out", drawn from the
+  misconception database; the professor layer; and the Economist's Lens.
+- **Exam connection**: question types, command terms, diagram and calculation requirements, common
+  errors, what strong answers do, and original practice questions. No claim is made about how often
+  anything is examined.
+- **Retrieve it**, then the seven **Can I actually do this?** ticks. The platform shows only the
+  ticks that apply: no diagram, no "I can draw it".
+- **Connect**: linked topics, key concepts and where each creates a tension, TOK, and a next
+  step. **What should I study next?** reads only the written prerequisite links and your own ticks.
+- **Teach it** adds a teacher layer: objective, starter, activity, discussion, formative check,
+  extension and homework.
 
-A dossier exists for all thirty-one subtopics in the guide. Most of each one is assembled from
-material the platform already holds, so nothing is duplicated: the theory and the HL extension
-come from the syllabus metadata, the diagrams from the model-driven engine, the calculations from
-the calculation board, the key terms from the economist's dictionary as links rather than as a
-second set of definitions. Eight subtopics carry the full authored layer as well: a conceptual
-core, measurable objectives, activation prompts and a retrieval set, and the interface marks
-which those are rather than implying the others are equivalent.
+Foundation, Core and Deeper choose how much of the lesson to show. They describe the content, not
+the student.
 
-**Objectives are measurable.** A self-test rejects any objective beginning "understand",
-"know about" or "appreciate", across both the dossiers and the mindmaps.
+**Around the lessons:**
+- **Unit pages.**
+- **Glossary 2.0.** 250 terms, each with plain English, the definition, why it matters, an example,
+  related terms, the confusion, its topic and IB status, and an optional deeper note. Filter by
+  letter, unit, topic, depth and status, and compare any terms.
+- **Command Terms 2.0.** The IB's definition, then a teacher's guidance, each labelled.
+- **The misconception database.** 51 entries, each with a student view and a teacher view.
+- **The Economist's Lens.** Seventeen questions for any economic issue.
+- **The concept network.** One concept, many worlds.
+- **Economics Intelligence.** Each of the six real-world issues as a path from concept to exam.
+- **Paper guidance.** Papers 1–3, with exercises on invented data, and economic writing.
+- **Checklists.** Including "Can I actually do this?".
+- **Academic integrity.** Includes "Before I submit" checklists.
+- **Revision mode.** 15, 30 or 60 minutes, a unit, or the whole course.
+- **Snapshot mindmaps.** The course, each unit and each subtopic on one page, printable on A4
+  landscape with a last-night version.
 
-**Prerequisites are not invented.** "You may want to know first" reads the curriculum link graph
-and keeps only the subtopics that sit earlier in the course. Nothing is asserted as a
-prerequisite that the curriculum relationships do not already contain.
-
-**Reflection is saved, not scored.** The five inquiry prompts write into the student's own notes
-for that subtopic, on their device.
+The course layer is data, not page fragments: `assets/data/course.js` carries its own version, its
+sources and its counts. How it was written, reviewed and patched, the source hierarchy, and a
+coverage matrix that shows every gap are in `docs/content-architecture.md`.
 
 ## Masterclass and the teacher topic pack
 
@@ -1105,10 +1154,12 @@ cd arjun-agrawal-ib-economics
 `index.html` is fully self-contained: the logo, portrait, diagrams and all logic are embedded.
 You can email that one file to a student and it will work on its own.
 
-The one thing that single file cannot carry with it is the Exam DNA corpus, which lives beside it
-at `assets/data/exam-dna.js`. Open the file on its own and every Exam DNA surface says plainly
-that the analysis file is not there; nothing else changes. Keep the folder together and Exam DNA
-works, including offline once the platform has been installed.
+Two things that single file cannot carry with it live beside it: the Exam DNA corpus
+(`assets/data/exam-dna.js`) and the course layer (`assets/data/course.js`: the lessons, glossary,
+misconception database and snapshot maps). Open the page on its own and the pages that need
+either file say so plainly; the earlier dictionary and command-term pages stand in for the new
+ones. Keep the folder together and both work, including offline once the platform has been
+installed.
 
 For the installable version, the service worker needs a real origin rather than a `file://` path,
 so serve the folder over HTTP:
@@ -1139,7 +1190,7 @@ and the `assets` folder. Commit directly to the `main` branch.
 >
 > ```text
 > index.html  404.html  favicon.svg  manifest.webmanifest  service-worker.js  robots.txt
-> assets/data/        exam-dna.js, real-world.js
+> assets/data/        exam-dna.js, real-world.js, course.js
 > assets/icons/       app icons and apple-touch-icon.png
 > assets/carousels/   economics-in-60-seconds-001.pdf … 010.pdf
 > assets/brand/       source logo, monogram and portrait files (the page embeds its own copies)
