@@ -37236,7 +37236,7 @@ function elSVG(r){const W=560,H=360,X=q=>50+q/200*460,Y=p=>320-p/20*290;
   <circle class="el-pt" cx="${X(r.Q0)}" cy="${Y(r.P0)}" r="5"/><circle class="el-pt" cx="${X(r.Q1)}" cy="${Y(r.P1)}" r="5"/>
   <text class="el-lb el-pl" x="${X(r.Q0)+8}" y="${Y(r.P0)-8}">A</text><text class="el-lb el-pl" x="${X(r.Q1)+8}" y="${Y(r.P1)-8}">B</text></svg>`}
 function elRead(r){const rev=r.dTR>0.05?"rises":r.dTR<-0.05?"falls":"is unchanged";
- return `PED = ${r.dq>0?"+":""}${r.dq}% ÷ ${r.dp>0?"+":""}${r.dp}% = ${r.ped.toFixed(2)}. |PED| = ${r.abs.toFixed(2)}: demand is ${r.cls} over this range. Total revenue ${rev} (${r.TR0.toFixed(0)} → ${r.TR1.toFixed(0)}, ${r.dTR>0?"+":""}${r.dTR.toFixed(1)}%).`}
+ return `PED = ${r.dq>0?"+":""}${r.dq}% ÷ ${r.dp>0?"+":""}${r.dp}% = ${r.ped.toFixed(2)}. |PED| = ${r.abs.toFixed(2)}: demand is ${r.cls} over this range. Total revenue ${rev} (${r.TR0.toFixed(0)} → ${r.TR1.toFixed(0)}, ${r.dTR>0?"+":""}${r.dTR.toFixed(1)}%).${r.cls==="unit elastic"&&Math.abs(r.dTR)>0.05?" Unit elasticity leaves revenue unchanged only for very small changes: over a change this large, the two percentage changes multiply, so revenue moves slightly.":""}`}
 function elUpdate(){const r=elCalc();const f=document.getElementById("el-fig"),o=document.getElementById("el-out");if(f)f.innerHTML=elSVG(r);if(o)o.textContent=elRead(r)}
 function elasticityLab(){const r=elCalc();
  return H.pageHead("Experiment","Elasticity lab","Change the price, choose how strongly quantity responds, and see price elasticity of demand and total revenue move together.")
@@ -37285,6 +37285,7 @@ function COVSUITE(){
   [{up:true,p:20,q:0},0,"perfectly inelastic",1],[{up:false,p:20,q:40},-2,"price elastic",1]];
  T("Elasticity lab · PED, its class and the direction of total revenue match five worked cases",()=>W.every(([o,ped,cls,dir])=>{const r=elCalc(o);
    return near(r.ped,ped)&&r.cls===cls&&Math.sign(Math.round(r.dTR*1e6))===dir}),"p+10% q−5%: −0.5 inelastic, TR up; p+10% q−20%: −2 elastic, TR down; p−10% q+10%: −1 unit, TR down (−1%); p+20% q 0: perfectly inelastic, TR up; p−20% q+40%: −2 elastic, TR up");
+ T("Elasticity lab · a unit-elastic reading over a large change explains why revenue still moves",()=>/only for very small changes/.test(elRead(elCalc({up:false,p:10,q:10})))&&!/only for very small/.test(elRead(elCalc({up:true,p:10,q:5}))));
  T("Elasticity lab · revenue is price times quantity at both points",()=>W.every(([o])=>{const r=elCalc(o);return near(r.TR0,r.P0*r.Q0)&&near(r.TR1,r.P1*r.Q1)&&near(r.P1,r.P0*(1+r.dp/100))&&near(r.Q1,r.Q0*(1+r.dq/100))}));
  T("Elasticity lab · quantity moves against price, so PED is never positive",()=>[true,false].every(up=>[1,15,40].every(p=>[0,7,60].every(q=>elCalc({up,p,q}).ped<=0))));
  T("Elasticity lab · is a Lab tab and states that it is a teacher-created tool",()=>{const s=SECTIONS.find(x=>x.v==="lab");return s.tabs.includes("Elasticity lab")&&/Teacher-created tool/.test(elasticityLab())});
