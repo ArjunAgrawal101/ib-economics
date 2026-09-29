@@ -10,8 +10,8 @@ let { p, errors } = await open(ctx, base);
 const st = () => p.evaluate(() => ({ v: VIEW, t: TAB, a: ARG }));
 
 /* the home page */
-check(await p.locator('.rn-home .rn-hfig svg.motif').count() === 1, 'the home opener draws its model');
-check(await p.locator('.rn-steps li').count() === 4, 'the opener names data, theory, evidence and decision');
+check(await p.locator('.rn-home.cv svg.cv-svg').count() === 1, 'the home opener draws its model');
+check(await p.locator('.cv-sig').count() >= 5, 'the opener shows the platform\'s scale, counted from its data');
 check(await p.locator('.rn-atlas .atl').count() >= 4 && await p.locator('.atl-index .atx').count() >= 5, 'the gateway offers every major destination in two tiers');
 await p.locator('.rn-atlas .atl', { hasText: 'Real World' }).first().click(); await p.waitForTimeout(200);
 check((await st()).v === 'world', 'a gateway card opens its section');
@@ -66,7 +66,7 @@ check(errors.length === 0, 'no page errors across the renaissance journeys', err
 /* reduced motion: nothing animates */
 const rm = await b.newContext({ viewport: { width: 1366, height: 900 }, reducedMotion: 'reduce' });
 const o = await open(rm, base);
-const anim = await o.p.evaluate(() => { const c = document.querySelector('.rn-home .motif .m-c'); return c ? getComputedStyle(c).animationName : 'none' });
+const anim = await o.p.evaluate(() => { const c = document.querySelector('.rn-home .motif .m-c, #view .motif .m-c'); return c ? getComputedStyle(c).animationName : 'none' });
 check(anim === 'none', 'with reduced motion the figures do not animate', anim);
 check(await o.p.evaluate(() => !document.body.classList.contains('rn-anim')), 'reduced motion switches the motion layer off');
 await rm.close();

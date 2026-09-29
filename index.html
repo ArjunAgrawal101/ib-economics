@@ -37147,7 +37147,9 @@ function mmFurther(n){if(!n||!n.sub)return "";let G=null;try{G=kgBuild()[n.sub]}
 (function(){if(typeof mmExplore!=="function")return;const prev=mmExplore;
  const MARK='Marking a node sends it to your revision queue and your mistake book, on this device only.</p>';
  mmExplore=function(m){const h=prev.apply(this,arguments);const n=MM.focus?mmNode(m,MM.focus):null;
-  if(!n||!h.includes(MARK))return h;return h.replace(MARK,MARK+mmFurther(n))}})();
+  if(!n||!h.includes(MARK))return h;return h.replace(MARK,MARK+mmFurther(n))}
+ /* the mode table captured the original function when it was built, so it is pointed at the wrapper too */
+ if(typeof MMBODY!=="undefined"&&MMBODY.explore===prev)MMBODY.explore=mmExplore})();
 /* Links across the platform open a case as nav('world',0,id). When Real World
    was reorganised, tab 0 became the landing page and stopped reading its
    argument, so those links landed on the overview instead of the case. Tab 0
@@ -37223,6 +37225,55 @@ function elasticityLab(){const r=elCalc();
    </div></div></div></section>`}
 (function(){const s=SECTIONS.find(x=>x.v==="lab");const T="Elasticity lab";if(s&&s.tabs&&!s.tabs.includes(T))s.tabs.push(T);
  const prev=VIEWS.lab;VIEWS.lab=function(){const t=SECTIONS.find(x=>x.v==="lab");return t&&t.tabs[TAB]===T?elasticityLab():prev.apply(this,arguments)}})();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE SELF-TESTS FOR THE COVER-AND-COMPOSITION RELEASE
+   The cover's movable market is recomputed at every slider position; the
+   elasticity lab's arithmetic is checked against worked cases, including
+   cases that must come out elastic, inelastic, unit elastic and perfectly
+   inelastic; every exam room must open a tab that exists and say what kind of
+   material it holds; case links must open the case; the portrait must sit in
+   a frame that holds no figure.
+   ═══════════════════════════════════════════════════════════════════════════ */
+function COVSUITE(){
+ const out=[];const T=(n,f,d)=>{let ok=false,det=d||"";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){ok=false;det=e.message}out.push({n,ok:!!ok,detail:det})};
+ const near=(a,b,t)=>Math.abs(a-b)<=(t===undefined?1e-9:t);
+ const S=[-2,-1.5,-1,-0.5,0,0.5,1,1.5,2];
+ T("Cover model · the equilibrium drawn lies on demand and on supply at every slider position",()=>S.every(s=>{const e=CVF.eq(s);return near(CVF.D(e.q,s),e.p)&&near(CVF.S(e.q),e.p)}));
+ T("Cover model · more demand raises both price and quantity; less demand lowers both",()=>S.slice(1).every((s,i)=>{const a=CVF.eq(S[i]),b=CVF.eq(s);return b.p>a.p&&b.q>a.q}));
+ T("Cover model · the reading names the shortage or surplus that moves price, never price moving demand",()=>{const k=CV.s;try{CV.s=1;const up=cvRead();CV.s=-1;const dn=cvRead();
+   return /shortage/.test(up)&&/surplus/.test(dn)&&!/price rises[^.]*demand (rises|increases)/i.test(up+dn)}finally{CV.s=k}});
+ T("Cover model · every scale signal is counted from the data it names",()=>{const n=rnCount(),h=cvScale();
+   return ["cases","maps","diagrams","calcs","dna"].every(k=>typeof n[k]!=="number"||h.includes(`<b>${fmtN(n[k])}</b>`))&&(h.match(/class="cv-sig"/g)||[]).length>=4});
+ T("Cover frame · the portrait sits in its own frame, which holds no figure",()=>{const h=VIEWS.home();const i=h.indexOf('<figure class="cv-portrait"');if(i<0)return false;
+   const f=h.slice(i,h.indexOf("</figure>",i));return !/<svg|data-motif/.test(f)&&/<img/.test(f)});
+ T("Profile frame · the portrait frame holds no figure, and the economics panel is a separate cell",()=>{const h=abCover();const i=h.indexOf('ab-portrait');const j=h.indexOf('<aside class="ab-panel"');
+   return i>0&&j>i&&!/<svg/.test(h.slice(i,j))});
+ /* the elasticity lab against worked cases */
+ const W=[[{up:true,p:10,q:5},-0.5,"price inelastic",1],[{up:true,p:10,q:20},-2,"price elastic",-1],[{up:false,p:10,q:10},-1,"unit elastic",-1],
+  [{up:true,p:20,q:0},0,"perfectly inelastic",1],[{up:false,p:20,q:40},-2,"price elastic",1]];
+ T("Elasticity lab · PED, its class and the direction of total revenue match five worked cases",()=>W.every(([o,ped,cls,dir])=>{const r=elCalc(o);
+   return near(r.ped,ped)&&r.cls===cls&&Math.sign(Math.round(r.dTR*1e6))===dir}),"p+10% q−5%: −0.5 inelastic, TR up; p+10% q−20%: −2 elastic, TR down; p−10% q+10%: −1 unit, TR down (−1%); p+20% q 0: perfectly inelastic, TR up; p−20% q+40%: −2 elastic, TR up");
+ T("Elasticity lab · revenue is price times quantity at both points",()=>W.every(([o])=>{const r=elCalc(o);return near(r.TR0,r.P0*r.Q0)&&near(r.TR1,r.P1*r.Q1)&&near(r.P1,r.P0*(1+r.dp/100))&&near(r.Q1,r.Q0*(1+r.dq/100))}));
+ T("Elasticity lab · quantity moves against price, so PED is never positive",()=>[true,false].every(up=>[1,15,40].every(p=>[0,7,60].every(q=>elCalc({up,p,q}).ped<=0))));
+ T("Elasticity lab · is a Lab tab and states that it is a teacher-created tool",()=>{const s=SECTIONS.find(x=>x.v==="lab");return s.tabs.includes("Elasticity lab")&&/Teacher-created tool/.test(elasticityLab())});
+ /* the exam rooms */
+ T("Exam rooms · every room opens a tab that exists",()=>EXAM_ROOMS().every(([,v,tab])=>{const s=SECTIONS.find(x=>x.v===v);return s&&VIEWS[v]&&s.tabs&&s.tabs.includes(tab)}));
+ T("Exam rooms · only the reference room is labelled official IB information",()=>{const r=EXAM_ROOMS().filter(x=>/Official IB/.test(x[3]));return r.length===1&&r[0][2]==="IB reference"&&EXAM_ROOMS().every(x=>x[3].length>5)});
+ /* case links */
+ T("Case links · a case id on the Real World landing tab opens that case",()=>{const k=[VIEW,TAB,ARG,RWC.id],c=RW_CASES[0];
+   try{VIEW="world";TAB=0;ARG=c.id;const h=VIEWS.world();return h.includes("Case intelligence")&&RWC.id===c.id}finally{[VIEW,TAB,ARG,RWC.id]=k}});
+ T("Case links · the landing tab without an argument is unchanged",()=>{const k=[VIEW,TAB,ARG,RWC.id];try{VIEW="world";TAB=0;ARG=null;return !VIEWS.world().includes("Case intelligence")}finally{[VIEW,TAB,ARG,RWC.id]=k}});
+ T("Case intelligence · compiled for every case without an empty or undefined field",()=>RW_CASES.every(c=>{const h=rwIntel(c);return h.includes("The model")&&!/\bundefined\b|\bnull\b|<p[^>]*>\s*<\/p>/.test(h)}));
+ T("Mindmap links · the explore mode, as the map page calls it, shows the links for a focused node",()=>{const k=MM.focus;
+   try{const m=mmGet("market");MM.focus="dem";return !!m&&MMBODY.explore(m).includes("mm-further")}finally{MM.focus=k}});
+ T("Mindmap links · a node with a subtopic offers links that run to real handlers",()=>{const h=mmFurther({sub:"2.5"});return /Go further/.test(h)&&(h.match(/<dd>/g)||[]).length>=2&&!/onclick=""/.test(h)});
+ return out;
+}
+COVSUITE.suiteName="Cover and composition";
+EXTRA_SUITES.push(COVSUITE);
+QAREPORT.push({area:"Cover, profile, cases and rooms",re:/^(Cover model|Cover frame|Profile frame|Elasticity lab|Exam rooms|Case links|Case intelligence|Mindmap links) · /,
+ what:"That the cover's movable market stays in equilibrium at every position and explains the shift correctly, the scale signals are counted from data, the portrait never shares a frame with a figure, the elasticity lab's arithmetic matches worked cases, every exam room opens a real tab and only official material is labelled official, and case links open the case."});
 
 /* ▓▓ RENAISSANCE:END ▓▓ */
 /* ═══════════════════════════════════════════════════════════════════════════
