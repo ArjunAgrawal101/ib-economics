@@ -1370,8 +1370,8 @@ svg text[font-family*="Georgia"]{font-family:var(--ser)}
 .rn-cap{position:absolute;right:0;top:2px;max-width:100%;text-align:right;font-family:var(--mono);font-size:10.5px;
   letter-spacing:.03em;color:rgba(255,255,255,.46);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media (max-width:1279px){.hero .rn-plot{width:min(40vw,470px);opacity:.62}}
-@media (max-width:999px){.hero .rn-plot,.hero.slim .rn-plot{top:18px;right:-36px;transform:none;width:380px;opacity:.26}.rn-cap{display:none}}
-@media (max-width:560px){.hero .rn-plot,.hero.slim .rn-plot{width:280px;right:-54px;top:10px;opacity:.2}}
+@media (max-width:999px){.hero .rn-plot,.hero.slim .rn-plot{top:18px;right:0;transform:none;width:min(380px,62vw);opacity:.26}.rn-cap{display:none}}
+@media (max-width:560px){.hero .rn-plot,.hero.slim .rn-plot{width:min(280px,70vw);right:0;top:10px;opacity:.2}}
 /* ── the motif language (dark openers) ──────────────────────────────────── */
 .motif .m-ax line{stroke:rgba(255,255,255,.5);stroke-width:1.5}
 .motif .m-c{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
@@ -36400,7 +36400,7 @@ function toolkitView(){
  return H.pageHead("Think","The economist's toolkit","Eighteen lenses an economist uses on any question, from a price rise to a trade war. Pick one, ask its questions, then open the platform's own material through it.")
  +`<section class="sec"><div class="wrap full">
   <p class="xs"><span class="tag">Teaching frame</span> A way of organising economic thinking by Arjun Agrawal, not an IB list. The nine key concepts of the course are the IB's own; these lenses sit alongside them.</p>
-  <div class="tk-grid mt4" role="list">${LENSES.map((x,i)=>`<button role="listitem" class="tk-lens${x.k===L.k?" on":""}" aria-pressed="${x.k===L.k}" onclick="TLAE.k='${x.k}';render()"><span class="tk-n">${String(i+1).padStart(2,"0")}</span><span class="tk-t">${esc(x.n)}</span></button>`).join("")}</div>
+  <div class="tk-grid mt4" role="group" aria-label="Choose a lens">${LENSES.map((x,i)=>`<button class="tk-lens${x.k===L.k?" on":""}" aria-pressed="${x.k===L.k}" onclick="TLAE.k='${x.k}';render()"><span class="tk-n">${String(i+1).padStart(2,"0")}</span><span class="tk-t">${esc(x.n)}</span></button>`).join("")}</div>
   <div class="tk-card mt5">
    <figure class="rn-fig">${motifSVG(L.m,{cls:"on-paper"})}<figcaption>${esc(motifCap(L.m))}</figcaption></figure>
    <div><div class="eb a">Lens ${LENSES.indexOf(L)+1} of ${LENSES.length}</div><h2 class="mt2">${esc(L.n)}</h2>
@@ -36565,7 +36565,7 @@ function rnMind(){
    <div class="row mt4"><button class="btn on-ink" onclick="nav('mind')">Open the mindmaps</button><button class="btn gh on-ink" onclick="nav('mind',2)">Connect two ideas</button></div></div>
   <div class="mn-net" role="list" aria-label="Core mindmaps">
    <svg class="mn-edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">${edges.map(([a,b])=>`<line x1="${P[a][0].toFixed(1)}" y1="${P[a][1].toFixed(1)}" x2="${P[b][0].toFixed(1)}" y2="${P[b][1].toFixed(1)}"/>`).join("")}</svg>
-   ${K.map((k,i)=>`<button role="listitem" class="mn-node" style="left:${P[i][0].toFixed(1)}%;top:${P[i][1].toFixed(1)}%" onclick="nav('mind',0,'${esA(k)}')">${esc(MIND_MAPS[k].title)}</button>`).join("")}
+   ${K.map((k,i)=>`<span role="listitem"><button class="mn-node" style="left:${P[i][0].toFixed(1)}%;top:${P[i][1].toFixed(1)}%" onclick="nav('mind',0,'${esA(k)}')">${esc(MIND_MAPS[k].title)}</button></span>`).join("")}
    <span class="mn-core" aria-hidden="true">Economics</span></div></div>
  </div></section>`}
 /* ── Economics at a glance: counted, not asserted ──────────────────────── */
@@ -36636,17 +36636,22 @@ const RN_ACR={ped:"price elasticity of demand",pes:"price elasticity of supply",
  hdi:"human development index",bop:"balance of payments",fdi:"foreign direct investment",msb:"marginal social benefit",msc:"marginal social cost",
  mr:"marginal revenue",mc:"marginal cost",ac:"average cost",nru:"natural rate of unemployment",tok:"theory of knowledge",ee:"extended essay",ia:"internal assessment"};
 const rnEsc=t=>t.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+/* patterns are compiled once per query, not once per record */
+const RN_PAT={q:null,w:null,acr:null};
+function rnPat(terms,q){if(RN_PAT.q!==q){RN_PAT.q=q;RN_PAT.w=terms.map(t=>new RegExp("(^|[^a-z0-9])"+rnEsc(t)));RN_PAT.acr=new RegExp("\\("+rnEsc(q)+"\\)")}return RN_PAT}
 function rnRank(x,terms,q){
- const T=(x.t||"").toLowerCase(),B=String(x.s||x.d||"").toLowerCase();let sc=0,hit=0;
- for(const t of terms){const w=new RegExp("(^|[^a-z0-9])"+rnEsc(t));
-  const tw=w.test(T),tb=w.test(B),ts=T.includes(t),bs=B.includes(t);
+ const P=rnPat(terms,q),T=(x.t||"").toLowerCase(),B=String(x.s||x.d||"").toLowerCase();let sc=0,hit=0;
+ for(let i=0;i<terms.length;i++){const t=terms[i],w=P.w[i];
+  const ts=T.includes(t),bs=B.includes(t);if(!ts&&!bs)continue;
+  const tw=ts&&w.test(T),tb=bs&&w.test(B);
   if(tw)sc+=8;else if(ts)sc+=2;
   if(tb)sc+=2;else if(bs)sc+=.4;
   if(tw||tb||(t.length>3&&(ts||bs)))hit++}
- if(hit<terms.length&&!(RN_ACR[q]&&(T.includes(RN_ACR[q])||B.includes(RN_ACR[q]))))return -1;
+ const A=RN_ACR[q],aT=A&&T.includes(A),aB=A&&!aT&&B.includes(A);
+ if(hit<terms.length&&!(aT||aB))return -1;
  if(T===q)sc+=12;else if(T.startsWith(q))sc+=5;
- if(new RegExp("\\("+rnEsc(q)+"\\)").test(T))sc+=6;   /* an acronym in brackets: "(PED)" */
- if(RN_ACR[q]){if(T.includes(RN_ACR[q]))sc+=16;else if(B.includes(RN_ACR[q]))sc+=3}
+ if(T.includes("("+q+")"))sc+=6;   /* an acronym in brackets: "(PED)" */
+ if(aT)sc+=16;else if(aB)sc+=3;
  return sc*(1+.18*(RN_KIND_W[x.k]!==undefined?RN_KIND_W[x.k]:1))}
 cpScore=function(list,terms,tw,sw){const q=terms.join(" ");
  return list.map(x=>({...x,sc:rnRank(x,terms,q)})).filter(x=>x.sc>0).sort((a,b)=>b.sc-a.sc)};
@@ -36688,6 +36693,8 @@ function dgReadGuide(k){const r=DG_READ[k];if(!r)return "";
    ═══════════════════════════════════════════════════════════════════════════ */
 function RENSUITE(){
  const out=[];const T=(n,f,d)=>{let ok=false,det=d||"";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){ok=false;det=e.message}out.push({n,ok:!!ok,detail:det})};
+
+ let HOMEH=null;const HOME=()=>HOMEH||(HOMEH=VIEWS.home());
  const F=MOTIFFN,near=(a,b,t)=>Math.abs(a-b)<=(t===undefined?1e-6:t);
  /* ── motifs: geometry recomputed from the stated functions ── */
  T("Motif · every motif renders an SVG hidden from assistive technology, with a caption",()=>Object.keys(MOTIFS).every(k=>{const s=motifSVG(k);return /^<svg[^>]*aria-hidden="true"/.test(s)&&/viewBox="0 0 600 400"/.test(s)&&motifCap(k).length>20&&!/NaN|undefined/.test(s)}));
@@ -36716,14 +36723,14 @@ function RENSUITE(){
  T("Identity · every paper section exists",()=>[...RN_PAPER].every(v=>SECTIONS.some(s=>s.v===v)));
  /* ── the front page ── */
  T("Front page · no band the home page had before is dropped",()=>{const t=h=>{const d=document.createElement("template");d.innerHTML=h;return [...d.content.children].map(e=>{const x=e.querySelector(".shead h2")||e.querySelector("h1,h2");return x?x.textContent.trim():""}).filter(Boolean)};
-   const before=t(RN.homePrev()),after=VIEWS.home();const miss=before.filter(x=>!after.includes(esc(x).slice(0,30))&&!after.includes(x.slice(0,30)));return miss.length===0?true:{ok:false,d:miss.join(" | ")}});
- T("Front page · the gateway, the daily page, the lead story, the network and the figures are present",()=>{const h=VIEWS.home();return ["Explore Economics","Today in Economics","Real World","See the whole idea","Economics at a glance","Think like an economist."].every(x=>h.includes(x))});
+   const before=t(RN.homePrev()),after=HOME();const miss=before.filter(x=>!after.includes(esc(x).slice(0,30))&&!after.includes(x.slice(0,30)));return miss.length===0?true:{ok:false,d:miss.join(" | ")}});
+ T("Front page · the gateway, the daily page, the lead story, the network and the figures are present",()=>{const h=HOME();return ["Explore Economics","Today in Economics","Real World","See the whole idea","Economics at a glance","Think like an economist."].every(x=>h.includes(x))});
  T("Front page · every gateway destination is a registered section",()=>{const h=rnAtlas();const v=[...h.matchAll(/onclick="nav\('([a-z]+)'\)"/g)].map(m=>m[1]);return v.length>=8&&v.every(x=>SECTIONS.some(s=>s.v===x))});
  T("Front page · the figures shown are the platform's own counts",()=>{const n=rnCount();return n.cases===RW_CASES.length&&n.maps===MMKEYS().length&&n.diagrams===DGKEYS.length&&n.calcs===CALC.length&&n.terms===GLOSS.length});
  T("Front page · the daily page is the same all day and changes across days",()=>{const d=new Date(2026,8,29,9),e=new Date(2026,8,29,22);const a=dailyItems(d),b=dailyItems(e);
    const week=[0,1,2,3,4,5,6].map(i=>dailyItems(new Date(2026,8,29+i)).idea.t);return a.idea.t===b.idea.t&&a.case.t===b.case.t&&new Set(week).size>=4});
  T("Front page · every daily item opens something",()=>{const a=dailyItems();return ["idea","case","q","term"].every(k=>a[k]&&/^nav\(/.test(a[k].go))});
- T("Front page · the desk folds only when there is nothing on it",()=>{const h=VIEWS.home();return /<details class="rn-desk"/.test(h)});
+ T("Front page · the desk folds only when there is nothing on it",()=>{const h=HOME();return /<details class="rn-desk"/.test(h)});
  /* ── discovery ── */
  T("Discovery · Random Economics finds something of every kind it offers",()=>RAND_TYPES.every(([k])=>{const it=randomItem(k);return it&&it.t&&/^nav\(|^[a-zA-Z]/.test(it.go)}),RAND_TYPES.filter(([k])=>!randomItem(k)).map(x=>x[0]).join(", "));
  T("Discovery · the named teaching components all render with a label",()=>Object.keys(KC_T).every(k=>{const h=KC(k,"t","b");return h.includes('aria-label="'+KC_T[k][0]+'"')&&h.includes(KC_T[k][0])}));
@@ -36756,7 +36763,7 @@ function RENSUITE(){
  T("Accuracy r2 · Bretton Woods broke down in 1971–73",()=>/1971–73/.test(rw("GLO-051").is));
  T("Accuracy r2 · a current account deficit is framed with the financial account",()=>/financial-account/.test(rw("GLO-017").u2)&&!/capital-account/.test(rw("GLO-017").u2+rw("GLO-017").xp));
  T("Accuracy r2 · a price charge cuts quantity demanded, not demand",()=>!/bag demand/.test(rw("MIC-023").is));
- const SRC=()=>[...document.scripts].map(x=>x.text).join("\n");
+ let SRCT=null;const SRC=()=>SRCT||(SRCT=[...document.scripts].map(x=>x.text).join("\n"));
  T("Accuracy r2 · supply-side improvement is a route, not the only route, to non-inflationary growth",()=>!SRC().includes("the only route to non-"+"inflationary growth")&&SRC().includes("is a route to non-"+"inflationary growth"));
  T("Accuracy r2 · growth is usually necessary for sustained development, on every surface that says so",()=>!SRC().includes("neither necessary nor "+"sufficient for every dimension")&&!SRC().includes("Either can happen "+"without the other"));
  T("Accuracy r2 · the PED quiz reports the sign",()=>SRC().includes("−0.4 (|PED| = 0.4), "+"inelastic")&&!SRC().includes('["0.4, '+'inelastic"'));
