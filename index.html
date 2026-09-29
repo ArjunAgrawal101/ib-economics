@@ -1653,6 +1653,117 @@ footer.ft{padding-top:0}
 @media(max-width:520px){.plate{padding:10px 4px 10px}}
 .rn-tlae .kc{max-width:880px;margin-top:var(--s4)}
 .dg-read-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 18px}.dg-read-grid .kc{margin:10px 0}@media(max-width:760px){.dg-read-grid{grid-template-columns:minmax(0,1fr)}}
+/* ═══ COVER · the home page opening ═══════════════════════════════════════ */
+.cv .in.cv-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.3fr);gap:clamp(28px,4vw,72px);align-items:center;
+  padding-block:clamp(40px,4.4vw,76px) clamp(40px,4.4vw,72px)}
+.cv h1.cv-h{font-family:var(--dsp);font-weight:400;font-size:clamp(42px,4.6vw,74px);line-height:.98;letter-spacing:-.022em;color:#fff;max-width:14ch}
+.cv-h em{font-style:italic;color:var(--brs-l)}
+.cv-think{font-family:var(--ser);font-size:clamp(18px,1.5vw,21px);font-style:italic;color:rgba(255,255,255,.9)}
+.cv-lede{font-family:var(--ser);font-weight:300;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:rgba(255,255,255,.76);max-width:42ch}
+.cv-more{font-size:14px;color:rgba(255,255,255,.6)}.cv-more .lnk{color:rgba(255,255,255,.88);font-size:14px}
+.cv-scale{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 18px;max-width:560px}
+.cv-sig{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;text-align:left;padding:10px 0 12px;min-height:44px;
+  border-top:1px solid rgba(255,255,255,.18);color:#fff;transition:border-color .2s}
+.cv-sig b{font-family:var(--dsp);font-weight:400;font-size:clamp(24px,2.1vw,32px);line-height:1;font-variant-numeric:tabular-nums}
+.cv-sig span{font-size:12.5px;color:rgba(255,255,255,.64)}
+.cv-sig:hover,.cv-sig:focus-visible{border-top-color:var(--brs-l)}.cv-sig:hover span{color:#fff}
+.cv-lab{display:grid;grid-template-columns:minmax(0,1fr) minmax(160px,.44fr);gap:clamp(16px,1.8vw,26px);align-items:start}
+.cv-plate{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.02);padding:14px 16px 16px;min-width:0}
+.cv-plate-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.cv-plate-h .kicker{color:var(--brs-l);font-size:11.5px}.cv-note{font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,.46)}
+.cv-plate-in{position:relative;margin-top:6px}
+.cv-svg{width:100%;height:auto;display:block}
+.cv-svg .cv-d0{opacity:.45}.cv-svg .cv-e0{opacity:.5}
+.cv-spot{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;z-index:2;transition:left .45s var(--ez),top .45s var(--ez)}
+.cv-dot{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--brs-l);background:rgba(22,24,28,.7);transition:transform .2s,background .2s}
+.cv-spot:hover .cv-dot,.cv-spot:focus-visible .cv-dot{transform:scale(1.35);background:var(--brs-l)}
+.cv-tip{position:absolute;bottom:calc(100% + 2px);left:50%;transform:translate(-50%,4px);white-space:nowrap;pointer-events:none;opacity:0;
+  background:#fff;color:var(--obs);font-size:12.5px;padding:6px 10px;box-shadow:var(--sh);transition:opacity .18s,transform .18s}
+.cv-tip b{display:block;font-family:var(--ser);font-size:15px}
+.cv-spot:hover .cv-tip,.cv-spot:focus-visible .cv-tip{opacity:1;transform:translate(-50%,0)}
+.cv-ctl{display:flex;align-items:center;gap:12px;margin-top:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,.86)}
+.cv-ctl input{flex:1;accent-color:var(--brs-l)}
+.cv-read{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.7);margin-top:6px;min-height:3em}
+.cv-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12)}
+.cv-chip{font-size:12.5px;font-weight:600;padding:6px 11px;min-height:34px;border:1px solid rgba(255,255,255,.26);color:rgba(255,255,255,.88);transition:border-color .2s,color .2s}
+.cv-chip:hover,.cv-chip:focus-visible{border-color:var(--brs-l);color:#fff}
+.cv-portrait{margin:0;min-width:0}
+.cv-frame{aspect-ratio:3/4;overflow:hidden;border:1px solid rgba(201,174,114,.55);padding:6px;background:rgba(255,255,255,.03)}
+.cv-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.cv-portrait figcaption{display:flex;flex-direction:column;gap:3px;margin-top:10px}
+.cv-portrait figcaption b{font-family:var(--ser);font-size:17px;color:#fff}.cv-portrait figcaption span{font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.62)}
+.cv-portrait .lnk{color:var(--brs-l);font-size:13px;align-self:flex-start}
+body.rn-anim .cv-svg .m-c:not(.dsh){animation:rnDraw 1.4s var(--ez) both}
+@media (max-width:1279px){.cv .in.cv-grid{grid-template-columns:minmax(0,1fr)}.cv h1.cv-h{max-width:16ch}}
+@media (max-width:640px){.cv-lab{grid-template-columns:minmax(0,1fr)}
+ .cv-portrait{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;align-items:center;order:-1}
+ .cv-portrait figcaption{margin-top:0}.cv-scale{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* the hinge: the cover's dark fades into the page */
+.rn-hinge{background:linear-gradient(180deg,var(--obs) 0,var(--obs) 8px,var(--chalk) 120px);padding:clamp(56px,6vw,96px) 0 clamp(8px,1vw,16px)}
+.hg-h{font-family:var(--dsp);font-size:clamp(38px,5vw,76px);line-height:1;letter-spacing:-.02em;color:var(--tx);margin-top:14px}
+.hg-h em{font-style:italic;color:var(--bur)}
+.hg-l{font-family:var(--ser);font-size:clamp(17px,1.4vw,20px);color:var(--tx-2);max-width:62ch;margin-top:12px}
+/* chapter markers */
+.rn-chap{display:flex;align-items:baseline;gap:14px;padding-top:clamp(28px,3vw,44px)}
+.rn-hinge .rn-chap{padding-top:0}
+.ch-n{font-family:var(--mono);font-size:12px;color:var(--brs)}
+.ch-t{font-family:var(--ui);font-size:12.5px;font-weight:800;letter-spacing:.14em;font-variant-caps:all-small-caps;color:var(--tx-3)}
+.rn-chap::after{content:"";flex:1;height:1px;background:var(--hair-2);align-self:center}
+/* split bands: exam, research, educators */
+.sp-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:clamp(24px,4vw,64px);align-items:start}
+.sp-rooms{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;border-top:1px solid var(--obs)}
+.sp-room{display:flex;flex-direction:column;gap:3px;width:100%;text-align:left;padding:12px 0;min-height:44px;border-bottom:1px solid var(--hair-2)}
+.sp-room:hover .sp-t,.sp-room:focus-visible .sp-t{color:var(--bur)}
+.sp-t{font-family:var(--ser);font-size:17.5px;font-weight:600;color:var(--tx)}.sp-d{font-size:13.5px;color:var(--tx-2)}
+.sp-tag{font-family:var(--mono);font-size:10px;font-weight:400;color:var(--tx-3);border:1px solid var(--hair-2);padding:1px 6px;margin-left:6px;vertical-align:2px;white-space:nowrap}
+.sp-fig{background:var(--ivory);border:1px solid var(--hair);padding:14px;position:sticky;top:calc(var(--top) + 20px)}
+.sp-fig [data-motif]{display:block;aspect-ratio:3/2}.sp-fig [data-motif] .motif{width:100%;height:auto;display:block}
+.sp-research{background:var(--paper)}
+@media (max-width:900px){.sp-grid{grid-template-columns:minmax(0,1fr)}.sp-fig{position:static;order:-1;max-width:520px}}
+@media (max-width:560px){.sp-rooms{grid-template-columns:minmax(0,1fr)}}
+/* the creator */
+.cr-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:center}
+.cr-fig{margin:0}.cr-frame{aspect-ratio:3/2;overflow:hidden;border:1px solid var(--hair-2);padding:8px;background:var(--white)}
+.cr-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.cr-fig figcaption{font-size:13px;color:var(--tx-3);margin-top:8px}
+.cr-quote{font-family:var(--dsp);font-size:clamp(24px,2.4vw,36px);line-height:1.2;color:var(--tx)}
+@media (max-width:860px){.cr-grid{grid-template-columns:minmax(0,1fr)}}
+/* the end of the story */
+.rn-final{text-align:left}.fn-in{padding-block:clamp(48px,6vw,96px)}
+.fn-h{font-family:var(--dsp);font-weight:400;font-size:clamp(46px,7vw,110px);line-height:.95;color:#fff;letter-spacing:-.025em}
+.fn-l{font-family:var(--ser);font-size:clamp(18px,1.6vw,22px);color:rgba(255,255,255,.72);margin-top:14px}
+.fn-row{margin-top:28px;gap:12px}
+.cv-ctl input[type=range]{height:28px;margin:0;background:linear-gradient(transparent 12px,rgba(255,255,255,.24) 12px,rgba(255,255,255,.24) 16px,transparent 16px);appearance:none;-webkit-appearance:none;border:0;padding:0}
+.cv-ctl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--brs-l);border:3px solid var(--obs);box-shadow:0 0 0 1px var(--brs-l);cursor:grab}
+.cv-ctl input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--brs-l);border:3px solid var(--obs);cursor:grab}
+.cv-ctl input[type=range]:focus-visible{outline:2.5px solid var(--brs-l);outline-offset:6px}
+/* header, 881–1180 px: the menu button used to share grid column 1 with the
+   brand and wrapped onto a second row above it; the flex layout the phone
+   header already uses is applied as soon as the menu button appears */
+@media(max-width:1180px){
+ .top .in{display:flex;align-items:center;column-gap:12px}
+ .top .in>.brand{order:1;flex:1 1 auto;min-width:0;border-right:none;padding-right:0}
+ .top .in>.mainnav{display:none}
+ .top .in>.topR{order:2;flex:0 0 auto;border-left:none;padding-left:0}
+ .top .in>.burger{order:3;flex:0 0 auto;display:grid;margin-right:0}
+}
+/* ═══ ABOUT · the profile ═══════════════════════════════════════════════ */
+.ab-cover{background:var(--paper);border-bottom:1px solid var(--hair-2);
+  background-image:linear-gradient(var(--grid-l) 1px,transparent 1px),linear-gradient(90deg,var(--grid-l) 1px,transparent 1px);background-size:56px 56px}
+.ab-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:clamp(28px,4.5vw,80px);align-items:center;padding-block:clamp(40px,5vw,84px)}
+.ab-h{font-family:var(--dsp);font-weight:400;font-size:clamp(46px,5.6vw,92px);line-height:.96;letter-spacing:-.022em;color:var(--tx)}
+.ab-role{font-family:var(--ser);font-size:clamp(18px,1.6vw,23px);color:var(--tx-2)}
+.ab-lede{font-family:var(--ser);font-weight:300;font-size:clamp(19px,1.7vw,24px);line-height:1.5;color:var(--tx);max-width:40ch}
+.ab-media{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.78fr);gap:clamp(16px,2vw,28px);align-items:end}
+.ab-cover .abfig.ab-portrait{margin:0}
+.ab-cover .ab-portrait .abimgbtn{display:block;width:100%;padding:8px;border:1px solid var(--brs);background:var(--white)}
+.ab-cover .ab-portrait img{display:block;width:100%;height:auto;object-fit:cover}
+.ab-cover .ab-portrait figcaption{display:flex;flex-direction:column;gap:2px;margin-top:10px}
+.ab-panel{background:var(--white);border:1px solid var(--hair-2);border-top:3px solid var(--brs);padding:16px 16px 18px}
+.ab-panel .kicker{font-size:11.5px}
+.ab-panel .motif{width:100%;height:auto;display:block}
+@media (max-width:1100px){.ab-grid{grid-template-columns:minmax(0,1fr)}.ab-media{max-width:760px}}
+@media (max-width:620px){.ab-media{grid-template-columns:minmax(0,1fr)}.ab-cover .abfig.ab-portrait{max-width:420px}}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -36578,9 +36689,14 @@ function rnGlance(){const n=rnCount();
  </div></section>`}
 function rnDivider(t,s){return `<div class="wrap full rn-divider"><span class="rn-dv-t">${esc(t)}</span><span class="rn-dv-s">${esc(s)}</span></div>`}
 /* the order the home page reads in; bands are matched by their heading */
-const RN_ORDER=["Start your journey","@atlas","@today","@lead","Economics, right now","@mind","What happens next?","Economics, Everywhere",
- "Timeless ideas","Inflation targeting","Latest from Arjun","Today's challenge","@desk","One next step","Continue where you left off",
- "What should I do next?","Six ways in","The Arjun method","@glance","Work through the platform"];
+/* the home page reads as a story in chapters: the platform, today, the world,
+   the theory, the lab, the exam, the research, the media, the educator, the
+   creator, and an invitation to start. "#n|Title" marks a chapter opener. */
+const RN_ORDER=["#01|The platform","Start your journey","@atlas","@today","#02|The world","@lead","Economics, right now",
+ "#03|The theory","@mind","#04|The lab","What happens next?","#05|The exam","@exam","Today's challenge",
+ "#06|The research","@research","#07|The media","Economics, Everywhere","Timeless ideas","Inflation targeting","Latest from Arjun",
+ "#08|The educator","@educator","#09|The creator","@creator","Work through the platform",
+ "@desk","One next step","Continue where you left off","What should I do next?","Six ways in","The Arjun method","@glance","@final"];
 function rnHome(html){
  if(typeof document==="undefined")return html;
  const t=document.createElement("template");t.innerHTML=html;
@@ -36589,9 +36705,11 @@ function rnHome(html){
  const hero=kids.find(el=>el.matches("section.hero"));
  const rest=kids.filter(el=>el!==hero);
  const NEW={"@atlas":rnAtlas,"@today":rnToday,"@lead":rnLead,"@mind":rnMind,"@glance":rnGlance,
+  "@exam":rnExamBand,"@research":rnResearchBand,"@educator":rnEducatorBand,"@creator":rnCreatorBand,"@final":rnFinalBand,
   "@desk":()=>"\u0001DESK\u0001"};
- const used=new Set();let out=rnHomeHero(hero);
+ const used=new Set();let out=rnCover(hero);
  for(const k of RN_ORDER){
+  if(k[0]==="#"){const [n,t]=k.slice(1).split("|");out+=rnChapter(n,t);continue}
   if(NEW[k]){try{out+=NEW[k]()}catch(e){}continue}
   rest.forEach(el=>{if(!used.has(el)&&title(el).startsWith(k)){used.add(el);out+=el.outerHTML}})}
  /* anything this list does not name keeps its place at the end: nothing is dropped */
@@ -36682,6 +36800,171 @@ function dgReadGuide(k){const r=DG_READ[k];if(!r)return "";
   <div class="dg-read-grid">${KC("model","What changes?",esc(r.changes))}${KC("key","Why does it change?",esc(r.why))}
   ${KC("deeper","What the diagram does not show",esc(r.notShown))}${KC("misc","Common mistake",esc(r.mistake))}</div></div>`}
 (function(){const prev=dgLibrary;dgLibrary=function(){const h=prev.apply(this,arguments);return ARG&&DG_READ[ARG]?h+dgReadGuide(ARG):h}})();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   COVER · the home page opens as an editorial cover and a working model
+   Three zones that never overlap: the statement, a supply-and-demand plate
+   the reader can move, and the author's portrait in its own frame. The plate
+   and the portrait are separate grid cells, so no line, label or axis can run
+   under the photograph at any width. Every number on the cover is counted
+   from the platform's data; every concept on the plate opens its page.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const CV={s:0};
+/* The photographs are embedded once, as data URIs. Pasting a 100-200 KB data
+   URI into the home page's markup on every paint doubled its size, so each
+   photograph is decoded once into an in-memory blob and referenced by URL. */
+const RN_PH={};
+function photoURL(k){if(RN_PH[k])return RN_PH[k];
+ try{const d=PHOTO[k],i=d.indexOf(","),bin=atob(d.slice(i+1)),u=new Uint8Array(bin.length);for(let j=0;j<bin.length;j++)u[j]=bin.charCodeAt(j);
+  RN_PH[k]=URL.createObjectURL(new Blob([u],{type:"image/jpeg"}))}catch(e){RN_PH[k]=PHOTO[k]}return RN_PH[k]}
+/* the plate's functions: D₁ is D shifted right by s units; S is fixed */
+const CVF={D:(q,s)=>9-0.8*(q-s),S:q=>1+0.8*q,eq:s=>({q:5+s/2,p:5+0.4*s})};
+const CV_W=600,CV_H=440,cx=q=>+(70+q/10*490).toFixed(1),cy=p=>+(370-p/10*320).toFixed(1);
+function cvLine(f,a,b){return `${cx(a)},${cy(f(a))} ${cx(b)},${cy(f(b))}`}
+function cvSVG(){const s=CV.s,e0=CVF.eq(0),e=CVF.eq(s);
+ const dq=[Math.max(0.6,s+0.2),Math.min(10,10+s)];
+ let g=`<g class="m-ax"><line x1="70" y1="370" x2="70" y2="36"/><line x1="70" y1="370" x2="572" y2="370"/></g>
+  <text class="m-t m-axl" x="62" y="28">Price</text><text class="m-t m-axl" x="572" y="398" text-anchor="end">Quantity</text>`;
+ if(s!==0)g+=`<polyline class="m-c dem dsh cv-d0" points="${cvLine(q=>CVF.D(q,0),0.6,10)}"/><text class="m-t m-dem" x="${cx(10)-2}" y="${cy(CVF.D(10,0))+20}" text-anchor="end">D</text>`;
+ g+=`<polyline class="m-c dem cv-d" points="${cvLine(q=>CVF.D(q,s),dq[0],dq[1])}" pathLength="1"/>
+  <text class="m-t m-dem" x="${cx(dq[1])-2}" y="${cy(CVF.D(dq[1],s))+20}" text-anchor="end">${s===0?"D":"D₁"}</text>
+  <polyline class="m-c sup cv-s" points="${cvLine(CVF.S,0.6,10)}" pathLength="1"/><text class="m-t m-sup" x="${cx(10)-2}" y="${cy(CVF.S(10))-9}" text-anchor="end">S</text>
+  <g class="m-drop"><line x1="${cx(e.q)}" y1="${cy(e.p)}" x2="${cx(e.q)}" y2="370"/><line x1="${cx(e.q)}" y1="${cy(e.p)}" x2="70" y2="${cy(e.p)}"/></g>
+  <text class="m-t m-tick" x="${cx(e.q)}" y="390" text-anchor="middle">${s===0?"Qe":"Q₁"}</text><text class="m-t m-tick" x="62" y="${cy(e.p)+4}" text-anchor="end">${s===0?"Pe":"P₁"}</text>`;
+ if(s!==0)g+=`<circle class="m-pt cv-e0" cx="${cx(e0.q)}" cy="${cy(e0.p)}" r="4.5"/>`;
+ g+=`<circle class="m-pt" cx="${cx(e.q)}" cy="${cy(e.p)}" r="6"/><circle class="m-ring" cx="${cx(e.q)}" cy="${cy(e.p)}" r="15"/>`;
+ return `<svg class="motif cv-svg" viewBox="0 0 ${CV_W} ${CV_H}" role="img" aria-label="${esc(cvAlt())}" focusable="false">${g}</svg>`}
+function cvAlt(){const s=CV.s,e=CVF.eq(s);
+ return s===0?"Supply and demand in equilibrium at price 5 and quantity 5 (illustrative units)."
+  :`Demand has shifted ${s>0?"right":"left"} by ${Math.abs(s)} units. The new equilibrium is at price ${e.p.toFixed(1)} and quantity ${e.q.toFixed(1)}, ${s>0?"both higher":"both lower"} than before (illustrative units).`}
+function cvRead(){const s=CV.s,e=CVF.eq(s);
+ if(s===0)return "Move demand and watch the market find a new equilibrium.";
+ return s>0?`Demand rises: at the old price there is a shortage, so price rises (to ${e.p.toFixed(1)}) until quantity supplied meets quantity demanded (${e.q.toFixed(1)}).`
+  :`Demand falls: at the old price there is a surplus, so price falls (to ${e.p.toFixed(1)}) until the market clears again (${e.q.toFixed(1)}).`}
+function cvSet(v){CV.s=+v;const p=document.getElementById("cv-plate-fig"),r=document.getElementById("cv-read");
+ if(p)p.innerHTML=cvSVG();if(r)r.textContent=cvRead();
+ CV_SPOTS.forEach(([,f],i)=>{const b=document.getElementById("cv-spot-"+i);if(b){const [x,y]=cvPos(f);b.style.left=x+"%";b.style.top=y+"%"}})}
+/* concepts on the plate, each a way into the platform */
+/* hotspot positions are computed from the model, as percentages of the plate, so they follow a shift */
+const CV_SPOTS=[["Demand",s=>[2.2+s,CVF.D(2.2+s,s)],"nav('learn',0,'c-ped')","The curve that moves"],["Supply",()=>[8,CVF.S(8)],"nav('mind',0,'supply')","How sellers respond"],
+ ["Equilibrium",s=>{const e=CVF.eq(s);return [e.q,e.p]},"nav('mind',0,'market')","Where plans agree"]];
+const cvPos=f=>{const [q,p]=f(CV.s);return [(cx(q)/CV_W*100).toFixed(2),(cy(p)/CV_H*100).toFixed(2)]};
+const CV_CHIPS=[["Elasticity","nav('learn',0,'c-ped')"],["Inflation","nav('learn',0,'c-inf')"],["Trade","nav('learn',0,'c-cadv')"],
+ ["Externalities","nav('learn',0,'c-ext')"],["Inequality","nav('learn',0,'c-gini')"],["Exchange rates","nav('learn',0,'c-fx')"]];
+function cvScale(){const n=rnCount();
+ return [["cases","Real World cases","nav('world',1)"],["maps","mindmaps","nav('mind')"],["diagrams","diagram plates","nav('lab',3)"],
+  ["calcs","calculations","nav('calculate')"],["dna","Exam DNA questions","nav('dna')"]].filter(([k])=>typeof n[k]==="number")
+  .map(([k,l,go])=>`<li><button class="cv-sig" onclick="${go}"><b>${fmtN(n[k])}</b><span>${esc(l)}</span></button></li>`).join("")
+  +`<li><button class="cv-sig" onclick="nav('ees')"><b>IA · EE</b><span>research studios</span></button></li>`}
+function rnCover(old){
+ const kept=old?[...old.querySelectorAll(".in > *")].filter(e=>!e.matches(".eb,.kicker,h1,.lede,.row")).map(e=>e.outerHTML).join(""):"";
+ const m=PHOTOMETA.hero;
+ return `<section class="hero rn-home cv" aria-labelledby="cv-h"><div class="wrap full in cv-grid">
+  <div class="cv-copy">
+   <div class="eb">IB DP Economics · Arjun Agrawal</div>
+   <h1 class="cv-h mt2" id="cv-h">Economics is a way of <em>seeing</em>.</h1>
+   <p class="cv-think mt3">Think like an economist.</p>
+   <p class="cv-lede mt2">Choices, incentives, institutions and the world around us, learned through models you can move, cases you can question and exams you can read.</p>
+   <div class="row mt4 cv-cta"><button class="btn lg a" onclick="nav('learn')">Start learning →</button><button class="btn lg on-ink" onclick="nav('world')">Explore Real World</button></div>
+   <p class="cv-more mt3">Or go straight to <button class="lnk" onclick="nav('practise',0)">the question bank</button> or <button class="lnk" onclick="nav('learn',1)">the curriculum</button>.</p>
+   <ul class="cv-scale mt4" aria-label="What the platform holds">${cvScale()}</ul>
+   <div class="rn-kept">${kept}</div></div>
+  <div class="cv-lab">
+   <div class="cv-plate"><div class="cv-plate-h"><span class="kicker">The model, live</span><span class="cv-note">tap a marked point · illustrative units</span></div>
+    <div class="cv-plate-in"><div id="cv-plate-fig">${cvSVG()}</div>
+     ${CV_SPOTS.map(([t,f,go,d],i)=>{const [x,y]=cvPos(f);return `<button class="cv-spot" id="cv-spot-${i}" style="left:${x}%;top:${y}%" onclick="${go}" aria-label="${esc(t)}: ${esc(d)}. Open it"><span class="cv-dot" aria-hidden="true"></span><span class="cv-tip"><b>${esc(t)}</b>${esc(d)} →</span></button>`}).join("")}</div>
+    <label class="cv-ctl" for="cv-shift"><span>Move demand</span><input id="cv-shift" type="range" min="-2" max="2" step="0.5" value="${CV.s}" oninput="cvSet(this.value)" aria-describedby="cv-read"></label>
+    <p class="cv-read" id="cv-read" aria-live="polite">${esc(cvRead())}</p>
+    <div class="cv-chips" role="group" aria-label="Explore a concept">${CV_CHIPS.map(([t,go])=>`<button class="cv-chip" onclick="${go}">${esc(t)}</button>`).join("")}</div></div>
+   <figure class="cv-portrait"><div class="cv-frame"><img src="${photoURL("hero")}" alt="${esc(m.alt)}" width="${m.w}" height="${m.h}" style="object-position:${m.pos}" decoding="async"></div>
+    <figcaption><b>Arjun Agrawal</b><span>IB DP Economics educator and resource creator</span><button class="lnk" onclick="nav('about')">About →</button></figcaption></figure>
+  </div></div></section>`}
+/* ── the story continues: chapters and the bands they need ─────────────── */
+function goTab(v,name){const s=SECTIONS.find(x=>x.v===v);const i=s&&s.tabs?s.tabs.indexOf(name):-1;return `nav('${v}',${i<0?0:i})`}
+function rnBand(o){return `<section class="sec rn-band rn-split ${o.cls||""}"><div class="wrap full"><div class="sp-grid">
+  <div class="sp-copy"><div class="shead fx"><span class="n">00</span><h2>${o.h}</h2>${o.aside?`<span class="aside">${esc(o.aside)}</span>`:""}</div>
+   <p class="ed mt2">${o.lede}</p>${o.label?`<p class="xs mt2"><span class="tag">${esc(o.label)}</span></p>`:""}
+   <ul class="sp-rooms mt3">${o.items.map(([t,d,go,tag])=>`<li><button class="sp-room" onclick="${go}"><span class="sp-t">${esc(t)}${tag?` <span class="sp-tag">${esc(tag)}</span>`:""}</span><span class="sp-d">${esc(d)}</span></button></li>`).join("")}</ul></div>
+  <figure class="rn-fig sp-fig">${o.fig}</figure></div></div></section>`}
+function rnExamBand(){return rnBand({h:"The exam room",aside:"Assessment, read closely",cls:"sp-exam",
+ lede:"Three papers, their markbands and the habits that earn marks. Practise under time, read your answer against the published framework, and study how past papers are built.",
+ fig:`<span data-motif="markbands"></span><figcaption>${esc(motifCap("markbands"))}</figcaption>`,
+ items:[["Paper 1 room","Extended response: plan, write and review against the clock",goTab("papers","Paper 1 workshop"),"Teacher-created practice"],
+  ["Paper 2 room","Data response with its own stimulus and calculations",goTab("papers","Paper 2 data lab"),"Teacher-created practice"],
+  ["Paper 3 room (HL)","Policy recommendation from a case",goTab("papers","Paper 3 recommendation lab"),"Teacher-created practice"],
+  ["Exam DNA","How 212 past questions are built",goTab("dna","Past paper explorer"),"Analysed metadata"],
+  ["Timed simulator","From a ten-minute drill to a full mock",goTab("papers","Exam simulator"),""],
+  ["Why did I lose marks?","Read an answer against the markbands",goTab("examiner","Why did I lose marks?"),""],
+  ["Mistake book","The pattern behind your errors",goTab("workspace","Mistake book"),"Your own work"],
+  ["IB reference","Structure, weightings and markbands, with sources",goTab("examiner","IB reference"),"Official IB information"]]})}
+function rnResearchBand(){return rnBand({h:"The research studios",aside:"IA and extended essay",cls:"sp-research",
+ lede:"Research the way an economist does: find a question worth asking, choose the model, weigh the evidence, and reflect. The studios ask questions; they never write the work.",
+ fig:`<span data-motif="research"></span><figcaption>${esc(motifCap("research"))}</figcaption>`,
+ items:[["IA studio","Commentaries: rubric, portfolio and supervisor gates","nav('ia')",""],
+  ["Article checker","Is this article a good basis for a commentary?",goTab("ia","Article checker"),""],
+  ["Research question lab","Diagnoses a question on twelve dimensions",goTab("ees","Research question lab"),""],
+  ["Evidence matrix","One row per source, with what it cannot show",goTab("ees","Evidence matrix"),""],
+  ["Data lab","What data shows, suggests and does not establish",goTab("ees","Data lab"),""],
+  ["Academic integrity and AI","Where AI help ends and your work begins",goTab("ees","Academic integrity & AI"),""],
+  ["EE Studio","Nineteen areas, from interest to reflection","nav('ees')",""]]})}
+function rnEducatorBand(){return rnBand({h:"For educators",aside:"Teaching, supervising, coordinating",cls:"sp-edu",
+ lede:"A professional studio for IB Economics teachers: plan with the guide's structure, teach diagrams and real-world economics, assess with the markbands, and supervise research.",
+ fig:`<span data-motif="ppc"></span><figcaption>${esc(motifCap("ppc"))}</figcaption>`,
+ items:[["Educator Studio","Role pathways and a ten-module handbook","nav('educator')",""],
+  ["Teacher desk","Lesson planner, exam builder, marking sheets","nav('teacher')",""],
+  ["Assignment builder","A printable sheet and a link, with no server",goTab("teacher","Assignment builder"),""],
+  ["Lesson planner","Success criteria, differentiation and extension",goTab("teacher","Lesson planner"),""],
+  ["TOK × Economics","Knowledge questions for the classroom","nav('tok')",""]]})}
+function rnCreatorBand(){const m=PHOTOMETA.teaching||PHOTOMETA.students,k=PHOTOMETA.teaching?"teaching":"students";
+ return `<section class="sec rn-band rn-creator"><div class="wrap full"><div class="cr-grid">
+  <figure class="cr-fig"><div class="cr-frame"><img src="${photoURL(k)}" alt="${esc(m.alt)}" width="${m.w}" height="${m.h}" style="object-position:${m.pos}" loading="lazy" decoding="async"></div>
+   <figcaption>${esc(m.cap)}</figcaption></figure>
+  <div class="cr-copy"><div class="shead fx"><span class="n">00</span><h2>The educator behind it</h2></div>
+   <p class="cr-quote mt3">“${esc(ABOUT.lede)}”</p>
+   <p class="ed mt3">Every model, case, question and tool here was written and drawn for this platform, and every statement about the IB course names the document it comes from.</p>
+   <div class="row mt4"><button class="btn" onclick="nav('about')">About Arjun Agrawal</button><button class="btn gh" onclick="nav('arjun')">Watch the videos</button><button class="btn gh" onclick="nav('tutorials')">Learn with Arjun</button></div></div>
+ </div></div></section>`}
+function rnFinalBand(){return `<section class="sec rn-final bg-ink"><div class="wrap full fn-in">
+  <h2 class="fn-h">Start exploring.</h2>
+  <p class="fn-l">Pick a door. Every one of them leads to the rest.</p>
+  <div class="row fn-row"><button class="btn lg a" onclick="nav('learn')">Start learning</button><button class="btn lg on-ink" onclick="randomOpen('')">Surprise me</button>
+   <button class="btn lg gh on-ink" onclick="cpOpen()">Search the platform</button></div></div></section>`}
+function rnChapter(n,t){
+ /* the first chapter is the hinge between the cover and the page: the dark of the cover fades into the paper beneath it */
+ if(n==="01")return `<div class="rn-hinge"><div class="wrap full"><div class="rn-chap"><span class="ch-n">${n}</span><span class="ch-t">${esc(t)}</span></div>
+  <p class="hg-h">See the world <em>differently</em>.</p><p class="hg-l">Real World, mindmaps, labs, the exam and the research studios: every door below opens onto the same economics.</p></div></div>`;
+ return `<div class="wrap full rn-chap"><span class="ch-n">${n}</span><span class="ch-t">${esc(t)}</span></div>`}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ABOUT · a profile composed, not layered
+   The opener used to draw the section's economics figure behind the
+   portrait, so the axis and curves ran under the photograph and stopped at
+   its edge. The profile is now three cells that cannot touch: the text, the
+   portrait in its own frame, and an economics panel of its own. No figure is
+   drawn behind the photograph at any width.
+   ═══════════════════════════════════════════════════════════════════════════ */
+function abCover(){const A=ABOUT;
+ return `<section class="ab-cover" aria-labelledby="ab-h"><div class="wrap full ab-grid">
+  <div class="ab-copy">
+   <div class="eb a">About</div>
+   <h1 class="ab-h mt2" id="ab-h">${esc(A.name)}</h1>
+   <p class="ab-role mt2">${esc(A.role)} · Economics educator and resource creator</p>
+   <div class="row mt3 ab-tags">${A.subjects.map(s=>`<span class="tag">${esc(s)}</span>`).join("")}</div>
+   <p class="ab-lede mt4">${esc(A.lede)}</p>
+   <p class="sm mt3">Teacher · Economics educator · Mentor · Resource creator</p>
+   <div class="row mt4"><button class="btn a" onclick="nav('tutorials')">Learn with Arjun →</button><a class="btn gh" href="mailto:${A.email}">Email</a></div></div>
+  <div class="ab-media">
+   ${abFigure("hero","ab-portrait")}
+   <aside class="ab-panel" aria-label="What the teaching is built around">
+    <div class="kicker">What the teaching is built around</div>
+    <figure class="rn-fig mt2">${motifSVG("sd",{cls:"on-paper"})}</figure>
+    <p class="sm mt2">Models students can move, cases they can question and arguments they have to defend.</p>
+    <button class="lnk mt2" onclick="nav('lab')">Open the lab →</button></aside>
+  </div></div></section>`}
+(function(){if(typeof aboutPage!=="function")return;const prev=aboutPage;
+ aboutPage=function(){const h=prev.apply(this,arguments);
+  const i=h.indexOf('<section class="hero"');if(i<0)return h;const j=h.indexOf("</section>",i);if(j<0)return h;
+  return h.slice(0,i)+abCover()+h.slice(j+10)}})();
 
 /* ═══════════════════════════════════════════════════════════════════════════
    RENAISSANCE · 9 · the self-tests for this release
