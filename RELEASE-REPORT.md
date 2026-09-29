@@ -308,7 +308,35 @@ No content was duplicated: every link resolves to an existing record, and the se
 
 ## 12. Performance
 
-<!-- PERF -->
+Measured in headless Chromium at 1366 × 900, service worker blocked, on a local server. Each figure
+is the median of 5 runs on the same machine, `main` (d8efb20) against this release:
+
+| | `main` | This release | Change |
+|---|---|---|---|
+| `index.html` | 4,531,980 B | 4,678,265 B | +146 KB (+3.2%) |
+| `index.html`, gzip -9 | 1,610,234 B | 1,657,100 B | +47 KB (+2.9%) |
+| `assets/data/real-world.js`, gzip | 71,488 B | 72,441 B | +1 KB |
+| First contentful paint | 408 ms | 456 ms | +48 ms |
+| DOMContentLoaded | 2,722 ms | 3,374 ms | +652 ms |
+| Full in-page self-test | 1,628 ms | 1,902 ms | +274 ms (53 more checks) |
+| DOM elements on the home page (first visit) | 1,002 | 1,265 | +263 |
+| Home page length at 1440 px (first visit) | 11,417 px | about 9,960 px | −13% |
+
+**How to read these numbers.**
+
+- **First paint barely moved.** First contentful paint, the moment a reader first sees the page,
+  moved by about 50 ms.
+- **What DOMContentLoaded includes.** It also covers the platform's synchronous startup self-test,
+  and it grew for four reasons:
+  - the self-test now has 53 more checks (about 110 ms);
+  - every view the self-test paints now carries its figure (about 150–250 ms, spread across the
+    existing suites);
+  - the script is 108 KB larger, 37 KB of which is the 35 reading guides;
+  - the home page has more elements.
+- **These are local timings, not field measurements.** A slower phone will see a larger absolute
+  difference.
+- **The module's size.** It is 108.5 KB of JavaScript (including the reading guides) and 28.6 KB of
+  CSS, before compression.
 
 **What was done to contain the cost.**
 
