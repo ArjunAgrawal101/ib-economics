@@ -1157,7 +1157,7 @@ table.heat th{white-space:nowrap}
 .ee-chart line{stroke-width:2.6;stroke-linecap:round}
 .ee-l-dem{stroke:var(--dem)}.ee-l-sup{stroke:var(--sup)}.ee-l-pol{stroke:var(--pol)}.ee-l-loss{stroke:var(--loss)}.ee-l-cap{stroke:var(--cap)}.ee-l-ink{stroke:var(--tx)}
 .ee-t-dem{fill:var(--dem)}.ee-t-sup{fill:var(--sup)}.ee-t-pol{fill:var(--pol)}.ee-t-loss{fill:var(--loss)}.ee-t-cap{fill:var(--cap)}.ee-t-ink{fill:var(--tx)}
-.ee-chart text[class^="ee-t-"]{font-size:12.5px;font-weight:700}
+.ee-chart text[class^="ee-t-"]{font-size:12.5px;font-weight:700;paint-order:stroke;stroke:var(--white);stroke-width:4px;stroke-linejoin:round}
 .ee-faint{opacity:.28}
 .ee-dash{stroke-dasharray:7 6}
 .ee-f-pol{fill:var(--pol);fill-opacity:.2}.ee-f-cap{fill:var(--cap);fill-opacity:.2}.ee-f-loss{fill:var(--loss);fill-opacity:.28}
@@ -1650,6 +1650,7 @@ body[data-sec="home"] .sec.t{padding-block:clamp(32px,3.6vw,52px)}
 footer.ft{padding-top:0}
 
 .ld-m{display:block;aspect-ratio:3/2}.ld-m .motif{width:100%;height:auto;display:block}
+@media(max-width:520px){.plate{padding:10px 4px 10px}}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -3452,8 +3453,8 @@ DG.cycle=()=>({t:"The business cycle",x:"Time",y:"Real output",
   /* actual output is the trend plus a cycle, so it fluctuates around potential
      rather than sitting below it: peaks above trend, troughs below */
   +P.path((()=>{let d="";for(let i=0;i<=90;i++){const x=.04+i*.01,y=.24+(.58/.9)*(x-.04)+.13*Math.sin(2*Math.PI*(x-.04)/.36);d+=(i?" L ":"M ")+gx(x)+" "+gy(y)}return d})(),G.C.d)
-  +P.pt(gx(.49),gy(.66),G.C.p)+P.t(gx(.49),gy(.72),"peak",{a:"middle",c:G.C.p,sz:10.5})
-  +P.pt(gx(.31),gy(.284),G.C.w)+P.t(gx(.31),gy(.21),"trough",{a:"middle",c:G.C.w,sz:10.5})
+  +P.pt(gx(.5065),gy(.6653),G.C.p)+P.t(gx(.5065),gy(.72),"peak",{a:"middle",c:G.C.p,sz:10.5})
+  +P.pt(gx(.2935),gy(.2787),G.C.w)+P.t(gx(.2935),gy(.21),"trough",{a:"middle",c:G.C.w,sz:10.5})
   +P.t(gx(.56),gy(.84),"long-term trend",{c:G.C.cap,sz:11})});
 DG.circular=()=>({t:"The circular flow with injections and withdrawals",x:"",y:"",
  alt:"A circular flow between households and firms. Spending on goods and services flows from households to firms along the top; incomes flow from firms to households along the bottom. Investment, government spending and export revenue are injections into spending; saving, taxation and import spending are withdrawals from income.",
@@ -4986,13 +4987,14 @@ const MKTSUP=[[-20,"Meets the price axis","PES above 1"],[0,"Through the origin"
    is lower. Above it nobody buys, and the floor line would leave the diagram. */
 function mktQsText(){const c=LAB.c||0;return c>0?c+" + "+LAB.D+"P":c<0?LAB.D+"P − "+(-c):LAB.D+"P"}
 function mktFloorMax(B){return Math.min(18,Math.floor((LABA/B-.25)*2)/2)}
+function mktTaxMax(B,D,c){return Math.max(1,Math.min(8,Math.ceil(LABA/B+(c||0)/D)-1))}
 function mkt(){
  const A=LABA,B=LAB.B,D=LAB.D,c=LAB.c||0,P0=(A-c)/(B+D),Q0=A-B*P0;
  const o={A,B,D,c,P0,Q0,ped:-Math.round(B*P0/Q0*1e9)/1e9,pes:Math.round(D*P0/Q0*1e9)/1e9,mode:LAB.mode};
  const iD=q=>(A-q)/B,iS=q=>(q-c)/D;
  /* the area under the supply curve from 0 to q (supply costs no price below c when c > 0) */
  const supA=q=>c>=0?(q>c?(q-c)**2/(2*D):0):(q*q/2-c*q)/D, demA=q=>(A*q-q*q/2)/B;
- if(LAB.mode==="tax"){const t=LAB.t;o.t=t;o.Pc=(A-c+D*t)/(B+D);o.Q=A-B*o.Pc;o.Pp=o.Pc-t;
+ if(LAB.mode==="tax"){const t=Math.min(LAB.t,mktTaxMax(B,D,c));o.t=t;o.Pc=(A-c+D*t)/(B+D);o.Q=A-B*o.Pc;o.Pp=o.Pc-t;
   o.cb=o.Pc-P0;o.pb=t-o.cb;o.rev=t*o.Q;o.wl=.5*t*(Q0-o.Q);
   o.cs=demA(o.Q)-o.Pc*o.Q;o.ps=o.Pp*o.Q-supA(o.Q)}
  else if(LAB.mode==="sub"){const s=LAB.s;o.s=s;o.Pc=(A-c-D*s)/(B+D);o.Q=A-B*o.Pc;o.Pp=o.Pc+s;
@@ -5006,7 +5008,7 @@ function mkt(){
  return o;
 }
 function mktSVG(o){
- const Pm=o.A/o.B*1.06,Qm=Math.max(o.A,o.mode==="floor"?o.qs:0)*1.04;
+ const Pm=Math.max(o.A/o.B,o.mode==="sub"?o.Pp:0)*1.06,Qm=Math.max(o.A,o.mode==="floor"?o.qs:0)*1.04;
  const X=q=>G.L+(q/Qm)*(G.W-G.L-G.R-14), Y=p=>(G.H-G.B)-(p/Pm)*(G.H-G.T-G.B-10);
  let b="";
  if(o.mode==="tax"||o.mode==="sub"){
@@ -5038,7 +5040,7 @@ function mktSVG(o){
  b+=P.t(X(o.A)-4,Y(0)-10,"D",{a:"end",c:G.C.d,sz:12})
   +P.t(X(S0[2])-4,Y(S0[3])+2,"S",{a:"end",c:shifted?G.C.s2:G.C.s,sz:12});
  if(o.mode==="tax")b+=P.t(X(St[2])-4,Y(St[3])-6,"S + tax",{a:"end",c:G.C.s,sz:11.5});
- if(o.mode==="sub")b+=P.t(X(S0[2])-4,Y(Math.max(0,S0[3]-o.s))+12,"S + subsidy",{a:"end",c:G.C.ok,sz:11.5});
+ if(o.mode==="sub")b+=P.t(X(Ss[2])-4,Y(Ss[3])-6,"S − subsidy",{a:"end",c:G.C.ok,sz:11.5});
  return frame(b,"Quantity (000)","Price ($)",{alt:"Interactive market model with computed equilibrium"});
 }
 const LABX={
@@ -5081,7 +5083,7 @@ function marketLab(){
     <div class="row mt2" style="gap:5px" role="group" aria-labelledby="mktsup-l">${MKTSUP.map(([c,n,e])=>
      `<button class="tag ${(LAB.c||0)===c?"f":""}" style="cursor:pointer" aria-pressed="${(LAB.c||0)===c}" onclick="LAB.c=${c};render()">${n} · ${e}</button>`).join("")}</div>
     <p class="xs mt2">A straight supply line's elasticity is set by where it meets the axes, not by how steep it is. Through the origin, PES is 1 at every point, however steep the line. Meeting the quantity axis, PES is below 1 everywhere; meeting the price axis, above 1. Slope and elasticity are different measures: slope is units per dollar, elasticity is percentage per percentage.</p>
-    ${LAB.mode==="tax"?`<label class="lb mt3">Specific tax · $${LAB.t}</label><input type="range" min="1" max="8" step="1" value="${LAB.t}" oninput="LAB.t=+this.value;render()">`:""}
+    ${LAB.mode==="tax"?`<label class="lb mt3">Specific tax · $${o.t}</label><input type="range" min="1" max="${mktTaxMax(LAB.B,LAB.D,LAB.c)}" step="1" value="${o.t}" oninput="LAB.t=+this.value;render()">`:""}
     ${LAB.mode==="sub"?`<label class="lb mt3">Subsidy · $${LAB.s}</label><input type="range" min="1" max="8" step="1" value="${LAB.s}" oninput="LAB.s=+this.value;render()">`:""}
     ${LAB.mode==="ceil"?`<label class="lb mt3">Maximum price · $${LAB.pmax}</label><input type="range" min="1" max="${Math.max(2,Math.floor(o.P0))}" step="0.5" value="${LAB.pmax}" oninput="LAB.pmax=+this.value;render()">`:""}
     ${LAB.mode==="floor"?`<label class="lb mt3">Minimum price · $${+o.Pset.toFixed(2)}</label><input type="range" min="${Math.ceil(o.P0)}" max="${mktFloorMax(LAB.B)}" step="0.5" value="${Math.min(LAB.pmin,mktFloorMax(LAB.B))}" oninput="LAB.pmin=+this.value;render()">`:""}
@@ -5110,14 +5112,14 @@ function adasSolve(){const{dAD,dAS,Yf,model}=ADAS;
     the economy sits at AD ∩ SRAS beyond potential (an inflationary gap); the
     point the lab reports is the long-run one, on LRAS. Stylised: SRAS is
     assumed to shift left until it passes through that long-run point. */
- const sr=model==="m"&&cap&&dAD>0?{P:(2000+dAD-dAS)/20,Y:(2000+dAD+dAS)/2}:null;
+ const sr=model==="m"&&cap?{P:(2000+dAD-dAS)/20,Y:(2000+dAD+dAS)/2}:null;
  if(model==="k"&&!cap&&P<90){P=90;Y=Math.min(2000+dAD-900,Yf);fl=true}
  const u=clamp(5+.5*((Yf-Y)/Yf*100),1.5,22);
  let note;
  if(!dAD&&!dAS)note=Yf===1000?"Baseline. The economy sits at a price level of 100 with real output of $1,000bn, at potential, by construction.":`Baseline curves. The economy sits at a price level of ${P.toFixed(1)} with real output of $${Y.toFixed(0)}bn, ${Y<Yf?"below":"at"} potential output of $${Yf}bn.`;
- else if(dAD&&!dAS&&sr)note=`Aggregate demand rises by $${dAD}bn. Short run (hollow marker): before money wages adjust, output goes to $${sr.Y.toFixed(0)}bn, $${(sr.Y-Yf).toFixed(0)}bn above potential, an inflationary gap, with the price level at ${sr.P.toFixed(1)}. Long run (solid marker): as wages and other input costs catch up, SRAS shifts left (dashed SRAS₁) until output is back at potential, $${Yf}bn, and the price level has risen to ${P.toFixed(1)}. Stimulus into a full-employment economy is inflationary rather than expansionary.`;
+ else if(dAD>0&&!dAS&&sr)note=`Aggregate demand rises by $${dAD}bn. Short run (hollow marker): before money wages adjust, output goes to $${sr.Y.toFixed(0)}bn, $${(sr.Y-Yf).toFixed(0)}bn above potential, an inflationary gap, with the price level at ${sr.P.toFixed(1)}. Long run (solid marker): as wages and other input costs catch up, SRAS shifts left (dashed SRAS₁) until output is back at potential, $${Yf}bn, and the price level has risen to ${P.toFixed(1)}. Stimulus into a full-employment economy is inflationary rather than expansionary.`;
  else if(dAD&&!dAS)note=`Aggregate demand ${dAD>0?"rises":"falls"} by $${Math.abs(dAD)}bn. ${cap?"Output is constrained by capacity, so once money wages have adjusted the whole adjustment falls on the price level. The point shown is that long-run outcome: in the short run output can rise above potential, an inflationary gap, before SRAS shifts left to close it. Either way, stimulus into a full-employment economy is inflationary rather than expansionary.":fl?"With substantial spare capacity and a price level rigid downwards, the adjustment falls almost entirely on output: the Keynesian case for demand management.":`Output moves to $${Y.toFixed(0)}bn and the price level to ${P.toFixed(1)}, so the effect is split between real and nominal adjustment.`}`;
- else if(dAS&&!dAD)note=`Short-run aggregate supply ${dAS>0?"increases":"decreases"} by $${Math.abs(dAS)}bn. ${dAS<0?"Output falls while the price level rises: the signature of a supply shock, and the reason demand-side policy cannot resolve one without cost.":cap?"The economy is already at potential output, and output cannot exceed it in this model, so a rise in short-run supply on its own changes neither output nor the price level. A lasting supply-side gain has to raise potential output itself: raise Yf as well, and output rises while the price level falls.":"Output rises while the price level falls, which is why supply-side improvement is a route to non-inflationary growth."}`;
+ else if(dAS&&!dAD)note=`Short-run aggregate supply ${dAS>0?"increases":"decreases"} by $${Math.abs(dAS)}bn. ${dAS<0?"Output falls while the price level rises: the signature of a supply shock, and the reason demand-side policy cannot resolve one without cost.":cap?(sr?`In the short run (hollow marker) output goes to $${sr.Y.toFixed(0)}bn, beyond potential, with the price level down at ${sr.P.toFixed(1)}. That does not last: with output above capacity, money wages rise and SRAS shifts back (dashed SRAS₁) until the economy is at potential again at a price level of ${P.toFixed(1)} (solid marker). A lasting supply-side gain has to raise potential output itself: raise Yf as well, and output rises while the price level falls.`:"The economy is already at potential output, and output cannot exceed it in this model, so a rise in short-run supply on its own changes neither output nor the price level. A lasting supply-side gain has to raise potential output itself: raise Yf as well, and output rises while the price level falls."):"Output rises while the price level falls, which is why supply-side improvement is a route to non-inflationary growth."}`;
  else note=`Both curves have moved. Output settles at $${Y.toFixed(0)}bn and the price level at ${P.toFixed(1)}.${sr?` That is the long run (solid marker); in the short run (hollow marker) output is $${sr.Y.toFixed(0)}bn, beyond potential, until SRAS shifts left.`:""} When two shocks act together, say which dominates and why rather than describing each separately.`;
  return{P,Y,u,cap,fl,note,sr}}
 function adasSVG(r){
@@ -6467,7 +6469,7 @@ function calcSVG(c,v){
   b+=P.ln(x(qT),y(Sp(qT)+t),x(Qm),y(Sp(Qm)+t),G.C.s);
   b+=P.ln(G.L,y(Pc),x(q1),y(Pc),G.C.gr2,{w:1.2,dash:"3,3"})+P.ln(G.L,y(Pp),x(q1),y(Pp),G.C.gr2,{w:1.2,dash:"3,3"});
   b+=P.ln(x(q1),y(Pc),x(q1),y(0),G.C.gr2,{w:1.2,dash:"3,3"})+P.ln(x(q0),y((Pc+Pp)/2),x(q0),y(0),G.C.gr2,{w:1.2,dash:"3,3"});
-  b+=P.t(x(q1),y(0)+16,"Q₁ "+q1,{a:"middle",sz:11,mono:1})+P.t(x(q0),y(0)+16,"Q₀ "+q0,{a:"middle",sz:11,mono:1});
+  b+=P.t(x(q1),y(0)+16,"Q₁ "+q1,{a:"middle",sz:11,mono:1})+P.t(x(q0),y(0)+(x(q0)-x(q1)<52?30:16),"Q₀ "+q0,{a:"middle",sz:11,mono:1});
   b+=P.t(G.L-8,y(Pc)+4,"Pc",{a:"end",sz:11,mono:1})+P.t(G.L-8,y(Pp)+4,"Pp",{a:"end",sz:11,mono:1});
   b+=P.t(x(q1*.34),y((Pc+Pp)/2),c.id==="dwl"?"revenue":"revenue = $"+r2(t*q1),{sz:11,c:G.C.p});
   b+=P.t(x(q1)+8,y(Pc*1.02),"welfare loss",{sz:11,c:G.C.w});
@@ -13103,7 +13105,7 @@ defModel("phillips",{sub:"3.3",t:"The Phillips curve",model:"Short-run Phillips 
      {k:"C",label:"C",q:C.q,p:C.p,on:["SR1","LR"],col:CW}],
    guides:[{q:A.q,p:A.p,xLab:NUM(A.q)+"%",yLab:NUM(A.p)+"%"},
      {q:B.q,p:B.p,xLab:NUM(B.q)+"%",yLab:NUM(B.p)+"%",col:"#E4DED2",lc:CD},
-     {q:C.q,p:C.p,yLab:NUM(C.p)+"%",col:"#E4DED2",lc:CW}],
+     {q:C.q,p:C.p,col:"#E4DED2",lc:CW}],
    facts:[["Natural rate of unemployment",NUM(p.nru)+"%"],["A: starting point",NUM(A.q)+"% unemployment, "+NUM(A.p)+"% inflation"],
      ["B: short-run trade-off",NUM(B.q)+"% unemployment, "+NUM(B.p)+"% inflation"],
      ["C: after expectations adjust",NUM(C.q)+"% unemployment, "+NUM(C.p)+"% inflation"],
@@ -13117,8 +13119,9 @@ defModel("ppc",{sub:"1.1",t:"The production possibilities curve",model:"Concave 
  x:"Capital goods (units)",y:"Consumer goods (units)",
  par:{a:100,b:80,g:1.2},
  build(p){
-  const pts=[];for(let i=0;i<=40;i++){const x=p.a*i/40;pts.push([x,p.b*Math.sqrt(Math.max(0,1-(x/p.a)*(x/p.a)))])}
-  const out=[];for(let i=0;i<=40;i++){const x=p.a*p.g*i/40;out.push([x,p.b*p.g*Math.sqrt(Math.max(0,1-(x/(p.a*p.g))*(x/(p.a*p.g))))])}
+  /* sampled evenly in angle, not in x, so the curve meets the axis without a visible chord */
+  const arc=(a,b)=>{const r=[];for(let i=0;i<=60;i++){const th=Math.PI/2*i/60;r.push([a*Math.sin(th),b*Math.cos(th)])}return r};
+  const pts=arc(p.a,p.b),out=arc(p.a*p.g,p.b*p.g);
   const curveY=(x,ax,by)=>by*Math.sqrt(Math.max(0,1-(x/ax)*(x/ax)));
   const A=[60,curveY(60,p.a,p.b)];
   const B=[40,30];
@@ -13188,7 +13191,7 @@ defModel("lorenz",{sub:"3.4",t:"The Lorenz curve",model:"Cumulative income share
      "Area between the curves, A = 5000 − "+NUM(B)+" = "+NUM(A),
      "Gini coefficient = A / (A + B) = "+NUM(A)+" / 5000 = "+NUM(gini)],
    curves:[{k:"EQ",label:"Line of equality",c:LIN(0,1),col:G.C.gr,dash:"5,4",q1:100,labA:"end",labAt:74,labDy:-7},
-     {k:"LZ",label:"Lorenz curve",c:POLY(cum),col:CD,labDx:-12,labDy:16}],
+     {k:"LZ",label:"Lorenz curve",c:POLY(cum),col:CD,labDx:-120,labDy:205}],
    /* A is bounded above by the line of equality and below by the Lorenz curve;
       B is the area beneath the Lorenz curve. Both are traced from the plotted
       coordinates, so the labels cannot describe a shape that is not there. */
@@ -23519,7 +23522,7 @@ function lorenzSVG(){
   <rect x="${PL}" y="${PT}" width="${SW}" height="${SH}" fill="none" stroke="#D8D3CA"/>
   ${[0.2,0.4,0.6,0.8].map(g=>`<line x1="${X(g)}" y1="${PT}" x2="${X(g)}" y2="${HGT-PB}" stroke="#EDE9E2"/>
     <line x1="${PL}" y1="${Y(g)}" x2="${W-PR}" y2="${Y(g)}" stroke="#EDE9E2"/>`).join("")}
-  <polygon points="${X(0)},${Y(0)} ${pts} ${X(1)},${Y(0)}" fill="#0C2340" opacity=".07"/>
+  <polygon points="${pts}" fill="#0C2340" opacity=".07"/>
   <line x1="${X(0)}" y1="${Y(0)}" x2="${X(1)}" y2="${Y(1)}" stroke="#8A6D3B" stroke-width="1.6" stroke-dasharray="5 4"/>
   <polyline points="${pts}" fill="none" stroke="#0C2340" stroke-width="2.4" stroke-linejoin="round"/>
   ${c.cum.map((v,i)=>`<circle cx="${X(i/5)}" cy="${Y(v)}" r="3.4" fill="#0C2340"/>`).join("")}
@@ -33491,7 +33494,7 @@ const EELABS={
   ctl:[["conf","Consumer and business confidence",-10,10,1,v=>eeP(v,0).replace("%","")],["rate","Interest rates (percentage points)",-3,3,0.5,v=>(v>0?"+":"")+eeF(v,1)],["gov","Government spending",-10,10,1,v=>eeP(v,0).replace("%","")],
    ["exp","Demand for exports",-10,10,1,v=>eeP(v,0).replace("%","")],["energy","Energy prices",-10,10,1,v=>eeP(v,0).replace("%","")],["wages","Wage costs",-10,10,1,v=>eeP(v,0).replace("%","")],["cap","Productive capacity (long run)",-10,10,1,v=>eeP(v,0).replace("%","")]],
   out(st){const m=EEM.adas(st),X=160,Y=180;
-   const lines=[{p:[[40,160],[160,40]],c:"dem",faint:true},{p:[[40,20],[160,80]],c:"sup",faint:true},
+   const lines=[{p:[[40,160],[160,40]],c:"dem",faint:true},{p:[[40,70],[160,130]],c:"sup",faint:true},
     {p:[[40,160+m.sAD],[160,40+m.sAD]],c:"dem",lab:"AD",at:"end",dx:-4,dy:-8,anchor:"end"},
     {p:[[40,50+m.sAS+0.5*(40-m.k)],[160,50+m.sAS+0.5*(160-m.k)]],c:"sup",lab:"SRAS",dx:-4,dy:-8,anchor:"end"},
     {p:[[m.Yf,0],[m.Yf,Y]],c:"ink",lab:"LRAS",at:"end",dx:6,dy:14}];
