@@ -14,12 +14,15 @@ const b = await browser();
 const WIDTHS = (process.env.WIDTHS || '320,360,375,390,414,430,768,834,1024,1280,1366,1440,1600,1920,2560').split(',').map(Number);
 const ROUTES = (process.env.ROUTES ? process.env.ROUTES.split(',') : ['', '#/about', '#/world', '#/world/real-world-economics/MIC-001', '#/mind/market',
   '#/lab', '#/lab/elasticity-lab', '#/lab/diagram-atlas/tax', '#/examiner', '#/papers', '#/dna', '#/learn/concept-spine/c-ped', '#/everywhere',
-  '#/ees', '#/videos', '#/educator', '#/think/economist-s-toolkit', '#/calculate', '#/course', '#/tutorials']);
+  '#/ees', '#/videos', '#/educator', '#/think/economist-s-toolkit', '#/calculate', '#/course', '#/tutorials',
+  '#/course/topics/2.5', '#/course/topics/unit-3', '#/course/dictionary', '#/course/command-terms', '#/learn/misconception-lab',
+  '#/think/inquiry-tools', '#/mind/mindmaps/snap-2.8', '#/papers/paper-2-data-lab', '#/papers/paper-3-recommendation-lab']);
 
 function audit() {
   const TOL = 3;
   const vis = e => { const s = getComputedStyle(e); return s.display !== 'none' && s.visibility !== 'hidden' && +s.opacity > 0.05 };
-  const shown = e => { for (let x = e; x && x !== document.body; x = x.parentElement) { if (!vis(x)) return false; if (x.tagName === 'DETAILS' && !x.open && x !== e && !e.closest('summary')) return false } return true };
+  /* a closed <details> shows only its own summary: a summary nested deeper inside it is hidden too */
+  const shown = e => { const sm = e.closest('summary'); for (let x = e; x && x !== document.body; x = x.parentElement) { if (!vis(x)) return false; if (x.tagName === 'DETAILS' && !x.open && x !== e && !(sm && sm.parentElement === x)) return false } return true };
   /* the part of an element's box that can actually be seen, after every clipping ancestor */
   const clip = e => {
     let r = e.getBoundingClientRect(); r = { l: r.left, t: r.top, r: r.right, b: r.bottom };
