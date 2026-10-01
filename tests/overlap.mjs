@@ -16,7 +16,8 @@ const ROUTES = (process.env.ROUTES ? process.env.ROUTES.split(',') : ['', '#/abo
   '#/lab', '#/lab/elasticity-lab', '#/lab/diagram-atlas/tax', '#/examiner', '#/papers', '#/dna', '#/learn/concept-spine/c-ped', '#/everywhere',
   '#/ees', '#/videos', '#/educator', '#/think/economist-s-toolkit', '#/calculate', '#/course', '#/tutorials',
   '#/course/topics/2.5', '#/course/topics/unit-3', '#/course/dictionary', '#/course/command-terms', '#/learn/misconception-lab',
-  '#/think/inquiry-tools', '#/mind/mindmaps/snap-2.8', '#/papers/paper-2-data-lab', '#/papers/paper-3-recommendation-lab']);
+  '#/think/inquiry-tools', '#/mind/mindmaps/snap-2.8', '#/papers/paper-2-data-lab', '#/papers/paper-3-recommendation-lab',
+  '#/ideas', '#/think/why-did-this-happen']);
 
 function audit() {
   const TOL = 3;
