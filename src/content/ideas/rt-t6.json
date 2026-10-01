@@ -1,0 +1,154 @@
+[
+ {
+  "file": "economists.json",
+  "path": [
+   14,
+   "ideas",
+   3,
+   "p"
+  ],
+  "old": "This links development economics with behavioural economics and choice architecture.",
+  "new": "This links development economics with behavioural economics and choice architecture. In the IB course, choice architecture and nudges are HL only (2.4 and 2.7).",
+  "sev": "major",
+  "why": "Nudges and choice architecture are HL only in the guide (2.4 ‘Behavioural economics in action’, 2.7 ‘Consumer nudges’) but are presented here without a label."
+ },
+ {
+  "file": "economists.json",
+  "path": [
+   6,
+   "criticisms",
+   0
+  ],
+  "old": "Friedman and others argued that fiscal policy acts with long and variable lags",
+  "new": "Friedman and others argued that discretionary policy, monetary as well as fiscal, acts with long and variable lags",
+  "sev": "minor",
+  "why": "Friedman’s ‘long and variable lags’ phrase was made about monetary policy, so tying it to fiscal policy alone misattributes it."
+ },
+ {
+  "file": "economists.json",
+  "path": [
+   6,
+   "criticisms",
+   2
+  ],
+  "old": "reducing the net effect on demand.",
+  "new": "reducing the net effect on demand (crowding out is HL only in the IB course, 3.6).",
+  "sev": "minor",
+  "why": "Crowding out is HL only (guide 3.6) and is not labelled here."
+ },
+ {
+  "file": "economists.json",
+  "path": [
+   6,
+   "criticisms",
+   1
+  ],
+  "old": "assumed a stable trade-off.",
+  "new": "assumed a stable trade-off between inflation and unemployment (the Phillips curve, HL only in the IB course).",
+  "sev": "minor",
+  "why": "This refers to the Phillips curve, which is HL only, without naming or labelling it."
+ },
+ {
+  "file": "economists.json",
+  "path": [
+   9,
+   "ideas",
+   2,
+   "p"
+  ],
+  "old": "This turned a recession into a depression.",
+  "new": "In their account, this turned a recession into a depression.",
+  "sev": "minor",
+  "why": "States a contested interpretation as fact in the platform’s voice; it should stay attributed to Friedman and Schwartz."
+ },
+ {
+  "file": "economists.json",
+  "path": [
+   12,
+   "ideas",
+   2,
+   "p"
+  ],
+  "old": "based on information problems rather than rigid wages.",
+  "new": "in which wages stay above the market-clearing level because of information problems, not because of minimum wages or union bargaining.",
+  "sev": "minor",
+  "why": "Efficiency wages are themselves a source of real-wage rigidity, so contrasting them with ‘rigid wages’ mischaracterises the model."
+ },
+ {
+  "file": "economists.json",
+  "path": [
+   4,
+   "ideas",
+   0,
+   "p"
+  ],
+  "old": "The familiar diagram, with price on the vertical axis and an equilibrium where the curves cross, is largely his.",
+  "new": "Earlier writers such as Cournot and Fleeming Jenkin had drawn demand and supply curves, but Marshall’s version, with price on the vertical axis and an equilibrium where the curves cross, is the one that became standard.",
+  "sev": "minor",
+  "why": "Demand and supply curves predate Marshall (Cournot 1838, Jenkin 1870); he popularised rather than originated the diagram."
+ },
+ {
+  "file": "economists.json",
+  "path": [
+   1,
+   "ideas",
+   1,
+   "p"
+  ],
+  "old": "The idea is an early form of diminishing marginal returns",
+  "new": "The idea is an early form of the law of diminishing marginal returns (HL only in the IB course, 2.2)",
+  "sev": "minor",
+  "why": "The law of diminishing marginal returns is HL only in the guide (2.2 assumptions underlying the law of supply) and is unlabelled here."
+ },
+ {
+  "file": "economists.json",
+  "path": [
+   2,
+   "ideas",
+   0,
+   "p"
+  ],
+  "old": "The mechanism relies on diminishing returns from a fixed supply of land.",
+  "new": "The mechanism relies on diminishing returns from a fixed supply of land (diminishing marginal returns is HL only in the IB course, 2.2).",
+  "sev": "minor",
+  "why": "Diminishing marginal returns is HL only and is unlabelled here."
+ },
+ {
+  "file": "economists.json",
+  "path": [
+   5,
+   "ideas",
+   3,
+   "p"
+  ],
+  "old": "because an extra pound is likely to matter more to someone with less.",
+  "new": "because an extra pound is likely to matter more to someone with less (an application of diminishing marginal utility, which is HL only in the IB course).",
+  "sev": "minor",
+  "why": "The argument rests on diminishing marginal utility, which is HL only (2.1), without a label."
+ },
+ {
+  "file": "causal.json",
+  "path": [
+   1,
+   "variables",
+   3,
+   "why"
+  ],
+  "old": "so the budget deficit tends to widen.",
+  "new": "so the budget deficit tends to widen (automatic stabilisers, HL only).",
+  "sev": "minor",
+  "why": "This is the automatic-stabiliser mechanism, HL only in 3.6, but the pathway’s hl field is null and the text is unlabelled."
+ },
+ {
+  "file": "causal.json",
+  "path": [
+   3,
+   "evaluation",
+   1
+  ],
+  "old": "because import and export volumes respond slowly.",
+  "new": "because import and export volumes respond slowly (the J-curve, HL only).",
+  "sev": "minor",
+  "why": "J-curve content appears in the SL-visible evaluation list without an HL label; only the separate hl field labels it."
+ }
+]

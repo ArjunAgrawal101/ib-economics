@@ -1,0 +1,1149 @@
+[
+ {
+  "id": "inflation",
+  "q": "Why did inflation rise?",
+  "unit": 3,
+  "subs": [
+   "3.2",
+   "3.3",
+   "3.5"
+  ],
+  "kc": [
+   "Change",
+   "Economic well-being",
+   "Intervention"
+  ],
+  "dg": "adas",
+  "dg2": "costpush",
+  "event": "A country’s consumer price index rises faster than in previous years. The increase is broad: it shows up in many categories of goods and services, not only in one volatile item. Households report that their incomes buy less, and firms report rising prices for both what they sell and what they buy as inputs.",
+  "initial": "Two facts decide which explanation fits. First, how close the economy was to full capacity: low unemployment and high capacity use make demand-pull more likely. Second, whether input costs such as energy, imported materials or wages had jumped. Expectations matter too: if people expect inflation to persist, they may build it into wage claims and prices.",
+  "mechanism": [
+   "Route A (demand-pull): consumption, investment, government spending or net exports rise → AD shifts right while the economy is near full capacity.",
+   "Firms cannot raise output much without paying more for scarce labour and capacity → the economy moves up a steepening SRAS curve, so the price level rises (a movement along SRAS).",
+   "Route B (cost-push): a rise in energy, raw-material or wage costs raises firms’ unit costs → SRAS shifts left.",
+   "With higher costs, firms raise prices and cut output → the price level rises while real GDP falls, a combination often called stagflation.",
+   "Either route can be reinforced if workers and firms come to expect higher inflation and raise wages and prices in advance, shifting SRAS left again.",
+   "Decision test: if output and employment rose alongside prices, demand-pull fits better; if output fell or stalled while prices rose, cost-push fits better."
+  ],
+  "agents": [
+   {
+    "who": "Households",
+    "what": "Spend more if incomes, credit or confidence rise (demand-pull); lose purchasing power if their wages lag behind prices."
+   },
+   {
+    "who": "Firms",
+    "what": "Raise prices when demand outruns capacity, or pass on higher input costs to protect profit margins."
+   },
+   {
+    "who": "Workers and unions",
+    "what": "Seek higher money wages to protect real wages, which can feed a wage-price spiral if expectations shift."
+   },
+   {
+    "who": "Central bank",
+    "what": "Judges whether the rise is temporary or persistent and decides whether to tighten monetary policy."
+   },
+   {
+    "who": "Foreign suppliers",
+    "what": "Higher world prices for energy or materials raise import costs and transmit cost-push pressure."
+   }
+  ],
+  "diagram": "Draw two AD–AS panels. Demand-pull: shift AD right from AD₁ to AD₂ near full capacity; the price level rises from P₁ to P₂ and real GDP rises from Y₁ to Y₂. Cost-push: shift SRAS left from SRAS₁ to SRAS₂; the price level rises and real GDP falls. Label which panel matches the observed data on output.",
+  "variables": [
+   {
+    "v": "Average price level",
+    "dir": "up",
+    "why": "Rises under both routes; the cause differs, so the price level alone cannot identify the route."
+   },
+   {
+    "v": "Real GDP",
+    "dir": "ambiguous",
+    "why": "Rises under demand-pull, but falls under cost-push as higher costs lead firms to cut output."
+   },
+   {
+    "v": "Unemployment",
+    "dir": "ambiguous",
+    "why": "Tends to fall with demand-pull and rise with cost-push, because output moves in opposite directions."
+   },
+   {
+    "v": "Real wages",
+    "dir": "down",
+    "why": "Usually fall at first, because money wages tend to adjust to higher prices with a lag."
+   },
+   {
+    "v": "Inflation expectations",
+    "dir": "up",
+    "why": "May rise if inflation persists, making future wage and price setting more inflationary."
+   }
+  ],
+  "short": "In the short run, demand-pull inflation comes with stronger output and falling unemployment, so the main costs are lost purchasing power and uncertainty. Cost-push inflation is harder to bear: prices rise while output and jobs fall. Lower-income households, who spend a larger share of income on food and energy, may lose most. Savers holding cash lose if interest rates stay below inflation.",
+  "long": "In the longer run, a one-off cost shock may fade once input prices stop rising, so inflation can fall back without policy action. Demand-pull inflation tends to persist if spending keeps outrunning capacity. The greatest risk under either route is that expectations become unanchored: wages and prices then rise because people expect them to, and bringing inflation down may need tighter policy and slower growth.",
+  "evidence": "Supporting evidence for demand-pull would include rising real GDP, low unemployment, high capacity use and fast growth in spending or credit. For cost-push, look for rising energy, import or wage costs that came before the price rise, and for weak output. Studies of recent episodes generally find that both routes operated together, with supply bottlenecks and energy prices interacting with recovering demand. Evidence on how much each contributed is mixed.",
+  "cases": [
+   "MAC-016",
+   "MAC-039",
+   "MAC-042"
+  ],
+  "evaluation": [
+   "It depends on where the economy was on its AS curve: near full capacity, extra demand mostly raises prices.",
+   "In the short run, cost-push inflation creates a policy dilemma, because raising interest rates to curb prices may deepen the fall in output.",
+   "In the long run, inflation tends to persist only if expectations or continued demand growth sustain it.",
+   "A key limitation is that real episodes usually mix both routes, so a clean demand-pull or cost-push label may oversimplify.",
+   "Stakeholders may experience inflation unequally: borrowers with fixed-rate debt may gain, while savers and those on fixed incomes lose."
+  ],
+  "alternatives": [
+   {
+    "h": "A depreciation of the currency",
+    "p": "A weaker currency raises the domestic price of imported goods and inputs. This works like a cost-push shock, but its source is the foreign exchange market rather than domestic costs. It is more likely to matter in an economy that imports a large share of its energy, food or components.",
+    "test": "Check whether the exchange rate fell before prices rose, and whether import prices rose faster than domestic service prices."
+   },
+   {
+    "h": "A change in indirect taxes or administered prices",
+    "p": "A rise in VAT, excise duties or regulated energy tariffs lifts measured prices in one step. This raises the inflation rate for about a year but is not a continuing process, so it may not justify a policy response.",
+    "test": "Look for a jump in the index at the date of the tax change, and compare headline inflation with measures that exclude taxes."
+   }
+  ],
+  "hl": null,
+  "next": [
+   "ratehike",
+   "currency"
+  ]
+ },
+ {
+  "id": "unemployment",
+  "q": "Why did unemployment rise?",
+  "unit": 3,
+  "subs": [
+   "3.2",
+   "3.3",
+   "3.7"
+  ],
+  "kc": [
+   "Change",
+   "Economic well-being",
+   "Equity"
+  ],
+  "dg": "adas",
+  "dg2": "cycle",
+  "event": "The unemployment rate rises over several quarters. More people who are actively seeking work cannot find a job. The rise may be spread across the whole economy, or concentrated in particular industries, regions or skill groups, and that pattern is a first clue to its cause.",
+  "initial": "What matters is the state of aggregate demand, the structure of the economy and how flexible the labour market is. If spending has fallen across the board, cyclical unemployment is likely. If technology, trade or consumer tastes have shifted demand away from some industries, structural unemployment is likely. Skills, mobility and information about vacancies affect how quickly workers can move.",
+  "mechanism": [
+   "Cyclical route: a fall in consumption, investment or exports shifts AD left → real GDP falls below potential output.",
+   "Firms need fewer workers to produce less output → labour is a derived demand, so employment falls and cyclical (demand-deficient) unemployment rises.",
+   "Structural route: technological change, trade competition or shifting tastes reduce demand for particular skills or industries, even if total AD is steady.",
+   "Workers displaced from declining sectors lack the skills, location or information to fill vacancies elsewhere → a mismatch persists even with unfilled jobs.",
+   "Decision test: cyclical unemployment comes with falling output and few vacancies; structural unemployment can coexist with many vacancies in other sectors or regions."
+  ],
+  "agents": [
+   {
+    "who": "Firms",
+    "what": "Cut hiring and lay off workers when sales fall, or replace some tasks with new technology."
+   },
+   {
+    "who": "Households",
+    "what": "Cut spending when jobs feel less secure, which can deepen a cyclical downturn."
+   },
+   {
+    "who": "Displaced workers",
+    "what": "Search for new jobs; some need retraining or must move to find work."
+   },
+   {
+    "who": "Government",
+    "what": "Pays unemployment benefits and may use demand-side or supply-side policies, depending on the diagnosis."
+   }
+  ],
+  "diagram": "On an AD–AS diagram, shift AD left from AD₁ to AD₂; real GDP falls from Y₁ to Y₂, below full-employment output Yf, so a deflationary (recessionary) gap opens. Mark the gap and link it to cyclical unemployment. Structural unemployment is not shown by an AD shift; note it separately as part of the natural rate at Yf.",
+  "variables": [
+   {
+    "v": "Real GDP",
+    "dir": "ambiguous",
+    "why": "Falls in a cyclical downturn; may be little changed if the rise in unemployment is mainly structural."
+   },
+   {
+    "v": "Job vacancies",
+    "dir": "ambiguous",
+    "why": "Fall in a recession; may stay high or rise in growing sectors when unemployment is structural."
+   },
+   {
+    "v": "Household consumption",
+    "dir": "down",
+    "why": "Lower incomes and weaker confidence lead households to spend less, especially on non-essential goods."
+   },
+   {
+    "v": "Government budget balance",
+    "dir": "down",
+    "why": "Tax revenue falls and benefit spending rises, so the budget deficit tends to widen."
+   },
+   {
+    "v": "Inflationary pressure",
+    "dir": "down",
+    "why": "Spare capacity and weaker wage bargaining usually reduce pressure on prices in a cyclical downturn."
+   }
+  ],
+  "short": "In the short run, cyclical unemployment lowers household incomes and spending, which can spread the downturn to other sectors. Government borrowing rises as tax revenue falls and benefit payments rise. Structural unemployment may hit specific towns or groups hard while the wider economy looks healthy. Either way, the costs include lost output, lower incomes and greater stress for affected households.",
+  "long": "In the longer run, cyclical unemployment usually falls as demand recovers, though recovery can be slow. If people stay unemployed for long periods, their skills may fade and employers may become reluctant to hire them, so some cyclical unemployment can turn into longer-term structural unemployment. Structural unemployment tends to fall only as workers retrain, move or as new industries grow.",
+  "evidence": "Supporting evidence for a cyclical cause would include falling real GDP, falling vacancies and job losses spread across many sectors. For a structural cause, look for rising unemployment in particular industries or regions alongside vacancies elsewhere, and long durations of unemployment. Studies generally find that deep recessions can leave lasting scars on some workers, but the size of this effect varies across countries and labour-market institutions.",
+  "cases": [
+   "MAC-032",
+   "MAC-017",
+   "MAC-040"
+  ],
+  "evaluation": [
+   "It depends on whether job losses are spread across the economy or concentrated in particular sectors, which points to cyclical or structural causes.",
+   "In the short run, demand-side policy may reduce cyclical unemployment but does little to fix a skills mismatch.",
+   "In the long run, structural unemployment may need retraining, mobility support or education reform, which take time to work.",
+   "This may be stronger if long spells of unemployment erode skills, turning a cyclical problem into a structural one.",
+   "Stakeholders may experience unemployment very unequally: young people, low-skilled workers and particular regions often bear more of the cost."
+  ],
+  "alternatives": [
+   {
+    "h": "Frictional unemployment from more people entering or changing jobs",
+    "p": "If more people enter the labour force, for example graduates or returning carers, measured unemployment can rise while they search, even if employment is also rising. This is usually short term and is not a sign of weak demand, so it calls for better job-matching rather than a demand-side stimulus.",
+    "test": "Check whether employment and the participation rate rose too, and whether most of the unemployed have short search durations."
+   },
+   {
+    "h": "A change in measurement",
+    "p": "A change in survey method or in how ‘actively seeking work’ is defined can shift the measured rate without any change in the real labour market. Comparisons across years, or between countries that measure unemployment differently, may then mislead students into seeing a cause where there is none.",
+    "test": "Look for a break in the data series and compare it with other indicators such as employment counts or benefit claims."
+   }
+  ],
+  "hl": null,
+  "next": [
+   "stimulus",
+   "supplyside"
+  ]
+ },
+ {
+  "id": "growth",
+  "q": "Why did economic growth slow?",
+  "unit": 3,
+  "subs": [
+   "3.1",
+   "3.2",
+   "3.7",
+   "4.9"
+  ],
+  "kc": [
+   "Change",
+   "Economic well-being",
+   "Sustainability"
+  ],
+  "dg": "adas",
+  "dg2": "growth",
+  "event": "The annual rate of growth of real GDP falls compared with earlier years. Output may still be rising, but more slowly. A slowdown is different from a recession: real GDP need not fall. The question is whether demand has weakened for a while or whether the economy’s capacity to produce is growing more slowly.",
+  "initial": "The key starting conditions are the size of the output gap, the growth of the labour force, the rate of investment and productivity growth, and the economy’s stage of development. A fast-growing economy catching up with richer ones may see growth slow as easy gains run out. Debt levels, confidence and the state of export markets also matter.",
+  "mechanism": [
+   "Demand-side route: weaker consumption, investment or exports shift AD left or slow its growth → actual growth falls below the growth of potential output.",
+   "Firms facing weaker sales postpone investment → this lowers AD now and also slows the future growth of the capital stock.",
+   "Supply-side route: slower growth in the labour force, capital or productivity slows the rightward shift of LRAS → potential growth itself falls.",
+   "In a catching-up economy, moving workers from farming into industry and copying existing technology yields large gains at first, but these gains tend to shrink over time.",
+   "Decision test: a demand-side slowdown shows spare capacity and falling inflation; a supply-side slowdown may show little spare capacity, with inflation steady or rising."
+  ],
+  "agents": [
+   {
+    "who": "Firms",
+    "what": "Delay investment when expected sales or confidence fall, slowing both demand and capacity growth."
+   },
+   {
+    "who": "Households",
+    "what": "Save more and spend less if incomes are uncertain or debts are high."
+   },
+   {
+    "who": "Government",
+    "what": "Chooses between demand-side support and longer-term supply-side reform depending on the diagnosis."
+   },
+   {
+    "who": "Foreign buyers",
+    "what": "Buy fewer exports if trading partners slow down, reducing AD."
+   }
+  ],
+  "diagram": "For a demand-side slowdown, draw AD shifting right by less than LRAS, or shifting left, so real GDP falls below potential and a deflationary gap opens. For a supply-side slowdown, use the long-run growth diagram: LRAS still shifts right, but by a smaller distance than before, so potential output grows more slowly.",
+  "variables": [
+   {
+    "v": "Real GDP growth rate",
+    "dir": "down",
+    "why": "The observed change; output may still rise, but by a smaller percentage each year."
+   },
+   {
+    "v": "Investment",
+    "dir": "down",
+    "why": "Weaker expected demand or confidence leads firms to postpone spending on capital goods."
+   },
+   {
+    "v": "Unemployment",
+    "dir": "ambiguous",
+    "why": "Tends to rise if the slowdown is demand-led; may change little if the labour force is also growing more slowly."
+   },
+   {
+    "v": "Inflation",
+    "dir": "ambiguous",
+    "why": "Tends to fall if demand weakens; may hold steady if potential output growth slowed as well."
+   },
+   {
+    "v": "Tax revenue",
+    "dir": "down",
+    "why": "Slower growth in incomes and spending slows the growth of tax receipts."
+   }
+  ],
+  "short": "In the short run, slower growth tends to mean weaker hiring, slower rises in living standards and lower business confidence. If demand is the cause, spare capacity appears and inflation may ease. Tax revenue grows more slowly, which can widen the budget deficit. Firms that depend on rising sales, such as construction and durable goods producers, are often hit first.",
+  "long": "In the longer run, a demand-led slowdown may reverse as confidence and spending recover. A supply-side slowdown is more persistent: lower investment, an ageing population or slower productivity growth reduce potential growth for years. Small differences in annual growth compound into large differences in living standards over a decade, so a lasting slowdown matters more than a temporary one.",
+  "evidence": "Evidence for a demand-side cause would include falling capacity use, rising unemployment, easing inflation and weak spending or credit. Evidence for a supply-side cause would include slower growth in the labour force or in output per worker, with little spare capacity. Studies of catching-up economies generally find that growth tends to slow as income per head rises, though the timing and size of the slowdown vary widely.",
+  "cases": [
+   "MAC-010",
+   "MAC-045",
+   "MAC-008"
+  ],
+  "evaluation": [
+   "It depends on whether the slowdown reflects weaker demand or slower growth in productive capacity, because the policy responses differ.",
+   "In the short run, demand-side policy may close an output gap, but it cannot raise potential growth.",
+   "In the long run, growth depends mainly on investment, skills, technology and institutions.",
+   "A key limitation is that potential output cannot be observed directly, so economists may disagree about how much of a slowdown is cyclical.",
+   "Stakeholders may experience a slowdown unevenly: new entrants to the labour market and firms in cyclical industries tend to be hit first."
+  ],
+  "alternatives": [
+   {
+    "h": "An external shock in trading partners",
+    "p": "If major export markets slow, demand for the country’s exports falls even if domestic conditions are sound. Open economies with a high share of exports in GDP are most exposed. The slowdown is still demand-led, but the policy response differs, because domestic stimulus cannot restore foreign demand directly.",
+    "test": "Compare the timing of the slowdown with trading partners’ growth and check whether net exports fell more than domestic spending."
+   },
+   {
+    "h": "A one-off supply disruption",
+    "p": "A drought, pandemic or energy shortage can cut output for a period without changing the economy’s long-run capacity. Growth may rebound once the disruption passes, so treating it as a lasting fall in potential growth, or responding with long-term reforms, could be a misdiagnosis.",
+    "test": "Look for a sharp fall concentrated in the affected sectors and a recovery once the disruption ends."
+   }
+  ],
+  "hl": null,
+  "next": [
+   "supplyside",
+   "unemployment"
+  ]
+ },
+ {
+  "id": "currency",
+  "q": "Why did the currency depreciate?",
+  "unit": 4,
+  "subs": [
+   "4.5",
+   "4.6",
+   "3.5"
+  ],
+  "kc": [
+   "Interdependence",
+   "Change",
+   "Intervention"
+  ],
+  "dg": "fx",
+  "dg2": null,
+  "event": "Under a floating exchange rate, the value of a country’s currency falls against other major currencies over several months. Each unit of domestic currency now buys fewer units of foreign currency. Import prices in domestic currency start to rise, and exporters find their goods cheaper for foreign buyers.",
+  "initial": "The relevant conditions include the gap between domestic and foreign interest rates, the inflation rate relative to trading partners, the size of the current account deficit, dependence on short-term capital inflows, and investor confidence in the government and central bank. Whether the currency floats freely or is managed matters too.",
+  "mechanism": [
+   "Foreign interest rates rise relative to domestic rates, or confidence falls → investors want fewer domestic financial assets, so demand for the currency falls (D shifts left).",
+   "Residents buy more foreign assets or imports → they supply more domestic currency to buy foreign currency (S shifts right).",
+   "Higher domestic inflation than abroad makes exports less competitive and imports more attractive → demand for the currency falls and supply rises over time.",
+   "With demand lower and/or supply higher, the equilibrium exchange rate falls → a depreciation, shown as a new equilibrium with a lower price of the currency.",
+   "Expectations can reinforce the fall: if traders expect further depreciation, they sell the currency now, which brings the fall forward."
+  ],
+  "agents": [
+   {
+    "who": "Foreign investors",
+    "what": "Move funds to countries with higher returns or lower risk, reducing demand for the currency."
+   },
+   {
+    "who": "Domestic households and firms",
+    "what": "Supply currency when they buy imports or foreign assets; importers face higher costs after the fall."
+   },
+   {
+    "who": "Exporters",
+    "what": "Find their goods more price-competitive abroad, which may raise export volumes over time."
+   },
+   {
+    "who": "Central bank",
+    "what": "May raise interest rates or sell foreign reserves to slow the fall, or allow it to continue."
+   }
+  ],
+  "diagram": "Draw the foreign exchange market for the domestic currency, with the exchange rate (foreign currency per unit) on the vertical axis. Shift demand for the currency left from D₁ to D₂, and if relevant supply right from S₁ to S₂. The equilibrium exchange rate falls from e₁ to e₂. The quantity traded may rise or fall.",
+  "variables": [
+   {
+    "v": "Exchange rate",
+    "dir": "down",
+    "why": "The observed change: fewer units of foreign currency per unit of domestic currency."
+   },
+   {
+    "v": "Import prices in domestic currency",
+    "dir": "up",
+    "why": "Each unit of foreign currency costs more domestic currency, so imported goods and inputs become dearer."
+   },
+   {
+    "v": "Export competitiveness",
+    "dir": "up",
+    "why": "Exports become cheaper in foreign-currency terms, which may raise demand for them."
+   },
+   {
+    "v": "Inflation",
+    "dir": "up",
+    "why": "Dearer imports raise costs and consumer prices, especially where imports are a large share of spending."
+   },
+   {
+    "v": "Current account balance",
+    "dir": "ambiguous",
+    "why": "Depends on how strongly import and export volumes respond to the new prices, and how quickly."
+   }
+  ],
+  "short": "In the short run, the depreciation raises the domestic price of imports. Consumers pay more for imported goods, and firms that rely on imported inputs face higher costs. Exporters gain price competitiveness, but export volumes may take time to respond, because contracts and buying habits adjust slowly. Inflation may rise, which can put pressure on the central bank to respond.",
+  "long": "In the longer run, export volumes may rise and import volumes fall as buyers switch, which can improve the current account. However, if the depreciation feeds into higher wages and prices, the competitive gain may be eroded. Firms and governments with debts in foreign currency face a heavier burden. Whether the depreciation helps or harms overall depends on how the economy adjusts.",
+  "evidence": "Supporting evidence would include a widening gap between foreign and domestic interest rates, capital outflows in the financial account, higher relative inflation or a worsening current account before the fall. Studies generally find that interest-rate differentials and shifts in investor confidence explain much short-run movement, while relative inflation matters more over longer periods. Exchange rates are hard to forecast, so explanations are often made after the event.",
+  "cases": [
+   "GLO-045",
+   "MAC-029",
+   "GLO-022"
+  ],
+  "evaluation": [
+   "It depends on what caused the fall: a confidence crisis has different implications from a gradual adjustment to higher relative inflation.",
+   "In the short run, the trade balance may worsen before it improves, because import and export volumes respond slowly.",
+   "In the long run, the gain in competitiveness may be eroded if the depreciation raises domestic wages and prices.",
+   "This may be stronger if the economy has a large current account deficit financed by short-term capital inflows.",
+   "Stakeholders may experience the depreciation differently: exporters and tourism firms may gain, while importers, consumers and foreign-currency borrowers lose."
+  ],
+  "alternatives": [
+   {
+    "h": "A deliberate policy choice",
+    "p": "A central bank may cut interest rates or sell domestic currency to support exports or growth. The currency then falls because of a policy decision, not a loss of confidence, and the authorities may see the depreciation as a desired outcome rather than a problem to be fixed.",
+    "test": "Check whether the fall followed an interest-rate cut or announced intervention, rather than capital flight or rising risk premiums."
+   },
+   {
+    "h": "Strength of the foreign currency rather than weakness at home",
+    "p": "If a major currency rises against almost all others, the domestic currency appears to depreciate even though nothing has changed at home. The cause then lies abroad, for example in higher foreign interest rates or a rush into a safe-haven currency, and domestic policy may not need to respond.",
+    "test": "Compare the currency against several other currencies, or a trade-weighted index, rather than against one currency alone."
+   }
+  ],
+  "hl": "HL: the J-curve and the Marshall–Lerner condition (why the current account may worsen before it improves)",
+  "next": [
+   "inflation",
+   "ratehike"
+  ]
+ },
+ {
+  "id": "ratehike",
+  "q": "Why did the central bank raise interest rates, and what happened next?",
+  "unit": 3,
+  "subs": [
+   "3.5",
+   "3.3",
+   "4.5"
+  ],
+  "kc": [
+   "Intervention",
+   "Change",
+   "Economic well-being"
+  ],
+  "dg": "adas",
+  "dg2": "fx",
+  "event": "A central bank raises its policy interest rate, sometimes in several steps over a year. Commercial banks soon raise the rates they charge on loans and mortgages, and many offer higher rates on savings. Commentators debate whether the rise will bring inflation down without causing a recession.",
+  "initial": "The usual starting point is inflation above the central bank’s target, often with low unemployment and strong demand. What happens next depends on how much household and business debt is on variable rates, how credible the central bank is, whether inflation is mainly demand-pull or cost-push, and how open the economy is to capital flows.",
+  "mechanism": [
+   "Inflation is above target and expected to stay there → the central bank raises the policy rate to reduce aggregate demand.",
+   "Banks raise borrowing costs → borrowing for houses, cars and investment becomes more expensive, so consumption and investment fall; saving becomes more attractive.",
+   "Households with variable-rate mortgages have less disposable income → consumption falls further, and AD shifts left.",
+   "Higher interest rates attract capital inflows → demand for the currency rises and it appreciates, making exports dearer and imports cheaper, so net exports fall.",
+   "AD shifts left → real GDP grows more slowly and inflationary pressure eases, with a time lag that can be long."
+  ],
+  "agents": [
+   {
+    "who": "Central bank",
+    "what": "Raises the policy rate to bring inflation back towards its target and to keep expectations anchored."
+   },
+   {
+    "who": "Households",
+    "what": "Borrowers pay more interest and spend less; savers earn more."
+   },
+   {
+    "who": "Firms",
+    "what": "Postpone investment projects as borrowing costs rise and expected demand weakens."
+   },
+   {
+    "who": "Foreign investors",
+    "what": "Move funds into domestic assets for the higher return, pushing the currency up."
+   },
+   {
+    "who": "Government",
+    "what": "Pays more interest on new borrowing, which can strain the budget."
+   }
+  ],
+  "diagram": "Start with an AD–AS diagram showing an inflationary gap, with equilibrium beyond full-employment output Yf. Shift AD left from AD₁ to AD₂; the price level falls relative to its previous path and real GDP moves back towards Yf. A second diagram can show the foreign exchange market, with higher demand for the currency raising the exchange rate.",
+  "variables": [
+   {
+    "v": "Consumption and investment",
+    "dir": "down",
+    "why": "Borrowing becomes more expensive and saving more attractive, so interest-sensitive spending falls."
+   },
+   {
+    "v": "Inflation",
+    "dir": "down",
+    "why": "Weaker AD reduces demand-pull pressure, usually after a lag of many months."
+   },
+   {
+    "v": "Real GDP growth",
+    "dir": "down",
+    "why": "Lower AD slows output growth; output can fall if rates rise sharply."
+   },
+   {
+    "v": "Exchange rate",
+    "dir": "up",
+    "why": "Higher returns attract capital inflows, increasing demand for the currency."
+   },
+   {
+    "v": "Unemployment",
+    "dir": "up",
+    "why": "Slower growth in demand tends to reduce hiring, so unemployment may rise."
+   }
+  ],
+  "short": "In the short run, borrowers face higher repayments and cut spending, and housing markets often cool first. Firms delay investment. The currency may appreciate, putting pressure on exporters. Inflation may not fall at once, because policy works with a lag. If inflation was driven by a supply shock, higher rates may reduce output without doing much about its cause.",
+  "long": "In the longer run, if the rise is credible, inflation expectations stay anchored and inflation returns towards target, after which rates can be lowered. The cost may be a period of slower growth and higher unemployment. If rates are raised too far or too late, a recession is possible. Lower investment today may also reduce the growth of productive capacity.",
+  "evidence": "Supporting evidence would include slowing credit growth, falling house prices or mortgage approvals, weaker investment and an easing in inflation after a lag. Studies generally find that monetary policy affects inflation with long and variable lags, and that the effect is stronger when more debt is on variable rates. Evidence is mixed on how well higher rates work against inflation that comes mainly from supply shocks.",
+  "cases": [
+   "MAC-012",
+   "MAC-029"
+  ],
+  "evaluation": [
+   "It depends on the cause of inflation: higher rates reduce demand-pull pressure more directly than cost-push pressure.",
+   "In the short run, time lags mean that inflation may keep rising for some months after rates go up.",
+   "In the long run, credibility matters: if people believe the central bank will hit its target, smaller rate rises may be needed.",
+   "This may be weaker if most borrowing is on fixed rates, or if households and firms hold large cash savings.",
+   "There may be unintended consequences: higher debt-servicing costs can strain indebted households, firms and governments, and the currency rise can hurt exporters."
+  ],
+  "alternatives": [
+   {
+    "h": "Defending the currency",
+    "p": "A central bank may raise rates mainly to stop a sharp depreciation that threatens to raise import prices and destabilise the economy, rather than because domestic demand is too strong. This is more common in economies that import much of their food and energy or that borrow heavily in foreign currencies.",
+    "test": "Check whether the rise followed a fall in the exchange rate or capital outflows, rather than strong domestic spending."
+   },
+   {
+    "h": "Following other central banks",
+    "p": "If major economies raise rates, a smaller open economy may follow to avoid capital outflows and depreciation, even if its own demand is weak. Its policy is then shaped by interdependence with larger economies, and the rate rise may slow its economy more than domestic conditions alone would justify.",
+    "test": "Compare the timing with rate decisions abroad and with the central bank’s own statements about its reasons."
+   }
+  ],
+  "hl": null,
+  "next": [
+   "inflation",
+   "currency"
+  ]
+ },
+ {
+  "id": "stimulus",
+  "q": "Why did the government increase spending in a recession, and what happened next?",
+  "unit": 3,
+  "subs": [
+   "3.6",
+   "3.2",
+   "3.3"
+  ],
+  "kc": [
+   "Intervention",
+   "Economic well-being",
+   "Change"
+  ],
+  "dg": "defgap",
+  "dg2": "multiplier",
+  "event": "During a recession, a government announces higher spending on infrastructure, public services or transfers, and allows its budget deficit to widen. Supporters say it will protect jobs and incomes; critics worry about rising public debt and whether the money will be spent in time to make a difference.",
+  "initial": "The economy has a deflationary gap: real GDP is below potential and unemployment is high. Households and firms are cautious, so private spending is weak. What follows depends on how much spare capacity exists, how much of extra income is spent rather than saved or used on imports, the state of public finances and whether interest rates are already low.",
+  "mechanism": [
+   "Private spending falls and a deflationary gap opens → the government raises its own spending (G), a component of AD.",
+   "Higher G shifts AD right → firms receiving government orders raise output and hire workers.",
+   "Those workers and firms spend part of their extra income → further rounds of spending raise AD again, so the final rise in real GDP can exceed the initial injection (the multiplier).",
+   "With spare capacity, firms can raise output without large cost increases → real GDP rises with only a small rise in the price level, a movement along the flatter part of the AS curve.",
+   "Government borrowing rises → if this pushes up interest rates, some private investment may be discouraged (crowding out), reducing the net effect."
+  ],
+  "agents": [
+   {
+    "who": "Government",
+    "what": "Raises spending and borrowing to support demand, accepting a larger deficit for a period."
+   },
+   {
+    "who": "Firms",
+    "what": "Receive orders, raise output and may rehire workers; may invest more if confidence improves."
+   },
+   {
+    "who": "Households",
+    "what": "Spend part of any extra income, and save more if they expect future tax rises or remain anxious."
+   },
+   {
+    "who": "Lenders and bond markets",
+    "what": "Buy government debt; may demand higher interest if they doubt the public finances."
+   }
+  ],
+  "diagram": "Draw an AD–AS diagram with equilibrium at Y₁, below full-employment output Yf, showing a deflationary gap. Shift AD right from AD₁ to AD₂; real GDP rises towards Yf and the price level rises only slightly because there is spare capacity. Mark the reduction in the gap. A multiplier diagram can show the successive rounds of spending.",
+  "variables": [
+   {
+    "v": "Real GDP",
+    "dir": "up",
+    "why": "Higher government spending raises AD; with spare capacity, most of the effect falls on output rather than prices."
+   },
+   {
+    "v": "Unemployment",
+    "dir": "down",
+    "why": "Firms need more workers to meet higher demand, so cyclical unemployment tends to fall."
+   },
+   {
+    "v": "Budget deficit",
+    "dir": "up",
+    "why": "Spending rises immediately; extra tax revenue from recovery offsets only part of it."
+   },
+   {
+    "v": "Price level",
+    "dir": "up",
+    "why": "Rises slightly with spare capacity; would rise more if the economy were close to full capacity."
+   },
+   {
+    "v": "Interest rates",
+    "dir": "ambiguous",
+    "why": "May rise if government borrowing competes for funds; may stay low if private demand for loans is weak."
+   }
+  ],
+  "short": "In the short run, if the spending is timely and well targeted, output and employment rise and the fall in incomes is limited. The multiplier may be larger in a deep recession, because spare capacity is high and the central bank may hold interest rates down. Time lags in planning and approving projects can delay the effect, sometimes until recovery has already begun.",
+  "long": "In the longer run, the spending leaves higher public debt that must be serviced. If the spending built useful infrastructure or skills, it may also raise potential output. If it is not withdrawn as the economy recovers, it may add to inflationary pressure. Some argue that expected future tax rises lead households to save more, weakening the effect.",
+  "evidence": "Supporting evidence would include a rise in output and employment in sectors that received spending, and a narrowing output gap after the policy began. Studies generally find that fiscal multipliers vary widely: they tend to be larger in recessions, when interest rates are low and in less open economies, and smaller when public debt is high. Separating the policy’s effect from a natural recovery is difficult, so estimates are uncertain.",
+  "cases": [
+   "MAC-007",
+   "MAC-015",
+   "MAC-049"
+  ],
+  "evaluation": [
+   "It depends on the size of the multiplier, which is larger when spare capacity is high and less extra income leaks into saving, taxes and imports.",
+   "In the short run, time lags may mean that spending arrives after the recovery has begun.",
+   "In the long run, higher public debt raises interest costs and may limit future fiscal choices.",
+   "This may be weaker if government borrowing pushes up interest rates and crowds out private investment.",
+   "There may be unintended consequences: spending that is hard to reverse may add to inflation once the economy is back near full capacity."
+  ],
+  "alternatives": [
+   {
+    "h": "Automatic stabilisers rather than new policy",
+    "p": "In a recession, benefit payments rise and tax receipts fall without any new decision. The deficit widens and demand is supported, even though the government did not choose to spend more. Part of the observed rise in spending and borrowing may therefore not be a deliberate stimulus at all.",
+    "test": "Separate discretionary measures announced in the budget from changes in spending and revenue that follow from the cycle."
+   },
+   {
+    "h": "A natural recovery",
+    "p": "Recessions often end as firms rebuild stocks and confidence returns. A rise in output after the stimulus may partly reflect this, not the policy itself. Assuming that whatever follows a policy was caused by it confuses correlation with causation.",
+    "test": "Compare sectors or regions that received more spending with similar ones that received less, looking at timing."
+   }
+  ],
+  "hl": "HL: the Keynesian multiplier, crowding out and automatic stabilisers",
+  "next": [
+   "ratehike",
+   "unemployment"
+  ]
+ },
+ {
+  "id": "tax",
+  "q": "Why did the price of a taxed good rise by less than the tax?",
+  "unit": 2,
+  "subs": [
+   "2.7",
+   "2.5",
+   "2.6"
+  ],
+  "kc": [
+   "Intervention",
+   "Equity",
+   "Efficiency"
+  ],
+  "dg": "tax",
+  "dg2": "ped",
+  "event": "A government places a specific (per-unit) indirect tax on a product. After the tax, the price consumers pay rises, but by less than the full amount of the tax per unit. Producers keep less per unit sold than before. Quantity bought and sold falls.",
+  "initial": "The key conditions are the price elasticities of demand and supply. If consumers can easily switch to substitutes, demand is relatively elastic. If producers can easily reduce output or switch to other products, supply is relatively elastic. The market is assumed to be competitive, with no other changes to demand or costs during the period.",
+  "mechanism": [
+   "The tax raises firms’ costs per unit sold → the supply curve shifts vertically upwards by the amount of the tax (S to S + tax).",
+   "At the original price, firms now supply less → excess demand pushes the price up, a movement along the demand curve to a new equilibrium with a higher price and lower quantity.",
+   "Consumers reduce the quantity they buy as the price rises → firms cannot pass on the whole tax without losing sales.",
+   "The tax per unit is split: the rise in the consumer price is the consumer share; the fall in the price producers keep is the producer share.",
+   "The side of the market that is less price elastic bears the larger share → if demand is more elastic than supply, the consumer price rises by less than half the tax."
+  ],
+  "agents": [
+   {
+    "who": "Consumers",
+    "what": "Pay a higher price and buy less; those who switch to substitutes avoid part of the burden."
+   },
+   {
+    "who": "Producers",
+    "what": "Receive a lower price net of tax, sell less and may cut output or employment."
+   },
+   {
+    "who": "Government",
+    "what": "Collects tax revenue equal to the tax per unit multiplied by the new quantity."
+   },
+   {
+    "who": "Workers in the industry",
+    "what": "May face lower hours or job losses if output falls significantly."
+   }
+  ],
+  "diagram": "Draw demand and supply with equilibrium at P₁ and Q₁. Shift supply vertically up by the tax to S + tax. The new consumer price is Pc and the quantity falls to Q₂. Read down to the original supply curve to find Pp, the price producers keep. Shade consumer incidence (Pc − P₁) and producer incidence (P₁ − Pp).",
+  "variables": [
+   {
+    "v": "Price paid by consumers",
+    "dir": "up",
+    "why": "Rises, but by less than the tax because some buyers reduce purchases as the price rises."
+   },
+   {
+    "v": "Price received by producers",
+    "dir": "down",
+    "why": "Producers absorb part of the tax to avoid losing too many sales."
+   },
+   {
+    "v": "Quantity traded",
+    "dir": "down",
+    "why": "The higher consumer price and lower producer price both reduce the equilibrium quantity."
+   },
+   {
+    "v": "Government revenue",
+    "dir": "up",
+    "why": "Equals the tax per unit multiplied by the new, lower quantity sold."
+   },
+   {
+    "v": "Consumer and producer surplus",
+    "dir": "down",
+    "why": "Both groups lose surplus; part of the loss becomes tax revenue and part is a welfare loss."
+   }
+  ],
+  "short": "In the short run, supply is often less elastic, because firms cannot quickly move resources elsewhere. Producers may then bear a larger share of the tax, so the consumer price rises by less. Consumption falls by more when demand is elastic. The government gains revenue, and if the good has negative externalities, the fall in quantity may reduce external costs.",
+  "long": "In the longer run, supply tends to become more elastic as firms leave the industry or shift to other products. More of the tax may then be passed on to consumers through higher prices. Demand may also become more elastic as consumers find substitutes. The split of the burden can therefore change over time, even if the tax rate stays the same.",
+  "evidence": "Supporting evidence would be a consumer price rise smaller than the tax, with producer margins falling. Studies of excise taxes generally find that pass-through to consumers varies with market structure and elasticities; it can be close to full in some markets and partial in others, and in imperfectly competitive markets it can sometimes exceed the tax. Data on prices before and after the tax date, compared with untaxed areas, can help isolate the effect.",
+  "cases": [],
+  "evaluation": [
+   "It depends on the relative price elasticities of demand and supply: the less elastic side bears more of the tax.",
+   "In the short run, producers may absorb more of the tax if they cannot easily reduce output.",
+   "In the long run, supply tends to become more elastic, so more of the tax may be passed on to consumers.",
+   "A key limitation is that the model assumes perfect competition; firms with market power may pass on more or less than the competitive model predicts.",
+   "Stakeholders may experience the tax differently: low-income consumers of necessities may lose a larger share of income than richer consumers."
+  ],
+  "alternatives": [
+   {
+    "h": "Falling costs or demand at the same time",
+    "p": "If input costs fell or demand weakened around the date of the tax, the price may have risen by less for reasons unrelated to incidence. The observed price change would then mix the effect of the tax with the effect of these other shifts in demand or supply.",
+    "test": "Compare the taxed market with a similar untaxed market over the same period, and check input-cost data."
+   },
+   {
+    "h": "Firms absorbing the tax for strategic reasons",
+    "p": "Firms with market power may delay passing on the tax to protect market share, or may reformulate products to lower the tax due, rather than because supply is inelastic. Such behaviour falls outside the simple competitive model and may change once the tax has been in place for a while.",
+    "test": "Check whether firms changed product size or content after the tax and whether margins recovered later."
+   }
+  ],
+  "hl": null,
+  "next": [
+   "subsidy",
+   "externality"
+  ]
+ },
+ {
+  "id": "subsidy",
+  "q": "Why did output rise after a subsidy, and who gained?",
+  "unit": 2,
+  "subs": [
+   "2.7",
+   "2.6",
+   "2.5"
+  ],
+  "kc": [
+   "Intervention",
+   "Equity",
+   "Efficiency"
+  ],
+  "dg": "subsidy",
+  "dg2": null,
+  "event": "A government pays producers a fixed amount for each unit of a product they sell. After the subsidy, the quantity produced and sold rises, and the market price paid by consumers falls. Producers receive more per unit than before, once the subsidy is included. The government’s spending rises.",
+  "initial": "The market is assumed to be competitive. The size of the effect depends on the price elasticities of demand and supply: if both are fairly elastic, quantity rises a lot. The government must be able to fund the subsidy, and the subsidy is assumed to be paid per unit produced, not as a lump sum.",
+  "mechanism": [
+   "The subsidy lowers firms’ effective cost per unit → the supply curve shifts vertically downwards by the amount of the subsidy (S to S − subsidy).",
+   "At the old price there is now excess supply → the price falls and the market moves along the demand curve to a higher quantity.",
+   "Consumers buy more as the price falls → quantity demanded rises, a movement along the demand curve, not a shift of demand.",
+   "Producers receive the lower market price plus the subsidy → the price they receive is higher than before, so they expand output.",
+   "The benefit is shared: the less price elastic side of the market gains a larger share of the subsidy per unit."
+  ],
+  "agents": [
+   {
+    "who": "Producers",
+    "what": "Receive a higher price per unit including the subsidy and expand output."
+   },
+   {
+    "who": "Consumers",
+    "what": "Pay a lower price and buy more."
+   },
+   {
+    "who": "Government",
+    "what": "Pays the subsidy per unit multiplied by the new, higher quantity, which has an opportunity cost."
+   },
+   {
+    "who": "Taxpayers",
+    "what": "Fund the subsidy through taxes or borrowing, now or in the future."
+   },
+   {
+    "who": "Foreign producers",
+    "what": "May lose market share if the subsidised domestic product competes with imports or exports."
+   }
+  ],
+  "diagram": "Draw demand and supply with equilibrium at P₁ and Q₁. Shift supply vertically down by the subsidy to S − subsidy. The new market price paid by consumers falls to Pc, quantity rises to Q₂, and the price producers receive (Pc plus the subsidy) is Pp. Shade the total cost to government: the subsidy per unit times Q₂.",
+  "variables": [
+   {
+    "v": "Quantity produced and sold",
+    "dir": "up",
+    "why": "Lower costs per unit lead producers to supply more at each price."
+   },
+   {
+    "v": "Price paid by consumers",
+    "dir": "down",
+    "why": "The rightward shift of supply lowers the equilibrium market price."
+   },
+   {
+    "v": "Price received by producers",
+    "dir": "up",
+    "why": "Producers receive the new market price plus the subsidy per unit."
+   },
+   {
+    "v": "Government spending",
+    "dir": "up",
+    "why": "Equals the subsidy per unit multiplied by the new, higher quantity."
+   },
+   {
+    "v": "Allocative efficiency",
+    "dir": "ambiguous",
+    "why": "Falls if the market was efficient before; may rise if the good has positive externalities."
+   }
+  ],
+  "short": "In the short run, consumers pay less and buy more, and producers expand output and may hire workers. If supply is inelastic in the short run, producers may capture much of the subsidy as a higher price received, with a smaller rise in output. The government’s budget bears the full cost, which has an opportunity cost in other spending.",
+  "long": "In the longer run, supply usually becomes more elastic, so output may rise further. Firms may grow to depend on the subsidy and resist its removal. If the subsidy supports a good with positive externalities, or a new industry that can later compete without help, it may raise welfare. Otherwise it can lock resources into inefficient uses.",
+  "evidence": "Supporting evidence would include a rise in output and a fall in consumer prices after the subsidy began, compared with similar unsubsidised markets. Studies generally find that the split of benefits depends on elasticities and market structure, and that subsidies are hard to withdraw once established. Industrial subsidies are sometimes credited with building new industries, but other factors such as scale, competition and technology usually contribute as well.",
+  "cases": [
+   "MIC-008"
+  ],
+  "evaluation": [
+   "It depends on the price elasticities of demand and supply, which decide how much output rises and how the gain is shared.",
+   "In the short run, inelastic supply means more of the subsidy goes to producers as a higher price received.",
+   "In the long run, subsidies can become hard to remove, as firms and workers come to rely on them.",
+   "A key limitation is the opportunity cost: the funds could have been spent on other priorities or left with taxpayers.",
+   "There may be unintended consequences, such as overproduction, environmental harm or trade disputes with countries whose producers lose market share."
+  ],
+  "alternatives": [
+   {
+    "h": "Rising demand at the same time",
+    "p": "If demand was rising, for example because incomes grew or tastes changed, output would have risen anyway. In that case, the subsidy explains only part of the increase, and attributing all of the extra output to the policy would overstate its effect.",
+    "test": "Check whether prices rose or fell: a supply-side subsidy lowers the market price, while a demand increase raises it."
+   },
+   {
+    "h": "Technological change lowering costs",
+    "p": "Falling production costs from new technology also shift supply right, lowering prices and raising output, independently of the subsidy. Where costs fall quickly, as with some new technologies, separating the two effects is difficult, and the subsidy may receive credit for gains that would have happened anyway.",
+    "test": "Compare cost trends in subsidised and unsubsidised countries or periods for the same product."
+   }
+  ],
+  "hl": null,
+  "next": [
+   "tax",
+   "tariff"
+  ]
+ },
+ {
+  "id": "tariff",
+  "q": "Why did domestic producers gain but consumers lose after a tariff?",
+  "unit": 4,
+  "subs": [
+   "4.2",
+   "4.3",
+   "4.1"
+  ],
+  "kc": [
+   "Interdependence",
+   "Intervention",
+   "Equity"
+  ],
+  "dg": "tariff",
+  "dg2": null,
+  "event": "A country imposes a tariff on an imported good that it also produces at home. After the tariff, the domestic price of the good rises. Domestic producers sell more and earn more, imports fall, and consumers pay more and buy less. The government receives tariff revenue on the imports that remain.",
+  "initial": "The country is assumed to be a small economy that takes the world price as given, with domestic supply that cannot meet all demand at the world price, so imports fill the gap. The effects depend on the elasticities of domestic demand and supply and on whether other countries retaliate.",
+  "mechanism": [
+   "Before the tariff, the domestic price equals the world price → domestic producers supply part of demand and imports fill the rest.",
+   "The tariff raises the price of imports to the world price plus the tariff → the domestic price rises to this level.",
+   "Domestic producers respond to the higher price → they move up their supply curve and increase output, gaining producer surplus.",
+   "Consumers respond to the higher price → they move up the demand curve and buy less, losing consumer surplus.",
+   "With domestic output up and consumption down, imports fall → the government collects revenue on remaining imports, and some resources are used less efficiently."
+  ],
+  "agents": [
+   {
+    "who": "Domestic producers",
+    "what": "Sell more at a higher price and gain producer surplus; may hire more workers."
+   },
+   {
+    "who": "Consumers",
+    "what": "Pay a higher price, buy less and lose consumer surplus."
+   },
+   {
+    "who": "Government",
+    "what": "Collects tariff revenue equal to the tariff per unit times the quantity still imported."
+   },
+   {
+    "who": "Foreign producers",
+    "what": "Sell less in the protected market and may lobby their governments to retaliate."
+   },
+   {
+    "who": "Downstream firms",
+    "what": "Pay more if the good is an input, which raises their costs and may cut their output."
+   }
+  ],
+  "diagram": "Draw domestic demand and supply with the world price Pw below the domestic equilibrium. Show imports as the gap between domestic quantity demanded and supplied at Pw. Draw Pw + tariff; domestic output rises, consumption falls and imports shrink. Label the gain in producer surplus, tariff revenue and the two welfare-loss triangles.",
+  "variables": [
+   {
+    "v": "Domestic price",
+    "dir": "up",
+    "why": "The tariff raises the price of imports, and domestic producers can match it."
+   },
+   {
+    "v": "Domestic production",
+    "dir": "up",
+    "why": "Producers move up their supply curve in response to the higher price."
+   },
+   {
+    "v": "Domestic consumption",
+    "dir": "down",
+    "why": "Consumers move up the demand curve and buy less at the higher price."
+   },
+   {
+    "v": "Imports",
+    "dir": "down",
+    "why": "The gap between domestic demand and domestic supply narrows from both sides."
+   },
+   {
+    "v": "Consumer surplus",
+    "dir": "down",
+    "why": "Consumers pay more for fewer units; their loss exceeds the gains to producers and government."
+   }
+  ],
+  "short": "In the short run, protected producers gain sales, profits and possibly jobs, while consumers pay more. The government gains revenue. Firms that use the good as an input face higher costs, which can reduce their competitiveness and employment. The total loss to consumers is larger than the combined gain to producers and government, leaving a net welfare loss.",
+  "long": "In the longer run, protected firms may face less pressure to cut costs or innovate, so inefficiency can persist. Trading partners may retaliate with tariffs on the country’s exports, harming exporters. If the tariff protects a genuine infant industry that later becomes competitive, the long-run gains might offset the costs, but this outcome is uncertain and hard to judge in advance.",
+  "evidence": "Supporting evidence would include a rise in domestic prices close to the tariff, higher domestic output and lower imports in the protected industry. Studies of recent tariffs generally find that much of the cost was passed on to domestic buyers, and that downstream industries using the protected good were often harmed. The overall employment effect is usually found to be small or negative once retaliation and input costs are included.",
+  "cases": [
+   "GLO-002",
+   "GLO-043"
+  ],
+  "evaluation": [
+   "It depends on the elasticities of domestic demand and supply, which decide how far output, consumption and imports change.",
+   "In the short run, protected producers and their workers gain visibly, while the cost to consumers is spread thinly and may go unnoticed.",
+   "In the long run, protection may reduce the pressure to become efficient, unless the tariff is temporary and tied to clear targets.",
+   "This may be weaker if trading partners retaliate, because exporters then lose markets.",
+   "Stakeholders may experience the tariff very differently: low-income consumers may lose a larger share of income, while protected firms gain."
+  ],
+  "alternatives": [
+   {
+    "h": "A rise in the world price",
+    "p": "If the world price rose at the same time, for example because of a global supply shortage, domestic prices and output would rise even without the tariff. Domestic producers would gain and consumers lose, but the cause would lie in the world market rather than in trade protection.",
+    "test": "Compare the domestic price with the world price before and after; with a tariff, the gap between them widens by about the tariff."
+   },
+   {
+    "h": "A depreciation of the currency",
+    "p": "A weaker currency raises the domestic price of all imports and helps domestic producers, producing similar effects to a tariff across many goods. Unlike a tariff, it also makes exports cheaper abroad and raises no revenue for the government.",
+    "test": "Check whether the price rise was limited to the tariffed good or spread across many imported goods."
+   }
+  ],
+  "hl": "HL: calculating the welfare effects of the tariff (changes in consumer and producer surplus, tariff revenue and welfare loss)",
+  "next": [
+   "subsidy",
+   "currency"
+  ]
+ },
+ {
+  "id": "supplyside",
+  "q": "Why might a supply-side reform take years to show results?",
+  "unit": 3,
+  "subs": [
+   "3.7",
+   "3.2",
+   "4.10"
+  ],
+  "kc": [
+   "Change",
+   "Efficiency",
+   "Economic well-being"
+  ],
+  "dg": "growth",
+  "dg2": "lras",
+  "event": "A government introduces a supply-side reform, such as investment in education and training, infrastructure, competition policy or changes to labour-market rules. Several years later, commentators note that growth and productivity have improved only modestly so far, and debate whether the reform is working or has failed.",
+  "initial": "The reform aims to raise the quantity or quality of factors of production, or the efficiency with which they are used. Results depend on how large the reform is, whether it is credible and sustained, the starting levels of skills and infrastructure, and whether demand is strong enough for firms to use any new capacity.",
+  "mechanism": [
+   "The reform aims to raise productive capacity → if successful, it shifts LRAS right, but only once the underlying factors have changed.",
+   "Education and training take years before students enter the workforce → the stock of human capital grows slowly.",
+   "Infrastructure must be planned, built and then used → firms change where and how they produce only after projects are complete.",
+   "Market-based reforms change incentives → but firms and workers adjust gradually, and some adjustment, such as job losses in declining firms, may come first.",
+   "Once the factors have improved, productivity rises → LRAS shifts right, potential output grows and the economy can grow faster without extra inflationary pressure."
+  ],
+  "agents": [
+   {
+    "who": "Government",
+    "what": "Designs, funds and must sustain the reform across several budgets and possibly elections."
+   },
+   {
+    "who": "Workers and students",
+    "what": "Acquire new skills or adjust to new rules, which takes time and effort."
+   },
+   {
+    "who": "Firms",
+    "what": "Decide whether to invest, enter new markets or change production methods as conditions change."
+   },
+   {
+    "who": "Investors",
+    "what": "Wait to see if the reform is credible and lasting before committing capital."
+   }
+  ],
+  "diagram": "Draw the long-run growth diagram with LRAS₁ at potential output Yp₁. Show LRAS shifting right to LRAS₂, increasing potential output to Yp₂, and note that the shift happens gradually, over years. Optionally show AD shifting right too, so actual output rises with potential and the price level stays broadly stable.",
+  "variables": [
+   {
+    "v": "Potential output",
+    "dir": "up",
+    "why": "Rises slowly as skills, infrastructure and efficiency improve; little changes in the first years."
+   },
+   {
+    "v": "Labour productivity",
+    "dir": "up",
+    "why": "Better skills, capital and organisation raise output per worker, usually after a lag."
+   },
+   {
+    "v": "Government spending",
+    "dir": "up",
+    "why": "Interventionist reforms such as education and infrastructure need funding before benefits appear."
+   },
+   {
+    "v": "Structural unemployment",
+    "dir": "ambiguous",
+    "why": "May rise at first as workers leave declining firms, then fall as skills improve."
+   },
+   {
+    "v": "Inflationary pressure",
+    "dir": "down",
+    "why": "Over time, more capacity lets output grow faster without pushing up the price level."
+   }
+  ],
+  "short": "In the short run, the reform mainly creates costs and spending. Interventionist policies raise government spending, which may add to AD before it adds to capacity. Market-based reforms can cause job losses or resistance as firms and workers adjust. Measured growth may change little, because capacity has not yet expanded. This can make a reform look like a failure.",
+  "long": "In the longer run, if the reform is sustained, better skills, infrastructure and competition can raise productivity and shift LRAS right. Potential growth rises, and the economy can grow faster with less inflationary pressure. The benefits may be uneven across regions and groups. If the reform is reversed or poorly designed, the gains may not appear at all.",
+  "evidence": "Supporting evidence would include gradual improvements in skills, infrastructure quality or business investment, followed later by rising productivity. Studies generally find that education and infrastructure have positive long-run effects on growth, but the size and timing vary widely. Isolating a reform’s effect is difficult because many other factors change over the same years, so evidence is often based on comparisons across regions or countries.",
+  "cases": [
+   "MAC-033",
+   "DEV-036"
+  ],
+  "evaluation": [
+   "It depends on the type of reform: education and infrastructure may take a decade, while some deregulation can work faster.",
+   "In the short run, the costs are visible and the benefits are not, which can make reforms politically difficult to sustain.",
+   "In the long run, successful reforms can raise potential growth without adding to inflation.",
+   "A key limitation is that it is hard to separate a reform’s effects from other changes over the same period.",
+   "Stakeholders may experience the reform unevenly: workers in declining sectors may lose out before the wider benefits appear."
+  ],
+  "alternatives": [
+   {
+    "h": "The reform was poorly designed or not implemented",
+    "p": "Slow results may reflect weak implementation, underfunding or reversal, rather than normal time lags. The reform may not deliver the expected effect at all. In that case, waiting longer will not help, and the design or funding of the policy needs to be reviewed.",
+    "test": "Check whether intermediate indicators, such as school enrolment or project completion, improved as planned."
+   },
+   {
+    "h": "Weak aggregate demand",
+    "p": "If demand is weak, firms may not use the new capacity, so output does not rise even though LRAS has shifted. The problem would then be on the demand side, and demand-side policy may be needed alongside the reform.",
+    "test": "Look for spare capacity, falling inflation and high cyclical unemployment alongside the reform."
+   }
+  ],
+  "hl": null,
+  "next": [
+   "growth",
+   "unemployment"
+  ]
+ },
+ {
+  "id": "externality",
+  "q": "Why did the market produce too much pollution?",
+  "unit": 2,
+  "subs": [
+   "2.8",
+   "2.7",
+   "4.7"
+  ],
+  "kc": [
+   "Sustainability",
+   "Efficiency",
+   "Intervention"
+  ],
+  "dg": "negprod",
+  "dg2": "tax",
+  "event": "An industry, such as power generation or manufacturing, emits pollution that damages the health of nearby residents and the environment. Output and pollution are higher than many people think is reasonable. Those harmed do not receive compensation, and the price of the product does not reflect the damage caused.",
+  "initial": "The market is competitive, and firms make decisions based on their private costs. The pollution harms third parties who are not part of the transaction. There is no effective tax, regulation or tradable permit system in place, and property rights over clean air or water are unclear or hard to enforce.",
+  "mechanism": [
+   "Firms choose output where price equals their marginal private cost (MPC) → the cost of pollution to third parties is not included in their decisions.",
+   "The pollution imposes an external cost → marginal social cost (MSC) lies above MPC by the amount of the external cost per unit.",
+   "The market equilibrium is at Qm, where demand (MSB) meets MPC → but the socially optimal output is at Q*, where MSB meets MSC.",
+   "Because Qm is greater than Q*, too much is produced → too many resources are allocated to the good and too much pollution is emitted.",
+   "The units between Q* and Qm cost society more than they are worth → this creates a welfare loss and market failure."
+  ],
+  "agents": [
+   {
+    "who": "Firms",
+    "what": "Produce where price equals private marginal cost, ignoring costs they do not pay."
+   },
+   {
+    "who": "Consumers",
+    "what": "Buy the good at a price that does not reflect the full social cost, so they buy more."
+   },
+   {
+    "who": "Third parties",
+    "what": "Bear health and environmental costs without compensation."
+   },
+   {
+    "who": "Government",
+    "what": "May intervene through taxes, regulation or tradable permits to reduce output towards Q*."
+   }
+  ],
+  "diagram": "Draw MPC and MSC, with MSC above MPC by the external cost, and demand as MSB. Mark the market output Qm, where MSB = MPC, and the social optimum Q*, where MSB = MSC. Shade the welfare-loss triangle between Q* and Qm, between MSC and MSB. Show that the market overproduces and underprices the good.",
+  "variables": [
+   {
+    "v": "Output of the good",
+    "dir": "up",
+    "why": "The market produces Qm, above the socially optimal Q*, because external costs are ignored."
+   },
+   {
+    "v": "Pollution",
+    "dir": "up",
+    "why": "Higher output brings more emissions than would occur at the social optimum."
+   },
+   {
+    "v": "Market price",
+    "dir": "down",
+    "why": "The price reflects only private costs, so it is lower than the price at the social optimum."
+   },
+   {
+    "v": "Social welfare",
+    "dir": "down",
+    "why": "Units beyond Q* add more to social cost than to social benefit, creating a welfare loss."
+   }
+  ],
+  "short": "In the short run, consumers enjoy a lower price and firms earn revenue from higher output, while third parties bear health and environmental costs. These costs may not show up in market prices or GDP, so they can be overlooked. The welfare loss is a measure of how much better off society could be with less output.",
+  "long": "In the longer run, pollution can accumulate, damaging health, ecosystems and the productivity of land and water. This can reduce future growth and well-being, raising questions about sustainability. If the government introduces a tax, permits or regulation, firms may invest in cleaner technology, which can reduce the external cost per unit over time.",
+  "evidence": "Supporting evidence would include measured damage to health or the environment near polluting sites, and prices that do not change with the level of pollution. Studies generally find that pricing pollution, through taxes or tradable permits, tends to reduce emissions, though the size of the effect varies. Measuring the external cost precisely is difficult, so estimates of the optimal output differ.",
+  "cases": [
+   "MIC-010",
+   "MIC-048"
+  ],
+  "evaluation": [
+   "It depends on the size of the external cost, which is hard to measure precisely and may vary across places and people.",
+   "In the short run, a tax or regulation may raise prices and reduce output and jobs in the polluting industry.",
+   "In the long run, pricing pollution can encourage cleaner technology, reducing the external cost per unit.",
+   "A key limitation is that governments may set the tax or cap at the wrong level, because they lack full information.",
+   "Stakeholders may experience pollution and policy unequally: low-income households may live closer to polluting sites and also pay more of a tax as a share of income."
+  ],
+  "alternatives": [
+   {
+    "h": "Government failure rather than market failure",
+    "p": "Some pollution may persist because existing regulations are weakly enforced or because subsidies encourage polluting activities, not only because the market ignores external costs. In that case, the government’s own policies are part of the problem, and removing harmful subsidies may help more than a new tax.",
+    "test": "Check whether there are rules or subsidies in place, and whether pollution is higher where enforcement is weaker."
+   },
+   {
+    "h": "High demand for the good",
+    "p": "Pollution may rise because demand for the product grew, even if the gap between private and social cost did not change. More output then means more pollution, but the externality per unit, and so the market failure, has not grown.",
+    "test": "Compare emissions per unit of output over time: if they are stable, the rise reflects higher output, not a larger externality."
+   }
+  ],
+  "hl": null,
+  "next": [
+   "tax",
+   "subsidy"
+  ]
+ }
+]

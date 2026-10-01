@@ -1,0 +1,2367 @@
+{
+ "subtopics": [
+  {
+   "code": "1.1",
+   "title": "What is economics?",
+   "unit": 1,
+   "lvl": "SL"
+  },
+  {
+   "code": "1.2",
+   "title": "How do economists approach the world?",
+   "unit": 1,
+   "lvl": "SL"
+  },
+  {
+   "code": "2.1",
+   "title": "Demand",
+   "unit": 2,
+   "lvl": "SL"
+  },
+  {
+   "code": "2.2",
+   "title": "Supply",
+   "unit": 2,
+   "lvl": "SL"
+  },
+  {
+   "code": "2.3",
+   "title": "Competitive market equilibrium",
+   "unit": 2,
+   "lvl": "SL"
+  },
+  {
+   "code": "2.4",
+   "title": "Critique of the maximizing behaviour of consumers and producers",
+   "unit": 2,
+   "lvl": "HL"
+  },
+  {
+   "code": "2.5",
+   "title": "Elasticities of demand",
+   "unit": 2,
+   "lvl": "SL"
+  },
+  {
+   "code": "2.6",
+   "title": "Elasticity of supply",
+   "unit": 2,
+   "lvl": "SL"
+  },
+  {
+   "code": "2.7",
+   "title": "Role of government in microeconomics",
+   "unit": 2,
+   "lvl": "SL"
+  },
+  {
+   "code": "2.8",
+   "title": "Market failure: externalities and common pool or common access resources",
+   "unit": 2,
+   "lvl": "SL"
+  },
+  {
+   "code": "2.9",
+   "title": "Market failure: public goods",
+   "unit": 2,
+   "lvl": "SL"
+  },
+  {
+   "code": "2.10",
+   "title": "Market failure: asymmetric information",
+   "unit": 2,
+   "lvl": "HL"
+  },
+  {
+   "code": "2.11",
+   "title": "Market failure: market power",
+   "unit": 2,
+   "lvl": "HL"
+  },
+  {
+   "code": "2.12",
+   "title": "The market's inability to achieve equity",
+   "unit": 2,
+   "lvl": "HL"
+  },
+  {
+   "code": "3.1",
+   "title": "Measuring economic activity and illustrating its variations",
+   "unit": 3,
+   "lvl": "SL"
+  },
+  {
+   "code": "3.2",
+   "title": "Variations in economic activity: aggregate demand and aggregate supply",
+   "unit": 3,
+   "lvl": "SL"
+  },
+  {
+   "code": "3.3",
+   "title": "Macroeconomic objectives",
+   "unit": 3,
+   "lvl": "SL"
+  },
+  {
+   "code": "3.4",
+   "title": "Economics of inequality and poverty",
+   "unit": 3,
+   "lvl": "SL"
+  },
+  {
+   "code": "3.5",
+   "title": "Demand management (demand-side policies): monetary policy",
+   "unit": 3,
+   "lvl": "SL"
+  },
+  {
+   "code": "3.6",
+   "title": "Demand management: fiscal policy",
+   "unit": 3,
+   "lvl": "SL"
+  },
+  {
+   "code": "3.7",
+   "title": "Supply-side policies",
+   "unit": 3,
+   "lvl": "SL"
+  },
+  {
+   "code": "4.1",
+   "title": "Benefits of international trade",
+   "unit": 4,
+   "lvl": "SL"
+  },
+  {
+   "code": "4.2",
+   "title": "Types of trade protection",
+   "unit": 4,
+   "lvl": "SL"
+  },
+  {
+   "code": "4.3",
+   "title": "Arguments for and against trade control/protection",
+   "unit": 4,
+   "lvl": "SL"
+  },
+  {
+   "code": "4.4",
+   "title": "Economic integration",
+   "unit": 4,
+   "lvl": "SL"
+  },
+  {
+   "code": "4.5",
+   "title": "Exchange rates",
+   "unit": 4,
+   "lvl": "SL"
+  },
+  {
+   "code": "4.6",
+   "title": "Balance of payments",
+   "unit": 4,
+   "lvl": "SL"
+  },
+  {
+   "code": "4.7",
+   "title": "Sustainable development",
+   "unit": 4,
+   "lvl": "SL"
+  },
+  {
+   "code": "4.8",
+   "title": "Measuring development",
+   "unit": 4,
+   "lvl": "SL"
+  },
+  {
+   "code": "4.9",
+   "title": "Barriers to economic growth and/or economic development",
+   "unit": 4,
+   "lvl": "SL"
+  },
+  {
+   "code": "4.10",
+   "title": "Economic growth and/or economic development strategies",
+   "unit": 4,
+   "lvl": "SL"
+  }
+ ],
+ "diagrams": [
+  {
+   "key": "ds",
+   "title": "Competitive market equilibrium"
+  },
+  {
+   "key": "dshift",
+   "title": "A change in demand"
+  },
+  {
+   "key": "sshift",
+   "title": "A change in supply"
+  },
+  {
+   "key": "ped",
+   "title": "Price elasticity of demand"
+  },
+  {
+   "key": "pes",
+   "title": "Price elasticity of supply"
+  },
+  {
+   "key": "tax",
+   "title": "An indirect tax"
+  },
+  {
+   "key": "subsidy",
+   "title": "A subsidy"
+  },
+  {
+   "key": "ceiling",
+   "title": "A binding price ceiling"
+  },
+  {
+   "key": "floor",
+   "title": "A binding price floor"
+  },
+  {
+   "key": "negprod",
+   "title": "A negative externality of production"
+  },
+  {
+   "key": "negcons",
+   "title": "A negative externality of consumption"
+  },
+  {
+   "key": "poscons",
+   "title": "A positive externality of consumption"
+  },
+  {
+   "key": "monopoly",
+   "title": "Monopoly and welfare loss"
+  },
+  {
+   "key": "labour",
+   "title": "A minimum wage"
+  },
+  {
+   "key": "lorenz",
+   "title": "The Lorenz curve"
+  },
+  {
+   "key": "adas",
+   "title": "AD-AS equilibrium"
+  },
+  {
+   "key": "defgap",
+   "title": "A deflationary gap"
+  },
+  {
+   "key": "infgap",
+   "title": "An inflationary gap"
+  },
+  {
+   "key": "lras",
+   "title": "Alternative views of aggregate supply: the Keynesian curve"
+  },
+  {
+   "key": "phillips",
+   "title": "The Phillips curve"
+  },
+  {
+   "key": "cycle",
+   "title": "The business cycle"
+  },
+  {
+   "key": "circular",
+   "title": "The circular flow with injections and withdrawals"
+  },
+  {
+   "key": "tariff",
+   "title": "A tariff"
+  },
+  {
+   "key": "quota",
+   "title": "A quota"
+  },
+  {
+   "key": "fx",
+   "title": "The foreign exchange market"
+  },
+  {
+   "key": "ppc",
+   "title": "The production possibilities curve"
+  },
+  {
+   "key": "multiplier",
+   "title": "Successive rounds of the multiplier"
+  },
+  {
+   "key": "bop",
+   "title": "Structure of the balance of payments"
+  },
+  {
+   "key": "pubgood",
+   "title": "Public goods and the free-rider problem"
+  },
+  {
+   "key": "cpr",
+   "title": "Common pool resource"
+  },
+  {
+   "key": "asym",
+   "title": "Adverse selection"
+  },
+  {
+   "key": "growth",
+   "title": "Long-run economic growth"
+  },
+  {
+   "key": "posprod",
+   "title": "A positive externality of production"
+  },
+  {
+   "key": "costpush",
+   "title": "Cost-push inflation"
+  },
+  {
+   "key": "compadv",
+   "title": "Comparative advantage"
+  }
+ ],
+ "cases": [
+  {
+   "id": "MIC-001",
+   "t": "India's Goods and Services Tax (GST)",
+   "c": "India",
+   "y": 2017,
+   "sub": "2.7",
+   "is": "A unified indirect tax replaced a patchwork of state and central levies to create a single national market."
+  },
+  {
+   "id": "MIC-002",
+   "t": "Petrol and diesel excise duties",
+   "c": "India",
+   "y": 2021,
+   "sub": "2.7",
+   "is": "High central excise on fuel funds the budget but feeds cost-push pressure across the economy."
+  },
+  {
+   "id": "MIC-003",
+   "t": "Onion price volatility and export bans",
+   "c": "India",
+   "y": 2019,
+   "sub": "2.6",
+   "is": "Sharp onion price spikes after monsoon shocks triggered export bans to protect consumers."
+  },
+  {
+   "id": "MIC-004",
+   "t": "Minimum Support Prices for wheat and rice",
+   "c": "India",
+   "y": 2020,
+   "sub": "2.7",
+   "is": "Minimum support prices, backed by government procurement mainly of wheat and rice, act as a price floor for farmers who can sell to the state; fear that three 2020 farm laws would weaken this system, and a demand for a legal MSP guarantee, were central to the 2020-21 farmer protests."
+  },
+  {
+   "id": "MIC-005",
+   "t": "Free electricity for farmers (Punjab)",
+   "c": "India",
+   "y": 2022,
+   "sub": "2.7",
+   "is": "Free or heavily subsidised power encourages over-pumping of groundwater and fiscal strain."
+  },
+  {
+   "id": "MIC-006",
+   "t": "Sin taxes on tobacco and alcohol",
+   "c": "India",
+   "y": 2023,
+   "sub": "2.8",
+   "is": "High taxes on demerit goods aim to cut consumption and raise revenue."
+  },
+  {
+   "id": "MIC-007",
+   "t": "Rare-earth export dominance",
+   "c": "China",
+   "y": 2023,
+   "sub": "2.11",
+   "is": "China's control of rare-earth processing gives it market power and a strategic lever in trade."
+  },
+  {
+   "id": "MIC-008",
+   "t": "Electric-vehicle subsidies and BYD",
+   "c": "China",
+   "y": 2022,
+   "sub": "2.8",
+   "is": "Large production and consumption subsidies helped build a dominant EV industry, alongside scale, competition and battery learning."
+  },
+  {
+   "id": "MIC-009",
+   "t": "State tobacco monopoly",
+   "c": "China",
+   "y": 2021,
+   "sub": "2.11",
+   "is": "A state monopoly is the world's largest cigarette producer by volume, mixing revenue and a major demerit good."
+  },
+  {
+   "id": "MIC-010",
+   "t": "Beijing air pollution and industrial emissions",
+   "c": "China",
+   "y": 2015,
+   "sub": "2.8",
+   "is": "Heavy-industry emissions imposed severe health costs, prompting pollution caps."
+  },
+  {
+   "id": "MIC-011",
+   "t": "Federal sugar price-support program",
+   "c": "USA",
+   "y": 2018,
+   "sub": "2.7",
+   "is": "Loans, quotas and import limits keep domestic sugar prices above world levels."
+  },
+  {
+   "id": "MIC-012",
+   "t": "Soda taxes (Berkeley, Philadelphia)",
+   "c": "USA",
+   "y": 2017,
+   "sub": "2.8",
+   "is": "City taxes on sweetened drinks (Berkeley 2015, Philadelphia 2017) aim to cut consumption and fund services."
+  },
+  {
+   "id": "MIC-013",
+   "t": "California cap-and-trade",
+   "c": "USA",
+   "y": 2013,
+   "sub": "2.8",
+   "is": "A market for emissions permits prices carbon to cut greenhouse gases efficiently; in 2025 the programme was extended to 2045 and renamed cap-and-invest."
+  },
+  {
+   "id": "MIC-014",
+   "t": "Opioid crisis and market failure",
+   "c": "USA",
+   "y": 2019,
+   "sub": "2.10",
+   "is": "Aggressive marketing and addiction created vast external and information costs."
+  },
+  {
+   "id": "MIC-015",
+   "t": "$15 minimum wage debate (Seattle)",
+   "c": "USA",
+   "y": 2017,
+   "sub": "2.7",
+   "is": "A phased rise to a $15 hourly minimum under Seattle's 2014 ordinance tested employment vs income effects of a wage floor."
+  },
+  {
+   "id": "MIC-016",
+   "t": "Live Nation-Ticketmaster market power",
+   "c": "USA",
+   "y": 2023,
+   "sub": "2.11",
+   "is": "Dominance in ticketing and venues raised antitrust concerns over prices and fees."
+  },
+  {
+   "id": "MIC-017",
+   "t": "Common Agricultural Policy",
+   "c": "European Union",
+   "y": 2020,
+   "sub": "2.7",
+   "is": "Subsidies and historic price supports shape EU farming and trade."
+  },
+  {
+   "id": "MIC-018",
+   "t": "End of EU sugar quotas",
+   "c": "European Union",
+   "y": 2017,
+   "sub": "2.7",
+   "is": "Abolishing production quotas exposed the sugar market to freer competition."
+  },
+  {
+   "id": "MIC-019",
+   "t": "Abolition of mobile roaming charges",
+   "c": "European Union",
+   "y": 2017,
+   "sub": "2.7",
+   "is": "‘Roam like at home' regulation removed cross-border mobile surcharges."
+  },
+  {
+   "id": "MIC-020",
+   "t": "Single-use plastics directive",
+   "c": "European Union",
+   "y": 2021,
+   "sub": "2.8",
+   "is": "Bans on selected items, consumption-reduction targets and producer-responsibility charges target plastic pollution as a negative externality."
+  },
+  {
+   "id": "MIC-021",
+   "t": "Feed-in tariffs (Energiewende) and their 2014 reform",
+   "c": "Germany",
+   "y": 2014,
+   "sub": "2.8",
+   "is": "Guaranteed feed-in prices, paid for by a levy on electricity bills, helped drive a rapid expansion of renewable generation."
+  },
+  {
+   "id": "MIC-022",
+   "t": "Soft Drinks Industry Levy (sugar tax)",
+   "c": "United Kingdom",
+   "y": 2018,
+   "sub": "2.8",
+   "is": "A tiered levy on sugary drinks pushed reformulation rather than just price rises."
+  },
+  {
+   "id": "MIC-023",
+   "t": "Plastic bag charge (England)",
+   "c": "United Kingdom",
+   "y": 2015,
+   "sub": "2.8",
+   "is": "A small per-bag charge sharply cut single-use bag use."
+  },
+  {
+   "id": "MIC-024",
+   "t": "London congestion charge",
+   "c": "United Kingdom",
+   "y": 2003,
+   "sub": "2.8",
+   "is": "A daily charge prices road use to cut congestion, an external cost."
+  },
+  {
+   "id": "MIC-025",
+   "t": "Minimum unit pricing for alcohol (Scotland)",
+   "c": "United Kingdom",
+   "y": 2018,
+   "sub": "2.7",
+   "is": "A floor price per unit targets cheap, high-strength alcohol (50p per unit from 2018, 65p from 2024)."
+  },
+  {
+   "id": "MIC-026",
+   "t": "Pension auto-enrolment",
+   "c": "United Kingdom",
+   "y": 2012,
+   "sub": "2.4",
+   "is": "Default enrolment dramatically raised workplace pension participation."
+  },
+  {
+   "id": "MIC-027",
+   "t": "Organ-donation opt-out (England)",
+   "c": "United Kingdom",
+   "y": 2020,
+   "sub": "2.4",
+   "is": "A deemed-consent default aimed to raise consent to organ donation."
+  },
+  {
+   "id": "MIC-028",
+   "t": "EV incentives and adoption",
+   "c": "Norway",
+   "y": 2022,
+   "sub": "2.8",
+   "is": "Tax exemptions and perks helped make Norway the country with the highest electric share of new-car sales."
+  },
+  {
+   "id": "MIC-029",
+   "t": "Certificate of Entitlement car quota",
+   "c": "Singapore",
+   "y": 2021,
+   "sub": "2.7",
+   "is": "An auctioned quota of vehicle entitlements caps car ownership to manage congestion and scarcity."
+  },
+  {
+   "id": "MIC-030",
+   "t": "Water pricing and conservation",
+   "c": "Singapore",
+   "y": 2017,
+   "sub": "2.7",
+   "is": "Tiered water pricing reflects scarcity and funds supply security."
+  },
+  {
+   "id": "MIC-031",
+   "t": "Fuel subsidy reform",
+   "c": "Indonesia",
+   "y": 2014,
+   "sub": "2.7",
+   "is": "Cutting costly fuel subsidies freed funds but raised prices and protests."
+  },
+  {
+   "id": "MIC-032",
+   "t": "Fuel subsidy removal",
+   "c": "Nigeria",
+   "y": 2023,
+   "sub": "2.7",
+   "is": "Removing the petrol subsidy in May 2023 sharply raised pump and transport costs and cut a large fiscal cost, but by end-2023 pump prices were again capped below cost, so an implicit subsidy returned; check the current position before citing it."
+  },
+  {
+   "id": "MIC-033",
+   "t": "OPEC+ production cuts",
+   "c": "Saudi Arabia",
+   "y": 2023,
+   "sub": "2.11",
+   "is": "Coordinated output cuts by a cartel support oil prices."
+  },
+  {
+   "id": "MIC-034",
+   "t": "Plain packaging for tobacco",
+   "c": "Australia",
+   "y": 2012,
+   "sub": "2.8",
+   "is": "Standardised packaging reduced the appeal of a demerit good."
+  },
+  {
+   "id": "MIC-035",
+   "t": "Carbon tax (one of the first)",
+   "c": "Sweden",
+   "y": 1991,
+   "sub": "2.8",
+   "is": "Emissions fell while the economy grew after Sweden introduced an early, high carbon tax in 1991; studies credit the tax with part of the fall, notably in transport, rather than all of it."
+  },
+  {
+   "id": "MIC-036",
+   "t": "Mass COVID-19 vaccination",
+   "c": "India",
+   "y": 2021,
+   "sub": "2.8",
+   "is": "Free vaccination at government centres aimed to internalise a positive consumption externality at scale."
+  },
+  {
+   "id": "MIC-037",
+   "t": "Right to Education and schooling subsidies",
+   "c": "India",
+   "y": 2010,
+   "sub": "2.8",
+   "is": "Free, compulsory schooling for ages 6–14 treats education as a merit good with wide benefits."
+  },
+  {
+   "id": "MIC-038",
+   "t": "Single-use plastic ban",
+   "c": "India",
+   "y": 2022,
+   "sub": "2.8",
+   "is": "A nationwide ban on specified single-use plastics targets pollution."
+  },
+  {
+   "id": "MIC-039",
+   "t": "Ride-hailing and surge pricing (Uber/Ola)",
+   "c": "India",
+   "y": 2016,
+   "sub": "2.3",
+   "is": "Dynamic pricing clears demand spikes but raises fairness concerns."
+  },
+  {
+   "id": "MIC-040",
+   "t": "App-store fees and the Digital Markets Act",
+   "c": "European Union",
+   "y": 2024,
+   "sub": "2.11",
+   "is": "New rules target ‘gatekeeper' platform power over app distribution and fees."
+  },
+  {
+   "id": "MIC-041",
+   "t": "Antitrust fines on Google",
+   "c": "European Union",
+   "y": 2018,
+   "sub": "2.11",
+   "is": "Fines that set EU antitrust records at the time (Shopping 2017, Android 2018) targeted abuse of search and Android dominance."
+  },
+  {
+   "id": "MIC-042",
+   "t": "Jio telecom price war",
+   "c": "India",
+   "y": 2016,
+   "sub": "2.11",
+   "is": "Ultra-low pricing reshaped an oligopoly and forced consolidation."
+  },
+  {
+   "id": "MIC-043",
+   "t": "Avocado supply and US demand",
+   "c": "Mexico",
+   "y": 2022,
+   "sub": "2.6",
+   "is": "Booming US demand and supply shocks drove avocado price swings."
+  },
+  {
+   "id": "MIC-044",
+   "t": "Coffee price volatility",
+   "c": "Ethiopia",
+   "y": 2021,
+   "sub": "2.6",
+   "is": "Low elasticities and weather shocks make coffee prices highly volatile."
+  },
+  {
+   "id": "MIC-045",
+   "t": "Luxury demand and Veblen goods",
+   "c": "China",
+   "y": 2019,
+   "sub": "2.1",
+   "is": "For status-driven luxuries, quantity demanded can rise with price (Veblen effect)."
+  },
+  {
+   "id": "MIC-046",
+   "t": "Berlin rent cap (Mietendeckel)",
+   "c": "Germany",
+   "y": 2020,
+   "sub": "2.7",
+   "is": "A rent ceiling froze, and in some cases cut, Berlin rents until Germany's Federal Constitutional Court declared it void in 2021 because rent law is a federal matter; its effect on the supply of flats to rent is a separate, evidential question."
+  },
+  {
+   "id": "MIC-047",
+   "t": "Insulin price cap",
+   "c": "USA",
+   "y": 2023,
+   "sub": "2.7",
+   "is": "From 2023 the Inflation Reduction Act capped what US Medicare enrollees pay out of pocket for insulin at $35 a month; the cap limits the patient's share of the cost, not the price at which insulin is sold."
+  },
+  {
+   "id": "MIC-048",
+   "t": "Fast fashion and external costs",
+   "c": "Bangladesh",
+   "y": 2023,
+   "sub": "2.8",
+   "is": "Cheap clothing production carries environmental and labour external costs."
+  },
+  {
+   "id": "MIC-049",
+   "t": "Cape Town ‘Day Zero' water crisis",
+   "c": "South Africa",
+   "y": 2018,
+   "sub": "2.8",
+   "is": "Severe drought pushed a major city near to running out of water."
+  },
+  {
+   "id": "MIC-050",
+   "t": "Diamond market control",
+   "c": "Cross-country",
+   "y": 2000,
+   "sub": "2.11",
+   "is": "Historic supply control by a dominant firm sustained high diamond prices."
+  },
+  {
+   "id": "MIC-051",
+   "t": "Overfishing and the global commons",
+   "c": "Developing economies",
+   "y": 2022,
+   "sub": "2.8",
+   "is": "Open-access fisheries are over-exploited beyond sustainable yields."
+  },
+  {
+   "id": "MIC-052",
+   "t": "Childhood vaccination and herd immunity",
+   "c": "Developing economies",
+   "y": 2020,
+   "sub": "2.8",
+   "is": "Public immunisation programmes generate large positive external benefits."
+  },
+  {
+   "id": "MIC-053",
+   "t": "Electricity access and rural micro-grids",
+   "c": "Developing economies",
+   "y": 2021,
+   "sub": "2.9",
+   "is": "Off-grid solar and micro-grids extend power where networks under-supply."
+  },
+  {
+   "id": "MIC-054",
+   "t": "EU Emissions Trading System",
+   "c": "European Union",
+   "y": 2005,
+   "sub": "2.8",
+   "is": "An EU-wide cap-and-trade market, also covering Iceland, Liechtenstein and Norway, prices carbon for power, heavy industry, aviation and (since 2024) shipping."
+  },
+  {
+   "id": "MAC-001",
+   "t": "Demonetisation",
+   "c": "India",
+   "y": 2016,
+   "sub": "3.2",
+   "is": "Overnight withdrawal of high-value notes aimed at black money disrupted cash-based activity."
+  },
+  {
+   "id": "MAC-002",
+   "t": "Atmanirbhar COVID stimulus",
+   "c": "India",
+   "y": 2020,
+   "sub": "3.6",
+   "is": "A large relief and credit package supported the economy through the pandemic shock."
+  },
+  {
+   "id": "MAC-003",
+   "t": "Inflation targeting by the RBI",
+   "c": "India",
+   "y": 2016,
+   "sub": "3.5",
+   "is": "A statutory CPI inflation target of 4% (±2%), set for five-year periods, aimed to anchor monetary policy and expectations."
+  },
+  {
+   "id": "MAC-004",
+   "t": "Jobless growth and informal labour",
+   "c": "India",
+   "y": 2023,
+   "sub": "3.3",
+   "is": "Strong GDP growth coexisted with weak formal job creation; official unemployment fell, so the debate is over job quality."
+  },
+  {
+   "id": "MAC-005",
+   "t": "Production-Linked Incentive scheme",
+   "c": "India",
+   "y": 2021,
+   "sub": "3.7",
+   "is": "Output-linked subsidies aim to build manufacturing capacity and exports."
+  },
+  {
+   "id": "MAC-006",
+   "t": "Fiscal deficit and subsidy burden",
+   "c": "India",
+   "y": 2022,
+   "sub": "3.6",
+   "is": "Large subsidies and capex pressure the deficit and debt path."
+  },
+  {
+   "id": "MAC-007",
+   "t": "‘Four-trillion-yuan' stimulus",
+   "c": "China",
+   "y": 2008,
+   "sub": "3.6",
+   "is": "Massive investment-led stimulus countered the global financial crisis."
+  },
+  {
+   "id": "MAC-008",
+   "t": "Evergrande and the property crisis",
+   "c": "China",
+   "y": 2021,
+   "sub": "3.2",
+   "is": "A property-developer debt crisis threatened growth and confidence; Evergrande was ordered into liquidation in January 2024."
+  },
+  {
+   "id": "MAC-009",
+   "t": "Deflationary pressure",
+   "c": "China",
+   "y": 2024,
+   "sub": "3.3",
+   "is": "Weak domestic demand and industrial overcapacity pushed prices toward deflation, risking a debt-deflation spiral."
+  },
+  {
+   "id": "MAC-010",
+   "t": "Middle-income transition and slowdown",
+   "c": "China",
+   "y": 2023,
+   "sub": "3.3",
+   "is": "Growth slowed as the easy gains from catch-up faded."
+  },
+  {
+   "id": "MAC-011",
+   "t": "Inflation Reduction Act",
+   "c": "USA",
+   "y": 2022,
+   "sub": "3.7",
+   "is": "A large package combined green subsidies, tax measures and deficit goals; many of its clean-energy tax credits were curtailed by 2025 legislation."
+  },
+  {
+   "id": "MAC-012",
+   "t": "Fed interest-rate hikes",
+   "c": "USA",
+   "y": 2022,
+   "sub": "3.5",
+   "is": "Rapid rate rises aimed to bring down post-pandemic inflation."
+  },
+  {
+   "id": "MAC-013",
+   "t": "Global financial crisis",
+   "c": "USA",
+   "y": 2008,
+   "sub": "3.2",
+   "is": "A housing and banking collapse caused a deep global recession."
+  },
+  {
+   "id": "MAC-014",
+   "t": "Quantitative easing",
+   "c": "USA",
+   "y": 2009,
+   "sub": "3.5",
+   "is": "Large-scale asset purchases eased policy when rates hit zero."
+  },
+  {
+   "id": "MAC-015",
+   "t": "CARES Act pandemic stimulus",
+   "c": "USA",
+   "y": 2020,
+   "sub": "3.6",
+   "is": "Cheques, expanded benefits and loans cushioned the pandemic shock."
+  },
+  {
+   "id": "MAC-016",
+   "t": "Post-pandemic inflation surge",
+   "c": "USA",
+   "y": 2021,
+   "sub": "3.3",
+   "is": "Inflation jumped on demand recovery, supply bottlenecks and energy."
+  },
+  {
+   "id": "MAC-017",
+   "t": "The Great Depression",
+   "c": "USA",
+   "y": 1933,
+   "sub": "3.2",
+   "is": "A collapse in demand, deepened by bank failures and monetary contraction, caused mass unemployment and shaped Keynesian thought."
+  },
+  {
+   "id": "MAC-018",
+   "t": "Tax Cuts and Jobs Act",
+   "c": "USA",
+   "y": 2017,
+   "sub": "3.7",
+   "is": "Corporate and income tax cuts aimed to lift investment and growth."
+  },
+  {
+   "id": "MAC-019",
+   "t": "Eurozone sovereign-debt crisis",
+   "c": "Greece",
+   "y": 2011,
+   "sub": "3.6",
+   "is": "High debt and lost competitiveness within the euro forced bailouts and austerity."
+  },
+  {
+   "id": "MAC-020",
+   "t": "ECB quantitative easing",
+   "c": "European Union",
+   "y": 2015,
+   "sub": "3.5",
+   "is": "Asset purchases and negative rates fought low inflation across the eurozone."
+  },
+  {
+   "id": "MAC-021",
+   "t": "NextGenerationEU recovery fund",
+   "c": "European Union",
+   "y": 2020,
+   "sub": "3.6",
+   "is": "A joint borrowing-funded recovery package marked a fiscal step-change."
+  },
+  {
+   "id": "MAC-022",
+   "t": "The 2022 ‘mini-budget' crisis",
+   "c": "United Kingdom",
+   "y": 2022,
+   "sub": "3.6",
+   "is": "Unfunded tax cuts spooked bond markets; the gilt sell-off, amplified by pension funds' liability-driven investment strategies, forced Bank of England intervention and a reversal."
+  },
+  {
+   "id": "MAC-023",
+   "t": "Bank of England independence",
+   "c": "United Kingdom",
+   "y": 1997,
+   "sub": "3.5",
+   "is": "Operational independence aimed to make monetary policy credible."
+  },
+  {
+   "id": "MAC-024",
+   "t": "COVID furlough (job-retention) scheme",
+   "c": "United Kingdom",
+   "y": 2020,
+   "sub": "3.6",
+   "is": "Wage subsidies preserved jobs through lockdowns."
+  },
+  {
+   "id": "MAC-025",
+   "t": "Abenomics",
+   "c": "Japan",
+   "y": 2013,
+   "sub": "3.5",
+   "is": "‘Three arrows' of monetary easing, fiscal spending and reform fought deflation."
+  },
+  {
+   "id": "MAC-026",
+   "t": "The ‘lost decade' and liquidity trap",
+   "c": "Japan",
+   "y": 1995,
+   "sub": "3.5",
+   "is": "Stagnation and near-zero rates illustrated the limits of monetary policy."
+  },
+  {
+   "id": "MAC-027",
+   "t": "Hyperinflation",
+   "c": "Zimbabwe",
+   "y": 2008,
+   "sub": "3.3",
+   "is": "Money printing to cover deficits, amid collapsing output, caused extreme hyperinflation."
+  },
+  {
+   "id": "MAC-028",
+   "t": "Hyperinflation and dollarisation",
+   "c": "Venezuela",
+   "y": 2018,
+   "sub": "3.3",
+   "is": "Collapsing output and money printing produced hyperinflation."
+  },
+  {
+   "id": "MAC-029",
+   "t": "Unorthodox rate cuts and inflation",
+   "c": "Turkey",
+   "y": 2022,
+   "sub": "3.5",
+   "is": "Cutting rates into high inflation worsened price instability and the lira; policy reversed to sharp rate rises from June 2023."
+  },
+  {
+   "id": "MAC-030",
+   "t": "Shock-therapy disinflation",
+   "c": "Argentina",
+   "y": 2024,
+   "sub": "3.6",
+   "is": "Sharp fiscal austerity aimed to crush triple-digit inflation."
+  },
+  {
+   "id": "MAC-031",
+   "t": "Inflation targeting and the Real Plan",
+   "c": "Brazil",
+   "y": 1999,
+   "sub": "3.5",
+   "is": "A new currency and later inflation targeting tamed chronic inflation."
+  },
+  {
+   "id": "MAC-032",
+   "t": "Youth unemployment crisis",
+   "c": "Spain",
+   "y": 2013,
+   "sub": "3.3",
+   "is": "Post-crisis recession drove very high youth and structural unemployment."
+  },
+  {
+   "id": "MAC-033",
+   "t": "Vision 2030 diversification",
+   "c": "Saudi Arabia",
+   "y": 2016,
+   "sub": "3.7",
+   "is": "A reform plan aims to reduce oil dependence and broaden the economy."
+  },
+  {
+   "id": "MAC-034",
+   "t": "Sovereign wealth fund",
+   "c": "Norway",
+   "y": 2020,
+   "sub": "3.6",
+   "is": "Saving oil revenue smooths spending and shares wealth across generations."
+  },
+  {
+   "id": "MAC-035",
+   "t": "Industrial policy and the chaebols",
+   "c": "South Korea",
+   "y": 1973,
+   "sub": "3.7",
+   "is": "State-directed industrial policy is widely credited, though debated, with building export champions and growth."
+  },
+  {
+   "id": "MAC-036",
+   "t": "First inflation-targeting regime",
+   "c": "New Zealand",
+   "y": 1990,
+   "sub": "3.5",
+   "is": "The first explicit inflation target became a global model."
+  },
+  {
+   "id": "MAC-037",
+   "t": "Sri Lanka's economic collapse",
+   "c": "Sri Lanka",
+   "y": 2022,
+   "sub": "4.6",
+   "is": "Debt, reserve loss and policy errors caused default and shortages."
+  },
+  {
+   "id": "MAC-038",
+   "t": "Debt-ceiling standoffs",
+   "c": "USA",
+   "y": 2023,
+   "sub": "3.6",
+   "is": "Repeated borrowing-limit fights risked default and confidence."
+  },
+  {
+   "id": "MAC-039",
+   "t": "Eurozone energy inflation",
+   "c": "European Union",
+   "y": 2022,
+   "sub": "3.3",
+   "is": "A gas-price shock drove a severe cost-push inflation episode."
+  },
+  {
+   "id": "MAC-040",
+   "t": "Youth unemployment: a series high and a change of method",
+   "c": "China",
+   "y": 2023,
+   "sub": "3.3",
+   "is": "High graduate unemployment exposed labour-market mismatch; the official 16–24 series was suspended after its 2023 high and resumed in 2024 on a method that excludes students, so the two are not comparable."
+  },
+  {
+   "id": "MAC-041",
+   "t": "Supply-chain disruption and inflation",
+   "c": "USA",
+   "y": 2021,
+   "sub": "3.2",
+   "is": "Shipping and component shortages raised costs across sectors."
+  },
+  {
+   "id": "MAC-042",
+   "t": "Stagflation and the oil shocks",
+   "c": "USA",
+   "y": 1974,
+   "sub": "3.2",
+   "is": "Oil-price shocks produced simultaneous inflation and unemployment."
+  },
+  {
+   "id": "MAC-043",
+   "t": "Automatic stabilisers",
+   "c": "USA",
+   "y": 2020,
+   "sub": "3.6",
+   "is": "Unemployment benefits and progressive taxes cushioned the downturn automatically."
+  },
+  {
+   "id": "MAC-044",
+   "t": "Negative interest rates in the euro area",
+   "c": "European Union",
+   "y": 2014,
+   "sub": "3.5",
+   "is": "Sub-zero policy rates (2014–22) aimed to push lending and spending."
+  },
+  {
+   "id": "MAC-045",
+   "t": "Demographic decline and growth",
+   "c": "China",
+   "y": 2023,
+   "sub": "3.3",
+   "is": "A shrinking workforce constrains long-run growth potential."
+  },
+  {
+   "id": "MAC-046",
+   "t": "Weimar hyperinflation",
+   "c": "Germany",
+   "y": 1923,
+   "sub": "3.3",
+   "is": "Deficits financed by money creation, worsened by reparations and the 1923 Ruhr occupation, produced classic hyperinflation."
+  },
+  {
+   "id": "MAC-047",
+   "t": "Asian Tiger growth model",
+   "c": "Singapore",
+   "y": 1995,
+   "sub": "3.3",
+   "is": "High savings, education and openness drove rapid sustained growth."
+  },
+  {
+   "id": "MAC-048",
+   "t": "Switzerland deflation and a strong franc",
+   "c": "Switzerland",
+   "y": 2015,
+   "sub": "3.3",
+   "is": "Safe-haven currency strength imported deflationary pressure."
+  },
+  {
+   "id": "MAC-049",
+   "t": "Crowding out and public investment",
+   "c": "India",
+   "y": 2024,
+   "sub": "3.6",
+   "is": "Heavy public capex raises growth but can crowd out private borrowing."
+  },
+  {
+   "id": "MAC-050",
+   "t": "Wage-price spiral risk",
+   "c": "United Kingdom",
+   "y": 2023,
+   "sub": "3.3",
+   "is": "High inflation and wage demands raised fears of a self-feeding spiral."
+  },
+  {
+   "id": "MAC-051",
+   "t": "Stability and Growth Pact fiscal rules",
+   "c": "European Union",
+   "y": 1997,
+   "sub": "3.6",
+   "is": "Common deficit and debt limits constrain national fiscal policy across the EU, most tightly in the eurozone; suspended in 2020–23, the rules were reformed in 2024 around country-specific expenditure paths."
+  },
+  {
+   "id": "GLO-001",
+   "t": "US-China trade war",
+   "c": "USA",
+   "y": 2018,
+   "sub": "4.2",
+   "is": "Tit-for-tat tariffs from 2018 targeted the bilateral deficit and technology rivalry."
+  },
+  {
+   "id": "GLO-002",
+   "t": "Section 232 steel and aluminium tariffs",
+   "c": "USA",
+   "y": 2018,
+   "sub": "4.2",
+   "is": "‘National security' tariffs raised input costs for downstream industries; the rates were raised in 2025."
+  },
+  {
+   "id": "GLO-003",
+   "t": "Brexit and leaving the single market",
+   "c": "United Kingdom",
+   "y": 2021,
+   "sub": "4.4",
+   "is": "Exiting the EU customs union and single market raised trade frictions."
+  },
+  {
+   "id": "GLO-004",
+   "t": "The EU single market (1993) and customs union (1968)",
+   "c": "European Union",
+   "y": 1993,
+   "sub": "4.4",
+   "is": "Free movement of goods, services, capital and labour deepened integration."
+  },
+  {
+   "id": "GLO-005",
+   "t": "EU-UK Trade and Cooperation Agreement",
+   "c": "European Union",
+   "y": 2021,
+   "sub": "4.4",
+   "is": "A deal with zero tariffs and quotas on goods that meet rules of origin, but not frictionless, governs post-Brexit trade."
+  },
+  {
+   "id": "GLO-006",
+   "t": "NAFTA to USMCA",
+   "c": "USA",
+   "y": 2020,
+   "sub": "4.4",
+   "is": "A renegotiated North American agreement updated rules of origin and labour."
+  },
+  {
+   "id": "GLO-007",
+   "t": "RCEP: the largest free-trade agreement by members' combined GDP",
+   "c": "Cross-country",
+   "y": 2022,
+   "sub": "4.4",
+   "is": "A 15-economy Asia-Pacific agreement lowered tariffs and harmonised rules."
+  },
+  {
+   "id": "GLO-008",
+   "t": "CPTPP comprehensive partnership",
+   "c": "Cross-country",
+   "y": 2018,
+   "sub": "4.4",
+   "is": "A high-standard trans-Pacific FTA continued after US withdrawal and admitted the UK in 2024."
+  },
+  {
+   "id": "GLO-009",
+   "t": "African Continental Free Trade Area",
+   "c": "Developing economies",
+   "y": 2021,
+   "sub": "4.4",
+   "is": "A continental FTA aims to boost intra-African trade and industrialisation."
+  },
+  {
+   "id": "GLO-010",
+   "t": "WTO Doha-round stalemate",
+   "c": "Developing economies",
+   "y": 2015,
+   "sub": "4.4",
+   "is": "Multilateral trade talks stalled over agriculture and development issues."
+  },
+  {
+   "id": "GLO-011",
+   "t": "China's WTO accession",
+   "c": "China",
+   "y": 2001,
+   "sub": "4.1",
+   "is": "Joining the WTO accelerated export-led growth and global integration."
+  },
+  {
+   "id": "GLO-012",
+   "t": "Belt and Road Initiative",
+   "c": "China",
+   "y": 2013,
+   "sub": "4.10",
+   "is": "Large overseas infrastructure lending deepened global economic ties."
+  },
+  {
+   "id": "GLO-013",
+   "t": "Managed exchange rate (the yuan)",
+   "c": "China",
+   "y": 2019,
+   "sub": "4.5",
+   "is": "A managed-float currency was labelled a ‘manipulator' by the US Treasury in August 2019, a label dropped in January 2020, although the IMF then judged the renminbi broadly in line with fundamentals."
+  },
+  {
+   "id": "GLO-014",
+   "t": "Rupee depreciation and oil imports",
+   "c": "India",
+   "y": 2022,
+   "sub": "4.5",
+   "is": "A weaker rupee raised the cost of large oil imports and the current account deficit."
+  },
+  {
+   "id": "GLO-015",
+   "t": "India's withdrawal from RCEP",
+   "c": "India",
+   "y": 2019,
+   "sub": "4.3",
+   "is": "India left negotiations fearing import surges, especially from China."
+  },
+  {
+   "id": "GLO-016",
+   "t": "The dollar as reserve currency",
+   "c": "USA",
+   "y": 2023,
+   "sub": "4.6",
+   "is": "Dominant reserve-currency status confers borrowing and trade advantages."
+  },
+  {
+   "id": "GLO-017",
+   "t": "Persistent US trade deficit",
+   "c": "USA",
+   "y": 2022,
+   "sub": "4.6",
+   "is": "A large goods deficit is usually explained by saving-investment and currency factors."
+  },
+  {
+   "id": "GLO-018",
+   "t": "Birth of the euro",
+   "c": "European Union",
+   "y": 1999,
+   "sub": "4.4",
+   "is": "A single currency removed exchange-rate risk among members."
+  },
+  {
+   "id": "GLO-019",
+   "t": "Lost competitiveness in the euro",
+   "c": "Greece",
+   "y": 2012,
+   "sub": "4.4",
+   "is": "Inside the euro, Greece could not devalue to restore competitiveness."
+  },
+  {
+   "id": "GLO-020",
+   "t": "Removal of the franc cap",
+   "c": "Switzerland",
+   "y": 2015,
+   "sub": "4.5",
+   "is": "Abandoning a currency floor caused a sudden franc surge."
+  },
+  {
+   "id": "GLO-021",
+   "t": "Semiconductor export controls",
+   "c": "USA",
+   "y": 2022,
+   "sub": "4.2",
+   "is": "Restrictions on advanced chips and tools target strategic technology."
+  },
+  {
+   "id": "GLO-022",
+   "t": "Yen weakness and intervention",
+   "c": "Japan",
+   "y": 2024,
+   "sub": "4.5",
+   "is": "A sharp yen slide prompted currency intervention and policy debate."
+  },
+  {
+   "id": "GLO-023",
+   "t": "Peso crisis and capital controls",
+   "c": "Argentina",
+   "y": 2023,
+   "sub": "4.5",
+   "is": "Currency instability led to controls and parallel exchange rates; most controls on individuals were lifted in April 2025."
+  },
+  {
+   "id": "GLO-024",
+   "t": "Pound devaluation and IMF support",
+   "c": "Egypt",
+   "y": 2022,
+   "sub": "4.5",
+   "is": "Repeated devaluations and an IMF programme addressed external imbalance."
+  },
+  {
+   "id": "GLO-025",
+   "t": "Naira float",
+   "c": "Nigeria",
+   "y": 2023,
+   "sub": "4.5",
+   "is": "Letting the naira float aimed to end distortions from a managed rate."
+  },
+  {
+   "id": "GLO-026",
+   "t": "The Plaza Accord",
+   "c": "USA",
+   "y": 1985,
+   "sub": "4.5",
+   "is": "Coordinated intervention aimed to weaken an over-strong dollar, which had been falling since its February 1985 peak and fell much further after the accord."
+  },
+  {
+   "id": "GLO-027",
+   "t": "Asian financial crisis",
+   "c": "Developing economies",
+   "y": 1997,
+   "sub": "4.5",
+   "is": "Pegged currencies and capital flight triggered a regional crisis from Thailand."
+  },
+  {
+   "id": "GLO-028",
+   "t": "Sanctions and the ruble",
+   "c": "Russia",
+   "y": 2022,
+   "sub": "4.2",
+   "is": "Sweeping sanctions cut trade and finance after the invasion of Ukraine."
+  },
+  {
+   "id": "GLO-029",
+   "t": "Energy shock and commodity prices",
+   "c": "Cross-country",
+   "y": 2022,
+   "sub": "4.1",
+   "is": "War-driven energy and food shocks rippled through the world economy."
+  },
+  {
+   "id": "GLO-030",
+   "t": "Dependence on Russian gas",
+   "c": "European Union",
+   "y": 2022,
+   "sub": "4.1",
+   "is": "Heavy reliance on imported gas became a strategic vulnerability."
+  },
+  {
+   "id": "GLO-031",
+   "t": "OPEC+ and the terms of trade",
+   "c": "Saudi Arabia",
+   "y": 2022,
+   "sub": "4.6",
+   "is": "Output decisions shift oil prices and exporters' terms of trade."
+  },
+  {
+   "id": "GLO-032",
+   "t": "Australia-China trade tensions",
+   "c": "Australia",
+   "y": 2020,
+   "sub": "4.2",
+   "is": "Tariffs and bans on Australian exports followed a diplomatic dispute; China lifted most of them in 2023–24."
+  },
+  {
+   "id": "GLO-033",
+   "t": "Airbus-Boeing subsidy dispute",
+   "c": "European Union",
+   "y": 2019,
+   "sub": "4.2",
+   "is": "A long WTO fight concerned government subsidies to aircraft makers; the retaliatory tariffs were suspended in 2021 (check their current status)."
+  },
+  {
+   "id": "GLO-034",
+   "t": "Carbon Border Adjustment Mechanism",
+   "c": "European Union",
+   "y": 2023,
+   "sub": "4.2",
+   "is": "A carbon border charge, paid by importers through certificates priced on the EU carbon market, aims to prevent ‘carbon leakage'; 2023–25 was a reporting-only phase and financial obligations apply to imports from 2026, with certificates bought from 2027."
+  },
+  {
+   "id": "GLO-035",
+   "t": "EV tariffs on Chinese imports",
+   "c": "European Union",
+   "y": 2024,
+   "sub": "4.2",
+   "is": "Tariffs on subsidised Chinese EVs aimed to protect domestic industry."
+  },
+  {
+   "id": "GLO-036",
+   "t": "Garment exports and comparative advantage",
+   "c": "Bangladesh",
+   "y": 2022,
+   "sub": "4.1",
+   "is": "Low-cost garment exports drove integration and development."
+  },
+  {
+   "id": "GLO-037",
+   "t": "China+1 and manufacturing shift",
+   "c": "Developing economies",
+   "y": 2023,
+   "sub": "4.1",
+   "is": "Firms diversified production toward Vietnam and others to cut China reliance."
+  },
+  {
+   "id": "GLO-038",
+   "t": "Nearshoring to Mexico",
+   "c": "Mexico",
+   "y": 2023,
+   "sub": "4.1",
+   "is": "Proximity to the US drew investment as firms shortened supply chains."
+  },
+  {
+   "id": "GLO-039",
+   "t": "Dutch disease",
+   "c": "Developing economies",
+   "y": 2014,
+   "sub": "4.5",
+   "is": "A resource boom can crowd out manufacturing via currency appreciation."
+  },
+  {
+   "id": "GLO-040",
+   "t": "Commodity dependence and terms of trade",
+   "c": "Ghana",
+   "y": 2021,
+   "sub": "4.9",
+   "is": "Reliance on a few commodities exposes income to price swings."
+  },
+  {
+   "id": "GLO-041",
+   "t": "Remittances and the balance of payments",
+   "c": "India",
+   "y": 2023,
+   "sub": "4.6",
+   "is": "On World Bank estimates India was the world's largest remittance recipient in 2023, and these inflows support the external accounts."
+  },
+  {
+   "id": "GLO-042",
+   "t": "Tourism-dependent economies",
+   "c": "Developing economies",
+   "y": 2021,
+   "sub": "4.6",
+   "is": "Small economies reliant on tourism were hit hard by the pandemic shock."
+  },
+  {
+   "id": "GLO-043",
+   "t": "Solar-panel anti-dumping tariffs",
+   "c": "USA",
+   "y": 2012,
+   "sub": "4.2",
+   "is": "Anti-dumping and anti-subsidy duties on Chinese panels aimed to protect domestic makers."
+  },
+  {
+   "id": "GLO-044",
+   "t": "Banana trade dispute",
+   "c": "European Union",
+   "y": 2009,
+   "sub": "4.4",
+   "is": "A long dispute over banana import preferences pitted the EU against Latin American exporters and the US."
+  },
+  {
+   "id": "GLO-045",
+   "t": "Capital flows and the ‘taper tantrum'",
+   "c": "India",
+   "y": 2013,
+   "sub": "4.5",
+   "is": "Signals of US tightening triggered capital outflows from emerging markets."
+  },
+  {
+   "id": "GLO-046",
+   "t": "ASEAN economic integration",
+   "c": "Developing economies",
+   "y": 2015,
+   "sub": "4.4",
+   "is": "A regional community deepened trade and investment links in Southeast Asia."
+  },
+  {
+   "id": "GLO-047",
+   "t": "Mercosur integration",
+   "c": "Developing economies",
+   "y": 2019,
+   "sub": "4.4",
+   "is": "A South American customs union shapes regional trade and external deals."
+  },
+  {
+   "id": "GLO-048",
+   "t": "Currency manipulation labelling",
+   "c": "China",
+   "y": 2019,
+   "sub": "4.5",
+   "is": "A US Treasury ‘manipulator' label (August 2019, withdrawn January 2020) escalated currency and trade tensions."
+  },
+  {
+   "id": "GLO-049",
+   "t": "Globalisation and the ‘China shock'",
+   "c": "USA",
+   "y": 2016,
+   "sub": "4.1",
+   "is": "Import competition raised aggregate gains but concentrated local job losses."
+  },
+  {
+   "id": "GLO-050",
+   "t": "Infant-industry protection",
+   "c": "Developing economies",
+   "y": 2018,
+   "sub": "4.3",
+   "is": "Temporary protection aims to let new industries reach competitiveness."
+  },
+  {
+   "id": "GLO-051",
+   "t": "Bretton Woods and the dollar standard",
+   "c": "USA",
+   "y": 1944,
+   "sub": "4.5",
+   "is": "A post-war system of adjustable pegs to the gold-convertible dollar broke down in 1971–73: gold convertibility was suspended in 1971 and general floating followed in 1973."
+  },
+  {
+   "id": "DEV-001",
+   "t": "Large-scale poverty reduction",
+   "c": "India",
+   "y": 2021,
+   "sub": "4.8",
+   "is": "Hundreds of millions of people in India exited multidimensional poverty between 2005/06 and 2019/21, on the UNDP and OPHI global MPI."
+  },
+  {
+   "id": "DEV-002",
+   "t": "Aadhaar and direct benefit transfers",
+   "c": "India",
+   "y": 2016,
+   "sub": "4.10",
+   "is": "A digital ID enabled direct benefit transfers; rigorous studies find leakage fell in some programmes, while biometric checks also excluded some genuine claimants."
+  },
+  {
+   "id": "DEV-003",
+   "t": "MGNREGA employment guarantee",
+   "c": "India",
+   "y": 2006,
+   "sub": "4.10",
+   "is": "A rural job-guarantee scheme, legislated in 2005, provided a wage floor and safety net until the VB-G RAM G Act replaced it from 1 July 2026."
+  },
+  {
+   "id": "DEV-004",
+   "t": "Microfinance and the Andhra crisis",
+   "c": "India",
+   "y": 2010,
+   "sub": "4.10",
+   "is": "Rapid microcredit growth led to over-indebtedness and a sector crisis."
+  },
+  {
+   "id": "DEV-005",
+   "t": "The Green Revolution",
+   "c": "India",
+   "y": 1966,
+   "sub": "4.10",
+   "is": "High-yield seeds and inputs transformed food output and security."
+  },
+  {
+   "id": "DEV-006",
+   "t": "IT-services-led development",
+   "c": "India",
+   "y": 2005,
+   "sub": "4.10",
+   "is": "An export services boom drove growth and a skilled middle class."
+  },
+  {
+   "id": "DEV-007",
+   "t": "Mass poverty reduction",
+   "c": "China",
+   "y": 2020,
+   "sub": "4.8",
+   "is": "Around 800 million people moved above the World Bank's international extreme-poverty line (then $1.90 a day at 2011 PPP) in the four decades to 2020, on that line and no other."
+  },
+  {
+   "id": "DEV-008",
+   "t": "Shenzhen special economic zone",
+   "c": "China",
+   "y": 1980,
+   "sub": "4.10",
+   "is": "An export-oriented SEZ pioneered market reforms and FDI-led growth."
+  },
+  {
+   "id": "DEV-009",
+   "t": "Infrastructure-led growth",
+   "c": "China",
+   "y": 2010,
+   "sub": "4.10",
+   "is": "Massive infrastructure investment supported rapid development."
+  },
+  {
+   "id": "DEV-010",
+   "t": "Lewis turning point and urbanisation",
+   "c": "China",
+   "y": 2012,
+   "sub": "4.10",
+   "is": "Surplus rural labour shifting to industry powered structural change."
+  },
+  {
+   "id": "DEV-011",
+   "t": "RMG exports, BRAC and development",
+   "c": "Bangladesh",
+   "y": 2020,
+   "sub": "4.10",
+   "is": "Garment exports and large NGOs are widely credited with broad-based development gains."
+  },
+  {
+   "id": "DEV-012",
+   "t": "Grameen Bank microcredit",
+   "c": "Bangladesh",
+   "y": 1983,
+   "sub": "4.10",
+   "is": "Group-lending microcredit pioneered finance for the poor."
+  },
+  {
+   "id": "DEV-013",
+   "t": "M-Pesa mobile money",
+   "c": "Kenya",
+   "y": 2007,
+   "sub": "4.10",
+   "is": "Mobile money brought financial services to the unbanked."
+  },
+  {
+   "id": "DEV-014",
+   "t": "Post-genocide development",
+   "c": "Rwanda",
+   "y": 2018,
+   "sub": "4.10",
+   "is": "Governance reform and services investment delivered rapid gains from a low base."
+  },
+  {
+   "id": "DEV-015",
+   "t": "Diamonds and good governance",
+   "c": "Botswana",
+   "y": 2015,
+   "sub": "4.9",
+   "is": "Sound institutions are widely credited with turning diamond wealth into development and avoiding the resource curse."
+  },
+  {
+   "id": "DEV-016",
+   "t": "Oil dependence and the resource curse",
+   "c": "Nigeria",
+   "y": 2016,
+   "sub": "4.9",
+   "is": "Oil reliance, volatility and weak governance constrained development."
+  },
+  {
+   "id": "DEV-017",
+   "t": "Cobalt and conflict minerals",
+   "c": "Developing economies",
+   "y": 2022,
+   "sub": "4.9",
+   "is": "Demand for battery minerals raised export earnings and governance risks."
+  },
+  {
+   "id": "DEV-018",
+   "t": "Industrial parks and growth",
+   "c": "Ethiopia",
+   "y": 2019,
+   "sub": "4.10",
+   "is": "State-built industrial parks attracted manufacturing FDI."
+  },
+  {
+   "id": "DEV-019",
+   "t": "Doi Moi market reforms",
+   "c": "Vietnam",
+   "y": 1986,
+   "sub": "4.10",
+   "is": "Market-oriented reforms opened the economy and accelerated growth."
+  },
+  {
+   "id": "DEV-020",
+   "t": "Aid recipient to donor",
+   "c": "South Korea",
+   "y": 2010,
+   "sub": "4.10",
+   "is": "Investment in education and industry is credited with taking a poor economy to high income."
+  },
+  {
+   "id": "DEV-021",
+   "t": "Bolsa Família conditional cash transfers",
+   "c": "Brazil",
+   "y": 2003,
+   "sub": "4.10",
+   "is": "Cash transfers conditional on schooling and health cut poverty."
+  },
+  {
+   "id": "DEV-022",
+   "t": "Progresa/Oportunidades and RCT evidence",
+   "c": "Mexico",
+   "y": 1997,
+   "sub": "4.10",
+   "is": "A rigorously evaluated CCT became a global model; it was abolished in 2019."
+  },
+  {
+   "id": "DEV-023",
+   "t": "Copper dependence and pensions",
+   "c": "Chile",
+   "y": 2014,
+   "sub": "4.9",
+   "is": "Copper reliance and a privatised pension system shaped development debates; a 2025 reform added employer contributions to the individual-account system."
+  },
+  {
+   "id": "DEV-024",
+   "t": "Cocoa dependence",
+   "c": "Ghana",
+   "y": 2022,
+   "sub": "4.9",
+   "is": "Reliance on cocoa exports exposes the economy to price swings."
+  },
+  {
+   "id": "DEV-025",
+   "t": "HIPC debt-relief initiative",
+   "c": "Developing economies",
+   "y": 1996,
+   "sub": "4.10",
+   "is": "Coordinated relief reduced unsustainable debt for poor countries."
+  },
+  {
+   "id": "DEV-026",
+   "t": "Jubilee 2000 debt cancellation",
+   "c": "Developing economies",
+   "y": 2000,
+   "sub": "4.10",
+   "is": "A global campaign helped secure large debt write-offs (enhanced HIPC, MDRI) for poor nations."
+  },
+  {
+   "id": "DEV-027",
+   "t": "Sovereign default and IMF support",
+   "c": "Sri Lanka",
+   "y": 2022,
+   "sub": "4.9",
+   "is": "Debt distress forced default and an IMF-supported adjustment."
+  },
+  {
+   "id": "DEV-028",
+   "t": "Debt default and external lending",
+   "c": "Zambia",
+   "y": 2020,
+   "sub": "4.9",
+   "is": "An early pandemic-era default highlighted rising external-debt risks."
+  },
+  {
+   "id": "DEV-029",
+   "t": "IMF stabilisation programmes",
+   "c": "Pakistan",
+   "y": 2023,
+   "sub": "4.10",
+   "is": "Repeated IMF programmes addressed recurring external crises."
+  },
+  {
+   "id": "DEV-030",
+   "t": "The aid-effectiveness debate",
+   "c": "Developing economies",
+   "y": 2018,
+   "sub": "4.10",
+   "is": "Whether aid reliably promotes development remains contested."
+  },
+  {
+   "id": "DEV-031",
+   "t": "MDGs to the Sustainable Development Goals",
+   "c": "Developing economies",
+   "y": 2015,
+   "sub": "4.7",
+   "is": "Global goals shifted from poverty targets to a broader sustainability agenda."
+  },
+  {
+   "id": "DEV-032",
+   "t": "Deworming and RCTs in development",
+   "c": "Kenya",
+   "y": 2004,
+   "sub": "4.10",
+   "is": "A randomised study in Kenya reported that school-based deworming raised school attendance, a result later disputed in re-analyses and systematic reviews."
+  },
+  {
+   "id": "DEV-033",
+   "t": "Randomised trials and poverty policy",
+   "c": "India",
+   "y": 2019,
+   "sub": "4.10",
+   "is": "Field experiments reshaped how poverty interventions are designed."
+  },
+  {
+   "id": "DEV-034",
+   "t": "Conditional cash transfers (general)",
+   "c": "Developing economies",
+   "y": 2020,
+   "sub": "4.10",
+   "is": "CCTs tie support to schooling and health to build human capital."
+  },
+  {
+   "id": "DEV-035",
+   "t": "Remittances and household welfare",
+   "c": "Developing economies",
+   "y": 2023,
+   "sub": "4.10",
+   "is": "Migrant remittances are a major, stable source of development finance."
+  },
+  {
+   "id": "DEV-036",
+   "t": "Women's education and development",
+   "c": "Developing economies",
+   "y": 2021,
+   "sub": "4.10",
+   "is": "Girls' education yields wide social and economic returns."
+  },
+  {
+   "id": "DEV-037",
+   "t": "Limits of microcredit",
+   "c": "Developing economies",
+   "y": 2015,
+   "sub": "4.10",
+   "is": "Rigorous studies found microcredit's poverty impact is modest."
+  },
+  {
+   "id": "DEV-038",
+   "t": "Tourism-led development",
+   "c": "Developing economies",
+   "y": 2019,
+   "sub": "4.10",
+   "is": "Tourism brings foreign exchange and jobs but heightens vulnerability."
+  },
+  {
+   "id": "DEV-039",
+   "t": "Special economic zones (general)",
+   "c": "Developing economies",
+   "y": 2018,
+   "sub": "4.10",
+   "is": "Zones use incentives and infrastructure to attract export industry."
+  },
+  {
+   "id": "DEV-040",
+   "t": "Trade versus aid debate",
+   "c": "Developing economies",
+   "y": 2017,
+   "sub": "4.10",
+   "is": "Whether trade access or aid better promotes development is contested."
+  },
+  {
+   "id": "DEV-041",
+   "t": "Climate change and development",
+   "c": "Bangladesh",
+   "y": 2022,
+   "sub": "4.7",
+   "is": "Climate vulnerability threatens hard-won development gains."
+  },
+  {
+   "id": "DEV-042",
+   "t": "Demographic dividend",
+   "c": "Developing economies",
+   "y": 2023,
+   "sub": "4.9",
+   "is": "A young, growing workforce can boost growth if jobs and skills follow."
+  },
+  {
+   "id": "DEV-043",
+   "t": "Gates-Foundation health interventions",
+   "c": "Developing economies",
+   "y": 2020,
+   "sub": "4.10",
+   "is": "Large-scale health funding targets diseases of poverty."
+  },
+  {
+   "id": "DEV-044",
+   "t": "Poverty trap and the ‘big push'",
+   "c": "Developing economies",
+   "y": 2016,
+   "sub": "4.9",
+   "is": "Low income, saving and investment can lock countries in a poverty cycle."
+  },
+  {
+   "id": "DEV-045",
+   "t": "Informal sector and development",
+   "c": "India",
+   "y": 2022,
+   "sub": "4.9",
+   "is": "A large informal sector limits productivity, revenue and protection."
+  },
+  {
+   "id": "DEV-046",
+   "t": "Foreign direct investment and growth",
+   "c": "Developing economies",
+   "y": 2021,
+   "sub": "4.10",
+   "is": "FDI brings capital, technology and jobs but can have mixed effects."
+  },
+  {
+   "id": "DEV-047",
+   "t": "The Kerala development model",
+   "c": "India",
+   "y": 2018,
+   "sub": "4.8",
+   "is": "High human-development outcomes were achieved in the 1970s and 1980s, when Kerala's income per head was modest. To compare its income per head with India's, read the per capita net state domestic product table in the most recent edition of the RBI's Handbook of Statistics on Indian States."
+  }
+ ],
+ "gloss": [
+  "Abnormal profit",
+  "Absolute advantage",
+  "Absolute poverty",
+  "Actual growth",
+  "Administrative barrier",
+  "Adverse selection",
+  "Aggregate demand",
+  "Aggregate supply",
+  "Allocative efficiency",
+  "Anchoring",
+  "Appreciation",
+  "Asymmetric information",
+  "Automatic stabiliser",
+  "Availability bias",
+  "Average tax rate",
+  "Balance of payments",
+  "Balance of trade",
+  "Barriers to entry",
+  "Basic economic questions",
+  "Behavioural economics",
+  "Bounded rationality",
+  "Bounded self-control",
+  "Bounded selfishness",
+  "Budget deficit",
+  "Business cycle",
+  "Capital account",
+  "Capital expenditure",
+  "Capital flight",
+  "Carbon tax",
+  "Central bank",
+  "Ceteris paribus",
+  "Choice architecture",
+  "Circular flow of income",
+  "Collective self-governance",
+  "Collusion",
+  "Command and control regulation",
+  "Common market",
+  "Common pool resource",
+  "Comparative advantage",
+  "Competitive supply",
+  "Complement",
+  "Composite indicator",
+  "Concentration ratio",
+  "Constant opportunity cost",
+  "Consumer price index",
+  "Consumer surplus",
+  "Contractionary policy",
+  "Corporate social responsibility",
+  "Cost-push inflation",
+  "Crowding out",
+  "Current account",
+  "Current transfers",
+  "Customs union",
+  "Cyclical unemployment",
+  "Debt relief",
+  "Deflation",
+  "Deflationary gap",
+  "Demand",
+  "Demand-pull inflation",
+  "Demerit good",
+  "Depreciation",
+  "Deregulation",
+  "Devaluation",
+  "Direct tax",
+  "Disinflation",
+  "Dumping",
+  "Economic development",
+  "Economic growth",
+  "Economic model",
+  "Economies of scale",
+  "Elasticity",
+  "Engel curve",
+  "Equality",
+  "Equity",
+  "Excess demand",
+  "Excess supply",
+  "Exchange rate",
+  "Expansionary policy",
+  "Expenditure reducing",
+  "Expenditure switching",
+  "Export promotion",
+  "Export subsidy",
+  "Externality",
+  "Factors of production",
+  "Financial account",
+  "Fiscal policy",
+  "Fixed exchange rate",
+  "Floating exchange rate",
+  "Foreign aid",
+  "Foreign direct investment",
+  "Framing",
+  "Free good",
+  "Free market economy",
+  "Free rider",
+  "Free trade area",
+  "Frictional unemployment",
+  "Full employment output",
+  "Game theory",
+  "GDP",
+  "Gender Inequality Index",
+  "Gini coefficient",
+  "GNI",
+  "Growth in production possibilities",
+  "Happy Planet Index",
+  "Human capital",
+  "Human Development Index",
+  "Import substitution",
+  "Income effect",
+  "Income elasticity of demand",
+  "Increasing opportunity cost",
+  "Indirect tax",
+  "Inequality-adjusted Human Development Index",
+  "Infant industry",
+  "Inferior good",
+  "Inflation",
+  "Inflation targeting",
+  "Inflationary gap",
+  "Informal economy",
+  "Injections",
+  "Interdependence",
+  "International poverty line",
+  "Interventionist supply-side policies",
+  "Investment",
+  "J-curve",
+  "Joint supply",
+  "Keynesian AS curve",
+  "Keynesian multiplier",
+  "Labour force",
+  "Law of demand",
+  "Law of diminishing marginal returns",
+  "Law of diminishing marginal utility",
+  "Law of supply",
+  "Leakages",
+  "Lorenz curve",
+  "LRAS",
+  "Managed exchange rate",
+  "Marginal benefit",
+  "Marginal cost",
+  "Marginal propensity to consume",
+  "Marginal revenue",
+  "Marginal social benefit",
+  "Marginal social cost",
+  "Marginal tax rate",
+  "Market equilibrium",
+  "Market failure",
+  "Market power",
+  "Market-based supply-side policies",
+  "Marshall-Lerner condition",
+  "Merit good",
+  "Microfinance",
+  "Minimum lending rate",
+  "Minimum reserve requirement",
+  "Minimum wage",
+  "Mixed economy",
+  "Monetary policy",
+  "Monetary union",
+  "Money creation",
+  "Monopolistic competition",
+  "Monopoly",
+  "Moral hazard",
+  "Movement along the demand curve",
+  "Multidimensional Poverty Index",
+  "National debt",
+  "Natural monopoly",
+  "Natural rate of unemployment",
+  "Negative externality",
+  "Non-excludable",
+  "Non-rivalrous",
+  "Normal good",
+  "Normal profit",
+  "Normative economics",
+  "Nudge",
+  "Official development assistance",
+  "Oligopoly",
+  "Open market operations",
+  "Opportunity cost",
+  "Percentage change",
+  "Perfect competition",
+  "Phillips curve",
+  "Pigouvian tax",
+  "Planned economy",
+  "Portfolio investment",
+  "Positive economics",
+  "Positive externality",
+  "Poverty trap",
+  "PPP",
+  "Price ceiling",
+  "Price deflator",
+  "Price elasticity of demand",
+  "Price elasticity of supply",
+  "Price floor",
+  "Price maker",
+  "Price mechanism",
+  "Price taker",
+  "Primary commodity",
+  "Privatisation",
+  "Producer surplus",
+  "Production possibilities curve",
+  "Profit maximisation",
+  "Progressive tax",
+  "Property rights",
+  "Proportional tax",
+  "Protectionism",
+  "Public good",
+  "Quantitative easing",
+  "Quota",
+  "Real GDP",
+  "Real GDP per capita",
+  "Real interest rate",
+  "Recession",
+  "Regressive tax",
+  "Relative poverty",
+  "Remittance",
+  "Revaluation",
+  "Satisficing",
+  "Scarcity",
+  "Screening",
+  "Seasonal unemployment",
+  "Shift of the demand curve",
+  "Signalling",
+  "Social surplus",
+  "Socially optimum output",
+  "SRAS",
+  "Structural unemployment",
+  "Subsidy",
+  "Substitute",
+  "Substitution effect",
+  "Supply",
+  "Supply-side policy",
+  "Sustainable development",
+  "Sustainable Development Goals",
+  "Tariff",
+  "Terms of trade",
+  "Total revenue",
+  "Tradable permit",
+  "Trade creation",
+  "Trade diversion",
+  "Trading bloc",
+  "Tragedy of the commons",
+  "Transfer payment",
+  "Unemployment rate",
+  "Universal basic income",
+  "Unused capacity",
+  "Utility",
+  "Value judgement",
+  "Wealth",
+  "Welfare loss",
+  "World price",
+  "World Trade Organization",
+  "Yield"
+ ],
+ "concepts": [
+  "Scarcity",
+  "Choice",
+  "Efficiency",
+  "Equity",
+  "Economic well-being",
+  "Sustainability",
+  "Change",
+  "Interdependence",
+  "Intervention"
+ ],
+ "calcs": [
+  {
+   "id": "pct",
+   "n": "Percentage change"
+  },
+  {
+   "id": "ped",
+   "n": "Price elasticity of demand"
+  },
+  {
+   "id": "yed",
+   "n": "Income elasticity of demand"
+  },
+  {
+   "id": "pes",
+   "n": "Price elasticity of supply"
+  },
+  {
+   "id": "tr",
+   "n": "Total revenue"
+  },
+  {
+   "id": "cs",
+   "n": "Consumer surplus"
+  },
+  {
+   "id": "ps",
+   "n": "Producer surplus"
+  },
+  {
+   "id": "taxrev",
+   "n": "Government revenue from an indirect tax"
+  },
+  {
+   "id": "subcost",
+   "n": "Cost of a subsidy"
+  },
+  {
+   "id": "dwl",
+   "n": "Welfare loss from a tax"
+  },
+  {
+   "id": "compadv",
+   "n": "Comparative advantage"
+  },
+  {
+   "id": "realgdp",
+   "n": "Real GDP from nominal GDP"
+  },
+  {
+   "id": "growth",
+   "n": "Economic growth rate"
+  },
+  {
+   "id": "infl",
+   "n": "Inflation rate from a price index"
+  },
+  {
+   "id": "unemp",
+   "n": "Unemployment rate"
+  },
+  {
+   "id": "realval",
+   "n": "Real value of a nominal figure"
+  },
+  {
+   "id": "mult",
+   "n": "The multiplier"
+  },
+  {
+   "id": "fx",
+   "n": "Exchange rate conversion"
+  },
+  {
+   "id": "appdep",
+   "n": "Appreciation or depreciation"
+  },
+  {
+   "id": "tot",
+   "n": "Terms of trade"
+  },
+  {
+   "id": "ca",
+   "n": "Current account balance"
+  },
+  {
+   "id": "tariffrev",
+   "n": "Tariff revenue"
+  },
+  {
+   "id": "gdpexp",
+   "n": "Nominal GDP by the expenditure approach"
+  },
+  {
+   "id": "gni",
+   "n": "Nominal GNI from GDP"
+  },
+  {
+   "id": "gdppc",
+   "n": "Real GDP per person"
+  },
+  {
+   "id": "wpi",
+   "n": "Weighted price index"
+  },
+  {
+   "id": "realint",
+   "n": "Real interest rate"
+  },
+  {
+   "id": "avgtax",
+   "n": "Total tax and the average tax rate"
+  },
+  {
+   "id": "indtax",
+   "n": "Indirect tax paid from expenditure"
+  },
+  {
+   "id": "profit",
+   "n": "Profit from revenue and cost data"
+  },
+  {
+   "id": "mcmr",
+   "n": "Marginal cost and marginal revenue"
+  },
+  {
+   "id": "ceilshort",
+   "n": "Shortage under a price ceiling"
+  },
+  {
+   "id": "floorsur",
+   "n": "Surplus under a price floor"
+  },
+  {
+   "id": "extwl",
+   "n": "Welfare loss from an externality"
+  },
+  {
+   "id": "quotaeff",
+   "n": "Quota effects on stakeholders"
+  },
+  {
+   "id": "tradeflow",
+   "n": "Trade flows from a diagram"
+  }
+ ]
+}
