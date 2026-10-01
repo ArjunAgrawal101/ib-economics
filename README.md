@@ -288,6 +288,16 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
 
 ## Technology
 
+**Where the source lives.** `index.html` is still the shipped file, but it is now built:
+- `src/modules/*.js` and `src/styles/*.css` are spliced into it by `python3 tools/build/splice.py`.
+  The splice is idempotent, and its output was checked byte-identical before the move.
+- Content data is generated into `assets/data/` by `tools/build/build_ideas.py` and
+  `tools/build/build_data.py`.
+- Changes to the older base code are made by recorded, re-runnable scripts in `tools/migrations/`.
+
+`docs/architecture-decision.md` gives the reasoning, the measured baseline and the staged plan.
+
+
 - A single self-contained `index.html`. No framework, no bundler, no dependencies to install.
 - **One file, deliberately, with one exception.** Everything the platform does is in `index.html`,
   because that is what makes it work from a memory stick, from an email attachment and from a
@@ -662,14 +672,19 @@ once:
 
 ## Navigation
 
-Real World and Resources are first-class destinations. The primary bar reads **Course · Learn ·
-Think · Lab · Real World · Practise · Exam · Mindmaps · Resources · Dashboard · IA · About** with
-**Tutorials** closing it, and the collapse order is declared rather than left to whichever item
-happens to sit last: Real World and Resources are the last two the bar gives up, so both are
-visible at every desktop width down to 1280 pixels. Everything withdrawn stays one click away in
-the More menu, which lists every section. On a phone the drawer opens **Start**, then **Real world
-and resources**, then Practise, Progress, IA, Teacher and About, so neither is behind a second
-level.
+The primary bar keeps the eight places most visits start from: **Course · Learn · Lab · Real World ·
+Practise · Exam · Mindmaps · Everywhere**, with **More** and **Tutorials** closing it. When the header is
+tight, items are withdrawn in a declared order. Real World and Mindmaps are the last two the bar gives
+up, and the IB course outranks the general-reader section.
+
+Everything else is one step away:
+- **The More menu** groups every section by what a visitor came to do: *Learn and explore* (Resources
+  first, then the course, Think, *Why did this happen?*, economists and ideas, economic data, the labs
+  and the video studio), *Exam and research*, *Your work*, *Teach* and *About*. Any section not named
+  there is appended under *More*, so nothing can become unreachable.
+- **On a phone**, the drawer carries the same sections in its own groups.
+- **Search** (`/` or `Ctrl`/`Cmd` + `K`) finds lessons, terms, economists, causal questions, data pages,
+  cases and tools by name.
 
 ## Learning paths and saved items
 
@@ -795,6 +810,93 @@ no page claims the IB requires an Economics TOK activity.
 The TOK section links to the official IB material for anything administrative rather than
 reproducing it. What it teaches is the habit of asking what a claim rests on, which is the same
 skill the highest evaluation band in Economics describes.
+
+## Economic data
+
+**Data explorer, country profiles, markets and prices, sources and method** (More › Economic data,
+`#/data`).
+
+**What it holds**
+- Six indicators for 25 economies, the world and the four World Bank income groups: GDP, GDP per capita,
+  consumer-price inflation, population, the Gini index and CO₂ per person.
+- Brent crude oil, the US 10-year Treasury yield, US unemployment, and 23 exchange rates against the
+  US dollar.
+
+**Where it comes from**
+- Each series comes from the institution that publishes it: the World Bank, the U.S. Energy
+  Information Administration, the Federal Reserve (H.15, and via FRED), the U.S. Bureau of Labor
+  Statistics, and CDIAC-FF.
+- They are copied from the open-data packages at `github.com/datasets`, retrieved on 1 October 2026,
+  each with its licence.
+
+**How it is handled**
+- Nothing is estimated or filled in: a missing year stays missing.
+- A computed or converted series says so:
+  - GDP per capita is World Bank GDP ÷ World Bank population;
+  - CO₂ is converted from tonnes of carbon.
+- Two errors in the packages' own metadata were caught by checking values against known figures, and
+  are recorded on *Sources and method*:
+  - the inflation file is labelled as a price index;
+  - the exchange-rate README describes four currencies quoted the other way round.
+
+**The charts**
+- One axis, with up to five economies in a validated, colour-blind-safe palette. A colour stays with
+  its economy.
+- Direct labels, a hover and keyboard crosshair, a text alternative and a table of the numbers.
+- Beside each chart are the facts computed from the values shown, and questions an economist would ask
+  that link to the lessons. They are questions, not explanations: the platform does not interpret a
+  movement for you.
+
+**Loading**
+- The 230 KB file (`assets/data/econ-data.js`) loads only when a data page opens, and is then kept
+  for offline use.
+- Before it arrives, the page says what it holds. If it fails, the page says so and offers a retry,
+  never a number.
+- To refresh the data, run `RETRIEVED=YYYY-MM-DD python3 tools/build/build_data.py --refresh`.
+
+## Economists and ideas
+
+**Sixteen economists** whose ideas the course still uses (More › Economists and ideas, `#/ideas`):
+Smith, Ricardo, Malthus, Marx, Marshall, Pigou, Keynes, Joan Robinson, Hayek, Friedman, Sen, Ostrom,
+Stiglitz, Banerjee, Duflo and Acemoglu.
+
+**Each profile covers:**
+- the problem they faced;
+- three or four central ideas;
+- the lasting contribution;
+- what their models assume;
+- influence;
+- criticisms and limits;
+- why it still matters;
+- a common misreading;
+- an inquiry question;
+- key works and prizes, limited to those the writers could confirm;
+- links into the lessons, glossary and diagram atlas, and to the thinkers they answered.
+
+A timeline puts the lifespans on one axis.
+
+**Review.** The profiles were reviewed adversarially before release. The review found no factual
+errors; it corrected one misattribution and one contested claim stated as fact, and added HL labels
+where the guide marks content HL only.
+
+## Why did this happen?
+
+**Eleven causal questions** (Think › *Why did this happen?*): why inflation rose, unemployment rose,
+growth slowed, a currency depreciated, a central bank raised rates, a government spent more in a
+recession, a tax raised the price by less than the tax, output rose after a subsidy, a tariff helped
+producers but hurt consumers, supply-side reform takes years, and a market polluted too much.
+
+**How a question works**
+1. The student first predicts which way each variable moves.
+2. They then step through the eleven stages: event, starting conditions, mechanism, who acts, the
+   diagram (drawn from the atlas), what changes (with their prediction marked), short run, longer run,
+   evidence (described, never quantified, linked to Real World cases), evaluation, and the other
+   explanations, with how to tell them apart.
+
+HL-only parts are labelled.
+
+The full text of both features is in `assets/data/ideas.js`, loaded when a profile or pathway opens.
+Lists and search use a small resident index.
 
 ## The course: thirty-one lessons
 
