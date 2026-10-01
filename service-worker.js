@@ -20,7 +20,7 @@
    Cache-first for the static assets, which change only when the version below
    changes.
    ═══════════════════════════════════════════════════════════════════════════ */
-const VERSION = "aa-ibdp-econ-v14";
+const VERSION = "aa-ibdp-econ-v15";
 const CACHE = VERSION + "-static";
 
 /* Relative to the service worker's own location, so the platform works from a
@@ -34,6 +34,8 @@ const PRECACHE = [
   "./assets/data/exam-dna.js",
   "./assets/data/real-world.js",
   "./assets/data/course.js",
+  "./assets/data/econ-data.js",
+  "./assets/data/ideas.js",
   "./assets/icons/icon-192.png",
   "./assets/icons/icon-512.png",
   "./assets/icons/icon-maskable-192.png",
