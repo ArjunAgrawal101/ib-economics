@@ -181,7 +181,7 @@ No new load-time measurements were taken in this release.
 | selftest (2,058 checks) | pass |
 | events (new) | pass, 49 checks |
 | tabs (new) | pass; fails on the build before the fix |
-| overlap, routes | failed on the first run after the tab repair (marker labels at 375–430 px; the exam-builder wording); both fixed and re-run, see §M |
+| overlap, routes | failed on the first run after the tab repair (marker labels at 375–430 px; the exam-builder wording); both fixed; on re-run both pass, see §M |
 
 ## R. Documentation
 
