@@ -109,7 +109,9 @@ for (const [w, h] of SIZES) {
   else await full('Back from another site to the home page (a full load)');
   /* Forward into the home page from another site: history is [about:blank, home]; step back, then forward */
   await p.goto('about:blank'); await p.goto(base + '#/home', { waitUntil: 'commit' }); await full('the home page before a Forward step');
-  await p.goBack({ waitUntil: 'commit' }); await p.goForward({ waitUntil: 'commit' });
+  /* wait until Back has landed on about:blank before stepping Forward, and confirm Forward by the address it reaches */
+  await p.goBack({ waitUntil: 'commit' }); await p.waitForURL('about:blank');
+  await p.goForward({ waitUntil: 'commit', timeout: 15000 }).catch(() => {}); await p.waitForURL(u => u.href.startsWith(base), { timeout: 15000 });
   const restoredF = await p.evaluate(() => !!(window.__INTRO && window.__INTRO.restored));
   if (restoredF) check(await p.locator('#splash').count() === 0, 'Forward from another site restores the page from the back-forward cache, as it was left');
   else await full('Forward from another site to the home page (a full load)');
