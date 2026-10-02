@@ -671,6 +671,15 @@ once:
 - The coverage dashboard now counts real-world cases, curated videos and analysed question parts
   per subtopic, so a gap in any of them is visible in one table.
 
+## Sticky navigation
+
+The top bar, the section tabs, the lesson rails and the events chapter rail stay in view while
+the page scrolls. They were always styled to do so, but `body` carried `overflow-x:hidden`, which
+(with `html` clipping sideways overflow) made `body` a scroll container that never scrolls, so
+nothing ever stuck. `body` now uses `overflow-x:clip`, which still prevents sideways scrolling
+without creating a scroll container. The widths audit also now fails on content cut off at the
+right edge, which that clip would otherwise hide.
+
 ## Navigation
 
 The primary bar keeps the eight places most visits start from: **Course · Learn · Lab · Real World ·
@@ -717,11 +726,11 @@ Exactly five seconds, on one clock. The sequence runs:
 
 | Time | Stage |
 |---|---|
-| 0–0.8 s | an obsidian field with a faint grid, a market and a frontier |
-| 0.7 s | the monogram |
+| 0–0.9 s | an obsidian field with a faint grid; the axes rule themselves in from their origins |
+| 0.7 s | the monogram, with a data series appearing beneath it (0.9–1.9 s) |
 | 1.4 s | the name and "Knowledge. Insight. Impact.", assembled from the brand vectors rather than set again in type |
-| 2.2 s | "IB DP Economics", with the economics figure brought into focus behind it |
-| 3.1 s | "Think like an economist.", the peak |
+| 2.2 s | "IB DP Economics", with supply and demand and a frontier (micro) brought into focus behind it |
+| 3.1 s | "Think like an economist.", the peak, as a growth path with its cycle (macro) and a faint network of trade (global) take over the background |
 | 4.0 s | "Learn. Think. Calculate." |
 | 4.7–5.0 s | the exit fade into the page |
 
@@ -834,6 +843,12 @@ skill the highest evaluation band in Economics describes.
 **Data explorer, country profiles, markets and prices, sources and method** (More › Economic data,
 `#/data`).
 
+**Reading a chart.** Above the explorer's chart, a strip names what the series measures, where
+(the economies shown), when, its unit and its source. Beneath it: why the indicator matters, the
+largest one-year change in the chosen period, what might explain a movement (offered as
+possibilities to test, not conclusions) and what to be careful about, including that lines moving
+together do not show that one caused the other.
+
 **What it holds**
 - Six indicators for 25 economies, the world and the four World Bank income groups: GDP, GDP per capita,
   consumer-price inflation, population, the Gini index and CO₂ per person.
@@ -891,7 +906,24 @@ Stiglitz, Banerjee, Duflo and Acemoglu.
 - key works and prizes, limited to those the writers could confirm;
 - links into the lessons, glossary and diagram atlas, and to the thinkers they answered.
 
-A timeline puts the lifespans on one axis.
+**The editorial layer** (this release) turns the profiles into intellectual history:
+- **An interactive timeline** places each economist by school of thought, at the year of their
+  major work, with the twelve economic events marked above. Hover, keyboard focus or a tap shows a
+  preview (school, core idea, idea chain, major work) and draws who they built on and who they
+  challenged. On a phone it becomes a dated list.
+- **Each profile opens** with the central question, the core idea, the key contribution, the major
+  work and an idea chain, labelled as interpretation. The written profile follows, regrouped: the
+  problem, what they argued, who they built on and challenged, what came after, assumptions and
+  critiques, modern relevance. Beside it: the course, related economic events, and connections for
+  Cambridge and other A-level courses, university, and the Indian economy where there is a real one.
+- **How ideas connect** is an influence map across ten traditions, with every relation also
+  listed in text.
+- **Compare economists** sets Keynes and Hayek, Friedman and Keynes, Smith and Marx, Pigou and
+  Coase, and the capability approach against income measures side by side on seven dimensions,
+  without declaring a winner.
+
+The schools, chains, relations and comparisons were written for this release and reviewed for
+accuracy; the 22 review corrections are applied at build time from `src/content/ideas/rt-v2.json`.
 
 **Review.** The profiles were reviewed adversarially before release. The review found no factual
 errors; it corrected one misattribution and one contested claim stated as fact, and added HL labels
@@ -903,6 +935,16 @@ where the guide marks content HL only.
 Depression, the end of Bretton Woods, the 1970s stagflation, the oil shocks of 1973 and 1979, the
 Plaza Accord, India's 1991 crisis and reforms, the Asian financial crisis, the dot-com bubble, the
 global financial crisis, the euro crisis and COVID-19.
+
+**The event in seven stages.** Each event opens with its story at a glance: before, trigger,
+transmission, crisis, policy response, consequences and long-term change, each drawn from the
+event's own text and each a link into its chapter. The chapter rail stays in view below the section
+tabs, marks the chapter being read and carries a reading-progress bar.
+
+**Scrolling.** An event page scrolls from top to bottom by wheel, trackpad, touch, Page Down,
+Home and End, after a refresh, Back/Forward or a deep link. (Before this release the rail's
+observer called `scrollIntoView` on its sticky links, which pulled the window back up each time a
+chapter came into view; `tests/events-scroll.mjs` guards against its return.)
 
 **Each event has fourteen chapters:** the world before; the trigger; a timeline you step through;
 the mechanism (opened only after the reader predicts it); the data; the policy response and who
@@ -1431,10 +1473,25 @@ See [`LICENSE`](LICENSE) for the full terms, or write to arjun1agr@gmail.com.
 One-to-one IB DP Economics sessions: full syllabus, revision, Papers 1, 2 and 3, internal
 assessment and extended essay. Guidance, coaching and feedback; not ghostwriting.
 
-**US$20 per 90-minute one-to-one online session.** Group discounts available.
+All sessions are one-to-one and online. The terms, exactly as supplied:
 
-To enquire, email **arjun1agr@gmail.com** with your grade level, whether you are SL or HL, your
-school, what you would like help with, and your preferred days and times.
+| Pathway | Fee | Sessions | What it is |
+|---|---|---|---|
+| Regular sessions | US$20 | 1 hour each | Any topic of your choice |
+| IA support | US$100 | 6 × 1 hour | Guidance in writing the three commentaries |
+| Economics EE supervisor support | US$150 | agreed at enquiry | Academic supervision and guidance, not ghostwriting |
+| Marathon Revision | US$300 | 20 × 1 hour | The entire syllabus before External Assessment |
+| Exam Practice | US$200 | 12 × 1 hour | Questions only: Papers 1, 2 and 3 |
+
+The Tutorials page (`#/tutorials`) sets these out as a narrative: why students get in touch, how
+sessions are taught, what an hour looks like, the five pathways (what each is, who it is for, what
+you do, what to expect), which pathway fits, how to get started, and eleven questions. Every pathway
+has its own enquiry link. There is no booking system: enquiries go by email or WhatsApp and are
+answered personally. The page carries no testimonials, ratings, outcomes or guarantees, and a
+self-test fails if any price, count or length changes.
+
+To enquire, email **arjun1agr@gmail.com** with whether you are SL or HL, your school, what you
+would like help with, and your preferred days and times.
 
 ## Credits and disclaimer
 
