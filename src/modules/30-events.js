@@ -50,7 +50,7 @@ function evChart(c,H2,i,id){
  if(c.series){const s=H2.series.find(x=>x.id===c.series);if(!s)return "";const inR=k=>String(k)>=String(c.from)&&String(k).slice(0,String(c.to).length)<=String(c.to);
   series=[{name:s.name,color:DLPAL[0],pts:s.data.filter(p=>inR(p[0]))}];unit=s.unit;src=s}
  else if(c.panel){const p=H2.panel[c.panel];if(!p)return "";unit=p.unit;src=p;
-  series=(c.entities||[]).filter(e=>p.data[e]).map((e,j)=>({name:H2.meta.entities[e]||e,short:(H2.meta.entities[e]||e).split(/[ ,]/)[0],color:DLPAL[j%DLPAL.length],pts:p.data[e].filter(q=>q[0]>=+c.from&&q[0]<=+c.to)}))}
+  series=(c.entities||[]).filter(e=>p.data[e]).map((e,j)=>({name:H2.meta.entities[e]||e,short:dlShort(H2.meta.entities[e]||e),color:DLPAL[j%DLPAL.length],pts:p.data[e].filter(q=>q[0]>=+c.from&&q[0]<=+c.to)}))}
  series=series.filter(s=>s.pts.length);if(!series.length)return "";
  const monthly=typeof series[0].pts[0][0]==="string";
  return `<figure class="ev-chart"><figcaption><span class="eb">Figure ${i+1}</span> <strong>${esc(title)}</strong> <span class="xs">${esc(unit)}</span></figcaption>

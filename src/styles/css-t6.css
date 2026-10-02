@@ -23,7 +23,7 @@
 .dl-legend li{display:flex;align-items:center;gap:6px}.dl-legend.sm1{font-size:12px;margin-top:4px}
 .dl-src{color:#4F5761;line-height:1.55}.dl-src a{color:inherit}
 .dl-read{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.dl-facts{list-style:none;padding:0;margin:0}.dl-facts li{display:flex;gap:8px;align-items:baseline;margin:6px 0;font-size:14.5px}.dl-facts i{transform:translateY(-3px)}
+.dl-facts{list-style:none;padding:0;margin:0}.dl-facts li{display:block;margin:6px 0;padding-left:20px;position:relative;font-size:14.5px}.dl-facts i{position:absolute;left:0;top:.7em}
 
 .dl-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
 .dl-big{font:600 26px var(--serif,Georgia);color:var(--obs)}
@@ -268,3 +268,10 @@ nav.ev-rail ol>li>a.on{color:var(--obs);border-bottom-color:#7A2436;font-weight:
 @media (max-width:900px){.ec-pv{grid-template-columns:1fr}.ec-triad{grid-template-columns:1fr}.ec-ideas,.ec-two{grid-template-columns:1fr}}
 @media (max-width:700px){.ec-tlwrap{display:none}.ec-vt{display:block}}
 @media (prefers-reduced-motion:reduce){.ec-rel,.ec-node circle{transition:none}}
+/* data: what / where / when / unit / source, and reading the chart */
+.dl-meta{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1.2fr) minmax(0,.7fr) minmax(0,.9fr) minmax(0,1.4fr);gap:0;margin:10px 0 4px;border-top:1px solid var(--hair,#e6e0d4);border-bottom:1px solid var(--hair,#e6e0d4)}
+.dl-meta>div{padding:10px 14px 10px 0;margin-right:14px;border-right:1px solid var(--hair,#e6e0d4)}.dl-meta>div:last-child{border-right:none;margin-right:0}
+.dl-meta dt{font:600 10.5px var(--ui);letter-spacing:.07em;text-transform:uppercase;color:#5E6670}.dl-meta dd{margin:3px 0 0;font-size:13px;line-height:1.45;color:#2A2F36}
+.dl-reading{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding-top:18px;border-top:1px solid var(--hair-2,#ddd6c6)}
+@media (max-width:900px){.dl-meta{grid-template-columns:repeat(2,minmax(0,1fr))}.dl-meta>div{border-right:none;border-bottom:1px solid var(--hair,#e6e0d4);margin-right:0}.dl-reading{grid-template-columns:1fr}}
+@media (max-width:520px){.dl-meta{grid-template-columns:1fr}}
