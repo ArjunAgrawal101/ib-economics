@@ -30,7 +30,7 @@ function dlNice(lo,hi,n){if(lo===hi){lo-=1;hi+=1}const r=hi-lo,st=Math.pow(10,Ma
 /* one axis, thin 2px lines, recessive grid, direct labels at the line ends, a crosshair on hover and focus */
 function dlChart(id,series,o){o=o||{};
  /* drawn at the width it is shown, so its text stays at its true size on a phone and a wide screen */
- const W=Math.round(Math.max(320,Math.min(1080,o.w||(((document.getElementById("view")||{}).clientWidth||innerWidth)-80)))),H=o.h||300,L=52,R=o.labels===false?18:118,T=14,B=30;
+ const W=Math.round(Math.max(320,Math.min(1080,o.w||(((document.getElementById("view")||{}).clientWidth||innerWidth)-80)))),H=o.h||300,L=52,R=o.labels===false?18:118,T=o.marks&&o.marks.length?38:14,B=30;
  const all=series.flatMap(s=>s.pts);if(!all.length)return `<p class="sm">No values in this range.</p>`;
  const xs=all.map(p=>dlX(p[0])),ys=all.map(p=>p[1]);let x0=Math.min(...xs),x1=Math.max(...xs);if(x0===x1){x0-=1;x1+=1}
  let lo=Math.min(...ys),hi=Math.max(...ys);if(o.zero!==false){lo=Math.min(lo,0);hi=Math.max(hi,0)}
@@ -49,6 +49,7 @@ function dlChart(id,series,o){o=o||{};
  return `<div class="dl-chart" id="${id}"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(desc)}">
   ${yt.map(v=>`<line x1="${L}" x2="${W-R}" y1="${sy(v).toFixed(1)}" y2="${sy(v).toFixed(1)}" class="${v===0?"dl-zero":"dl-grid"}"/><text x="${L-8}" y="${(sy(v)+4).toFixed(1)}" class="dl-tick" text-anchor="end">${dlFmt(v)}</text>`).join("")}
   ${xt.map(v=>`<text x="${sx(v).toFixed(1)}" y="${H-10}" class="dl-tick" text-anchor="middle">${v}</text>`).join("")}
+  ${(o.marks||[]).filter(m=>dlX(m.at)>=x0&&dlX(m.at)<=x1).map((m,i)=>{const mx=sx(m.at).toFixed(1);return `<line x1="${mx}" x2="${mx}" y1="${T-4}" y2="${H-B}" class="dl-mark"/><text x="${mx}" y="${T-8-(i%2)*12}" class="dl-mlab" text-anchor="${sx(m.at)>W-R-80?"end":"start"}" dx="${sx(m.at)>W-R-80?-4:4}">${esc(m.label)}</text>`}).join("")}
   ${paths}${lab}<line class="dl-cross" id="${id}-x" x1="0" x2="0" y1="${T}" y2="${H-B}" style="display:none"/>
   <g id="${id}-dots"></g>
 </svg>
