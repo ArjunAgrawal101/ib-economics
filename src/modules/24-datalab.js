@@ -23,6 +23,8 @@ function dlFreeSlot(d){const used=new Set(d.ents.map(c=>d.slots[c]).filter(x=>x!
 function dlEnt(code){const D=dlData();return ((D&&D.meta.entities)||[]).find(e=>e.code===code)||{code,name:code}}
 function dlFmt(v,unit){if(v===null||v===undefined||isNaN(v))return "–";const a=Math.abs(v);
  const s=a>=1000?Math.round(v).toLocaleString("en-GB"):a>=100?v.toFixed(0):a>=10?v.toFixed(1):v.toFixed(2);return s}
+/* a direct label short enough for the line end, but never ambiguous */
+function dlShort(n){const m={"United States":"US","United Kingdom":"UK","United Arab Emirates":"UAE","South Africa":"S. Africa","Korea, Rep.":"Korea","Russian Federation":"Russia","Saudi Arabia":"Saudi Arabia","New Zealand":"NZ","Euro area":"Euro area"};if(m[n])return m[n];return n.length<=12?n:n.split(/[ ,]/)[0]}
 function dlX(x){return typeof x==="number"?x:(+x.slice(0,4))+((+x.slice(5,7)||1)-1)/12}
 function dlNice(lo,hi,n){if(lo===hi){lo-=1;hi+=1}const r=hi-lo,st=Math.pow(10,Math.floor(Math.log10(r/n))),m=[1,2,2.5,5,10].find(k=>r/(st*k)<=n)||10,s=st*m;
  const a=Math.floor(lo/s)*s,b=Math.ceil(hi/s)*s,t=[];for(let v=a;v<=b+s/2;v+=s)t.push(+v.toFixed(10));return t}
@@ -106,10 +108,37 @@ function dlFacts(ind,series){return series.map(s=>{const p=s.pts;if(!p.length)re
   const ch=ind.kind==="level"&&a[1]>0?`${b[1]>=a[1]?"+":""}${dlFmt((b[1]/a[1]-1)*100)}% since ${a[0]}`:`${b[1]>=a[1]?"+":""}${dlFmt(b[1]-a[1])} ${ind.kind==="rate"?"percentage points":"points"} since ${a[0]}`;
   return `<li><i style="background:${s.color}"></i><strong>${esc(s.name)}</strong>: ${dlFmt(b[1])} in ${b[0]} (${ch}). Highest ${dlFmt(mx[1])} in ${mx[0]}; lowest ${dlFmt(mn[1])} in ${mn[0]}.</li>`}).join("")}
 
+/* reading a chart: what the series measures, why it matters, what could explain a movement, and what to be careful about.
+   Explanations are offered as possibilities to test, never as the cause of what the chart shows. */
+const DLREAD={
+ gdp:{what:"The market value of all final goods and services produced in a year, in current US dollars.",why:"The broadest measure of an economy's size: it frames comparisons of output, growth and the tax base.",
+  explain:["Real growth in output","Inflation, because values are in current prices","Exchange-rate movements against the dollar"],careful:"Current-dollar GDP mixes real growth, inflation and the exchange rate: a fall can reflect a weaker currency rather than lower output. Size is not living standards."},
+ gdppc:{what:"GDP divided by population: average output per person, in current US dollars.",why:"A first indicator of average living standards and development, and one input to the Human Development Index.",
+  explain:["Output growing faster or slower than population","Inflation and exchange-rate movements","Structural change towards higher-productivity sectors"],careful:"An average says nothing about distribution (see the Gini index), is not adjusted for purchasing power here, and leaves out unpaid work and environmental costs."},
+ infl:{what:"The annual percentage change in consumer prices.",why:"Inflation erodes purchasing power, redistributes between borrowers and lenders, and shapes central bank decisions.",
+  explain:["Demand growing faster than productive capacity","Higher energy, food or import costs, for example after a depreciation","Expectations feeding into wages and prices","Monetary conditions"],careful:"An annual average hides swings within the year. Falling inflation means prices rising more slowly (disinflation), not falling prices. Each country's basket differs."},
+ pop:{what:"Mid-year estimate of the resident population.",why:"Population sets the scale of the labour force and of demand, and turns GDP into per-person terms.",
+  explain:["Birth and death rates","Migration","A changing age structure"],careful:"The latest years are estimates or projections and are revised. For living standards, the growth rate matters more than the level."},
+ gini:{what:"A summary of inequality in income or consumption, from 0 (everyone equal) to 100 (one person has everything).",why:"Two economies with the same GDP per person can distribute it very differently, which matters for poverty, equity and policy.",
+  explain:["Taxes and transfers","Returns to education and skills","Shifts between sectors","Ownership of land and capital"],careful:"Surveys are irregular, and some measure income while others measure consumption, so compare countries with care. One number cannot show where in the distribution a change happened."},
+ co2pc:{what:"Carbon dioxide from burning fossil fuels and making cement, per person, in tonnes.",why:"It links output to a negative externality and to the sustainability questions in the course.",
+  explain:["The energy mix: coal, gas, renewables","The structure of the economy: industry or services","Income per person","Energy efficiency and policy, such as carbon pricing"],careful:"These are production-based figures: emissions embodied in imports are counted where goods are made. Per-person levels differ from national totals. The series ends in 2020."}};
+function dlBiggest(ind,series){return series.map(s=>{const p=s.pts;if(p.length<2)return "";let best=null;
+  for(let i=1;i<p.length;i++){if(p[i][0]-p[i-1][0]!==1)continue;const d=ind.kind==="level"&&p[i-1][1]>0?(p[i][1]/p[i-1][1]-1)*100:p[i][1]-p[i-1][1];if(!best||Math.abs(d)>Math.abs(best.d))best={y:p[i][0],d}}
+  if(!best)return "";const u=ind.kind==="level"?"%":ind.kind==="rate"?" percentage points":" points";
+  return `<li><i style="background:${s.color}"></i><strong>${esc(s.name)}</strong>: ${best.d>=0?"+":""}${dlFmt(best.d)}${u} in ${best.y}</li>`}).join("")}
+function dlMeta(ind,series,y0,y1,D){const r=DLREAD[ind.id]||{};
+ return `<dl class="dl-meta mt3"><div><dt>What</dt><dd>${esc(r.what||ind.name)}</dd></div><div><dt>Where</dt><dd>${series.length?series.map(s=>esc(s.name)).join(", "):"No economy chosen"}</dd></div>
+  <div><dt>When</dt><dd>${y0}–${y1}, annual</dd></div><div><dt>Unit</dt><dd>${esc(ind.unit)}</dd></div><div><dt>Source</dt><dd>${esc(ind.source)}${ind.code?` (${esc(ind.code)})`:""}, retrieved ${esc(D.meta.retrieved)}</dd></div></dl>`}
+function dlReading(ind,series){const r=DLREAD[ind.id];if(!r)return "";
+ return `<div class="dl-reading mt4" aria-label="Reading this chart">
+  <div><div class="eb">Why it matters</div><p class="sm mt2">${esc(r.why)}</p><div class="eb mt3">What changed most</div><ul class="dl-facts mt2">${dlBiggest(ind,series)||'<li class="xs">Choose an economy to see its largest one-year change.</li>'}</ul><p class="xs mt1">The largest change between consecutive years in the chosen period.</p></div>
+  <div><div class="eb">What might explain it</div><ul class="ls-list mt2">${r.explain.map(x=>`<li>${esc(x)}</li>`).join("")}</ul><p class="xs mt2">Possibilities to test against the evidence, not conclusions.</p></div>
+  <div><div class="eb">What to be careful about</div><p class="sm mt2">${esc(r.careful)}</p><p class="sm mt2">Lines that move together on this chart do not show that one caused the other.</p></div></div>`}
 function dataExplorer(){const D=dlData();if(!D)return dlLoading();const d=dlS(),ind=dlInd(d.ind);
  const years=[...new Set(Object.values(ind.data).flatMap(r=>r.map(p=>p[0])))].sort((a,b)=>a-b);const y0=Math.max(d.y0,years[0]),y1=d.y1&&d.y1<=years[years.length-1]?d.y1:years[years.length-1];
  const ents=d.ents.filter(c=>ind.data[c]);const missing=d.ents.filter(c=>!ind.data[c]);
- const series=ents.map(c=>({name:dlEnt(c).name,short:dlEnt(c).name.split(/[ ,]/)[0],color:DLPAL[d.slots[c]||0],pts:ind.data[c].filter(p=>p[0]>=y0&&p[0]<=y1)})).filter(s=>s.pts.length);
+ const series=ents.map(c=>({name:dlEnt(c).name,short:dlShort(dlEnt(c).name),color:DLPAL[d.slots[c]||0],pts:ind.data[c].filter(p=>p[0]>=y0&&p[0]<=y1)})).filter(s=>s.pts.length);
  const opts=D.meta.entities.filter(e=>!d.ents.includes(e.code)&&ind.data[e.code]);
  return H.pageHead("Data","Data explorer",`Compare official series across economies and years. Every line names its source; nothing is estimated or filled in.`)
  +`<section class="sec"><div class="wrap"><div class="dl-filters" role="group" aria-label="Chart controls">
@@ -121,10 +150,12 @@ function dataExplorer(){const D=dlData();if(!D)return dlLoading();const d=dlS(),
   <div class="dl-card mt3"><div class="dl-head"><h2 class="dl-t">${esc(ind.name)}</h2><span class="xs">${esc(ind.unit)}, ${y0}–${y1}</span></div>
    ${series.length?dlChart("dl-main",series,{unit:ind.unit,title:ind.name,zero:ind.kind!=="index"})+dlLegend(series)+dlTable(series,ind.unit):`<p class="sm mt3">Choose at least one economy that has values for this indicator.</p>`}
    ${missing.length?`<p class="xs mt2">No values in this source for ${missing.map(c=>esc(dlEnt(c).name)).join(", ")}.</p>`:""}
+   ${dlMeta(ind,series,y0,y1,D)}
    ${dlSrc(ind,D.meta.retrieved)}</div>
   <div class="dl-read mt4"><div><div class="eb">What the numbers show</div><ul class="dl-facts mt2">${dlFacts(ind,series)}</ul><p class="xs mt2">Computed from the values on the chart, nothing more.</p></div>
    <div><div class="eb">Questions an economist would ask</div><ul class="ls-list mt2">${(DLQ[ind.id]||[]).map(q=>`<li>${esc(q)}</li>`).join("")}</ul>
     <div class="row mt3" style="gap:6px;flex-wrap:wrap">${(ind.subs||[]).map(c=>typeof lsGoSub==="function"&&typeof SUBMAP!=="undefined"&&SUBMAP[c]?`<button class="kcchip" onclick="${lsGoSub(c)}">${esc(c)} ${esc(SUBMAP[c].title)}</button>`:"").join("")}${(ind.kc||[]).map(k=>`<span class="kcchip">${esc(k)}</span>`).join("")}</div></div></div>
+  ${dlReading(ind,series)}
  </div></section>`}
 
 function dlCaseMatch(name){const al={"United States":["United States","USA","US"],"United Kingdom":["United Kingdom","UK"],"Korea, Rep.":["South Korea","Korea"],"Russian Federation":["Russia"],"Viet Nam":["Vietnam","Viet Nam"],"Türkiye":["Turkey","Türkiye"],"Egypt":["Egypt"]}[name]||[name];
@@ -170,3 +201,9 @@ function dataSources(){const D=dlData();if(!D)return dlLoading();const rows=D.in
 
 SECTIONS.push({v:"data",n:"Economic data",hide:1,tabs:["Data explorer","Country profiles","Markets and prices","Sources and method"]});
 VIEWS.data=()=>[dataExplorer,dataAtlas,dataMarkets,dataSources][TAB]?.()||dataExplorer();
+function DLREADSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){det=e.message}out.push({n,ok:!!ok,detail:det})};
+ T("Data · every indicator says what it measures, why it matters, what might explain a change and what to be careful about",()=>["gdp","gdppc","infl","pop","gini","co2pc"].every(k=>{const r=DLREAD[k];return r&&r.what&&r.why&&r.explain.length>=3&&r.careful}));
+ T("Data · explanations are offered as possibilities, and correlation is not presented as causation",()=>{const h=dlReading({id:"infl",kind:"rate"},[]);return /Possibilities to test/.test(h)&&/do not show that one caused the other/.test(h)});
+ return out}
+DLREADSUITE.suiteName="Data reading";
+EXTRA_SUITES.push(DLREADSUITE);

@@ -13,7 +13,7 @@ const ROUTES = ['', '#/course', '#/learn', '#/world', '#/mind', '#/lab/diagram-a
   '#/ees', '#/ees/research-question-lab', '#/ees/find-your-topic/microeconomics', '#/ees/theory-and-models/fx', '#/ees/data-lab', '#/ees/evidence-matrix',
   '#/ees/academic-integrity-and-ai', '#/ees/quality-check', '#/ees/supervisor-mode', '#/arjun', '#/educator', '#/educator/handbook',
   '#/think/economist-s-toolkit', '#/lab/diagram-atlas/tax', '#/learn/concept-spine/c-cadv', '#/world/real-world-economics/MIC-001',
-  '#/about', '#/lab/elasticity-lab', '#/papers', '#/dna', '#/mind/market', '#/ideas', '#/think/why-did-this-happen', '#/data', '#/events', '#/events/archive/india-1991', '#/events/economics-through-time', '#/paths', '#/paths/the-indian-economy'];
+  '#/about', '#/lab/elasticity-lab', '#/papers', '#/dna', '#/mind/market', '#/ideas', '#/think/why-did-this-happen', '#/data', '#/events', '#/events/archive/india-1991', '#/events/economics-through-time', '#/paths', '#/paths/the-indian-economy', '#/tutorials', '#/ideas/economists/keynes', '#/ideas/how-ideas-connect', '#/ideas/compare-economists'];
 const results = {};
 const queue = [...WIDTHS];
 await Promise.all([0, 1, 2, 3].map(async () => { for (let w; (w = queue.shift()) !== undefined;) {
@@ -28,13 +28,18 @@ await Promise.all([0, 1, 2, 3].map(async () => { for (let w; (w = queue.shift())
       /* a table that scrolls sideways must be reachable from the keyboard */
       const unreach = [...document.querySelectorAll('#view .scrollx')]
         .filter(e => e.scrollWidth > e.clientWidth + 1 && e.tabIndex < 0 && !e.querySelector('a[href],button,input,select,textarea,[tabindex]')).length;
-      return { ov, small, unreach };
+      /* content cut off at the right edge: html and body clip sideways overflow, so the page cannot scroll to it */
+      const W = innerWidth, clip = [...document.querySelectorAll('#view *')].filter(e => {
+        const r = e.getBoundingClientRect(); if (!(r.right > W + 2 && r.width > 0 && r.height > 0) || getComputedStyle(e).position === 'fixed') return false;
+        for (let a = e.parentElement; a && a !== document.body; a = a.parentElement) { const c = getComputedStyle(a); if (c.overflowX !== 'visible' || c.position === 'fixed') return false; }
+        return true; }).length;
+      return { ov, small, unreach, clip };
     });
-    if (m.ov > 1 || m.small || m.unreach || errors.length) bad.push(`${r || 'home'} ${JSON.stringify(m)} ${errors.join(' ')}`);
+    if (m.ov > 1 || m.small || m.unreach || m.clip || errors.length) bad.push(`${r || 'home'} ${JSON.stringify(m)} ${errors.join(' ')}`);
     await p.close();
   }
   results[w] = bad;
   await ctx.close();
 } }));
-for (const w of WIDTHS) check(results[w].length === 0, `${ROUTES.length} routes at ${w}px: no overflow, no errors, usable targets, scrolling tables reachable`, results[w].join('\n     '));
+for (const w of WIDTHS) check(results[w].length === 0, `${ROUTES.length} routes at ${w}px: no overflow, nothing clipped, no errors, usable targets, scrolling tables reachable`, results[w].join('\n     '));
 await b.close(); srv.close(); done();

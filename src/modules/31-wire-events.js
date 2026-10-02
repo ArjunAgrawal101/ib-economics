@@ -3,10 +3,22 @@
    records for every event, and the start-up guard for the lazy files.
    ═══════════════════════════════════════════════════════════════════════════ */
 let EVOBS=null;
+/* Keep the current chapter's link in view by scrolling the rail's own list
+   sideways. Never call scrollIntoView here: the rail is sticky, and asking the
+   browser to reveal a stuck element scrolls the WINDOW back to the rail's
+   original place, which pulled readers up the page every time a chapter came
+   into view (the "page will not scroll" fault). */
+/* reading progress on the rail: a passive listener that only paints a bar */
+let EVPROG=0;
+window.addEventListener("scroll",()=>{if(EVPROG)return;EVPROG=requestAnimationFrame(()=>{EVPROG=0;const bar=document.querySelector(".ev-railbar i"),b=document.querySelector(".ev-body");if(!bar||!b)return;
+ const r=b.getBoundingClientRect(),tot=r.height-innerHeight*0.6,done=Math.min(1,Math.max(0,(-r.top+innerHeight*0.3)/Math.max(1,tot)));bar.style.transform=`scaleX(${done.toFixed(3)})`})},{passive:true});
+function evRailReveal(a){const ol=a&&a.closest("ol");if(!ol)return;
+ const l=a.offsetLeft,r=l+a.offsetWidth;
+ if(l<ol.scrollLeft||r>ol.scrollLeft+ol.clientWidth)ol.scrollLeft=Math.max(0,l-(ol.clientWidth-a.offsetWidth)/2)}
 (function(){const prev=render;render=function(){const r=prev.apply(this,arguments);
  if(EVOBS){EVOBS.disconnect();EVOBS=null}
  if(VIEW==="events"&&ARG&&TAB===0&&"IntersectionObserver" in window){const links=[...document.querySelectorAll(".ev-rail a[data-ch]")];if(links.length){
-  EVOBS=new IntersectionObserver(es=>{es.forEach(x=>{if(x.isIntersecting){const k=x.target.id.replace("ev-","");links.forEach(a=>{const on=a.dataset.ch===k;a.classList.toggle("on",on);if(on){a.setAttribute("aria-current","step");try{a.scrollIntoView({block:"nearest",inline:"nearest"})}catch(e){}}else a.removeAttribute("aria-current")})}})},{rootMargin:"-30% 0px -60% 0px"});
+  EVOBS=new IntersectionObserver(es=>{es.forEach(x=>{if(x.isIntersecting){const k=x.target.id.replace("ev-","");links.forEach(a=>{const on=a.dataset.ch===k;a.classList.toggle("on",on);if(on){a.setAttribute("aria-current","step");evRailReveal(a)}else a.removeAttribute("aria-current")})}})},{rootMargin:"-30% 0px -60% 0px"});
   document.querySelectorAll(".ev-ch").forEach(s=>EVOBS.observe(s))}}
  return r}})();
 (function(){if(typeof buildIndex!=="function")return;const prev=buildIndex;
