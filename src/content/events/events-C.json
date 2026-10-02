@@ -1,0 +1,1745 @@
+[
+ {
+  "id": "asia-1997",
+  "title": "The Asian financial crisis",
+  "years": "1997–98",
+  "start": "1997-07",
+  "end": "1998-12",
+  "region": "East and South-East Asia",
+  "kind": "crisis",
+  "standfirst": "Some of the fastest-growing economies in the world lost a large share of their dollar income within a year, after a run on the Thai baht spread across the region. The episode asks how a fixed exchange rate, short-term foreign borrowing and fragile banks can turn a currency fall into a deep recession.",
+  "question": "Why did a currency devaluation in one middle-sized economy turn into a regional recession, and did the policy response help or hurt?",
+  "before": {
+   "p": "By the mid-1990s Thailand, South Korea, Indonesia and Malaysia had grown quickly for decades, helped by high saving, investment in factories and schooling, and exports to rich markets. Their currencies were held stable against the US dollar, either by a peg or by a tightly managed band. Interest rates at home were well above those in the United States and Japan, so banks and firms borrowed in dollars and yen, often for short periods, and lent the money on at home in local currency. Much of it went into property and share prices. Thailand ran a large current account deficit, financed by these capital inflows. The arrangement worked only while lenders were willing to keep rolling the loans over.",
+   "facts": [
+    {
+     "t": "Thailand's central bank kept the baht within a narrow range against a basket of currencies dominated by the US dollar for more than a decade before 1997.",
+     "status": "fact"
+    },
+    {
+     "t": "Thailand created the Bangkok International Banking Facility in 1993, which made it easier for domestic borrowers to raise foreign-currency loans.",
+     "status": "fact"
+    },
+    {
+     "t": "Thailand's current account deficit was about 8% of GDP in 1996.",
+     "status": "fact"
+    },
+    {
+     "t": "In January 1997 Hanbo Steel, part of a large South Korean business group, went bankrupt, an early sign of strain in Korea's highly indebted corporate sector.",
+     "status": "fact"
+    },
+    {
+     "t": "The baht averaged 25.76 per US dollar in 1987 and 25.36 in 1996, a decade of near-stability against the dollar.",
+     "status": "fact"
+    }
+   ]
+  },
+  "trigger": {
+   "p": "In early 1997 Thai property developers and finance companies began to fail, and speculators sold the baht in expectation of a devaluation. The Bank of Thailand spent much of its usable reserves, partly through forward contracts, defending the peg in May. On 2 July 1997, with reserves close to exhausted, it let the baht float. The currency fell sharply, and lenders began to ask which other Asian economies had the same weaknesses.",
+   "status": "fact"
+  },
+  "timeline": [
+   {
+    "d": "1997-05",
+    "t": "Speculative attack on the baht",
+    "detail": "Heavy selling of the baht forces the Bank of Thailand to commit much of its foreign-currency reserves, largely through forward contracts, to defend the peg.",
+    "status": "fact"
+   },
+   {
+    "d": "1997-07-02",
+    "t": "Thailand floats the baht",
+    "detail": "Thailand abandons the peg. The baht depreciates at once, and the annual average for 1997 is 31.07 per US dollar against 25.36 in 1996.",
+    "status": "fact"
+   },
+   {
+    "d": "1997-07-11",
+    "t": "Philippine peso allowed to float",
+    "detail": "The Philippines lets the peso move more freely within days of the Thai float, the first sign that investors were reassessing similar economies.",
+    "status": "fact"
+   },
+   {
+    "d": "1997-08",
+    "t": "IMF programme for Thailand",
+    "detail": "Thailand agrees an IMF-led rescue package with conditions on fiscal policy, interest rates and the closure of insolvent finance companies. Indonesia floats the rupiah in mid-August.",
+    "status": "fact"
+   },
+   {
+    "d": "1997-10",
+    "t": "Pressure reaches Hong Kong",
+    "detail": "An attack on the Hong Kong dollar peg is resisted with sharply higher interest rates, and share prices in Hong Kong fall steeply, rippling into markets elsewhere.",
+    "status": "fact"
+   },
+   {
+    "d": "1997-11",
+    "t": "Indonesian bank closures spark runs",
+    "detail": "Under its first IMF programme Indonesia closes sixteen private banks with only limited protection for depositors. Depositors run on other banks, and the rupiah continues to fall.",
+    "status": "fact"
+   },
+   {
+    "d": "1997-12",
+    "t": "South Korea's IMF rescue",
+    "detail": "South Korea, short of reserves to repay maturing short-term debt, agrees the largest IMF-led package to that date. Foreign banks are later persuaded to roll over their loans.",
+    "status": "fact"
+   },
+   {
+    "d": "1998-05-21",
+    "t": "Suharto resigns in Indonesia",
+    "detail": "After a currency collapse, rising prices and riots, President Suharto steps down. Indonesian consumer-price inflation reaches 58.5% for 1998 as a whole.",
+    "status": "fact"
+   },
+   {
+    "d": "1998-08",
+    "t": "Russia defaults; contagion widens",
+    "detail": "Russia devalues and defaults on domestic debt in August. Losses spread to emerging markets in general and to leveraged investors in rich countries.",
+    "status": "fact"
+   },
+   {
+    "d": "1998-09",
+    "t": "Malaysia imposes capital controls",
+    "detail": "Malaysia restricts the movement of short-term capital and fixes the ringgit at 3.80 per US dollar, a rate it keeps until 2005.",
+    "status": "fact"
+   },
+   {
+    "d": "1998-09",
+    "t": "LTCM rescue and Fed rate cuts",
+    "detail": "The New York Fed organises a private rescue of the hedge fund Long-Term Capital Management, and the Fed cuts interest rates three times in autumn 1998.",
+    "status": "fact"
+   }
+  ],
+  "actors": [
+   {
+    "who": "Bank of Thailand",
+    "role": "Defended the baht peg with reserves and forward sales of dollars, then floated the currency on 2 July 1997 when its usable reserves ran low."
+   },
+   {
+    "who": "International Monetary Fund (IMF)",
+    "role": "Lent to Thailand, Indonesia and South Korea on conditions that included high interest rates, initial fiscal tightening, bank closures and structural reforms."
+   },
+   {
+    "who": "Foreign banks and portfolio investors",
+    "role": "Had lent short-term in dollars and yen; their refusal to roll over loans and their sales of local assets turned a currency problem into a liquidity crisis."
+   },
+   {
+    "who": "Domestic banks, finance companies and conglomerates",
+    "role": "Borrowed in foreign currency and lent or invested in local currency, so depreciation raised the burden of their debts and many became insolvent."
+   },
+   {
+    "who": "Government of Malaysia under Mahathir Mohamad",
+    "role": "Rejected an IMF programme, cut interest rates and in September 1998 imposed capital controls with a fixed ringgit, a contested alternative strategy."
+   },
+   {
+    "who": "US Treasury and Federal Reserve",
+    "role": "Shaped the IMF packages and, after Russia's default and the LTCM rescue, cut US interest rates, easing global financial conditions."
+   }
+  ],
+  "changed": "Within a year, the crisis economies moved from rapid growth to deep recession. Currencies lost a large part of their value, so imports became expensive and firms with dollar debts faced much larger repayments in local currency. Banks failed or were nationalised, credit contracted, investment collapsed and unemployment and poverty rose, most severely in Indonesia. Current account deficits turned into surpluses, mainly because imports fell. Afterwards the region's governments accumulated large foreign-exchange reserves as self-insurance and became wary of short-term foreign borrowing.",
+  "predict": {
+   "q": "Illustrative figures: a Thai firm owes US$10 million and earns its revenue in baht. The baht falls from 25 to 40 per dollar. What happens to the firm's debt measured in baht?",
+   "options": [
+    "It rises by about 60%, even though nothing about the firm's business has changed",
+    "It stays the same, because the loan was agreed in dollars",
+    "It falls, because a weaker baht makes Thai exports cheaper"
+   ],
+   "answer": 0,
+   "explain": "The debt is fixed in dollars, so its baht value is the dollar amount times the exchange rate: 250 million baht becomes 400 million baht. This currency mismatch is the heart of the crisis. Cheaper exports help over time, but the jump in debt arrives at once and can make a firm insolvent before export gains appear."
+  },
+  "mechanism": [
+   "Pegged exchange rate + higher domestic interest rates → firms and banks borrow short-term in dollars and yen, believing the exchange-rate risk is small",
+   "Capital inflows → credit boom → rising property and share prices; current account deficits widen",
+   "Doubts about the peg → capital flight: supply of baht on the foreign exchange market increases and demand falls → reserves drain until the peg is abandoned",
+   "Depreciation → baht value of dollar debts rises (currency mismatch) → firms and banks become insolvent → bank lending contracts",
+   "Lenders refuse to roll over short-term loans (a sudden stop) → the financial account inflow reverses → imports must fall sharply",
+   "Higher interest rates to defend the currency, falling asset prices and lost confidence → consumption and investment fall → AD shifts left → real output falls and unemployment rises",
+   "Investors reassess similar economies (contagion) → the same sequence repeats in Indonesia, South Korea and Malaysia"
+  ],
+  "charts": [
+   {
+    "series": "fx-thailand",
+    "from": "1990",
+    "to": "2002",
+    "title": "Baht per US dollar, annual average",
+    "look": "A decade of near-stability around 25 baht, then a jump to 31.07 in 1997 and 41.32 in 1998. A higher number means a weaker baht. The rate does not return to its pre-crisis level.",
+    "marks": [
+     {
+      "at": "1997",
+      "label": "Baht floated, July"
+     }
+    ]
+   },
+   {
+    "series": "fx-south-korea",
+    "from": "1990",
+    "to": "2002",
+    "title": "Won per US dollar, annual average",
+    "look": "The won averaged 805.16 per dollar in 1996 and 1,404.2 in 1998. Compare the timing with Thailand: Korea was hit later in 1997, after contagion spread north.",
+    "marks": [
+     {
+      "at": "1997",
+      "label": "IMF package, December"
+     }
+    ]
+   },
+   {
+    "panel": "gdp",
+    "entities": [
+     "THA",
+     "KOR",
+     "IDN",
+     "MYS"
+    ],
+    "from": "1993",
+    "to": "2003",
+    "title": "GDP in current US dollars, US$ billions",
+    "look": "Indonesia's GDP falls from 227.4 billion dollars in 1996 to 95.4 billion in 1998. Much of this fall reflects depreciation, because local-currency output is converted at a far weaker rate.",
+    "marks": [
+     {
+      "at": "1998",
+      "label": "Trough in dollar terms"
+     }
+    ]
+   },
+   {
+    "panel": "infl",
+    "entities": [
+     "IDN",
+     "THA",
+     "KOR",
+     "MYS"
+    ],
+    "from": "1993",
+    "to": "2003",
+    "title": "Consumer-price inflation, annual %",
+    "look": "Depreciation raises import prices. Indonesia's inflation reaches 58.5% in 1998; Thailand's (8.0%) and Korea's (7.5%) rise far less, then all fall back as recession bites.",
+    "marks": [
+     {
+      "at": "1998",
+      "label": "Imported inflation peaks"
+     }
+    ]
+   }
+  ],
+  "diagrams": [
+   {
+    "dg": "fx",
+    "how": "Draw the market for baht with the exchange rate in US dollars per baht. Capital flight and lost confidence shift demand for baht left and supply of baht right. The equilibrium rate falls well below the old pegged rate, which the central bank can no longer hold with reserves."
+   },
+   {
+    "dg": "adas",
+    "how": "Show AD shifting left as investment, consumption and credit collapse, with higher interest rates adding to the fall. Real output falls below the full employment level. Depreciation also raises import costs, so SRAS may shift left, pushing prices up while output falls."
+   }
+  ],
+  "policy": [
+   {
+    "who": "Bank of Thailand",
+    "when": "1997-07",
+    "what": "Ended the peg and let the baht float after spending much of its usable reserves. This stopped the drain on reserves but transferred the shock to borrowers with foreign-currency debts.",
+    "status": "fact"
+   },
+   {
+    "who": "IMF with Thailand, Indonesia and South Korea",
+    "when": "1997",
+    "what": "Provided large loans conditional on high interest rates to stabilise currencies, initial fiscal tightening, closure or recapitalisation of weak financial institutions and wider structural reforms.",
+    "status": "fact"
+   },
+   {
+    "who": "Creditor banks, coordinated by official lenders",
+    "when": "1997-12",
+    "what": "Foreign banks were persuaded to roll over and later reschedule short-term loans to Korean banks, slowing the outflow of capital that the official loans alone could not offset.",
+    "status": "fact"
+   },
+   {
+    "who": "Government of Malaysia",
+    "when": "1998-09",
+    "what": "Imposed controls on short-term capital outflows and fixed the ringgit at 3.80 per US dollar, then lowered interest rates instead of following an IMF-style programme.",
+    "status": "fact"
+   },
+   {
+    "who": "IMF and crisis governments, second stage",
+    "when": "1998",
+    "what": "As recessions deepened, fiscal targets were relaxed to allow larger budget deficits and more spending on social safety nets, a significant revision of the original programmes' demand for tightening.",
+    "status": "fact"
+   },
+   {
+    "who": "ASEAN members, China, Japan and South Korea",
+    "when": "2000",
+    "what": "Agreed the Chiang Mai Initiative, a network of bilateral currency swap lines intended to give the region its own source of emergency foreign currency and reduce reliance on the IMF.",
+    "status": "fact"
+   }
+  ],
+  "stakeholders": [
+   {
+    "who": "Workers in the crisis economies",
+    "effect": "Lost jobs as firms failed and investment collapsed; real wages fell as import prices rose. Many moved back into informal or rural work."
+   },
+   {
+    "who": "Poor households, especially in Indonesia",
+    "effect": "Faced sharply higher prices for food and imported goods. Poverty rose markedly in 1998, reversing part of the gains of earlier decades."
+   },
+   {
+    "who": "Firms with dollar debts",
+    "effect": "Saw their debts rise in local-currency terms overnight. Many large firms and conglomerates defaulted or were restructured, and some were sold to foreign buyers."
+   },
+   {
+    "who": "Exporters with local-currency costs",
+    "effect": "Gained price competitiveness from depreciation, though many could not expand at first because credit for imported inputs and working capital dried up."
+   },
+   {
+    "who": "Foreign creditors and investors",
+    "effect": "Suffered losses on loans and shares, but many short-term lenders were repaid with the help of official rescue loans, which raised questions of moral hazard."
+   },
+   {
+    "who": "Consumers and firms in importing countries",
+    "effect": "Benefited from cheaper Asian goods and lower commodity prices in 1998, while producers competing with Asian firms faced stronger import competition and pressure on prices."
+   }
+  ],
+  "short": "In the short run the crisis economies suffered a severe contraction. Depreciation raised the value of foreign-currency debts, banks failed, credit dried up and interest rates were held high to stop the slide in the currency. Imports fell much faster than exports grew, so current accounts swung into surplus through falling income, not booming sales abroad. Inflation rose where depreciation was largest, above all in Indonesia, and unemployment and poverty increased across the region.",
+  "long": "Over the following decade, South Korea, Thailand and Malaysia returned to growth, helped by competitive exchange rates and recovering exports, while Indonesia's recovery was slower and coincided with a political transition. Governments restructured their banks, tightened supervision and built up large foreign-exchange reserves. Many economists see that reserve build-up, and the current account surpluses behind it, as part of the global saving flow into US assets that preceded 2008, though that link is debated.",
+  "transmission": "The crisis spread less through trade than through finance. Investors who lost money in Thailand reassessed economies with similar features: pegged currencies, short-term foreign debt and weak bank supervision. Funds sold assets across the region to meet losses, and banks cut credit lines. Trade links added pressure, since a cheaper baht made rival exporters less competitive. By 1998 falling Asian demand had depressed commodity prices, which hurt exporters such as Russia, and Russia's default spread losses to other emerging markets and to leveraged investors in New York.",
+  "winners": [
+   {
+    "t": "Importers of Asian manufactures, who paid lower prices after 1997–98.",
+    "status": "inference"
+   },
+   {
+    "t": "Foreign buyers who acquired Asian firms and assets at depressed prices after the crisis.",
+    "status": "fact"
+   },
+   {
+    "t": "Exporters in the crisis economies with local-currency costs and access to finance, once trade credit recovered.",
+    "status": "inference"
+   }
+  ],
+  "losers": [
+   {
+    "t": "Workers and poor households in Indonesia, Thailand and South Korea, through job losses and higher prices for essentials.",
+    "status": "fact"
+   },
+   {
+    "t": "Owners and creditors of failed banks, finance companies and conglomerates.",
+    "status": "fact"
+   },
+   {
+    "t": "Taxpayers in the crisis economies, who bore much of the cost of recapitalising or closing banks.",
+    "status": "fact"
+   }
+  ],
+  "unintended": [
+   {
+    "t": "Closing Indonesian banks in November 1997 with only limited protection for depositors triggered runs on other banks and deepened the panic.",
+    "status": "fact"
+   },
+   {
+    "t": "Large official loans that repaid foreign creditors may have encouraged future risky lending to emerging markets, a moral hazard concern raised at the time.",
+    "status": "controversy"
+   },
+   {
+    "t": "Asian governments' later accumulation of very large reserves, partly to avoid ever needing the IMF again, added to global imbalances in the 2000s.",
+    "status": "interpretation"
+   }
+  ],
+  "interpretations": [
+   {
+    "view": "Fundamentals and moral hazard",
+    "p": "One view, prominent in early analyses by Paul Krugman and others, stresses weaknesses inside the crisis economies: implicit government backing for banks and connected firms encouraged excessive borrowing and poor investment. On this reading the crisis exposed losses that already existed, and reform of banking and governance was the necessary cure.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Financial panic (Radelet and Sachs)",
+    "p": "Steven Radelet and Jeffrey Sachs argued that the economies were basically solvent but illiquid: short-term foreign debt exceeded reserves, so a loss of confidence became self-fulfilling. They criticised early IMF bank closures and austerity for deepening the panic rather than calming it.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Critics of the IMF (Stiglitz)",
+    "p": "Joseph Stiglitz, then chief economist at the World Bank, argued that premature capital-account liberalisation caused the vulnerability and that IMF demands for high interest rates and fiscal tightening worsened the recessions. Defenders of the IMF reply that very high rates were needed to stop a self-feeding collapse of the currencies.",
+    "status": "controversy"
+   },
+   {
+    "view": "Capital controls in Malaysia",
+    "p": "Whether Malaysia's 1998 controls worked is still debated. Supporters point to its recovery without an IMF programme; sceptics note the controls came after the worst pressure had passed, when regional interest rates were already falling, so their separate effect is hard to identify.",
+    "status": "controversy"
+   }
+  ],
+  "explain": [
+   "The foreign exchange market model explains why capital flight lowers the currency's value and why a central bank with limited reserves cannot hold a peg indefinitely.",
+   "The AD/AS model explains how falling investment, consumption and credit shift AD left, reducing real output and employment.",
+   "Balance of payments accounting explains why a sudden reversal of financial account inflows forces a matching swing in the current account, mainly through lower imports."
+  ],
+  "miss": [
+   "Simple exchange rate models predict that depreciation boosts net exports and output; they miss balance-sheet effects, where dollar debts make depreciation contractionary in the short run.",
+   "Standard models treat the exchange rate as set by fundamentals; they miss self-fulfilling panics, in which fear of devaluation alone can cause it.",
+   "Basic AD/AS analysis has little to say about bank runs and credit crunches, which magnified the fall in spending."
+  ],
+  "differently": [
+   {
+    "t": "Stronger bank supervision and limits on short-term foreign-currency borrowing during the boom years might have reduced the currency mismatch that made depreciation so damaging, though such rules can be evaded and may slow growth.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Central banks, acting as lenders of last resort, could have protected depositors more clearly when weak banks were closed, especially in Indonesia, to avoid runs on sound institutions. Broad protection, however, shifts losses to taxpayers.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Earlier coordinated rollover of private short-term loans, as eventually arranged for Korea, might have reduced the need for very high interest rates, although the success of a rollover depends on creditor cooperation.",
+    "status": "controversy"
+   }
+  ],
+  "whatif": {
+   "q": "Suppose Thailand had allowed the baht to float gradually in 1995–96, before reserves ran low. What is the most plausible outcome?",
+   "options": [
+    "A smaller, more orderly depreciation, though firms with dollar debts would still have faced losses",
+    "No change, because the crisis was purely the result of contagion from abroad",
+    "An immediate boom, because a weaker baht has only positive effects on output"
+   ],
+   "best": 0,
+   "explain": "An earlier, voluntary exit would have kept reserves intact and might have discouraged unhedged dollar borrowing, so the adjustment could have been smaller. It would not have removed the underlying problems of weak banks and an asset bubble, and a pre-emptive move can itself trigger capital flight. The counterfactual is uncertain: we cannot observe how investors would have responded."
+  },
+  "compare": [
+   {
+    "id": "india-1991",
+    "similar": "Both were balance of payments crises in which foreign-currency reserves ran low, the currency was devalued or floated, and IMF support came with conditions on fiscal and structural policy.",
+    "different": "India's crisis followed fiscal deficits in a relatively closed economy with limited private foreign debt. Asia's crisis struck open, fast-growing economies whose private banks and firms had borrowed heavily abroad.",
+    "dominant": "India 1991: a fiscal and current account problem met by reform. Asia 1997: a private capital-account reversal with banking collapse and contagion."
+   },
+   {
+    "id": "gfc-2008",
+    "similar": "Both featured a credit boom, rising asset prices, banks funding long-term lending with short-term borrowing, and a sudden loss of confidence that spread across countries.",
+    "different": "In 2008 the crisis began in the economy that issues the world's reserve currency, so its central bank could create the dollars it needed. Asian economies had to borrow foreign currency they could not print.",
+    "dominant": "Asia: currency mismatch and sudden stop of foreign capital. GFC: losses on mortgage securities and a run on short-term funding of banks."
+   },
+   {
+    "id": "eurozone-2010",
+    "similar": "Both involved large capital inflows that financed current account deficits, followed by a sudden stop of finance and painful adjustment under externally designed programmes with IMF participation.",
+    "different": "Eurozone members could not devalue, so adjustment came slowly through falling wages and prices. Asian currencies depreciated sharply, which hurt foreign-currency borrowers at first but later helped exports recover.",
+    "dominant": "Asia: sharp depreciation and its balance-sheet effects on private borrowers. Eurozone: no exchange-rate adjustment, so internal devaluation and fears about sovereign debt dominate."
+   }
+  ],
+  "ib": {
+   "subs": [
+    "4.5",
+    "4.6",
+    "3.5",
+    "3.2"
+   ],
+   "kc": [
+    "Interdependence",
+    "Intervention",
+    "Change",
+    "Economic well-being"
+   ],
+   "note": "The episode lets students apply foreign exchange and balance of payments diagrams to a real case and evaluate the trade-off between defending a currency with high interest rates and protecting domestic output, which suits Paper 1 essays and Paper 2 data responses."
+  },
+  "cambridge": {
+   "topics": [
+    "exchange rate systems",
+    "balance of payments",
+    "capital flows",
+    "monetary policy",
+    "international financial institutions"
+   ],
+   "note": "Useful for comparing fixed and floating exchange rates and for evaluating policies to correct balance of payments instability."
+  },
+  "university": {
+   "fields": [
+    "international finance",
+    "open-economy macroeconomics",
+    "financial crises",
+    "development economics"
+   ],
+   "note": "A university course would add models of currency crises, from speculative-attack models to self-fulfilling crises, and the balance-sheet approach to currency mismatch and 'original sin' in foreign borrowing."
+  },
+  "civil": {
+   "themes": [
+    "external sector",
+    "exchange rate management",
+    "capital account convertibility",
+    "financial stability",
+    "role of the IMF"
+   ],
+   "note": "India was largely insulated in 1997–98, which helped shape a cautious, gradual approach to opening its capital account and to building foreign-exchange reserves."
+  },
+  "economists": [
+   "stiglitz",
+   "friedman"
+  ],
+  "causal": [
+   "currency",
+   "ratehike",
+   "growth",
+   "unemployment"
+  ],
+  "concepts": [
+   "Fixed exchange rate",
+   "Floating exchange rate",
+   "Managed exchange rate",
+   "Devaluation",
+   "Depreciation",
+   "Capital flight",
+   "Current account",
+   "Financial account",
+   "Portfolio investment",
+   "Moral hazard",
+   "Contractionary policy",
+   "Recession"
+  ],
+  "cases": [
+   "GLO-027",
+   "MAC-035"
+  ],
+  "policies": [
+   "Exchange-rate peg",
+   "Floating exchange rate",
+   "Interest-rate increases to defend a currency",
+   "IMF conditional lending",
+   "Bank closure and recapitalisation",
+   "Capital controls",
+   "Regional currency swap lines"
+  ],
+  "questions": [
+   {
+    "q": "Explain why a sharp depreciation of the baht raised the burden of debt for Thai firms that had borrowed in US dollars.",
+    "kind": "explain"
+   },
+   {
+    "q": "Using a foreign exchange market diagram, analyse why the Bank of Thailand could not maintain the baht peg in 1997.",
+    "kind": "analyse"
+   },
+   {
+    "q": "Evaluate the view that the IMF's demand for high interest rates in 1997–98 did more harm than good to the crisis economies.",
+    "kind": "evaluate"
+   },
+   {
+    "q": "Using the chart of GDP in current US dollars, explain why Indonesia's GDP in dollars fell by more than its real output did in 1998.",
+    "kind": "data"
+   },
+   {
+    "q": "Compare the Asian crisis of 1997–98 with India's 1991 crisis in terms of causes and policy responses.",
+    "kind": "compare"
+   }
+  ],
+  "retrieval": [
+   {
+    "q": "On what date did Thailand float the baht?",
+    "a": "2 July 1997."
+   },
+   {
+    "q": "What is a currency mismatch?",
+    "a": "Owing debts in a foreign currency while earning income in the domestic currency, so depreciation raises the real burden of the debt."
+   },
+   {
+    "q": "Which country rejected an IMF programme and imposed capital controls in September 1998?",
+    "a": "Malaysia, which also fixed the ringgit at 3.80 per US dollar."
+   },
+   {
+    "q": "Why do current accounts tend to move into surplus after a sudden stop of capital inflows?",
+    "a": "Without new foreign finance, the country must cut imports (and raise exports) so that spending matches available foreign exchange."
+   },
+   {
+    "q": "What regional arrangement did East Asian governments agree in 2000?",
+    "a": "The Chiang Mai Initiative, a network of currency swap lines."
+   }
+  ],
+  "reflection": "If you were advising a fast-growing economy today, how far would you limit short-term foreign borrowing, knowing that the limit might also slow investment in good years?",
+  "reading": [
+   {
+    "t": "Joseph E. Stiglitz, Globalization and Its Discontents, 2002",
+    "note": "A critical insider account of IMF policy in East Asia, useful for evaluation but best read alongside the IMF's defenders."
+   },
+   {
+    "t": "Paul Blustein, The Chastening: Inside the Crisis that Rocked the Global Financial System and Humbled the IMF, 2001",
+    "note": "A journalist's detailed narrative of decision-making in Thailand, Indonesia and Korea."
+   },
+   {
+    "t": "Steven Radelet and Jeffrey Sachs, 'The East Asian Financial Crisis: Diagnosis, Remedies, Prospects', Brookings Papers on Economic Activity, 1998",
+    "note": "The classic statement of the financial-panic interpretation."
+   },
+   {
+    "t": "Paul Krugman, The Return of Depression Economics, 1999",
+    "note": "An accessible account of currency crises and contagion written soon after the events."
+   }
+  ],
+  "numbers": [
+   {
+    "value": "about 8% of GDP",
+    "claim": "Thailand's current account deficit in 1996",
+    "basis": "Widely cited IMF and Bank of Thailand estimates (about 7.9% of GDP)."
+   },
+   {
+    "value": "sixteen",
+    "claim": "Number of private banks closed by Indonesia in November 1997",
+    "basis": "Widely documented in IMF and academic accounts of the first Indonesian programme."
+   },
+   {
+    "value": "three",
+    "claim": "Number of Federal Reserve interest-rate cuts in autumn 1998",
+    "basis": "FOMC decisions of September, October and November 1998."
+   },
+   {
+    "value": "2005",
+    "claim": "Year Malaysia ended the fixed ringgit rate of 3.80 per US dollar",
+    "basis": "Bank Negara Malaysia moved to a managed float in July 2005."
+   },
+   {
+    "value": "3.80",
+    "claim": "Fixed ringgit rate per US dollar from September 1998",
+    "basis": "Bank Negara Malaysia announcement; consistent with the catalogue's annual averages of 3.8 for 1999–2004."
+   }
+  ]
+ },
+ {
+  "id": "dotcom-2000",
+  "title": "The dot-com bubble and bust",
+  "years": "1995–2002",
+  "start": "1995-08",
+  "end": "2002-10",
+  "region": "United States, with global technology markets",
+  "kind": "bubble",
+  "standfirst": "A genuine technological change, the commercial internet, drew a wave of investment and a rise in share prices that many investors came to see as permanent. The episode asks how a real innovation can still produce an asset bubble, and why its collapse led to only a mild recession.",
+  "question": "How can investors overvalue a technology that really does change the economy, and why did the bust hurt shareholders far more than workers?",
+  "before": {
+   "p": "In the mid-1990s the United States combined steady growth, falling unemployment and low inflation. Personal computers were spreading, and the World Wide Web gave firms a new way to sell, advertise and communicate. Venture capitalists funded young internet companies, many of which had little revenue and no profits but promised to dominate new markets. Investors were willing to pay high prices for the shares of such firms because they expected rapid growth. Telecommunications firms borrowed to lay fibre-optic cable in anticipation of soaring internet traffic. Households, many buying shares for the first time through mutual funds and online brokers, saw their wealth rise year after year.",
+   "facts": [
+    {
+     "t": "The S&P 500 index averaged 465.25 in January 1995 and 1,428.68 in December 1999 (monthly averages).",
+     "status": "fact"
+    },
+    {
+     "t": "US unemployment fell from 5.6% in 1995 to 4.0% in 2000, while consumer-price inflation stayed between 1.6% and 3.4% a year.",
+     "status": "fact"
+    },
+    {
+     "t": "The US Telecommunications Act of 1996 opened local and long-distance telephone markets to more competition, encouraging investment in networks.",
+     "status": "fact"
+    },
+    {
+     "t": "The US federal government ran budget surpluses from 1998 to 2001.",
+     "status": "fact"
+    }
+   ]
+  },
+  "trigger": {
+   "p": "There was no single trigger, which is typical of bubbles. The Federal Reserve raised its policy rate six times between June 1999 and May 2000. In early 2000 many internet firms were burning through cash with no profits in sight, and investors began to question whether they would ever earn enough to justify their share prices. The technology-heavy NASDAQ index peaked on 10 March 2000 and then fell, slowly at first and then steeply.",
+   "status": "interpretation"
+  },
+  "timeline": [
+   {
+    "d": "1995-08",
+    "t": "Netscape's share offering",
+    "detail": "Netscape, maker of an early web browser, sells shares to the public. The price roughly doubles on the first day, signalling investor appetite for internet companies with few profits.",
+    "status": "fact"
+   },
+   {
+    "d": "1996-12",
+    "t": "Greenspan's 'irrational exuberance' speech",
+    "detail": "Federal Reserve chairman Alan Greenspan asks publicly how central bankers would know when 'irrational exuberance' had raised asset values too far. Share prices dip briefly, then keep rising.",
+    "status": "fact"
+   },
+   {
+    "d": "1998-09",
+    "t": "Fed cuts rates after LTCM",
+    "detail": "After Russia's default and the rescue of Long-Term Capital Management, the Fed cuts interest rates three times in autumn 1998. Share prices resume their rise into 1999.",
+    "status": "fact"
+   },
+   {
+    "d": "1999-06",
+    "t": "Fed begins raising rates",
+    "detail": "With unemployment low and growth strong, the Fed starts a series of six rate increases, taking its target from 4.75% to 6.5% by May 2000.",
+    "status": "fact"
+   },
+   {
+    "d": "2000-01",
+    "t": "AOL and Time Warner announce merger",
+    "detail": "AOL, an internet company, agrees to combine with the media group Time Warner, a deal later seen as a symbol of peak confidence in internet valuations.",
+    "status": "fact"
+   },
+   {
+    "d": "2000-03-10",
+    "t": "NASDAQ peaks",
+    "detail": "The NASDAQ Composite closes at about 5,050. Over the next two and a half years it loses close to four-fifths of its value.",
+    "status": "fact"
+   },
+   {
+    "d": "2000-04",
+    "t": "UK auctions 3G mobile licences",
+    "detail": "Telecom firms bid about £22.5 billion for UK third-generation mobile licences, and other European auctions follow, loading the sector with debt just as share prices turn.",
+    "status": "fact"
+   },
+   {
+    "d": "2001-01",
+    "t": "Fed starts cutting rates",
+    "detail": "The Fed cuts its target rate between meetings in January 2001, the first of eleven cuts that year, taking the rate to 1.75% by December.",
+    "status": "fact"
+   },
+   {
+    "d": "2001-03",
+    "t": "US recession begins",
+    "detail": "The NBER later dates a recession from March to November 2001. Real GDP falls at an annualised 1.3% in the first quarter and 1.6% in the third.",
+    "status": "fact"
+   },
+   {
+    "d": "2001-09-11",
+    "t": "Terrorist attacks on the United States",
+    "detail": "The attacks close US stock exchanges for several days and deepen uncertainty. The S&P 500 averages 1,044.64 in September, down from 1,178.5 in August.",
+    "status": "fact"
+   },
+   {
+    "d": "2001-12",
+    "t": "Enron files for bankruptcy",
+    "detail": "The collapse of Enron, followed by WorldCom in July 2002, reveals accounting fraud and damages trust in reported profits and in auditors.",
+    "status": "fact"
+   },
+   {
+    "d": "2002-07",
+    "t": "Sarbanes–Oxley Act signed",
+    "detail": "Congress tightens rules on corporate accounting, auditor independence and executive responsibility for financial statements. Share prices reach their lows in October 2002.",
+    "status": "fact"
+   }
+  ],
+  "actors": [
+   {
+    "who": "Internet start-ups and their venture-capital backers",
+    "role": "Raised money from share sales on the promise of future market dominance; many spent heavily on growth and advertising and failed when funding dried up."
+   },
+   {
+    "who": "Telecommunications firms",
+    "role": "Borrowed heavily to build fibre-optic networks and buy mobile licences, creating far more capacity than demand required in the short run."
+   },
+   {
+    "who": "Federal Reserve under Alan Greenspan",
+    "role": "Questioned high valuations in 1996 but chose not to target share prices directly; raised rates in 1999–2000 and cut them sharply from 2001."
+   },
+   {
+    "who": "Households and fund investors",
+    "role": "Bought shares directly and through mutual funds and pensions; rising wealth supported consumption, and falling wealth later restrained it."
+   },
+   {
+    "who": "Investment banks, analysts and auditors",
+    "role": "Brought new firms to market and published optimistic research; conflicts of interest and accounting failures were exposed after the bust."
+   }
+  ],
+  "changed": "Business investment in computers, software and communications equipment grew rapidly in the late 1990s, and US productivity growth picked up. Rising share prices increased household wealth and encouraged consumption, so saving fell. When the bubble burst, investment in technology fell sharply, many young firms disappeared and telecom companies went bankrupt under their debts. Yet the network capacity and much of the know-how remained, and some surviving firms grew into dominant companies. Unemployment rose from 4.0% in 2000 to 6.0% in 2003, a smaller rise than in many recessions.",
+  "predict": {
+   "q": "Share prices fall heavily from 2000 to 2002, and household wealth drops. Before reading on, predict what happens to US consumer spending and real GDP.",
+   "options": [
+    "Consumer spending keeps growing slowly and the recession is mild, helped by rate cuts and tax cuts",
+    "Consumer spending collapses and real GDP falls for several years",
+    "Consumer spending rises sharply because shares become cheaper to buy"
+   ],
+   "answer": 0,
+   "explain": "Falling wealth did restrain consumption, but it was spread across many households, little of it was financed by bank loans, and the banking system stayed sound. Large interest-rate cuts and tax cuts supported spending. The main fall in AD came from business investment, so the recession was short and shallow."
+  },
+  "mechanism": [
+   "New technology + optimistic expectations → expected future profits rise → demand for technology shares increases → share prices rise",
+   "Rising share prices → feedback: past gains attract new buyers and easy share issuance funds more start-ups → prices rise further above values based on realistic profits",
+   "Higher wealth and cheap equity finance → consumption and investment rise → AD shifts right; productivity gains also shift LRAS right, so inflation stays low",
+   "Higher interest rates, doubts about profits and cash running out → demand for shares falls → share prices fall",
+   "Falling share prices → negative wealth effect on consumption and higher cost of equity finance → investment in technology falls sharply → AD shifts left",
+   "Lower AD → real GDP growth slows and cyclical unemployment rises → central bank cuts rates and government cuts taxes → AD partly restored"
+  ],
+  "charts": [
+   {
+    "series": "sp500",
+    "from": "1995-01",
+    "to": "2003-12",
+    "title": "S&P 500 index, monthly average",
+    "look": "Steady rise from 465.25 in January 1995 to a peak monthly average of 1,485.46 in August 2000, then a fall to 837.03 by February 2003. The broad index fell less than technology shares did.",
+    "marks": [
+     {
+      "at": "1996-12",
+      "label": "Irrational exuberance speech"
+     },
+     {
+      "at": "2000-03",
+      "label": "NASDAQ peaks"
+     },
+     {
+      "at": "2002-07",
+      "label": "Sarbanes–Oxley"
+     }
+    ]
+   },
+   {
+    "series": "us-gdp-q",
+    "from": "1999-01",
+    "to": "2003-10",
+    "title": "US real GDP growth, quarterly, annualised %",
+    "look": "Growth reaches 7.5% in the second quarter of 2000, then falls; output contracts at 1.3% and 1.6% annualised in the first and third quarters of 2001. Note that the quarters in between were positive.",
+    "marks": [
+     {
+      "at": "2001-01",
+      "label": "Recession begins"
+     },
+     {
+      "at": "2001-07",
+      "label": "September 11"
+     }
+    ]
+   },
+   {
+    "series": "us-unemp",
+    "from": "1995",
+    "to": "2005",
+    "title": "US unemployment rate, annual average %",
+    "look": "Unemployment falls to 4.0% in 2000 and rises to 6.0% in 2003. It kept rising after the recession officially ended, a pattern often called a jobless recovery.",
+    "marks": [
+     {
+      "at": "2001",
+      "label": "Recession year"
+     }
+    ]
+   }
+  ],
+  "diagrams": [
+   {
+    "dg": "adas",
+    "how": "Start from an economy near full employment. Show AD shifting left as business investment in technology falls and the wealth effect reduces consumption. Real output falls below its potential level and the price level rises more slowly. Then show expansionary monetary and fiscal policy shifting AD partly back to the right."
+   },
+   {
+    "dg": "lras",
+    "how": "Show LRAS shifting right because investment in information technology raised productivity. This helps explain why the late-1990s boom brought low inflation, and why the bust did not destroy the economy's productive capacity even though share prices fell."
+   }
+  ],
+  "policy": [
+   {
+    "who": "Federal Reserve",
+    "when": "1999-06",
+    "what": "Raised its federal funds target six times from 4.75% to 6.5% by May 2000 to slow demand in a tight labour market, a tightening that coincided with the peak in technology shares.",
+    "status": "fact"
+   },
+   {
+    "who": "Federal Reserve",
+    "when": "2001",
+    "what": "Cut its target rate eleven times during 2001, to 1.75%, and later to 1% by June 2003, to support demand after the bust and the September 11 attacks.",
+    "status": "fact"
+   },
+   {
+    "who": "US Congress and President George W. Bush",
+    "when": "2001-06",
+    "what": "Enacted income tax cuts, including rebate payments to households in 2001, which added to disposable income during the recession, although their design was mainly long term.",
+    "status": "fact"
+   },
+   {
+    "who": "US Congress",
+    "when": "2002-07",
+    "what": "Passed the Sarbanes–Oxley Act, which created a public oversight board for auditors, strengthened auditor independence and required senior executives to certify their firms' financial statements personally.",
+    "status": "fact"
+   }
+  ],
+  "stakeholders": [
+   {
+    "who": "Shareholders in technology firms",
+    "effect": "Gained heavily in the late 1990s and lost much of it from 2000; those who bought near the peak suffered the largest losses."
+   },
+   {
+    "who": "Workers in technology and telecoms",
+    "effect": "Enjoyed strong demand for skills and share options in the boom, then faced layoffs and worthless options as firms cut back or failed."
+   },
+   {
+    "who": "Workers elsewhere in the economy",
+    "effect": "Were affected less, as the recession was mild, but the slow rise in employment after 2001 meant job seekers faced weak hiring for several years."
+   },
+   {
+    "who": "Consumers",
+    "effect": "Benefited in the long run from cheaper communications and new online services, many of them built on network infrastructure financed during the bubble."
+   },
+   {
+    "who": "Employees of Enron and WorldCom",
+    "effect": "Lost jobs and, in Enron's case, much of their retirement savings held in company shares, exposing the risk of concentrated pension holdings."
+   }
+  ],
+  "short": "In the short run the bust cut business investment, especially in technology and telecoms, and reduced household wealth. Real GDP growth fell from 4.1% in 2000 to 1.0% in 2001 and unemployment rose. Because banks had not lent heavily against technology shares, the banking system stayed sound, and fast interest-rate cuts plus tax cuts supported spending. The recession was among the mildest in post-war US history, but hiring stayed weak for some time afterwards.",
+  "long": "In the long run, the internet changed retailing, media and communications, as investors had expected, although few of the firms that floated in the bubble survived. Fibre networks built at a loss became cheap capacity for later users. US productivity growth stayed relatively strong until the mid-2000s. Policy lessons were mixed: the episode encouraged the view that central banks could clean up after an asset bust, a view many economists revisited after 2008.",
+  "transmission": "The bubble and its bust were international because technology and telecom shares were traded globally. European and Asian technology markets rose and fell with the NASDAQ, and Germany's Neuer Markt for growth firms was closed in 2003. European telecom groups that had paid heavily for mobile licences faced debt problems. East Asian exporters of electronics saw demand slow in 2001. The real effects abroad were smaller than the market swings, because the shock was mainly to wealth and investment rather than to banks.",
+  "winners": [
+   {
+    "t": "Early investors and founders who sold shares before 2000.",
+    "status": "fact"
+   },
+   {
+    "t": "Later users of telecom and internet infrastructure, who gained capacity built at a loss by others.",
+    "status": "inference"
+   },
+   {
+    "t": "Surviving internet firms, which faced less competition once rivals failed.",
+    "status": "inference"
+   }
+  ],
+  "losers": [
+   {
+    "t": "Investors who bought technology shares near the peak in 2000.",
+    "status": "fact"
+   },
+   {
+    "t": "Creditors and shareholders of bankrupt telecom firms such as WorldCom.",
+    "status": "fact"
+   },
+   {
+    "t": "Technology workers laid off from 2001, many of whom had been partly paid in share options.",
+    "status": "fact"
+   }
+  ],
+  "unintended": [
+   {
+    "t": "Very low interest rates after 2001, intended to support recovery, may have fed the later US housing boom, a link argued by John Taylor and others but disputed by the Fed.",
+    "status": "controversy"
+   },
+   {
+    "t": "Overbuilt fibre-optic networks lowered the cost of bandwidth, helping later internet firms grow.",
+    "status": "inference"
+   },
+   {
+    "t": "Accounting scandals revealed in the bust led to the Sarbanes–Oxley Act, which raised compliance costs and may have discouraged some smaller firms from listing.",
+    "status": "controversy"
+   }
+  ],
+  "interpretations": [
+   {
+    "view": "Behavioural finance (Robert Shiller)",
+    "p": "Shiller argued that share prices had risen far above levels justified by earnings and dividends, driven by feedback loops, media stories and the belief that prices would keep rising. His book Irrational Exuberance, published in March 2000, became a reference point for the view that markets can misprice assets for years.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Rational uncertainty about a new technology",
+    "p": "Another view holds that high prices reflected genuine uncertainty: no one knew which firms would win, and a few huge successes could justify investing in many losers. Supporters of efficient markets add that bubbles are easy to identify afterwards but hard to identify in advance.",
+    "status": "controversy"
+   },
+   {
+    "view": "Should central banks lean against bubbles?",
+    "p": "The Greenspan Fed argued that bubbles are hard to diagnose and that raising rates to burst them would damage the wider economy, so it was better to cut rates after a bust. Economists at the Bank for International Settlements argued instead for leaning against credit and asset booms early.",
+    "status": "controversy"
+   }
+  ],
+  "explain": [
+   "The AD/AS model explains how falling investment and a negative wealth effect shifted AD left, slowing growth and raising cyclical unemployment.",
+   "Supply and demand for shares explain how changing expectations of future profits move share prices.",
+   "Monetary policy analysis explains how lower interest rates cushioned the fall in spending by making borrowing cheaper."
+  ],
+  "miss": [
+   "Models based on rational, maximising investors struggle to explain why prices rose so far above any plausible estimate of future profits.",
+   "Standard macroeconomic models in use at the time largely ignored asset prices, so they gave little warning of how a bust might affect demand.",
+   "Simple models treat all asset busts alike; they miss why this one, without heavy bank lending, was much less damaging than credit-fuelled busts."
+  ],
+  "differently": [
+   {
+    "t": "Regulators could have tackled analysts' conflicts of interest and weak accounting standards before the bust rather than after it, which might have reduced the flow of money into firms with little prospect of profit.",
+    "status": "interpretation"
+   },
+   {
+    "t": "The Fed could have raised margin requirements on share purchases bought with borrowed money, a tool Greenspan considered. Critics argued this would have had little effect, since most share buying was not financed by margin loans.",
+    "status": "controversy"
+   }
+  ],
+  "whatif": {
+   "q": "Suppose the Fed had raised interest rates sharply in 1997 to stop share prices rising. What is the most plausible outcome?",
+   "options": [
+    "Share prices might have risen less, but at the cost of slower growth and higher unemployment, with uncertain effects on the size of the later bust",
+    "The bubble would have ended with no effect on the wider economy",
+    "Inflation would have risen because higher interest rates raise firms' costs"
+   ],
+   "best": 0,
+   "explain": "Higher rates would have reduced demand across the whole economy, not only in technology shares, so jobs and output would probably have been lost. Investors expecting very high returns might not have been deterred by a few points of interest. Whether a smaller bubble would have meant a smaller bust is uncertain, and this debate continues among central bankers."
+  },
+  "compare": [
+   {
+    "id": "gfc-2008",
+    "similar": "Both followed long rises in asset prices driven by optimistic expectations, and in both the Fed cut interest rates sharply after the bust to support demand.",
+    "different": "The dot-com bubble was mainly in shares bought with savings, so losses fell on investors. The housing bubble was financed by bank and shadow-bank credit, so losses broke the financial system.",
+    "dominant": "Dot-com: a wealth and investment shock to AD. GFC: a banking crisis and credit crunch that magnified the fall in AD."
+   },
+   {
+    "id": "great-depression",
+    "similar": "Both followed a boom in share prices built on new technologies, from radio and cars in the 1920s to the internet in the 1990s, and a sharp stock-market fall.",
+    "different": "In the 1930s bank failures and a shrinking money supply turned a crash into a depression. In 2001 the banks held up and policy eased quickly, so the recession was mild.",
+    "dominant": "Depression: monetary contraction, bank failures and debt deflation. Dot-com: a fall in business investment and household wealth, cushioned by rapid monetary and fiscal easing."
+   }
+  ],
+  "ib": {
+   "subs": [
+    "3.2",
+    "3.5",
+    "3.3",
+    "2.4"
+   ],
+   "kc": [
+    "Change",
+    "Choice",
+    "Efficiency",
+    "Intervention"
+   ],
+   "note": "The episode connects behavioural ideas about investor choice with AD/AS analysis and monetary policy, and it gives students a clear case for evaluating whether a central bank should respond to asset prices."
+  },
+  "cambridge": {
+   "topics": [
+    "aggregate demand",
+    "the business cycle",
+    "monetary policy",
+    "behavioural economics",
+    "financial markets"
+   ],
+   "note": "Useful for showing how wealth effects and investment move aggregate demand, and for evaluating monetary policy responses to a downturn."
+  },
+  "university": {
+   "fields": [
+    "financial economics",
+    "macroeconomics",
+    "behavioural finance",
+    "economic history"
+   ],
+   "note": "A university course would add asset-pricing models, tests of market efficiency, models of speculative bubbles with limits to arbitrage, and the debate on whether monetary policy should respond to asset prices."
+  },
+  "civil": {
+   "themes": [
+    "financial markets",
+    "monetary policy",
+    "technology and growth",
+    "corporate governance"
+   ],
+   "note": "The boom in US technology spending helped raise demand for Indian IT services in the late 1990s, and the governance scandals that followed are a reference point for debates on auditing and disclosure."
+  },
+  "economists": [
+   "keynes",
+   "hayek"
+  ],
+  "causal": [
+   "ratehike",
+   "growth",
+   "unemployment"
+  ],
+  "concepts": [
+   "Wealth",
+   "Investment",
+   "Aggregate demand",
+   "Business cycle",
+   "Recession",
+   "Cyclical unemployment",
+   "Monetary policy",
+   "Expansionary policy",
+   "Behavioural economics",
+   "Bounded rationality",
+   "Availability bias",
+   "Asymmetric information"
+  ],
+  "cases": [],
+  "policies": [
+   "Interest-rate changes",
+   "Income tax cuts and rebates",
+   "Accounting and audit regulation",
+   "Margin requirements"
+  ],
+  "questions": [
+   {
+    "q": "Explain how a fall in share prices can reduce aggregate demand.",
+    "kind": "explain"
+   },
+   {
+    "q": "Using an AD/AS diagram, analyse why the late-1990s US boom combined fast growth with low inflation.",
+    "kind": "analyse"
+   },
+   {
+    "q": "Evaluate the view that central banks should raise interest rates to prevent asset-price bubbles.",
+    "kind": "evaluate"
+   },
+   {
+    "q": "Using the unemployment and quarterly GDP data, describe the 2001 recession and explain why unemployment kept rising after growth resumed.",
+    "kind": "data"
+   },
+   {
+    "q": "Compare the dot-com bust with the 2008 financial crisis, explaining why one caused a much deeper recession.",
+    "kind": "compare"
+   }
+  ],
+  "retrieval": [
+   {
+    "q": "On what date did the NASDAQ Composite peak?",
+    "a": "10 March 2000."
+   },
+   {
+    "q": "What is the wealth effect?",
+    "a": "The change in consumption that follows a change in household wealth, such as a fall in share prices."
+   },
+   {
+    "q": "When did the NBER date the 2001 US recession?",
+    "a": "March to November 2001."
+   },
+   {
+    "q": "What did the Sarbanes–Oxley Act of 2002 aim to do?",
+    "a": "Improve the reliability of corporate financial reporting by tightening rules on auditors and executive responsibility."
+   },
+   {
+    "q": "Why did the dot-com bust not cause a banking crisis?",
+    "a": "Most share purchases were financed by savings rather than bank loans, so losses fell on investors, not on banks."
+   }
+  ],
+  "reflection": "If a new technology is clearly important, how would you decide whether the prices investors pay for it are reasonable?",
+  "reading": [
+   {
+    "t": "Robert J. Shiller, Irrational Exuberance, 2000",
+    "note": "Written at the peak; explains the psychological and institutional forces behind high share prices."
+   },
+   {
+    "t": "Charles P. Kindleberger, Manias, Panics, and Crashes, 1978 (later editions)",
+    "note": "A historical framework for bubbles and busts that the dot-com episode fits closely."
+   },
+   {
+    "t": "Carlota Perez, Technological Revolutions and Financial Capital, 2002",
+    "note": "Argues that financial bubbles often accompany the installation of major new technologies."
+   },
+   {
+    "t": "John Cassidy, dot.con, 2002",
+    "note": "A journalist's narrative of the bubble, its promoters and its collapse."
+   }
+  ],
+  "numbers": [
+   {
+    "value": "about 5,050",
+    "claim": "NASDAQ Composite closing peak on 10 March 2000",
+    "basis": "Exchange record: 5,048.62."
+   },
+   {
+    "value": "close to four-fifths",
+    "claim": "NASDAQ Composite fall from March 2000 peak to October 2002 low",
+    "basis": "Peak 5,048.62; low of 1,114.11 on 9 October 2002, a fall of about 78%."
+   },
+   {
+    "value": "roughly doubles",
+    "claim": "Netscape share price on its first trading day, August 1995",
+    "basis": "Offered at $28, the shares closed at about $58 on the first day."
+   },
+   {
+    "value": "six; 4.75% to 6.5%",
+    "claim": "Federal Reserve rate increases June 1999–May 2000",
+    "basis": "FOMC decisions, June 1999 to May 2000."
+   },
+   {
+    "value": "eleven; 1.75%; 1%",
+    "claim": "Fed rate cuts in 2001, end-2001 target, and June 2003 target",
+    "basis": "FOMC decisions, 2001–03."
+   },
+   {
+    "value": "about £22.5 billion",
+    "claim": "Proceeds of the UK 3G mobile licence auction, April 2000",
+    "basis": "UK Radiocommunications Agency auction result."
+   },
+   {
+    "value": "three",
+    "claim": "Fed rate cuts in autumn 1998",
+    "basis": "FOMC decisions of September, October and November 1998."
+   },
+   {
+    "value": "1998 to 2001",
+    "claim": "Years of US federal budget surplus",
+    "basis": "US Office of Management and Budget historical tables (fiscal years)."
+   }
+  ]
+ },
+ {
+  "id": "gfc-2008",
+  "title": "The global financial crisis",
+  "years": "2007–09",
+  "start": "2007-08",
+  "end": "2009-06",
+  "region": "United States, Europe and the world economy",
+  "kind": "crisis",
+  "standfirst": "Losses on US mortgages that were small relative to the world economy set off a run on the financial system and the deepest global recession since the 1930s. The episode asks how a housing bust became a banking panic, and what governments and central banks did to stop it becoming a depression.",
+  "question": "How did falling house prices in parts of the United States bring the global financial system close to collapse, and did the policy response work?",
+  "before": {
+   "p": "Through the early 2000s inflation was low and recessions were mild, a period economists called the Great Moderation. US house prices rose strongly for a decade, helped by low interest rates and looser lending. Lenders increasingly sold mortgages to banks that pooled them into securities, which were then sliced, rated and sold to investors around the world. Subprime loans to borrowers with weak credit records grew quickly, often with low initial rates that reset higher later. Banks and other financial firms, including those outside traditional regulation, financed long-term assets with short-term borrowing and held little capital against possible losses. Rising prices made the system look safe.",
+   "facts": [
+    {
+     "t": "The Federal Reserve held its policy rate at 1% from June 2003 to June 2004, then raised it in seventeen steps to 5.25% by June 2006.",
+     "status": "fact"
+    },
+    {
+     "t": "US house prices roughly doubled in nominal terms between the late 1990s and their peak in 2006, on the S&P/Case–Shiller national index.",
+     "status": "fact"
+    },
+    {
+     "t": "US unemployment averaged 4.6% in both 2006 and 2007, and consumer-price inflation was 3.2% and 2.9%.",
+     "status": "fact"
+    },
+    {
+     "t": "Fannie Mae and Freddie Mac, government-sponsored enterprises, backed or held a large share of US mortgages.",
+     "status": "fact"
+    }
+   ]
+  },
+  "trigger": {
+   "p": "US house prices stopped rising in 2006 and began to fall. Subprime borrowers whose rates reset could no longer refinance, and defaults rose. Because mortgage securities were complex and widely held, no one knew where the losses lay. On 9 August 2007 the French bank BNP Paribas froze three investment funds, saying it could not value their US mortgage assets. Banks stopped trusting each other and interbank lending rates jumped.",
+   "status": "fact"
+  },
+  "timeline": [
+   {
+    "d": "2007-08-09",
+    "t": "BNP Paribas freezes three funds",
+    "detail": "The bank cannot value assets backed by US subprime mortgages. The European Central Bank injects liquidity into money markets the same day, and the Fed follows.",
+    "status": "fact"
+   },
+   {
+    "d": "2007-09",
+    "t": "Run on Northern Rock",
+    "detail": "After news that the UK mortgage lender needed emergency support from the Bank of England, depositors queue to withdraw savings, the first UK bank run in generations. It is nationalised in February 2008.",
+    "status": "fact"
+   },
+   {
+    "d": "2007-12",
+    "t": "US recession begins",
+    "detail": "The NBER later dates the start of the recession to December 2007. Central banks announce coordinated measures to supply dollar funding to banks.",
+    "status": "fact"
+   },
+   {
+    "d": "2008-03",
+    "t": "Bear Stearns rescued",
+    "detail": "The investment bank runs out of short-term funding and is sold to JPMorgan Chase with Federal Reserve financial support, and the Fed begins lending to investment banks.",
+    "status": "fact"
+   },
+   {
+    "d": "2008-09-07",
+    "t": "Fannie Mae and Freddie Mac taken over",
+    "detail": "The US government places the two mortgage giants into conservatorship, taking control of them as losses mount on the mortgages they backed or held.",
+    "status": "fact"
+   },
+   {
+    "d": "2008-09-15",
+    "t": "Lehman Brothers files for bankruptcy",
+    "detail": "No public rescue or private buyer is found. Lehman's failure, the largest bankruptcy in US history, spreads panic through money markets worldwide.",
+    "status": "fact"
+   },
+   {
+    "d": "2008-09-16",
+    "t": "AIG rescued; money fund breaks the buck",
+    "detail": "The Fed lends to the insurer AIG, which had sold protection on mortgage securities. A large money-market fund holding Lehman debt falls below its fixed share value, triggering withdrawals.",
+    "status": "fact"
+   },
+   {
+    "d": "2008-10",
+    "t": "TARP and coordinated rate cuts",
+    "detail": "Congress passes the Troubled Asset Relief Program after rejecting a first version. On 8 October major central banks cut rates together, and the UK announces bank recapitalisation.",
+    "status": "fact"
+   },
+   {
+    "d": "2008-12",
+    "t": "Fed rate reaches near zero",
+    "detail": "The Fed sets a target range for its policy rate of 0 to 0.25%, having announced purchases of mortgage-backed securities in November.",
+    "status": "fact"
+   },
+   {
+    "d": "2009-02",
+    "t": "US fiscal stimulus enacted",
+    "detail": "The American Recovery and Reinvestment Act combines tax cuts, transfers to states and households, and public investment worth roughly 800 billion dollars over several years.",
+    "status": "fact"
+   },
+   {
+    "d": "2009-03",
+    "t": "Markets bottom; QE expands",
+    "detail": "The S&P 500 averages 757.13 in March 2009, its low point. The Fed enlarges asset purchases and the Bank of England starts quantitative easing.",
+    "status": "fact"
+   },
+   {
+    "d": "2009-06",
+    "t": "US recession ends",
+    "detail": "The NBER later dates the end of the recession to June 2009, but US unemployment keeps rising, averaging 9.6% in 2010.",
+    "status": "fact"
+   }
+  ],
+  "actors": [
+   {
+    "who": "Mortgage lenders and securitising banks",
+    "role": "Made and packaged loans, many to subprime borrowers, earning fees on volume while passing much of the credit risk on to investors."
+   },
+   {
+    "who": "Credit rating agencies",
+    "role": "Gave high ratings to many mortgage securities that later suffered heavy losses, encouraging investors and banks to hold them as if they were safe."
+   },
+   {
+    "who": "Investment banks and the shadow banking system",
+    "role": "Financed holdings of long-term securities with very short-term borrowing, so a loss of confidence could drain their funding within days."
+   },
+   {
+    "who": "Federal Reserve under Ben Bernanke",
+    "role": "Cut rates to near zero, lent to banks and non-banks on a large scale, supplied dollars to foreign central banks and bought assets in quantitative easing."
+   },
+   {
+    "who": "US Treasury, Congress and other governments",
+    "role": "Took over mortgage agencies, injected capital into banks, backed bank debts and enacted fiscal stimulus packages."
+   },
+   {
+    "who": "Households with mortgages",
+    "role": "Borrowed heavily against rising house prices; when prices fell, many owed more than their homes were worth and cut spending or defaulted."
+   }
+  ],
+  "changed": "The crisis turned a fall in house prices into a collapse of credit. Banks hoarded cash, lending to firms and households contracted and world trade fell steeply in late 2008. US real GDP fell at an annualised 8.5% in the fourth quarter of 2008, and unemployment rose from 4.6% in 2007 to 9.3% in 2009. Governments took large stakes in banks, central banks cut rates to near zero and began quantitative easing, and budget deficits widened. Recovery in the United States and Europe was slow.",
+  "predict": {
+   "q": "A bank holds long-term mortgage securities funded by loans that must be renewed every night. Lenders hear rumours of losses. What is most likely to happen?",
+   "options": [
+    "Lenders refuse to renew, the bank must sell assets quickly at low prices, and its losses grow",
+    "Nothing, because the bank's assets still pay interest",
+    "The bank's lenders offer more funding because interest rates are high"
+   ],
+   "answer": 0,
+   "explain": "Short-term lenders can withdraw at once, while the bank's assets cannot be sold quickly at full value. A run forces fire sales, which lower prices for every holder of similar assets and spread losses to other institutions. This maturity mismatch, outside traditional deposit insurance, explains how modest mortgage losses became a system-wide panic."
+  },
+  "mechanism": [
+   "Low interest rates, global saving inflows and looser lending standards → demand for housing rises → house prices increase, encouraging further borrowing and building",
+   "Securitisation → lenders pass on credit risk → weaker incentives to check borrowers (asymmetric information and moral hazard) → more risky loans",
+   "House prices fall → defaults rise → mortgage securities lose value → banks with little capital face large losses",
+   "Uncertainty about who holds losses → short-term lenders withdraw (a run on shadow banks) → fire sales of assets → asset prices fall further",
+   "Bank losses and hoarding of cash → credit crunch: lending to firms and households falls → investment and consumption fall",
+   "Falling wealth, confidence and credit → AD shifts left → real GDP falls and unemployment rises; the fall spreads abroad through finance and trade",
+   "Central bank rate cuts, liquidity support, quantitative easing, bank recapitalisation and fiscal stimulus → AD partly restored and the financial system stabilised"
+  ],
+  "charts": [
+   {
+    "series": "sp500",
+    "from": "2006-01",
+    "to": "2009-12",
+    "title": "S&P 500 index, monthly average",
+    "look": "A peak monthly average of 1,539.66 in October 2007, a slide through 2008, a collapse after Lehman's failure in September, and a low of 757.13 in March 2009 before recovery.",
+    "marks": [
+     {
+      "at": "2007-08",
+      "label": "BNP Paribas funds frozen"
+     },
+     {
+      "at": "2008-09",
+      "label": "Lehman fails"
+     },
+     {
+      "at": "2009-03",
+      "label": "Market low; QE expands"
+     }
+    ]
+   },
+   {
+    "series": "us-gdp-q",
+    "from": "2006-01",
+    "to": "2009-10",
+    "title": "US real GDP growth, quarterly, annualised %",
+    "look": "Growth weakens through 2007, turns negative in early 2008 and plunges to minus 8.5% in the fourth quarter of 2008. Positive growth returns in the third quarter of 2009.",
+    "marks": [
+     {
+      "at": "2008-10",
+      "label": "Post-Lehman collapse"
+     }
+    ]
+   },
+   {
+    "series": "us-unemp",
+    "from": "2003",
+    "to": "2014",
+    "title": "US unemployment rate, annual average %",
+    "look": "Unemployment averages 4.6% in 2007, 9.3% in 2009 and 9.6% in 2010, and falls back only slowly. Unemployment lags output: it keeps rising after GDP starts to recover.",
+    "marks": [
+     {
+      "at": "2009",
+      "label": "Recession ends mid-year"
+     }
+    ]
+   },
+   {
+    "series": "fx-united-kingdom",
+    "from": "2004",
+    "to": "2012",
+    "title": "Pounds per US dollar, annual average",
+    "look": "A higher number means a weaker pound. Sterling averages 0.50 per dollar in 2007 and 0.64 in 2009, a sharp depreciation as UK banks suffered and interest rates fell.",
+    "marks": [
+     {
+      "at": "2008",
+      "label": "Banking crisis"
+     }
+    ]
+   }
+  ],
+  "diagrams": [
+   {
+    "dg": "adas",
+    "how": "Show AD shifting sharply left as credit, investment, consumption and exports fall, opening a large deflationary gap. Then show expansionary monetary and fiscal policy shifting AD part of the way back, and discuss why the recovery was slow if banks and households were repairing their balance sheets."
+   },
+   {
+    "dg": "asym",
+    "how": "Use the asymmetric information diagram to show how lenders who sold loans on knew more about borrower risk than investors did, so risky mortgages were overproduced relative to the socially optimum level. Asymmetric information is HL only (2.10; guide PDF p. 26)."
+   }
+  ],
+  "policy": [
+   {
+    "who": "Federal Reserve",
+    "when": "2008-12",
+    "what": "Cut its policy rate to a range of 0 to 0.25% after starting cuts in September 2007, and opened lending facilities for banks, investment banks and money markets.",
+    "status": "fact"
+   },
+   {
+    "who": "Federal Reserve and Bank of England",
+    "when": "2009-03",
+    "what": "Bought government bonds and, in the US, mortgage-backed securities on a large scale (quantitative easing) to lower long-term interest rates once policy rates were near zero.",
+    "status": "fact"
+   },
+   {
+    "who": "US Treasury and Congress",
+    "when": "2008-10",
+    "what": "The Troubled Asset Relief Program authorised up to 700 billion dollars, mostly used to inject capital into banks and support the car industry, rather than to buy troubled assets as first planned.",
+    "status": "fact"
+   },
+   {
+    "who": "UK government",
+    "when": "2008-10",
+    "what": "Recapitalised major banks, taking large stakes in the Royal Bank of Scotland and Lloyds Banking Group, and offered state backing for new bank borrowing to restore their access to funding.",
+    "status": "fact"
+   },
+   {
+    "who": "US Congress and President Barack Obama",
+    "when": "2009-02",
+    "what": "The American Recovery and Reinvestment Act provided tax cuts, support to state governments, extended unemployment benefits and infrastructure spending, aiming to raise aggregate demand and protect jobs.",
+    "status": "fact"
+   },
+   {
+    "who": "G20 governments",
+    "when": "2009-04",
+    "what": "At the London summit, leaders agreed to increase IMF resources and coordinate stimulus, and committed to strengthen financial regulation, later including higher bank capital requirements under Basel III.",
+    "status": "fact"
+   }
+  ],
+  "stakeholders": [
+   {
+    "who": "Homeowners with mortgages",
+    "effect": "Many faced negative equity and foreclosure as prices fell, especially subprime borrowers whose payments reset higher; lost housing wealth reduced spending."
+   },
+   {
+    "who": "Workers",
+    "effect": "Millions lost jobs as firms cut output; long-term unemployment rose sharply, and young people entering the labour market faced weak hiring for years."
+   },
+   {
+    "who": "Bank shareholders and executives",
+    "effect": "Shareholders in failed or rescued banks lost much of their investment. Many executives kept pay earned in the boom years, fuelling public anger about who paid for the crisis."
+   },
+   {
+    "who": "Taxpayers and governments",
+    "effect": "Took on large risks through rescues and stimulus; budget deficits and public debt rose sharply, shaping a decade of fiscal debate."
+   },
+   {
+    "who": "Savers",
+    "effect": "Earned very low interest for years after central banks cut rates to near zero, while owners of bonds and shares gained as QE raised asset prices."
+   },
+   {
+    "who": "Exporting emerging economies",
+    "effect": "Faced a sudden fall in world trade in late 2008 and capital outflows, though many recovered quickly, helped by their own stimulus, notably in China."
+   }
+  ],
+  "short": "In the short run the crisis froze credit markets and caused the sharpest contraction in output in rich countries since the 1930s. US real GDP fell by 2.6% in 2009 and unemployment roughly doubled. Share prices roughly halved from peak to trough. Inflation fell, and US consumer prices fell by 0.4% in 2009. Swift and large policy action stopped bank runs from spreading further, and output began to grow again in mid-2009.",
+  "long": "In the long run, recovery was slow in the United States and slower in much of Europe, where the crisis fed into the eurozone debt crisis. Output in many economies stayed below its pre-crisis trend. Central banks kept rates near zero for years and held large bond portfolios. Regulators raised capital and liquidity requirements for banks and created new powers to resolve failing firms. Public anger at bank rescues influenced politics, and economists rethought the role of finance in macroeconomics.",
+  "transmission": "The crisis spread through finance first. European banks had bought US mortgage securities and borrowed dollars short-term, so they shared the losses and the funding squeeze. After Lehman's failure, trust collapsed across money markets everywhere. Then trade transmitted the shock: orders for cars, machinery and electronics fell, hitting exporters such as Germany, Japan and South Korea. Capital fled to US Treasury bonds, so the dollar strengthened against many currencies. World GDP in current dollars fell from 64,072.3 billion in 2008 to 60,718.3 billion in 2009.",
+  "winners": [
+   {
+    "t": "Holders of US government bonds, whose prices rose as investors sought safety and interest rates fell.",
+    "status": "fact"
+   },
+   {
+    "t": "Banks that survived, which acquired failed rivals at low prices, such as JPMorgan Chase with Bear Stearns.",
+    "status": "fact"
+   },
+   {
+    "t": "Owners of financial assets in the following decade, as low interest rates and QE raised share and bond prices.",
+    "status": "interpretation"
+   }
+  ],
+  "losers": [
+   {
+    "t": "Workers who lost jobs, especially those without degrees and young people entering the labour market.",
+    "status": "fact"
+   },
+   {
+    "t": "Households that lost their homes to foreclosure or fell into negative equity.",
+    "status": "fact"
+   },
+   {
+    "t": "Shareholders and many creditors of Lehman Brothers and other failed firms.",
+    "status": "fact"
+   },
+   {
+    "t": "Taxpayers in economies where bank rescues turned out to be very costly, such as Ireland and Iceland.",
+    "status": "fact"
+   }
+  ],
+  "unintended": [
+   {
+    "t": "Rescuing large financial firms may have strengthened the belief that some firms are too big to fail, encouraging future risk-taking (moral hazard).",
+    "status": "controversy"
+   },
+   {
+    "t": "Years of very low interest rates and QE raised the prices of assets mostly held by richer households, which some economists argue widened wealth inequality.",
+    "status": "controversy"
+   },
+   {
+    "t": "Rising public debt after rescues and stimulus helped prompt fiscal austerity from 2010 in the UK and parts of Europe, which many economists argue slowed recovery.",
+    "status": "controversy"
+   }
+  ],
+  "interpretations": [
+   {
+    "view": "Keynesian and credit-channel view",
+    "p": "Many economists, including Ben Bernanke drawing on his research on the 1930s, stress that the banking panic disrupted credit and cut aggregate demand. On this reading, rapid liquidity support, near-zero rates, QE and fiscal stimulus prevented a second Great Depression, and austerity from 2010 came too early.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Monetary policy too loose (John Taylor)",
+    "p": "John Taylor argued that the Fed kept rates well below the level implied by his policy rule in 2002–04, fuelling the housing boom. Bernanke and others replied that house prices also rose in countries with tighter policy and that lending standards mattered more.",
+    "status": "controversy"
+   },
+   {
+    "view": "Financial instability (Hyman Minsky)",
+    "p": "Followers of Minsky argue that long periods of stability encourage borrowers and lenders to take on more risk, so the system moves from cautious to speculative finance until a fall in asset prices triggers forced selling. The crisis is often described as a Minsky moment.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Global saving glut and imbalances",
+    "p": "Another view, set out by Bernanke in 2005, links low long-term interest rates to large saving surpluses in Asia and oil exporters flowing into US assets. Critics reply that gross flows, especially through European banks, mattered more than net current account balances.",
+    "status": "controversy"
+   }
+  ],
+  "explain": [
+   "The AD/AS model explains how falls in investment, consumption and exports shifted AD left, reducing real output and raising cyclical unemployment.",
+   "The Keynesian multiplier explains why an initial fall in spending caused a larger fall in national income, and why fiscal stimulus could offset part of it.",
+   "Asymmetric information and moral hazard explain why securitised lending allowed poor-quality loans to be made and sold on."
+  ],
+  "miss": [
+   "Many pre-crisis macroeconomic models had no banks or financial sector, so they could not show how a run on short-term funding could cause a deep recession.",
+   "Standard models assume that cutting interest rates boosts spending; they miss the zero lower bound and the weak response of borrowers repairing their balance sheets.",
+   "Models that treat risk as independent across loans missed how a national fall in house prices would cause defaults to rise everywhere at once."
+  ],
+  "differently": [
+   {
+    "t": "Regulators could have required more capital and liquid assets of banks and of the shadow banking system, and checked lending standards, before 2007. Critics note that rules can push risk into less regulated corners.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Lehman Brothers might have been rescued or wound down in an orderly way. US officials said they lacked legal authority to lend without adequate collateral; others argue a way could have been found.",
+    "status": "controversy"
+   },
+   {
+    "t": "More of the rescue effort could have gone to reducing household mortgage debt, which some economists argue would have sped up the recovery of consumer spending. Others warn that this raises fairness questions about helping those who borrowed most.",
+    "status": "controversy"
+   }
+  ],
+  "whatif": {
+   "q": "Suppose central banks and governments had not intervened in late 2008, letting troubled banks fail. What is the most plausible outcome?",
+   "options": [
+    "A deeper collapse in credit and output, closer to the 1930s, although future risk-taking might have been lower",
+    "A quick recovery, because failed banks would be replaced at once",
+    "Higher inflation, because bank failures increase the money supply"
+   ],
+   "best": 0,
+   "explain": "The 1930s suggest that widespread bank failures shrink the money supply and credit, deepening recessions. Most economists therefore expect that non-intervention would have produced a much deeper slump. However, we cannot observe the counterfactual, and some argue that letting more firms fail would have reduced moral hazard and the long-run costs of too big to fail."
+  },
+  "compare": [
+   {
+    "id": "great-depression",
+    "similar": "Both began with asset busts in the United States, spread through banking panics and the international financial system, and caused deep falls in output and employment across many countries.",
+    "different": "In the 1930s the money supply collapsed and policy stayed tight under the gold standard. In 2008 central banks expanded their balance sheets quickly and governments used fiscal stimulus.",
+    "dominant": "Depression: monetary contraction, bank failures and gold-standard constraints. GFC: a run on shadow banking and short-term funding, contained by aggressive monetary and fiscal policy."
+   },
+   {
+    "id": "dotcom-2000",
+    "similar": "Both followed long rises in asset prices driven by optimism and cheap finance, and both were met with sharp cuts in US interest rates by the Federal Reserve.",
+    "different": "Dot-com losses fell mainly on shareholders and the banks stayed sound. Housing losses were concentrated in leveraged banks and shadow banks, so the credit system itself broke down.",
+    "dominant": "Dot-com: a wealth and investment shock. GFC: a leveraged credit boom whose bust froze lending and amplified the fall in AD."
+   },
+   {
+    "id": "eurozone-2010",
+    "similar": "The eurozone crisis grew partly out of the GFC: bank losses, recession and rescues raised public debt, and markets began to doubt some governments' ability to repay.",
+    "different": "The US could rely on its own central bank and currency. Eurozone members lacked national monetary policy and exchange rates, so banking and sovereign problems reinforced each other.",
+    "dominant": "GFC: a private-sector credit boom and banking collapse. Eurozone: a self-reinforcing loop between sovereign debt and weak banks inside a monetary union."
+   }
+  ],
+  "ib": {
+   "subs": [
+    "3.2",
+    "3.5",
+    "3.6",
+    "2.10",
+    "4.5"
+   ],
+   "kc": [
+    "Interdependence",
+    "Intervention",
+    "Economic well-being",
+    "Change"
+   ],
+   "note": "The crisis gives students a single case for analysing AD shocks, monetary and fiscal policy and, for HL students, asymmetric information (2.10 is HL only; guide PDF p. 26), and for evaluating the effectiveness and side effects of intervention."
+  },
+  "cambridge": {
+   "topics": [
+    "aggregate demand",
+    "the business cycle",
+    "monetary policy",
+    "fiscal policy",
+    "the role of banks",
+    "market failure and asymmetric information"
+   ],
+   "note": "Useful for evaluating the effectiveness of monetary and fiscal policy in a deep recession and for discussing the regulation of financial markets."
+  },
+  "university": {
+   "fields": [
+    "monetary economics",
+    "financial economics",
+    "macroeconomics",
+    "economic history"
+   ],
+   "note": "A university course would add models of bank runs and liquidity, the zero lower bound and unconventional monetary policy, and macroeconomic models with financial frictions and leverage."
+  },
+  "civil": {
+   "themes": [
+    "financial stability",
+    "monetary policy",
+    "fiscal policy",
+    "banking regulation",
+    "external sector"
+   ],
+   "note": "India faced capital outflows, rupee depreciation and slower growth in 2008–09, and responded with rate cuts, liquidity support and fiscal stimulus, a useful comparison with advanced economies."
+  },
+  "economists": [
+   "keynes",
+   "friedman",
+   "hayek",
+   "stiglitz"
+  ],
+  "causal": [
+   "stimulus",
+   "unemployment",
+   "growth",
+   "ratehike"
+  ],
+  "concepts": [
+   "Asymmetric information",
+   "Moral hazard",
+   "Adverse selection",
+   "Recession",
+   "Deflationary gap",
+   "Cyclical unemployment",
+   "Monetary policy",
+   "Quantitative easing",
+   "Fiscal policy",
+   "Expansionary policy",
+   "Budget deficit",
+   "National debt",
+   "Keynesian multiplier",
+   "Automatic stabiliser",
+   "Wealth"
+  ],
+  "cases": [
+   "MAC-013",
+   "MAC-014",
+   "MAC-007"
+  ],
+  "policies": [
+   "Interest-rate cuts",
+   "Lender-of-last-resort lending",
+   "Quantitative easing",
+   "Bank recapitalisation",
+   "Fiscal stimulus",
+   "Higher capital requirements (Basel III)",
+   "Bank stress tests"
+  ],
+  "questions": [
+   {
+    "q": "Explain how a fall in house prices can lead to a fall in bank lending.",
+    "kind": "explain"
+   },
+   {
+    "q": "Using an AD/AS diagram, analyse the effect of the 2008 credit crunch on real GDP and unemployment in the United States.",
+    "kind": "analyse"
+   },
+   {
+    "q": "Evaluate the effectiveness of quantitative easing as a response to the global financial crisis.",
+    "kind": "evaluate"
+   },
+   {
+    "q": "Using the quarterly GDP and annual unemployment data, explain why unemployment kept rising after the recession officially ended in June 2009.",
+    "kind": "data"
+   },
+   {
+    "q": "Compare the policy responses to the global financial crisis and to the Great Depression.",
+    "kind": "compare"
+   }
+  ],
+  "retrieval": [
+   {
+    "q": "When did Lehman Brothers file for bankruptcy?",
+    "a": "15 September 2008."
+   },
+   {
+    "q": "What is securitisation?",
+    "a": "Pooling loans such as mortgages and selling securities that pay investors from the loans' repayments."
+   },
+   {
+    "q": "What is quantitative easing?",
+    "a": "Large-scale central bank purchases of bonds or other assets, financed by creating central bank money, to lower long-term interest rates."
+   },
+   {
+    "q": "What was the Troubled Asset Relief Program used for mainly?",
+    "a": "Injecting capital into banks and supporting the car industry, rather than buying troubled assets as first planned."
+   },
+   {
+    "q": "What happened on 9 August 2007?",
+    "a": "BNP Paribas froze three funds holding US mortgage assets, and interbank lending markets seized up."
+   }
+  ],
+  "reflection": "Bank rescues in 2008 probably prevented a deeper slump, yet they also protected some of the people who caused the crisis; how would you weigh efficiency against equity in that choice?",
+  "reading": [
+   {
+    "t": "Adam Tooze, Crashed: How a Decade of Financial Crises Changed the World, 2018",
+    "note": "A global history that explains the role of European banks and dollar funding."
+   },
+   {
+    "t": "Ben S. Bernanke, The Courage to Act, 2015",
+    "note": "The Fed chairman's own account of decisions during the crisis; read critically as an insider's view."
+   },
+   {
+    "t": "Atif Mian and Amir Sufi, House of Debt, 2014",
+    "note": "Argues that household debt and falling house prices explain much of the depth of the recession."
+   },
+   {
+    "t": "Carmen M. Reinhart and Kenneth S. Rogoff, This Time Is Different, 2009",
+    "note": "Places the crisis in eight centuries of financial crises and shows how often booms end in busts."
+   }
+  ],
+  "numbers": [
+   {
+    "value": "1%; seventeen; 5.25%",
+    "claim": "Fed policy rate 2003–04, number of increases 2004–06 and the June 2006 level",
+    "basis": "FOMC decisions, June 2003 to June 2006."
+   },
+   {
+    "value": "roughly doubled",
+    "claim": "Rise in US house prices from the late 1990s to the 2006 peak",
+    "basis": "S&P/Case–Shiller US National Home Price Index, nominal."
+   },
+   {
+    "value": "three",
+    "claim": "Number of funds frozen by BNP Paribas on 9 August 2007",
+    "basis": "BNP Paribas announcement, 9 August 2007."
+   },
+   {
+    "value": "0 to 0.25%",
+    "claim": "Fed target range from December 2008",
+    "basis": "FOMC statement, 16 December 2008."
+   },
+   {
+    "value": "up to 700 billion dollars",
+    "claim": "TARP authorisation, October 2008",
+    "basis": "Emergency Economic Stabilization Act of 2008."
+   },
+   {
+    "value": "roughly 800 billion dollars",
+    "claim": "Size of the American Recovery and Reinvestment Act, February 2009",
+    "basis": "Congressional Budget Office estimate of about $787 billion at enactment."
+   },
+   {
+    "value": "December 2007 to June 2009",
+    "claim": "US recession dates",
+    "basis": "NBER Business Cycle Dating Committee."
+   },
+   {
+    "value": "roughly halved",
+    "claim": "Fall in the S&P 500 from peak to trough",
+    "basis": "Catalogue monthly averages: 1,539.66 (October 2007) to 757.13 (March 2009)."
+   }
+  ]
+ }
+]

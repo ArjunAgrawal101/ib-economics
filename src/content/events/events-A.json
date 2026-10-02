@@ -1,0 +1,1750 @@
+[
+ {
+  "id": "great-depression",
+  "title": "The 1929 crash and the Great Depression",
+  "years": "1929–1939",
+  "start": "1929-10",
+  "end": "1939",
+  "region": "United States and the gold-standard world",
+  "kind": "crisis",
+  "standfirst": "A stock market crash in October 1929 was followed by three years of collapsing output, prices and banks, and a decade of mass unemployment. The economic question is why a downturn that began like many others became the deepest slump of the industrial era.",
+  "question": "How did a stock market crash turn into a decade-long depression, and which policy choices made it deeper or ended it?",
+  "before": {
+   "p": "The United States ended the 1920s as the world’s largest economy and a major creditor. Output had grown strongly through the decade, helped by electricity, cars and consumer durables bought on instalment credit. Consumer prices were broadly stable and even fell slightly in 1927 and 1928. Most major economies had returned to the gold standard, so each country’s money supply was tied to its gold reserves and interest rates were set with one eye on the exchange rate. Farm incomes were weak, and Germany’s ability to pay reparations depended heavily on borrowing from American lenders. From 1928 the Federal Reserve tightened policy, partly out of concern about credit flowing into stock market speculation.",
+   "facts": [
+    {
+     "t": "US consumer prices fell by 1.9% in 1927 and 1.2% in 1928, and were unchanged in 1929.",
+     "status": "fact"
+    },
+    {
+     "t": "The S&P 500 composite’s monthly average rose from 17.53 in January 1928 to 31.3 in September 1929.",
+     "status": "fact"
+    },
+    {
+     "t": "Britain returned to the gold standard in 1925 at its pre-war parity; most major economies had restored gold convertibility by the late 1920s.",
+     "status": "fact"
+    },
+    {
+     "t": "Many share purchases were financed with broker loans (buying on margin), so falling prices could force investors to sell.",
+     "status": "fact"
+    },
+    {
+     "t": "German reparations, Allied war debts and American lending formed a chain of international payments that depended on continued US capital outflows.",
+     "status": "interpretation"
+    }
+   ]
+  },
+  "trigger": {
+   "p": "Share prices peaked in early September 1929 and began to slide. On Thursday 24 October heavy selling overwhelmed the New York Stock Exchange; a pool of leading bankers bought shares to steady prices, but the support held only briefly. On 28 and 29 October prices fell steeply again, and margin calls forced further sales. Most economic historians treat the crash as the trigger rather than the full cause of the Depression: the slump deepened mainly through later banking panics, falling money and prices, and policy choices.",
+   "status": "fact"
+  },
+  "timeline": [
+   {
+    "d": "1928",
+    "t": "The Federal Reserve tightens",
+    "detail": "The Fed raised its discount rate in several steps during 1928, worried about credit fuelling stock speculation. Higher US rates also drew gold towards the United States, squeezing other gold-standard countries.",
+    "status": "fact"
+   },
+   {
+    "d": "1929-10-24",
+    "t": "Black Thursday",
+    "detail": "Panic selling hit the New York Stock Exchange. Leading bankers organised purchases to support prices, which steadied the market for only a few days.",
+    "status": "fact"
+   },
+   {
+    "d": "1929-10-29",
+    "t": "Black Tuesday deepens the crash",
+    "detail": "After a heavy fall on 28 October, another wave of selling followed on 29 October. The S&P 500 monthly average fell from 31.3 in September to 20.58 in November.",
+    "status": "fact"
+   },
+   {
+    "d": "1930-06",
+    "t": "Smoot–Hawley tariff becomes law",
+    "detail": "President Hoover signed the Tariff Act of 1930, raising duties on many imports. Trading partners retaliated with their own barriers, and world trade shrank as the depression spread.",
+    "status": "fact"
+   },
+   {
+    "d": "1930-12",
+    "t": "Bank of United States fails",
+    "detail": "The collapse of a large New York bank capped the first wave of US bank failures. Depositors withdrew cash, and banks hoarded reserves instead of lending.",
+    "status": "fact"
+   },
+   {
+    "d": "1931-05",
+    "t": "Creditanstalt collapses in Vienna",
+    "detail": "The failure of Austria’s largest bank set off runs on banks and currencies across central Europe. In July 1931 the crisis reached Germany, where major banks closed temporarily.",
+    "status": "fact"
+   },
+   {
+    "d": "1931-09",
+    "t": "Britain leaves gold",
+    "detail": "On 21 September 1931 Britain suspended gold convertibility and sterling depreciated. In October the Federal Reserve raised its discount rate sharply to stop gold leaving the United States.",
+    "status": "fact"
+   },
+   {
+    "d": "1932",
+    "t": "The deepest year of the slump",
+    "detail": "US real GDP fell 12.9% and consumer prices fell 10.3%. The Reconstruction Finance Corporation began lending to banks and railways, while the Revenue Act of 1932 raised taxes.",
+    "status": "fact"
+   },
+   {
+    "d": "1933-03",
+    "t": "Bank holiday and the New Deal",
+    "detail": "Franklin Roosevelt took office on 4 March amid a nationwide banking panic and closed the nation’s banks. The Emergency Banking Act let banks judged sound reopen, and deposits began to return.",
+    "status": "fact"
+   },
+   {
+    "d": "1933-04",
+    "t": "The dollar leaves gold",
+    "detail": "Roosevelt restricted private gold holdings and exports, and the dollar was allowed to fall. The Gold Reserve Act of January 1934 fixed a higher official gold price, devaluing the dollar.",
+    "status": "fact"
+   },
+   {
+    "d": "1937",
+    "t": "A recession within the Depression",
+    "detail": "The Fed doubled banks’ reserve requirements in 1936–37, the Treasury sterilised gold inflows and the budget deficit narrowed. Real GDP fell 3.3% in 1938 after four years of fast growth.",
+    "status": "fact"
+   },
+   {
+    "d": "1941",
+    "t": "War demand absorbs spare capacity",
+    "detail": "Rearmament and war orders lifted spending sharply. US real GDP grew 17.7% in 1941, and unemployment fell from 9.9% in 1941 to 4.7% in 1942.",
+    "status": "fact"
+   }
+  ],
+  "actors": [
+   {
+    "who": "The Federal Reserve System",
+    "role": "The US central bank, then a loosely coordinated set of regional banks. It tightened in 1928–29 and did little to stop bank failures and the contraction of the money stock in 1930–33."
+   },
+   {
+    "who": "Herbert Hoover",
+    "role": "President 1929–33. Urged firms to hold wages, signed the 1930 tariff, created the Reconstruction Finance Corporation and backed tax rises in 1932 to reduce the budget deficit."
+   },
+   {
+    "who": "Franklin D. Roosevelt",
+    "role": "President from March 1933. Closed and reopened the banks, took the dollar off gold and launched the New Deal of relief, public works, regulation and social insurance."
+   },
+   {
+    "who": "Depositors and commercial banks",
+    "role": "Fearing failures, depositors converted deposits into cash; banks kept larger reserves and cut lending. Their rational caution shrank the money stock and credit for the whole economy."
+   },
+   {
+    "who": "Central banks abroad on gold",
+    "role": "Bound by gold-standard rules, they raised interest rates or restricted credit to protect reserves, spreading deflation; countries that left gold earlier generally began recovering sooner."
+   },
+   {
+    "who": "John Maynard Keynes",
+    "role": "British economist whose General Theory (1936) argued that an economy could stay stuck with mass unemployment because aggregate demand was too weak, and that government spending could fill the gap."
+   }
+  ],
+  "changed": "Between 1929 and 1933 US nominal GDP fell from $104.6 billion to $57.2 billion, as both real output and prices collapsed. Thousands of banks failed, the money stock contracted and debts became heavier in real terms as prices fell. Private investment collapsed and unemployment rose to roughly a quarter of the labour force. World trade shrank behind tariffs and quotas. The state’s role grew: deposit insurance, securities regulation, social insurance and public works became lasting features of the US economy, and stabilising demand came to be seen as a task for government.",
+  "predict": {
+   "q": "In 1931–32 US prices were falling fast and nominal interest rates were low by historical standards. What happened to the real cost of borrowing for a farmer or firm with debts fixed in dollars?",
+   "options": [
+    "It fell, because nominal interest rates were low",
+    "It rose, because falling prices increased real interest rates and the real value of debts",
+    "It stayed about the same, because nominal and real rates move together"
+   ],
+   "answer": 1,
+   "explain": "Consumer prices fell 8.9% in 1931 and 10.3% in 1932. Because the real interest rate is roughly the nominal rate minus inflation, a low nominal rate still meant a high real rate. Debts fixed in dollars had to be repaid with dollars that bought more. Borrowers cut spending or defaulted, banks failed, and demand fell further: Irving Fisher’s debt-deflation mechanism."
+  },
+  "mechanism": [
+   "Crash and loss of wealth → households and firms cut spending on durables and investment → AD shifts left (a shift of the curve, not a movement along it)",
+   "Fall in investment → incomes fall → consumption falls → incomes fall again → the multiplier enlarges the initial fall in spending",
+   "Bank failures → depositors hoard cash and banks hoard reserves → money stock contracts → credit dries up → AD falls further",
+   "Falling prices with fixed nominal debts → real debt burdens and real interest rates rise → more defaults and bank failures (debt deflation)",
+   "Gold-standard rules → central banks raise rates or restrict credit to defend reserves → deflation passes from country to country",
+   "Tariffs and retaliation → exports fall → injections into the circular flow fall and world trade contracts",
+   "Sticky money wages and prices → output and employment, not only prices, absorb the fall in AD → a persistent deflationary gap",
+   "Leaving gold in 1933 → money stock grows and deflation expectations end → real interest rates fall → AD recovers from 1933"
+  ],
+  "charts": [
+   {
+    "series": "sp500",
+    "from": "1928-01",
+    "to": "1933-12",
+    "title": "Share prices: the crash and the long slide",
+    "look": "The October 1929 fall was large, but the index kept falling until mid-1932. Most of the total loss came during the later banking crises, not in the crash itself.",
+    "marks": [
+     {
+      "at": "1929-10",
+      "label": "The crash"
+     },
+     {
+      "at": "1931-09",
+      "label": "Britain leaves gold"
+     },
+     {
+      "at": "1933-03",
+      "label": "Bank holiday"
+     }
+    ]
+   },
+   {
+    "series": "us-gdp-growth",
+    "from": "1930",
+    "to": "1941",
+    "title": "US real GDP growth through the decade",
+    "look": "Four years of contraction, sharpest in 1932, then rapid growth from 1934 interrupted by the 1938 relapse. Fast growth from a very low base can coexist with a large output gap.",
+    "marks": [
+     {
+      "at": "1932",
+      "label": "Deepest fall"
+     },
+     {
+      "at": "1938",
+      "label": "1937–38 relapse"
+     }
+    ]
+   },
+   {
+    "series": "us-cpi-infl",
+    "from": "1925",
+    "to": "1941",
+    "title": "Four years of falling prices",
+    "look": "Consumer prices fell every year from 1930 to 1933, by as much as 10.3% in 1932, and rose once the dollar left gold. Deflation raised the real burden of debts.",
+    "marks": [
+     {
+      "at": "1933",
+      "label": "Dollar leaves gold"
+     },
+     {
+      "at": "1938",
+      "label": "Relapse"
+     }
+    ]
+   }
+  ],
+  "diagrams": [
+   {
+    "dg": "defgap",
+    "how": "Draw AD₁ meeting a Keynesian AS curve near full employment output. Shift AD to the left to AD₂ as consumption, investment and exports fall. Real output falls well below full employment output and the price level falls a little: a large deflationary gap."
+   },
+   {
+    "dg": "multiplier",
+    "how": "Show an initial fall in investment spending, then successive smaller rounds of lost income and consumption. Label the total fall in national income as a multiple of the initial fall, and note that bank failures and deflation made later rounds larger."
+   }
+  ],
+  "policy": [
+   {
+    "who": "Federal Reserve",
+    "when": "1931-10",
+    "what": "Raised its discount rate sharply after Britain left gold, to protect the dollar’s gold parity. The move tightened credit while banks were failing and prices falling, and later economists widely criticise it.",
+    "status": "fact"
+   },
+   {
+    "who": "Hoover administration and Congress",
+    "when": "1932",
+    "what": "Created the Reconstruction Finance Corporation to lend to banks, railways and other firms, but also passed the Revenue Act of 1932, raising taxes to reduce the deficit in the middle of the slump.",
+    "status": "fact"
+   },
+   {
+    "who": "Roosevelt administration",
+    "when": "1933-03",
+    "what": "Declared a national bank holiday. The Emergency Banking Act let inspected banks reopen with official backing, and currency hoarded during the panic flowed back into the banking system.",
+    "status": "fact"
+   },
+   {
+    "who": "Roosevelt administration",
+    "when": "1933-04",
+    "what": "Ended gold convertibility for private holders and let the dollar depreciate; the Gold Reserve Act (1934) raised the official gold price. Gold inflows then expanded the money stock and ended deflation.",
+    "status": "fact"
+   },
+   {
+    "who": "Congress",
+    "when": "1933-06",
+    "what": "The Banking Act of 1933 (Glass–Steagall) created federal deposit insurance and separated commercial from investment banking. After insurance began in 1934, bank runs became rare.",
+    "status": "fact"
+   },
+   {
+    "who": "Federal Reserve and Treasury",
+    "when": "1936",
+    "what": "The Fed doubled reserve requirements in steps during 1936–37 and the Treasury sterilised gold inflows, slowing money growth just as the budget deficit narrowed. A sharp recession followed in 1937–38.",
+    "status": "fact"
+   }
+  ],
+  "stakeholders": [
+   {
+    "who": "Unemployed workers",
+    "effect": "Lost income for years at a time, with little public relief before 1933. Long spells without work eroded skills and savings and left lasting damage to families."
+   },
+   {
+    "who": "Farmers",
+    "effect": "Crop prices fell faster than costs and mortgage payments, which were fixed in dollars. Many lost their farms through foreclosure, and export markets shrank under foreign tariffs."
+   },
+   {
+    "who": "Bank depositors",
+    "effect": "Before federal deposit insurance, depositors at failed banks could lose savings or wait years for partial repayment, which explains why fear spread so quickly between banks."
+   },
+   {
+    "who": "Creditors and holders of cash",
+    "effect": "Those whose borrowers stayed solvent gained in real terms, because deflation raised the purchasing power of money and of fixed repayments."
+   },
+   {
+    "who": "Trading partners",
+    "effect": "Exporters to the United States faced higher tariffs and collapsing demand, and countries dependent on American loans, such as Germany, lost their source of finance."
+   }
+  ],
+  "short": "In the short run the crash cut wealth and confidence, and spending on cars, houses and machinery fell sharply. Waves of bank failures in 1930, 1931 and early 1933 shrank the money stock and credit. Prices fell every year from 1930 to 1933, raising real debts. Real GDP fell 8.5% in 1930, 6.4% in 1931 and 12.9% in 1932. Unemployment rose to roughly a quarter of the labour force by 1933, and output stayed far below its 1929 level.",
+  "long": "The long-run legacy was institutional and intellectual. Deposit insurance, securities regulation, unemployment insurance and old-age pensions reshaped the US economy. Keynes’s General Theory made aggregate demand the centre of macroeconomics, and governments came to accept responsibility for employment. Monetarists later drew a different lesson: central banks must stop the money stock and the banking system collapsing. Both lessons shaped the response to 2008. The gold standard was discredited, and the post-war Bretton Woods system tried to combine stable exchange rates with national policy freedom.",
+  "transmission": "The Depression spread mainly through the gold standard, capital flows and trade. When US lending abroad dried up from 1928, borrowers such as Germany lost finance. Gold-standard countries losing reserves had to raise interest rates or deflate, transmitting the US contraction worldwide. Banking crises in Austria and Germany in 1931 fed back to London and New York. Tariffs, starting with Smoot–Hawley and followed by retaliation, cut world trade. Countries that left gold earlier, such as Britain in 1931, could ease policy and generally recovered sooner.",
+  "winners": [
+   {
+    "t": "Holders of cash and safe government bonds, whose purchasing power rose as prices fell.",
+    "status": "inference"
+   },
+   {
+    "t": "Workers who kept their jobs at stable money wages, whose real wages rose as prices fell.",
+    "status": "inference"
+   },
+   {
+    "t": "Creditors whose borrowers stayed solvent, repaid in dollars worth more than those they lent.",
+    "status": "inference"
+   }
+  ],
+  "losers": [
+   {
+    "t": "The unemployed, who reached roughly a quarter of the US labour force in 1933.",
+    "status": "fact"
+   },
+   {
+    "t": "Farmers and indebted households facing falling incomes but fixed debt payments.",
+    "status": "fact"
+   },
+   {
+    "t": "Shareholders: the S&P 500 monthly average fell from 31.3 in September 1929 to 4.77 in June 1932.",
+    "status": "fact"
+   },
+   {
+    "t": "Depositors at the thousands of banks that failed before federal deposit insurance.",
+    "status": "fact"
+   }
+  ],
+  "unintended": [
+   {
+    "t": "Retaliation against the 1930 tariff hurt US farm exports, even though protecting farmers was one of the tariff’s aims.",
+    "status": "inference"
+   },
+   {
+    "t": "The 1936–37 rise in reserve requirements, meant as a precaution against future inflation, coincided with a sharp relapse in 1937–38.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Deposit insurance ended most bank runs but, over the long run, weakened depositors’ incentive to monitor banks (moral hazard).",
+    "status": "inference"
+   }
+  ],
+  "interpretations": [
+   {
+    "view": "Monetarist (Friedman and Schwartz)",
+    "p": "The Depression was above all a contraction of money. The Fed allowed waves of bank failures to shrink the money stock by about a third between 1929 and 1933. A central bank willing to act as lender of last resort and supply reserves could have turned a severe recession into a far milder one.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Debt deflation and credit (Fisher; Bernanke)",
+    "p": "Falling prices raised real debt burdens, causing defaults and distress sales that pushed prices down further. Bernanke added that bank failures destroyed banks’ knowledge of their borrowers, so credit for households, farms and small firms dried up beyond what the fall in money alone would imply.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Gold standard (Eichengreen, Temin)",
+    "p": "The gold standard spread deflation across countries and stopped central banks from expanding. Countries recovered roughly in the order they left gold: Britain and the Scandinavian countries from 1931, the United States from 1933, and France and the remaining gold bloc only after 1935–36.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Why recovery was slow",
+    "p": "Keynesians argue New Deal deficits were too small to close the output gap. Others, such as Cole and Ohanian, argue that policies like the National Industrial Recovery Act raised wages and prices above market levels and slowed the return of jobs. The evidence remains contested.",
+    "status": "controversy"
+   }
+  ],
+  "explain": [
+   "The AD–AS model shows how a large leftward shift of AD, with sticky wages, produces falling output, rising unemployment and a falling price level together.",
+   "The Keynesian multiplier explains why a collapse in investment led to a much larger fall in national income.",
+   "The relation real rate ≈ nominal rate − inflation shows why low nominal interest rates were still tight money when prices were falling 9–10% a year."
+  ],
+  "miss": [
+   "The basic AD–AS model treats banks lightly; it says little about bank runs, credit rationing and why the money stock collapsed.",
+   "Single-country models miss how the gold standard tied countries together and transmitted deflation and high interest rates between them.",
+   "Models of self-correcting markets expected falling wages and prices to restore full employment; deflation instead deepened the slump by raising real debts.",
+   "They miss expectations and regime change: the 1933 break with gold appears to have worked partly by changing what people expected about future prices."
+  ],
+  "differently": [
+   {
+    "t": "The Fed could have acted as lender of last resort in 1930–31, supplying reserves to solvent banks and offsetting the fall in the money stock. Friedman and Schwartz argue this would have made the downturn far milder.",
+    "status": "interpretation"
+   },
+   {
+    "t": "The United States could have left gold earlier, as Britain did in 1931, freeing monetary policy. Critics reply that devaluation in 1931 risked a run on the dollar and a loss of confidence in US finance.",
+    "status": "controversy"
+   },
+   {
+    "t": "Avoiding the 1932 tax rises and the 1936–37 tightening, and keeping larger deficits until recovery was secure, might have shortened the slump. Economists still dispute by how much, since the multiplier in the 1930s is hard to estimate.",
+    "status": "interpretation"
+   }
+  ],
+  "whatif": {
+   "q": "Suppose the Federal Reserve had stopped the money stock from falling in 1930–33. What would most likely have happened?",
+   "options": [
+    "The 1929 crash would not have occurred",
+    "A severe recession would probably still have followed, but it would have been shorter and shallower",
+    "Nothing would have changed, because monetary policy has no effect in a slump"
+   ],
+   "best": 1,
+   "explain": "The crash came before the monetary collapse, so the first option cannot follow. Friedman and Schwartz argue stable money would have avoided most of the damage, and the credit and gold-standard views broadly agree that monetary and banking collapse deepened the slump. But the counterfactual cannot be tested directly: weak demand, heavy debts and the constraints of the gold standard would still have weighed on recovery."
+  },
+  "compare": [
+   {
+    "id": "gfc-2008",
+    "similar": "Both began with a fall in asset prices and turned into banking crises that threatened credit and the money supply, while falling demand spread quickly across countries.",
+    "different": "In 2008 central banks cut rates to near zero, lent heavily and expanded their balance sheets, and deposit insurance limited runs; in 1930–33 the Fed let banks fail and money contract.",
+    "dominant": "1929–33: a demand collapse deepened by monetary contraction and gold-standard deflation. 2008–09: a credit shock largely contained by aggressive monetary and fiscal responses."
+   },
+   {
+    "id": "oil-1973",
+    "similar": "Both produced deep US recessions with rising unemployment and falling real output, both spread quickly to other countries, and both changed how economists think about macroeconomic policy.",
+    "different": "The Depression was a demand shock with falling prices; 1973–74 was a supply shock with rising prices, so stimulus suited to the 1930s risked adding to inflation in the 1970s.",
+    "dominant": "1930s: a leftward AD shift with deflation. 1973–74: a leftward SRAS shift from higher oil costs, producing cost-push inflation alongside falling output."
+   }
+  ],
+  "ib": {
+   "subs": [
+    "3.1",
+    "3.2",
+    "3.3",
+    "3.5",
+    "3.6",
+    "4.2",
+    "4.5"
+   ],
+   "kc": [
+    "Change",
+    "Interdependence",
+    "Intervention",
+    "Economic well-being",
+    "Equity"
+   ],
+   "note": "Supports analysis of a leftward AD shift and a deflationary gap, evaluation of monetary versus fiscal responses, and supplies historical evidence for essay answers on demand-side policy and protectionism."
+  },
+  "cambridge": {
+   "topics": [
+    "aggregate demand and aggregate supply",
+    "the multiplier",
+    "unemployment",
+    "deflation",
+    "monetary policy",
+    "fiscal policy",
+    "protectionism",
+    "exchange rate systems"
+   ],
+   "note": "A historical case for linking falling aggregate demand, the multiplier and the choice between monetary and fiscal responses."
+  },
+  "university": {
+   "fields": [
+    "economic history",
+    "monetary economics",
+    "macroeconomics",
+    "international finance"
+   ],
+   "note": "A university course would add money-multiplier analysis of the fall in the money stock, Fisher’s debt-deflation model, Bernanke’s credit-channel argument and cross-country evidence on the timing of exit from gold."
+  },
+  "civil": {
+   "themes": [
+    "financial stability",
+    "monetary policy",
+    "fiscal policy",
+    "external sector",
+    "global economic history"
+   ],
+   "note": "In British India the collapse in agricultural prices in the early 1930s hit indebted cultivators hard; the episode also anchors debates on deposit insurance and the lender-of-last-resort role of a central bank."
+  },
+  "economists": [
+   "keynes",
+   "friedman"
+  ],
+  "causal": [
+   "unemployment",
+   "growth",
+   "stimulus",
+   "tariff"
+  ],
+  "concepts": [
+   "Aggregate demand",
+   "Deflation",
+   "Deflationary gap",
+   "Keynesian multiplier",
+   "Keynesian AS curve",
+   "Fixed exchange rate",
+   "Devaluation",
+   "Monetary policy",
+   "Fiscal policy",
+   "Central bank",
+   "Real interest rate",
+   "Cyclical unemployment",
+   "Recession",
+   "Protectionism",
+   "Tariff"
+  ],
+  "cases": [
+   "MAC-017"
+  ],
+  "policies": [
+   "Smoot–Hawley Tariff Act (1930)",
+   "Reconstruction Finance Corporation (1932)",
+   "Revenue Act of 1932",
+   "Emergency Banking Act (1933)",
+   "Banking Act of 1933 (Glass–Steagall) and federal deposit insurance",
+   "Gold Reserve Act (1934)",
+   "Social Security Act (1935)",
+   "Reserve requirement increases (1936–37)"
+  ],
+  "questions": [
+   {
+    "q": "Explain, using an AD–AS diagram, why US real output and the price level both fell between 1930 and 1933.",
+    "kind": "explain"
+   },
+   {
+    "q": "Analyse how bank failures could reduce aggregate demand even when the central bank’s interest rates were low.",
+    "kind": "analyse"
+   },
+   {
+    "q": "Evaluate the view that the gold standard, rather than the stock market crash, was the main cause of the Great Depression.",
+    "kind": "evaluate"
+   },
+   {
+    "q": "Using US nominal GDP for 1929 and 1933, calculate the percentage change and explain why it is larger than the fall in real output over the same years.",
+    "kind": "data"
+   },
+   {
+    "q": "Compare the policy responses to the Great Depression and to the 2008 financial crisis. Which differences best explain the different depth of the two downturns?",
+    "kind": "compare"
+   }
+  ],
+  "retrieval": [
+   {
+    "q": "On what date did Britain leave the gold standard?",
+    "a": "21 September 1931."
+   },
+   {
+    "q": "What did the Emergency Banking Act of March 1933 allow?",
+    "a": "Banks that inspectors judged sound could reopen after the national bank holiday, which restored depositors’ confidence."
+   },
+   {
+    "q": "What is debt deflation?",
+    "a": "A process in which falling prices raise the real burden of debts, causing defaults and distress sales that push prices down further."
+   },
+   {
+    "q": "By how much did US real GDP fall in 1932?",
+    "a": "By 12.9%, the largest annual fall of the decade."
+   },
+   {
+    "q": "What happened in 1937–38?",
+    "a": "A sharp relapse: after the Fed doubled reserve requirements and fiscal policy tightened, real GDP fell 3.3% in 1938."
+   }
+  ],
+  "reflection": "If falling wages and prices are supposed to restore full employment, why did four years of deflation seem to make the slump worse?",
+  "reading": [
+   {
+    "t": "Milton Friedman and Anna J. Schwartz, A Monetary History of the United States, 1867–1960, 1963",
+    "note": "The classic monetarist account; its chapter on 1929–33 sets out the case against the Federal Reserve."
+   },
+   {
+    "t": "Barry Eichengreen, Golden Fetters: The Gold Standard and the Great Depression, 1919–1939, 1992",
+    "note": "Explains how the gold standard spread and prolonged the slump across countries."
+   },
+   {
+    "t": "Charles P. Kindleberger, The World in Depression, 1929–1939, 1973",
+    "note": "Argues the slump deepened because no country was willing and able to stabilise the world economy."
+   },
+   {
+    "t": "John Kenneth Galbraith, The Great Crash, 1929, 1955",
+    "note": "A readable narrative of the speculative boom and the crash itself."
+   }
+  ],
+  "numbers": [
+   {
+    "value": "about a third",
+    "claim": "The US money stock fell by about a third between 1929 and 1933.",
+    "basis": "Friedman and Schwartz (1963), A Monetary History of the United States; widely cited."
+   },
+   {
+    "value": "roughly a quarter",
+    "claim": "US unemployment peaked at roughly a quarter of the labour force in 1933.",
+    "basis": "Standard historical estimates (Lebergott, published in US Historical Statistics) put 1933 unemployment at about 25%."
+   },
+   {
+    "value": "doubled",
+    "claim": "The Fed doubled member banks’ reserve requirements in three steps between August 1936 and May 1937.",
+    "basis": "Federal Reserve history; Friedman and Schwartz (1963)."
+   },
+   {
+    "value": "9–10% a year",
+    "claim": "Rate of price decline in 1931–32.",
+    "basis": "Derived from catalogue series us-cpi-infl: −8.9% (1931), −10.3% (1932)."
+   },
+   {
+    "value": "1925",
+    "claim": "Year Britain returned to gold at pre-war parity.",
+    "basis": "Widely documented (Churchill as Chancellor)."
+   }
+  ]
+ },
+ {
+  "id": "oil-1973",
+  "title": "The first oil shock, 1973–74",
+  "years": "1973–1974",
+  "start": "1973-10",
+  "end": "1975-03",
+  "region": "Global: oil importers in North America, Western Europe and Japan",
+  "kind": "shock",
+  "standfirst": "In late 1973 the price of the world’s most important commodity roughly quadrupled within three months. The question for economists was how to respond to a shock that raised inflation and unemployment at the same time.",
+  "question": "How can a rise in the price of one input push an economy into inflation and recession at once, and what can policy do about it?",
+  "before": {
+   "p": "By the early 1970s the industrial economies ran on cheap oil. Through the 1950s and 1960s crude prices were low and stable, and oil replaced coal in transport, heating, power and petrochemicals. US crude production peaked in 1970, so the United States relied increasingly on imports and lost the spare capacity that had once calmed world markets. The members of OPEC were taking control of output and prices from the large Western oil companies. Inflation was already rising: the Bretton Woods system of fixed exchange rates broke down between 1971 and 1973, and a synchronised boom in 1972–73 pushed up commodity prices.",
+   "facts": [
+    {
+     "t": "OPEC was founded in 1960 by Iran, Iraq, Kuwait, Saudi Arabia and Venezuela.",
+     "status": "fact"
+    },
+    {
+     "t": "US crude oil production peaked in 1970, leaving the country more dependent on imported oil.",
+     "status": "fact"
+    },
+    {
+     "t": "US consumer-price inflation was 3.3% in 1972 and 6.2% in 1973, before most of the oil price rise had passed through.",
+     "status": "fact"
+    },
+    {
+     "t": "In August 1971 the United States suspended the dollar’s convertibility into gold; major currencies were floating by March 1973.",
+     "status": "fact"
+    },
+    {
+     "t": "President Nixon imposed wage and price controls in August 1971; controls on domestic oil prices outlasted most of the others.",
+     "status": "fact"
+    }
+   ]
+  },
+  "trigger": {
+   "p": "On 6 October 1973 Egypt and Syria attacked Israel, beginning the October (Yom Kippur) War. On 16 October the Gulf members of OPEC raised the posted price of their benchmark crude by about 70% without negotiating with the oil companies. The next day Arab oil ministers announced monthly production cuts, and an embargo on the United States and the Netherlands followed because of their support for Israel. In December the Gulf producers more than doubled the posted price again, from January 1974.",
+   "status": "fact"
+  },
+  "timeline": [
+   {
+    "d": "1971-08",
+    "t": "Nixon closes the gold window",
+    "detail": "The United States suspended dollar convertibility into gold and froze wages and prices. The dollar’s later fall cut the real value of oil revenues priced in dollars, a grievance producers cited.",
+    "status": "fact"
+   },
+   {
+    "d": "1973-03",
+    "t": "Generalised floating begins",
+    "detail": "After a second dollar devaluation in February, major currencies began floating against the dollar. The fixed-rate system of the post-war decades had ended.",
+    "status": "fact"
+   },
+   {
+    "d": "1973-10-06",
+    "t": "The October War begins",
+    "detail": "Egypt and Syria attacked Israeli positions in Sinai and the Golan Heights. Arab oil producers prepared to use oil supplies as a political lever against Israel’s supporters.",
+    "status": "fact"
+   },
+   {
+    "d": "1973-10-16",
+    "t": "OPEC sets prices without the companies",
+    "detail": "Gulf members of OPEC raised the posted price of Arabian Light from about $3 to about $5 a barrel, setting prices unilaterally for the first time rather than negotiating with the oil companies.",
+    "status": "fact"
+   },
+   {
+    "d": "1973-10-17",
+    "t": "Arab production cuts and embargo",
+    "detail": "Arab exporters announced output cuts of 5% a month, followed by an embargo on the United States and the Netherlands. Buyers scrambled for supplies, and prices in spot markets rose well above posted prices.",
+    "status": "fact"
+   },
+   {
+    "d": "1973-11",
+    "t": "The US economy turns down",
+    "detail": "The NBER dates the peak of the US business cycle to November 1973. Real GDP then fell at an annualised rate of 3.4% in the first quarter of 1974.",
+    "status": "fact"
+   },
+   {
+    "d": "1973-12",
+    "t": "Posted price doubled again",
+    "detail": "Meeting in Tehran, Gulf producers set the posted price at $11.65 a barrel from 1 January 1974, roughly four times its level of early October.",
+    "status": "fact"
+   },
+   {
+    "d": "1974-01",
+    "t": "Britain’s three-day week",
+    "detail": "With coal supplies also cut by a miners’ overtime ban, the UK government limited commercial use of electricity to three days a week from January to early March 1974.",
+    "status": "fact"
+   },
+   {
+    "d": "1974-03",
+    "t": "Embargo on the US lifted",
+    "detail": "Most Arab producers ended the embargo on the United States in March 1974, but oil prices stayed at their new, much higher level.",
+    "status": "fact"
+   },
+   {
+    "d": "1974-11",
+    "t": "International Energy Agency founded",
+    "detail": "Oil-importing OECD countries created the IEA to share supplies in emergencies, hold minimum oil stocks and coordinate their energy policies, aiming to reduce exposure to future embargoes.",
+    "status": "fact"
+   },
+   {
+    "d": "1975-03",
+    "t": "US recession ends",
+    "detail": "The NBER dates the trough to March 1975. US unemployment averaged 8.5% in 1975, up from 4.9% in 1973, while inflation was still 9.1%.",
+    "status": "fact"
+   },
+   {
+    "d": "1975-12",
+    "t": "Energy Policy and Conservation Act",
+    "detail": "Congress created the Strategic Petroleum Reserve and fuel-economy standards for new cars, while extending controls on the price of domestically produced crude oil.",
+    "status": "fact"
+   }
+  ],
+  "actors": [
+   {
+    "who": "OPEC",
+    "role": "An organisation of oil-exporting states acting as a cartel. In 1973 its Gulf members took over price-setting from the international oil companies and raised posted prices about fourfold."
+   },
+   {
+    "who": "Arab oil exporters, led by Saudi Arabia",
+    "role": "Used production cuts and an embargo as a political weapon during and after the October War, turning a market already tight into an acute shortage."
+   },
+   {
+    "who": "The Federal Reserve under Arthur Burns",
+    "role": "Tightened in 1973–74 as inflation rose, then eased as the recession deepened; critics argue policy was too loose across the decade, letting the shock feed wage and price expectations."
+   },
+   {
+    "who": "The Nixon and Ford administrations",
+    "role": "Kept controls on domestic oil prices, introduced fuel-saving measures such as a national speed limit and, in 1975, cut taxes to support demand."
+   },
+   {
+    "who": "The major oil companies",
+    "role": "Lost control of posted prices and, over the decade, much of their ownership of reserves as producer governments took stakes or nationalised. They gained on inventories and non-OPEC output."
+   },
+   {
+    "who": "Households and firms in importing countries",
+    "role": "Faced higher bills for fuel, heating and energy-intensive goods, so their real incomes and profits fell while the prices they paid rose."
+   }
+  ],
+  "changed": "Oil-importing economies faced a large transfer of income to oil exporters: the price of their imports rose relative to their exports, and their current accounts weakened. Firms’ costs rose across transport, chemicals, plastics and power, so prices rose while output fell. US real GDP fell 0.5% in 1974 and 0.2% in 1975, unemployment rose from 4.9% in 1973 to 8.5% in 1975, and inflation reached 11.1% in 1974. The post-war belief that policy could steadily trade a little more inflation for lower unemployment was badly shaken.",
+  "predict": {
+   "q": "Oil prices roughly quadrupled in three months. Before looking at the mechanism, which pair of outcomes would you expect in an oil-importing economy in 1974–75?",
+   "options": [
+    "Higher inflation and lower unemployment, as in a demand boom",
+    "Higher inflation and higher unemployment",
+    "Lower inflation and higher unemployment, as in a demand slump"
+   ],
+   "answer": 1,
+   "explain": "A rise in the cost of a key input shifts SRAS to the left. The price level rises while real output falls, so inflation and unemployment rise together: stagflation. In the United States inflation was 11.1% in 1974 and unemployment reached 8.5% in 1975. A demand shock would have moved the two in opposite directions."
+  },
+  "mechanism": [
+   "Output cuts and embargo → supply of oil shifts left → price rises sharply because short-run demand and supply of oil are price-inelastic",
+   "Higher oil price → higher production costs for energy-using firms → SRAS shifts left → price level rises and real output falls (cost-push inflation)",
+   "Higher fuel bills → less income left for other goods → spending on cars and other goods falls → AD also weakens",
+   "Higher import bills → income transferred to oil exporters, who cannot spend it all at once → world spending falls in the short run",
+   "Rising prices → workers bargain for higher wages and expect more inflation → wage–price spiral shifts SRAS left again",
+   "Central bank accommodates → inflation persists; central bank tightens → recession deepens: the policy dilemma of a supply shock",
+   "Price controls on US crude → domestic price held below the world price → excess demand, queues and weaker incentives to conserve or produce"
+  ],
+  "charts": [
+   {
+    "series": "us-gdp-q",
+    "from": "1973-01",
+    "to": "1974-10",
+    "title": "US real GDP, quarter by quarter",
+    "look": "Output had already dipped in mid-1973. After the October price rise, growth was negative in three of the four quarters of 1974, turning a slowdown into a recession.",
+    "marks": [
+     {
+      "at": "1973-10",
+      "label": "War and embargo"
+     }
+    ]
+   },
+   {
+    "panel": "infl",
+    "entities": [
+     "USA",
+     "GBR",
+     "JPN",
+     "DEU"
+    ],
+    "from": "1970",
+    "to": "1979",
+    "title": "Same shock, different inflation",
+    "look": "Japan’s inflation reached 23.2% in 1974 and Britain’s 24.2% in 1975, while Germany’s peaked at 7.0%. Wage bargaining and monetary policy shaped how far the shock fed into prices.",
+    "marks": [
+     {
+      "at": "1974",
+      "label": "First full year"
+     }
+    ]
+   },
+   {
+    "series": "sp500-real",
+    "from": "1973-01",
+    "to": "1974-12",
+    "title": "Real share prices",
+    "look": "Inflation-adjusted share prices fell by more than half between January 1973 and December 1974 as profits were squeezed, inflation rose and interest rates climbed.",
+    "marks": [
+     {
+      "at": "1973-10",
+      "label": "October War"
+     }
+    ]
+   },
+   {
+    "series": "us-unemp",
+    "from": "1970",
+    "to": "1980",
+    "title": "US unemployment",
+    "look": "Unemployment rose from 4.9% in 1973 to 8.5% in 1975 and fell only slowly afterwards, even though inflation stayed high: the combination the simple Phillips curve did not expect.",
+    "marks": [
+     {
+      "at": "1975",
+      "label": "Peak year"
+     }
+    ]
+   }
+  ],
+  "diagrams": [
+   {
+    "dg": "costpush",
+    "how": "Draw AD and SRAS₁ meeting at P₁ and Y₁ near full employment. Shift SRAS left to SRAS₂ because energy costs rise. The price level rises to P₂ and real output falls to Y₂. Note that expansionary policy, shifting AD right, would raise output but push prices higher still."
+   },
+   {
+    "dg": "sshift",
+    "how": "In the world oil market, shift supply to the left (embargo and output cuts) along a steep, price-inelastic demand curve. The price rises far more, in percentage terms, than quantity falls, so producers’ total revenue rises."
+   }
+  ],
+  "policy": [
+   {
+    "who": "US Congress",
+    "when": "1973-11",
+    "what": "The Emergency Petroleum Allocation Act kept federal controls on domestic crude prices and allocated supplies among refiners and regions. Prices stayed below world levels, and many economists link the controls to shortages and petrol queues.",
+    "status": "fact"
+   },
+   {
+    "who": "US Congress",
+    "when": "1974-01",
+    "what": "The Emergency Highway Energy Conservation Act set a national speed limit of 55 miles per hour to save fuel, one of several measures aimed at cutting demand rather than raising supply.",
+    "status": "fact"
+   },
+   {
+    "who": "Federal Reserve",
+    "when": "1974",
+    "what": "Raised interest rates as inflation passed 10%, then cut them from late 1974 as unemployment rose. Critics argue it was too tight during the recession or too loose over the decade as a whole.",
+    "status": "fact"
+   },
+   {
+    "who": "International Monetary Fund",
+    "when": "1974",
+    "what": "Set up an oil facility to lend to member countries facing larger oil import bills, helping to recycle oil exporters’ surpluses to importing countries with deficits.",
+    "status": "fact"
+   },
+   {
+    "who": "OECD oil importers",
+    "when": "1974-11",
+    "what": "Created the International Energy Agency, with an emergency system for sharing oil among members and obligations to hold stocks, to reduce exposure to future embargoes.",
+    "status": "fact"
+   },
+   {
+    "who": "US Congress",
+    "when": "1975-03",
+    "what": "The Tax Reduction Act gave households a one-off rebate on 1974 taxes and cut taxes for 1975, an expansionary fiscal response once the recession was clear.",
+    "status": "fact"
+   }
+  ],
+  "stakeholders": [
+   {
+    "who": "Oil-exporting governments",
+    "effect": "Revenues multiplied almost overnight, financing development spending and large purchases of foreign assets; some, such as Saudi Arabia, earned far more than they could spend quickly."
+   },
+   {
+    "who": "Households in importing countries",
+    "effect": "Paid more for fuel and heating, so real incomes fell. Low-income households, which spend a larger share of income on energy, were hit hardest."
+   },
+   {
+    "who": "Energy-intensive industries",
+    "effect": "Airlines, chemicals and car makers faced higher costs and weaker demand; US car makers lost sales to smaller, more fuel-efficient imported cars."
+   },
+   {
+    "who": "Non-oil developing countries",
+    "effect": "Faced higher import bills and slower export demand. Many borrowed heavily, often from Western banks recycling oil surpluses, building debts that became a crisis in the 1980s."
+   },
+   {
+    "who": "Non-OPEC producers",
+    "effect": "Higher prices made costly fields worth developing; North Sea and Alaskan oil began flowing later in the decade, reducing reliance on OPEC."
+   }
+  ],
+  "short": "In the short run the shock hit through prices and confidence. Petrol queues, rationing plans and speed limits appeared. Firms passed higher energy costs on, so inflation jumped: 11.1% in the United States in 1974 and 16.0% in the UK. Real incomes fell and spending on cars and other durables dropped, so the US entered a recession that lasted from November 1973 to March 1975. Share prices fell steeply. Policymakers faced a dilemma: easing would support jobs but add to inflation.",
+  "long": "The long-run effects ran through energy use, technology and ideas. Higher prices encouraged insulation, smaller cars, fuel-economy standards and new non-OPEC supply, so oil demand became more price-elastic over time. Productivity growth slowed in many rich economies after 1973, though how much oil was to blame is debated. OPEC surpluses were recycled through Western banks to borrowers in Latin America and elsewhere. In economics, the episode weakened faith in a stable Phillips curve trade-off and strengthened monetarist and supply-side arguments.",
+  "transmission": "The shock spread through trade, finance and prices. Every oil importer faced the same jump in its import bill, so inflation rose and growth slowed in many countries at once. Exporters’ surpluses were mirrored by deficits in importers’ current accounts. Floating exchange rates, new since 1973, absorbed some pressure but let weaker currencies fall, adding to imported inflation. Banks recycled petrodollar deposits as loans to developing countries. Outcomes differed: Germany’s tighter policy and wage restraint kept inflation far lower than in Britain or Japan.",
+  "winners": [
+   {
+    "t": "Oil-exporting governments, whose revenues multiplied.",
+    "status": "fact"
+   },
+   {
+    "t": "Oil producers outside OPEC, such as North Sea and Alaskan fields, which became profitable at higher prices.",
+    "status": "fact"
+   },
+   {
+    "t": "Makers of small, fuel-efficient cars, notably Japanese firms that gained market share in the United States.",
+    "status": "inference"
+   }
+  ],
+  "losers": [
+   {
+    "t": "Oil-importing developing countries facing higher import bills without oil revenues.",
+    "status": "fact"
+   },
+   {
+    "t": "Workers in energy-intensive and car industries who lost jobs in the 1973–75 recession.",
+    "status": "fact"
+   },
+   {
+    "t": "Savers holding cash and fixed-rate bonds, whose real value was eroded by double-digit inflation.",
+    "status": "inference"
+   }
+  ],
+  "unintended": [
+   {
+    "t": "US price controls, meant to protect consumers, weakened incentives to conserve and to produce, and contributed to petrol queues.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Recycling oil surpluses as bank loans to developing countries eased adjustment in the 1970s but built the debts behind the 1980s debt crisis.",
+    "status": "interpretation"
+   },
+   {
+    "t": "High prices spurred non-OPEC exploration and energy efficiency, which later weakened OPEC’s market power.",
+    "status": "inference"
+   }
+  ],
+  "interpretations": [
+   {
+    "view": "Supply-shock view (mainstream)",
+    "p": "The oil price rise was an adverse supply shock that shifted SRAS left and made importing countries poorer. Some rise in prices and fall in output could not be avoided; policy could only decide how to split the pain between inflation and unemployment, and how long it lasted.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Monetarist (Friedman)",
+    "p": "A rise in one relative price need not raise the general price level persistently. Sustained inflation required monetary accommodation, and inflation was already rising before October 1973 because money growth had been too fast. On this view oil was the occasion, not the root cause, of 1970s inflation.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Barsky and Kilian",
+    "p": "Causation may partly run the other way: a global monetary expansion and boom in 1972–73 raised commodity prices and strengthened OPEC’s hand, so the oil shock was partly a symptom of earlier policy. Others stress the war and embargo as genuinely external. The weight to give each is disputed.",
+    "status": "controversy"
+   },
+   {
+    "view": "Monetary response view (Bernanke and co-authors)",
+    "p": "Some research suggests much of the output loss after oil shocks came from central banks’ tightening in response to higher inflation, not from the oil price itself. Critics question the method and argue the oil effect was large on its own.",
+    "status": "controversy"
+   }
+  ],
+  "explain": [
+   "The cost-push AD–AS model shows why a rise in input costs raises the price level and cuts real output at the same time.",
+   "Low short-run price elasticity of demand for oil explains why modest supply cuts produced huge price rises and higher revenue for producers.",
+   "Cartel theory explains why coordinated output restrictions raise members’ joint profits, at least while members comply with their quotas."
+  ],
+  "miss": [
+   "A one-off SRAS shift predicts a one-off rise in the price level, not years of high inflation; persistence needs expectations, wage bargaining and monetary accommodation.",
+   "Static models miss the time dimension: oil demand and non-OPEC supply became much more elastic over a decade, eroding the cartel’s power.",
+   "Simple models struggle to separate the oil shock from the earlier demand boom, the end of Bretton Woods and the productivity slowdown that coincided with it."
+  ],
+  "differently": [
+   {
+    "t": "Letting domestic oil prices rise to world levels, with targeted help for poor households, would have encouraged conservation and supply and avoided queues. Critics of decontrol worried about windfall gains for producers and the burden on low-income consumers.",
+    "status": "controversy"
+   },
+   {
+    "t": "A firmer monetary response, as in West Germany, might have limited second-round wage and price effects. The cost would have been a deeper short-run recession, which is why many governments chose to accommodate.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Holding emergency stocks and diversifying energy supplies before 1973 would have reduced vulnerability. Importers did this mainly after the shock, through the IEA’s stockholding rules and national reserves such as the US Strategic Petroleum Reserve.",
+    "status": "interpretation"
+   }
+  ],
+  "whatif": {
+   "q": "Suppose the Federal Reserve had kept money growth tight throughout 1973–75. What would most likely have happened?",
+   "options": [
+    "Neither inflation nor unemployment would have risen",
+    "Inflation would probably have been lower, but the recession deeper or longer",
+    "Inflation would have been higher, because tight money raises firms’ costs"
+   ],
+   "best": 1,
+   "explain": "Tight money cannot undo a supply shock: the higher oil price still shifts SRAS left. It can limit second-round effects on wages and expectations, so inflation would probably have been lower, as West Germany’s experience suggests. With AD held back while SRAS falls, output and employment would probably have fallen further in the short run. The size of each effect is uncertain and depends on how quickly expectations adjusted."
+  },
+  "compare": [
+   {
+    "id": "oil-1979",
+    "similar": "Both were oil supply disruptions linked to Middle East politics that sharply raised prices, pushed up inflation and contributed to recessions in oil-importing economies, with petrol queues in the United States.",
+    "different": "In 1979 the supply loss came from revolution and panic buying rather than a cartel decision, and the Fed under Volcker responded with sustained tightening rather than accommodation.",
+    "dominant": "1973–74: a cartel-driven SRAS shift, met by accommodating policy in many countries. 1979–80: a supply disruption followed by a monetary regime change aimed at breaking inflation."
+   },
+   {
+    "id": "bretton-woods-1971",
+    "similar": "Both ended the post-war stability of the 1960s and fed 1970s inflation; the dollar’s fall after 1971 was one reason oil exporters wanted higher dollar prices.",
+    "different": "The end of Bretton Woods was a change in the international monetary system chosen by governments; the oil shock was a sudden rise in the price of a key input.",
+    "dominant": "1971–73: a monetary and exchange-rate regime change that loosened the anchor on inflation. 1973–74: a real supply shock to costs and output."
+   },
+   {
+    "id": "stagflation-1970s",
+    "similar": "The 1973–74 shock opened the decade of stagflation, combining rising inflation with rising unemployment and weak growth across the industrial economies, and both challenged the simple Phillips curve.",
+    "different": "The oil shock was a single, datable event; the wider stagflation also reflected loose money, rising inflation expectations, a second oil shock and slower productivity growth over many years.",
+    "dominant": "1973–74: a sudden SRAS shift. The 1970s as a whole: repeated supply shocks combined with accommodating demand policy and entrenched expectations."
+   }
+  ],
+  "ib": {
+   "subs": [
+    "2.2",
+    "2.5",
+    "2.11",
+    "3.2",
+    "3.3",
+    "3.5",
+    "4.6"
+   ],
+   "kc": [
+    "Change",
+    "Interdependence",
+    "Scarcity",
+    "Intervention",
+    "Economic well-being"
+   ],
+   "note": "Supports analysis of cost-push inflation with an SRAS shift, use of PED to explain oil revenue, and evaluation of policy trade-offs; the cartel analysis links to market power, which is HL only (2.11)."
+  },
+  "cambridge": {
+   "topics": [
+    "cost-push inflation",
+    "aggregate supply",
+    "price elasticity of demand",
+    "oligopoly and cartels",
+    "balance of payments",
+    "inflation and unemployment"
+   ],
+   "note": "A clear case for showing how a change in a single input price affects the whole economy."
+  },
+  "university": {
+   "fields": [
+    "macroeconomics",
+    "energy economics",
+    "international economics",
+    "economic history"
+   ],
+   "note": "A university course would add econometric evidence on the effects of oil shocks, the distinction between supply-driven and demand-driven oil price changes, and models of optimal monetary policy after a supply shock."
+  },
+  "civil": {
+   "themes": [
+    "external sector",
+    "inflation management",
+    "energy security",
+    "balance of payments"
+   ],
+   "note": "India’s inflation reached 28.6% in 1974 as oil and food prices rose together; the episode is a reference point for India’s exposure to imported energy and its current account."
+  },
+  "economists": [
+   "friedman",
+   "keynes"
+  ],
+  "causal": [
+   "inflation",
+   "unemployment",
+   "growth"
+  ],
+  "concepts": [
+   "Cost-push inflation",
+   "SRAS",
+   "Aggregate supply",
+   "Primary commodity",
+   "Price elasticity of demand",
+   "Oligopoly",
+   "Collusion",
+   "Current account",
+   "Price ceiling",
+   "Phillips curve",
+   "Floating exchange rate",
+   "Recession",
+   "Inflation"
+  ],
+  "cases": [
+   "MAC-042",
+   "MIC-033",
+   "GLO-031",
+   "GLO-051"
+  ],
+  "policies": [
+   "Emergency Petroleum Allocation Act (1973)",
+   "National 55 mph speed limit (1974)",
+   "IMF oil facility (1974)",
+   "International Energy Agency emergency sharing (1974)",
+   "Tax Reduction Act of 1975",
+   "Strategic Petroleum Reserve (1975)",
+   "Domestic oil price controls"
+  ],
+  "questions": [
+   {
+    "q": "Explain why the 1973–74 oil price rise increased both inflation and unemployment in the United States.",
+    "kind": "explain"
+   },
+   {
+    "q": "Using a diagram, analyse why oil exporters’ revenue rose even though the quantity of oil they sold fell.",
+    "kind": "analyse"
+   },
+   {
+    "q": "Evaluate the use of price controls on domestic oil as a response to the 1973 oil shock.",
+    "kind": "evaluate"
+   },
+   {
+    "q": "Using the inflation data for 1973–76, compare Germany and the United Kingdom and suggest two reasons for the difference.",
+    "kind": "data"
+   },
+   {
+    "q": "Compare how the 1973 oil shock and the Great Depression appear on an AD–AS diagram, and explain what this implies for policy.",
+    "kind": "compare"
+   }
+  ],
+  "retrieval": [
+   {
+    "q": "When did the Arab oil embargo begin and end?",
+    "a": "It was announced in October 1973 and lifted for the United States in March 1974."
+   },
+   {
+    "q": "What is cost-push inflation?",
+    "a": "A rise in the general price level caused by higher costs of production, shown as a leftward shift of SRAS."
+   },
+   {
+    "q": "What was US inflation in 1974?",
+    "a": "11.1%."
+   },
+   {
+    "q": "Why did oil revenues rise when output was cut?",
+    "a": "Short-run demand for oil was price-inelastic, so the percentage rise in price exceeded the percentage fall in quantity."
+   },
+   {
+    "q": "What was the International Energy Agency set up to do?",
+    "a": "Coordinate importing countries’ energy policies, require oil stocks and share supplies in emergencies."
+   }
+  ],
+  "reflection": "If a supply shock makes a country poorer, can any macroeconomic policy avoid the loss, or can it only decide who bears it?",
+  "reading": [
+   {
+    "t": "Daniel Yergin, The Prize: The Epic Quest for Oil, Money and Power, 1991",
+    "note": "A detailed history of the oil industry, including the rise of OPEC and the 1973 embargo."
+   },
+   {
+    "t": "Alan S. Blinder, Economic Policy and the Great Stagflation, 1979",
+    "note": "A contemporary economist’s analysis of supply shocks and US policy in the 1970s."
+   },
+   {
+    "t": "Robert B. Barsky and Lutz Kilian, Do We Really Know that Oil Caused the Great Stagflation? A Monetary Alternative, 2001",
+    "note": "Sets out the argument that monetary conditions, not only oil, drove 1970s inflation."
+   }
+  ],
+  "numbers": [
+   {
+    "value": "about 70%",
+    "claim": "Rise in the posted price of Arabian Light on 16 October 1973 (from about $3.01 to $5.12 a barrel).",
+    "basis": "Decision of OPEC’s Gulf members, 16 October 1973; widely documented (e.g. Yergin, The Prize)."
+   },
+   {
+    "value": "$11.65",
+    "claim": "Posted price of Arabian Light from 1 January 1974.",
+    "basis": "Tehran meeting of Gulf producers, December 1973; widely documented."
+   },
+   {
+    "value": "roughly quadrupled / about fourfold",
+    "claim": "Increase in the posted oil price between early October 1973 and January 1974.",
+    "basis": "$3.01 to $11.65 per barrel; widely documented."
+   },
+   {
+    "value": "5% a month",
+    "claim": "Arab production cuts announced on 17 October 1973.",
+    "basis": "OAPEC ministers’ announcement in Kuwait; widely documented."
+   },
+   {
+    "value": "55 miles per hour",
+    "claim": "National speed limit set by the Emergency Highway Energy Conservation Act.",
+    "basis": "US federal law signed January 1974."
+   },
+   {
+    "value": "1960; five founders",
+    "claim": "OPEC founding year and members.",
+    "basis": "Baghdad conference, September 1960."
+   }
+  ]
+ },
+ {
+  "id": "oil-1979",
+  "title": "The second oil shock, 1979–80",
+  "years": "1979–1980",
+  "start": "1978-10",
+  "end": "1982",
+  "region": "Global: Iran, the United States, Western Europe and Japan",
+  "kind": "shock",
+  "standfirst": "Revolution in Iran took one of the world’s largest oil exporters out of the market, and fear did the rest: crude prices more than doubled. This time the decisive response came from central banks, which chose to break inflation even at the cost of deep recession.",
+  "question": "Why did a partial loss of oil supply cause such a large price rise, and why was the policy response so different from 1973?",
+  "before": {
+   "p": "After the first oil shock, the dollar price of oil rose only gradually between 1974 and 1978, and in real terms it drifted down as general inflation eroded it. Western economies recovered from the 1974–75 recession, but inflation stayed high, and the dollar fell sharply against the yen and the Deutsche Mark in 1977–78. Many governments still hoped to bring unemployment down without much extra inflation. Iran was one of OPEC’s largest exporters, and the Shah was a close ally of the West. In the United States, federal controls still held domestic crude prices below world levels.",
+   "facts": [
+    {
+     "t": "US consumer-price inflation was 6.5% in 1977 and 7.6% in 1978.",
+     "status": "fact"
+    },
+    {
+     "t": "The yen strengthened from an average of 268.38 per dollar in 1977 to 210.46 in 1978.",
+     "status": "fact"
+    },
+    {
+     "t": "Iran was OPEC’s second-largest exporter after Saudi Arabia in the late 1970s.",
+     "status": "fact"
+    },
+    {
+     "t": "US controls on domestic crude oil prices, introduced in the early 1970s, were still in force in 1978.",
+     "status": "fact"
+    }
+   ]
+  },
+  "trigger": {
+   "p": "From October 1978, strikes by Iranian oil workers, part of the revolution against the Shah, cut Iran’s exports sharply, and they almost stopped around the turn of the year. The Shah left Iran in January 1979. Saudi Arabia and other producers raised output, but buyers feared further disruption and rushed to build stocks. Precautionary buying on top of the lost Iranian supply pushed spot prices far above official contract prices, and OPEC members raised their official prices in successive steps through 1979.",
+   "status": "fact"
+  },
+  "timeline": [
+   {
+    "d": "1978-10",
+    "t": "Strikes hit Iranian oil fields",
+    "detail": "Oil workers joined the revolutionary movement against the Shah. Iranian production fell steeply over the following weeks, removing a large share of OPEC exports from the market.",
+    "status": "fact"
+   },
+   {
+    "d": "1979-01",
+    "t": "The Shah leaves Iran",
+    "detail": "The Shah left the country on 16 January and Ayatollah Khomeini returned on 1 February. Iranian exports resumed later in 1979, but at a lower level than before the revolution.",
+    "status": "fact"
+   },
+   {
+    "d": "1979-04",
+    "t": "Carter announces phased decontrol",
+    "detail": "President Carter announced that controls on domestic crude prices would be phased out from June 1979, paired with a proposed tax on producers’ windfall profits.",
+    "status": "fact"
+   },
+   {
+    "d": "1979-06",
+    "t": "Petrol queues in the United States",
+    "detail": "Allocation rules and price controls, combined with panic buying, produced long queues at petrol stations; several states introduced odd–even rationing based on number plates.",
+    "status": "fact"
+   },
+   {
+    "d": "1979-07",
+    "t": "Carter’s energy address",
+    "detail": "In a televised speech on 15 July, President Carter described a national crisis of confidence and proposed limits on oil imports and a large synthetic-fuels programme.",
+    "status": "fact"
+   },
+   {
+    "d": "1979-08",
+    "t": "Volcker becomes Fed chair",
+    "detail": "Paul Volcker took office at the Federal Reserve on 6 August, with US inflation running above 10% and the dollar under pressure in foreign exchange markets.",
+    "status": "fact"
+   },
+   {
+    "d": "1979-10-06",
+    "t": "The Fed changes its approach",
+    "detail": "The Fed announced it would target the growth of bank reserves rather than short-term interest rates, allowing rates to rise as far as needed to slow money growth.",
+    "status": "fact"
+   },
+   {
+    "d": "1980-01",
+    "t": "Recession begins",
+    "detail": "The NBER dates a US cycle peak to January 1980. In March the administration and the Fed introduced credit controls, which cut consumer borrowing sharply before they were lifted in July.",
+    "status": "fact"
+   },
+   {
+    "d": "1980-04",
+    "t": "Windfall profit tax enacted",
+    "detail": "Congress passed the Crude Oil Windfall Profit Tax Act, taxing part of the gain domestic producers received as controlled prices rose towards world levels.",
+    "status": "fact"
+   },
+   {
+    "d": "1980-09",
+    "t": "Iran–Iraq war begins",
+    "detail": "Iraq invaded Iran on 22 September, cutting exports from both countries and pushing prices up again; crude prices for this episode peaked around the turn of 1980–81.",
+    "status": "fact"
+   },
+   {
+    "d": "1981-01",
+    "t": "Reagan completes decontrol",
+    "detail": "On 28 January 1981 President Reagan ended the remaining federal controls on crude oil and petrol prices, months ahead of the planned timetable.",
+    "status": "fact"
+   },
+   {
+    "d": "1982",
+    "t": "Disinflation and deep recession",
+    "detail": "With interest rates very high, US unemployment averaged 9.7% in 1982 and inflation fell to 6.1%, then 3.2% in 1983. In August, Mexico’s debt crisis spread the strain to borrowing countries.",
+    "status": "fact"
+   }
+  ],
+  "actors": [
+   {
+    "who": "Iranian oil workers and the revolutionary movement",
+    "role": "Strikes from October 1978 brought Iranian oil production close to a halt, the immediate cause of the loss of supply."
+   },
+   {
+    "who": "Saudi Arabia and other OPEC producers",
+    "role": "Saudi Arabia raised output to offset part of the loss, but OPEC members also raised official prices repeatedly, and for a period members charged different official prices."
+   },
+   {
+    "who": "Paul Volcker and the Federal Reserve",
+    "role": "Chair from August 1979. Shifted to targeting bank reserves and let short-term interest rates rise to around 20%, accepting recession to break inflation expectations."
+   },
+   {
+    "who": "Jimmy Carter",
+    "role": "President 1977–81. Began phased oil price decontrol, introduced a windfall profit tax and conservation measures, and appointed Volcker to the Federal Reserve."
+   },
+   {
+    "who": "Margaret Thatcher’s government",
+    "role": "Elected in May 1979. Pursued tight monetary targets while North Sea oil and high interest rates pushed sterling up, squeezing British manufacturing."
+   },
+   {
+    "who": "Japanese firms and unions",
+    "role": "Kept wage settlements moderate after 1979, limiting second-round inflation; Japan’s inflation peaked at 7.8% in 1980, against 23.2% in 1974."
+   }
+  ],
+  "changed": "Oil prices more than doubled between 1978 and 1980, renewing cost-push pressure in economies where inflation was already high. US inflation rose to 13.5% in 1980. The decisive change came in policy: central banks, led by the Federal Reserve, made reducing inflation their priority. Long-term US interest rates rose, with the 10-year yield averaging 13.91% in 1981, the dollar strengthened, and the US had two recessions in quick succession. By 1983 inflation had fallen to 3.2%. High prices also cut oil demand and spurred non-OPEC supply.",
+  "predict": {
+   "q": "From October 1979 the Fed let short-term interest rates rise to record levels while inflation was above 10%. What would you expect to happen first?",
+   "options": [
+    "Inflation falls quickly with little effect on output",
+    "Output and employment fall first; inflation falls more slowly",
+    "Inflation rises further because higher rates raise firms’ costs"
+   ],
+   "answer": 1,
+   "explain": "Monetary policy works with lags. Higher real interest rates cut investment, house building and spending on durables, so AD falls and unemployment rises before wage and price setting adjusts. US unemployment averaged 9.7% in 1982, while inflation fell from 13.5% in 1980 to 3.2% in 1983. The cost of disinflation fell first on output and jobs."
+  },
+  "mechanism": [
+   "Iranian strikes and revolution → supply of oil shifts left → with price-inelastic short-run demand, the price rises sharply",
+   "Fear of further disruption → firms and governments buy for stocks → demand for oil shifts right, adding to the price rise",
+   "Higher oil price → SRAS shifts left in importing economies → cost-push inflation and lower real output",
+   "Inflation already high and expected to persist → wages indexed or bargained upward → second-round effects risk a wage–price spiral",
+   "Fed targets reserves → short-term rates rise to around 20% → real interest rates turn strongly positive → investment and consumption fall → AD shifts left",
+   "Higher US interest rates → capital inflows → dollar appreciates → import prices fall, helping disinflation, while US exporters lose competitiveness",
+   "Sustained tightening → inflation expectations fall → the short-run Phillips curve shifts down over time (a shift, not a movement along the curve)",
+   "Prices stay high for several years → more efficient energy use and more non-OPEC supply → oil demand and supply become more elastic → prices fall in the mid-1980s"
+  ],
+  "charts": [
+   {
+    "series": "us-cpi-infl",
+    "from": "1975",
+    "to": "1986",
+    "title": "US inflation: second peak and the break",
+    "look": "Inflation rose from 7.6% in 1978 to 13.5% in 1980, then fell to 3.2% by 1983 as tight money took hold. Compare the speed of this fall with the slow decline after 1975.",
+    "marks": [
+     {
+      "at": "1979",
+      "label": "Volcker appointed"
+     },
+     {
+      "at": "1983",
+      "label": "Inflation at 3.2%"
+     }
+    ]
+   },
+   {
+    "series": "us10y",
+    "from": "1975",
+    "to": "1986",
+    "title": "Long-term interest rates",
+    "look": "The 10-year yield rose from 8.41% in 1978 to 13.91% in 1981 as the Fed tightened and investors demanded compensation for inflation risk. It fell as inflation came down.",
+    "marks": [
+     {
+      "at": "1979",
+      "label": "Fed changes approach"
+     }
+    ]
+   },
+   {
+    "series": "us-unemp",
+    "from": "1976",
+    "to": "1986",
+    "title": "The output cost of disinflation",
+    "look": "Unemployment rose in 1980 and again, more steeply, to average 9.7% in 1982. Compare this with the fall in inflation in the first chart to see the trade-off.",
+    "marks": [
+     {
+      "at": "1982",
+      "label": "Peak year"
+     }
+    ]
+   },
+   {
+    "panel": "infl",
+    "entities": [
+     "USA",
+     "GBR",
+     "JPN",
+     "DEU"
+    ],
+    "from": "1976",
+    "to": "1985",
+    "title": "Second shock, different results",
+    "look": "Japan’s inflation peaked at 7.8% in 1980, far below its 1974 peak, while Britain’s reached 18.0%. Wage bargaining and monetary credibility mattered as much as the oil price.",
+    "marks": [
+     {
+      "at": "1980",
+      "label": "Peak for most"
+     }
+    ]
+   }
+  ],
+  "diagrams": [
+   {
+    "dg": "costpush",
+    "how": "Shift SRAS left as oil costs rise, raising the price level and cutting real output. Then show the policy response: contractionary monetary policy shifts AD left, holding the price level down but reducing real output still further in the short run."
+   },
+   {
+    "dg": "phillips",
+    "how": "HL only. Draw a short-run Phillips curve at high expected inflation and a vertical long-run curve at the natural rate. Tight money moves the economy along the short-run curve to higher unemployment; as expected inflation falls, the short-run curve shifts down."
+   }
+  ],
+  "policy": [
+   {
+    "who": "Federal Reserve",
+    "when": "1979-10",
+    "what": "Switched to targeting bank reserves and money growth, letting short-term interest rates rise to around 20% at their peaks in 1980–81. The aim was to break inflation expectations, accepting a recession.",
+    "status": "fact"
+   },
+   {
+    "who": "Carter administration and Federal Reserve",
+    "when": "1980-03",
+    "what": "Introduced credit controls to restrain consumer borrowing. Spending fell much faster than expected, the economy contracted sharply in the second quarter, and the controls were lifted by July.",
+    "status": "fact"
+   },
+   {
+    "who": "US Congress",
+    "when": "1980-04",
+    "what": "Passed the Crude Oil Windfall Profit Tax Act, an excise tax on part of the difference between decontrolled prices and a base price, so that the government shared in producers’ gains.",
+    "status": "fact"
+   },
+   {
+    "who": "Reagan administration",
+    "when": "1981-01",
+    "what": "Ended remaining federal price and allocation controls on crude oil and petrol, letting domestic prices move with world prices and removing the rules blamed for the 1979 queues.",
+    "status": "fact"
+   },
+   {
+    "who": "UK government",
+    "when": "1980-03",
+    "what": "The Medium Term Financial Strategy set declining targets for money growth and public borrowing over several years, aiming to bring down inflation and the inflation expectations built into wages.",
+    "status": "fact"
+   }
+  ],
+  "stakeholders": [
+   {
+    "who": "US borrowers and home-buyers",
+    "effect": "Faced loan and mortgage rates at record levels; house building and car sales fell sharply in 1980–82 as higher real interest rates cut demand for credit."
+   },
+   {
+    "who": "Manufacturing workers in the US and UK",
+    "effect": "Bore heavy job losses as demand fell and strong currencies hurt exports; many plants in older industrial regions closed permanently."
+   },
+   {
+    "who": "Savers and lenders",
+    "effect": "Gained once interest rates rose well above inflation in the early 1980s, ending years in which real returns on deposits and bonds had often been negative."
+   },
+   {
+    "who": "Developing-country borrowers",
+    "effect": "Had borrowed at floating rates in dollars; higher US rates and a stronger dollar raised debt service sharply, leading to Mexico’s 1982 crisis and a lost decade in Latin America."
+   },
+   {
+    "who": "Oil exporters",
+    "effect": "Earned large revenues in 1979–81, but high prices reduced demand for OPEC oil, and its market share and prices fell in the mid-1980s."
+   }
+  ],
+  "short": "In 1979 the shock looked like a repeat of 1973: petrol queues, rising prices and falling confidence. US inflation rose to 11.3% in 1979 and 13.5% in 1980. The difference was the policy response. After October 1979 the Fed let interest rates rise steeply, and the 1980 credit controls briefly cut consumer spending. US real GDP fell 0.3% in 1980; after a short recovery a deeper recession followed from mid-1981 to late 1982, and unemployment averaged 9.7% in 1982.",
+  "long": "Over the following decade inflation fell across most rich economies, and governments increasingly gave central banks independence and clear inflation goals to lock in the gains. High oil prices accelerated energy saving and non-OPEC production in the North Sea, Alaska and Mexico, and the oil price fell sharply in 1986. The years of high interest rates and a strong dollar left a legacy of debt crises in Latin America and job losses in older industries. The episode became the standard example of a disinflation that worked but was costly.",
+  "transmission": "The oil price rise reached every importer at once, but after 1979 transmission ran mainly through interest rates and exchange rates. Tight US policy drew capital into dollar assets, the dollar rose, and other central banks had to choose between matching US rates and accepting weaker currencies and imported inflation. Developing countries that had borrowed in dollars at floating rates saw debt service jump as commodity prices fell, and Mexico’s 1982 crisis began a wider debt crisis. Oil exporters gained until demand fell.",
+  "winners": [
+   {
+    "t": "Oil exporters and non-OPEC producers in 1979–81, while prices stayed high.",
+    "status": "fact"
+   },
+   {
+    "t": "Savers and creditors once real interest rates turned clearly positive in the early 1980s.",
+    "status": "inference"
+   },
+   {
+    "t": "Holders of dollar assets as the dollar appreciated from 1980–81.",
+    "status": "inference"
+   }
+  ],
+  "losers": [
+   {
+    "t": "Indebted developing countries facing higher interest costs and weaker commodity export prices.",
+    "status": "fact"
+   },
+   {
+    "t": "Workers in US and UK manufacturing during the 1980–82 recessions.",
+    "status": "fact"
+   },
+   {
+    "t": "Households with variable-rate debt, and firms in interest-sensitive sectors such as housing and cars.",
+    "status": "inference"
+   }
+  ],
+  "unintended": [
+   {
+    "t": "US price controls and allocation rules, meant to shield consumers, worsened the 1979 petrol queues by stopping prices from clearing local shortages.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Sustained high oil prices undermined OPEC by encouraging conservation and rival supply, contributing to the 1986 price collapse.",
+    "status": "inference"
+   },
+   {
+    "t": "The 1980 credit controls cut spending far more sharply than intended and were withdrawn within months.",
+    "status": "inference"
+   }
+  ],
+  "interpretations": [
+   {
+    "view": "Monetarist (Friedman)",
+    "p": "Inflation is ultimately a monetary phenomenon. The oil shock raised one relative price, but double-digit inflation persisted because money had grown too fast for a decade. On this view Volcker’s control of money growth, not oil, explains why inflation fell after 1980.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Keynesian and supply-shock view",
+    "p": "Oil drove much of the 1979–80 spike, and falling commodity prices later helped disinflation. Tight money was needed, but its costs were larger than necessary; a more gradual approach, perhaps with incomes policies, might have cut inflation with less unemployment.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Credibility and expectations",
+    "p": "The cost of disinflation depends on whether people believe the central bank. Volcker’s sustained tightening eventually established credibility and lowered expected inflation; the recession was deep partly because credibility had been lost in the 1970s and took time to rebuild.",
+    "status": "interpretation"
+   },
+   {
+    "view": "The British debate",
+    "p": "Economists dispute whether the 1980–81 slump in British manufacturing came mainly from tight monetary policy, from North Sea oil pushing up sterling, or from both. In 1981, 364 economists signed a public letter opposing the government’s macroeconomic policy, yet output began to recover later that year, which each side read differently.",
+    "status": "controversy"
+   }
+  ],
+  "explain": [
+   "The cost-push AD–AS model shows why the oil price rise raised prices and cut real output again in 1979–80.",
+   "The expectations-augmented Phillips curve (HL only) explains why reducing inflation required a period of unemployment above the natural rate.",
+   "The foreign exchange model shows why higher US interest rates attracted capital and appreciated the dollar, spreading tight policy abroad."
+  ],
+  "miss": [
+   "Standard models treat the oil market as a supply shift, but much of the 1979 price spike came from precautionary buying and expectations, not lost production alone.",
+   "They give little guidance on how fast credibility builds, which largely decided how costly the Volcker disinflation turned out to be.",
+   "Simple models miss distributional effects: high rates and a strong dollar concentrated losses on manufacturing regions and indebted developing countries.",
+   "Money-growth targets worked less well than monetarist models suggested, partly because the demand for money became unstable as financial markets were deregulated."
+  ],
+  "differently": [
+   {
+    "t": "Removing US oil price controls earlier would have let prices ration supply and reduced the 1979 queues, at the cost of higher prices for consumers in the short run and larger windfall gains for domestic producers.",
+    "status": "interpretation"
+   },
+   {
+    "t": "A more gradual disinflation, possibly supported by incomes policies, might have reduced the unemployment cost. Critics argue gradualism had failed in the 1970s and only a sharp break could restore credibility.",
+    "status": "controversy"
+   },
+   {
+    "t": "Clearer coordination of stock policies among oil-importing countries in 1979 might have damped the precautionary buying that added so much to the price spike, since much of the shortage came from stockbuilding rather than lost production.",
+    "status": "interpretation"
+   }
+  ],
+  "whatif": {
+   "q": "If the Fed had not tightened sharply in 1979–81, what would most likely have happened to US inflation in the early 1980s?",
+   "options": [
+    "It would have fallen anyway as oil prices eased",
+    "It would probably have stayed high for longer, with a milder recession at first",
+    "It would have fallen faster, because high interest rates add to costs"
+   ],
+   "best": 1,
+   "explain": "Without tighter money, expectations of high inflation would probably have persisted, so inflation would likely have stayed higher for longer, although the 1986 oil price fall would eventually have helped. Unemployment might have been lower in 1981–82. Some economists argue the later costs of entrenched inflation would have been greater; the size of the trade-off cannot be measured directly."
+  },
+  "compare": [
+   {
+    "id": "oil-1973",
+    "similar": "Both were Middle East supply disruptions that sharply raised oil prices and inflation in importing countries, and both brought petrol queues to the United States under price controls.",
+    "different": "In 1979 the loss came from revolution rather than a cartel decision, precautionary buying amplified it, and central banks responded with sustained tightening instead of accommodation.",
+    "dominant": "1973–74: an SRAS shift met by accommodating policy, leading to entrenched inflation. 1979–82: an SRAS shift followed by a deliberate leftward AD shift to break expectations."
+   },
+   {
+    "id": "stagflation-1970s",
+    "similar": "The 1979 shock was the final and most acute phase of the 1970s stagflation, combining high inflation with weak growth and rising unemployment in most industrial economies.",
+    "different": "The 1970s stagflation built over a decade from several causes; the 1979–80 episode added a sharp new oil shock and ended with a change of regime in monetary policy.",
+    "dominant": "The 1970s as a whole: repeated supply shocks plus loose money and rising expectations. 1979–82: an oil shock followed by a demand contraction that reset expectations."
+   }
+  ],
+  "ib": {
+   "subs": [
+    "3.2",
+    "3.3",
+    "3.5",
+    "3.7",
+    "4.5",
+    "4.6"
+   ],
+   "kc": [
+    "Change",
+    "Intervention",
+    "Economic well-being",
+    "Interdependence",
+    "Equity"
+   ],
+   "note": "Supports evaluation of contractionary monetary policy and its trade-offs, analysis of cost-push inflation, and (HL only) application of the short-run and long-run Phillips curves to disinflation."
+  },
+  "cambridge": {
+   "topics": [
+    "inflation",
+    "monetary policy",
+    "unemployment",
+    "exchange rates",
+    "price controls",
+    "supply-side policy"
+   ],
+   "note": "A case for weighing the costs of reducing inflation against unemployment, and for linking interest rates to exchange rates."
+  },
+  "university": {
+   "fields": [
+    "monetary economics",
+    "macroeconomics",
+    "economic history",
+    "international finance"
+   ],
+   "note": "A university course would add the expectations-augmented Phillips curve, rules versus discretion and time inconsistency, estimates of the sacrifice ratio, and the literature on the 1980s debt crisis."
+  },
+  "civil": {
+   "themes": [
+    "inflation management",
+    "monetary policy",
+    "external sector",
+    "energy security"
+   ],
+   "note": "India’s inflation reached 11.3% in 1980 as oil import costs rose; the Volcker episode is also a reference point in debates on inflation targeting, which India adopted in 2016."
+  },
+  "economists": [
+   "friedman",
+   "keynes"
+  ],
+  "causal": [
+   "inflation",
+   "ratehike",
+   "unemployment"
+  ],
+  "concepts": [
+   "Cost-push inflation",
+   "Monetary policy",
+   "Contractionary policy",
+   "Real interest rate",
+   "Phillips curve",
+   "Natural rate of unemployment",
+   "Disinflation",
+   "Price ceiling",
+   "Appreciation",
+   "Recession",
+   "Central bank",
+   "Inflation targeting"
+  ],
+  "cases": [
+   "MAC-042",
+   "MAC-012",
+   "MAC-003"
+  ],
+  "policies": [
+   "Fed reserve targeting (October 1979)",
+   "Credit Control Program (1980)",
+   "Crude Oil Windfall Profit Tax Act (1980)",
+   "Oil price decontrol (1979–81)",
+   "Medium Term Financial Strategy (UK, 1980)",
+   "Odd–even petrol rationing"
+  ],
+  "questions": [
+   {
+    "q": "Explain how a rise in interest rates by a central bank can reduce inflation.",
+    "kind": "explain"
+   },
+   {
+    "q": "Analyse why the 1979–82 disinflation in the United States was accompanied by high unemployment.",
+    "kind": "analyse"
+   },
+   {
+    "q": "Evaluate the decision of the Federal Reserve to give priority to reducing inflation over reducing unemployment in 1979–82.",
+    "kind": "evaluate"
+   },
+   {
+    "q": "Using US data for 1978–1983, describe what happened to inflation, unemployment and the 10-year bond yield, and explain one reason for each change.",
+    "kind": "data"
+   },
+   {
+    "q": "Compare Japan’s inflation in 1974 and 1980. What does the difference suggest about the role of wage bargaining and monetary policy after a supply shock?",
+    "kind": "compare"
+   }
+  ],
+  "retrieval": [
+   {
+    "q": "What cut Iran’s oil exports in late 1978?",
+    "a": "Strikes by oil workers during the revolution against the Shah."
+   },
+   {
+    "q": "What did the Fed announce on 6 October 1979?",
+    "a": "It would target bank reserves and money growth rather than short-term interest rates, allowing rates to rise sharply."
+   },
+   {
+    "q": "What was US inflation in 1980, and in 1983?",
+    "a": "13.5% and 3.2%."
+   },
+   {
+    "q": "What is disinflation?",
+    "a": "A fall in the rate of inflation: prices still rise, but more slowly."
+   },
+   {
+    "q": "Why did the dollar appreciate in the early 1980s?",
+    "a": "High US interest rates attracted capital inflows, raising demand for dollars."
+   }
+  ],
+  "reflection": "Was the unemployment of 1981–82 a price worth paying for lower inflation, and who should have the power to make that choice?",
+  "reading": [
+   {
+    "t": "William L. Silber, Volcker: The Triumph of Persistence, 2012",
+    "note": "A biography centred on the Fed’s anti-inflation policy of 1979–82."
+   },
+   {
+    "t": "Paul A. Volcker and Toyoo Gyohten, Changing Fortunes: The World’s Money and the Threat to American Leadership, 1992",
+    "note": "First-hand accounts of the period by the US and Japanese officials involved."
+   },
+   {
+    "t": "Daniel Yergin, The Prize: The Epic Quest for Oil, Money and Power, 1991",
+    "note": "Covers the Iranian revolution, the 1979 panic and the 1986 price collapse."
+   }
+  ],
+  "numbers": [
+   {
+    "value": "more than doubled",
+    "claim": "World crude oil prices between 1978 and 1980.",
+    "basis": "Widely documented (e.g. official Saudi and spot prices rose from roughly $13–14 to over $30 a barrel); the catalogue Brent series begins only in 1987."
+   },
+   {
+    "value": "around 20%",
+    "claim": "Peak short-term US interest rates (federal funds rate) in 1980–81.",
+    "basis": "Federal Reserve H.15 data: effective federal funds rate peaked near 19–20% in 1980–81; widely documented."
+   },
+   {
+    "value": "364",
+    "claim": "Number of economists who signed the March 1981 letter to The Times criticising UK policy.",
+    "basis": "Widely documented."
+   },
+   {
+    "value": "above 10%",
+    "claim": "US inflation when Volcker took office in August 1979.",
+    "basis": "Consistent with catalogue us-cpi-infl annual 1979 value of 11.3%."
+   },
+   {
+    "value": "2016",
+    "claim": "Year India adopted a statutory inflation target.",
+    "basis": "Amended RBI Act, 2016; matches case MAC-003."
+   }
+  ]
+ }
+]

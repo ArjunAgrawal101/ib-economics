@@ -1,6 +1,6 @@
 /* The opening sequence: exactly five seconds from the first frame the reader
-   sees, at the six widths the brief names, plus Skip, reduced motion, a deep
-   link and a reload. Timing is read from the overlay's own record
+   sees, at the six widths the brief names, plus Skip, reduced motion, and the
+   state model: every kind of home-page load plays in full; a deep link does not. Timing is read from the overlay's own record
    (window.__INTRO), which the browser fills from requestAnimationFrame and
    Paint Timing, both on the performance.now() timeline. */
 import { serve, browser, check, done } from './lib.mjs';
@@ -79,18 +79,54 @@ for (const [w, h] of SIZES) {
   check(r.how === 'still' && r.end - r.start >= 1500 - 0.5 && r.end - r.start < 5000, `reduced motion leaves after ${Math.round(r.end - r.start)} ms, without the five-second hold`);
   await ctx.close();
 }
-/* a link to one page, and a reload, do not replay the sequence */
+/* the state model: the home page plays in full on every kind of load; a deep link does not */
 {
   const ctx = await b.newContext({ viewport: { width: 1024, height: 768 } });
   const p = await ctx.newPage();
+  const full = async (label) => { await finished(p); const r = await p.evaluate(rec);
+    check(r.mode === 'play' && Math.abs(r.exitAt - r.start - 5000) < 0.5 && r.end - r.start >= 4999.5 && r.end - r.start <= 5000 + FRAME,
+      `${label}: the full sequence plays (${Math.round(r.end - r.start)} ms, navigation type ${await p.evaluate(() => window.__INTRO.nav)})`, JSON.stringify({ mode: r.mode, how: r.how })); };
   await p.goto(base + '#/course', { waitUntil: 'commit' });
   await finished(p);
   let r = await p.evaluate(rec);
-  check(r.mode === 'cover' && r.how === 'cover' && r.end - r.start < 5000, `a deep link shows the identity still and leaves when ready (${Math.round(r.end - r.start)} ms)`);
-  await p.goto(base, { waitUntil: 'commit' }); await p.reload({ waitUntil: 'commit' });
-  await finished(p);
-  r = await p.evaluate(rec);
-  check(r.mode === 'cover', 'a reload does not replay the sequence');
+  check(r.mode === 'cover' && r.how === 'cover' && r.end - r.start < 5000, `a deep link to another page skips the sequence and leaves when ready (${Math.round(r.end - r.start)} ms)`);
+  await p.goto(base, { waitUntil: 'commit' }); await full('the home page after a deep link');
+  await p.reload({ waitUntil: 'commit' }); await full('a reload of the home page');
+  const cdp = await ctx.newCDPSession(p); await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
+  await p.reload({ waitUntil: 'commit' }); await full('a hard reload with the cache disabled');
+  await cdp.send('Network.setCacheDisabled', { cacheDisabled: false });
+  /* a hash change alone is a same-document navigation: leave the document first so each address is a real load */
+  await p.goto('about:blank'); await p.goto(base + '#/home', { waitUntil: 'commit' }); await full('a direct #/home address');
+  await p.goto('about:blank'); await p.goto(base + '#/learn', { waitUntil: 'commit' }); await finished(p);
+  check((await p.evaluate(rec)).mode === 'cover', 'a second deep link still skips it');
+  await p.evaluate(() => nav('home')); await p.waitForTimeout(150);
+  check(await p.locator('#splash').count() === 0, 'navigating to home inside the app does not show the opening');
+  await p.evaluate(() => nav('course')); await p.waitForTimeout(150); await p.goBack(); await p.waitForTimeout(250);
+  check(await p.evaluate(() => VIEW) === 'home' && await p.locator('#splash').count() === 0, 'Back inside the app returns without the opening');
+  await p.goto('about:blank'); await p.goBack({ waitUntil: 'commit' });
+  const restored = await p.evaluate(() => !!(window.__INTRO && window.__INTRO.restored));
+  if (restored) check(await p.locator('#splash').count() === 0, 'Back from another site restores the page from the back-forward cache, as it was left');
+  else await full('Back from another site to the home page (a full load)');
+  /* Forward into the home page from another site: history is [about:blank, home]; step back, then forward */
+  await p.goto('about:blank'); await p.goto(base + '#/home', { waitUntil: 'commit' }); await full('the home page before a Forward step');
+  /* wait until Back has landed on about:blank before stepping Forward, and confirm Forward by the address it reaches */
+  await p.goBack({ waitUntil: 'commit' }); await p.waitForURL('about:blank');
+  await p.goForward({ waitUntil: 'commit', timeout: 15000 }).catch(() => {}); await p.waitForURL(u => u.href.startsWith(base), { timeout: 15000 });
+  const restoredF = await p.evaluate(() => !!(window.__INTRO && window.__INTRO.restored));
+  if (restoredF) check(await p.locator('#splash').count() === 0, 'Forward from another site restores the page from the back-forward cache, as it was left');
+  else await full('Forward from another site to the home page (a full load)');
+  await ctx.close();
+}
+/* a warm service worker and a populated cache do not shorten the sequence */
+{
+  const ctx = await b.newContext({ viewport: { width: 390, height: 844 } });
+  const p = await ctx.newPage();
+  await p.goto(base, { waitUntil: 'load' }); await finished(p);
+  await p.waitForFunction(() => navigator.serviceWorker && navigator.serviceWorker.controller !== null || !('serviceWorker' in navigator), null, { timeout: 20000 }).catch(() => {});
+  const ctl = await p.evaluate(() => !!(navigator.serviceWorker && navigator.serviceWorker.controller));
+  await p.goto(base + '?again', { waitUntil: 'commit' }); await finished(p);
+  const r = await p.evaluate(rec);
+  check(r.mode === 'play' && r.end - r.start >= 4999.5 && r.end - r.start <= 5000 + FRAME, `a revisit ${ctl ? 'controlled by the service worker' : 'with a warm cache'} plays the same 5000 ms (${Math.round(r.end - r.start)} ms)`);
   await ctx.close();
 }
 await b.close(); srv.close(); done();

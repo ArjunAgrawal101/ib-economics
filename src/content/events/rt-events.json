@@ -1,0 +1,87 @@
+[
+ {
+  "event": "bretton-woods-1971",
+  "path": [
+   "differently",
+   2,
+   "t"
+  ],
+  "old": "as in Keynes’s 1944 proposal for a clearing union",
+  "new": "as in Keynes’s wartime proposal for an International Clearing Union (published in 1943)",
+  "sev": "medium",
+  "why": "Keynes’s clearing-union plan was drafted in 1941–42 and published as a British White Paper in April 1943; at Bretton Woods in 1944 the negotiations proceeded largely on the US (White) plan."
+ },
+ {
+  "event": "oil-1973",
+  "path": [
+   "before",
+   "facts",
+   1,
+   "t"
+  ],
+  "old": "US crude oil production peaked in 1970, leaving",
+  "new": "US crude oil production reached a peak in 1970 that was not exceeded until 2018, leaving",
+  "sev": "low",
+  "why": "EIA data show annual US crude output (about 9.6 million barrels a day in 1970) was surpassed in 2018, so an unqualified ‘peaked’ is now misleading as a stated fact."
+ },
+ {
+  "event": "stagflation-1970s",
+  "path": [
+   "timeline",
+   1,
+   "detail"
+  ],
+  "old": "impose an embargo on the United States after the Yom Kippur War",
+  "new": "impose an embargo on the United States during the Yom Kippur War",
+  "sev": "low",
+  "why": "The OAPEC cuts (17 October) and the Saudi-led embargo on the US (from about 20 October 1973) came while the war was still being fought; the ceasefire followed on 25 October."
+ },
+ {
+  "event": "gfc-2008",
+  "path": [
+   "policy",
+   3,
+   "what"
+  ],
+  "old": "taking large stakes in the Royal Bank of Scotland and Lloyds Banking Group",
+  "new": "taking large stakes in the Royal Bank of Scotland and in Lloyds TSB and HBOS (merged as Lloyds Banking Group in January 2009)",
+  "sev": "low",
+  "why": "In October 2008 the recapitalisation covered Lloyds TSB and HBOS separately; Lloyds Banking Group was formed only when their merger completed in January 2009."
+ },
+ {
+  "event": "eurozone-2010",
+  "path": [
+   "timeline",
+   11,
+   "detail"
+  ],
+  "old": "Greek banks close and capital controls begin; voters reject",
+  "new": "After banks closed and capital controls began on 29 June, Greek voters reject",
+  "sev": "low",
+  "why": "Greek banks shut and capital controls took effect on 29 June 2015, before the 5 July referendum, not in July as the entry’s date implies."
+ },
+ {
+  "event": "covid-2020",
+  "path": [
+   "interpretations",
+   0,
+   "p"
+  ],
+  "old": "Some theorists, including Guido Lorenzoni and Iván Werning with co-authors, showed in 2020",
+  "new": "Veronica Guerrieri, Guido Lorenzoni, Ludwig Straub and Iván Werning argued in 2020",
+  "sev": "low",
+  "why": "The ‘Keynesian supply shock’ paper (NBER Working Paper 26918, 2020) is by Guerrieri, Lorenzoni, Straub and Werning, with Guerrieri as first author; naming only two of the four misattributes it."
+ },
+ {
+  "event": "india-1991",
+  "path": [
+   "actors",
+   3,
+   "role"
+  ],
+  "old": "Provided emergency credit in January 1991 and a stand-by arrangement in October 1991, with conditions",
+  "new": "The IMF provided emergency credit in January 1991 and a stand-by arrangement in October 1991, and the World Bank followed with adjustment lending, with conditions",
+  "sev": "low",
+  "why": "The January 1991 emergency drawings (first credit tranche and CCFF) and the October 1991 stand-by were IMF lending; the World Bank’s structural adjustment loan came later in 1991, as timeline.9 itself says."
+ }
+]

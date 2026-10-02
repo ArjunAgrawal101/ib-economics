@@ -31,3 +31,6 @@ tmp/
 
 # Test output
 tests/overlap-report.json
+# the build scripts are source; only their download cache is ignored
+!tools/build/
+tools/build/.cache/

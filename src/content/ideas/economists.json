@@ -1,0 +1,1363 @@
+[
+ {
+  "id": "smith",
+  "name": "Adam Smith",
+  "life": "1723–1790",
+  "era": "Classical political economy",
+  "headline": "Smith showed how an economy coordinated by prices, competition and the division of labour could generate rising output without central direction, while arguing that this order rested on law, institutions and moral norms.",
+  "context": "Smith was a moral philosopher in Enlightenment Scotland, teaching at the University of Glasgow. Britain’s trade policy at the time was shaped by mercantilist thinking: the view that national wealth meant accumulating gold and silver, so exports should be encouraged and imports restricted. Chartered companies held monopoly privileges, and guilds and apprenticeship rules limited who could work in many trades. Smith asked a different question. What actually makes a nation richer, and why do some economies grow while others stagnate? His answer moved attention away from stocks of precious metal and towards the productive capacity of labour, the extent of markets and the rules that govern exchange.",
+  "ideas": [
+   {
+    "h": "The division of labour",
+    "p": "Smith’s opening example is a pin workshop. When production is split into many narrow tasks, each worker becomes more skilled, less time is lost switching between jobs, and simple tasks invite the invention of tools and machines. Output per worker can rise many times over. The limit on this specialisation is the size of the market: a small, isolated market cannot absorb the output of highly specialised producers, which is one reason Smith connected productivity growth to trade and transport."
+   },
+   {
+    "h": "Self-interest and the price mechanism",
+    "p": "Smith argued that in competitive markets people pursuing their own gain are led to supply what others want. If a good is scarce, its market price rises above its ‘natural price’, drawing in resources until supply catches up. This is an early account of how relative prices allocate resources. The phrase ‘invisible hand’ appears only once in The Wealth of Nations, in a passage about investment at home, and was not the slogan for unregulated markets it later became."
+   },
+   {
+    "h": "A critique of mercantilism and monopoly",
+    "p": "Smith treated restrictions on trade as a way for organised merchants and manufacturers to gain at consumers’ expense. Tariffs, bounties and monopoly charters raised prices and diverted capital into less productive uses. He was openly suspicious of business interests seeking political favours, and warned that producers in the same trade tend to look for ways to raise prices. His argument for open markets was therefore partly an argument against concentrated private power, not simply for business."
+   },
+   {
+    "h": "Moral sentiments and the role of the state",
+    "p": "In The Theory of Moral Sentiments, Smith explained social behaviour through sympathy: our ability to imagine others’ situations and to judge ourselves as an impartial spectator might. Markets, in this view, depend on trust, justice and shared norms. Smith also gave government real tasks: defence, a system of justice, public works and institutions that private firms would not provide profitably, and support for the basic education of ordinary workers, whose minds he feared repetitive work could dull."
+   }
+  ],
+  "contribution": "Smith gave economics its first systematic account of how a market economy works as a whole. He linked productivity to specialisation, explained how market prices tend to move towards costs of production, and treated the growth of national income, rather than the accumulation of bullion, as the measure of a nation’s wealth. His method of combining abstract reasoning with historical and institutional detail set the agenda for the classical economists who followed, including Ricardo and Malthus.",
+  "assumptions": [
+   "Individuals are largely motivated by self-interest, but within a framework of moral norms and law",
+   "Competition is sufficiently strong that no single seller can control price for long",
+   "Secure property rights and the enforcement of contracts",
+   "Labour and capital can move between uses in response to price signals"
+  ],
+  "influence": "The Wealth of Nations shaped nineteenth-century British debates on free trade and helped discredit mercantilist policy. Classical economists built directly on his theories of value, distribution and growth. Later, Smith became a symbol in arguments for market liberalisation, sometimes in a narrower form than his writing supports. Historians of economic thought and development economists have recently drawn more on his institutional arguments, his concern with the conditions of the poor and his scepticism of monopoly.",
+  "criticisms": [
+   "His theory of value moves between labour-cost and cost-of-production explanations without fully reconciling them, a gap later economists tried to resolve.",
+   "The account of self-regulating markets says relatively little about externalities, public goods beyond a short list, or prolonged unemployment, which later analysis made central.",
+   "Some historians argue that his story of growth underplays the role of state support, protection and coercion, including colonial trade and slavery, in Britain’s own industrialisation."
+  ],
+  "modern": "Questions Smith raised still organise much of economics. Debates about global supply chains are debates about the division of labour and the extent of the market. Competition authorities share his worry that firms may collude or lobby for protection. Behavioural and institutional economists cite The Theory of Moral Sentiments when arguing that trust and norms support exchange. Reading both of his books together is a useful corrective to treating him as a one-line defender of laissez-faire. In 4.1, absolute and comparative advantage are HL only.",
+  "works": [
+   {
+    "t": "The Theory of Moral Sentiments",
+    "y": 1759
+   },
+   {
+    "t": "An Inquiry into the Nature and Causes of the Wealth of Nations",
+    "y": 1776
+   }
+  ],
+  "honours": null,
+  "misread": "Students often treat Smith as arguing that government should do nothing and that self-interest is all that matters. In fact he gave the state significant duties, criticised merchants who sought monopoly, and placed markets inside a wider moral and legal framework.",
+  "subs": [
+   "1.1",
+   "2.3",
+   "4.1"
+  ],
+  "kc": [
+   "Choice",
+   "Efficiency",
+   "Interdependence"
+  ],
+  "terms": [
+   "Price mechanism",
+   "Free market economy",
+   "Absolute advantage",
+   "Property rights",
+   "Mixed economy"
+  ],
+  "dg": [
+   "ds"
+  ],
+  "question": "To what extent does Smith’s argument about the ‘extent of the market’ help to explain why small, landlocked economies may find it harder to specialise?",
+  "connects": [
+   {
+    "id": "ricardo",
+    "why": "Ricardo extended Smith’s case for trade from absolute to comparative advantage."
+   },
+   {
+    "id": "hayek",
+    "why": "Hayek developed Smith’s idea of an unplanned market order into an argument about knowledge and prices."
+   },
+   {
+    "id": "marx",
+    "why": "Marx read Smith closely and reworked the classical labour theory of value into a critique of capitalism."
+   }
+  ]
+ },
+ {
+  "id": "ricardo",
+  "name": "David Ricardo",
+  "life": "1772–1823",
+  "era": "Classical political economy",
+  "headline": "Ricardo showed that two countries can both gain from trade even when one is more productive at everything, and built abstract models of distribution that shaped how economists reason.",
+  "context": "Ricardo made a fortune as a stockbroker and financier in London before turning to economics and later sitting in Parliament. He wrote during and after the Napoleonic Wars, when Britain’s Corn Laws restricted grain imports to protect landowners’ incomes. Food prices were high, population was growing and more marginal land was being farmed. Ricardo wanted to know how the national product is divided between landlords, capitalists and workers, and what happens to profits and growth when cheap foreign grain is kept out. His answers were framed as deliberately simplified models, a method that became characteristic of economics.",
+  "ideas": [
+   {
+    "h": "Comparative advantage",
+    "p": "Ricardo’s example used England and Portugal producing cloth and wine. Even if Portugal needed less labour for both goods, each country gains by specialising in the good it produces at a lower opportunity cost and trading for the other. The gain comes from differences in relative efficiency, not absolute efficiency. This idea, which is HL only in the IB course (4.1), separates the case for trade from the question of which country is more productive overall."
+   },
+   {
+    "h": "Differential rent and diminishing returns",
+    "p": "As population grows, farming extends to less fertile land, so each extra unit of food costs more labour to produce. Rent, in Ricardo’s account, arises because better land yields a surplus over the worst land in use. Landlords receive that surplus without adding to output. The idea is an early form of diminishing marginal returns and of thinking ‘at the margin’, where the last unit of land determines price."
+   },
+   {
+    "h": "Distribution, profits and the Corn Laws",
+    "p": "Ricardo argued that rising food costs push up the wages needed to keep workers alive, which squeezes profits. Lower profits reduce the incentive to accumulate capital, slowing growth towards a ‘stationary state’. Restricting grain imports accelerates this process by forcing cultivation onto poorer land. Free trade in corn, by contrast, would lower food prices, protect profits and support investment, at the expense of landlords’ rents."
+   },
+   {
+    "h": "Abstract modelling",
+    "p": "Ricardo reasoned from a few stylised assumptions to strong conclusions, isolating one mechanism at a time. This approach gave clarity and allowed general results, such as comparative advantage, that hold within the model. It also carried a risk later called the ‘Ricardian vice’: applying conclusions from a highly simplified model directly to policy without checking whether the assumptions fit the real case."
+   }
+  ],
+  "contribution": "Comparative advantage remains one of the foundations of international economics and one of the least intuitive results in the subject. Ricardo’s rent theory introduced reasoning at the margin, and his model of how income is shared among social classes made distribution a central question. His method of building a simplified model to isolate one mechanism set the pattern for much later economic theory, for better and for worse.",
+  "assumptions": [
+   "Labour is the only factor of production, and its productivity differs between countries",
+   "Factors move freely within a country but not between countries",
+   "Constant opportunity costs and no transport costs",
+   "Full employment, so specialisation reallocates rather than idles resources"
+  ],
+  "influence": "The Corn Laws were repealed in 1846, and Ricardo’s arguments were part of the long debate leading there. His trade theory became the starting point for later models, including those that explain comparative advantage through differences in factor endowments. Marx built on his labour theory of value, while the marginalist economists of the 1870s replaced it. Modern trade agreements and debates about who loses from trade still rely on Ricardian reasoning.",
+  "criticisms": [
+   "The single-factor model hides the distributional effects of trade: some workers and regions can lose even when the country gains overall.",
+   "Comparative advantage is treated as fixed, whereas later economists argued it can be created through learning, investment and policy, which underpins the infant industry argument.",
+   "The model assumes full employment; if displaced workers do not find new jobs, the predicted gains may not appear in the short run.",
+   "His predicted fall in profits towards a stationary state did not occur, partly because technical change in agriculture offset diminishing returns."
+  ],
+  "modern": "Ricardo’s logic is used whenever economists explain why rich and poor countries both trade, or why outsourcing a task can make sense even for a firm that could do it more efficiently itself. Debates about the regional effects of import competition, about reshoring production and about industrial policy are, in part, arguments about the limits of his assumptions. Students meet his model in its simplest linear form, but the reasoning about opportunity cost carries over to richer settings.",
+  "works": [
+   {
+    "t": "On the Principles of Political Economy and Taxation",
+    "y": 1817
+   }
+  ],
+  "honours": null,
+  "misread": "A common misreading is that a country should import only goods it cannot produce at all, or that the most efficient country gains nothing from trade. Comparative advantage depends on relative opportunity costs, so both countries can gain even when one has an absolute advantage in every good.",
+  "subs": [
+   "4.1",
+   "4.3",
+   "1.1"
+  ],
+  "kc": [
+   "Interdependence",
+   "Efficiency",
+   "Choice"
+  ],
+  "terms": [
+   "Comparative advantage",
+   "Absolute advantage",
+   "Opportunity cost",
+   "Law of diminishing marginal returns",
+   "Constant opportunity cost"
+  ],
+  "dg": [
+   "compadv",
+   "ppc"
+  ],
+  "question": "How far do the assumptions of Ricardo’s two-country model limit its usefulness in explaining a present-day trade dispute you have studied?",
+  "connects": [
+   {
+    "id": "smith",
+    "why": "Ricardo refined Smith’s absolute-advantage argument for trade."
+   },
+   {
+    "id": "malthus",
+    "why": "Ricardo and Malthus corresponded at length, disagreeing on the Corn Laws and on general gluts."
+   },
+   {
+    "id": "marx",
+    "why": "Marx adapted Ricardo’s labour theory of value and his class-based theory of distribution."
+   }
+  ]
+ },
+ {
+  "id": "malthus",
+  "name": "Thomas Robert Malthus",
+  "life": "1766–1834",
+  "era": "Classical political economy",
+  "headline": "Malthus made the relationship between population, resources and living standards a central economic question, and raised early doubts about whether total demand would be sufficient to keep production growing.",
+  "context": "Malthus was an English clergyman who later taught political economy. He wrote in the 1790s, when thinkers such as William Godwin and the Marquis de Condorcet argued that human society could progress towards equality and abundance. Malthus was sceptical. England’s population was rising, poor relief under the Poor Laws was a matter of public argument, and food supply depended on limited land. He set out to show that any improvement in living standards would tend to be absorbed by population growth, unless something restrained births. The argument was as much a contribution to political debate as to economic theory.",
+  "ideas": [
+   {
+    "h": "The principle of population",
+    "p": "Malthus contrasted population, which he argued tends to grow geometrically when unchecked, with food supply, which he argued grows at most arithmetically. If incomes rise, people marry earlier and have more surviving children, so population expands until food per person falls back. Living standards therefore gravitate towards subsistence. The mechanism relies on diminishing returns from a fixed supply of land."
+   },
+   {
+    "h": "Positive and preventive checks",
+    "p": "Population is held in line with food by two types of check. Positive checks raise the death rate: famine, disease and war. Preventive checks lower the birth rate, chiefly through later marriage, which Malthus called ‘moral restraint’. In later editions of the Essay he gave more weight to preventive checks, which softened his conclusions and allowed for the possibility of sustained, if modest, improvement."
+   },
+   {
+    "h": "The Poor Laws",
+    "p": "Malthus argued that relief payments to the poor could raise births without raising food supply, pushing up food prices and leaving the poor no better off. This led him to oppose the existing system of poor relief. The argument was widely criticised at the time and since, both on empirical grounds and because of its harsh implications for the most vulnerable."
+   },
+   {
+    "h": "Effective demand and gluts",
+    "p": "In his debates with Ricardo, Malthus questioned the view that supply creates its own demand. He argued that if landlords and capitalists saved too much and spent too little, a general glut of unsold goods could occur. Ricardo rejected this. Keynes later praised Malthus for raising the problem of insufficient demand, though Malthus did not develop a full theory of it."
+   }
+  ],
+  "contribution": "Malthus forced economists to consider natural limits and the feedback between incomes and population. His model is a clear early example of a dynamic system with an equilibrium that pulls living standards back towards a fixed level. It describes the pre-industrial world reasonably well, where gains in output tended to be absorbed by population growth. His questions about aggregate demand anticipated themes that Keynes developed more than a century later.",
+  "assumptions": [
+   "Land is fixed in supply and subject to diminishing returns",
+   "Higher incomes lead to higher fertility or lower mortality",
+   "Technical progress in food production is slow relative to population pressure",
+   "Restraint on births depends mainly on individual behaviour such as delayed marriage"
+  ],
+  "influence": "Malthus influenced Ricardo’s theory of wages and rent, and Charles Darwin acknowledged that the Essay helped him think about competition for survival. In development economics the ‘Malthusian trap’ describes economies where income gains are absorbed by population growth, and growth economists use Malthusian models to describe the long period before industrialisation. His ideas also shaped later debates about famine, family planning and environmental limits.",
+  "criticisms": [
+   "Industrialisation and agricultural innovation allowed food output to outpace population growth for long periods, which his model did not anticipate.",
+   "Many countries experienced a demographic transition in which fertility fell as incomes rose, reversing the link he assumed.",
+   "Sen argued that famines are often caused by a collapse in people’s ability to obtain food, not by a simple shortage of food in total.",
+   "His case against poor relief was criticised as placing the costs of adjustment on the poorest people."
+  ],
+  "modern": "Malthusian reasoning reappears in debates about whether finite natural resources and environmental limits constrain long-run growth. Critics reply that prices, substitution and innovation can relax resource constraints, as they did after his time. The question for students is not whether Malthus was simply right or wrong, but under what conditions resource pressure binds, and which institutions and technologies allow societies to escape it.",
+  "works": [
+   {
+    "t": "An Essay on the Principle of Population",
+    "y": 1798
+   }
+  ],
+  "honours": null,
+  "misread": "Students sometimes treat Malthus as having predicted that the world would run out of food by a particular date. His argument was about a tendency for living standards to be pulled back towards subsistence, and he revised it in later editions to give more weight to voluntary restraint on births.",
+  "subs": [
+   "4.9",
+   "1.1",
+   "4.7"
+  ],
+  "kc": [
+   "Scarcity",
+   "Sustainability",
+   "Change"
+  ],
+  "terms": [
+   "Scarcity",
+   "Law of diminishing marginal returns",
+   "Economic growth",
+   "Sustainable development",
+   "Poverty trap"
+  ],
+  "dg": [
+   "ppc"
+  ],
+  "question": "Under what conditions, if any, might Malthusian pressures help to explain slow growth in living standards in a low-income economy today?",
+  "connects": [
+   {
+    "id": "ricardo",
+    "why": "Their long correspondence shaped the classical theories of rent, wages and demand."
+   },
+   {
+    "id": "keynes",
+    "why": "Keynes saw Malthus’s concern with gluts as a forerunner of his theory of effective demand."
+   },
+   {
+    "id": "sen",
+    "why": "Sen’s entitlement analysis challenged food-supply explanations of famine."
+   }
+  ]
+ },
+ {
+  "id": "marx",
+  "name": "Karl Marx",
+  "life": "1818–1883",
+  "era": "Classical political economy and its critique",
+  "headline": "Marx analysed capitalism as a historically specific system driven by accumulation and conflict between classes, and asked how profit, inequality and instability arise from its normal workings.",
+  "context": "Marx was a German philosopher and journalist who spent most of his working life in exile in London. He wrote as industrial capitalism transformed Europe: factory employment expanded, cities grew quickly, working conditions were often harsh and periodic commercial crises threw people out of work. The revolutions of 1848 failed to deliver lasting political change. Marx studied the classical economists, especially Smith and Ricardo, and set out to explain where profit comes from, why capitalist economies grow and change so rapidly, and why they also seemed prone to crisis and to deep divisions between owners and workers.",
+  "ideas": [
+   {
+    "h": "Labour value and surplus value",
+    "p": "Building on Ricardo, Marx argued that the value of commodities reflects the labour time socially necessary to produce them. Workers sell their capacity to work for a wage that covers the cost of maintaining themselves. Because they can produce more value during the working day than that wage, the difference, which Marx called surplus value, is the source of profit. Profit, in this account, arises in production rather than from buying cheap and selling dear."
+   },
+   {
+    "h": "Accumulation and competition",
+    "p": "Competition pushes capitalists to reinvest profits, mechanise and cut costs, or be driven out. Marx saw this as the source of capitalism’s exceptional dynamism and technical change. Mechanisation can also displace workers, creating what he called a reserve army of the unemployed that restrains wages. Over time, he argued, capital tends to become concentrated in fewer, larger firms."
+   },
+   {
+    "h": "Crisis and instability",
+    "p": "Marx argued that capitalist economies are prone to recurring crises. Production is organised for profit, not directly for need, and decisions are made by many independent firms. Overproduction relative to what can be sold profitably, disproportions between sectors and pressures on the rate of profit can lead to downturns. These crises destroy some capital, which can then restore the conditions for renewed expansion."
+   },
+   {
+    "h": "Historical change and class",
+    "p": "Marx treated economic systems as historical stages, each with its own relations of ownership and production. Capitalism, defined by private ownership of the means of production and wage labour, had replaced feudalism and, he expected, would itself be replaced. Conflict between classes over the division of output was, for him, a central driver of social and political change."
+   }
+  ],
+  "contribution": "Marx placed capital accumulation, technical change, the distribution of income between labour and capital, and the instability of growth at the centre of economic analysis. Many economists reject his value theory while still treating him as an important analyst of how capitalist economies evolve. His insistence that economic institutions are historically specific, rather than natural, also influenced economic history and sociology.",
+  "assumptions": [
+   "Value is determined by socially necessary labour time",
+   "Society is divided into classes defined by their relation to the means of production",
+   "Competition compels firms to accumulate and mechanise",
+   "Wages tend to be held near the cost of maintaining workers by the reserve army of labour"
+  ],
+  "influence": "Marx’s ideas shaped labour movements and socialist and communist parties, and were cited to justify the planned economies of the twentieth century, whose design he did not set out in detail. Within economics, his work influenced theories of business cycles, development economics focused on structure and dependency, and the study of income distribution between wages and profits. Economists who reject his conclusions have still engaged with his questions about technological unemployment and concentration.",
+  "criticisms": [
+   "Eugen von Böhm-Bawerk and others argued that his labour theory of value could not consistently explain market prices, a difficulty known as the transformation problem.",
+   "His expectation of the growing impoverishment of workers was not borne out in many industrial economies, where real wages rose substantially over time.",
+   "The marginalist approach explained value through subjective preferences and scarcity, and most economists adopted it in place of labour value.",
+   "Economies that adopted central planning in his name faced serious problems of information and incentives, a point Mises and Hayek argued, though how far this tests Marx’s own analysis is debated."
+  ],
+  "modern": "Marx is read today less as a guide to policy than as a source of questions. Debates about whether automation will reduce demand for labour, why the share of income going to labour changes over time, and why market power tends to concentrate echo themes he raised. In the IB course, his work is useful background for the basic economic questions, for comparing planned and free market economies, and for discussing inequality and the distribution of income.",
+  "works": [
+   {
+    "t": "The Communist Manifesto (with Friedrich Engels)",
+    "y": 1848
+   },
+   {
+    "t": "Capital, Volume I",
+    "y": 1867
+   }
+  ],
+  "honours": null,
+  "misread": "Students often equate Marx with the Soviet economy. Most of his economic writing is an analysis of capitalism, not a blueprint for a planned economy, and later regimes made many choices he did not describe.",
+  "subs": [
+   "1.1",
+   "3.4"
+  ],
+  "kc": [
+   "Equity",
+   "Change",
+   "Interdependence"
+  ],
+  "terms": [
+   "Planned economy",
+   "Free market economy",
+   "Basic economic questions",
+   "Factors of production",
+   "Equality",
+   "Wealth"
+  ],
+  "dg": [
+   "lorenz"
+  ],
+  "question": "To what extent do concerns about automation and the labour share of income resemble the questions Marx asked about mechanisation and the reserve army of labour?",
+  "connects": [
+   {
+    "id": "ricardo",
+    "why": "Marx took Ricardo’s labour theory of value and class analysis as his starting point."
+   },
+   {
+    "id": "hayek",
+    "why": "Hayek’s knowledge argument was a central objection to economies planned in Marx’s name."
+   },
+   {
+    "id": "robinson",
+    "why": "Joan Robinson wrote a sympathetic but critical study of Marx’s economics."
+   }
+  ]
+ },
+ {
+  "id": "marshall",
+  "name": "Alfred Marshall",
+  "life": "1842–1924",
+  "era": "Neoclassical economics",
+  "headline": "Marshall combined demand, built on marginal utility, with supply, built on costs of production, into the partial-equilibrium framework of supply and demand that most introductory economics still uses.",
+  "context": "Marshall trained in mathematics and moral philosophy and spent most of his career at Cambridge. In the 1870s economists such as Jevons, Menger and Walras had argued that value depends on marginal utility, challenging the classical emphasis on costs of production. The debate risked splitting the subject. Marshall, writing in Victorian Britain amid concern about urban poverty, wanted economics to be both rigorous and useful to policy. He sought a framework that reconciled the two views of value, kept mathematics in the background and could be applied to the study of real industries and the condition of workers.",
+  "ideas": [
+   {
+    "h": "The scissors of supply and demand",
+    "p": "Marshall compared the question of whether utility or cost of production determines value to asking which blade of a pair of scissors does the cutting. Price is set by demand and supply together. Demand reflects consumers’ marginal valuation, while supply reflects producers’ marginal cost. The familiar diagram, with price on the vertical axis and an equilibrium where the curves cross, is largely his."
+   },
+   {
+    "h": "Partial equilibrium and ceteris paribus",
+    "p": "Rather than model the whole economy at once, Marshall analysed one market at a time, holding other influences constant. This ‘other things being equal’ method makes it possible to trace the effect of a single change, such as a tax or a shift in demand. Its limit is that effects in one market can spill back into others, so the method works best for markets that are small relative to the economy."
+   },
+   {
+    "h": "Time periods and elasticity",
+    "p": "Marshall distinguished the market period, short run and long run by how far producers can adjust inputs. Supply becomes more responsive as time passes. He also gave a precise form to the price elasticity of demand: the responsiveness of quantity demanded to a change in price. Elasticity let economists predict, for example, how the burden of a tax would be shared between buyers and sellers."
+   },
+   {
+    "h": "Consumer surplus and external economies",
+    "p": "Consumer surplus measures the gap between what buyers would be willing to pay and what they actually pay, giving a money measure of welfare. Marshall also described external economies: cost advantages a firm gains from the growth of its whole industry or district, such as a pool of skilled labour and specialised suppliers. Both ideas later became tools for analysing welfare and the location of industry."
+   }
+  ],
+  "contribution": "Marshall built the toolkit that most microeconomics courses still start with: supply and demand curves, equilibrium, elasticity, consumer and producer surplus, and the short-run and long-run distinction. He established economics as a separate university discipline at Cambridge and trained a generation that included Pigou and Keynes. His approach made it possible to analyse real policy questions, such as the incidence of taxes, with clear and teachable diagrams. In the IB course, diminishing marginal utility as an assumption behind demand is HL only.",
+  "assumptions": [
+   "Other things are held equal while one variable changes",
+   "Consumers experience diminishing marginal utility from additional units",
+   "Firms respond to price by adjusting output towards the point where price covers marginal cost",
+   "Markets are competitive enough that individual buyers and sellers are price takers"
+  ],
+  "influence": "Marshall’s Principles was the leading economics textbook in the English-speaking world for decades. Pigou built welfare economics on his concepts of consumer surplus and external effects, while Robinson and others reworked his theory of the firm. His ideas on industrial districts were revived in the study of clusters and agglomeration. Standard diagrams for taxes, subsidies, price controls and elasticity descend directly from his work.",
+  "criticisms": [
+   "Partial-equilibrium analysis can miss feedback between markets, which general-equilibrium approaches such as that of Walras try to capture.",
+   "His treatment of increasing returns sits uneasily with perfect competition, a tension that Piero Sraffa and later Joan Robinson pressed in the 1920s and 1930s.",
+   "Measuring welfare by consumer surplus assumes a constant marginal utility of money, which is unlikely to hold for large changes or across people with very different incomes."
+  ],
+  "modern": "Every time a student draws a demand and supply diagram, calculates price elasticity or shades consumer surplus, they are using Marshall’s tools. Competition authorities, tax analysts and regulators still use partial-equilibrium models for practical decisions. Economic geographers draw on his external economies to explain why firms in some industries cluster in particular cities. The key skill is knowing when holding other things constant is a reasonable simplification.",
+  "works": [
+   {
+    "t": "Principles of Economics",
+    "y": 1890
+   }
+  ],
+  "honours": null,
+  "misread": "Students sometimes think a change in price ‘shifts’ the demand curve. In Marshall’s framework a change in the good’s own price causes a movement along the curve; only changes in other conditions, held constant under ceteris paribus, shift it.",
+  "subs": [
+   "2.1",
+   "2.3",
+   "2.5"
+  ],
+  "kc": [
+   "Choice",
+   "Efficiency",
+   "Change"
+  ],
+  "terms": [
+   "Ceteris paribus",
+   "Market equilibrium",
+   "Price elasticity of demand",
+   "Consumer surplus",
+   "Law of diminishing marginal utility",
+   "Movement along the demand curve"
+  ],
+  "dg": [
+   "ds",
+   "ped"
+  ],
+  "question": "How far does holding ‘other things equal’ limit the usefulness of a demand and supply diagram for analysing a large change, such as a sharp rise in the price of energy?",
+  "connects": [
+   {
+    "id": "pigou",
+    "why": "Pigou succeeded Marshall at Cambridge and developed welfare economics from his ideas."
+   },
+   {
+    "id": "keynes",
+    "why": "Keynes was Marshall’s student before breaking with the Cambridge tradition on aggregate demand."
+   },
+   {
+    "id": "robinson",
+    "why": "Robinson rebuilt Marshall’s theory of the firm for imperfectly competitive markets."
+   }
+  ]
+ },
+ {
+  "id": "pigou",
+  "name": "Arthur Cecil Pigou",
+  "life": "1877–1959",
+  "era": "Neoclassical welfare economics",
+  "headline": "Pigou showed how private and social costs and benefits can diverge, and argued that taxes and subsidies could bring market outcomes closer to what is best for society.",
+  "context": "Pigou succeeded Marshall as professor of political economy at Cambridge. He wrote in the early twentieth century, when industrial pollution, poor urban housing and dangerous working conditions were prominent public concerns, and when the scope of government in Britain was widening. Marshall had pointed to effects that spill beyond a firm. Pigou set out to build a systematic welfare economics: a way of judging when market outcomes maximise the economic welfare of society, and when there is a case for the state to intervene to correct them.",
+  "ideas": [
+   {
+    "h": "Private versus social net product",
+    "p": "Pigou distinguished the private return from an activity, which the decision-maker considers, from its social return, which includes effects on others. When a factory’s smoke damages laundry and health nearby, the social cost exceeds the private cost. Because the firm ignores these costs, it produces more than is socially optimal. In modern terms this is a negative externality of production, where marginal social cost exceeds marginal private cost."
+   },
+   {
+    "h": "Corrective taxes and subsidies",
+    "p": "If the divergence can be measured, the state can impose a tax equal to the external cost at the optimal output, so that the firm faces the full social cost. Where activities generate external benefits, such as education or planting trees, a subsidy can encourage output towards the social optimum. This is now known as a Pigouvian tax or subsidy, and it underpins modern carbon taxes."
+   },
+   {
+    "h": "Price discrimination",
+    "p": "Pigou classified price discrimination into first, second and third degrees. A seller may charge each buyer their maximum willingness to pay, charge different prices according to quantity bought, or charge different prices to separate groups of buyers. His analysis showed that the welfare effects depend on whether discrimination raises total output, not simply on whether some buyers pay more."
+   },
+   {
+    "h": "Welfare and distribution",
+    "p": "Pigou argued that, other things equal, transferring income from richer to poorer people tends to raise total welfare, because an extra pound is likely to matter more to someone with less. He paired this with concern about the effect of transfers on incentives to produce. The argument linked welfare economics to debates about progressive taxation and social policy."
+   }
+  ],
+  "contribution": "Pigou gave economists a framework for judging market outcomes against a social standard and for designing policy to correct market failure. The distinction between private and social cost, and the idea of internalising an externality through price, remain central in environmental, health and urban economics. His classification of price discrimination is still taught. More broadly, he helped establish welfare economics as a field in which efficiency and distribution are analysed together.",
+  "assumptions": [
+   "External costs and benefits can be identified and measured in money terms",
+   "Government has the information and motivation to set the correct tax or subsidy",
+   "Firms and consumers respond to price signals in predictable ways",
+   "Utility can be compared across people, at least approximately"
+  ],
+  "influence": "Pigouvian taxes inform policy on carbon emissions, fuel, tobacco, sugary drinks and congestion. In 1960 Ronald Coase challenged Pigou’s approach in The Problem of Social Cost, arguing that with clearly defined property rights and low bargaining costs the affected parties might reach an efficient outcome themselves. The resulting debate, including the use of tradable permits as an alternative, continues to shape environmental economics. Keynes used Pigou’s work as an example of the classical approach he was challenging.",
+  "criticisms": [
+   "Ronald Coase argued that externalities are reciprocal and that, where transaction costs are low, assigning property rights may resolve them without taxation; Pigou’s framework, he said, overlooked this.",
+   "Setting the correct tax requires knowing the size of the external cost, which is often uncertain or disputed.",
+   "Public choice economists argue that governments may set taxes for revenue or political reasons rather than to correct the externality, so intervention can itself fail.",
+   "Interpersonal comparisons of utility, which support his case for redistribution, are rejected by economists who regard them as unscientific."
+  ],
+  "modern": "Pigou’s ideas sit behind debates about carbon pricing, congestion charging and taxes on demerit goods. Economists often compare Pigouvian taxes with cap-and-trade schemes, regulation and nudges, weighing information requirements, political feasibility and distributional effects. When a student draws a negative externality diagram and shows how a tax could move output to the socially optimum level, they are applying his analysis, and evaluation usually turns on the practical problems he and his critics identified.",
+  "works": [
+   {
+    "t": "The Economics of Welfare",
+    "y": 1920
+   }
+  ],
+  "honours": null,
+  "misread": "Students sometimes think a Pigouvian tax aims to eliminate the harmful activity. The aim is to reduce output to the socially optimum level, where marginal social cost equals marginal social benefit, which is usually above zero.",
+  "subs": [
+   "2.8",
+   "2.7",
+   "3.4"
+  ],
+  "kc": [
+   "Intervention",
+   "Efficiency",
+   "Economic well-being"
+  ],
+  "terms": [
+   "Pigouvian tax",
+   "Externality",
+   "Marginal social cost",
+   "Marginal social benefit",
+   "Socially optimum output",
+   "Property rights"
+  ],
+  "dg": [
+   "negprod",
+   "tax"
+  ],
+  "question": "Is a carbon tax or a system of tradable permits the better way to apply Pigou’s insight in an economy you have studied, and why?",
+  "connects": [
+   {
+    "id": "marshall",
+    "why": "Pigou built his welfare economics on Marshall’s consumer surplus and external effects."
+   },
+   {
+    "id": "ostrom",
+    "why": "Ostrom showed that some shared-resource problems can be managed without either taxes or privatisation."
+   },
+   {
+    "id": "keynes",
+    "why": "Keynes cast Pigou as a representative of the classical view of unemployment."
+   }
+  ]
+ },
+ {
+  "id": "keynes",
+  "name": "John Maynard Keynes",
+  "life": "1883–1946",
+  "era": "Keynesian macroeconomics",
+  "headline": "Keynes argued that an economy can remain stuck with high unemployment because total spending is too low, and that government can act to raise aggregate demand.",
+  "context": "Keynes was a Cambridge economist, Treasury official and public intellectual. After the First World War he criticised the reparations imposed on Germany as economically damaging. In the 1920s Britain suffered persistent unemployment, and from 1929 the Great Depression brought mass unemployment across industrial economies. The prevailing view held that flexible wages and prices would restore full employment, and that governments should balance their budgets. Keynes doubted that wage cuts would work, and asked why unemployment could persist for years. His answer required a theory of output as a whole, which helped create macroeconomics as a separate field.",
+  "ideas": [
+   {
+    "h": "Effective demand",
+    "p": "Keynes argued that output and employment are determined by aggregate demand: planned spending by households, firms, government and foreign buyers. If that spending falls, firms cut output and jobs. An economy can settle at an equilibrium below full employment, a deflationary gap, with no strong force pushing it back. Cutting wages may reduce workers’ incomes and spending, so it may not cure unemployment."
+   },
+   {
+    "h": "The multiplier",
+    "p": "Richard Kahn developed the employment multiplier in 1931, and Keynes made it part of his theory. An initial rise in spending becomes income for others, who spend part of it, generating further rounds of income. The total rise in national income is a multiple of the initial injection, depending on the share of extra income that leaks into saving, taxes and imports. The Keynesian multiplier is HL only in the IB course."
+   },
+   {
+    "h": "Uncertainty, expectations and investment",
+    "p": "Investment depends on firms’ expectations about uncertain future profits, which Keynes argued cannot be reduced to calculable probabilities. Confidence, which he described as ‘animal spirits’, can shift sharply, making investment volatile. A collapse in business confidence can therefore start a downturn even without any change in underlying productive capacity. Falling investment then lowers incomes through the multiplier."
+   },
+   {
+    "h": "Money, interest and the paradox of thrift",
+    "p": "Keynes argued that interest rates reflect the demand to hold money as a liquid asset, not simply saving and investment. In a deep slump, lower rates may do little to stimulate borrowing. If every household tries to save more at once, total spending and incomes fall, so total saving may not rise. Government spending financed by borrowing can then fill the gap in demand."
+   }
+  ],
+  "contribution": "Keynes made aggregate demand the starting point for explaining fluctuations in output and employment, and gave governments a framework for stabilisation through fiscal and monetary policy. The AD–AS model, the circular flow with injections and withdrawals, the multiplier and the idea of an output gap all draw on his work. He also showed that what is sensible for one household, such as saving more, can have different effects when everyone does it.",
+  "assumptions": [
+   "Wages and prices are slow to adjust downward, especially in the short run",
+   "Investment depends heavily on uncertain expectations",
+   "Spare capacity exists, so higher demand raises output more than prices",
+   "Consumption depends mainly on current income"
+  ],
+  "influence": "After the Second World War many governments adopted demand management, aiming to stabilise output and employment through fiscal policy. Keynes helped design the Bretton Woods system of international monetary cooperation in 1944. In the 1970s, rising inflation together with high unemployment led many economists, including Friedman, to challenge Keynesian policy. Large fiscal and monetary responses to the 2008 financial crisis and the 2020 pandemic drew heavily on Keynesian reasoning.",
+  "criticisms": [
+   "Friedman and others argued that fiscal policy acts with long and variable lags and may destabilise rather than stabilise output.",
+   "The experience of rising inflation alongside high unemployment in the 1970s was hard to explain with early Keynesian models that assumed a stable trade-off.",
+   "Government borrowing to raise spending may crowd out private investment by pushing up interest rates, reducing the net effect on demand.",
+   "Economists in the new classical tradition argued that his models lacked a consistent account of how households and firms form expectations."
+  ],
+  "modern": "Keynesian reasoning frames much of the discussion of recessions, stimulus packages and austerity. Debates continue about the size of fiscal multipliers, whether low interest rates limit monetary policy, and how large public debt can safely become. New Keynesian models combine his emphasis on sticky prices and demand with forward-looking expectations, and they shape how many central banks think about policy.",
+  "works": [
+   {
+    "t": "The Economic Consequences of the Peace",
+    "y": 1919
+   },
+   {
+    "t": "The General Theory of Employment, Interest and Money",
+    "y": 1936
+   }
+  ],
+  "honours": null,
+  "misread": "Students often say Keynes favoured permanent budget deficits. His case for deficit spending applied to periods of weak demand and spare capacity; in a boom, Keynesian reasoning points towards restraint.",
+  "subs": [
+   "3.2",
+   "3.6",
+   "3.1"
+  ],
+  "kc": [
+   "Intervention",
+   "Economic well-being",
+   "Change"
+  ],
+  "terms": [
+   "Aggregate demand",
+   "Keynesian multiplier",
+   "Deflationary gap",
+   "Keynesian AS curve",
+   "Fiscal policy",
+   "Crowding out"
+  ],
+  "dg": [
+   "defgap",
+   "multiplier"
+  ],
+  "question": "How far does the size of the multiplier in an economy you have studied depend on leakages such as imports and taxes, and what does that imply for fiscal stimulus?",
+  "connects": [
+   {
+    "id": "friedman",
+    "why": "Friedman’s monetarism was the leading challenge to Keynesian demand management."
+   },
+   {
+    "id": "hayek",
+    "why": "Hayek debated Keynes in the 1930s over the causes of slumps and the role of policy."
+   },
+   {
+    "id": "robinson",
+    "why": "Robinson was among the Cambridge economists who helped develop and extend his theory."
+   }
+  ]
+ },
+ {
+  "id": "robinson",
+  "name": "Joan Robinson",
+  "life": "1903–1983",
+  "era": "Imperfect competition and post-Keynesian economics",
+  "headline": "Robinson showed how firms with market power set prices and wages, introducing the term monopsony, and later challenged core assumptions of mainstream growth and capital theory.",
+  "context": "Robinson studied and taught at Cambridge, in a period when the subject was dominated by Marshall’s followers. In the late 1920s Piero Sraffa pointed out that Marshall’s theory of perfectly competitive firms struggled to account for industries with falling costs and branded products. Many real firms clearly influenced their own prices. During the Depression, Robinson was part of a group of young Cambridge economists who discussed Keynes’s ideas while he developed his theory of employment. Throughout her career she questioned whether prevailing theory described how capitalist economies actually work.",
+  "ideas": [
+   {
+    "h": "Imperfect competition",
+    "p": "Robinson analysed firms facing downward-sloping demand curves, so that selling more requires cutting price. Such a firm maximises profit where marginal revenue equals marginal cost, and charges a price above marginal cost. Output is lower and price higher than under perfect competition. Edward Chamberlin developed a related theory of monopolistic competition in the same year, independently."
+   },
+   {
+    "h": "Monopsony",
+    "p": "Robinson introduced the term monopsony for a market with a single buyer, such as a dominant employer in a town. Because hiring more workers requires raising the wage for everyone, the marginal cost of labour exceeds the wage. The firm hires fewer workers and pays less than in a competitive labour market. In this setting a well-set minimum wage could raise both wages and employment."
+   },
+   {
+    "h": "Price discrimination",
+    "p": "Robinson worked out when a firm with market power can charge different prices to separate groups of buyers, and how it would set them. Prices tend to be higher for groups with less elastic demand. Whether discrimination reduces or increases welfare depends on its effect on total output, which she showed could go either way."
+   },
+   {
+    "h": "Critique of capital and growth theory",
+    "p": "Later, Robinson led the Cambridge side of the ‘Cambridge capital controversy’, arguing that capital cannot be measured as a single quantity independent of prices and the rate of profit. If so, simple models in which output depends on a stock of ‘capital’ face logical problems. She also stressed historical time and uncertainty, influencing post-Keynesian economics."
+   }
+  ],
+  "contribution": "Robinson’s work helped move economics beyond the polar cases of perfect competition and pure monopoly, and made marginal revenue a standard tool. Monopsony is now central to labour economics and to debates about minimum wages. Her analysis of price discrimination remains standard. Her later critiques sharpened debate about the foundations of growth theory, even though many economists continued to use the models she criticised.",
+  "assumptions": [
+   "Firms aim to maximise profit by equating marginal revenue and marginal cost",
+   "Firms face downward-sloping demand curves rather than a horizontal one",
+   "Buyers can be separated into groups with different elasticities when price discrimination is possible",
+   "In monopsony, a single buyer faces an upward-sloping supply of labour"
+  ],
+  "influence": "Robinson’s models became standard in microeconomics courses. Monopsony analysis has gained renewed attention in research on employer concentration and in the minimum wage debate, where it offers one explanation for why some studies find small employment effects. Competition authorities consider buyer power as well as seller power. Her post-Keynesian work influenced economists who emphasise demand, uncertainty and distribution in growth.",
+  "criticisms": [
+   "Her static models of imperfect competition say little about strategic interaction between rival firms, which game theory later addressed in oligopoly.",
+   "In the capital controversy, many economists accepted her logical point but continued to use aggregate production functions as useful approximations.",
+   "Her sympathetic assessments of some planned economies were later widely judged to have been too favourable."
+  ],
+  "modern": "Robinson’s ideas are directly relevant to HL subtopic 2.11 on market power. Debates about large digital platforms, supermarkets’ power over suppliers and employers’ wage-setting power in some labour markets all use her concepts. Monopsony provides a counterweight to the simple competitive prediction that a minimum wage reduces employment, which matters when evaluating labour market policies.",
+  "works": [
+   {
+    "t": "The Economics of Imperfect Competition",
+    "y": 1933
+   }
+  ],
+  "honours": null,
+  "misread": "Students sometimes treat monopsony and monopoly as the same. A monopolist is a single seller with power over price; a monopsonist is a single buyer, often an employer, with power over the price it pays.",
+  "subs": [
+   "2.11",
+   "3.3",
+   "3.4"
+  ],
+  "kc": [
+   "Efficiency",
+   "Equity",
+   "Intervention"
+  ],
+  "terms": [
+   "Market power",
+   "Monopoly",
+   "Marginal revenue",
+   "Minimum wage",
+   "Barriers to entry",
+   "Price maker"
+  ],
+  "dg": [
+   "monopoly",
+   "labour"
+  ],
+  "question": "Could monopsony help to explain why a minimum wage in a labour market you have studied had a smaller effect on employment than a competitive model predicts?",
+  "connects": [
+   {
+    "id": "marshall",
+    "why": "Robinson rebuilt Marshall’s theory of the firm for markets with price-setting firms."
+   },
+   {
+    "id": "keynes",
+    "why": "She was part of the Cambridge group that helped develop Keynes’s theory."
+   },
+   {
+    "id": "marx",
+    "why": "She wrote a study of Marx’s economics that engaged critically with his ideas."
+   }
+  ]
+ },
+ {
+  "id": "hayek",
+  "name": "Friedrich August von Hayek",
+  "life": "1899–1992",
+  "era": "Austrian school",
+  "headline": "Hayek argued that prices transmit dispersed knowledge that no central planner could gather, making the problem of economic coordination as much about information as about incentives.",
+  "context": "Hayek was born in Vienna and trained in the Austrian tradition associated with Carl Menger and Ludwig von Mises. He moved to the London School of Economics in 1931. In the interwar years, many economists believed that central planning could match or outperform markets, and some argued that a socialist economy could replicate market prices through calculation. Hayek, following Mises, joined this ‘socialist calculation debate’. He also argued with Keynes about the causes of the Depression. Writing during the Second World War, he worried that wartime economic controls would become a permanent feature of peacetime economies.",
+  "ideas": [
+   {
+    "h": "Prices as information",
+    "p": "Knowledge about local conditions, such as a sudden shortage of a material or a spare machine in one factory, is scattered among millions of people and often cannot be written down. A change in price summarises that knowledge and signals it to everyone who uses the good, prompting them to economise or supply more without knowing why. The price mechanism is, in this view, a system for communicating information."
+   },
+   {
+    "h": "The knowledge problem in planning",
+    "p": "A central planner would need to collect and process this dispersed, changing knowledge to allocate resources well. Hayek argued that this is not just a matter of computing power: much relevant knowledge is tacit and specific to time and place. Planning therefore tends to produce shortages, surpluses and poor quality, because the planner cannot see what market prices would reveal."
+   },
+   {
+    "h": "Spontaneous order",
+    "p": "Many useful social institutions, such as language, money, common law and markets, emerged from human action without being designed by anyone. Hayek argued that such orders can coordinate far more activity than deliberate planning. Attempts to redesign them wholesale may destroy knowledge embedded in rules that have evolved over time, even when those rules seem arbitrary."
+   },
+   {
+    "h": "Credit, malinvestment and the cycle",
+    "p": "In his business-cycle theory, Hayek argued that when banks or central banks push interest rates below the level consistent with saving, firms invest in long-term projects that are not sustainable. The boom rests on distorted price signals, and the bust is the painful correction. This put him at odds with Keynes, who emphasised insufficient demand."
+   }
+  ],
+  "contribution": "Hayek’s main lasting contribution is the idea that the economic problem is partly one of using knowledge that no single person holds. This reframed the comparison between markets and planning around information, not just efficiency in a static model. His work fed into later research on information, institutions and incentives. Within the IB course, his argument offers a theoretical explanation of why the price mechanism can allocate resources without central direction.",
+  "assumptions": [
+   "Relevant economic knowledge is dispersed, local and often tacit",
+   "Prices in competitive markets reflect changing conditions of scarcity",
+   "Individuals respond to price signals in pursuing their own plans",
+   "Rules and institutions that evolved over time often embody useful knowledge"
+  ],
+  "influence": "The Road to Serfdom reached a large audience and influenced debates about the role of the state after 1945. Hayek helped found the Mont Pelerin Society in 1947, a network of liberal economists and thinkers. His ideas were cited by policymakers in the 1970s and 1980s who favoured deregulation and privatisation. Economists who study information, from those who analyse markets to those working on mechanism design, engage with his knowledge argument.",
+  "criticisms": [
+   "Critics argue that prices convey useful information only if markets are reasonably complete and competitive; with externalities, asymmetric information or market power, they may send misleading signals.",
+   "The Road to Serfdom’s warning that extensive economic planning leads towards authoritarian rule is disputed, since several countries built large welfare states while remaining democracies.",
+   "Keynesian economists argued that his business-cycle theory offered little practical guidance during a deep depression, when allowing the slump to run its course carried heavy costs."
+  ],
+  "modern": "Hayek’s knowledge problem is relevant to debates about whether data and algorithms could allow more central coordination of economic activity, and to the design of price-based policies such as auctions and tradable permits. His concern with credit-fuelled booms is cited in discussions of asset bubbles after periods of low interest rates. Students can use his arguments to evaluate planned economies and government price controls, while weighing them against the market failures that limit price signals.",
+  "works": [
+   {
+    "t": "The Road to Serfdom",
+    "y": 1944
+   },
+   {
+    "t": "The Use of Knowledge in Society",
+    "y": 1945
+   }
+  ],
+  "honours": "Nobel memorial prize in economic sciences, 1974, shared with Gunnar Myrdal",
+  "misread": "Students sometimes describe Hayek as opposing all government. He accepted a role for the state in providing a legal framework, some public goods and a minimum safety net; his objection was to central direction of economic activity.",
+  "subs": [
+   "1.1",
+   "2.3",
+   "2.7"
+  ],
+  "kc": [
+   "Choice",
+   "Efficiency",
+   "Intervention"
+  ],
+  "terms": [
+   "Price mechanism",
+   "Planned economy",
+   "Free market economy",
+   "Price ceiling",
+   "Deregulation"
+  ],
+  "dg": [
+   "ds",
+   "ceiling"
+  ],
+  "question": "Using Hayek’s idea of prices as signals, how might a binding price ceiling on a staple good affect the information available to producers and consumers?",
+  "connects": [
+   {
+    "id": "keynes",
+    "why": "Hayek and Keynes debated the causes of the Depression and the role of policy."
+   },
+   {
+    "id": "smith",
+    "why": "Hayek extended Smith’s idea of an unplanned market order."
+   },
+   {
+    "id": "friedman",
+    "why": "Both were leading twentieth-century advocates of market economies, though they differed on monetary theory."
+   }
+  ]
+ },
+ {
+  "id": "friedman",
+  "name": "Milton Friedman",
+  "life": "1912–2006",
+  "era": "Monetarism and the Chicago school",
+  "headline": "Friedman put the money supply and expectations at the centre of macroeconomics, arguing that there is no lasting trade-off between inflation and unemployment.",
+  "context": "Friedman spent most of his career at the University of Chicago. In the decades after 1945, Keynesian ideas dominated macroeconomic policy, and many economists believed governments could choose a point on a stable trade-off between inflation and unemployment. Friedman challenged this. He studied the history of money in detail and argued that the Great Depression had been worsened by monetary contraction. By the late 1960s he warned that attempts to hold unemployment below its natural level would bring rising inflation, a prediction that seemed borne out by the experience of the 1970s.",
+  "ideas": [
+   {
+    "h": "Money and inflation",
+    "p": "Building on the quantity theory of money, Friedman argued that sustained inflation results from the money supply growing faster than real output. If the central bank expands money too quickly, spending rises, and once the economy is at capacity this shows up mainly in prices. He recommended that monetary authorities aim for steady, predictable growth of the money supply rather than discretionary adjustment."
+   },
+   {
+    "h": "The natural rate and expectations",
+    "p": "In his 1968 presidential address to the American Economic Association, Friedman argued that unemployment tends towards a natural rate determined by real factors in the labour market. Expansionary policy can reduce unemployment below this rate only temporarily, while workers’ expectations of inflation lag behind. Once expectations adjust, unemployment returns to the natural rate at a higher inflation rate. Edmund Phelps reached similar conclusions independently."
+   },
+   {
+    "h": "The Great Contraction",
+    "p": "With Anna Schwartz, Friedman argued in A Monetary History of the United States that the Federal Reserve allowed the money supply to fall sharply in the early 1930s as banks failed. This turned a recession into a depression. The interpretation shifted blame from a failure of markets to a failure of monetary policy, and influenced how central banks respond to financial crises."
+   },
+   {
+    "h": "Permanent income",
+    "p": "Friedman argued that households base consumption on their expected long-run income, not just current income. A temporary tax cut or one-off payment may therefore have a smaller effect on spending than a permanent change. This challenged the simple Keynesian consumption function and implied that short-term fiscal stimulus could be less powerful than assumed."
+   }
+  ],
+  "contribution": "Friedman made expectations and monetary policy central to macroeconomics. The expectations-augmented Phillips curve, distinguishing the short run from the long run, is now standard; in the IB course the Phillips curve is HL only. His historical work changed views of the Depression, and his permanent income hypothesis reshaped the study of consumption. He also argued for flexible exchange rates and many market-based policies.",
+  "assumptions": [
+   "The demand for money is relatively stable, so changes in the money supply have predictable effects on spending",
+   "Expectations of inflation adapt to experience",
+   "The economy tends towards a natural rate of unemployment in the long run",
+   "Long and variable lags make discretionary policy unreliable"
+  ],
+  "influence": "Several central banks in the late 1970s and early 1980s adopted targets for money supply growth, influenced by monetarist ideas. The long-run vertical Phillips curve became part of mainstream macroeconomics, and the emphasis on anchoring inflation expectations underlies modern inflation targeting. Friedman also argued publicly for floating exchange rates, school vouchers and a negative income tax, and his writing for general readers shaped political debates about the scope of government.",
+  "criticisms": [
+   "The relationship between money and spending became unstable in the 1980s as financial markets changed, and most central banks abandoned money supply targets.",
+   "Critics argue that the natural rate is hard to estimate and may itself shift with past unemployment, so the long-run Phillips curve may be less vertical than he claimed.",
+   "Rational expectations economists argued that adaptive expectations allowed people to be fooled repeatedly, a weakness in his framework.",
+   "Keynesian economists argued that a stable money rule would leave policymakers unable to respond to large shocks to demand."
+  ],
+  "modern": "Most central banks now target inflation directly rather than money supply growth, but Friedman’s emphasis on expectations shapes how they communicate. His reading of the Depression influenced the large monetary responses to the 2008 crisis. Debates about whether loose monetary policy contributes to inflation, and about the long-run Phillips curve, continue to draw on his work, as do discussions of income support schemes resembling his negative income tax.",
+  "works": [
+   {
+    "t": "A Monetary History of the United States, 1867–1960 (with Anna Schwartz)",
+    "y": 1963
+   }
+  ],
+  "honours": "Nobel memorial prize in economic sciences, 1976",
+  "misread": "Students sometimes say Friedman argued that unemployment cannot be reduced. He argued that demand-side policy cannot keep unemployment below the natural rate in the long run; supply-side changes to the labour market may lower the natural rate itself.",
+  "subs": [
+   "3.3",
+   "3.5",
+   "3.7"
+  ],
+  "kc": [
+   "Change",
+   "Intervention",
+   "Choice"
+  ],
+  "terms": [
+   "Phillips curve",
+   "Natural rate of unemployment",
+   "Monetary policy",
+   "Inflation targeting",
+   "Inflation",
+   "Central bank"
+  ],
+  "dg": [
+   "phillips"
+  ],
+  "question": "To what extent does recent experience in an economy you have studied support the idea that there is no long-run trade-off between inflation and unemployment?",
+  "connects": [
+   {
+    "id": "keynes",
+    "why": "Friedman’s work was the leading challenge to postwar Keynesian policy."
+   },
+   {
+    "id": "hayek",
+    "why": "Both defended market economies, though Friedman’s monetary theory differed from Hayek’s."
+   },
+   {
+    "id": "stiglitz",
+    "why": "Stiglitz’s work on information failures challenged the confidence in markets associated with Chicago economics."
+   }
+  ]
+ },
+ {
+  "id": "sen",
+  "name": "Amartya Sen",
+  "life": "born 1933",
+  "era": "Welfare economics and development",
+  "headline": "Sen redefined development and poverty in terms of what people are able to do and be, and showed that famines can occur without a fall in food supply.",
+  "context": "Sen grew up in Bengal and witnessed the Bengal famine of 1943 as a child. After independence, India and many newly independent countries treated development largely as a matter of raising national income. Welfare economics, meanwhile, judged outcomes mainly by income or utility, and social choice theory had produced discouraging results about combining individual preferences into collective decisions. Sen worked on all of these. He asked why people starve in societies with food available, what development should aim at, and how to make sound judgements about inequality and well-being when people differ in their needs and circumstances.",
+  "ideas": [
+   {
+    "h": "Entitlements and famine",
+    "p": "Sen argued that famines result from a collapse in people’s entitlements: their ability to command food through what they own, produce, earn or receive. In the 1943 Bengal famine, he argued, food supply had not fallen enough to explain mass starvation; instead, rising food prices and lost earnings left rural labourers unable to buy food. Starvation is about people not having enough food, not necessarily about there not being enough food."
+   },
+   {
+    "h": "The capability approach",
+    "p": "Income is a means, not an end. Sen argued that well-being should be judged by people’s capabilities: their real freedom to achieve valued functionings such as being healthy, educated and able to take part in community life. Two people with the same income may have very different capabilities, for example if one has a disability or lives where public services are poor."
+   },
+   {
+    "h": "Development as freedom",
+    "p": "Sen defined development as the expansion of substantive freedoms, including political liberties, economic opportunities, social provision, transparency and protective security. These freedoms reinforce one another. He argued that democracy and a free press help prevent famines, because governments facing elections and public criticism have strong incentives to act. Freedom is thus both the goal of development and a means of achieving it."
+   },
+   {
+    "h": "Inequality and missing women",
+    "p": "Sen developed measures of inequality and poverty sensitive to how income is distributed among the poor. He also drew attention to ‘missing women’: in some regions the ratio of women to men is much lower than would be expected given equal care, reflecting unequal treatment in nutrition, health care and, in some cases, sex-selective practices."
+   }
+  ],
+  "contribution": "Sen widened the economic evaluation of well-being beyond income. The capability approach provided the philosophical basis for the Human Development Index, introduced in 1990, which Sen developed with Mahbub ul Haq. His entitlement analysis changed how economists and agencies study famine and food security. His work in social choice and on poverty measurement shaped how inequality and deprivation are assessed, including in multidimensional measures.",
+  "assumptions": [
+   "Well-being depends on capabilities, not only on income or utility",
+   "People differ in their ability to convert income into well-being",
+   "Access to food depends on entitlements, which can fail even when food is available",
+   "Political freedoms affect economic outcomes through accountability"
+  ],
+  "influence": "The United Nations Development Programme’s Human Development Reports drew directly on the capability approach. Agencies now treat famine prevention partly as a matter of protecting incomes, for example through public works or cash transfers, rather than only supplying food. Composite indicators, such as the Multidimensional Poverty Index, reflect his argument that deprivation has several dimensions. Philosophers, notably Martha Nussbaum, have developed the capability approach further.",
+  "criticisms": [
+   "Critics argue that the capability approach does not specify which capabilities matter most, making it hard to apply consistently without value judgements.",
+   "Some historians argue that the entitlement approach underplays the role of food supply shortfalls, war and government policy in particular famines, including Bengal in 1943.",
+   "Composite indices inspired by his work, such as the HDI, involve arbitrary choices about indicators and weights, which Sen himself acknowledged."
+  ],
+  "modern": "Sen’s work informs how students evaluate development, poverty and the limits of GDP per capita. Debates about whether to use income, consumption or multidimensional measures, about the role of democracy in development, and about how to prevent hunger during price shocks all draw on his ideas. In IB terms, his capability approach underlies the Human Development Index and the discussion of composite indicators in 4.8.",
+  "works": [
+   {
+    "t": "Poverty and Famines: An Essay on Entitlement and Deprivation",
+    "y": 1981
+   },
+   {
+    "t": "Development as Freedom",
+    "y": 1999
+   }
+  ],
+  "honours": "Nobel memorial prize in economic sciences, 1998",
+  "misread": "Students sometimes think Sen dismissed income as unimportant. He treats income as an important means to well-being, but argues that it is an incomplete measure because people convert income into capabilities at different rates.",
+  "subs": [
+   "4.8",
+   "3.4",
+   "4.7"
+  ],
+  "kc": [
+   "Economic well-being",
+   "Equity",
+   "Sustainability"
+  ],
+  "terms": [
+   "Human Development Index",
+   "Economic development",
+   "Composite indicator",
+   "Multidimensional Poverty Index",
+   "Absolute poverty",
+   "Gender Inequality Index"
+  ],
+  "dg": [],
+  "question": "How well does the Human Development Index capture Sen’s idea of capabilities, and what dimensions of development does it leave out for a country you have studied?",
+  "connects": [
+   {
+    "id": "malthus",
+    "why": "Sen’s entitlement analysis challenged explanations of famine based only on food supply."
+   },
+   {
+    "id": "banerjee",
+    "why": "Banerjee and Duflo share his focus on the lived conditions of poor households."
+   },
+   {
+    "id": "smith",
+    "why": "Sen has written extensively on Smith’s moral philosophy and his concern for the poor."
+   }
+  ]
+ },
+ {
+  "id": "ostrom",
+  "name": "Elinor Ostrom",
+  "life": "1933–2012",
+  "era": "Institutional economics and the commons",
+  "headline": "Ostrom showed through field evidence that communities can manage shared resources sustainably through their own rules, without either privatisation or central control.",
+  "context": "Ostrom trained as a political scientist and worked at Indiana University, where she founded a research workshop with Vincent Ostrom. In 1968 Garrett Hardin popularised the ‘tragedy of the commons’: when a resource such as a pasture or fishery is open to all, each user has an incentive to overuse it, and the resource is depleted. The standard policy responses were to privatise the resource or to have government regulate it. Ostrom observed that many real communities had managed fisheries, forests, grazing land and irrigation systems for long periods without either. She set out to explain when and why such arrangements work.",
+  "ideas": [
+   {
+    "h": "Beyond the tragedy of the commons",
+    "p": "Common pool resources are rivalrous but hard to exclude people from, which creates a risk of overuse. Ostrom accepted this risk but rejected the conclusion that only markets or the state can prevent depletion. Users who can communicate, build trust and agree rules can sometimes avoid the tragedy. Whether they do depends on the institutions they create."
+   },
+   {
+    "h": "Design principles",
+    "p": "From many case studies, including Swiss alpine meadows, Japanese forests and irrigation systems in Spain and the Philippines, Ostrom identified features shared by durable arrangements. These included clear boundaries, rules suited to local conditions, participation of users in making rules, monitoring by people accountable to users, graduated sanctions, low-cost ways to resolve conflicts and recognition by outside authorities."
+   },
+   {
+    "h": "Collective self-governance",
+    "p": "Ostrom showed that users can monitor and enforce rules themselves, often more cheaply and effectively than outside regulators who lack local knowledge. Self-governance relies on reciprocity and reputation: people cooperate if they expect others to do so, and sanctions start small. This links economic outcomes to trust and social norms, not only to prices or laws."
+   },
+   {
+    "h": "Polycentric governance",
+    "p": "Rather than a single authority, Ostrom favoured systems with several overlapping centres of decision-making at local, regional and national levels. Problems at different scales can be handled at the level best suited to them. She applied this thinking to large problems such as climate change, arguing that action at many levels could complement global agreements."
+   }
+  ],
+  "contribution": "Ostrom broadened the range of solutions economists consider for market failure in common pool resources. She showed that institutions created by resource users can be an alternative to privatisation and state regulation, and she gave a systematic, evidence-based account of when such institutions succeed. Her combination of field studies, laboratory experiments and game theory also influenced the methods used to study cooperation.",
+  "assumptions": [
+   "Resource users can communicate and repeatedly interact with each other",
+   "Users have local knowledge about the resource that outsiders lack",
+   "Trust and reciprocity can sustain cooperation when rules are seen as fair",
+   "Groups and resources are of a manageable size with identifiable boundaries"
+  ],
+  "influence": "Ostrom’s work changed how development agencies and governments approach community forestry, fisheries and water management, supporting forms of co-management between communities and the state. Environmental economists now consider community institutions alongside taxes, permits and property rights. Her ideas also influenced research on the governance of knowledge and digital commons. She was the first woman to receive the economics prize.",
+  "criticisms": [
+   "Her design principles were drawn mainly from small, local resources; how far they apply to global commons such as the atmosphere or oceans, with millions of users, is debated.",
+   "Critics note that community management can entrench local elites or exclude outsiders, raising equity concerns.",
+   "Some economists argue that her case-study method makes it hard to separate the effect of institutions from other local conditions."
+  ],
+  "modern": "Ostrom’s work is directly relevant to subtopic 2.8 on common pool resources and to 4.7 on sustainable development. Debates about overfishing, groundwater depletion, community forestry and climate cooperation draw on her findings. When evaluating responses to a common pool problem, students can compare government regulation and tradable permits with collective self-governance, and consider the conditions that make each more likely to work.",
+  "works": [
+   {
+    "t": "Governing the Commons: The Evolution of Institutions for Collective Action",
+    "y": 1990
+   }
+  ],
+  "honours": "Nobel memorial prize in economic sciences, 2009, shared with Oliver Williamson; the first woman to receive the economics prize",
+  "misread": "Students sometimes conclude from Ostrom that government has no role in managing commons. She argued that community rules work best under certain conditions, and that recognition and support from higher levels of government are often part of successful arrangements.",
+  "subs": [
+   "2.8",
+   "4.7"
+  ],
+  "kc": [
+   "Sustainability",
+   "Interdependence",
+   "Intervention"
+  ],
+  "terms": [
+   "Common pool resource",
+   "Tragedy of the commons",
+   "Collective self-governance",
+   "Property rights",
+   "Sustainable development"
+  ],
+  "dg": [
+   "cpr"
+  ],
+  "question": "Which of Ostrom’s design principles are present, or missing, in the management of a common pool resource you have studied?",
+  "connects": [
+   {
+    "id": "pigou",
+    "why": "Ostrom’s approach offers an alternative to Pigouvian taxes for some shared-resource problems."
+   },
+   {
+    "id": "hayek",
+    "why": "Both stressed local knowledge and institutions that evolve without central design."
+   },
+   {
+    "id": "acemoglu",
+    "why": "Both treat institutions as the key to explaining economic outcomes."
+   }
+  ]
+ },
+ {
+  "id": "stiglitz",
+  "name": "Joseph E. Stiglitz",
+  "life": "born 1943",
+  "era": "Information economics",
+  "headline": "Stiglitz showed that when buyers and sellers hold different information, markets can fail in systematic ways, so that prices alone may not produce efficient outcomes.",
+  "context": "Stiglitz studied at Amherst College and the Massachusetts Institute of Technology, and has taught at several leading universities, including Columbia. Standard general-equilibrium theory, developed in the mid-twentieth century, showed that competitive markets are efficient under strict conditions, including that everyone has the information they need. From the late 1960s, a group of economists including George Akerlof and Michael Spence began asking what happens when that condition fails. Stiglitz explored how information problems affect insurance, credit and labour markets. He later served as chair of the US Council of Economic Advisers and as chief economist of the World Bank.",
+  "ideas": [
+   {
+    "h": "Screening",
+    "p": "When one party knows less than the other, it can design choices that lead the better-informed side to reveal information. Stiglitz, with Michael Rothschild, showed that insurers can offer contracts with different deductibles and premiums: low-risk customers choose high deductibles and low premiums, high-risk customers the reverse. Screening can reduce adverse selection, but the resulting market may still be inefficient, and may sometimes fail to reach an equilibrium."
+   },
+   {
+    "h": "Credit rationing",
+    "p": "With Andrew Weiss, Stiglitz argued that banks may not raise interest rates to clear excess demand for loans. A higher rate can drive away safer borrowers and encourage riskier projects, reducing the bank’s expected return. Banks therefore ration credit at a given rate, so some creditworthy borrowers cannot borrow at all. This helps explain why small firms and poor households may lack access to finance."
+   },
+   {
+    "h": "Efficiency wages",
+    "p": "With Carl Shapiro, Stiglitz showed that if employers cannot perfectly monitor effort, they may pay above the market-clearing wage to make job loss costly and discourage shirking. Because many firms do this, some unemployment persists even in equilibrium. The model offers one explanation of involuntary unemployment based on information problems rather than rigid wages."
+   },
+   {
+    "h": "The limits of the invisible hand",
+    "p": "Stiglitz and Bruce Greenwald argued that when information is imperfect or markets are incomplete, market outcomes are generally not efficient, even with competition. This weakens the general presumption that competitive markets are efficient and suggests a potential role for well-designed intervention, though it does not show that any particular intervention will help."
+   }
+  ],
+  "contribution": "Stiglitz helped build the economics of information, showing how asymmetric information shapes contracts, prices and the structure of markets. Concepts such as screening, credit rationing and efficiency wages are now standard in microeconomics, finance and labour economics. In the IB course, the analysis of asymmetric information in 2.10, which is HL only, draws on the work he shared with Akerlof and Spence.",
+  "assumptions": [
+   "One party to a transaction has relevant information the other lacks",
+   "Actions such as effort or risk-taking cannot be perfectly observed",
+   "Prices and contract terms affect the mix of people who trade, not only how much is traded",
+   "Markets for some risks are missing or incomplete"
+  ],
+  "influence": "Information economics changed the design of insurance, lending and employment contracts and of regulation in those markets. Stiglitz’s arguments about credit markets informed debates on financial regulation and microfinance. As World Bank chief economist and later as a writer, he criticised policies associated with the IMF in the 1990s, arguing that rapid capital-market liberalisation and austerity worsened crises in several countries. He has also written widely on inequality.",
+  "criticisms": [
+   "Critics argue that showing markets with imperfect information are generally inefficient does not establish that government, which also has limited information, can do better.",
+   "His criticisms of the IMF’s handling of the Asian financial crisis were contested by IMF economists, including Kenneth Rogoff, who defended the policies.",
+   "Efficiency wage models are hard to test directly, and the evidence on how much they contribute to unemployment is mixed."
+  ],
+  "modern": "Questions about insurance markets, used-car platforms, online reviews, credit scoring and data privacy are applications of information economics. Regulation that requires disclosure, licensing or minimum standards responds to the problems Stiglitz analysed. Students evaluating government responses to asymmetric information can use his work to explain why markets may fail, and also to ask whether regulators have better information than the market participants they oversee.",
+  "works": [
+   {
+    "t": "Globalization and Its Discontents",
+    "y": 2002
+   }
+  ],
+  "honours": "Nobel memorial prize in economic sciences, 2001, shared with George Akerlof and Michael Spence",
+  "misread": "Students sometimes treat asymmetric information as simply ‘one side being dishonest’. The problem arises even with honest parties, because hidden characteristics or hidden actions change who participates and how they behave, which can shrink or close a market.",
+  "subs": [
+   "2.10",
+   "3.3",
+   "4.10"
+  ],
+  "kc": [
+   "Efficiency",
+   "Intervention",
+   "Economic well-being"
+  ],
+  "terms": [
+   "Asymmetric information",
+   "Adverse selection",
+   "Moral hazard",
+   "Screening",
+   "Signalling",
+   "Microfinance"
+  ],
+  "dg": [
+   "asym"
+  ],
+  "question": "How effectively does regulation in a market you have studied, such as health insurance or used cars, deal with the information problems Stiglitz identified?",
+  "connects": [
+   {
+    "id": "hayek",
+    "why": "Both made information central, but drew opposite conclusions about markets."
+   },
+   {
+    "id": "friedman",
+    "why": "Stiglitz’s work challenged the view that competitive markets are generally efficient."
+   },
+   {
+    "id": "banerjee",
+    "why": "Credit rationing helps explain the finance constraints poor households face, which Banerjee studies."
+   }
+  ]
+ },
+ {
+  "id": "banerjee",
+  "name": "Abhijit Banerjee",
+  "life": "born 1961",
+  "era": "Experimental development economics",
+  "headline": "Banerjee helped turn development economics towards testing specific policies with randomised experiments and towards understanding the economic lives of poor households in detail.",
+  "context": "Banerjee was born in India and studied in India and at Harvard, before joining the Massachusetts Institute of Technology. By the 1990s, development economics was divided between broad claims that aid either worked or failed, and cross-country comparisons that struggled to separate cause from correlation. Banerjee, whose early theoretical work examined how information and incentives shape credit and occupational choice in poor economies, became frustrated with the lack of reliable evidence on what specific programmes achieve. With Esther Duflo and Sendhil Mullainathan he founded the Abdul Latif Jameel Poverty Action Lab (J-PAL) in 2003 to promote rigorous evaluation of anti-poverty policies.",
+  "ideas": [
+   {
+    "h": "Randomised controlled trials",
+    "p": "An RCT randomly assigns a programme to some households, schools or villages and not to others, then compares outcomes. Because assignment is random, differences between the groups can be attributed to the programme rather than to pre-existing differences. Banerjee argued that this method can answer narrow, practical questions, such as whether remedial tutoring raises learning, more convincingly than broad comparisons across countries."
+   },
+   {
+    "h": "The economic lives of the poor",
+    "p": "Banerjee and Duflo documented how poor households in many countries spend, borrow, save and take risks. They found choices that seem puzzling, such as spending on festivals rather than food, often make sense given constraints, risks and the absence of insurance. Poor households face the same human tendencies as everyone else, but with less room for error and fewer institutions to fall back on."
+   },
+   {
+    "h": "Poverty traps, case by case",
+    "p": "Rather than asking whether a single poverty trap explains global poverty, Banerjee argued that traps may exist in some domains and not in others. Small investments in nutrition, health or schooling may lead to large gains, or not, depending on the setting. Whether a trap exists is an empirical question to be tested."
+   },
+   {
+    "h": "Political economy of service delivery",
+    "p": "Banerjee examined why public services often fail the poor even when funded, pointing to absenteeism, weak accountability and capture by local elites. Experiments testing ways to improve delivery, such as information campaigns or changes in monitoring, showed how institutional details within a single programme affect outcomes. Funding alone, on this view, tells us little about what reaches the poor."
+   }
+  ],
+  "contribution": "Banerjee helped establish experimental methods as a mainstream tool in development economics and showed how close study of poor households can challenge assumptions on all sides of the aid debate. His work turned attention from grand theories of development towards the design and implementation of specific programmes. It also connected development economics with behavioural economics, showing how constraints and human limitations interact.",
+  "assumptions": [
+   "Random assignment creates comparable treatment and control groups",
+   "Effects measured in one setting can inform policy elsewhere if conditions are similar",
+   "Poor households respond rationally to their constraints, within normal behavioural limits",
+   "Many development questions can be broken into specific, testable policy choices"
+  ],
+  "influence": "J-PAL’s network of researchers has evaluated many programmes in health, education, finance and governance, and some results have informed government policy, such as the expansion of remedial teaching programmes in parts of India. Development agencies and charities increasingly require rigorous evaluation. Banerjee’s work also shaped debates on microfinance, where experimental evidence suggested more modest effects than early advocates claimed.",
+  "criticisms": [
+   "Angus Deaton and others argued that RCTs are not uniquely reliable and that results from one context may not generalise to others, a problem of external validity.",
+   "Critics argue that the method suits small, testable interventions and may divert attention from larger questions about institutions, macroeconomic policy and structural change.",
+   "Experiments on poor households raise ethical questions about consent and about withholding a potentially beneficial programme from a control group."
+  ],
+  "modern": "Banerjee’s approach shapes how governments, charities and aid agencies design and evaluate programmes such as cash transfers, school interventions and health campaigns. In the IB course, it connects 4.10 on development strategies with 1.2, where the guide asks how economists approach the world, including the use of evidence. Students can use his work to evaluate claims about microfinance, aid and poverty traps, and to ask what kind of evidence would test a policy claim.",
+  "works": [
+   {
+    "t": "Poor Economics (with Esther Duflo)",
+    "y": 2011
+   }
+  ],
+  "honours": "Nobel memorial prize in economic sciences, 2019, shared with Esther Duflo and Michael Kremer",
+  "misread": "Students sometimes think Banerjee claims that poor people make irrational choices. His work argues that poor households often make sensible choices given tight constraints and risks, and that the same behavioural biases found among richer people matter more when there is little margin for error.",
+  "subs": [
+   "4.10",
+   "1.2",
+   "3.4"
+  ],
+  "kc": [
+   "Economic well-being",
+   "Equity",
+   "Intervention"
+  ],
+  "terms": [
+   "Microfinance",
+   "Poverty trap",
+   "Foreign aid",
+   "Behavioural economics",
+   "Absolute poverty"
+  ],
+  "dg": [],
+  "question": "What could, and could not, a randomised controlled trial tell us about the effectiveness of a development strategy you have studied?",
+  "connects": [
+   {
+    "id": "duflo",
+    "why": "His closest collaborator, with whom he founded J-PAL and wrote Poor Economics."
+   },
+   {
+    "id": "sen",
+    "why": "Both focus on the conditions and choices of poor households."
+   },
+   {
+    "id": "acemoglu",
+    "why": "Acemoglu’s emphasis on institutions contrasts with their focus on specific programmes."
+   }
+  ]
+ },
+ {
+  "id": "duflo",
+  "name": "Esther Duflo",
+  "life": "born 1972",
+  "era": "Experimental development economics",
+  "headline": "Duflo showed how carefully designed field experiments can test specific anti-poverty policies, and made evidence on what works central to development debates.",
+  "context": "Duflo was born in Paris and studied history and economics in France before completing her doctorate at the Massachusetts Institute of Technology, where she later became a professor. Her early research used natural experiments, such as a large school construction programme in Indonesia, to estimate the effects of education. In development economics at the time, many policies were adopted with little reliable evidence on their effects. With Abhijit Banerjee and Sendhil Mullainathan she founded J-PAL in 2003, aiming to apply randomised evaluation, a method borrowed from medical research, to questions about education, health, finance and governance in low-income countries.",
+  "ideas": [
+   {
+    "h": "Field experiments in policy",
+    "p": "Duflo argued that development policy can be broken down into many specific questions, each of which can be tested. Should mosquito nets be given free or sold at a subsidised price? Does adding teachers improve learning? Randomised evaluation compares groups that differ only in whether they received the policy, so differences in outcomes can be attributed to the policy itself."
+   },
+   {
+    "h": "The economist as plumber",
+    "p": "Duflo has argued that economists should attend to the details of how policies are implemented, like a plumber fixing leaks in a system. A well-designed programme on paper can fail because of small practical problems, such as unclear rules, missing information or weak incentives for staff. Testing and adjusting these details can make a large difference."
+   },
+   {
+    "h": "Women’s empowerment and development",
+    "p": "Duflo examined how development and the position of women interact. Her research on political reservations for women in Indian village councils found that women leaders tended to invest more in public goods valued by women. She argued that economic development and empowerment support each other, but that development alone may not remove gender inequality without targeted policy."
+   },
+   {
+    "h": "Behaviour and small nudges",
+    "p": "Many of Duflo’s experiments show that small changes in timing, convenience or framing can affect choices such as fertiliser use, vaccination or saving. For example, offering farmers a chance to buy fertiliser at harvest time, when they have cash, can raise its use. This links development economics with behavioural economics and choice architecture."
+   }
+  ],
+  "contribution": "Duflo helped make randomised evaluation a standard method in development economics and in policy evaluation more widely. Her work demonstrated that rigorous evidence can be gathered on specific policies in difficult settings, and that implementation details matter as much as broad policy direction. She also brought gender and political economy into experimental research, showing how institutions shape who benefits from public spending.",
+  "assumptions": [
+   "Random assignment allows causal effects to be identified",
+   "Specific policies can be isolated and tested separately",
+   "Behavioural tendencies such as procrastination affect decisions in predictable ways",
+   "Evidence from well-designed trials can improve policy if it is acted upon"
+  ],
+  "influence": "Governments, charities and international agencies increasingly fund and use randomised evaluations, and J-PAL works with policymakers in many countries. Duflo’s findings on subsidised health products, teaching methods and gender quotas have informed policy debates. She was the second woman to receive the economics prize. Her work, with Banerjee’s, has also shaped the way economists communicate research to general readers.",
+  "criticisms": [
+   "Angus Deaton and Nancy Cartwright argued that randomisation does not by itself ensure that a result will hold in a different place or at a larger scale.",
+   "Some critics argue that focusing on small, testable interventions can neglect the macroeconomic and institutional changes that drove growth in economies that became rich.",
+   "Programme effects found in a trial may change when governments scale them up, because implementation, prices or behaviour may differ."
+  ],
+  "modern": "Duflo’s work is relevant to IB subtopic 4.10 on development strategies and to 1.2 on how economists use evidence. Discussions about cash transfers, women’s empowerment, education policy and health subsidies regularly cite experimental findings. Students can use her approach to evaluate a development policy by asking what specific mechanism it relies on, how its effect could be measured, and whether evidence from elsewhere is likely to apply.",
+  "works": [
+   {
+    "t": "Poor Economics (with Abhijit Banerjee)",
+    "y": 2011
+   }
+  ],
+  "honours": "Nobel memorial prize in economic sciences, 2019, shared with Abhijit Banerjee and Michael Kremer",
+  "misread": "Students sometimes think that randomised trials can settle any economic question. Duflo uses them for specific, testable policy questions; many important questions, such as the effects of trade or monetary policy, cannot be randomised and need other methods.",
+  "subs": [
+   "4.10",
+   "1.2",
+   "2.7"
+  ],
+  "kc": [
+   "Equity",
+   "Economic well-being",
+   "Intervention"
+  ],
+  "terms": [
+   "Nudge",
+   "Choice architecture",
+   "Behavioural economics",
+   "Human capital",
+   "Economic development"
+  ],
+  "dg": [],
+  "question": "How might you design a fair test of whether a particular government subsidy changes behaviour in a community you know, and what would limit the results?",
+  "connects": [
+   {
+    "id": "banerjee",
+    "why": "Her closest collaborator, co-founder of J-PAL and co-author of Poor Economics."
+   },
+   {
+    "id": "sen",
+    "why": "Her work on women’s position in development connects with Sen’s concern with gender inequality."
+   },
+   {
+    "id": "acemoglu",
+    "why": "Acemoglu’s institutional approach poses larger-scale questions that experiments cannot easily test."
+   }
+  ]
+ },
+ {
+  "id": "acemoglu",
+  "name": "Daron Acemoglu",
+  "life": "born 1967",
+  "era": "Institutional economics and political economy",
+  "headline": "Acemoglu, with Simon Johnson and James Robinson, argued that differences in political and economic institutions are a fundamental cause of why some nations are rich and others poor.",
+  "context": "Acemoglu was born in Istanbul, studied in Britain and has spent his career at the Massachusetts Institute of Technology. By the 1990s, growth economics had established that physical capital, education and technology are close causes of income differences, but not why some societies accumulate them and others do not. Explanations based on geography, culture or policy competed. Acemoglu and his co-authors argued that institutions, meaning the rules that shape incentives in an economy, are more fundamental. The challenge was to show causation rather than correlation, since rich countries might simply be able to afford better institutions.",
+  "ideas": [
+   {
+    "h": "Colonial origins",
+    "p": "In a 2001 paper on the colonial origins of comparative development, Acemoglu, Johnson and Robinson argued that where European colonisers faced high mortality, they set up extractive institutions designed to transfer resources. Where they could settle, they built institutions protecting property and limiting state power. These institutions persisted. Using settler mortality as a source of variation in institutions not caused by current income, they estimated a large effect of institutions on income today."
+   },
+   {
+    "h": "Inclusive and extractive institutions",
+    "p": "In Why Nations Fail, Acemoglu and Robinson distinguish inclusive economic institutions, which secure property rights, enforce contracts and open markets to new entrants, from extractive ones, which concentrate gains in a narrow elite. Inclusive economic institutions depend on inclusive political institutions that distribute power widely. Extractive systems can grow for a time but tend to stall because elites block innovation that threatens them."
+   },
+   {
+    "h": "Critical junctures",
+    "p": "Small institutional differences can widen when major shocks, such as plagues, colonisation or new trade opportunities, interact with existing institutions. These critical junctures can push societies onto different paths. Outcomes therefore depend on history and contingency, not fixed geography or culture. The Black Death, for example, is argued to have weakened serfdom in western Europe while it was strengthened in parts of eastern Europe, as landlords there responded differently to labour shortages."
+   },
+   {
+    "h": "Technology and labour",
+    "p": "In more recent work, Acemoglu has studied how automation and artificial intelligence affect work. He argues that the direction of technological change is a choice, shaped by institutions and incentives, and that technologies which replace workers without creating new tasks can lower labour’s share of income. Policy, in his view, can steer innovation towards uses that complement workers."
+   }
+  ],
+  "contribution": "Acemoglu and his co-authors made institutions central to explaining long-run growth and development, and set a demanding standard for identifying causal effects at the scale of whole economies. Their framework links political power to economic incentives, so that the question of why nations differ in income becomes partly a question of who controls the rules. This approach shaped development economics, economic history and political economy.",
+  "assumptions": [
+   "Institutions shape incentives to invest, innovate and work",
+   "Those in power choose institutions that serve their interests",
+   "Institutions persist over long periods unless disrupted",
+   "Historical variation, such as settler mortality, can isolate the effect of institutions from that of income"
+  ],
+  "influence": "The institutional view influenced the agendas of development agencies, which gave more attention to governance, rule of law and property rights from the late 1990s. Why Nations Fail reached a wide audience and is often cited in debates about corruption, state capacity and political reform. Acemoglu’s work on automation has informed policy debates about artificial intelligence and labour markets.",
+  "criticisms": [
+   "David Albouy questioned the reliability of the settler mortality data used in the 2001 paper, which the authors disputed.",
+   "Edward Glaeser and co-authors argued that human capital may be a more fundamental cause of growth, with institutions improving as countries become richer and more educated.",
+   "Critics argue that the inclusive–extractive distinction is broad, and that cases such as rapid growth under authoritarian rule are hard to classify or explain within it.",
+   "Geographical explanations, associated with Jeffrey Sachs and others, argue that disease burden and location have direct effects not captured by institutions."
+  ],
+  "modern": "The institutional approach underlies much of the discussion in IB subtopics 4.9 and 4.10 about weak institutions, corruption and the role of the state in development. It encourages students to ask who benefits from existing rules and why reforms may be resisted. His recent work on technology connects to debates about the future of work, inequality and the labour share in both rich and developing economies.",
+  "works": [
+   {
+    "t": "Why Nations Fail (with James Robinson)",
+    "y": 2012
+   }
+  ],
+  "honours": "Nobel memorial prize in economic sciences, 2024, shared with Simon Johnson and James Robinson",
+  "misread": "Students sometimes read Acemoglu as arguing that institutions are permanently fixed by history. His framework stresses that institutions persist but can change at critical junctures, and that reform is possible though often resisted by those who gain from the existing system.",
+  "subs": [
+   "4.9",
+   "4.10",
+   "3.4"
+  ],
+  "kc": [
+   "Change",
+   "Economic well-being",
+   "Equity"
+  ],
+  "terms": [
+   "Property rights",
+   "Economic growth",
+   "Economic development",
+   "Human capital",
+   "Real GDP per capita"
+  ],
+  "dg": [
+   "growth"
+  ],
+  "question": "Using the distinction between inclusive and extractive institutions, how far can institutions explain the growth record of an economy you have studied?",
+  "connects": [
+   {
+    "id": "ostrom",
+    "why": "Both place institutions and rules at the centre of economic outcomes."
+   },
+   {
+    "id": "banerjee",
+    "why": "Their focus on testing specific programmes contrasts with his emphasis on whole-society institutions."
+   },
+   {
+    "id": "smith",
+    "why": "Smith also linked prosperity to secure property, justice and the absence of monopoly privilege."
+   }
+  ]
+ }
+]

@@ -10,6 +10,13 @@ let { p, errors } = await open(ctx, base);
 const st = () => p.evaluate(() => ({ v: VIEW, t: TAB, a: ARG }));
 
 /* the home page */
+/* the desk first, while the visit is still a first visit: opening the idea of the day can record activity, which opens the desk (on some dates) */
+check(await p.locator('details.rn-desk').count() === 1 && !(await p.locator('details.rn-desk').evaluate(d => d.open)), 'on a first visit the desk is folded');
+await p.locator('details.rn-desk > summary').click(); await p.waitForTimeout(150);
+check(await p.locator('details.rn-desk').evaluate(d => d.open), 'the desk opens on request');
+await p.evaluate(() => nav('course')); await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
+check(await p.locator('details.rn-desk').evaluate(d => d.open), 'the desk stays as the reader left it');
+check(/One next step/.test(await p.locator('details.rn-desk').innerText()), 'the folded desk still holds the existing bands');
 check(await p.locator('.rn-home.cv svg.cv-svg').count() === 1, 'the home opener draws its model');
 check(await p.locator('.cv-sig').count() >= 5, 'the opener shows the platform\'s scale, counted from its data');
 check(await p.locator('.rn-atlas .atl').count() >= 4 && await p.locator('.atl-index .atx').count() >= 5, 'the gateway offers every major destination in two tiers');
@@ -20,12 +27,6 @@ check(await p.locator('.td-card').count() === 4, 'Today in Economics shows an id
 await p.locator('.td-card').first().getByRole('button', { name: /Read it/ }).click(); await p.waitForTimeout(200);
 check(['learn', 'everywhere'].includes((await st()).v), 'the idea of the day opens its page');
 await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
-check(await p.locator('details.rn-desk').count() === 1 && !(await p.locator('details.rn-desk').evaluate(d => d.open)), 'on a first visit the desk is folded');
-await p.locator('details.rn-desk > summary').click(); await p.waitForTimeout(150);
-check(await p.locator('details.rn-desk').evaluate(d => d.open), 'the desk opens on request');
-await p.evaluate(() => nav('course')); await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
-check(await p.locator('details.rn-desk').evaluate(d => d.open), 'the desk stays as the reader left it');
-check(/One next step/.test(await p.locator('details.rn-desk').innerText()), 'the folded desk still holds the existing bands');
 
 /* Random Economics */
 await p.getByRole('button', { name: /Surprise me/ }).first().click(); await p.waitForTimeout(200);
