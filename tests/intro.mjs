@@ -107,6 +107,12 @@ for (const [w, h] of SIZES) {
   const restored = await p.evaluate(() => !!(window.__INTRO && window.__INTRO.restored));
   if (restored) check(await p.locator('#splash').count() === 0, 'Back from another site restores the page from the back-forward cache, as it was left');
   else await full('Back from another site to the home page (a full load)');
+  /* Forward into the home page from another site: history is [about:blank, home]; step back, then forward */
+  await p.goto('about:blank'); await p.goto(base + '#/home', { waitUntil: 'commit' }); await full('the home page before a Forward step');
+  await p.goBack({ waitUntil: 'commit' }); await p.goForward({ waitUntil: 'commit' });
+  const restoredF = await p.evaluate(() => !!(window.__INTRO && window.__INTRO.restored));
+  if (restoredF) check(await p.locator('#splash').count() === 0, 'Forward from another site restores the page from the back-forward cache, as it was left');
+  else await full('Forward from another site to the home page (a full load)');
   await ctx.close();
 }
 /* a warm service worker and a populated cache do not shorten the sequence */
