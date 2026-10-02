@@ -13,7 +13,7 @@ const ROUTES = ['', '#/course', '#/learn', '#/world', '#/mind', '#/lab/diagram-a
   '#/ees', '#/ees/research-question-lab', '#/ees/find-your-topic/microeconomics', '#/ees/theory-and-models/fx', '#/ees/data-lab', '#/ees/evidence-matrix',
   '#/ees/academic-integrity-and-ai', '#/ees/quality-check', '#/ees/supervisor-mode', '#/arjun', '#/educator', '#/educator/handbook',
   '#/think/economist-s-toolkit', '#/lab/diagram-atlas/tax', '#/learn/concept-spine/c-cadv', '#/world/real-world-economics/MIC-001',
-  '#/about', '#/lab/elasticity-lab', '#/papers', '#/dna', '#/mind/market', '#/ideas', '#/think/why-did-this-happen', '#/data'];
+  '#/about', '#/lab/elasticity-lab', '#/papers', '#/dna', '#/mind/market', '#/ideas', '#/think/why-did-this-happen', '#/data', '#/events', '#/events/archive/india-1991', '#/events/economics-through-time', '#/paths', '#/paths/the-indian-economy'];
 const results = {};
 const queue = [...WIDTHS];
 await Promise.all([0, 1, 2, 3].map(async () => { for (let w; (w = queue.shift()) !== undefined;) {

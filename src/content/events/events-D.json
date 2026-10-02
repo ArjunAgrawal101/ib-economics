@@ -1,0 +1,1861 @@
+[
+ {
+  "id": "bretton-woods-1971",
+  "title": "The end of Bretton Woods",
+  "years": "1971–1973",
+  "start": "1971-05",
+  "end": "1973-03",
+  "region": "United States and the world",
+  "kind": "policy",
+  "standfirst": "For a quarter of a century after 1944, most major currencies were pegged to the US dollar, and the dollar was tied to gold. Between 1971 and 1973 that arrangement came apart, and the main currencies moved to floating exchange rates that still largely govern the world economy.",
+  "question": "Why could a system of fixed exchange rates anchored on a gold-convertible dollar not survive the strains of the late 1960s, and what changed when it ended?",
+  "before": {
+   "p": "The Bretton Woods agreement of 1944 built an adjustable-peg system. Each member fixed its currency to the US dollar within narrow bands, and the United States undertook to convert dollars held by foreign monetary authorities into gold at $35 an ounce. A parity could be changed to correct a “fundamental disequilibrium”, with the IMF involved. Capital controls were common, which left governments some room to run their own policies. Trade grew quickly, and Western Europe and Japan rebuilt. Yet the system relied on a growing supply of dollars, and as foreign dollar holdings outgrew US gold reserves, confidence in the $35 promise weakened.",
+   "facts": [
+    {
+     "t": "Delegates from 44 Allied nations met at Bretton Woods, New Hampshire, in July 1944; the conference created the IMF and the International Bank for Reconstruction and Development.",
+     "status": "fact"
+    },
+    {
+     "t": "The main Western European currencies became convertible for current-account transactions at the end of 1958, and only then did the system operate as designed.",
+     "status": "fact"
+    },
+    {
+     "t": "By the early 1960s, dollars held outside the United States exceeded the US gold stock, so the gold promise could not have been met if all holders had asked at once.",
+     "status": "fact"
+    },
+    {
+     "t": "In 1960 the economist Robert Triffin argued that the system needed US payments deficits to supply reserves, yet those same deficits would erode confidence in the dollar’s gold value.",
+     "status": "fact"
+    },
+    {
+     "t": "US consumer-price inflation rose from 1.6% in 1965 to 5.8% in 1970, during heavy spending on the Vietnam War and domestic programmes.",
+     "status": "fact"
+    }
+   ]
+  },
+  "trigger": {
+   "p": "In spring 1971 the pressure became acute. Money moved out of dollars and into Deutsche Marks in expectation of a revaluation, and in May West Germany let its currency float. Over the summer, outflows continued and the risk grew that foreign official holders would ask for gold. On 15 August 1971 President Nixon announced that the United States would stop converting dollars into gold for foreign authorities, together with a temporary wage and price freeze and a 10% surcharge on many imports.",
+   "status": "fact"
+  },
+  "timeline": [
+   {
+    "d": "1944-07",
+    "t": "Bretton Woods conference sets the rules",
+    "detail": "Allied delegates agree a system of fixed but adjustable parities against the dollar, with the dollar convertible into gold for official holders, and create the IMF to lend to countries in payments difficulty.",
+    "status": "fact"
+   },
+   {
+    "d": "1958-12",
+    "t": "European currencies become convertible",
+    "detail": "Major Western European currencies become freely usable for current-account transactions. The system now works as intended, but dollars and capital begin to move across borders more easily.",
+    "status": "fact"
+   },
+   {
+    "d": "1961",
+    "t": "London Gold Pool formed",
+    "detail": "The United States and several European central banks pool gold to hold the London market price near $35 an ounce, a sign that the official price needed active defence.",
+    "status": "fact"
+   },
+   {
+    "d": "1967-11",
+    "t": "Sterling devalued",
+    "detail": "After years of pressure, the United Kingdom devalues the pound from $2.80 to $2.40. Attention turns to the dollar as the next currency that markets might test.",
+    "status": "fact"
+   },
+   {
+    "d": "1968-03",
+    "t": "Two-tier gold market created",
+    "detail": "The Gold Pool is wound up. Official transactions stay at $35 an ounce while the private market price is allowed to float, separating the official promise from the market price.",
+    "status": "fact"
+   },
+   {
+    "d": "1971-05",
+    "t": "Deutsche Mark allowed to float",
+    "detail": "Faced with heavy inflows of dollars, West Germany stops buying dollars at the fixed rate and lets the Deutsche Mark float upwards. The Netherlands takes a similar step.",
+    "status": "fact"
+   },
+   {
+    "d": "1971-08-15",
+    "t": "Nixon closes the gold window",
+    "detail": "The United States suspends gold convertibility for foreign official holders, announces a 90-day wage and price freeze and a temporary 10% import surcharge, in effect forcing other countries to negotiate a realignment.",
+    "status": "fact"
+   },
+   {
+    "d": "1971-12",
+    "t": "Smithsonian Agreement realigns currencies",
+    "detail": "The Group of Ten agree new central rates in Washington. The official gold price rises to $38 an ounce, several currencies are revalued against the dollar, bands widen, and the surcharge is removed.",
+    "status": "fact"
+   },
+   {
+    "d": "1972-06",
+    "t": "Sterling floats",
+    "detail": "After renewed outflows, the United Kingdom stops defending its Smithsonian rate and lets the pound float, an early sign that the new parities would not hold.",
+    "status": "fact"
+   },
+   {
+    "d": "1973-02",
+    "t": "Second dollar devaluation",
+    "detail": "Under fresh speculative pressure the United States raises the official gold price to $42.22 an ounce. Markets remain unconvinced, and flows into Deutsche Marks and yen resume within weeks.",
+    "status": "fact"
+   },
+   {
+    "d": "1973-03",
+    "t": "Generalised floating begins",
+    "detail": "Major countries stop defending dollar parities. Several European Community currencies float jointly against the dollar, while the yen, pound and others float independently. The fixed-rate era among major currencies ends.",
+    "status": "fact"
+   },
+   {
+    "d": "1976-01",
+    "t": "Jamaica agreement legalises floating",
+    "detail": "IMF members agree to amend the Fund’s Articles so that countries may choose their own exchange-rate arrangements, and the official role of gold is reduced. The amendment took effect in 1978.",
+    "status": "fact"
+   }
+  ],
+  "actors": [
+   {
+    "who": "President Richard Nixon",
+    "role": "Announced the suspension of gold convertibility in August 1971, combining it with domestic wage and price controls and an import surcharge to strengthen the US bargaining position."
+   },
+   {
+    "who": "John Connally, US Treasury Secretary",
+    "role": "Led the tough US negotiating stance in 1971, pressing surplus countries to revalue their currencies and share more of the burden of adjustment."
+   },
+   {
+    "who": "Paul Volcker, Treasury Under Secretary for Monetary Affairs",
+    "role": "Senior official who helped design the August 1971 measures and negotiated the realignments; he later became Federal Reserve chairman in 1979."
+   },
+   {
+    "who": "West German and Japanese authorities",
+    "role": "Ran large surpluses and accumulated dollars to hold their pegs, importing monetary expansion, and resisted revaluations until market pressure made them unavoidable."
+   },
+   {
+    "who": "Group of Ten finance ministers and central bankers",
+    "role": "Negotiated the Smithsonian realignment of December 1971, attempting to rebuild a fixed-rate system on new parities with wider bands."
+   },
+   {
+    "who": "International Monetary Fund",
+    "role": "Guardian of the par-value rules; after the system broke down it oversaw the rewriting of its own Articles to allow members to choose floating."
+   }
+  ],
+  "changed": "Exchange rates among the major currencies were no longer pegged but set largely in markets, with central banks intervening when they chose. The last formal link between money and gold disappeared, so the price level came to depend on central-bank policy rather than a metallic anchor. Countries gained freedom to set interest rates for domestic aims, while firms and investors faced more exchange-rate risk, and markets for hedging that risk grew. The dollar stayed the main reserve and invoicing currency, which many had not expected when the gold link ended.",
+  "predict": {
+   "q": "Once the gold window closed and the dollar was eventually allowed to float, what would you expect to happen to the number of Deutsche Marks and yen needed to buy one dollar between 1971 and 1973?",
+   "options": [
+    "Both fell: the dollar depreciated",
+    "Both rose: the dollar appreciated",
+    "Little change, because new pegs held"
+   ],
+   "answer": 0,
+   "explain": "At its old parities the dollar was overvalued, as persistent US payments deficits and the build-up of dollars abroad suggested. Removing the peg let the excess supply of dollars push its price down. Annual averages fell from 3.48 to 2.67 Deutsche Marks per dollar, and from 348.05 to 271.4 yen per dollar, between 1971 and 1973."
+  },
+  "mechanism": [
+   "Persistent US balance-of-payments deficits → dollars accumulate in the reserves of foreign central banks",
+   "Foreign dollar holdings grow faster than the US gold stock → doubts that the $35 gold price can be honoured → incentive to convert dollars before others do",
+   "Faster US inflation in the late 1960s at fixed nominal parities → US real exchange rate appreciates → US goods lose price competitiveness → trade balance weakens",
+   "Expected dollar devaluation → speculative capital flows into Deutsche Marks and yen → surplus central banks buy dollars to hold the peg → their money supply expands (imported inflation)",
+   "Cost of defending the peg rises for both deficit and surplus countries → gold convertibility suspended → realignment at the Smithsonian, then generalised floating",
+   "Peg removed → the dollar’s price moves to where existing demand and supply of dollars meet: a movement to market equilibrium, not a shift of either curve",
+   "Dollar depreciation → dearer imports for US buyers → added upward pressure on US prices, alongside expansionary policy, before the 1973 oil shock"
+  ],
+  "charts": [
+   {
+    "series": "fx-germany",
+    "from": "1971",
+    "to": "1980",
+    "title": "Deutsche Marks per US dollar, 1971–1980",
+    "look": "The Deutsche Mark price of a dollar falls in steps: after August 1971, after the Smithsonian realignment, and again once floating began in March 1973. A falling line means a weaker dollar.",
+    "marks": [
+     {
+      "at": "1971-08",
+      "label": "Gold window closed"
+     },
+     {
+      "at": "1971-12",
+      "label": "Smithsonian Agreement"
+     },
+     {
+      "at": "1973-03",
+      "label": "Generalised floating"
+     }
+    ]
+   },
+   {
+    "series": "fx-japan",
+    "from": "1971",
+    "to": "1980",
+    "title": "Yen per US dollar, 1971–1980",
+    "look": "The yen had been fixed at 360 per dollar since 1949. Notice how quickly the rate fell after 1971, and that floating did not mean steady movement: the yen weakened again in 1974–76 after the oil shock.",
+    "marks": [
+     {
+      "at": "1971-08",
+      "label": "Gold window closed"
+     },
+     {
+      "at": "1971-12",
+      "label": "Smithsonian Agreement"
+     },
+     {
+      "at": "1973-03",
+      "label": "Generalised floating"
+     }
+    ]
+   },
+   {
+    "series": "us-cpi-infl",
+    "from": "1960",
+    "to": "1980",
+    "title": "US consumer-price inflation, 1960–1980",
+    "look": "Inflation was rising well before 1971. The price freeze and controls held it to 3.3% in 1972, but it reached 6.2% in 1973 and 11.1% in 1974 as controls eased and oil prices jumped.",
+    "marks": [
+     {
+      "at": "1971",
+      "label": "Gold window closed"
+     },
+     {
+      "at": "1973",
+      "label": "Floating begins"
+     }
+    ]
+   }
+  ],
+  "diagrams": [
+   {
+    "dg": "fx",
+    "how": "Draw the market for US dollars priced in Deutsche Marks. Set the official parity above the equilibrium, creating an excess supply of dollars that the Bundesbank had to buy. Then remove the peg: the price falls to equilibrium, a movement along both curves rather than a shift."
+   },
+   {
+    "dg": "bop",
+    "how": "Sketch the US balance of payments around 1970: a weakening current account and capital outflows, matched by a rise in dollars held by foreign central banks. Explain why financing deficits this way depended on foreigners’ willingness to keep holding dollars."
+   }
+  ],
+  "policy": [
+   {
+    "who": "West German authorities",
+    "when": "1971-05",
+    "what": "Stopped buying dollars at the fixed rate and let the Deutsche Mark float after heavy inflows, because defending the peg was swelling the domestic money supply and adding to inflation pressure.",
+    "status": "fact"
+   },
+   {
+    "who": "US government",
+    "when": "1971-08",
+    "what": "Suspended dollar–gold convertibility for foreign official holders, imposed a 90-day wage and price freeze and a temporary 10% surcharge on many imports, aiming to force a realignment and contain inflation.",
+    "status": "fact"
+   },
+   {
+    "who": "Group of Ten",
+    "when": "1971-12",
+    "what": "Smithsonian Agreement: raised the official gold price from $35 to $38 an ounce, revalued several major currencies against the dollar and widened permitted bands to 2.25% either side of central rates; the US dropped its surcharge.",
+    "status": "fact"
+   },
+   {
+    "who": "European Community members",
+    "when": "1972-04",
+    "what": "Created the “snake”, keeping fluctuations among their own currencies within narrower margins than the Smithsonian bands, an early step in the European monetary cooperation that later led to the euro.",
+    "status": "fact"
+   },
+   {
+    "who": "US government",
+    "when": "1973-02",
+    "what": "Devalued the dollar a second time, raising the official gold price to $42.22 an ounce; within weeks, renewed outflows led the major countries to stop defending dollar parities altogether.",
+    "status": "fact"
+   },
+   {
+    "who": "IMF members",
+    "when": "1976-01",
+    "what": "Agreed at Kingston, Jamaica, to amend the IMF’s Articles so that members could choose their own exchange-rate arrangements, giving legal recognition to floating and reducing gold’s official role.",
+    "status": "fact"
+   }
+  ],
+  "stakeholders": [
+   {
+    "who": "US exporters and import-competing firms",
+    "effect": "Gained price competitiveness as the dollar depreciated against the Deutsche Mark and yen, and enjoyed brief protection from the 1971 import surcharge."
+   },
+   {
+    "who": "German and Japanese exporters",
+    "effect": "Lost some price advantage as their currencies appreciated; Japanese firms had planned for decades around a rate of 360 yen per dollar."
+   },
+   {
+    "who": "Central banks in surplus countries",
+    "effect": "Regained control of their money supply once they no longer had to buy dollars, but their existing dollar reserves fell in value measured in their own currencies."
+   },
+   {
+    "who": "US households",
+    "effect": "Faced dearer imported goods as the dollar fell; the price freeze held measured inflation down for a time before it rose again in 1973–74."
+   },
+   {
+    "who": "Firms and investors trading across borders",
+    "effect": "Faced more day-to-day exchange-rate risk, raising demand for forward contracts and other hedging tools, and making long-term contracts in foreign currencies harder to price."
+   }
+  ],
+  "short": "In the short run, the August 1971 measures shocked other governments and forced a negotiated realignment within four months. The dollar fell against the Deutsche Mark and yen, the US import surcharge disappeared once the Smithsonian rates were agreed, and the wage and price freeze held US inflation to 3.3% in 1972. But the new parities lacked credibility. Sterling floated within six months, a second dollar devaluation came in February 1973, and by March the major currencies were floating against the dollar.",
+  "long": "In the long run, floating exchange rates became the norm among the major economies, with central banks setting interest rates for domestic goals. Without a gold anchor, controlling inflation depended on the credibility of monetary policy, which helps explain the later spread of independent central banks and inflation targets. Exchange rates turned out to be more volatile than many supporters of floating had expected. The dollar kept its dominant international role, and Europe pursued its own route to currency stability that ended in monetary union.",
+  "transmission": "Because the dollar sat at the centre of the system, its troubles reached every country that pegged to it. Surplus countries had been importing US monetary expansion as they bought dollars to hold their pegs, and the rapid growth of official reserves in the early 1970s added to global liquidity. After 1973, changes in US interest rates and inflation passed abroad mainly through exchange rates and capital flows rather than official reserve purchases. Many smaller economies continued to peg to the dollar or another currency, so floating was general among major currencies only.",
+  "winners": [
+   {
+    "t": "US export and import-competing industries, which gained competitiveness from a weaker dollar.",
+    "status": "inference"
+   },
+   {
+    "t": "Countries such as West Germany that wanted lower inflation than the United States, since floating let them stop importing US monetary expansion.",
+    "status": "inference"
+   },
+   {
+    "t": "Banks and dealers in foreign exchange, as currency trading and hedging grew once rates floated.",
+    "status": "inference"
+   }
+  ],
+  "losers": [
+   {
+    "t": "Foreign central banks holding large dollar reserves, whose holdings lost value in terms of their own appreciating currencies.",
+    "status": "inference"
+   },
+   {
+    "t": "Exporters in Japan and West Germany, whose prices rose in dollar terms after revaluation.",
+    "status": "inference"
+   },
+   {
+    "t": "Firms relying on predictable exchange rates for long-term trade contracts, which now faced greater uncertainty.",
+    "status": "inference"
+   }
+  ],
+  "unintended": [
+   {
+    "t": "Removing the gold anchor took away an external brake on inflation; many economists link this to the high inflation of the 1970s, though oil shocks and domestic policy choices also mattered.",
+    "status": "controversy"
+   },
+   {
+    "t": "Ending gold convertibility did not reduce the world’s reliance on the dollar; the dollar remained the main reserve currency under floating.",
+    "status": "fact"
+   },
+   {
+    "t": "The wage and price controls, extended in later phases, distorted relative prices, and inflation re-emerged strongly once they were relaxed.",
+    "status": "interpretation"
+   }
+  ],
+  "interpretations": [
+   {
+    "view": "The Triffin dilemma",
+    "p": "Robert Triffin argued the system contained a built-in contradiction. A growing world economy needed more reserves, which mainly came from US payments deficits. But the more dollars piled up abroad relative to US gold, the less credible convertibility became. On this view, collapse was a structural problem rather than the fault of any one government.",
+    "status": "interpretation"
+   },
+   {
+    "view": "US policy and the monetarist reading",
+    "p": "Milton Friedman and others had argued since the 1950s for floating rates. Monetarists emphasised that the United States ran monetary and fiscal policies too loose for its role as anchor, exporting inflation to partners. Surplus countries then faced a choice between importing that inflation or breaking their pegs.",
+    "status": "interpretation"
+   },
+   {
+    "view": "The trilemma view",
+    "p": "Historians such as Barry Eichengreen stress the “impossible trinity”: a country cannot keep a fixed exchange rate, free capital movement and an independent monetary policy all at once. As capital controls became less effective in the 1960s, governments that prized domestic policy autonomy found the pegs harder to hold.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Asymmetric adjustment and power",
+    "p": "One view blames surplus countries for resisting revaluation; another blames the United States for acting unilaterally and treating the dollar’s value with neglect. How far the burden of adjustment should have fallen on deficit or surplus countries remains disputed, and the same argument recurs in later episodes.",
+    "status": "controversy"
+   }
+  ],
+  "explain": [
+   "The foreign exchange market model shows why an overvalued peg creates an excess supply of the currency that must be absorbed by reserve sales, or ended by devaluation.",
+   "Purchasing power parity suggests that persistently higher US inflation should lead to a weaker dollar over time, which is what happened once the peg was removed.",
+   "Balance of payments accounting shows how US deficits were financed by foreign official holdings of dollars, building claims on limited gold.",
+   "The impossible trinity explains why rising capital mobility made fixed rates harder to combine with independent national monetary policies."
+  ],
+  "miss": [
+   "Simple models give little guide to timing: the system survived years of strain, then broke within weeks once expectations of devaluation became self-reinforcing.",
+   "They underplay politics and bargaining; the August measures were partly a negotiating tactic to force other countries to revalue.",
+   "Many advocates of floating expected smooth, gradual adjustment; in practice exchange rates turned out volatile and at times overshot their longer-run values.",
+   "They do not predict the dollar’s continued dominance, which rests on network effects, deep financial markets and habit rather than gold."
+  ],
+  "differently": [
+   {
+    "t": "Earlier and more frequent parity changes, especially larger revaluations by West Germany and Japan in the 1960s, might have reduced the build-up of imbalances and the scale of speculative pressure that eventually broke the system.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Tighter US fiscal and monetary policy in the late 1960s could have slowed inflation and protected the dollar’s parity, though at the cost of slower growth and higher unemployment, which policymakers judged politically unacceptable.",
+    "status": "interpretation"
+   },
+   {
+    "t": "A larger role for an international reserve asset, as in Keynes’s 1944 proposal for a clearing union or the Special Drawing Rights created in 1969, might have eased reliance on the dollar. Whether this was politically achievable is disputed.",
+    "status": "controversy"
+   }
+  ],
+  "whatif": {
+   "q": "Suppose that in 1971 the United States had raised interest rates sharply and cut spending to defend the $35 gold price instead of closing the gold window. What is the most likely result?",
+   "options": [
+    "The peg might have lasted longer, at the cost of a US recession and higher unemployment",
+    "The system would have become permanently secure",
+    "US inflation would have risen faster"
+   ],
+   "best": 0,
+   "explain": "Tighter policy would have raised the return on dollar assets and slowed US inflation, reducing the incentive to convert. But it would also have reduced aggregate demand when unemployment was already 5.9% in 1971. It would not have solved the Triffin problem of reserve growth, so many historians doubt it could have saved the system for long. The answer is a judgement, not a certainty."
+  },
+  "compare": [
+   {
+    "id": "plaza-1985",
+    "similar": "Both episodes involved governments acting to change the value of an overvalued dollar and negotiating over who should bear the burden of adjustment between the United States, Germany and Japan.",
+    "different": "In 1985 currencies were already floating, and the change came through coordinated intervention and policy signals; in 1971 a formal peg and gold promise were abandoned.",
+    "dominant": "In 1971, a loss of confidence in a fixed parity dominated; in 1985, coordinated expectations management in a floating market dominated."
+   },
+   {
+    "id": "asia-1997",
+    "similar": "Both show a currency peg breaking once markets doubted that the authorities could or would defend it, with speculative capital flows speeding the collapse and forcing a sudden change of regime.",
+    "different": "In 1997 the countries breaking pegs were emerging economies with foreign-currency debts; in 1971 the anchor country itself abandoned convertibility, and its debts were in its own currency.",
+    "dominant": "In 1971, the reserve-currency country’s policy choices dominated; in 1997, sudden capital flight and balance-sheet damage from foreign-currency debt dominated."
+   },
+   {
+    "id": "stagflation-1970s",
+    "similar": "The end of the gold anchor and the inflation of the 1970s are closely linked in time, and both raised questions about what disciplines monetary policy.",
+    "different": "Bretton Woods ended through an exchange-rate and reserve problem among governments; stagflation combined supply shocks from oil with entrenched inflation expectations inside each economy, raising unemployment and inflation together.",
+    "dominant": "In 1971, external-balance and confidence problems in the anchor currency dominated; in the stagflation years, supply shocks interacting with wage and price expectations dominated."
+   }
+  ],
+  "ib": {
+   "subs": [
+    "4.5",
+    "4.6",
+    "3.3",
+    "3.5"
+   ],
+   "kc": [
+    "Change",
+    "Interdependence",
+    "Intervention"
+   ],
+   "note": "The event gives a real setting for analysing fixed versus floating exchange rates with the foreign exchange market diagram, and for evaluating the trade-off between exchange-rate stability and domestic policy freedom in Paper 1 or Paper 2 responses."
+  },
+  "cambridge": {
+   "topics": [
+    "exchange rate systems",
+    "balance of payments",
+    "international monetary system",
+    "inflation"
+   ],
+   "note": "Useful for comparing fixed, managed and floating exchange rates and explaining how payments imbalances are financed."
+  },
+  "university": {
+   "fields": [
+    "international finance",
+    "economic history",
+    "open-economy macroeconomics"
+   ],
+   "note": "A university course would formalise the Triffin dilemma and the impossible trinity, and study speculative attacks on pegs and the “n−1” problem of who sets monetary policy in a fixed-rate system."
+  },
+  "civil": {
+   "themes": [
+    "external sector",
+    "exchange rate management",
+    "monetary policy",
+    "international institutions"
+   ],
+   "note": "India moved from pegs towards a market-determined rupee only after 1991–93; the Bretton Woods story helps explain why any peg needs adequate reserves and credible domestic policy."
+  },
+  "economists": [
+   "keynes",
+   "friedman"
+  ],
+  "causal": [
+   "currency",
+   "inflation"
+  ],
+  "concepts": [
+   "Fixed exchange rate",
+   "Floating exchange rate",
+   "Devaluation",
+   "Revaluation",
+   "Exchange rate",
+   "Balance of payments",
+   "Current account",
+   "Managed exchange rate",
+   "Central bank",
+   "Inflation"
+  ],
+  "cases": [
+   "GLO-051",
+   "GLO-016",
+   "GLO-026"
+  ],
+  "policies": [
+   "Suspension of gold convertibility",
+   "Wage and price controls",
+   "Import surcharge",
+   "Currency revaluation",
+   "Devaluation",
+   "Move to floating exchange rates"
+  ],
+  "questions": [
+   {
+    "q": "Explain, using a foreign exchange market diagram, why West Germany had to buy dollars to maintain its peg in the late 1960s.",
+    "kind": "explain"
+   },
+   {
+    "q": "Analyse how rising US inflation at fixed nominal parities affected the US current account.",
+    "kind": "analyse"
+   },
+   {
+    "q": "Using the chart of Deutsche Marks per dollar, describe how the exchange rate changed between 1971 and 1973 and calculate the percentage change in the annual average.",
+    "kind": "data"
+   },
+   {
+    "q": "Evaluate the view that the collapse of Bretton Woods was caused mainly by US macroeconomic policy rather than by flaws in the system’s design.",
+    "kind": "evaluate"
+   },
+   {
+    "q": "Compare the breakdown of the dollar’s peg to gold in 1971 with the collapse of the Thai baht’s peg in 1997.",
+    "kind": "compare"
+   }
+  ],
+  "retrieval": [
+   {
+    "q": "At what price did the United States convert dollars into gold for foreign official holders under Bretton Woods?",
+    "a": "$35 an ounce."
+   },
+   {
+    "q": "What did President Nixon announce on 15 August 1971?",
+    "a": "The suspension of dollar–gold convertibility for foreign official holders, a 90-day wage and price freeze, and a temporary 10% import surcharge."
+   },
+   {
+    "q": "What was the Smithsonian Agreement?",
+    "a": "A December 1971 realignment by the Group of Ten that devalued the dollar against gold to $38 an ounce, revalued other currencies and widened bands to 2.25%."
+   },
+   {
+    "q": "What is the Triffin dilemma?",
+    "a": "The conflict between the world’s need for more dollar reserves, supplied by US deficits, and the loss of confidence in dollar–gold convertibility that those deficits caused."
+   },
+   {
+    "q": "When did the major currencies begin generalised floating against the dollar?",
+    "a": "March 1973."
+   }
+  ],
+  "reflection": "If you were a finance minister today, would you give up some control over interest rates in exchange for a stable exchange rate? What would your answer depend on?",
+  "reading": [
+   {
+    "t": "Barry Eichengreen, Globalizing Capital: A History of the International Monetary System, 1996",
+    "note": "A clear account of the gold standard, Bretton Woods and floating, organised around the trade-off between pegs, capital mobility and policy autonomy."
+   },
+   {
+    "t": "Robert Triffin, Gold and the Dollar Crisis, 1960",
+    "note": "The original statement of the dilemma that bears his name, written a decade before the collapse."
+   },
+   {
+    "t": "Paul Volcker and Toyoo Gyohten, Changing Fortunes, 1992",
+    "note": "An American and a Japanese official describe the end of Bretton Woods and later currency diplomacy from the inside."
+   },
+   {
+    "t": "Barry Eichengreen, Exorbitant Privilege, 2011",
+    "note": "Explains why the dollar kept its international role after the gold link ended."
+   }
+  ],
+  "numbers": [
+   {
+    "value": "$35 an ounce",
+    "claim": "Official dollar price of gold under Bretton Woods",
+    "basis": "Bretton Woods par value of the dollar; widely documented"
+   },
+   {
+    "value": "44",
+    "claim": "Number of Allied nations at the 1944 conference",
+    "basis": "Conference records; widely documented"
+   },
+   {
+    "value": "$2.80 to $2.40",
+    "claim": "Sterling devaluation of November 1967",
+    "basis": "Widely documented official parity change"
+   },
+   {
+    "value": "90 days; 10%",
+    "claim": "Length of the 1971 wage and price freeze; size of the import surcharge",
+    "basis": "Nixon’s announcement of 15 August 1971"
+   },
+   {
+    "value": "$38 an ounce; 2.25%",
+    "claim": "Smithsonian official gold price and widened band",
+    "basis": "Smithsonian Agreement, December 1971"
+   },
+   {
+    "value": "$42.22 an ounce",
+    "claim": "Official gold price after the February 1973 devaluation",
+    "basis": "US devaluation of February 1973; widely documented"
+   },
+   {
+    "value": "360 yen per dollar",
+    "claim": "Yen parity from 1949 to 1971",
+    "basis": "Widely documented fixed rate"
+   }
+  ]
+ },
+ {
+  "id": "eurozone-2010",
+  "title": "The euro area sovereign debt crisis",
+  "years": "2009–2015",
+  "start": "2009-10",
+  "end": "2015-08",
+  "region": "Euro area: Greece, Ireland, Portugal, Spain, Italy",
+  "kind": "crisis",
+  "standfirst": "Between 2009 and 2015, several euro-area governments lost access to borrowing at affordable rates, and their economies went through deep and long recessions. The crisis tested whether a single currency could work without a common budget, a common banking system or a lender of last resort for governments.",
+  "question": "Why did a debt problem in one small economy grow into a crisis that threatened the euro itself, and why was recovery in the hardest-hit countries so slow?",
+  "before": {
+   "p": "The euro began in 1999, and Greece joined in 2001. Membership removed exchange-rate risk inside the area, and the bond yields of southern members fell close to Germany’s. Cheap credit flowed from the core to the periphery: into housing in Ireland and Spain, and into government and household borrowing in Greece and Portugal. Wages and prices in these economies rose faster than in Germany, eroding competitiveness, and large current account deficits opened. With one interest rate for all members, the ECB could not tighten for the booming periphery alone. When the 2008 financial crisis struck, both banks and governments in these countries were exposed.",
+   "facts": [
+    {
+     "t": "The euro was launched on 1 January 1999 by eleven countries; Greece joined in 2001, and euro notes and coins entered circulation in 2002.",
+     "status": "fact"
+    },
+    {
+     "t": "The Maastricht Treaty set reference values of 3% of GDP for budget deficits and 60% of GDP for government debt, later backed by the Stability and Growth Pact.",
+     "status": "fact"
+    },
+    {
+     "t": "Spain and Ireland ran budget surpluses in the years just before 2008; their vulnerabilities lay mainly in private borrowing and property-lending banks, not in public debt.",
+     "status": "fact"
+    },
+    {
+     "t": "In September 2008 the Irish government took on responsibility for the liabilities of its main banks, tying the state’s finances to large banking losses.",
+     "status": "fact"
+    }
+   ]
+  },
+  "trigger": {
+   "p": "In October 2009 Greece’s newly elected government revealed that the budget deficit would be far larger than previously reported, at more than 12% of GDP, and the figures were later revised higher still. Rating agencies downgraded Greek debt and investors began to doubt that Greece could repay. Because Greece could neither devalue nor create its own currency, rising bond yields fed straight into the cost of rolling over its debts. By spring 2010 it could no longer borrow on acceptable terms.",
+   "status": "fact"
+  },
+  "timeline": [
+   {
+    "d": "2009-10",
+    "t": "Greek deficit revised sharply upwards",
+    "detail": "A new Greek government announces that the deficit is far larger than previously reported. Downgrades follow, and the yield gap between Greek and German government bonds starts to widen rapidly.",
+    "status": "fact"
+   },
+   {
+    "d": "2010-05",
+    "t": "First Greek rescue programme",
+    "detail": "Euro-area governments and the IMF agree loans of €110 billion to Greece, conditional on spending cuts, tax rises and structural reforms monitored by the Commission, the ECB and the IMF, later known as the troika.",
+    "status": "fact"
+   },
+   {
+    "d": "2010-05",
+    "t": "Rescue fund and ECB bond buying",
+    "detail": "Governments create a temporary rescue fund, the European Financial Stability Facility, and the ECB begins buying government bonds in secondary markets through its Securities Markets Programme to calm markets.",
+    "status": "fact"
+   },
+   {
+    "d": "2010-11",
+    "t": "Ireland receives a programme",
+    "detail": "Overwhelmed by the cost of supporting its banks, Ireland agrees an €85 billion EU–IMF programme. The crisis is shown to be about banks and private debt as well as public borrowing.",
+    "status": "fact"
+   },
+   {
+    "d": "2011-05",
+    "t": "Portugal receives a programme",
+    "detail": "Portugal, with slow growth and rising borrowing costs, agrees a €78 billion EU–IMF programme with conditions on fiscal consolidation and reforms to labour and product markets.",
+    "status": "fact"
+   },
+   {
+    "d": "2011-07",
+    "t": "ECB raises interest rates again",
+    "detail": "Under Jean-Claude Trichet, the ECB raises its main rate for the second time in 2011, citing inflation risks. Critics argue this tightened conditions just as the crisis spread to Spain and Italy.",
+    "status": "fact"
+   },
+   {
+    "d": "2011-12",
+    "t": "Draghi’s ECB offers three-year loans",
+    "detail": "Mario Draghi, ECB President since November, reverses the 2011 rate rises and offers banks unlimited three-year loans, easing bank funding stress; Italy has already replaced its government amid soaring borrowing costs.",
+    "status": "fact"
+   },
+   {
+    "d": "2012-03",
+    "t": "Greek debt restructured",
+    "detail": "Private holders of Greek government bonds accept losses of more than half the face value in an exchange that accompanies a second official programme, the largest sovereign restructuring of its kind to that date.",
+    "status": "fact"
+   },
+   {
+    "d": "2012-07",
+    "t": "Spain’s banks aided; Draghi’s pledge",
+    "detail": "Euro-area ministers agree up to €100 billion for Spain’s banks. Days later, in London, Draghi says the ECB is ready to do “whatever it takes”, within its mandate, to preserve the euro.",
+    "status": "fact"
+   },
+   {
+    "d": "2012-09",
+    "t": "Outright Monetary Transactions announced",
+    "detail": "The ECB offers potentially unlimited purchases of short-term bonds of countries that accept a rescue programme. Yields in Spain and Italy fall, although the scheme is not used.",
+    "status": "fact"
+   },
+   {
+    "d": "2015-01",
+    "t": "ECB launches quantitative easing",
+    "detail": "With inflation near zero and a negative deposit rate already in place since June 2014, the ECB announces large-scale purchases of government bonds, beginning in March 2015.",
+    "status": "fact"
+   },
+   {
+    "d": "2015-07",
+    "t": "Greek referendum and third programme",
+    "detail": "Greek banks close and capital controls begin; voters reject creditors’ terms in a referendum. Within weeks the government accepts a third programme, agreed in August 2015, to stay in the euro.",
+    "status": "fact"
+   }
+  ],
+  "actors": [
+   {
+    "who": "Greek governments (Papandreou, Papademos, Samaras, Tsipras)",
+    "role": "Negotiated successive programmes with creditors, carried out deep spending cuts and tax rises, and in 2015 tested, then accepted, creditors’ terms after a referendum."
+   },
+   {
+    "who": "European Central Bank (Trichet, then Draghi)",
+    "role": "Supplied liquidity to banks, bought bonds, raised rates in 2011, then cut them, and in 2012 pledged to act as a backstop through Outright Monetary Transactions."
+   },
+   {
+    "who": "The troika: European Commission, ECB and IMF",
+    "role": "Designed and monitored the conditions attached to rescue loans for Greece, Ireland, Portugal and Cyprus, including fiscal targets and structural reforms."
+   },
+   {
+    "who": "German government (Chancellor Angela Merkel)",
+    "role": "As the largest creditor country, insisted on strict conditions and fiscal rules in return for support, while ultimately agreeing to new permanent rescue funds."
+   },
+   {
+    "who": "Bond investors and banks",
+    "role": "Their reassessment of default and redenomination risk drove the sharp rise in yields; banks’ large holdings of their own governments’ bonds linked sovereign and banking stress."
+   }
+  ],
+  "changed": "Countries that had borrowed freely in the 2000s faced a sudden stop: private capital left, and official loans replaced it. Governments cut spending and raised taxes while output fell, so unemployment rose to levels not seen in decades. Wages and prices adjusted slowly downwards, an internal devaluation. The euro area built institutions it had lacked at birth: a permanent rescue fund, joint bank supervision and a central bank willing to act as a backstop for government bond markets. Public attitudes to the euro and to austerity hardened in both creditor and debtor countries.",
+  "predict": {
+   "q": "Greece could not devalue while it used the euro. If it needed to regain competitiveness against its euro partners, what would you expect to happen to its price level?",
+   "options": [
+    "Prices fall or rise more slowly than partners’: an internal devaluation",
+    "Prices rise faster, because the government prints money",
+    "No change, because the ECB fixes Greek prices"
+   ],
+   "answer": 0,
+   "explain": "Without a national currency, the only way to lower the real exchange rate is for domestic wages and prices to fall relative to partners’. This usually happens through high unemployment and weak demand, which is slow and painful. Greek consumer prices fell by 0.9% in 2013, 1.3% in 2014 and 1.7% in 2015."
+  },
+  "mechanism": [
+   "Euro entry removes currency risk → periphery borrowing costs fall → credit-financed boom shifts AD right in Greece, Ireland, Spain and Portugal",
+   "Wages and prices rise faster than in Germany at a fixed nominal exchange rate → real exchange rate appreciates → exports lose competitiveness → current account deficits widen",
+   "2008–09 recession and bank losses → tax revenue falls while spending and bank support rise → public debt jumps (the sovereign–bank loop)",
+   "Investors doubt repayment → bond yields rise → higher refinancing costs worsen deficits → doubts grow further, a self-reinforcing spiral when no national central bank can act as backstop",
+   "Austerity cuts government spending and raises taxes → AD shifts left → real GDP falls → the debt-to-GDP ratio can rise in the short run even as borrowing is cut",
+   "No devaluation possible → adjustment through falling wages and prices (internal devaluation) → competitiveness returns slowly, with high unemployment meanwhile",
+   "ECB commitment to buy bonds (Outright Monetary Transactions) → fear of default or exit falls → yields drop without bonds needing to be bought"
+  ],
+  "charts": [
+   {
+    "panel": "gdp",
+    "entities": [
+     "GRC",
+     "PRT",
+     "IRL"
+    ],
+    "from": "2005",
+    "to": "2019",
+    "title": "GDP in current US$ billions: Greece, Portugal, Ireland",
+    "look": "Greek GDP fell from 355.9 in 2008 to 195.7 in 2015. Part of that fall reflects a weaker euro against the dollar; Ireland’s jump in 2015 reflects multinational accounting, not a sudden boom.",
+    "marks": [
+     {
+      "at": "2010",
+      "label": "First Greek programme"
+     },
+     {
+      "at": "2012",
+      "label": "Greek debt restructured"
+     },
+     {
+      "at": "2015",
+      "label": "Third Greek programme"
+     }
+    ]
+   },
+   {
+    "panel": "infl",
+    "entities": [
+     "GRC",
+     "IRL",
+     "ESP",
+     "DEU"
+    ],
+    "from": "2006",
+    "to": "2019",
+    "title": "Consumer-price inflation: Greece, Ireland, Spain, Germany",
+    "look": "Look for internal devaluation: Ireland’s prices fell 4.4% in 2009, and Greek inflation was negative from 2013 to 2016, while Germany’s stayed positive. Falling relative prices restore competitiveness, slowly.",
+    "marks": [
+     {
+      "at": "2010",
+      "label": "Austerity programmes begin"
+     },
+     {
+      "at": "2015",
+      "label": "ECB starts QE"
+     }
+    ]
+   },
+   {
+    "series": "fx-euro",
+    "from": "2008",
+    "to": "2017",
+    "title": "Euros per US dollar, 2008–2017",
+    "look": "Despite the crisis, the euro did not collapse. The bigger move came with negative rates and quantitative easing: the annual average rose from 0.75 euros per dollar in 2014 to 0.90 in 2015, a weaker euro.",
+    "marks": [
+     {
+      "at": "2012-07",
+      "label": "Draghi’s pledge"
+     },
+     {
+      "at": "2015-01",
+      "label": "QE announced"
+     }
+    ]
+   },
+   {
+    "series": "uk10y",
+    "from": "2007",
+    "to": "2016",
+    "title": "UK 10-year government bond yield, 2007–2016",
+    "look": "A comparison outside the euro: the UK also ran large deficits, yet its yield fell from 3.62% in 2010 to 1.92% in 2012. One explanation is that it borrowed in a currency its own central bank issues.",
+    "marks": [
+     {
+      "at": "2010",
+      "label": "Greek crisis erupts"
+     },
+     {
+      "at": "2012",
+      "label": "Euro crisis peak"
+     }
+    ]
+   }
+  ],
+  "diagrams": [
+   {
+    "dg": "defgap",
+    "how": "Draw AD–AS for Greece. Shift AD left as government spending falls, taxes rise and confidence collapses, opening a deflationary gap: real GDP falls below full employment output and the price level comes under downward pressure. Then show SRAS shifting right only slowly as wages fall."
+   },
+   {
+    "dg": "adas",
+    "how": "Draw the counterfactual with a national currency. A devaluation raises net exports, shifting AD right and closing part of the gap faster, but it also raises import prices. Compare this with the slow internal-devaluation route that euro membership required."
+   }
+  ],
+  "policy": [
+   {
+    "who": "Euro-area governments and the IMF",
+    "when": "2010-05",
+    "what": "Agreed the first Greek programme of €110 billion, conditional on fiscal consolidation, privatisation and structural reforms, followed by programmes for Ireland in 2010 and Portugal in 2011.",
+    "status": "fact"
+   },
+   {
+    "who": "Euro-area governments",
+    "when": "2012-10",
+    "what": "Replaced the temporary rescue facility with the permanent European Stability Mechanism, able to lend to member governments under strict conditions; a treaty tightening national budget rules was signed in March 2012.",
+    "status": "fact"
+   },
+   {
+    "who": "European Central Bank",
+    "when": "2011-12",
+    "what": "Offered banks unlimited three-year loans in December 2011 and February 2012, totalling about €1 trillion, easing bank funding strain, although many banks used the funds to buy their own governments’ bonds.",
+    "status": "fact"
+   },
+   {
+    "who": "European Central Bank",
+    "when": "2012-09",
+    "what": "Announced Outright Monetary Transactions: potentially unlimited purchases of bonds of countries in a rescue programme. The commitment alone helped lower yields in Spain and Italy.",
+    "status": "fact"
+   },
+   {
+    "who": "European Central Bank",
+    "when": "2015-01",
+    "what": "Announced large-scale purchases of government bonds, following a negative deposit rate from June 2014, to counter very low inflation and to lower borrowing costs across the euro area.",
+    "status": "fact"
+   },
+   {
+    "who": "EU institutions",
+    "when": "2014-11",
+    "what": "Began banking union: the ECB took over direct supervision of the largest euro-area banks, aiming to weaken the link between national governments and their banking systems.",
+    "status": "fact"
+   }
+  ],
+  "stakeholders": [
+   {
+    "who": "Greek workers and households",
+    "effect": "Suffered deep falls in income, pensions and public services; unemployment rose above a quarter of the labour force in 2013, and many young graduates emigrated."
+   },
+   {
+    "who": "Young people in Spain and Greece",
+    "effect": "Youth unemployment rose above 50% in both countries, damaging early careers and raising concerns about lasting losses of skills and earnings."
+   },
+   {
+    "who": "Taxpayers in creditor countries",
+    "effect": "Their governments lent large sums through the rescue funds, exposing them to losses if programmes failed, which fed political resistance to further support."
+   },
+   {
+    "who": "Private holders of Greek bonds",
+    "effect": "Accepted losses of more than half the face value in 2012; banks in Greece and Cyprus with large holdings suffered heavily as a result."
+   },
+   {
+    "who": "German exporters",
+    "effect": "Benefited from a euro that was arguably weaker than a stand-alone Deutsche Mark would have been, especially as the crisis and later ECB easing weakened the euro."
+   }
+  ],
+  "short": "In the short run, rescue programmes prevented disorderly defaults, but the required fiscal consolidation took place during recession. Output fell sharply in Greece, Portugal, Spain and Ireland, and unemployment soared. Bond yields rose in Spain and Italy, threatening economies too large to rescue with the funds available, until the ECB’s 2012 pledge calmed markets. Banks in weak countries lost deposits and funding, and credit to firms tightened. Greece came close to leaving the euro in 2012 and again in 2015.",
+  "long": "In the long run, Ireland, Portugal and Spain returned to growth and to market borrowing, helped by recovering exports and ECB support. Greece suffered one of the deepest peacetime contractions recorded in an advanced economy, losing about a quarter of its output, and left its last programme only in 2018. The euro area emerged with new institutions: a permanent rescue fund, joint bank supervision and an ECB willing to act as a backstop. The case for a common budget remained contested.",
+  "transmission": "The crisis spread less through trade than through finance and expectations. Investors who saw Greece restructure asked whether Portugal, Spain or Italy might follow, so yields rose together. Banks across Europe held periphery government bonds, linking each government’s solvency to banks elsewhere. Weak banks cut lending, weakening growth and tax revenue further. Outside the euro area, the effects came mainly through slower European demand and financial-market volatility. Countries borrowing in their own currencies, such as the UK, saw yields fall instead.",
+  "winners": [
+   {
+    "t": "Germany and other core governments, whose borrowing costs fell as investors moved into what they saw as safe assets.",
+    "status": "fact"
+   },
+   {
+    "t": "Euro-area exporters, which gained from a weaker euro after 2014.",
+    "status": "inference"
+   },
+   {
+    "t": "Investors who bought periphery bonds at very high yields before the ECB’s 2012 pledge, as prices then recovered.",
+    "status": "inference"
+   }
+  ],
+  "losers": [
+   {
+    "t": "Greek households, who saw large falls in income, employment and public services over several years.",
+    "status": "fact"
+   },
+   {
+    "t": "Young workers in Spain, Greece and Portugal, who faced very high unemployment at the start of their careers.",
+    "status": "fact"
+   },
+   {
+    "t": "Private holders of Greek government bonds, who took losses in the 2012 restructuring.",
+    "status": "fact"
+   }
+  ],
+  "unintended": [
+   {
+    "t": "Fiscal consolidation during recession reduced output by more than many official forecasts expected, so debt-to-GDP ratios in some countries kept rising despite spending cuts.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Cheap long-term ECB loans were partly used by banks to buy their own governments’ bonds, deepening the link between banks and sovereigns.",
+    "status": "fact"
+   },
+   {
+    "t": "Support grew for anti-austerity and euro-sceptic parties in both debtor and creditor countries, complicating later negotiations.",
+    "status": "fact"
+   }
+  ],
+  "interpretations": [
+   {
+    "view": "The fiscal-discipline view",
+    "p": "Associated with many policymakers in creditor countries, this view holds that the crisis came from governments breaking budget rules, so the remedy was consolidation and stricter enforcement. It fits Greece well. It fits Ireland and Spain poorly, since both had low public debt before 2008 and their problems began in banks.",
+    "status": "interpretation"
+   },
+   {
+    "view": "The sudden-stop or balance-of-payments view",
+    "p": "Economists including Richard Baldwin and Francesco Giavazzi argue that the root problem was large capital flows from core to periphery that financed current account deficits. When those flows stopped abruptly, the debtors faced a crisis whatever their budget positions, much as in classic emerging-market crises.",
+    "status": "interpretation"
+   },
+   {
+    "view": "The fragile-union view",
+    "p": "Paul De Grauwe argued that members of a monetary union borrow in a currency they cannot create, so markets can push them into default through a self-fulfilling loss of confidence. On this view, the ECB’s 2012 pledge worked because it removed the bad equilibrium.",
+    "status": "interpretation"
+   },
+   {
+    "view": "The austerity debate",
+    "p": "IMF economists Olivier Blanchard and Daniel Leigh found in 2013 that forecasters had underestimated fiscal multipliers during the crisis, implying austerity was more damaging than expected. Others argue consolidation was unavoidable once markets closed, and point to the recoveries in Ireland and Portugal.",
+    "status": "controversy"
+   }
+  ],
+  "explain": [
+   "Optimum currency area theory predicts that a shared currency is costly when members face different shocks and lack labour mobility or fiscal transfers.",
+   "The AD–AS model shows how cutting government spending during recession shifts AD left, deepening the fall in output and employment.",
+   "The multiplier explains why cuts in government spending can reduce GDP by more than the cut itself, especially when interest rates cannot fall.",
+   "Real exchange rate analysis explains how faster wage growth at a fixed nominal rate eroded competitiveness in the periphery."
+  ],
+  "miss": [
+   "Simple models struggle with self-fulfilling crises, where expectations of default raise yields enough to make default more likely.",
+   "Standard textbook models often leave out banks, yet the link between banks and their governments was central to how the crisis spread.",
+   "Before the crisis, many models treated capital flows within a currency union as benign, underplaying the risk of sudden stops.",
+   "Models say little about the politics of creditor and debtor countries, which shaped the timing and conditions of every rescue."
+  ],
+  "differently": [
+   {
+    "t": "Restructuring Greek debt in 2010 rather than 2012 might have reduced the austerity required and the losses that later fell on official lenders. An IMF review in 2013 suggested restructuring should have been considered earlier; European governments disputed parts of that review.",
+    "status": "controversy"
+   },
+   {
+    "t": "The ECB could have avoided its 2011 rate rises and acted as a backstop for government bonds earlier, as it did in 2012, possibly limiting contagion to Spain and Italy.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Slower fiscal consolidation, combined with stronger demand in surplus countries such as Germany, would have spread the burden of adjustment more evenly, though creditors worried this would weaken pressure for reform.",
+    "status": "controversy"
+   }
+  ],
+  "whatif": {
+   "q": "Suppose Greece had left the euro in 2015 and reintroduced a national currency. What would most likely have followed in the short run?",
+   "options": [
+    "A sharp depreciation, banking stress and dearer imports, with uncertain gains in competitiveness later",
+    "A quick and painless return to strong growth",
+    "A stronger currency and lower inflation"
+   ],
+   "best": 0,
+   "explain": "A new currency would probably have fallen sharply, raising import prices and the burden of any debts still owed in euros. Depositors would have rushed to withdraw euros, so banks would have needed stronger controls. Over time, a cheaper currency could have helped exports and tourism, but the outcome depends on credibility and policy, which is why economists disagree about whether exit would have been better."
+  },
+  "compare": [
+   {
+    "id": "asia-1997",
+    "similar": "Both crises followed large capital inflows that financed booms and current account deficits, then reversed suddenly, forcing deep recessions and IMF-backed programmes with strict conditions.",
+    "different": "Asian countries had their own currencies, which collapsed, boosting exports later; euro members could not devalue and had to adjust through falling wages and prices instead.",
+    "dominant": "In 1997, currency collapse and foreign-currency debt dominated; in the euro crisis, the lack of a devaluation option and the sovereign–bank loop dominated."
+   },
+   {
+    "id": "gfc-2008",
+    "similar": "The euro crisis grew directly out of the financial crisis: bank losses and recession turned private debt problems into public ones, especially in Ireland and Spain.",
+    "different": "The 2008 crisis centred on US mortgage markets and global banks; the euro crisis centred on government debt and the institutional design of a monetary union.",
+    "dominant": "In 2008, a banking panic and credit collapse dominated; in 2010–12, doubts about sovereign solvency inside a currency union dominated."
+   },
+   {
+    "id": "great-depression",
+    "similar": "Many historians compare the euro to the interwar gold standard: fixed exchange rates forced deficit countries to deflate, while surplus countries faced little pressure to adjust.",
+    "different": "In the 1930s countries could leave gold, and recovery tended to follow exit; in the euro crisis no country left, and new institutions were built instead.",
+    "dominant": "In the 1930s, monetary contraction under gold dominated; in the euro crisis, the absence of national monetary and exchange-rate tools dominated."
+   }
+  ],
+  "ib": {
+   "subs": [
+    "4.4",
+    "4.5",
+    "3.6",
+    "3.5",
+    "3.3"
+   ],
+   "kc": [
+    "Interdependence",
+    "Intervention",
+    "Equity",
+    "Change"
+   ],
+   "note": "The event supports evaluation of monetary union, the costs of fiscal consolidation during recession, and the limits of monetary policy when a country shares a central bank, with data suitable for Paper 1 and Paper 2 responses."
+  },
+  "cambridge": {
+   "topics": [
+    "economic integration and monetary union",
+    "fiscal policy and government debt",
+    "exchange rate systems",
+    "unemployment",
+    "deflation"
+   ],
+   "note": "A strong illustration of the costs and benefits of a single currency and of the trade-offs in reducing a budget deficit."
+  },
+  "university": {
+   "fields": [
+    "international macroeconomics",
+    "public finance",
+    "monetary economics",
+    "European economic integration"
+   ],
+   "note": "A university course would use optimum currency area theory, models of sovereign default with multiple equilibria, and the analysis of lenders of last resort and fiscal multipliers at the zero lower bound."
+  },
+  "civil": {
+   "themes": [
+    "fiscal policy",
+    "public debt management",
+    "financial stability",
+    "regional integration"
+   ],
+   "note": "Indian states, like euro members, borrow without controlling monetary policy or the exchange rate, so the crisis is a useful analogy for debates on state debt and fiscal rules, though India’s fiscal federalism differs."
+  },
+  "economists": [
+   "keynes",
+   "friedman",
+   "stiglitz"
+  ],
+  "causal": [
+   "unemployment",
+   "growth",
+   "ratehike"
+  ],
+  "concepts": [
+   "Monetary union",
+   "National debt",
+   "Budget deficit",
+   "Fiscal policy",
+   "Contractionary policy",
+   "Quantitative easing",
+   "Current account",
+   "Deflation",
+   "Moral hazard",
+   "Yield",
+   "Cyclical unemployment",
+   "Fixed exchange rate",
+   "Central bank"
+  ],
+  "cases": [
+   "MAC-019",
+   "GLO-019",
+   "MAC-020",
+   "MAC-044",
+   "MAC-032",
+   "MAC-051",
+   "GLO-018"
+  ],
+  "policies": [
+   "Conditional rescue loans",
+   "Fiscal consolidation (austerity)",
+   "Structural reforms",
+   "Sovereign debt restructuring",
+   "Long-term refinancing operations",
+   "Outright Monetary Transactions",
+   "Negative interest rates",
+   "Quantitative easing",
+   "Banking union"
+  ],
+  "questions": [
+   {
+    "q": "Explain why Greece could not use devaluation to restore competitiveness after 2010.",
+    "kind": "explain"
+   },
+   {
+    "q": "Using an AD–AS diagram, analyse the likely short-run effects of fiscal consolidation on real GDP and unemployment in Greece.",
+    "kind": "analyse"
+   },
+   {
+    "q": "Using the inflation chart, describe how Greek and German inflation differed between 2012 and 2016, and explain what this suggests about internal devaluation.",
+    "kind": "data"
+   },
+   {
+    "q": "Evaluate the view that the euro area crisis was caused mainly by excessive government borrowing.",
+    "kind": "evaluate"
+   },
+   {
+    "q": "Compare the adjustment of a euro member after a sudden stop with that of Thailand in 1997.",
+    "kind": "compare"
+   }
+  ],
+  "retrieval": [
+   {
+    "q": "What revelation in October 2009 triggered the Greek crisis?",
+    "a": "Greece’s new government announced a budget deficit far larger than previously reported, more than 12% of GDP."
+   },
+   {
+    "q": "Which three institutions formed the troika?",
+    "a": "The European Commission, the European Central Bank and the International Monetary Fund."
+   },
+   {
+    "q": "What did the ECB announce in September 2012?",
+    "a": "Outright Monetary Transactions: potentially unlimited purchases of bonds of countries in a rescue programme."
+   },
+   {
+    "q": "What is internal devaluation?",
+    "a": "Restoring competitiveness by lowering domestic wages and prices relative to trading partners, instead of devaluing the currency."
+   },
+   {
+    "q": "Why did Ireland need a rescue despite low public debt before 2008?",
+    "a": "Its government underwrote its banks’ liabilities in 2008, so their property-lending losses then transferred to the state."
+   }
+  ],
+  "reflection": "Should countries that share a currency also share a budget, and what would each side need to give up for that to work?",
+  "reading": [
+   {
+    "t": "Adam Tooze, Crashed: How a Decade of Financial Crises Changed the World, 2018",
+    "note": "Places the euro crisis within the wider story of the 2008 crisis and its aftermath."
+   },
+   {
+    "t": "Ashoka Mody, EuroTragedy: A Drama in Nine Acts, 2018",
+    "note": "A critical history of the euro by a former IMF official involved in the crisis response."
+   },
+   {
+    "t": "Joseph E. Stiglitz, The Euro: How a Common Currency Threatens the Future of Europe, 2016",
+    "note": "A strongly argued critique of the euro’s design and of austerity, best read alongside more sympathetic accounts."
+   }
+  ],
+  "numbers": [
+   {
+    "value": "more than 12% of GDP",
+    "claim": "Greek deficit announced in October 2009",
+    "basis": "Greek government revision, October 2009; later revised higher by Eurostat"
+   },
+   {
+    "value": "3% and 60% of GDP",
+    "claim": "Maastricht reference values for deficit and debt",
+    "basis": "Maastricht Treaty protocol on the excessive deficit procedure"
+   },
+   {
+    "value": "eleven",
+    "claim": "Founding members of the euro in 1999",
+    "basis": "Widely documented"
+   },
+   {
+    "value": "€110 billion",
+    "claim": "First Greek programme, May 2010",
+    "basis": "Euro-area and IMF announcements"
+   },
+   {
+    "value": "€85 billion",
+    "claim": "Irish EU–IMF programme, November 2010",
+    "basis": "EU–IMF announcement"
+   },
+   {
+    "value": "€78 billion",
+    "claim": "Portuguese EU–IMF programme, May 2011",
+    "basis": "EU–IMF announcement"
+   },
+   {
+    "value": "about €1 trillion",
+    "claim": "Combined take-up of the ECB’s two three-year LTROs",
+    "basis": "ECB allotments of December 2011 and February 2012"
+   },
+   {
+    "value": "more than half the face value",
+    "claim": "Losses accepted by private holders of Greek bonds, 2012",
+    "basis": "Terms of the March 2012 private sector involvement"
+   },
+   {
+    "value": "up to €100 billion",
+    "claim": "Support for Spanish banks, July 2012",
+    "basis": "Eurogroup agreement"
+   },
+   {
+    "value": "above a quarter; about a quarter",
+    "claim": "Greek unemployment rate in 2013; fall in Greek real output from 2008 peak",
+    "basis": "ELSTAT and Eurostat data; widely documented"
+   },
+   {
+    "value": "above 50%",
+    "claim": "Youth unemployment in Spain and Greece at the crisis peak",
+    "basis": "Eurostat data; widely documented"
+   }
+  ]
+ },
+ {
+  "id": "covid-2020",
+  "title": "The COVID-19 economic shock",
+  "years": "2020–2023",
+  "start": "2020-01",
+  "end": "2023",
+  "region": "Global",
+  "kind": "pandemic",
+  "standfirst": "In spring 2020, governments deliberately shut large parts of their economies to slow a virus, producing the sharpest fall in output in post-war records for many countries, followed by an unusually fast rebound. The policy response was larger and faster than in 2008, and economists still debate how far it contributed to the inflation of 2021–23.",
+  "question": "What kind of shock was the pandemic, a fall in demand, a fall in supply or both, and did the policy response cushion it at the cost of later inflation?",
+  "before": {
+   "p": "In early 2020 the US economy was in its eleventh year of expansion. Unemployment had averaged 3.7% in 2019 and inflation 1.8%. Interest rates were low across advanced economies: the US 10-year Treasury yield averaged 2.14% in 2019, and the ECB’s deposit rate was already below zero, so central banks had little room to cut. Global supply chains were long and lean, designed to keep inventories small. Public debt in many countries was already high after the global financial crisis. No modern economy had planned to close workplaces, schools and borders all at once.",
+   "facts": [
+    {
+     "t": "US unemployment averaged 3.7% in 2019, its lowest annual average since 1969.",
+     "status": "fact"
+    },
+    {
+     "t": "Chinese authorities placed Wuhan under lockdown on 23 January 2020.",
+     "status": "fact"
+    },
+    {
+     "t": "The World Health Organization declared a public health emergency of international concern on 30 January 2020 and described the outbreak as a pandemic on 11 March 2020.",
+     "status": "fact"
+    },
+    {
+     "t": "The US 10-year Treasury yield averaged 2.14% in 2019 and 0.89% in 2020.",
+     "status": "fact"
+    }
+   ]
+  },
+  "trigger": {
+   "p": "As the virus spread from China to Europe and North America in February and March 2020, governments imposed lockdowns and travel bans, and many people avoided contact voluntarily. Spending on travel, hospitality and personal services collapsed, many factories paused, and financial markets fell sharply: the S&P 500 averaged 3277.31 in February 2020 and 2652.39 in March. The shock was unusual because it came from public-health measures and fear of infection, not from a financial imbalance.",
+   "status": "fact"
+  },
+  "timeline": [
+   {
+    "d": "2020-01-23",
+    "t": "Wuhan placed under lockdown",
+    "detail": "China locks down a city of millions to contain the outbreak. Factory closures in China soon disrupt supplies of components to manufacturers around the world.",
+    "status": "fact"
+   },
+   {
+    "d": "2020-03-11",
+    "t": "WHO describes a pandemic",
+    "detail": "The World Health Organization calls the outbreak a pandemic. Within days, many European countries and US states close schools, shops and offices.",
+    "status": "fact"
+   },
+   {
+    "d": "2020-03-15",
+    "t": "Fed cuts rates to near zero",
+    "detail": "The Federal Reserve cuts its target range to 0–0.25% and restarts large-scale asset purchases; it soon adds lending facilities and wider dollar swap lines with other central banks.",
+    "status": "fact"
+   },
+   {
+    "d": "2020-03-18",
+    "t": "ECB launches pandemic bond purchases",
+    "detail": "The ECB announces a €750 billion Pandemic Emergency Purchase Programme to keep borrowing costs low across euro-area governments and firms; it was later enlarged.",
+    "status": "fact"
+   },
+   {
+    "d": "2020-03-20",
+    "t": "UK announces job retention scheme",
+    "detail": "The UK government offers to pay 80% of furloughed employees’ wages, up to £2,500 a month, so firms can keep staff on payroll. A national lockdown follows on 23 March.",
+    "status": "fact"
+   },
+   {
+    "d": "2020-03-24",
+    "t": "India announces national lockdown",
+    "detail": "India announces a 21-day nationwide lockdown, later extended. Millions of informal and migrant workers lose earnings almost overnight, and many return to their home villages.",
+    "status": "fact"
+   },
+   {
+    "d": "2020-03-27",
+    "t": "US CARES Act signed",
+    "detail": "A package of about $2.2 trillion provides direct payments to households, enlarged unemployment benefits and forgivable loans to small firms that keep workers on payroll.",
+    "status": "fact"
+   },
+   {
+    "d": "2020-04-20",
+    "t": "US oil futures turn negative",
+    "detail": "With demand collapsing and storage nearly full, a US crude oil futures contract briefly trades below zero, a sign of how abruptly transport and industrial demand had stopped.",
+    "status": "fact"
+   },
+   {
+    "d": "2020-07",
+    "t": "EU agrees NextGenerationEU",
+    "detail": "EU leaders agree a €750 billion recovery package financed by joint EU borrowing, a step towards shared fiscal capacity that had been resisted during the euro crisis.",
+    "status": "fact"
+   },
+   {
+    "d": "2020-12",
+    "t": "First vaccines authorised",
+    "detail": "The UK authorises the Pfizer–BioNTech vaccine for emergency use on 2 December, and other countries soon follow. Vaccination makes a lasting reopening of contact-intensive services possible during 2021.",
+    "status": "fact"
+   },
+   {
+    "d": "2021-03",
+    "t": "American Rescue Plan enacted",
+    "detail": "A further US package of about $1.9 trillion adds household payments and support to state governments. Some economists warn that it is large relative to the remaining output gap.",
+    "status": "fact"
+   },
+   {
+    "d": "2022-03",
+    "t": "Fed begins raising rates",
+    "detail": "With US inflation at four-decade highs and energy prices up after Russia’s invasion of Ukraine in February, the Fed starts a rapid series of rate rises that continues into 2023.",
+    "status": "fact"
+   }
+  ],
+  "actors": [
+   {
+    "who": "Federal Reserve (Chair Jerome Powell)",
+    "role": "Cut rates to near zero, bought government and mortgage bonds on a huge scale, backstopped credit markets in 2020, then raised rates rapidly from 2022 as inflation rose."
+   },
+   {
+    "who": "US Congress and the Trump and Biden administrations",
+    "role": "Passed successive relief packages in 2020 and 2021 that replaced lost income on an unprecedented scale through payments, unemployment benefits and business loans."
+   },
+   {
+    "who": "European Central Bank and EU leaders",
+    "role": "The ECB bought bonds through its pandemic programme; EU leaders suspended fiscal rules and agreed joint borrowing to fund recovery spending."
+   },
+   {
+    "who": "UK Treasury and Bank of England",
+    "role": "The Treasury funded wage subsidies through the furlough scheme; the Bank cut its policy rate to 0.1% and expanded its bond purchases."
+   },
+   {
+    "who": "Government of India and the Reserve Bank of India",
+    "role": "Imposed one of the strictest lockdowns, announced a relief and credit package, and the RBI cut its policy rate and allowed borrowers to defer loan repayments."
+   }
+  ],
+  "changed": "Within weeks, output in many economies fell further than in any post-war recession, but unlike 2008 the banking system held up and governments replaced much of the lost income. Spending shifted from services to goods and from offices to homes, while household savings rose because there was less to buy. Remote work, online retail and digital payments grew quickly. Public debt rose steeply and central bank balance sheets expanded. When demand recovered faster than supply chains and energy markets could adjust, inflation in several advanced economies reached its highest rates in four decades.",
+  "predict": {
+   "q": "In 2020, governments closed many businesses but also paid the wages of furloughed workers and sent payments to households. What would you expect to happen to US real GDP and unemployment in 2020, and then in 2021?",
+   "options": [
+    "A sharp fall in GDP then a fast rebound; unemployment up sharply then falling quickly",
+    "A long slump like the 1930s, with GDP falling for several years",
+    "Little change in either, because incomes were protected"
+   ],
+   "answer": 0,
+   "explain": "US real GDP fell by 2.2% in 2020 and grew by 6.1% in 2021. Unemployment averaged 3.7% in 2019, 8.1% in 2020 and 5.3% in 2021. Within 2020 the swings were far larger: an annualised fall of 28.1% in the second quarter, then growth of 35.2% in the third, as lockdowns eased."
+  },
+  "mechanism": [
+   "Lockdowns and fear of infection → firms in contact-intensive sectors cannot produce and consumers cannot buy → SRAS and AD both shift left at once",
+   "Lost income in closed sectors → those workers cut spending on other goods → the multiplier spreads the demand shock beyond the sectors that were shut",
+   "Transfers, wage subsidies and loans → household income and firms’ cash flow are protected → AD shifts back right, and fewer firms fail or lay off workers permanently",
+   "Central bank rate cuts and asset purchases → lower borrowing costs and calmer financial markets → credit keeps flowing and asset prices recover",
+   "Reopening, accumulated savings and further stimulus → AD shifts right faster than supply recovers, with spending tilted towards goods → bottlenecks raise shipping and component costs",
+   "Energy and food price shock after Russia’s 2022 invasion of Ukraine → SRAS shifts left → cost-push inflation adds to demand-pull pressure",
+   "High inflation → central banks raise interest rates from 2021–22 → growth of AD slows → inflation falls back in 2023–24, a movement down the short-run Phillips curve with only a modest rise in unemployment"
+  ],
+  "charts": [
+   {
+    "series": "us-gdp-q",
+    "from": "2019-01",
+    "to": "2021-10",
+    "title": "US real GDP growth by quarter (annualised), 2019–2021",
+    "look": "Quarterly growth is annualised, so a fall of 28.1% means output fell at that yearly pace for one quarter. Notice how the collapse and the rebound of 35.2% came in consecutive quarters.",
+    "marks": [
+     {
+      "at": "2020-04",
+      "label": "Lockdown quarter"
+     },
+     {
+      "at": "2020-07",
+      "label": "Reopening rebound"
+     }
+    ]
+   },
+   {
+    "series": "us-unemp",
+    "from": "2007",
+    "to": "2024",
+    "title": "US unemployment rate, 2007–2024",
+    "look": "Compare the two recessions. After 2008, unemployment stayed above 8% for four years. After the pandemic jump to 8.1% in 2020, it was back to 3.6% by 2022, a much faster recovery.",
+    "marks": [
+     {
+      "at": "2009",
+      "label": "Financial crisis"
+     },
+     {
+      "at": "2020",
+      "label": "Pandemic shock"
+     }
+    ]
+   },
+   {
+    "series": "us-cpi-infl",
+    "from": "2010",
+    "to": "2024",
+    "title": "US consumer-price inflation, 2010–2024",
+    "look": "Inflation rose from 1.2% in 2020 to 4.7% in 2021 and 8.0% in 2022, the highest for four decades, then eased to 4.1% in 2023 and 2.9% in 2024 as rates rose and supply recovered.",
+    "marks": [
+     {
+      "at": "2021",
+      "label": "Reopening and stimulus"
+     },
+     {
+      "at": "2022",
+      "label": "Fed starts raising rates"
+     }
+    ]
+   },
+   {
+    "panel": "infl",
+    "entities": [
+     "USA",
+     "GBR",
+     "DEU",
+     "IND"
+    ],
+    "from": "2015",
+    "to": "2024",
+    "title": "Consumer-price inflation: US, UK, Germany, India",
+    "look": "The 2022 surge was international: 8.0% in the US, 7.9% in the UK, 6.9% in Germany. A shared surge points to common causes such as energy prices and supply chains, not only national stimulus.",
+    "marks": [
+     {
+      "at": "2020",
+      "label": "Pandemic"
+     },
+     {
+      "at": "2022",
+      "label": "Energy price shock"
+     }
+    ]
+   }
+  ],
+  "diagrams": [
+   {
+    "dg": "adas",
+    "how": "For 2020, shift both SRAS and AD left. Real GDP falls sharply, while the price level changes little because the two shifts pull it in opposite directions. Then show fiscal and monetary support shifting AD partly back to the right."
+   },
+   {
+    "dg": "costpush",
+    "how": "For 2021–22, shift SRAS left as energy, shipping and component costs rise, and shift AD right as economies reopen with extra savings and stimulus. Both raise the price level; the debate is about the relative size of each shift."
+   }
+  ],
+  "policy": [
+   {
+    "who": "Federal Reserve",
+    "when": "2020-03",
+    "what": "Cut its target range to 0–0.25%, began open-ended purchases of government and mortgage bonds, set up emergency lending facilities including support for corporate bond markets, and widened dollar swap lines with other central banks.",
+    "status": "fact"
+   },
+   {
+    "who": "US Congress",
+    "when": "2020-03",
+    "what": "Passed the CARES Act, about $2.2 trillion, with direct payments, larger unemployment benefits and the Paycheck Protection Program; further packages followed in December 2020 and March 2021.",
+    "status": "fact"
+   },
+   {
+    "who": "UK government and Bank of England",
+    "when": "2020-03",
+    "what": "The Coronavirus Job Retention Scheme paid 80% of furloughed workers’ wages up to £2,500 a month, running until September 2021; the Bank of England cut Bank Rate to 0.1%.",
+    "status": "fact"
+   },
+   {
+    "who": "European Central Bank and EU",
+    "when": "2020-03",
+    "what": "The ECB launched its Pandemic Emergency Purchase Programme; the EU activated the escape clause in its fiscal rules and in July agreed NextGenerationEU, funded by joint borrowing.",
+    "status": "fact"
+   },
+   {
+    "who": "Government of India and RBI",
+    "when": "2020-05",
+    "what": "Announced the Atmanirbhar Bharat package, largely made up of government-backed credit and liquidity support alongside food transfers, while the RBI cut its repo rate to 4% and allowed a moratorium on loan repayments.",
+    "status": "fact"
+   },
+   {
+    "who": "Central banks in advanced economies",
+    "when": "2022",
+    "what": "Raised interest rates rapidly as inflation climbed: the Bank of England from December 2021, the Fed from March 2022 and the ECB from July 2022, in the fastest tightening for decades.",
+    "status": "fact"
+   }
+  ],
+  "stakeholders": [
+   {
+    "who": "Workers in hospitality, travel and personal services",
+    "effect": "Were the first to lose hours and jobs because their work required physical contact; many were low paid, young or on insecure contracts."
+   },
+   {
+    "who": "Workers who could work from home",
+    "effect": "Mostly kept their jobs and incomes, while spending less on travel and leisure, so many built up savings during 2020–21."
+   },
+   {
+    "who": "Owners of shares and property",
+    "effect": "Gained as interest rates fell and asset prices recovered quickly: the S&P 500 averaged 3695.31 in December 2020, above its February level."
+   },
+   {
+    "who": "Informal and migrant workers in India",
+    "effect": "Lost earnings abruptly under the national lockdown and had little access to wage subsidies, relying mainly on food transfers and rural employment."
+   },
+   {
+    "who": "Households facing the 2022 price surge",
+    "effect": "Saw real wages fall as prices of food and energy rose faster than pay, with the largest burden on lower-income households that spend more on essentials."
+   }
+  ],
+  "short": "In the short run, output fell at a pace not seen in post-war data, but the fall was brief. Income support kept household spending from collapsing and limited bankruptcies, so many firms reopened with their workforce intact. Unemployment in the United States jumped in spring 2020 and then fell quickly. Financial markets, after a sharp fall in March 2020, recovered within months because central banks acted as buyers and lenders of last resort. Countries with smaller fiscal space and large informal sectors had much less protection.",
+  "long": "In the long run, public debt rose substantially in most countries, narrowing room for future fiscal policy once interest rates rose. The inflation of 2021–23 ended the era of near-zero interest rates and tested central banks’ credibility. Some changes in work persisted, notably hybrid and remote working and greater use of digital services. Lost schooling may reduce the future productivity of some cohorts. Firms and governments began rethinking long supply chains, with more emphasis on resilience and stocks rather than minimum cost.",
+  "transmission": "The shock spread through several channels at once. The virus itself crossed borders, so lockdowns hit most countries within weeks of each other. Supply chains transmitted factory closures in one country to producers elsewhere. Collapsing travel hit tourism-dependent economies, and falling commodity prices hurt exporters. In March 2020 a scramble for dollars caused emerging-market currencies to fall until the Fed widened swap lines. Later, synchronised reopening and the 2022 energy shock pushed inflation up in many countries at the same time.",
+  "winners": [
+   {
+    "t": "Online retailers, technology and delivery firms, whose sales rose as spending moved online.",
+    "status": "inference"
+   },
+   {
+    "t": "Holders of financial assets, as low interest rates and central bank purchases lifted share and bond prices after March 2020.",
+    "status": "fact"
+   },
+   {
+    "t": "Borrowers with fixed-rate debt during the inflation of 2021–23, as rising prices reduced the real value of what they owed.",
+    "status": "inference"
+   }
+  ],
+  "losers": [
+   {
+    "t": "Low-paid workers in contact-intensive services, who lost jobs and hours first.",
+    "status": "fact"
+   },
+   {
+    "t": "Children and students, whose schooling was interrupted for long periods in many countries.",
+    "status": "fact"
+   },
+   {
+    "t": "Tourism-dependent and commodity-exporting developing economies, which lost income with limited room to borrow.",
+    "status": "fact"
+   },
+   {
+    "t": "Savers and people on fixed incomes during 2021–23, whose purchasing power fell as inflation rose.",
+    "status": "inference"
+   }
+  ],
+  "unintended": [
+   {
+    "t": "Rapid recovery in asset prices while many low-paid workers lost income may have widened wealth inequality in several economies.",
+    "status": "inference"
+   },
+   {
+    "t": "Large stimulus, combined with supply constraints and energy shocks, contributed to the 2021–23 inflation; how much each factor mattered is disputed.",
+    "status": "controversy"
+   },
+   {
+    "t": "Loan schemes designed to be fast, such as the Paycheck Protection Program, reached some firms that did not need help and were open to fraud.",
+    "status": "fact"
+   }
+  ],
+  "interpretations": [
+   {
+    "view": "The “Keynesian supply shock” view",
+    "p": "Some theorists, including Guido Lorenzoni and Iván Werning with co-authors, showed in 2020 that closing some sectors can reduce aggregate demand by more than the original supply loss, because workers in closed sectors cut spending elsewhere. On this view, income support was the right response to a supply shock.",
+    "status": "interpretation"
+   },
+   {
+    "view": "The overheating warning",
+    "p": "In early 2021 Lawrence Summers and Olivier Blanchard warned that the American Rescue Plan was large relative to the remaining output gap and could raise inflation. Defenders argued that the risks of doing too little were greater, as after 2008. Later inflation lent support to the warning, but its exact contribution remains debated.",
+    "status": "controversy"
+   },
+   {
+    "view": "The price-shock view",
+    "p": "Ben Bernanke and Olivier Blanchard, in a 2023 study, concluded that most of the early US inflation surge came from shocks to energy and food prices and from sectoral shortages, while tight labour markets became more important in keeping inflation high later.",
+    "status": "interpretation"
+   },
+   {
+    "view": "The ‘transitory’ debate",
+    "p": "Critics argue that central banks were too slow to tighten in 2021 because they judged inflation temporary. Defenders reply that the supply shocks were genuinely unusual, that longer-term inflation expectations stayed fairly stable, and that inflation fell without a deep recession.",
+    "status": "controversy"
+   }
+  ],
+  "explain": [
+   "The AD–AS model shows how simultaneous leftward shifts of AD and SRAS produce a deep fall in real GDP with little change in the price level.",
+   "The multiplier and automatic stabilisers explain why replacing lost income limited the spread of the shock to sectors that stayed open.",
+   "Cost-push and demand-pull analysis together explain why the 2021–22 inflation appeared across many countries with different policies.",
+   "The Phillips curve helps explain why very tight labour markets in 2022 coincided with high inflation and rapid wage growth."
+  ],
+  "miss": [
+   "Aggregate models treat the economy as one sector, yet the pandemic was highly uneven, with some sectors shut and others booming at the same time.",
+   "They have no built-in trade-off between economic activity and public health, which was the central policy choice in 2020.",
+   "Supply chains behaved non-linearly: small disruptions at bottlenecks such as ports and chips caused large price rises that simple models did not anticipate.",
+   "Standard models struggle with forced saving, where households save not by choice but because services are closed, then spend later."
+  ],
+  "differently": [
+   {
+    "t": "Support could have been more closely targeted. US payments went to many households whose incomes had not fallen, while support for lower-income countries, including vaccine supply, was slower and smaller.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Central banks could have begun raising interest rates in 2021, when inflation first rose above target, which might have reduced peak inflation in 2022, although at the risk of slowing an incomplete recovery.",
+    "status": "controversy"
+   },
+   {
+    "t": "Earlier investment in testing, contact tracing, public-health capacity and stockpiles of protective equipment might have allowed shorter or more targeted lockdowns, reducing the economic cost of controlling the virus, though how much is hard to judge.",
+    "status": "interpretation"
+   }
+  ],
+  "whatif": {
+   "q": "Suppose governments had provided no income support or emergency loans in 2020. What would most likely have happened?",
+   "options": [
+    "A deeper recession with more bankruptcies and a slower recovery, but probably less inflation in 2021–22",
+    "A faster recovery, because markets would have adjusted on their own",
+    "Much the same outcome, because the virus decided everything"
+   ],
+   "best": 0,
+   "explain": "Without support, lost incomes in closed sectors would have spread through the multiplier, and many viable firms would have failed, destroying jobs and relationships that take time to rebuild. Recovery would probably have been slower, as after 2008. Lower demand in 2021 would probably also have meant less inflation, so the counterfactual shows a trade-off rather than a free choice, and its scale is uncertain."
+  },
+  "compare": [
+   {
+    "id": "gfc-2008",
+    "similar": "Both were global recessions met by near-zero interest rates, quantitative easing and large fiscal packages, with central banks acting as lenders of last resort to calm financial markets.",
+    "different": "In 2008 the shock came from bank losses and debt, and recovery was slow; in 2020 banks held up, policy acted faster and recovery was much quicker.",
+    "dominant": "In 2008, a financial crisis and household debt repair dominated; in 2020, a non-financial health shock, cushioned by income replacement, dominated."
+   },
+   {
+    "id": "great-depression",
+    "similar": "Both brought very sudden falls in output and employment across many countries at once, testing whether governments and central banks were willing to act quickly to support demand and incomes.",
+    "different": "In the 1930s policy was slow and often contractionary, and banks failed; in 2020 policy support was rapid and large, and the downturn lasted months, not years.",
+    "dominant": "In the Depression, monetary contraction and bank failures dominated; in 2020, the public-health shutdown dominated, and strong policy support limited lasting damage."
+   },
+   {
+    "id": "stagflation-1970s",
+    "similar": "Both saw an energy price shock push up costs while central banks judged how hard to tighten, with debate about whether policy had been too loose.",
+    "different": "In the 1970s high inflation persisted for years as expectations rose and wages chased prices; in 2021–23 longer-term expectations stayed more stable and inflation fell back fairly quickly.",
+    "dominant": "In the 1970s, supply shocks plus unanchored expectations dominated; in 2021–23, a mix of reopening demand, supply bottlenecks and energy shocks dominated."
+   }
+  ],
+  "ib": {
+   "subs": [
+    "3.1",
+    "3.2",
+    "3.3",
+    "3.5",
+    "3.6"
+   ],
+   "kc": [
+    "Change",
+    "Intervention",
+    "Equity",
+    "Economic well-being"
+   ],
+   "note": "The event shows simultaneous AD and SRAS shifts, fiscal and monetary policy at the limits of their tools, and a recent inflation episode, giving students current evidence for analysis and evaluation in Paper 1 and Paper 2."
+  },
+  "cambridge": {
+   "topics": [
+    "aggregate demand and aggregate supply",
+    "fiscal policy",
+    "monetary policy",
+    "inflation",
+    "unemployment"
+   ],
+   "note": "A recent case for comparing demand-side and supply-side shocks and for evaluating the effects and costs of large-scale stimulus."
+  },
+  "university": {
+   "fields": [
+    "macroeconomics",
+    "monetary economics",
+    "public economics",
+    "health economics"
+   ],
+   "note": "A university course would use multi-sector models in which supply shocks can cause demand shortfalls, and study the interaction of fiscal and monetary policy near the lower bound on interest rates."
+  },
+  "civil": {
+   "themes": [
+    "fiscal policy",
+    "monetary policy and inflation",
+    "informal sector and social security",
+    "public health and the economy"
+   ],
+   "note": "India’s strict lockdown fell heavily on informal and migrant workers, and its policy mix leaned on credit support and food transfers, which makes a useful comparison with wage-subsidy schemes elsewhere."
+  },
+  "economists": [
+   "keynes",
+   "friedman"
+  ],
+  "causal": [
+   "stimulus",
+   "inflation",
+   "ratehike",
+   "unemployment"
+  ],
+  "concepts": [
+   "Aggregate demand",
+   "Aggregate supply",
+   "Recession",
+   "Fiscal policy",
+   "Monetary policy",
+   "Quantitative easing",
+   "Automatic stabiliser",
+   "Budget deficit",
+   "National debt",
+   "Cost-push inflation",
+   "Demand-pull inflation",
+   "Cyclical unemployment",
+   "Transfer payment",
+   "Keynesian multiplier",
+   "Expansionary policy",
+   "Informal economy"
+  ],
+  "cases": [
+   "MAC-015",
+   "MAC-024",
+   "MAC-043",
+   "MAC-016",
+   "MAC-041",
+   "MAC-012",
+   "MAC-021",
+   "MAC-002",
+   "GLO-042",
+   "MIC-036",
+   "MAC-039"
+  ],
+  "policies": [
+   "Lockdowns and social distancing rules",
+   "Wage subsidies (furlough schemes)",
+   "Direct transfers to households",
+   "Government-backed business loans",
+   "Interest-rate cuts",
+   "Quantitative easing",
+   "Emergency lending facilities",
+   "Joint EU borrowing",
+   "Interest-rate rises (2022–23)"
+  ],
+  "questions": [
+   {
+    "q": "Explain why the pandemic is often described as both a demand shock and a supply shock.",
+    "kind": "explain"
+   },
+   {
+    "q": "Using an AD–AS diagram, analyse how wage-subsidy schemes affected real GDP and unemployment in 2020.",
+    "kind": "analyse"
+   },
+   {
+    "q": "Using the US inflation and unemployment charts, describe the changes between 2019 and 2023 and suggest reasons for them.",
+    "kind": "data"
+   },
+   {
+    "q": "Evaluate the view that expansionary fiscal policy was the main cause of high inflation in 2021–23.",
+    "kind": "evaluate"
+   },
+   {
+    "q": "Compare the speed of recovery after the 2008 financial crisis with the recovery after the 2020 pandemic shock.",
+    "kind": "compare"
+   }
+  ],
+  "retrieval": [
+   {
+    "q": "To what range did the Federal Reserve cut its target rate in March 2020?",
+    "a": "0–0.25%."
+   },
+   {
+    "q": "What share of furloughed workers’ wages did the UK job retention scheme pay?",
+    "a": "80%, up to £2,500 a month."
+   },
+   {
+    "q": "What was NextGenerationEU?",
+    "a": "A €750 billion EU recovery package, agreed in July 2020, financed by joint EU borrowing."
+   },
+   {
+    "q": "What were US consumer-price inflation rates in 2021 and 2022?",
+    "a": "4.7% in 2021 and 8.0% in 2022."
+   },
+   {
+    "q": "Why did spending shift from services to goods in 2020?",
+    "a": "Contact-intensive services were closed or avoided, so households spent more on goods for use at home."
+   }
+  ],
+  "reflection": "Was the inflation of 2021–23 a price worth paying for the speed of the recovery, and who should decide that trade-off?",
+  "reading": [
+   {
+    "t": "Adam Tooze, Shutdown: How Covid Shook the World’s Economy, 2021",
+    "note": "A narrative history of the 2020 shock and the policy response across major economies."
+   },
+   {
+    "t": "Ben S. Bernanke, 21st Century Monetary Policy, 2022",
+    "note": "A former Fed chair explains the tools used in 2008 and 2020, including asset purchases and lending facilities."
+   },
+   {
+    "t": "International Monetary Fund, World Economic Outlook, April 2020",
+    "note": "The IMF’s early assessment of what it called the Great Lockdown, useful for seeing how forecasters judged the shock at the time."
+   }
+  ],
+  "numbers": [
+   {
+    "value": "eleventh year",
+    "claim": "Length of the US expansion by early 2020",
+    "basis": "NBER business-cycle dates: expansion from June 2009 to February 2020"
+   },
+   {
+    "value": "0–0.25%",
+    "claim": "Fed target range from 15 March 2020",
+    "basis": "Federal Reserve statement, 15 March 2020"
+   },
+   {
+    "value": "€750 billion",
+    "claim": "Initial size of the ECB’s Pandemic Emergency Purchase Programme",
+    "basis": "ECB announcement, 18 March 2020"
+   },
+   {
+    "value": "80%, up to £2,500 a month",
+    "claim": "UK furlough scheme support",
+    "basis": "UK government announcement, 20 March 2020"
+   },
+   {
+    "value": "21 days",
+    "claim": "Initial length of India’s national lockdown",
+    "basis": "Government of India announcement, 24 March 2020"
+   },
+   {
+    "value": "about $2.2 trillion",
+    "claim": "Size of the CARES Act",
+    "basis": "Congressional Budget Office estimates; widely documented"
+   },
+   {
+    "value": "about $1.9 trillion",
+    "claim": "Size of the American Rescue Plan",
+    "basis": "Enacted March 2021; widely documented"
+   },
+   {
+    "value": "€750 billion",
+    "claim": "Size of NextGenerationEU",
+    "basis": "European Council conclusions, July 2020"
+   },
+   {
+    "value": "0.1%",
+    "claim": "Bank of England Bank Rate from March 2020",
+    "basis": "Bank of England decision, 19 March 2020"
+   },
+   {
+    "value": "4%",
+    "claim": "RBI repo rate from May 2020",
+    "basis": "RBI policy decision, May 2020"
+   },
+   {
+    "value": "above 8% for four years",
+    "claim": "US unemployment 2009–2012 (annual averages)",
+    "basis": "Catalogue series us-unemp: 9.3, 9.6, 8.9, 8.1"
+   }
+  ]
+ }
+]

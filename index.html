@@ -2531,10 +2531,79 @@ body[data-sec="home"] #view .shead > .n{display:none}
 @media (max-width:900px){.id-cols{grid-template-columns:1fr}}
 @media (max-width:560px){.why-st{grid-template-columns:1fr}.why-n{padding-top:0}}
 /* ── home: reason, evidence, ideas ── */
-.t6-band{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--hair-2,#ddd6c6);border-bottom:1px solid var(--hair-2,#ddd6c6)}
+.t6-band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid var(--hair-2,#ddd6c6);border-bottom:1px solid var(--hair-2,#ddd6c6)}
 .t6-b{padding:22px 22px 24px;border-left:1px solid var(--hair-2,#ddd6c6)}.t6-b:first-child{border-left:0;padding-left:0}
 .t6-b h3{font:600 21px var(--serif,Georgia);line-height:1.25}
+@media (max-width:1100px) and (min-width:901px){.t6-band{grid-template-columns:1fr 1fr}.t6-b:nth-child(3){border-left:0;padding-left:0}.t6-b{border-top:1px solid var(--hair-2,#ddd6c6)}.t6-b:nth-child(-n+2){border-top:0}}
 @media (max-width:900px){.t6-band{grid-template-columns:1fr}.t6-b{border-left:0;border-top:1px solid var(--hair-2,#ddd6c6);padding-left:0}.t6-b:first-child{border-top:0}}
+.dl-mark{stroke:#7A2436;stroke-width:1;stroke-dasharray:2 3}.dl-mlab{font:600 11px var(--mono);fill:#7A2436}
+/* ── economic events ── */
+.ev-st{display:inline-block;font:600 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border:1px solid;vertical-align:1px;margin-right:4px;white-space:nowrap}
+.ev-st-fact{color:#2A6B45;border-color:#9CC3AC;background:#EEF6F1}.ev-st-interpretation{color:#24557F;border-color:#9DB6CF;background:#EDF2F8}
+.ev-st-inference{color:#5C4B8A;border-color:#B6ACD3;background:#F1EEF8}.ev-st-controversy{color:#7A2436;border-color:#D2A1AC;background:#F8EDEF}
+.ev-axis svg{width:100%;min-width:720px;height:auto}.ev-ax-b{fill:#C9AE72;stroke:#FBF8F1;stroke-width:1}.ev-ax-b.k-crisis{fill:#B23A55}.ev-ax-b.k-shock{fill:#C77A2A}.ev-ax-b.k-bubble{fill:#7357B8}.ev-ax-b.k-policy{fill:#2F6FB3}.ev-ax-b.k-pandemic{fill:#1F8C70}
+.ev-ax-b.on{stroke:#16181C;stroke-width:2}.ev-ax-t{font:10.5px var(--sans,system-ui);fill:#3A4048}.ev-axis a:focus-visible rect{stroke:#16181C;stroke-width:2}
+.eb-svg{font:600 10px var(--mono);letter-spacing:.1em;fill:#5E6670}
+.ev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.ev-card{display:flex;flex-direction:column;gap:6px;text-align:left;padding:18px;border:1px solid var(--hair-2,#ddd6c6);border-top:3px solid #C9AE72;background:var(--white,#fff);font:inherit;color:inherit;cursor:pointer}
+.ev-card.k-crisis{border-top-color:#B23A55}.ev-card.k-shock{border-top-color:#C77A2A}.ev-card.k-bubble{border-top-color:#7357B8}.ev-card.k-policy{border-top-color:#2F6FB3}.ev-card.k-pandemic{border-top-color:#1F8C70}
+.ev-card:hover,.ev-card:focus-visible{border-color:var(--obs)}
+.ev-yr{font:600 26px var(--serif,Georgia);color:var(--obs)}.ev-k{font:11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:#5E6670}
+.ev-t{font:600 18px var(--serif,Georgia);line-height:1.3}.ev-sf{font-size:14px;line-height:1.55;color:#3A4048}.ev-q{font-size:13px;font-style:italic;color:#5E6670;margin-top:auto}
+.ev-hero{background:var(--obs);color:#F4F1EA;padding:56px 0 28px;border-top:4px solid #C9AE72}.ev-hero.k-crisis{border-top-color:#B23A55}.ev-hero.k-shock{border-top-color:#C77A2A}.ev-hero.k-bubble{border-top-color:#7357B8}.ev-hero.k-policy{border-top-color:#2F6FB3}.ev-hero.k-pandemic{border-top-color:#1F8C70}
+.ev-hk{font:12px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#C9AE72}
+.ev-h1{font:400 clamp(32px,5vw,56px)/1.08 var(--serif,Georgia);margin-top:14px;max-width:20ch;color:#FBF8F1}
+.ev-sf2{font:clamp(17px,2vw,21px)/1.55 var(--serif,Georgia);color:#DAD5CA;max-width:62ch;margin-top:16px}
+.ev-bq{margin-top:18px;padding-left:14px;border-left:2px solid #C9AE72;color:#F4F1EA;max-width:62ch}.ev-bq .eb{color:#C9AE72;display:block;margin-bottom:4px}
+.ev-hero .ev-axis{margin-top:26px;background:#20232A;padding:8px 6px}.ev-hero .ev-ax-t{fill:#C8C3B8}.ev-hero .dl-grid{stroke:#33373F}.ev-hero .dl-tick{fill:#9A9FA6}
+.ev-rail{position:sticky;top:var(--top,64px);z-index:5;background:rgba(251,248,241,.96);border-bottom:1px solid var(--hair-2,#ddd6c6);backdrop-filter:blur(4px)}
+.ev-rail ol{display:flex;gap:2px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:thin}
+nav.ev-rail ol>li>a{display:flex;align-items:center;padding:12px 10px;font-size:13px;color:#5E6670;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;min-height:44px}
+nav.ev-rail ol>li>a.on{color:var(--obs);border-bottom-color:#7A2436;font-weight:600}.ev-rail a:focus-visible{outline:2px solid var(--brs);outline-offset:-2px}
+.ev-body{padding-bottom:40px}
+.ev-ch{display:grid;grid-template-columns:56px minmax(0,1fr);gap:16px;padding:36px 0;border-bottom:1px solid var(--hair-2,#ddd6c6);scroll-margin-top:calc(var(--top,64px) + 56px)}
+.ev-chn{font:600 13px var(--mono);color:#6E5423;padding-top:8px}.ev-h2{font:400 clamp(24px,3vw,32px)/1.2 var(--serif,Georgia)}.ev-h3{font:600 16px var(--sans,system-ui);margin-top:24px}
+.ev-p{max-width:70ch;line-height:1.75;margin-top:12px;font-size:16.5px}
+.ev-facts{list-style:none;padding:0;margin:12px 0 0}.ev-facts li{margin:8px 0;line-height:1.6;max-width:76ch}
+.ev-tl{display:flex;list-style:none;padding:0;margin:14px 0 0;gap:0;overflow-x:auto;border-bottom:1px solid var(--hair-2,#ddd6c6)}
+.ev-tl li{flex:1 0 96px}.ev-tl button{display:flex;flex-direction:column;gap:2px;align-items:flex-start;width:100%;padding:10px 8px 12px;border:0;border-top:3px solid #E4DED1;background:none;font:inherit;text-align:left;cursor:pointer;min-height:64px}
+.ev-tl button.past{border-top-color:#C9AE72}.ev-tl button.on{border-top-color:#7A2436;background:#FFF}
+.ev-tld{font:600 11px var(--mono);color:#5E6670}.ev-tlt{font-size:12.5px;line-height:1.35;color:var(--obs)}
+.ev-tlbody{padding:16px;background:var(--white,#fff);border:1px solid var(--hair-2,#ddd6c6);border-top:0}
+.ev-tlnav{display:flex;align-items:center;gap:10px}.ev-here{font:13px var(--mono)}.ev-here .eb{margin-right:6px;color:#7A2436}
+.ev-prog{height:3px;background:#E4DED1;margin-top:14px}.ev-prog i{display:block;height:3px;background:#7A2436}
+.ev-actors{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-top:10px}.ev-actors div{padding:10px 12px;border-left:2px solid #C9AE72;background:var(--white,#fff)}.ev-actors dt{font-weight:600}.ev-actors dd{margin:4px 0 0;font-size:14px;line-height:1.5}
+.ev-opts{display:flex;flex-wrap:wrap;gap:8px}.ev-opts .btn{white-space:normal;text-align:left;max-width:100%}
+.ev-verdict{padding:12px 14px;border-left:3px solid;margin:12px 0}.ev-verdict.ok{border-color:#2A6B45;background:#EEF6F1}.ev-verdict.no{border-color:#7A2436;background:#F8EDEF}.ev-verdict.mid{border-color:#C77A2A;background:#FBF3E8}
+.ev-chain{counter-reset:c;list-style:none;padding:0;margin:14px 0 0}.ev-chain li{counter-increment:c;position:relative;padding:10px 12px 10px 44px;margin:0 0 18px;background:var(--white,#fff);border:1px solid var(--hair-2,#ddd6c6);line-height:1.55;max-width:76ch}
+.ev-chain li::before{content:counter(c);position:absolute;left:12px;top:10px;font:600 13px var(--mono);color:#7A2436}
+.ev-chain li:not(:last-child)::after{content:"↓";position:absolute;left:16px;bottom:-17px;font-size:13px;color:#C9AE72}
+.ev-chain.sm li{padding:6px 8px 6px 30px;margin-bottom:12px;font-size:13.5px}.ev-chain.sm li::before{left:8px;top:6px}.ev-chain.sm li:not(:last-child)::after{left:10px;bottom:-13px}
+.ev-dgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.ev-chart{margin:18px 0 28px}.ev-chart figcaption{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.ev-pol{list-style:none;padding:0;margin:12px 0 0}.ev-pol li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--hair-2,#ddd6c6)}.ev-pw{font:600 13px var(--mono);color:#7A2436}
+.ev-split{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:12px}.ev-split>div{padding:16px;background:var(--white,#fff);border:1px solid var(--hair-2,#ddd6c6)}.ev-split p{line-height:1.65}
+.ev-debate{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:12px}.ev-debate article{padding:16px;border:1px solid var(--hair-2,#ddd6c6);background:var(--white,#fff)}.ev-debate .eb{margin-bottom:6px}
+.ev-cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px}.ev-cmp article{padding:14px;border:1px solid var(--hair-2,#ddd6c6);background:var(--white,#fff)}.ev-cmp h3{font-size:16px}
+.ev-cmp summary{cursor:pointer;min-height:36px;display:flex;align-items:center;font-size:14px}
+.ev-conn{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:12px}
+.ev-qs{padding-left:20px}.ev-qs li{margin:8px 0;line-height:1.55}.ev-qk{font:600 10px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:#6E5423;margin-right:6px}
+.ev-ret{padding-left:20px}.ev-ret li{margin:10px 0}.ev-ans{padding:8px 10px;background:#EEF6F1;border-left:2px solid #2A6B45}
+.ev-ctab td,.ev-ctab th{vertical-align:top;min-width:200px}
+@media (max-width:760px){.ev-ch{grid-template-columns:1fr;gap:4px;padding:26px 0}.ev-split{grid-template-columns:1fr}.ev-pol li{grid-template-columns:1fr;gap:2px}.ev-hero{padding:36px 0 20px}}
+@media print{.ev-rail,.ev-axis{display:none}.ev-hero{background:none;color:#000}.ev-h1,.ev-sf2,.ev-bq{color:#000}}
+/* ── pathways ── */
+.pa-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.pa-card{display:flex;flex-direction:column;padding:20px;border:1px solid var(--hair-2,#ddd6c6);background:var(--white,#fff)}.pa-card.on{border-color:var(--obs);box-shadow:inset 0 3px 0 #7A2436}
+.pa-top{display:flex;justify-content:space-between;align-items:baseline}.pa-n{font:600 21px/1.25 var(--serif,Georgia);margin-top:6px}
+.pa-st{color:#4F5761;border-top:1px dashed var(--hair-2,#ddd6c6);padding-top:8px}.pa-steps{padding-left:20px;margin:0}.pa-steps li{margin:4px 0}.pa-card .btn{align-self:flex-start;margin-top:auto}
+.pa-band{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:28px;align-items:center;padding:26px 0;border-top:1px solid var(--hair-2,#ddd6c6);border-bottom:1px solid var(--hair-2,#ddd6c6)}
+.pa-chips{display:flex;flex-wrap:wrap;gap:8px}.pa-chip{display:flex;flex-direction:column;align-items:flex-start;padding:10px 14px;border:1px solid var(--hair-3,#cfc8b8);background:var(--white,#fff);font:600 14px var(--sans,system-ui);cursor:pointer;min-height:44px;color:var(--obs)}
+.pa-chip span{font:500 11px var(--mono);color:#5E6670;letter-spacing:.04em;text-transform:uppercase}.pa-chip.on{border-color:var(--obs);background:#F3EBDA}.pa-chip:hover,.pa-chip:focus-visible{border-color:var(--obs)}
+.pa-lead{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px;padding:22px;border:1px solid var(--hair-2,#ddd6c6);background:var(--white,#fff)}
+.in-themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}.pa-h3{font:600 15px var(--sans,system-ui);border-top:2px solid #C9AE72;padding-top:8px}
+@media (max-width:860px){.pa-band,.pa-lead{grid-template-columns:1fr}}
+.ev-ctab th,.ev-ctab td{text-align:left;vertical-align:top}.ev-ctab tbody th[scope=row]{width:140px;font-size:13px;color:#5E6670}.ev-ctab{min-width:640px}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -2569,9 +2638,13 @@ body[data-sec="home"] #view .shead > .n{display:none}
    start + 5000 ms. The overlay is removed on the first frame at or after
    that. If the platform behind it is not ready by then (a slow device), the
    final frame holds rather than uncovering an unfinished page, and the record
-   says so. A reload, a Back/Forward step or a link to one page shows the same
-   identity still and leaves as soon as the platform is ready; so does a
-   reduced-motion preference, after 1.5 s. No timers, no storage, no network. */
+   says so. THE STATE MODEL: loading the home page plays the full sequence
+   every time (first visit, revisit, reload, bookmark, direct URL, a full-page
+   Back/Forward), whatever is cached, because nothing here waits on the network.
+   A deep link to another page shows the identity still only until the platform
+   is ready. Navigation inside the app never shows it, and a page restored from
+   the back-forward cache is shown as it was left. Reduced motion shows the still
+   for 1.5 s. No timers, no storage, no network. */
 (function(){
  var sp=document.getElementById("splash");if(!sp)return;
  var I=window.__INTRO={ms:5000,fadeAt:4700,holdStill:1500,t0:null,start:null,fp:null,anchored:false,mode:"play",state:"waiting",how:null,end:null,exitAt:null,late:false,anims:[]};
@@ -2591,11 +2664,12 @@ body[data-sec="home"] #view .shead > .n{display:none}
   [".ia-vb",4000,4300,[[4000,{opacity:0,transform:"translateY(8px)"}],[4300,{opacity:1,transform:"translateY(0)"}]]],
   [".ia-bar i",0,5000,[[0,{transform:"scaleX(0)"}],[5000,{transform:"scaleX(1)"}]],"linear"]];
  I.QUIET=[3700,3950];
- var again=false;
- try{var n=performance.getEntriesByType("navigation")[0];again=!!n&&(n.type==="reload"||n.type==="back_forward")}catch(e){}
+ I.nav="navigate";try{var n=performance.getEntriesByType("navigation")[0];if(n)I.nav=n.type}catch(e){}
  var h=(location.hash||"").replace(/^#\/?/,"");
+ I.route=(!h||/^home(\/|$)/.test(h))?"home":"deep";
  var reduced=false;try{reduced=!!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches)}catch(e){}
- if(again||(h&&!/^home(\/|$)/.test(h)))I.mode="cover";
+ window.addEventListener("pageshow",function(e){if(e.persisted)I.restored=true});
+ if(I.route!=="home")I.mode="cover";
  else if(reduced||typeof sp.animate!=="function")I.mode="still";
  if(I.mode!=="play"){sp.classList.add("still");sp.classList.add(I.mode)}
  function firstPaint(){try{var e=performance.getEntriesByType("paint");for(var i=0;i<e.length;i++)if(e[i].name==="first-paint")return e[i].startTime}catch(x){}return null}
@@ -28391,8 +28465,8 @@ function SPLASHSUITE(){
  T("Opening · a second press of Skip does nothing",/btn\.disabled=true/.test(String(splashEnd)));
  T("Opening · reduced motion shows the same hierarchy at once, and leaves after 1.5 s rather than playing slowly",
    /prefers-reduced-motion:reduce/.test(clock)&&I.holdStill===1500&&/#splash\.still \.sc,/.test(css));
- T("Opening · a reload, Back/Forward or a link to one page does not replay the sequence",
-   /reload/.test(clock)&&/back_forward/.test(clock)&&/I\.mode="cover"/.test(clock));
+ T("Opening · the home page plays the full sequence on every kind of load; only a deep link to another page skips it",
+   /I\.route=/.test(clock)&&/if\(I\.route!=="home"\)I\.mode="cover"/.test(clock)&&!/type==="reload"/.test(clock)&&!/again\|\|/.test(clock));
  T("Opening · the font stylesheet cannot hold the first frame",
    (()=>{const l=[...document.querySelectorAll('link[href*="fonts.googleapis.com/css2"]')].filter(x=>x.rel==="stylesheet");
      return l.length>=1&&l.every(x=>x.media==="all"||x.media==="print"||x.getAttribute("onload"))})());
@@ -37594,7 +37668,7 @@ function rnDivider(t,s){return `<div class="wrap full rn-divider"><span class="r
 /* the home page reads as a story in eleven chapters, one verb each: think,
    learn, see, interact, connect, practise, research, explore, watch, teach,
    and the person behind it. "#n|Title" marks a chapter opener. */
-const RN_ORDER=["#01|Think","Start your journey","@atlas",
+const RN_ORDER=["#01|Think","Start your journey","@atlas","@paths",
  "#02|The course","@course",
  "#03|Learn","@learn","Timeless ideas","Inflation targeting",
  "#04|See the world","@lead","Economics, right now",
@@ -37613,7 +37687,7 @@ function rnHome(html){
  const title=el=>{const h=el.querySelector(".shead h2")||el.querySelector("h1,h2");return h?h.textContent.trim():""};
  const hero=kids.find(el=>el.matches("section.hero"));
  const rest=kids.filter(el=>el!==hero);
- const NEW={"@course":()=>typeof rnCourseBand==="function"?rnCourseBand():"","@ideas":()=>typeof rnIdeasBand==="function"?rnIdeasBand():"","@atlas":rnAtlas,"@today":rnToday,"@lead":rnLead,"@mind":rnMind,"@glance":rnGlance,
+ const NEW={"@course":()=>typeof rnCourseBand==="function"?rnCourseBand():"","@ideas":()=>typeof rnIdeasBand==="function"?rnIdeasBand():"","@paths":()=>typeof rnPathsBand==="function"?rnPathsBand():"","@atlas":rnAtlas,"@today":rnToday,"@lead":rnLead,"@mind":rnMind,"@glance":rnGlance,
   "@exam":rnExamBand,"@learn":rnLearnBand,"@labs":rnLabsBand,"@research":rnResearchBand,"@educator":rnEducatorBand,"@creator":rnCreatorBand,"@final":rnFinalBand,
   "@desk":()=>"\u0001DESK\u0001"};
  const used=new Set();let out=rnCover(hero);
@@ -39736,7 +39810,7 @@ function dlNice(lo,hi,n){if(lo===hi){lo-=1;hi+=1}const r=hi-lo,st=Math.pow(10,Ma
 /* one axis, thin 2px lines, recessive grid, direct labels at the line ends, a crosshair on hover and focus */
 function dlChart(id,series,o){o=o||{};
  /* drawn at the width it is shown, so its text stays at its true size on a phone and a wide screen */
- const W=Math.round(Math.max(320,Math.min(1080,o.w||(((document.getElementById("view")||{}).clientWidth||innerWidth)-80)))),H=o.h||300,L=52,R=o.labels===false?18:118,T=14,B=30;
+ const W=Math.round(Math.max(320,Math.min(1080,o.w||(((document.getElementById("view")||{}).clientWidth||innerWidth)-80)))),H=o.h||300,L=52,R=o.labels===false?18:118,T=o.marks&&o.marks.length?38:14,B=30;
  const all=series.flatMap(s=>s.pts);if(!all.length)return `<p class="sm">No values in this range.</p>`;
  const xs=all.map(p=>dlX(p[0])),ys=all.map(p=>p[1]);let x0=Math.min(...xs),x1=Math.max(...xs);if(x0===x1){x0-=1;x1+=1}
  let lo=Math.min(...ys),hi=Math.max(...ys);if(o.zero!==false){lo=Math.min(lo,0);hi=Math.max(hi,0)}
@@ -39755,6 +39829,7 @@ function dlChart(id,series,o){o=o||{};
  return `<div class="dl-chart" id="${id}"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(desc)}">
   ${yt.map(v=>`<line x1="${L}" x2="${W-R}" y1="${sy(v).toFixed(1)}" y2="${sy(v).toFixed(1)}" class="${v===0?"dl-zero":"dl-grid"}"/><text x="${L-8}" y="${(sy(v)+4).toFixed(1)}" class="dl-tick" text-anchor="end">${dlFmt(v)}</text>`).join("")}
   ${xt.map(v=>`<text x="${sx(v).toFixed(1)}" y="${H-10}" class="dl-tick" text-anchor="middle">${v}</text>`).join("")}
+  ${(o.marks||[]).filter(m=>dlX(m.at)>=x0&&dlX(m.at)<=x1).map((m,i)=>{const mx=sx(m.at).toFixed(1);return `<line x1="${mx}" x2="${mx}" y1="${T-4}" y2="${H-B}" class="dl-mark"/><text x="${mx}" y="${T-8-(i%2)*12}" class="dl-mlab" text-anchor="${sx(m.at)>W-R-80?"end":"start"}" dx="${sx(m.at)>W-R-80?-4:4}">${esc(m.label)}</text>`}).join("")}
   ${paths}${lab}<line class="dl-cross" id="${id}-x" x1="0" x2="0" y1="${T}" y2="${H-B}" style="display:none"/>
   <g id="${id}-dots"></g>
 </svg>
@@ -39982,7 +40057,7 @@ VIEWS.ideas=()=>TAB===1?econTimeline():ARG?econPage(ARG):econList();
    it lists every section, including those on the bar (a narrow screen withdraws some of them), and anything not named
    below is appended under "More", so no section can become unreachable. */
 moreMenu=function(e){e.stopPropagation();if(document.getElementById("menu")){closeMenuPop();return}
- const G=[["Learn and explore",[["resources","Resources"],["course","Course"],["learn","Learn"],["think","Think"],["@why","Why did this happen?"],["ideas","Economists and ideas"],["data","Economic data"],["lab","Lab"],["world","Real World"],["mind","Mindmaps"],["everywhere","Economics, Everywhere"],["tok","TOK × Economics"],["arjun","Video studio"],["video","Video library"]]],
+ const G=[["Learn and explore",[["resources","Resources"],["paths","Pathways"],["course","Course"],["learn","Learn"],["think","Think"],["events","Economic events"],["@why","Why did this happen?"],["ideas","Economists and ideas"],["data","Economic data"],["lab","Lab"],["world","Real World"],["mind","Mindmaps"],["everywhere","Economics, Everywhere"],["tok","TOK × Economics"],["arjun","Video studio"],["video","Video library"]]],
   ["Exam and research",[["practise","Practise"],["examiner","Exam"],["papers","Paper labs"],["dna","Exam DNA"],["calculate","Calculate"],["session","Timed session"],["ees","EE Studio"],["ia","IA studio"]]],
   ["Your work",[["master","Dashboard"],["syllabus","My syllabus"],["saved","My economics"],["workspace","My workspace"]]],
   ["Teach",[["educator","Educator studio"],["teacher","Teacher tools"]]],
@@ -40016,6 +40091,7 @@ if(typeof MOREV!=="undefined"&&Array.isArray(MOREV))["think","ideas","data","ees
 /* the home page: three ways to think with evidence */
 function rnIdeasBand(){const e=IDEASIDX.economists,c=IDEASIDX.causal,pick=(a,n)=>a[(new Date().getDate()+n)%a.length];const q=pick(c,0),p=pick(e,3);
  return `<section class="sec rn-band"><div class="wrap full"><div class="t6-band">
+  <div class="t6-b"><div class="eb">History</div><h3 class="mt1">Economic events</h3><p class="sm mt2">${esc(pick(EVENTSIDX.events,1).title)} (${esc(pick(EVENTSIDX.events,1).years)}): ${esc(pick(EVENTSIDX.events,1).question)}</p><p class="xs mt1">Twelve episodes told as Economics, from 1929 to 2020.</p><button class="btn sm mt3" onclick="nav('events',0,'${pick(EVENTSIDX.events,1).id}')">Follow the story</button> <button class="btn gh sm mt3" onclick="nav('events',0)">All ${EVENTSIDX.events.length}</button></div>
   <div class="t6-b"><div class="eb">Reason</div><h3 class="mt1">Why did this happen?</h3><p class="sm mt2">${esc(q.q)}</p><p class="xs mt1">Predict, then work it through: mechanism, diagram, evidence, evaluation and the explanations to rule out.</p><button class="btn sm mt3" onclick="nav('think',WHYTAB(),'${q.id}')">Work it through</button> <button class="btn gh sm mt3" onclick="nav('think',WHYTAB())">All ${c.length}</button></div>
   <div class="t6-b"><div class="eb">Evidence</div><h3 class="mt1">Economic data</h3><p class="sm mt2">GDP, inflation, inequality, emissions, oil, interest and exchange rates, from the institutions that publish them, with every source named.</p><button class="btn sm mt3" onclick="nav('data',0)">Open the data explorer</button> <button class="btn gh sm mt3" onclick="nav('data',1)">Country profiles</button></div>
   <div class="t6-b"><div class="eb">Ideas</div><h3 class="mt1">${esc(p.name)}</h3><p class="sm mt2">${esc(p.headline)}</p><p class="xs mt1">${esc(p.life)} · ${esc(p.era)}</p><button class="btn sm mt3" onclick="nav('ideas',0,'${p.id}')">Read the profile</button> <button class="btn gh sm mt3" onclick="nav('ideas',0)">All ${e.length} economists</button></div>
@@ -40059,6 +40135,275 @@ EXTRA_SUITES.push(T6SUITE);
 QAREPORT.push({area:"Data, ideas and reasoning",re:/^(Data|Ideas|Why|Search|Discoverability|Home) · /,
  what:"That the data lab loads its file only when needed and is useful before it arrives, draws with the validated palette, breaks lines at missing years and gives every chart a text alternative and a table; that the economists and causal pathways link only to subtopics, concepts and diagrams that exist; that the new Think tab moved no older address; that the bar keeps eight items while the More menu and drawer reach everything; and that search and structured data find the new surfaces without claiming a URL or an endorsement."});
 
+/* Generated by tools/build/build_events.py: the resident index for the lazy-loaded events file. */
+const EVENTSIDX={"version":"events-2026.10.1","hash":"3323763b3627dae6","events":[{"id":"great-depression","title":"The 1929 crash and the Great Depression","short":"Great Depression","years":"1929–1939","start":"1929-10","end":"1939","region":"United States and the gold-standard world","kind":"crisis","standfirst":"A stock market crash in October 1929 was followed by three years of collapsing output, prices and banks, and a decade of mass unemployment. The economic question is why a downturn that began like many others became the deepest slump of the industrial era.","question":"How did a stock market crash turn into a decade-long depression, and which policy choices made it deeper or ended it?","subs":["3.1","3.2","3.3","3.5","3.6","4.2","4.5"],"kc":["Change","Interdependence","Intervention","Economic well-being","Equity"],"economists":["keynes","friedman"],"tags":["Smoot–Hawley Tariff Act (1930)","Reconstruction Finance Corporation (1932)","Revenue Act of 1932","Emergency Banking Act (1933)"]},{"id":"bretton-woods-1971","title":"The end of Bretton Woods","short":"End of Bretton Woods","years":"1971–1973","start":"1971-05","end":"1973-03","region":"United States and the world","kind":"policy","standfirst":"For a quarter of a century after 1944, most major currencies were pegged to the US dollar, and the dollar was tied to gold. Between 1971 and 1973 that arrangement came apart, and the main currencies moved to floating exchange rates that still largely govern the world economy.","question":"Why could a system of fixed exchange rates anchored on a gold-convertible dollar not survive the strains of the late 1960s, and what changed when it ended?","subs":["4.5","4.6","3.3","3.5"],"kc":["Change","Interdependence","Intervention"],"economists":["keynes","friedman"],"tags":["Suspension of gold convertibility","Wage and price controls","Import surcharge","Currency revaluation"]},{"id":"stagflation-1970s","title":"Stagflation and the Volcker disinflation","short":"Stagflation","years":"1971–1983","start":"1971-08","end":"1983","region":"United States (with global effects)","kind":"shock","standfirst":"For a decade the United States suffered rising prices and rising unemployment at the same time, a combination many policymakers of the 1960s had treated as unlikely. Ending it required a central bank willing to accept a deep recession, and the episode reshaped how economists think about expectations and credibility.","question":"Why did inflation and unemployment rise together in the 1970s, and what did it cost to bring inflation back down?","subs":["3.2","3.3","3.5"],"kc":["Change","Intervention","Economic well-being","Choice"],"economists":["friedman","keynes"],"tags":["Wage and price controls","Voluntary incomes policy (Whip Inflation Now)","Reserve targeting by the Federal Reserve","Credit controls"]},{"id":"oil-1973","title":"The first oil shock, 1973–74","short":"Oil shock","years":"1973–1974","start":"1973-10","end":"1975-03","region":"Global: oil importers in North America, Western Europe and Japan","kind":"shock","standfirst":"In late 1973 the price of the world’s most important commodity roughly quadrupled within three months. The question for economists was how to respond to a shock that raised inflation and unemployment at the same time.","question":"How can a rise in the price of one input push an economy into inflation and recession at once, and what can policy do about it?","subs":["2.2","2.5","2.11","3.2","3.3","3.5","4.6"],"kc":["Change","Interdependence","Scarcity","Intervention","Economic well-being"],"economists":["friedman","keynes"],"tags":["Emergency Petroleum Allocation Act (1973)","National 55 mph speed limit (1974)","IMF oil facility (1974)","International Energy Agency emergency sharing (1974)"]},{"id":"oil-1979","title":"The second oil shock, 1979–80","short":"Second oil shock","years":"1979–1980","start":"1978-10","end":"1982","region":"Global: Iran, the United States, Western Europe and Japan","kind":"shock","standfirst":"Revolution in Iran took one of the world’s largest oil exporters out of the market, and fear did the rest: crude prices more than doubled. This time the decisive response came from central banks, which chose to break inflation even at the cost of deep recession.","question":"Why did a partial loss of oil supply cause such a large price rise, and why was the policy response so different from 1973?","subs":["3.2","3.3","3.5","3.7","4.5","4.6"],"kc":["Change","Intervention","Economic well-being","Interdependence","Equity"],"economists":["friedman","keynes"],"tags":["Fed reserve targeting (October 1979)","Credit Control Program (1980)","Crude Oil Windfall Profit Tax Act (1980)","Oil price decontrol (1979–81)"]},{"id":"plaza-1985","title":"The Plaza Accord and the falling dollar","short":"Plaza Accord","years":"1985–1987","start":"1985-02","end":"1987-12","region":"United States, Japan and West Germany (G5)","kind":"policy","standfirst":"By early 1985 the US dollar had risen so far that American manufacturers were losing markets and Congress was considering protectionist laws. Five governments then tried something unusual: to talk and trade a major currency down together, and later to hold it steady.","question":"Can governments deliberately move a floating exchange rate, and what happens to trade and asset prices when they do?","subs":["4.5","4.6","3.5","4.3"],"kc":["Interdependence","Intervention","Change"],"economists":["friedman"],"tags":["Coordinated foreign exchange intervention","Exchange-rate target ranges (Louvre Accord)","Discount-rate cuts (Federal Reserve, Bank of Japan)","Lender-of-last-resort liquidity support"]},{"id":"india-1991","title":"India’s 1991 crisis and the turn to reform","short":"India 1991","years":"1990–1994","start":"1990-08","end":"1994-08","region":"India","kind":"crisis","standfirst":"In mid-1991 India’s foreign exchange reserves had fallen so low that the country was close to defaulting on its external payments, and its gold was flown to London as security for a loan. The emergency became the starting point for the most far-reaching change in Indian economic policy since independence.","question":"How did a distant war and years of fiscal deficits push India to the edge of default, and why did the response go beyond rescue to a change of economic model?","subs":["4.6","4.5","3.6","3.7","4.2","4.10"],"kc":["Change","Interdependence","Intervention","Economic well-being","Equity"],"economists":["sen","ricardo"],"tags":["Devaluation of the rupee (July 1991)","Gold pledge to the Bank of England and the Bank of Japan","IMF stand-by arrangement (1991)","New Industrial Policy (1991)"]},{"id":"dotcom-2000","title":"The dot-com bubble and bust","short":"Dot-com","years":"1995–2002","start":"1995-08","end":"2002-10","region":"United States, with global technology markets","kind":"bubble","standfirst":"A genuine technological change, the commercial internet, drew a wave of investment and a rise in share prices that many investors came to see as permanent. The episode asks how a real innovation can still produce an asset bubble, and why its collapse led to only a mild recession.","question":"How can investors overvalue a technology that really does change the economy, and why did the bust hurt shareholders far more than workers?","subs":["3.2","3.5","3.3","2.4"],"kc":["Change","Choice","Efficiency","Intervention"],"economists":["keynes","hayek"],"tags":["Interest-rate changes","Income tax cuts and rebates","Accounting and audit regulation","Margin requirements"]},{"id":"asia-1997","title":"The Asian financial crisis","short":"Asian crisis","years":"1997–98","start":"1997-07","end":"1998-12","region":"East and South-East Asia","kind":"crisis","standfirst":"Some of the fastest-growing economies in the world lost a large share of their dollar income within a year, after a run on the Thai baht spread across the region. The episode asks how a fixed exchange rate, short-term foreign borrowing and fragile banks can turn a currency fall into a deep recession.","question":"Why did a currency devaluation in one middle-sized economy turn into a regional recession, and did the policy response help or hurt?","subs":["4.5","4.6","3.5","3.2"],"kc":["Interdependence","Intervention","Change","Economic well-being"],"economists":["stiglitz","friedman"],"tags":["Exchange-rate peg","Floating exchange rate","Interest-rate increases to defend a currency","IMF conditional lending"]},{"id":"gfc-2008","title":"The global financial crisis","short":"Global financial crisis","years":"2007–09","start":"2007-08","end":"2009-06","region":"United States, Europe and the world economy","kind":"crisis","standfirst":"Losses on US mortgages that were small relative to the world economy set off a run on the financial system and the deepest global recession since the 1930s. The episode asks how a housing bust became a banking panic, and what governments and central banks did to stop it becoming a depression.","question":"How did falling house prices in parts of the United States bring the global financial system close to collapse, and did the policy response work?","subs":["3.2","3.5","3.6","2.10","4.5"],"kc":["Interdependence","Intervention","Economic well-being","Change"],"economists":["keynes","friedman","hayek","stiglitz"],"tags":["Interest-rate cuts","Lender-of-last-resort lending","Quantitative easing","Bank recapitalisation"]},{"id":"eurozone-2010","title":"The euro area sovereign debt crisis","short":"Euro crisis","years":"2009–2015","start":"2009-10","end":"2015-08","region":"Euro area: Greece, Ireland, Portugal, Spain, Italy","kind":"crisis","standfirst":"Between 2009 and 2015, several euro-area governments lost access to borrowing at affordable rates, and their economies went through deep and long recessions. The crisis tested whether a single currency could work without a common budget, a common banking system or a lender of last resort for governments.","question":"Why did a debt problem in one small economy grow into a crisis that threatened the euro itself, and why was recovery in the hardest-hit countries so slow?","subs":["4.4","4.5","3.6","3.5","3.3"],"kc":["Interdependence","Intervention","Equity","Change"],"economists":["keynes","friedman","stiglitz"],"tags":["Conditional rescue loans","Fiscal consolidation (austerity)","Structural reforms","Sovereign debt restructuring"]},{"id":"covid-2020","title":"The COVID-19 economic shock","short":"COVID-19","years":"2020–2023","start":"2020-01","end":"2023","region":"Global","kind":"pandemic","standfirst":"In spring 2020, governments deliberately shut large parts of their economies to slow a virus, producing the sharpest fall in output in post-war records for many countries, followed by an unusually fast rebound. The policy response was larger and faster than in 2008, and economists still debate how far it contributed to the inflation of 2021–23.","question":"What kind of shock was the pandemic, a fall in demand, a fall in supply or both, and did the policy response cushion it at the cost of later inflation?","subs":["3.1","3.2","3.3","3.5","3.6"],"kc":["Change","Intervention","Equity","Economic well-being"],"economists":["keynes","friedman"],"tags":["Lockdowns and social distancing rules","Wage subsidies (furlough schemes)","Direct transfers to households","Government-backed business loans"]}]};
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ECONOMIC EVENTS · an archive of economic history told as Economics
+   Each event is a story in chapters: the world before, the trigger, the
+   timeline, the mechanism (after a prediction), the data, the policy response,
+   who gained and lost, the international transmission, competing readings,
+   what the models explain and miss, a counterfactual, comparisons, curriculum
+   connections and practice. Full text loads from assets/data/events.js and the
+   charts from assets/data/history.js, both on demand; lists, the timeline and
+   search use the resident index (EVENTSIDX).
+   ═══════════════════════════════════════════════════════════════════════════ */
+const EVX={loading:{},err:{}};
+function evLoad(key,src,glob){
+ if(window[glob])return window[glob];
+ if(!EVX.loading[key]&&!EVX.err[key]&&!(typeof QARUNNING!=="undefined"&&QARUNNING)){EVX.loading[key]=true;const s=document.createElement("script");s.src=src;
+  s.onload=()=>{EVX.loading[key]=false;if(!window[glob])EVX.err[key]=true;render()};s.onerror=()=>{EVX.loading[key]=false;EVX.err[key]=true;render()};document.head.appendChild(s)}
+ return null}
+const evData=()=>evLoad("ev","assets/data/events.js","__EVENTS__");
+const evHist=()=>evLoad("hist","assets/data/history.js","__HISTORY__");
+const EVSTATUS={fact:["Fact","Documented and checked in review"],interpretation:["Interpretation","One reading of the evidence"],inference:["Inference","A conclusion this platform draws from the facts"],controversy:["Controversy","Actively disputed among economists or historians"]};
+function evBadge(st){const s=EVSTATUS[st]||EVSTATUS.fact;return `<span class="ev-st ev-st-${esc(st||"fact")}" title="${esc(s[1])}">${esc(s[0])}</span>`}
+const EVKIND={crisis:"Crisis",shock:"Shock",bubble:"Bubble",policy:"Policy turn",pandemic:"Pandemic"};
+function evS(id){S.ev=S.ev&&typeof S.ev==="object"?S.ev:{};return S.ev[id]=S.ev[id]||{pred:null,whatif:null,tl:0,ret:{},note:""}}
+function evYear(d){return +String(d).slice(0,4)+((+String(d).slice(5,7)||1)-1)/12}
+function evWait(what,key){return `<div class="dl-state mt4" role="status" aria-live="polite">${EVX.err[key]?`<h2>${esc(what)} could not be loaded</h2><p class="sm mt2">It is kept in a separate file that did not arrive. Check the connection and try again.</p><button class="btn sm mt3" onclick="EVX.err['${key}']=false;render()">Try again</button>`:`<h2>Loading ${esc(what)}</h2><p class="sm mt2">The story loads once and is then kept for offline use.</p>`}</div>`}
+const EVF={kind:"",region:""};
+
+/* the archive: one axis from 1929 to now, every event on it */
+function evAxis(list,sel){const y0=1925,y1=2026,W=1000,sx=y=>20+(y-y0)/(y1-y0)*(W-40),lw=t=>String(t).length*5.9+8;
+ /* pack into rows by what each item occupies on screen: the bar or its label, whichever reaches further */
+ const rows=[];list.slice().sort((a,b)=>evYear(a.start)-evYear(b.start)).forEach(e=>{const a=sx(evYear(e.start)),b=Math.max(a+6,sx(Math.max(evYear(e.start)+0.6,evYear(e.end)))),end=Math.max(b,a+lw(e.short||e.title))+4;let r=0;while(rows[r]!=null&&rows[r]>a)r++;rows[r]=end;e._r=r});
+ const H=Math.max(110,16+rows.length*26+40),ticks=[1930,1940,1950,1960,1970,1980,1990,2000,2010,2020];
+ return `<div class="ev-axis scrollx" tabindex="0" role="region" aria-label="Every event on one time axis"><svg viewBox="0 0 ${W} ${H}" role="group" aria-label="Economic events from ${y0} to ${y1}">
+  ${ticks.map(t=>`<line x1="${sx(t)}" x2="${sx(t)}" y1="10" y2="${H-22}" class="dl-grid"/><text x="${sx(t)}" y="${H-6}" class="dl-tick" text-anchor="middle">${t}</text>`).join("")}
+  ${list.map(e=>{const a=evYear(e.start),b=Math.max(a+0.6,evYear(e.end)),y=18+e._r*26;return `<a href="#/events/archive/${e.id}" onclick="event.preventDefault();nav('events',0,'${e.id}')" aria-label="${esc(e.title)}, ${esc(e.years)}">
+   <rect x="${sx(a)}" y="${y}" width="${Math.max(6,sx(b)-sx(a))}" height="12" rx="2" class="ev-ax-b ${sel===e.id?"on":""} k-${esc(e.kind)}"/><text x="${sx(a)}" y="${y-3}" class="ev-ax-t">${esc(e.short||e.title)}</text></a>`}).join("")}</svg></div>`}
+function evArchive(){const L=EVENTSIDX.events.filter(e=>(!EVF.kind||e.kind===EVF.kind)&&(!EVF.region||e.region===EVF.region));
+ const kinds=[...new Set(EVENTSIDX.events.map(e=>e.kind))],regions=[...new Set(EVENTSIDX.events.map(e=>e.region))];
+ return H.pageHead("History","Economic events",`Twelve episodes that changed how economies work and how economists think, each told as a story you can follow: what the world looked like before, what broke, why, who responded, and what the models explain and miss.`)
+ +`<section class="sec"><div class="wrap">${evAxis(L)}
+  <div class="dl-filters mt4"><label>Kind<select onchange="EVF.kind=this.value;render()"><option value="">All</option>${kinds.map(k=>`<option value="${esc(k)}" ${EVF.kind===k?"selected":""}>${esc(EVKIND[k]||k)}</option>`).join("")}</select></label>
+   <label>Where<select onchange="EVF.region=this.value;render()"><option value="">Everywhere</option>${regions.map(r=>`<option ${EVF.region===r?"selected":""}>${esc(r)}</option>`).join("")}</select></label></div>
+  <div class="ev-grid mt4">${L.map(e=>`<button class="ev-card k-${esc(e.kind)}" onclick="nav('events',0,'${e.id}')"><span class="ev-yr">${esc(e.years)}</span><span class="ev-k">${esc(EVKIND[e.kind]||e.kind)} · ${esc(e.region)}</span>
+   <span class="ev-t">${esc(e.title)}</span><span class="ev-sf">${esc(e.standfirst)}</span><span class="ev-q">${esc(e.question)}</span></button>`).join("")}</div>
+  <p class="xs mt4">${srcTag("platform")} Original histories written for this platform and reviewed for accuracy. Every statement about the world is labelled as fact, interpretation, inference or controversy; every chart names its source.</p></div></section>`}
+
+/* the event page */
+const EVCH=[["before","Before"],["trigger","Trigger"],["timeline","Timeline"],["mechanism","Mechanism"],["data","Data"],["policy","Response"],["effects","Effects"],["world","The world"],["debate","Readings"],["models","Models"],["whatif","What if"],["compare","Compare"],["connect","Connections"],["practise","Practise"]];
+function evChart(c,H2,i,id){
+ if(!H2)return "";let series=[],unit="",src=null,title=c.title;
+ if(c.series){const s=H2.series.find(x=>x.id===c.series);if(!s)return "";const inR=k=>String(k)>=String(c.from)&&String(k).slice(0,String(c.to).length)<=String(c.to);
+  series=[{name:s.name,color:DLPAL[0],pts:s.data.filter(p=>inR(p[0]))}];unit=s.unit;src=s}
+ else if(c.panel){const p=H2.panel[c.panel];if(!p)return "";unit=p.unit;src=p;
+  series=(c.entities||[]).filter(e=>p.data[e]).map((e,j)=>({name:H2.meta.entities[e]||e,short:(H2.meta.entities[e]||e).split(/[ ,]/)[0],color:DLPAL[j%DLPAL.length],pts:p.data[e].filter(q=>q[0]>=+c.from&&q[0]<=+c.to)}))}
+ series=series.filter(s=>s.pts.length);if(!series.length)return "";
+ const monthly=typeof series[0].pts[0][0]==="string";
+ return `<figure class="ev-chart"><figcaption><span class="eb">Figure ${i+1}</span> <strong>${esc(title)}</strong> <span class="xs">${esc(unit)}</span></figcaption>
+  ${dlChart(id,series,{unit,title,monthly,labels:series.length>1,zero:c.panel==="infl"||/growth|inflation/i.test(unit+title),marks:(c.marks||[]).map(m=>({at:monthly?String(m.at).length===4?m.at+"-01":m.at:+String(m.at).slice(0,4),label:m.label}))})}
+  ${series.length>1?dlLegend(series):""}<p class="sm mt2"><strong>What to look for:</strong> ${esc(c.look)}</p>${dlTable(series,unit)}
+  <p class="xs dl-src mt1"><strong>Source:</strong> ${esc(src.source)}. <a href="${esc(src.url)}" target="_blank" rel="noopener">Original</a> · <a href="${esc(src.pkg)}" target="_blank" rel="noopener">package</a> (${esc(src.licence)}). Retrieved ${esc(H2.meta.retrieved)}.${src.note?" "+esc(src.note):""}</p></figure>`}
+function evPage(id){const ix=EVENTSIDX.events.find(e=>e.id===id);if(!ix)return evArchive();const D=evData();
+ if(!D)return H.pageHead("History",ix.title,ix.standfirst)+`<section class="sec"><div class="wrap">${evWait("this event","ev")}</div></section>`;
+ const e=D.events.find(x=>x.id===id),st=evS(id),H2=evHist(),sec=(k,h,b,cls)=>`<section class="ev-ch ${cls||""}" id="ev-${k}" aria-labelledby="ev-${k}-h"><div class="ev-chn">${String(EVCH.findIndex(c=>c[0]===k)+1).padStart(2,"0")}</div><div class="ev-chb"><h2 class="ev-h2" id="ev-${k}-h">${h}</h2>${b}</div></section>`;
+ const tl=e.timeline,ti=Math.min(st.tl||0,tl.length-1),cur=tl[ti];
+ const others=EVENTSIDX.events.filter(x=>x.id!==id);
+ return `<section class="ev-hero k-${esc(e.kind)}"><div class="wrap"><div class="ev-hk">${esc(EVKIND[e.kind]||e.kind)} · ${esc(e.region)} · ${esc(e.years)}</div>
+  <h1 class="ev-h1">${esc(e.title)}</h1><p class="ev-sf2">${esc(e.standfirst)}</p><p class="ev-bq"><span class="eb">The question</span> ${esc(e.question)}</p>
+  ${evAxis(EVENTSIDX.events,id)}</div></section>
+ <nav class="ev-rail" aria-label="Chapters of this event"><div class="wrap"><ol>${EVCH.map(([k,n])=>`<li><a class="ev-ch" href="#ev-${k}" onclick="event.preventDefault();document.getElementById('ev-${k}').scrollIntoView({block:'start'})" data-ch="${k}">${n}</a></li>`).join("")}</ol></div></nav>
+ <div class="wrap ev-body">
+ ${sec("before","The world before",`<p class="ev-p">${esc(e.before.p)}</p><ul class="ev-facts">${e.before.facts.map(f=>`<li>${evBadge(f.status)} ${esc(f.t)}</li>`).join("")}</ul>`)}
+ ${sec("trigger","The trigger",`<p class="ev-p">${esc(e.trigger.p)} ${evBadge(e.trigger.status)}</p>`)}
+ ${sec("timeline","Timeline",`<ol class="ev-tl" role="tablist" aria-label="Timeline of ${esc(e.title)}">${tl.map((t,i)=>`<li role="presentation"><button role="tab" aria-selected="${i===ti}" class="${i===ti?"on":i<ti?"past":""}" onclick="evS('${id}').tl=${i};save();lsSwap('ev-tlwrap',evTl('${id}'))"><span class="ev-tld">${esc(t.d)}</span><span class="ev-tlt">${esc(t.t)}</span></button></li>`).join("")}</ol>
+  <div id="ev-tlwrap">${evTlBody(e,ti)}</div>
+  <h3 class="ev-h3">Who acted</h3><dl class="ev-actors">${e.actors.map(a=>`<div><dt>${esc(a.who)}</dt><dd>${esc(a.role)}</dd></div>`).join("")}</dl>`)}
+ ${sec("mechanism","The mechanism",st.pred===null?`<div class="why-pred"><div class="eb">Predict first</div><p class="mt1"><strong>${esc(e.predict.q)}</strong></p><div class="ev-opts mt2">${e.predict.options.map((o,i)=>`<button class="btn gh sm" onclick="evS('${id}').pred=${i};save();render();setTimeout(()=>document.getElementById('ev-mechanism').scrollIntoView({block:'start'}),0)">${esc(o)}</button>`).join("")}</div><p class="xs mt2">Commit to an answer; the mechanism opens after it. <button class="lnk" onclick="evS('${id}').pred=-1;save();render()">Show it without predicting</button></p></div>`
+  :`${st.pred>=0?`<div class="ev-verdict ${st.pred===e.predict.answer?"ok":"no"}"><strong>${st.pred===e.predict.answer?"Your prediction holds.":"Not quite."}</strong> ${esc(e.predict.explain)}</div>`:""}
+   <ol class="ev-chain">${e.mechanism.map(m=>`<li>${esc(m)}</li>`).join("")}</ol><h3 class="ev-h3">What changed</h3><p class="ev-p">${esc(e.changed)}</p>
+   <div class="ev-dgs">${e.diagrams.map(d=>{try{const g=DG[d.dg]();return `<figure class="ls-fig">${frame(g.b,g.x,g.y,{alt:g.alt})}<figcaption class="xs">${esc(g.t)} · <button class="lnk" onclick="nav('lab',3,'${d.dg}')">build it in the atlas</button></figcaption><p class="sm mt1">${esc(d.how)}</p></figure>`}catch(x){return ""}}).join("")}</div>`)}
+ ${sec("data","The data",H2?e.charts.map((c,i)=>evChart(c,H2,i,`ev-c-${id}-${i}`)).join("")||`<p class="sm">No series in the collection covers this period.</p>`:evWait("the data","hist"))}
+ ${sec("policy","The response",`<ol class="ev-pol">${e.policy.map(p=>`<li><span class="ev-pw">${esc(p.when)}</span><div><strong>${esc(p.who)}</strong> ${evBadge(p.status)}<p class="sm mt1">${esc(p.what)}</p></div></li>`).join("")}</ol>
+  <h3 class="ev-h3">Stakeholders</h3><dl class="ev-actors">${e.stakeholders.map(a=>`<div><dt>${esc(a.who)}</dt><dd>${esc(a.effect)}</dd></div>`).join("")}</dl>`)}
+ ${sec("effects","Short run, long run",`<div class="ev-split"><div><div class="eb">In the short run</div><p class="mt1">${esc(e.short)}</p></div><div><div class="eb">In the long run</div><p class="mt1">${esc(e.long)}</p></div></div>
+  <div class="ev-split mt4"><div><div class="eb">Who gained</div><ul class="ev-facts">${e.winners.map(w=>`<li>${evBadge(w.status)} ${esc(w.t)}</li>`).join("")}</ul></div><div><div class="eb">Who lost</div><ul class="ev-facts">${e.losers.map(w=>`<li>${evBadge(w.status)} ${esc(w.t)}</li>`).join("")}</ul></div></div>
+  <h3 class="ev-h3">Unintended consequences</h3><ul class="ev-facts">${e.unintended.map(w=>`<li>${evBadge(w.status)} ${esc(w.t)}</li>`).join("")}</ul>`)}
+ ${sec("world","How it travelled",`<p class="ev-p">${esc(e.transmission)}</p>`)}
+ ${sec("debate","Competing readings",`<div class="ev-debate">${e.interpretations.map(x=>`<article><div class="eb">${esc(x.view)}</div>${evBadge(x.status)}<p class="sm mt2">${esc(x.p)}</p></article>`).join("")}</div>
+  <h3 class="ev-h3">What could have been done differently</h3><ul class="ev-facts">${e.differently.map(w=>`<li>${evBadge(w.status)} ${esc(w.t)}</li>`).join("")}</ul>`)}
+ ${sec("models","What the models explain, and what they miss",`<div class="ev-split"><div><div class="eb">Explains</div><ul class="ls-list mt1">${e.explain.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div><div class="eb">Misses</div><ul class="ls-list mt1">${e.miss.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></div>`)}
+ ${sec("whatif","What if?",`<p><strong>${esc(e.whatif.q)}</strong></p><div class="ev-opts mt2">${e.whatif.options.map((o,i)=>`<button class="btn sm ${st.whatif===i?(i===e.whatif.best?"":"gh"):"gh"}" aria-pressed="${st.whatif===i}" onclick="evS('${id}').whatif=${i};save();render();setTimeout(()=>document.getElementById('ev-whatif').scrollIntoView({block:'start'}),0)">${esc(o)}</button>`).join("")}</div>
+  ${st.whatif!==null?`<div class="ev-verdict ${st.whatif===e.whatif.best?"ok":"mid"} mt3"><strong>${st.whatif===e.whatif.best?"The most defensible answer.":"Defensible, but weaker."}</strong> ${esc(e.whatif.explain)}</div>`:`<p class="xs mt2">Choose before the discussion opens. A counterfactual cannot be proved; the point is to reason from the mechanism.</p>`}`)}
+ ${sec("compare","Compare",`<div class="ev-cmp">${e.compare.map(c=>{const o=EVENTSIDX.events.find(x=>x.id===c.id);return o?`<article><h3><button class="lnk" onclick="nav('events',0,'${o.id}')">${esc(o.title)}</button> <span class="xs">${esc(o.years)}</span></h3>
+   <details class="mt2"><summary>What is similar?</summary><p class="sm mt1">${esc(c.similar)}</p></details><details><summary>What is different?</summary><p class="sm mt1">${esc(c.different)}</p></details><details><summary>Which mechanism dominates?</summary><p class="sm mt1">${esc(c.dominant)}</p></details></article>`:""}).join("")}</div>
+  <p class="xs mt2">Try to answer each question before you open it. <button class="lnk" onclick="EVC.a='${id}';EVC.b='${(e.compare[0]||{}).id||""}';nav('events',1)">Put two events side by side →</button></p>`)}
+ ${sec("connect","Connections",`<div class="ev-conn">
+   <div><div class="eb">IB DP Economics</div><div class="id-chips mt1">${e.ib.subs.map(idSubBtn).join("")}${e.ib.kc.map(k=>`<span class="kcchip">${esc(k)}</span>`).join("")}</div><p class="sm mt1">${esc(e.ib.note)}</p></div>
+   <div><div class="eb">Cambridge AS &amp; A Level</div><div class="id-chips mt1">${e.cambridge.topics.map(t=>`<span class="kcchip">${esc(t)}</span>`).join("")}</div><p class="sm mt1">${esc(e.cambridge.note)}</p><p class="xs mt1">Economic topics only: the platform's Cambridge syllabus map awaits checking against the official syllabus.</p></div>
+   <div><div class="eb">University</div><div class="id-chips mt1">${e.university.fields.map(t=>`<span class="kcchip">${esc(t)}</span>`).join("")}</div><p class="sm mt1">${esc(e.university.note)}</p></div>
+   <div><div class="eb">Civil services and the Indian economy</div><div class="id-chips mt1">${e.civil.themes.map(t=>`<span class="kcchip">${esc(t)}</span>`).join("")}</div><p class="sm mt1">${esc(e.civil.note)}</p></div></div>
+  <div class="ev-conn mt4"><div><div class="eb">Economists</div><div class="id-chips mt1">${e.economists.map(x=>{const o=IDEASIDX.economists.find(y=>y.id===x);return o?`<button class="kcchip" onclick="nav('ideas',0,'${o.id}')">${esc(o.name)}</button>`:""}).join("")}</div></div>
+   <div><div class="eb">Why did this happen?</div><div class="id-chips mt1">${e.causal.map(x=>{const o=IDEASIDX.causal.find(y=>y.id===x);return o?`<button class="kcchip" onclick="nav('think',WHYTAB(),'${o.id}')">${esc(o.q)}</button>`:""}).join("")}</div></div>
+   <div><div class="eb">Concepts</div><div class="id-chips mt1">${e.concepts.map(idTermBtn).join("")}</div></div>
+   <div><div class="eb">Policies and cases</div><div class="id-chips mt1">${e.policies.map(p=>`<span class="kcchip">${esc(p)}</span>`).join("")}${e.cases.map(cid=>{const x=(typeof RW_CASES!=="undefined"?RW_CASES:[]).find(y=>y.id===cid);return x?`<button class="kcchip" onclick="rwOpen('${x.id}')">${esc(x.t)}</button>`:""}).join("")}</div></div></div>`)}
+ ${sec("practise","Practise and reflect",`<ol class="ev-qs">${e.questions.map(q=>`<li><span class="ev-qk">${esc(q.kind)}</span> ${esc(q.q)}</li>`).join("")}</ol>
+  <h3 class="ev-h3">Retrieve</h3><ol class="ev-ret">${e.retrieval.map((r,i)=>`<li><p>${esc(r.q)}</p>${st.ret[i]?`<p class="ev-ans sm">${esc(r.a)}</p>`:`<button class="btn xs gh" onclick="evS('${id}').ret[${i}]=true;save();render();setTimeout(()=>document.getElementById('ev-practise').scrollIntoView({block:'start'}),0)">Show the answer</button>`}</li>`).join("")}</ol>
+  <h3 class="ev-h3">Reflect</h3><label class="sm" for="ev-note">${esc(e.reflection)}</label><textarea id="ev-note" class="inp mt2" rows="3" onchange="evS('${id}').note=this.value;save()">${esc(st.note||"")}</textarea><p class="xs mt1">Kept on this device only.</p>
+  <h3 class="ev-h3">Further reading</h3><ul class="ls-list">${e.reading.map(r=>`<li><em>${esc(r.t)}</em>. ${esc(r.note)}</li>`).join("")}</ul>
+  ${e.numbers.length?`<details class="mt3"><summary>How the numbers were checked</summary><p class="xs mt1">Figures quoted from the charts come from the sourced series shown with them. These other figures are widely documented and were checked in review:</p><ul class="ls-list xs">${e.numbers.map(n=>`<li><strong>${esc(n.value)}</strong>: ${esc(n.claim)} (${esc(n.basis)})</li>`).join("")}</ul></details>`:""}`)}
+ <nav class="ls-nav mt5" aria-label="Other events">${(()=>{const i=EVENTSIDX.events.findIndex(x=>x.id===id),p=EVENTSIDX.events[i-1],n=EVENTSIDX.events[i+1];return `${p?`<button class="btn gh sm" onclick="nav('events',0,'${p.id}')">← ${esc(p.title)}</button>`:"<span></span>"}<button class="btn gh sm" onclick="nav('events',0)">All events</button>${n?`<button class="btn gh sm" onclick="nav('events',0,'${n.id}')">${esc(n.title)} →</button>`:"<span></span>"}`})()}</nav>
+ <p class="xs mt3">${srcTag("platform")} Original history, reviewed for accuracy. Version ${esc(D.version||"")}.</p></div>`}
+function evTlBody(e,i){const t=e.timeline[i];return `<div class="ev-tlbody"><div class="ev-tlnav"><button class="btn xs gh" ${i===0?"disabled":""} onclick="evS('${e.id}').tl=${i-1};save();lsSwap('ev-tlwrap',evTl('${e.id}'))" aria-label="Earlier">←</button>
+  <span class="ev-here"><span class="eb">You are here</span> ${esc(t.d)}</span><button class="btn xs gh" ${i===e.timeline.length-1?"disabled":""} onclick="evS('${e.id}').tl=${i+1};save();lsSwap('ev-tlwrap',evTl('${e.id}'))" aria-label="Later">→</button></div>
+  <h3 class="mt2">${esc(t.t)} ${evBadge(t.status)}</h3><p class="mt1">${esc(t.detail)}</p><div class="ev-prog" aria-hidden="true"><i style="width:${((i+1)/e.timeline.length*100).toFixed(1)}%"></i></div></div>`}
+function evTl(id){const D=window.__EVENTS__,e=D&&D.events.find(x=>x.id===id);if(!e)return "";
+ document.querySelectorAll('#ev-timeline .ev-tl button').forEach((b,i)=>{const on=i===evS(id).tl;b.classList.toggle("on",on);b.classList.toggle("past",i<evS(id).tl);b.setAttribute("aria-selected",String(on))});
+ return evTlBody(e,evS(id).tl)}
+
+/* compare two events side by side */
+const EVC={a:"india-1991",b:"asia-1997"};
+function evCompare(){const D=evData();const pick=(k)=>`<label>${k==="a"?"First event":"Second event"}<select onchange="EVC.${k}=this.value;render()">${EVENTSIDX.events.map(e=>`<option value="${e.id}" ${EVC[k]===e.id?"selected":""}>${esc(e.title)} (${esc(e.years)})</option>`).join("")}</select></label>`;
+ const head=H.pageHead("History","Compare two events",`Put two episodes side by side, dimension by dimension. Decide what is similar, what is different and which mechanism dominates before reading the comparison.`)+`<section class="sec"><div class="wrap"><div class="dl-filters">${pick("a")}${pick("b")}</div>`;
+ if(!D)return head+evWait("the events","ev")+`</div></section>`;
+ const A=D.events.find(e=>e.id===EVC.a)||D.events[0],B=D.events.find(e=>e.id===EVC.b)||D.events[1];
+ const row=(h,f)=>`<tr><th scope="row">${h}</th><td>${f(A)}</td><td>${f(B)}</td></tr>`;
+ const pair=A.compare.find(c=>c.id===B.id)||B.compare.find(c=>c.id===A.id);
+ return head+`<div class="scrollx mt4" tabindex="0" role="region" aria-label="The two events compared"><table class="ptbl ev-ctab"><thead><tr><th scope="col">Dimension</th><th scope="col">${esc(A.title)}</th><th scope="col">${esc(B.title)}</th></tr></thead><tbody>
+  ${row("When and where",e=>esc(e.years+" · "+e.region))}${row("The question",e=>esc(e.question))}${row("Trigger",e=>esc(e.trigger.p))}
+  ${row("Mechanism",e=>`<ol class="ev-chain sm">${e.mechanism.map(m=>`<li>${esc(m)}</li>`).join("")}</ol>`)}${row("Response",e=>`<ul class="ls-list sm">${e.policy.map(p=>`<li>${esc(p.when)}: ${esc(p.who)}</li>`).join("")}</ul>`)}
+  ${row("Short run",e=>esc(e.short))}${row("Long run",e=>esc(e.long))}${row("How it travelled",e=>esc(e.transmission))}</tbody></table></div>
+  ${pair?`<div class="ev-cmp mt4"><article><details><summary>What is similar?</summary><p class="sm mt1">${esc(pair.similar)}</p></details><details><summary>What is different?</summary><p class="sm mt1">${esc(pair.different)}</p></details><details><summary>Which mechanism dominates?</summary><p class="sm mt1">${esc(pair.dominant)}</p></details></article></div>`:`<p class="sm mt4">No written comparison for this pair: use the table, then ask which mechanism dominates in each.</p>`}
+ </div></section>`}
+
+/* economics through time: events and economists on one axis */
+function evHistory(){const y0=1720,y1=2026,W=1000,sx=y=>196+(y-y0)/(y1-y0)*(W-212);const E=IDEASIDX.economists,V=EVENTSIDX.events;const HH=(E.length+3)*20+60;
+ return H.pageHead("History","Economics through time",`Ideas and events on one axis: who was thinking what, and what the world was doing at the time. Select any name or event to open it.`)
+ +`<section class="sec"><div class="wrap"><div class="scrollx" tabindex="0" role="region" aria-label="Economists and events on one timeline"><svg class="id-tl ev-hist" viewBox="0 0 ${W} ${HH}" role="group" aria-label="Lifespans of sixteen economists and twelve economic events, 1720 to 2026">
+  ${[1750,1800,1850,1900,1950,2000].map(t=>`<line x1="${sx(t)}" x2="${sx(t)}" y1="6" y2="${HH-24}" class="dl-grid"/><text x="${sx(t)}" y="${HH-8}" class="dl-tick" text-anchor="middle">${t}</text>`).join("")}
+  <text x="188" y="18" text-anchor="end" class="eb-svg">EVENTS</text>
+  ${V.map(e=>{const a=evYear(e.start),b=Math.max(a+0.8,evYear(e.end));return `<a href="#/events/archive/${e.id}" onclick="event.preventDefault();nav('events',0,'${e.id}')"><rect x="${sx(a)}" y="10" width="${Math.max(4,sx(b)-sx(a))}" height="18" class="ev-ax-b k-${esc(e.kind)}"><title>${esc(e.title)}, ${esc(e.years)}</title></rect></a>`}).join("")}
+  ${E.map((e,i)=>{const a=e.years[0],b=e.years[1]||2026,y=50+i*20;return `<a href="#/ideas/economists/${e.id}" onclick="event.preventDefault();nav('ideas',0,'${e.id}')"><text x="188" y="${y+10}" text-anchor="end" class="id-tl-n">${esc(e.name)}</text><rect x="${sx(a)}" y="${y+1}" width="${Math.max(4,sx(b)-sx(a))}" height="11" rx="2" class="${e.years[1]?"id-tl-b":"id-tl-l"}"/></a>`}).join("")}</svg></div>
+  <p class="xs mt2">The top band is the events archive; the bars below are lifespans (open-ended for living economists).</p>
+  <div class="ev-grid mt4">${V.map(e=>`<button class="ev-card k-${esc(e.kind)}" onclick="nav('events',0,'${e.id}')"><span class="ev-yr">${esc(e.years)}</span><span class="ev-t">${esc(e.title)}</span><span class="ev-q">${esc(e.question)}</span></button>`).join("")}</div></div></section>`}
+
+SECTIONS.push({v:"events",n:"Economic events",hide:1,tabs:["Archive","Compare events","Economics through time"]});
+VIEWS.events=()=>TAB===1?evCompare():TAB===2?evHistory():ARG?evPage(ARG):evArchive();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   WIRING FOR THE EVENTS ARCHIVE: the "you are here" chapter rail, search
+   records for every event, and the start-up guard for the lazy files.
+   ═══════════════════════════════════════════════════════════════════════════ */
+let EVOBS=null;
+(function(){const prev=render;render=function(){const r=prev.apply(this,arguments);
+ if(EVOBS){EVOBS.disconnect();EVOBS=null}
+ if(VIEW==="events"&&ARG&&TAB===0&&"IntersectionObserver" in window){const links=[...document.querySelectorAll(".ev-rail a[data-ch]")];if(links.length){
+  EVOBS=new IntersectionObserver(es=>{es.forEach(x=>{if(x.isIntersecting){const k=x.target.id.replace("ev-","");links.forEach(a=>{const on=a.dataset.ch===k;a.classList.toggle("on",on);if(on){a.setAttribute("aria-current","step");try{a.scrollIntoView({block:"nearest",inline:"nearest"})}catch(e){}}else a.removeAttribute("aria-current")})}})},{rootMargin:"-30% 0px -60% 0px"});
+  document.querySelectorAll(".ev-ch").forEach(s=>EVOBS.observe(s))}}
+ return r}})();
+(function(){if(typeof buildIndex!=="function")return;const prev=buildIndex;
+ buildIndex=function(){if(SIDX)return SIDX;const I=prev().slice();
+  EVENTSIDX.events.forEach(e=>I.push({k:"Economic event",t:`${e.title} (${e.years})`,d:e.standfirst,go:`nav('events',0,'${e.id}')`,s:[e.id,e.region,e.kind,e.question,(e.tags||[]).join(" "),"history crisis economic event"].join(" ")}));
+  I.push({k:"Economic event",t:"Compare two economic events",d:"Two episodes side by side: trigger, mechanism, response, short and long run",go:"nav('events',1)",s:"compare events crisis similar different mechanism"});
+  I.push({k:"Economic event",t:"Economics through time",d:"Economists and events on one timeline",go:"nav('events',2)",s:"timeline history of economic thought events economists"});
+  return SIDX=I};
+ if(typeof RN_KIND_W!=="undefined")RN_KIND_W["Economic event"]=2.3;
+ if(typeof CPGROUPS!=="undefined"){const g=CPGROUPS.find(x=>x[0]==="ideas");if(g){g[1]="Ideas, history and data";g[2]=/^(Economist|Why did this happen\?|Data|Economic event)$/}}
+ try{SIDX=null}catch(e){}})();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PATHWAYS · one body of Economics, several ways in
+   The economics underneath is shared; each pathway is an overlay that says
+   honestly what it offers today. IB DP Economics is the deepest (written to the
+   official guide). The Cambridge and civil-services overlays use the concept-
+   first content and do not yet carry syllabus maps: those wait for the official
+   syllabus documents to be checked. The Indian economy hub gathers the
+   platform's India data, cases and history.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const PATHWAYS=[
+ {id:"ib",name:"IB DP Economics",who:"Students on the IB Diploma Programme, SL and HL.",depth:"Deepest",status:"Written to the IB Economics guide (first assessment 2022)",
+  lead:"Thirty-one lessons, the nine key concepts, the six real-world issues, paper labs, the IA and EE studios, and TOK.",
+  steps:[["Start with the course map","nav('course',TOPICS_TAB())"],["Open a lesson","nav('course',TOPICS_TAB(),'2.1')"],["Practise a paper","nav('papers')"],["Plan your IA","nav('ia')"],["Revise","nav('practise')"]]},
+ {id:"cambridge",name:"Cambridge International AS & A Level",who:"Students taking Cambridge International AS and A Level Economics.",depth:"Concept-first",status:"Syllabus map not yet published: awaiting the official syllabus document",
+  lead:"Most of the economics overlaps with IB: demand and supply, elasticity, market failure, macroeconomic policy, trade and exchange rates. Use the concept pages, labs, diagrams, data and events; the exam layer here is IB's, so check command words and paper formats against your own syllabus.",
+  steps:[["Concepts and diagrams","nav('learn')"],["The diagram atlas","nav('lab',3)"],["Why did this happen?","nav('think',WHYTAB())"],["Economic events","nav('events',0)"],["Economic data","nav('data',0)"]]},
+ {id:"school",name:"School and senior secondary",who:"Students meeting Economics for the first time at school.",depth:"Introductory",status:"Concept-first; no syllabus claims",
+  lead:"Begin with everyday questions, then the core ideas: scarcity and choice, demand and supply, prices, and what governments do.",
+  steps:[["Everyday questions","nav('everywhere',1)"],["One idea at a time","nav('everywhere',3)"],["The market lab","nav('lab',0)"],["Key concepts","nav('course')"]]},
+ {id:"university",name:"University and college",who:"Undergraduates, and anyone who wants the models, the evidence and the debates.",depth:"Advanced",status:"Built from Go deeper panels, events, economists and data",
+  lead:"Each lesson's Go deeper panels add formal reasoning and research; the events archive adds economic history and competing interpretations; the economists section adds the history of thought; the data lab adds evidence.",
+  steps:[["Economists and ideas","nav('ideas',0)"],["Economic events","nav('events',0)"],["Economics through time","nav('events',2)"],["Economic data","nav('data',0)"],["Concept network","nav('think')"]]},
+ {id:"civil",name:"Civil services and the Indian economy",who:"Candidates preparing Economics for civil-services examinations, and anyone studying the Indian economy.",depth:"Applied",status:"Syllabus map not yet published: awaiting the official documents; facts are dated and sourced",
+  lead:"The Indian economy through its data, its policy cases and its history, from the 1991 balance-of-payments crisis to taxation, inflation targeting, the external sector, agriculture, employment and development.",
+  steps:[["The Indian economy hub","nav('paths',1)"],["India 1991","nav('events',0,'india-1991')"],["India's data","dlS().atlas='IND';save();nav('data',1)"],["Why did this happen?","nav('think',WHYTAB())"]]},
+ {id:"everyone",name:"Economics for everyone",who:"Anyone curious about how economies work.",depth:"From intuition up",status:"No exam language",
+  lead:"Why flights cost more tomorrow, why queues exist, why a currency can fall fast, why markets sometimes fail: start from a question and follow it as far as you like.",
+  steps:[["Big questions","nav('everywhere',1)"],["Economics in real life","nav('everywhere',2)"],["Economic events","nav('events',0)"],["Economists and ideas","nav('ideas',0)"]]}];
+function pathS(){return S.path||""}
+function pathsView(){const cur=pathS();
+ return H.pageHead("Pathways","Choose your path",`One body of Economics underneath, several ways in. Each pathway says what it offers today and how deep it goes. IB DP Economics is the deepest; the others are being built on the same foundations.`)
+ +`<section class="sec"><div class="wrap"><div class="pa-grid">${PATHWAYS.map(p=>`<article class="pa-card ${cur===p.id?"on":""}"><div class="pa-top"><span class="eb">${esc(p.depth)}</span>${cur===p.id?`<span class="xs">Your path</span>`:""}</div>
+   <h2 class="pa-n">${esc(p.name)}</h2><p class="sm mt1"><em>${esc(p.who)}</em></p><p class="sm mt2">${esc(p.lead)}</p>
+   <p class="xs mt2 pa-st"><strong>Status:</strong> ${esc(p.status)}</p>
+   <ol class="pa-steps mt3">${p.steps.map(([t,go])=>`<li><button class="lnk" onclick="${go}">${esc(t)}</button></li>`).join("")}</ol>
+   <button class="btn sm mt3 ${cur===p.id?"gh":""}" aria-pressed="${cur===p.id}" onclick="S.path=${cur===p.id?"''":`'${p.id}'`};save();render()">${cur===p.id?"Clear my path":"Make this my path"}</button></article>`).join("")}</div>
+  <p class="xs mt4">Choosing a path changes what the home page suggests first; it hides nothing. It is kept on this device only.</p></div></section>`}
+
+/* the Indian economy hub */
+const INTHEMES=[["Public finance and taxation",["MIC-001","MIC-002","MIC-006","MAC-006","MAC-049","MAC-002"]],["Money, inflation and banking",["MAC-003","MAC-001","DEV-004"]],
+ ["The external sector",["GLO-014","GLO-015","GLO-041","GLO-045"]],["Agriculture and food",["MIC-003","MIC-004","MIC-005","DEV-005"]],["Employment and labour",["MAC-004","DEV-003","DEV-045"]],
+ ["Development and welfare",["DEV-001","DEV-002","DEV-033","DEV-047","MIC-037","MIC-036"]],["Industry, technology and markets",["MAC-005","MIC-042","MIC-039","DEV-006","MIC-038"]]];
+function indiaHub(){const D=dlData(),cases=typeof RW_CASES!=="undefined"?RW_CASES:[];
+ const charts=D?["gdppc","infl","gini"].map(k=>{const i=D.indicators.find(x=>x.id===k);if(!i||!i.data.IND)return "";
+  const ser=[{name:"India",short:"India",color:DLPAL[0],pts:i.data.IND.filter(p=>p[0]>=1990)}].concat(i.data.WLD?[{name:"World",short:"World",color:"#8A8F96",pts:i.data.WLD.filter(p=>p[0]>=1990)}]:[]);
+  return `<article class="dl-card"><div class="dl-head"><h3 class="dl-t">${esc(i.name)}</h3><span class="xs">${esc(i.unit)}</span></div>${dlChart("in-"+k,ser,{unit:i.unit,title:i.name+", India",zero:i.kind!=="index"})}${dlLegend(ser)}${dlSrc(i,D.meta.retrieved)}</article>`}).join(""):`<div class="dl-state" role="status">Loading India's data…</div>`;
+ return H.pageHead("Pathways","The Indian economy",`India's economy through its data, its policy cases and its history. Every figure names its source and date; nothing here is a forecast or a statement of current policy.`)
+ +`<section class="sec"><div class="wrap">
+  <div class="pa-lead"><div><div class="eb">Start with the turning point</div><h2 class="mt1">The 1991 balance-of-payments crisis</h2><p class="sm mt2">How a reserve crisis became the start of India's economic reforms: the trigger, the response by the Government of India and the RBI, and what changed afterwards.</p>
+   <button class="btn sm mt3" onclick="nav('events',0,'india-1991')">Follow the story</button> <button class="btn gh sm mt3" onclick="EVC.a='india-1991';EVC.b='asia-1997';nav('events',1)">Compare with the Asian crisis</button></div>
+   <div><div class="eb">Economists</div><div class="id-chips mt2">${["sen","banerjee","duflo"].map(x=>{const o=IDEASIDX.economists.find(y=>y.id===x);return o?`<button class="kcchip" onclick="nav('ideas',0,'${o.id}')">${esc(o.name)}</button>`:""}).join("")}</div>
+    <div class="eb mt3">Data</div><p class="sm mt1"><button class="lnk" onclick="dlS().atlas='IND';save();nav('data',1)">India's country profile</button> · <button class="lnk" onclick="dlS().fx='India';save();nav('data',2)">the rupee against the dollar</button></p></div></div>
+  <h2 class="mt5">India in the data</h2><div class="dl-stack mt3">${charts}</div>
+  <h2 class="mt5">India in policy: the platform's cases</h2><p class="sm mt1">Each case is a short economic analysis of a real Indian policy or market, with its date. Open one to see the theory, the diagram and the evaluation.</p>
+  <div class="in-themes mt3">${INTHEMES.map(([h,ids])=>`<section><h3 class="pa-h3">${esc(h)}</h3><ul class="ls-list">${ids.map(id=>{const c=cases.find(x=>x.id===id);return c?`<li><button class="lnk" onclick="rwOpen('${c.id}')">${esc(c.t)}</button> <span class="xs">${esc(String(c.y||""))}</span></li>`:""}).join("")}</ul></section>`).join("")}</div>
+  <p class="xs mt4">Current schemes, budgets and rates change: check the latest Economic Survey, Union Budget and RBI publications for current figures. This hub states no current policy facts beyond the dated cases.</p></div></section>`}
+SECTIONS.push({v:"paths",n:"Pathways",hide:1,tabs:["Choose your path","The Indian economy"]});
+VIEWS.paths=()=>TAB===1?indiaHub():pathsView();
+(function(){if(typeof buildIndex!=="function")return;const prev=buildIndex;
+ buildIndex=function(){if(SIDX)return SIDX;const I=prev().slice();
+  PATHWAYS.forEach(p=>I.push({k:"Pathway",t:p.name,d:p.lead,go:p.id==="civil"?"nav('paths',1)":"nav('paths',0)",s:[p.id,p.who,p.depth,"pathway start here curriculum"].join(" ")}));
+  I.push({k:"Pathway",t:"The Indian economy",d:"India's data, policy cases and the 1991 crisis",go:"nav('paths',1)",s:"india indian economy rbi rupee gst upsc civil services budget"});
+  return SIDX=I};
+ if(typeof RN_KIND_W!=="undefined")RN_KIND_W["Pathway"]=2.4;try{SIDX=null}catch(e){}})();
+/* the home page: where do you want to start? */
+function rnPathsBand(){const cur=pathS(),p=PATHWAYS.find(x=>x.id===cur);
+ return `<section class="sec rn-band"><div class="wrap full"><div class="pa-band"><div><div class="eb">Where do you want to start?</div><h2 class="mt1">${p?`Your path: ${esc(p.name)}`:"Six ways into Economics"}</h2>
+  <p class="sm mt2">${p?esc(p.lead):"IB DP Economics is the deepest pathway here. Cambridge, school, university, civil services and the curious each have their own way in to the same Economics."}</p></div>
+  <div class="pa-chips">${PATHWAYS.map(x=>`<button class="pa-chip ${cur===x.id?"on":""}" onclick="nav('paths',0)">${esc(x.name)}<span>${esc(x.depth)}</span></button>`).join("")}<button class="pa-chip" onclick="nav('paths',1)">The Indian economy<span>Hub</span></button></div></div></div></section>`}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SELF-TESTS: the events archive and the pathways. The lazy story files are
+   checked by tests/events.mjs in a browser; these check what is resident.
+   ═══════════════════════════════════════════════════════════════════════════ */
+function EVSUITE(){const out=[];const T=(n,f,d)=>{let ok=false,det=d||"";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){ok=false;det=e.message}out.push({n,ok:!!ok,detail:det})};
+ const keep={VIEW,TAB,ARG},txt=h=>String(h).replace(/<[^>]+>/g," ").replace(/\s+/g," ");
+ const E=EVENTSIDX.events;
+ T("Events · twelve events are indexed, in chronological order, each with a question and a standfirst",()=>E.length===12&&E.every((e,i)=>e.question&&e.standfirst&&(!i||evYear(e.start)>=evYear(E[i-1].start)-0.01)),"");
+ T("Events · every date reads as a year (and month), and no event ends before it starts",()=>E.every(e=>/^\d{4}(-\d{2})?(-\d{2})?$/.test(e.start)&&/^\d{4}(-\d{2})?$/.test(String(e.end))&&evYear(e.end)>=evYear(e.start)));
+ T("Events · every subtopic, key concept and economist an event names exists",()=>{const K=["Scarcity","Choice","Efficiency","Equity","Economic well-being","Sustainability","Change","Interdependence","Intervention"],bad=[];
+   E.forEach(e=>{e.subs.forEach(c=>{if(!SUBMAP[c])bad.push(e.id+" "+c)});e.kc.forEach(k=>{if(!K.includes(k))bad.push(e.id+" "+k)});e.economists.forEach(x=>{if(!IDEASIDX.economists.some(y=>y.id===x))bad.push(e.id+" "+x)})});return{ok:!bad.length,d:bad.join(", ")}});
+ T("Events · the archive draws every event on one axis and lists every one",()=>{VIEW="events";TAB=0;ARG=null;EVF.kind="";EVF.region="";const h=VIEWS.events();return E.every(e=>h.includes(`nav('events',0,'${e.id}')`))&&(h.match(/class="ev-ax-b/g)||[]).length===E.length});
+ T("Events · the filters narrow the archive and say nothing is lost",()=>{VIEW="events";TAB=0;ARG=null;EVF.kind="crisis";const h=VIEWS.events();EVF.kind="";const n=E.filter(e=>e.kind==="crisis").length;return n>0&&(h.match(/class="ev-card/g)||[]).length===n});
+ T("Events · an event page waits for its file instead of failing",()=>{VIEW="events";TAB=0;ARG="india-1991";const h=txt(VIEWS.events());ARG=null;return window.__EVENTS__?/The world before/i.test(h):/Loading this event|could not be loaded/.test(h)});
+ T("Events · compare and the history timeline render, with every economist and event on the timeline",()=>{VIEW="events";TAB=1;ARG=null;const a=txt(VIEWS.events());TAB=2;const b=VIEWS.events();TAB=0;
+   return /Compare two events/.test(a)&&IDEASIDX.economists.every(x=>b.includes(`nav('ideas',0,'${x.id}')`))&&E.every(x=>b.includes(`nav('events',0,'${x.id}')`))});
+ T("Events · every fact-status badge has a label and an explanation",()=>["fact","interpretation","inference","controversy"].every(k=>EVSTATUS[k]&&EVSTATUS[k][0]&&EVSTATUS[k][1])&&/Controversy/.test(evBadge("controversy")));
+ T("Events · charts can mark an event on the time axis",()=>{const h=dlChart("t-ev",[{name:"A",color:DLPAL[0],pts:[[1990,1],[1991,2],[1992,3]]}],{w:600,marks:[{at:1991,label:"Crisis"}]});delete DLCH["t-ev"];return /class="dl-mark"/.test(h)&&/>Crisis</.test(h)});
+ T("Pathways · six pathways, and IB is the deepest",()=>PATHWAYS.length===6&&PATHWAYS[0].id==="ib"&&PATHWAYS[0].depth==="Deepest");
+ T("Pathways · Cambridge and civil services make no syllabus claim until the official documents are checked",()=>["cambridge","civil"].every(id=>{const p=PATHWAYS.find(x=>x.id===id);return /awaiting the official/.test(p.status)&&!/\b9708\b|paper \d|component \d|prelims|mains/i.test(p.lead+p.status)}));
+ T("Pathways · the Indian economy hub links only to cases that exist and to the 1991 event",()=>{const ids=INTHEMES.flatMap(t=>t[1]);const h=indiaHub();return ids.every(id=>RW_CASES.some(c=>c.id===id))&&h.includes("nav('events',0,'india-1991')")&&ids.length>=25});
+ T("Pathways · choosing a path is kept and changes the home band's lead",()=>{const k=S.path;S.path="civil";const a=txt(rnPathsBand());S.path=k;return /Your path: Civil services/.test(a)});
+ T("Navigation · the More menu and the drawer reach the events archive and the pathways",()=>{const src=String(moreMenu);return src.includes('"events"')&&src.includes('"paths"')&&MOBGROUPS.some(([,it])=>it.some(i=>i[0]==="events"))&&MOBGROUPS.some(([,it])=>it.some(i=>i[0]==="paths"))});
+ T("Search · events and pathways are found by name",()=>{SIDX=null;const k=q=>cpMatch(q).map(x=>x.k);const r=k("1991 india").includes("Economic event")&&k("great depression").includes("Economic event")&&k("cambridge").includes("Pathway");SIDX=null;return r});
+ VIEW=keep.VIEW;TAB=keep.TAB;ARG=keep.ARG;SIDX=null;return out}
+EVSUITE.suiteName="Events and pathways";
+EXTRA_SUITES.push(EVSUITE);
+QAREPORT.push({area:"Events and pathways",re:/^(Events|Pathways) · /,
+ what:"That twelve events are indexed in order with valid dates and links, that the archive, filters, compare room and history timeline render, that an event page waits for its file rather than failing, that charts mark events; and that the six pathways put IB first, make no Cambridge or civil-services syllabus claims before the official documents are checked, and link the Indian economy hub only to cases that exist."});
+
 /* ▓▓ RENAISSANCE:END ▓▓ */
 /* ═══════════════════════════════════════════════════════════════════════════
    PARTS 4, 39, 77, 110 · the navigation, settled after every section exists
@@ -40090,7 +40435,7 @@ QAREPORT.push({area:"Data, ideas and reasoning",re:/^(Data|Ideas|Why|Search|Disc
 
 MOBGROUPS.length=0;
 [["Start",[["course","Course"],["learn","Learn"],["think","Think"],["lab","Lab"]]],
- ["Explore",[["everywhere","Economics, Everywhere"],["world","Real World"],["mind","Mindmaps"],["resources","Resources"],["arjun","Arjun Agrawal · Video studio"],["video","Curated videos"],["tok","TOK × Economics"],["data","Economic data"],["ideas","Economists and ideas"]]],
+ ["Explore",[["everywhere","Economics, Everywhere"],["world","Real World"],["mind","Mindmaps"],["resources","Resources"],["arjun","Arjun Agrawal · Video studio"],["video","Curated videos"],["tok","TOK × Economics"],["events","Economic events"],["data","Economic data"],["ideas","Economists and ideas"],["paths","Pathways"]]],
  ["Practise",[["practise","Practise"],["calculate","Calculate"],["examiner","Exam"],["dna","Exam DNA"],["papers","Exam practice"]]],
  ["Progress",[["master","Dashboard"],["syllabus","My syllabus"],["saved","My economics"],["workspace","My workspace"]]],
  ["IA",[["ia","IA studio"],["ees","Economics EE Studio"]]],

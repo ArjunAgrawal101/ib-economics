@@ -114,7 +114,7 @@ function rnDivider(t,s){return `<div class="wrap full rn-divider"><span class="r
 /* the home page reads as a story in eleven chapters, one verb each: think,
    learn, see, interact, connect, practise, research, explore, watch, teach,
    and the person behind it. "#n|Title" marks a chapter opener. */
-const RN_ORDER=["#01|Think","Start your journey","@atlas",
+const RN_ORDER=["#01|Think","Start your journey","@atlas","@paths",
  "#02|The course","@course",
  "#03|Learn","@learn","Timeless ideas","Inflation targeting",
  "#04|See the world","@lead","Economics, right now",
@@ -133,7 +133,7 @@ function rnHome(html){
  const title=el=>{const h=el.querySelector(".shead h2")||el.querySelector("h1,h2");return h?h.textContent.trim():""};
  const hero=kids.find(el=>el.matches("section.hero"));
  const rest=kids.filter(el=>el!==hero);
- const NEW={"@course":()=>typeof rnCourseBand==="function"?rnCourseBand():"","@ideas":()=>typeof rnIdeasBand==="function"?rnIdeasBand():"","@atlas":rnAtlas,"@today":rnToday,"@lead":rnLead,"@mind":rnMind,"@glance":rnGlance,
+ const NEW={"@course":()=>typeof rnCourseBand==="function"?rnCourseBand():"","@ideas":()=>typeof rnIdeasBand==="function"?rnIdeasBand():"","@paths":()=>typeof rnPathsBand==="function"?rnPathsBand():"","@atlas":rnAtlas,"@today":rnToday,"@lead":rnLead,"@mind":rnMind,"@glance":rnGlance,
   "@exam":rnExamBand,"@learn":rnLearnBand,"@labs":rnLabsBand,"@research":rnResearchBand,"@educator":rnEducatorBand,"@creator":rnCreatorBand,"@final":rnFinalBand,
   "@desk":()=>"\u0001DESK\u0001"};
  const used=new Set();let out=rnCover(hero);

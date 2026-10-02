@@ -343,11 +343,11 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   address is a hash, so it works from a `file://` path and from a subdirectory with no server
   rewrite rules; the short form the install shortcuts use (`#mind`, `#session`, `#video`) works
   too. The router writes nothing while the self-tests run, leaves assignment links (`#assign=…`)
-  untouched and stores nothing. A reload, a Back step into the platform or a deep link skips the
-  five-second opening sequence; a fresh visit still plays it.
+  untouched and stores nothing. The home page plays the five-second opening sequence on every kind
+  of load; a deep link to any other page skips it (see *The opening sequence*).
 - A command palette opens on `/` or `Ctrl`/`Cmd` + `K` and reaches every section, every printable and
   every indexed item of content.
-- The build includes a self-test of **2,019 checks** reported across every area of the build: startup, printing,
+- The build includes a self-test of **2,052 checks** reported across every area of the build: startup, printing,
   navigation, mobile, desktop, resources, Google Drive, IB Economics, TOK, economics theory, calculations,
   diagrams, mindmap integrity, topic architecture, assessment, IA, student features, teacher features,
   progress, storage, export and import, contact links, tutorials, branding, accessibility, performance,
@@ -735,14 +735,29 @@ transparency at exactly start + 5000 ms, and the overlay is removed on the next 
 - On a device slow enough that the platform is not ready at 4.7 s, the final frame holds rather than
   uncovering an unfinished page, and the timing record says so.
 
-**Skip, reduced motion, reloads and deep links.**
+**When it plays: the opening state model.** The rule depends on the address, not on the cache or
+the kind of load:
+
+| How the reader arrives | What they see |
+|---|---|
+| The home page (`/`, `#/home`), first visit or any later one | the full five seconds |
+| The home page by reload, hard reload, cache disabled, a bookmark or a typed address | the full five seconds |
+| The home page by the browser's Back or Forward from another site | the full five seconds |
+| The home page from a page restored by the back/forward cache | the page as it was left (it never unloaded, so there is nothing to open) |
+| A deep link to any other page (`#/events/archive/india-1991`) | the identity still, gone as soon as the page is ready |
+| Moving inside the platform, including Home and Back between its own pages | no opening at all |
+
+The page records the navigation type, the route and the result in `window.__INTRO`. There is no
+timer that waits for the opening: the page is built behind it, so it is ready when the overlay leaves.
+
+**Skip and reduced motion.**
 - **Skip intro** fades out over about 170 ms and leaves through the same exit.
 - Reduced motion shows the same hierarchy at once and leaves after 1.5 s.
-- A reload, a Back/Forward step or a link to one page shows the identity still and leaves as soon as
-  the platform is ready.
 
 `tests/intro.mjs` measures the timing at 360, 390, 768, 1024, 1440 and 1920 px, from the record the
-page keeps in `window.__INTRO`.
+page keeps in `window.__INTRO`, and every row of the table above: a fresh profile, reload, hard
+reload with the cache disabled, a direct address, Back and Forward from another site, a revisit
+controlled by the service worker, and a deep link.
 
 ## Installable, and honest about offline
 
@@ -878,6 +893,62 @@ A timeline puts the lifespans on one axis.
 **Review.** The profiles were reviewed adversarially before release. The review found no factual
 errors; it corrected one misattribution and one contested claim stated as fact, and added HL labels
 where the guide marks content HL only.
+
+## Economic events
+
+**Twelve episodes told as stories you can follow** (More › Economic events, `#/events`): the Great
+Depression, the end of Bretton Woods, the 1970s stagflation, the oil shocks of 1973 and 1979, the
+Plaza Accord, India's 1991 crisis and reforms, the Asian financial crisis, the dot-com bubble, the
+global financial crisis, the euro crisis and COVID-19.
+
+**Each event has fourteen chapters:** the world before; the trigger; a timeline you step through;
+the mechanism (opened only after the reader predicts it); the data; the policy response and who
+gained and lost; short- and long-run effects; how it travelled; competing readings; what the models
+explain and miss; what might have been done differently and a what-if; comparisons; connections
+(IB subtopics and key concepts, economics topics for Cambridge, university fields, themes for
+civil-services study, economists, causal pathways, glossary, Real World cases); practice, retrieval
+and reflection; and further reading.
+
+**Fact, interpretation, inference, controversy.** Every statement about the world carries one of
+these four labels, so a well-documented fact never looks like one school's reading of it. Every
+number that does not come from the charted data is listed under *How the numbers were checked*, with
+its basis.
+
+**The data.** Charts come from `assets/data/history.js`: US inflation from 1914, US growth from
+1930, Shiller's monthly share prices, US and UK ten-year yields, Brent from 1987, US unemployment from
+1941, exchange rates for nine currencies and a sixteen-economy panel of growth and inflation. Each
+series names its original source, the open-data package it came through, its licence and the
+retrieval date. Where a package was wrong it was corrected and the chart says so: US growth is
+computed from chained levels, because the package's growth column is shifted by a year. Series whose
+licence is unclear (Case-Shiller, VIX) were left out. Each chart marks the event on its time axis.
+
+**Compare and history.** *Compare events* sets any two side by side (trigger, mechanism,
+response, short and long run, how it travelled) and asks what is similar, what is different and which
+mechanism dominates. *Economics through time* puts the twelve events and the sixteen economists on one
+axis.
+
+**Review.** Four writers drafted the events from a shared brief, and a separate reviewer then checked
+dates, people, causal claims and every listed number. The review found no high-severity errors and
+made seven corrections (for example, the January 1991 emergency credit was the IMF's, not the World
+Bank's). The corrections are kept as patches in `src/content/events/rt-events.json` and applied at
+build time. `tools/build/build_events.py` validates every subtopic, diagram, glossary term, case,
+economist and chart series an event names.
+
+## Pathways and the Indian economy
+
+**Six ways in** (More › Pathways, `#/paths`): IB DP Economics (the deepest, written to the guide),
+Cambridge International AS & A Level, school, university, civil services and the Indian economy, and
+Economics for everyone. Choosing a path changes what the home page suggests first and hides nothing.
+
+**What the pathways do not claim.** The Cambridge and civil-services syllabi could not be checked
+against their official documents from this build, so those pathways carry no syllabus map, no topic
+numbers and no exam-format claims. Each says so on its card, and the events name economic topics
+rather than syllabus references for them. A self-test fails if that changes before the documents are
+checked.
+
+**The Indian economy hub** (`#/paths/the-indian-economy`) gathers India's growth, inflation and
+inequality against the world, thirty-one dated policy cases in seven themes, the 1991 event and the
+economists who wrote about India. It states no current policy facts.
 
 ## Why did this happen?
 
@@ -1304,8 +1375,9 @@ and the `assets` folder. Commit directly to the `main` branch.
 **3a. Enable Pages using the workflow (recommended)**
 
 Repository → **Settings** → **Pages** → under **Build and deployment**, set **Source** to
-**GitHub Actions**. The included workflow at `.github/workflows/pages.yml` publishes the site
-on every push to `main`.
+**GitHub Actions**, and place `pages.yml` at `.github/workflows/pages.yml`. In this repository the
+file sits at the root, where GitHub does not read it, so the live site is published by step 3b
+(GitHub's built-in *pages build and deployment* from `main`).
 
 **3b. Or enable Pages without the workflow**
 

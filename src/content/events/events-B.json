@@ -1,0 +1,1718 @@
+[
+ {
+  "id": "stagflation-1970s",
+  "title": "Stagflation and the Volcker disinflation",
+  "years": "1971–1983",
+  "start": "1971-08",
+  "end": "1983",
+  "region": "United States (with global effects)",
+  "kind": "shock",
+  "standfirst": "For a decade the United States suffered rising prices and rising unemployment at the same time, a combination many policymakers of the 1960s had treated as unlikely. Ending it required a central bank willing to accept a deep recession, and the episode reshaped how economists think about expectations and credibility.",
+  "question": "Why did inflation and unemployment rise together in the 1970s, and what did it cost to bring inflation back down?",
+  "before": {
+   "p": "In the late 1960s the US economy ran close to full capacity. Spending on the Vietnam War and on new social programmes added to aggregate demand, and many policymakers read the Phillips curve as a stable menu: a little more inflation could buy a little less unemployment. US consumer-price inflation rose from 1.6% in 1965 to 5.5% in 1969, while unemployment fell to 3.5% in 1969. Under the Bretton Woods system the dollar was tied to gold, so US monetary conditions spread to other countries. A few economists warned that the apparent trade-off would not last once people came to expect higher inflation.",
+   "facts": [
+    {
+     "t": "US CPI inflation was 1.6% in 1965 and 5.5% in 1969; unemployment averaged 3.5% in 1969 (BLS data).",
+     "status": "fact"
+    },
+    {
+     "t": "In his 1967 presidential address to the American Economic Association, published in 1968, Milton Friedman argued that there was no lasting trade-off between inflation and unemployment; Edmund Phelps made a similar argument.",
+     "status": "fact"
+    },
+    {
+     "t": "Arthur Burns became chair of the Federal Reserve in 1970.",
+     "status": "fact"
+    },
+    {
+     "t": "On 15 August 1971 President Nixon suspended the dollar’s convertibility into gold and imposed a 90-day freeze on wages and prices.",
+     "status": "fact"
+    }
+   ]
+  },
+  "trigger": {
+   "p": "There was no single trigger. Inflation was already elevated when the first oil shock arrived in late 1973: Arab members of OPEC imposed an embargo and oil prices roughly quadrupled within months. A second shock followed the Iranian revolution of 1979. A widely held reading is that these supply shocks landed on an economy where demand had been allowed to run hot and inflation expectations were drifting up, so each shock left inflation higher than before.",
+   "status": "interpretation"
+  },
+  "timeline": [
+   {
+    "d": "1971-08-15",
+    "t": "Gold window closed; wage-price freeze",
+    "detail": "Nixon suspends dollar–gold convertibility and freezes wages and prices for 90 days. Controls continue in phases until 1974; measured inflation falls for a while, then rebounds once controls loosen.",
+    "status": "fact"
+   },
+   {
+    "d": "1973-10",
+    "t": "Oil embargo and price shock",
+    "detail": "Arab OPEC members cut supplies and impose an embargo on the United States after the Yom Kippur War. Oil prices roughly quadruple, raising costs for firms and households across the economy.",
+    "status": "fact"
+   },
+   {
+    "d": "1974",
+    "t": "Double-digit inflation and recession",
+    "detail": "US inflation reaches 11.1% for the year while real GDP falls by 0.5%. Rising prices and falling output together give the word ‘stagflation’ its everyday meaning.",
+    "status": "fact"
+   },
+   {
+    "d": "1974-10",
+    "t": "‘Whip Inflation Now’ campaign",
+    "detail": "President Ford launches a voluntary anti-inflation campaign urging households and firms to restrain spending and price rises. It relies on persuasion rather than on tighter money and has little measurable effect.",
+    "status": "fact"
+   },
+   {
+    "d": "1975",
+    "t": "Unemployment peaks for the decade",
+    "detail": "Annual unemployment averages 8.5%, the highest since the Second World War at that point. The Fed eases, inflation falls to 5.7% in 1976 but does not return to 1960s levels.",
+    "status": "fact"
+   },
+   {
+    "d": "1979",
+    "t": "Second oil shock",
+    "detail": "The Iranian revolution disrupts oil supply and prices more than double over 1979–80. US inflation rises to 11.3% in 1979, and expectations of continuing high inflation become entrenched.",
+    "status": "fact"
+   },
+   {
+    "d": "1979-08",
+    "t": "Paul Volcker becomes Fed chair",
+    "detail": "President Carter appoints Paul Volcker, previously president of the Federal Reserve Bank of New York, to chair the Federal Reserve after G. William Miller moves to the Treasury.",
+    "status": "fact"
+   },
+   {
+    "d": "1979-10-06",
+    "t": "Fed changes its operating procedure",
+    "detail": "The Fed announces it will target the quantity of bank reserves rather than the short-term interest rate, letting interest rates rise as far as needed to slow money growth.",
+    "status": "fact"
+   },
+   {
+    "d": "1980-03",
+    "t": "Credit controls imposed, then lifted",
+    "detail": "The Carter administration invokes credit controls. Spending drops sharply, a short recession follows and the controls are removed within months; interest rates fall and then climb again.",
+    "status": "fact"
+   },
+   {
+    "d": "1981-07",
+    "t": "Deep recession begins",
+    "detail": "With the federal funds rate close to 20% earlier in 1981, a second recession begins. Housing, manufacturing and farming, all sensitive to interest rates, are hit hardest.",
+    "status": "fact"
+   },
+   {
+    "d": "1982",
+    "t": "Unemployment peaks; Fed eases",
+    "detail": "Annual unemployment averages 9.7% and the monthly rate reaches 10.8% late in the year. After Mexico’s debt crisis in August, the Fed relaxes policy in the second half of 1982.",
+    "status": "fact"
+   },
+   {
+    "d": "1983",
+    "t": "Inflation down to 3.2%",
+    "detail": "Inflation falls to 3.2% while real GDP grows by 4.6%. President Reagan reappoints Volcker, and the recovery strengthens into 1984.",
+    "status": "fact"
+   }
+  ],
+  "actors": [
+   {
+    "who": "Federal Reserve under Arthur Burns (1970–78)",
+    "role": "Set monetary policy through two oil shocks; critics argue it eased too readily when unemployment rose and treated inflation as caused mainly by forces outside its control."
+   },
+   {
+    "who": "Federal Reserve under Paul Volcker (1979–87)",
+    "role": "Shifted to controlling bank reserves in October 1979 and accepted very high interest rates and a deep recession to bring inflation down."
+   },
+   {
+    "who": "OPEC and Gulf oil producers",
+    "role": "Raised oil prices sharply in 1973–74; supply disruption after the Iranian revolution produced a second rise in 1979–80, transferring income from oil importers to exporters."
+   },
+   {
+    "who": "US presidents Nixon, Ford, Carter and Reagan",
+    "role": "Tried wage-price controls, voluntary restraint and credit controls; Carter appointed Volcker and Reagan reappointed him, giving political cover to tight money."
+   },
+   {
+    "who": "Workers, unions and firms",
+    "role": "Built expected inflation into wage contracts and prices, often through cost-of-living clauses, which made inflation more persistent once it had risen."
+   }
+  ],
+  "changed": "The 1970s broke the belief that policymakers could choose a permanent point on a Phillips curve. Inflation and unemployment rose together, real wages stalled, and savers lost as interest rates trailed inflation. The Volcker disinflation then showed that a determined central bank could bring inflation down, but at the cost of the deepest recession since the 1930s. Afterwards, central banks increasingly treated low and stable inflation as their main task, and the role of expectations and credibility moved to the centre of macroeconomics.",
+  "predict": {
+   "q": "Oil prices suddenly quadruple in an economy where inflation is already rising. Before looking at the mechanism, what would you expect to happen to output and the price level in the short run?",
+   "options": [
+    "The price level rises and real output falls",
+    "The price level rises and real output rises",
+    "The price level falls and real output falls"
+   ],
+   "answer": 0,
+   "explain": "An oil price rise raises production costs for most firms, so short-run aggregate supply shifts to the left. With aggregate demand unchanged, the new equilibrium has a higher price level and lower real output. That combination of rising prices and falling output is stagflation; a demand shock would move both in the same direction instead."
+  },
+  "mechanism": [
+   "Oil price rise → firms’ costs of production rise → SRAS shifts left → price level rises and real output falls (cost-push inflation)",
+   "Inflation persists → workers and firms expect it to continue → higher wage claims and price setting → SRAS shifts left again, a wage–price spiral",
+   "Higher expected inflation → short-run Phillips curve shifts upwards → any given unemployment rate now comes with higher inflation",
+   "Policy eases when unemployment rises → AD shifts right → inflation is accommodated rather than squeezed out of the system",
+   "From October 1979 the Fed restricts reserve growth → interest rates rise sharply → borrowing, investment and consumption fall → AD shifts left → output falls and unemployment rises (movement along the short-run Phillips curve)",
+   "Tight policy is sustained through the 1981–82 recession → people come to believe the Fed will not reverse → expected inflation falls → short-run Phillips curve shifts down",
+   "High US real interest rates → capital flows into dollar assets → demand for dollars rises → the dollar appreciates in the early 1980s"
+  ],
+  "charts": [
+   {
+    "series": "us-cpi-infl",
+    "from": "1965",
+    "to": "1990",
+    "title": "US consumer-price inflation, 1965–1990",
+    "look": "Two peaks, after each oil shock, sitting on a rising floor through the 1970s. Then a steep fall from 13.5% in 1980 to 3.2% in 1983 after the Fed tightened.",
+    "marks": [
+     {
+      "at": "1973-10",
+      "label": "Oil embargo"
+     },
+     {
+      "at": "1979-08",
+      "label": "Volcker takes office"
+     }
+    ]
+   },
+   {
+    "series": "us-unemp",
+    "from": "1965",
+    "to": "1990",
+    "title": "US unemployment rate, 1965–1990",
+    "look": "Unemployment rises in both oil-shock recessions and peaks at 9.7% in 1982. Compare its timing with the inflation chart: the cost of disinflation shows up here.",
+    "marks": [
+     {
+      "at": "1975",
+      "label": "First peak"
+     },
+     {
+      "at": "1982",
+      "label": "Disinflation recession"
+     }
+    ]
+   },
+   {
+    "series": "us10y",
+    "from": "1965",
+    "to": "1990",
+    "title": "US 10-year Treasury yield, 1965–1990",
+    "look": "Long-term yields rise with expected inflation, peak at 13.91% in 1981, and fall only slowly afterwards, suggesting markets took years to trust that inflation would stay low.",
+    "marks": [
+     {
+      "at": "1979-10",
+      "label": "New Fed procedure"
+     }
+    ]
+   }
+  ],
+  "diagrams": [
+   {
+    "dg": "costpush",
+    "how": "Start from AD–AS equilibrium. Shift SRAS left to show the oil shock: the price level rises and real GDP falls below full-employment output. Then show a second leftward shift as wage claims catch up, and note that easing policy would shift AD right and raise prices further."
+   },
+   {
+    "dg": "phillips",
+    "how": "Draw a vertical long-run Phillips curve at the natural rate. Show SRPC shifting up as expected inflation rises in the 1970s. Show 1980–82 as a movement down along a high SRPC to higher unemployment, then SRPC shifting down as expectations fall."
+   }
+  ],
+  "policy": [
+   {
+    "who": "Nixon administration",
+    "when": "1971-08",
+    "what": "Imposed a wage and price freeze, followed by phased controls until 1974. Controls held measured inflation down briefly but caused shortages in some markets, and prices jumped once they were relaxed.",
+    "status": "fact"
+   },
+   {
+    "who": "Congress",
+    "when": "1978",
+    "what": "Passed the Full Employment and Balanced Growth Act (Humphrey–Hawkins), setting goals for both employment and price stability and requiring the Fed to report regularly to Congress on monetary policy.",
+    "status": "fact"
+   },
+   {
+    "who": "Federal Reserve (Volcker)",
+    "when": "1979-10",
+    "what": "Switched to targeting non-borrowed bank reserves so that money growth, not the interest rate, became the operating focus. Short-term interest rates became much higher and more volatile.",
+    "status": "fact"
+   },
+   {
+    "who": "Carter administration and Federal Reserve",
+    "when": "1980-03",
+    "what": "Introduced credit controls to restrain consumer borrowing. Spending fell abruptly and the economy contracted; the controls were withdrawn within months and are widely seen as a misstep.",
+    "status": "fact"
+   },
+   {
+    "who": "Reagan administration and Congress",
+    "when": "1981-08",
+    "what": "Enacted the Economic Recovery Tax Act, cutting income tax rates. With higher defence spending, this widened budget deficits while monetary policy stayed tight, pushing up real interest rates.",
+    "status": "fact"
+   },
+   {
+    "who": "Federal Reserve (Volcker)",
+    "when": "1982",
+    "what": "Eased policy in the second half of 1982 as the recession deepened and the Latin American debt crisis broke, and gave less weight to narrow money targets from late 1982.",
+    "status": "fact"
+   }
+  ],
+  "stakeholders": [
+   {
+    "who": "Savers and holders of fixed-income assets",
+    "effect": "Lost in real terms during the 1970s, as interest rates on many deposits and bonds stayed below inflation; gained after 1982 when inflation fell faster than yields."
+   },
+   {
+    "who": "Households with fixed-rate mortgages",
+    "effect": "Gained during the 1970s, because inflation reduced the real value of their debt while repayments stayed fixed in money terms."
+   },
+   {
+    "who": "Manufacturing and construction workers",
+    "effect": "Bore much of the cost of disinflation: interest-sensitive industries cut output and jobs sharply in 1981–82, and some job losses proved long-lasting."
+   },
+   {
+    "who": "Farmers",
+    "effect": "Borrowed heavily against rising land values in the 1970s, then faced high interest rates and falling land prices in the early 1980s, leading to widespread farm debt problems."
+   },
+   {
+    "who": "Developing-country borrowers",
+    "effect": "Had borrowed in dollars at floating rates; the rise in US interest rates and the strong dollar raised debt-service costs and contributed to the 1982 debt crisis."
+   }
+  ],
+  "short": "In the short run each oil shock raised costs and pushed the US economy towards higher inflation and lower output at the same time. Policy responses swung between stimulus when unemployment rose and restraint when inflation rose, which tended to keep inflation high. The Volcker tightening from 1979 then produced two recessions in quick succession, with unemployment averaging 9.7% in 1982, before inflation fell to 3.2% in 1983.",
+  "long": "Over the longer run the episode changed monetary policy. Central banks came to treat inflation expectations as something they must anchor, and many later moved towards greater independence and explicit inflation targets. US inflation stayed far lower in the 1980s and 1990s than in the 1970s. Long-term interest rates, however, fell only gradually, suggesting credibility took years to rebuild. Some of the industrial job losses of the early 1980s were not reversed in the same regions.",
+  "transmission": "Oil shocks hit all oil-importing economies, so stagflation was international: inflation was 24.2% in the United Kingdom in 1975 and 23.2% in Japan in 1974. The Volcker tightening then spread through financial markets. Higher US interest rates attracted capital, strengthening the dollar, and raised the cost of dollar debts. Several Latin American governments that had borrowed at floating rates found repayments unaffordable, and Mexico’s difficulties in August 1982 opened a regional debt crisis.",
+  "winners": [
+   {
+    "t": "Oil-exporting countries received a large transfer of income from oil importers after 1973 and again after 1979.",
+    "status": "fact"
+   },
+   {
+    "t": "Borrowers with fixed-rate debt in the 1970s saw inflation erode the real burden of what they owed.",
+    "status": "inference"
+   },
+   {
+    "t": "Investors who bought long-term bonds at the high yields of 1980–82 gained as inflation and yields later fell.",
+    "status": "inference"
+   }
+  ],
+  "losers": [
+   {
+    "t": "Savers whose deposit rates were capped by regulation earned negative real returns for much of the 1970s.",
+    "status": "fact"
+   },
+   {
+    "t": "Workers in interest-sensitive industries lost jobs in large numbers during the 1981–82 recession.",
+    "status": "fact"
+   },
+   {
+    "t": "Latin American governments with floating-rate dollar debts faced sharply higher repayments, contributing to the 1982 debt crisis.",
+    "status": "fact"
+   }
+  ],
+  "unintended": [
+   {
+    "t": "Interest-rate ceilings on deposits, combined with high inflation, pushed savers towards money market funds and weakened the savings and loan institutions that held long fixed-rate mortgages.",
+    "status": "fact"
+   },
+   {
+    "t": "The high real interest rates of the early 1980s strengthened the dollar, hurting US exporters and building the pressure that led to the Plaza Accord of 1985.",
+    "status": "inference"
+   },
+   {
+    "t": "Wage-price controls in the early 1970s caused shortages in some markets and may have delayed rather than reduced inflation.",
+    "status": "interpretation"
+   }
+  ],
+  "interpretations": [
+   {
+    "view": "Keynesian reading",
+    "p": "Stagflation reflected adverse supply shocks, chiefly oil and food prices, arriving in an economy where demand had already been allowed to run hot. On this view the shocks explain much of the timing of the inflation peaks, and the disinflation succeeded partly because those supply pressures eased after 1981.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Monetarist reading (Friedman)",
+    "p": "Persistent inflation was a monetary phenomenon: the Fed allowed money growth to stay too high for too long. Oil shocks could raise the price level once, but without monetary accommodation they would not have produced a decade of high inflation.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Expectations and credibility (Sargent and others)",
+    "p": "The cost of disinflation depends on whether people believe policy has changed. Some argue the Volcker Fed lowered inflation partly by changing expectations, though the depth of the 1981–82 recession suggests credibility was earned slowly rather than granted at once.",
+    "status": "controversy"
+   },
+   {
+    "view": "Political-economy reading",
+    "p": "Under Burns, the Fed was exposed to political pressure, including from President Nixon before the 1972 election, and to a belief that inflation was largely non-monetary. How far political pressure, rather than mistaken economic analysis, explains the easy policy of the early 1970s is still debated by historians of the Fed.",
+    "status": "controversy"
+   }
+  ],
+  "explain": [
+   "The AD–AS model shows how a leftward shift of SRAS produces rising prices and falling output together, which matches the oil-shock years.",
+   "The expectations-augmented Phillips curve explains why higher inflation stopped buying lower unemployment once expectations adjusted.",
+   "Standard monetary transmission explains how very high interest rates reduced spending and pulled inflation down in 1981–83."
+  ],
+  "miss": [
+   "Simple models treat expectations as adjusting smoothly; in practice credibility was rebuilt slowly, and long-term interest rates stayed high for years.",
+   "They usually ignore measurement problems: policymakers in the 1970s worked with estimates of spare capacity that later proved too optimistic.",
+   "They say little about who bears the cost of disinflation; job losses were concentrated in particular industries and regions."
+  ],
+  "differently": [
+   {
+    "t": "Some economists argue that steadier tightening in the mid-1970s, before expectations became entrenched, could have lowered inflation at a smaller cost in lost output than the abrupt tightening of 1979–82.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Others argue that the Fed should have relied less on its real-time estimates of spare capacity, which later proved too optimistic, and responded more strongly and consistently to inflation itself.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Whether a more gradual disinflation after 1979 would have cost less is disputed: gradualism might have reduced the recession’s depth, or it might have failed to convince markets at all.",
+    "status": "controversy"
+   }
+  ],
+  "whatif": {
+   "q": "Suppose the Fed had not tightened sharply after 1979 and had kept interest rates close to their late-1970s levels. What is the most likely outcome?",
+   "options": [
+    "Inflation would have stayed high or risen further, with expectations becoming harder to reverse",
+    "Inflation would have fallen just as quickly once oil prices stopped rising",
+    "Unemployment would have fallen permanently below the natural rate"
+   ],
+   "best": 0,
+   "explain": "With expectations already high, easy policy would most likely have accommodated further price rises. Lower oil prices after 1981 would have helped, so inflation might have eased somewhat without tightening. But the natural-rate view suggests unemployment could not be held permanently below its natural level by tolerating inflation. Nobody can be sure how large the difference would have been."
+  },
+  "compare": [
+   {
+    "id": "oil-1973",
+    "similar": "Both involve a sharp rise in oil prices that shifted short-run aggregate supply to the left, raising prices and cutting output in the United States and other oil-importing economies.",
+    "different": "The oil shock is a single supply event; the stagflation story covers a whole decade, including policy choices, changing expectations and the costly disinflation that followed.",
+    "dominant": "In oil-1973 the supply shock dominates. In the 1970s stagflation, accommodation and rising inflation expectations dominate after the initial shocks."
+   },
+   {
+    "id": "plaza-1985",
+    "similar": "Both are US-centred episodes in which Federal Reserve policy and US interest rates shaped the value of the dollar and, through it, the economies of major trading partners.",
+    "different": "Stagflation is mainly about inflation and unemployment inside the United States. The Plaza Accord concerns an over-strong dollar, a large trade deficit and international policy coordination.",
+    "dominant": "Monetary tightening and the slow fall in inflation expectations dominate the disinflation. Exchange-rate expectations, interest-rate differentials and coordinated intervention dominate the Plaza episode."
+   },
+   {
+    "id": "covid-2020",
+    "similar": "Both saw US inflation rise well above what the Fed wanted after supply disruptions and strong demand, followed by sharp Federal Reserve interest-rate increases to bring it down.",
+    "different": "After 2020 inflation peaked at 8.0% in 2022 and fell back without a deep recession, whereas the early 1980s disinflation came with unemployment averaging 9.7%.",
+    "dominant": "In the 1970s, entrenched inflation expectations dominated. After 2020, supply bottlenecks and a strong demand rebound dominated, while longer-term expectations stayed less disturbed."
+   }
+  ],
+  "ib": {
+   "subs": [
+    "3.2",
+    "3.3",
+    "3.5"
+   ],
+   "kc": [
+    "Change",
+    "Intervention",
+    "Economic well-being",
+    "Choice"
+   ],
+   "note": "The episode supports AD–AS analysis of supply shocks and evaluation of monetary policy; the short-run and long-run Phillips curve is HL only (guide PDF p. 44), so HL students can use the 1970s to analyse shifting expectations."
+  },
+  "cambridge": {
+   "topics": [
+    "inflation",
+    "unemployment",
+    "aggregate demand and aggregate supply",
+    "monetary policy",
+    "the Phillips curve"
+   ],
+   "note": "Useful for showing cost-push inflation, the conflict between macroeconomic objectives and the costs of reducing inflation."
+  },
+  "university": {
+   "fields": [
+    "macroeconomics",
+    "monetary economics",
+    "economic history"
+   ],
+   "note": "A university course would add the expectations-augmented Phillips curve, time inconsistency and credibility in policy, and the debate about policy rules versus discretion."
+  },
+  "civil": {
+   "themes": [
+    "inflation management",
+    "monetary policy",
+    "oil-price shocks",
+    "central bank independence"
+   ],
+   "note": "India also faced very high inflation after the first oil shock (28.6% in 1974), and later debates on anchoring expectations fed into the RBI’s adoption of flexible inflation targeting in 2016."
+  },
+  "economists": [
+   "friedman",
+   "keynes"
+  ],
+  "causal": [
+   "inflation",
+   "unemployment",
+   "ratehike"
+  ],
+  "concepts": [
+   "Cost-push inflation",
+   "Demand-pull inflation",
+   "Phillips curve",
+   "Natural rate of unemployment",
+   "Disinflation",
+   "Monetary policy",
+   "Contractionary policy",
+   "Real interest rate",
+   "SRAS",
+   "Central bank",
+   "Recession"
+  ],
+  "cases": [
+   "MAC-042",
+   "GLO-051"
+  ],
+  "policies": [
+   "Wage and price controls",
+   "Voluntary incomes policy (Whip Inflation Now)",
+   "Reserve targeting by the Federal Reserve",
+   "Credit controls",
+   "Contractionary monetary policy",
+   "Income tax cuts (Economic Recovery Tax Act)"
+  ],
+  "questions": [
+   {
+    "q": "Using an AD–AS diagram, explain why a sharp rise in oil prices can cause inflation and unemployment to rise at the same time.",
+    "kind": "explain"
+   },
+   {
+    "q": "Analyse how rising inflation expectations in the 1970s made inflation more persistent.",
+    "kind": "analyse"
+   },
+   {
+    "q": "Evaluate the view that the cost of the 1981–82 recession was a price worth paying to reduce US inflation.",
+    "kind": "evaluate"
+   },
+   {
+    "q": "Using the US inflation and unemployment data for 1979–1984, describe how the two series moved and explain the relationship you observe.",
+    "kind": "data"
+   },
+   {
+    "q": "Compare the causes of US inflation in the 1970s with the causes of the rise in inflation after 2020.",
+    "kind": "compare"
+   }
+  ],
+  "retrieval": [
+   {
+    "q": "What is stagflation?",
+    "a": "A period in which inflation is high while output stagnates or falls and unemployment rises."
+   },
+   {
+    "q": "Which shift on an AD–AS diagram represents an oil price shock?",
+    "a": "A leftward shift of the short-run aggregate supply curve."
+   },
+   {
+    "q": "What did the Fed change on 6 October 1979?",
+    "a": "It began targeting the quantity of bank reserves instead of the short-term interest rate, allowing rates to rise sharply."
+   },
+   {
+    "q": "What happened to the short-run Phillips curve as expected inflation rose in the 1970s?",
+    "a": "It shifted upwards, so each unemployment rate came with higher inflation."
+   },
+   {
+    "q": "What was US inflation in 1980 and in 1983?",
+    "a": "13.5% in 1980 and 3.2% in 1983."
+   }
+  ],
+  "reflection": "If ending high inflation requires a recession, who should decide how much unemployment is acceptable, and on what grounds?",
+  "reading": [
+   {
+    "t": "Milton Friedman, ‘The Role of Monetary Policy’, American Economic Review, 1968",
+    "note": "The classic statement of the natural-rate argument that anticipated the breakdown of the simple Phillips curve."
+   },
+   {
+    "t": "Thomas J. Sargent, ‘The Ends of Four Big Inflations’, 1982",
+    "note": "Argues that credible changes in policy regime can end inflation at lower cost; a key text in the credibility debate."
+   },
+   {
+    "t": "Paul Volcker and Toyoo Gyohten, Changing Fortunes, 1992",
+    "note": "Volcker’s own account of the period, useful for the reasoning behind the 1979 change of procedure."
+   }
+  ],
+  "numbers": [
+   {
+    "value": "roughly quadrupled",
+    "claim": "Oil prices rose about fourfold in 1973–74",
+    "basis": "Widely documented; posted Gulf crude prices rose from about $3 to about $12 a barrel between mid-1973 and early 1974"
+   },
+   {
+    "value": "more than doubled",
+    "claim": "Oil prices more than doubled over 1979–80",
+    "basis": "Widely documented effect of the Iranian revolution and the start of the Iran–Iraq war"
+   },
+   {
+    "value": "close to 20%",
+    "claim": "The federal funds rate was close to 20% in 1981",
+    "basis": "Federal Reserve H.15 effective federal funds rate, monthly averages near 19% in early-to-mid 1981"
+   },
+   {
+    "value": "10.8%",
+    "claim": "Monthly US unemployment peaked at 10.8% in late 1982",
+    "basis": "BLS seasonally adjusted unemployment rate, November and December 1982"
+   },
+   {
+    "value": "90-day",
+    "claim": "Length of Nixon’s initial wage-price freeze",
+    "basis": "Executive Order 11615, 15 August 1971"
+   },
+   {
+    "value": "1967 / 1968",
+    "claim": "Friedman’s AEA presidential address delivered December 1967, published in the American Economic Review in March 1968",
+    "basis": "American Economic Review, vol. 58, no. 1"
+   }
+  ]
+ },
+ {
+  "id": "plaza-1985",
+  "title": "The Plaza Accord and the falling dollar",
+  "years": "1985–1987",
+  "start": "1985-02",
+  "end": "1987-12",
+  "region": "United States, Japan and West Germany (G5)",
+  "kind": "policy",
+  "standfirst": "By early 1985 the US dollar had risen so far that American manufacturers were losing markets and Congress was considering protectionist laws. Five governments then tried something unusual: to talk and trade a major currency down together, and later to hold it steady.",
+  "question": "Can governments deliberately move a floating exchange rate, and what happens to trade and asset prices when they do?",
+  "before": {
+   "p": "Between 1980 and early 1985 the dollar rose strongly against other major currencies. The Federal Reserve had tightened sharply to fight inflation, while tax cuts and higher defence spending widened the US budget deficit. The result was high real interest rates that drew capital into dollar assets. The dollar bought 1.82 Deutsche Marks on average in 1980 and 2.94 in 1985. US exports became expensive, imports cheap, and the current account moved into a large deficit. Industries facing import competition pressed Congress for protection.",
+   "facts": [
+    {
+     "t": "The Deutsche Mark per dollar rate averaged 1.82 in 1980 and 2.94 in 1985 (Federal Reserve data).",
+     "status": "fact"
+    },
+    {
+     "t": "The dollar reached its peak in February 1985 and had already begun to fall before the Plaza meeting.",
+     "status": "fact"
+    },
+    {
+     "t": "US 10-year Treasury yields averaged 12.44% in 1984, far above inflation of 4.3%, so real interest rates were high.",
+     "status": "fact"
+    },
+    {
+     "t": "In early 1985 James Baker became Treasury Secretary and the administration moved away from its earlier hands-off stance on the exchange rate.",
+     "status": "fact"
+    }
+   ]
+  },
+  "trigger": {
+   "p": "On 22 September 1985 the finance ministers and central bank governors of the G5 (the United States, Japan, West Germany, France and the United Kingdom) met at the Plaza Hotel in New York. Their statement said that a further orderly appreciation of the main non-dollar currencies was desirable and that they stood ready to cooperate to achieve it. Central banks then sold dollars on the foreign exchange market.",
+   "status": "fact"
+  },
+  "timeline": [
+   {
+    "d": "1985-02",
+    "t": "The dollar peaks",
+    "detail": "After almost five years of appreciation, the dollar reaches its highest level against major currencies and begins to ease, partly as US interest rates come down from their earlier peaks.",
+    "status": "fact"
+   },
+   {
+    "d": "1985-09-22",
+    "t": "Plaza Accord announced",
+    "detail": "G5 ministers and central bankers meet in New York and announce that non-dollar currencies should appreciate in an orderly way. The announcement is backed by coordinated sales of dollars.",
+    "status": "fact"
+   },
+   {
+    "d": "1985-10",
+    "t": "Coordinated intervention continues",
+    "detail": "Central banks continue selling dollars in the weeks after the meeting. The dollar falls quickly, especially against the yen and the Deutsche Mark.",
+    "status": "fact"
+   },
+   {
+    "d": "1986",
+    "t": "Yen strengthens sharply",
+    "detail": "The yen averages 168.5 per dollar in 1986, against 238.47 in 1985. Japanese exporters face falling yen revenues and Japan’s economy slows in what became known as the ‘endaka’ (strong-yen) recession.",
+    "status": "fact"
+   },
+   {
+    "d": "1986",
+    "t": "Bank of Japan cuts rates",
+    "detail": "The Bank of Japan begins a series of discount-rate cuts to support the economy against the strong yen, reaching 2.5% in February 1987, a low level for the time.",
+    "status": "fact"
+   },
+   {
+    "d": "1987-02-22",
+    "t": "Louvre Accord",
+    "detail": "Finance ministers of the G5 and Canada meet in Paris and agree that currencies are now broadly consistent with fundamentals and that they will cooperate to stabilise them around current levels.",
+    "status": "fact"
+   },
+   {
+    "d": "1987-08",
+    "t": "Greenspan succeeds Volcker at the Fed",
+    "detail": "Alan Greenspan becomes chair of the Federal Reserve. Concerns about inflation and the dollar push US interest rates up during 1987.",
+    "status": "fact"
+   },
+   {
+    "d": "1987-10-19",
+    "t": "Black Monday stock market crash",
+    "detail": "US share prices fall by more than a fifth in a single day. Public disagreement between the United States and West Germany over interest rates and the dollar is one of several explanations offered.",
+    "status": "fact"
+   },
+   {
+    "d": "1988",
+    "t": "US trade deficit starts to narrow",
+    "detail": "With a lag of two to three years after the dollar’s peak, US export volumes grow strongly and the current account deficit begins to shrink, although it remains large.",
+    "status": "fact"
+   }
+  ],
+  "actors": [
+   {
+    "who": "US Treasury under James Baker",
+    "role": "Led the push for coordinated action to lower the dollar, partly to head off protectionist bills in Congress, and later sought stability at the Louvre."
+   },
+   {
+    "who": "Federal Reserve (Volcker, then Greenspan)",
+    "role": "Took part in intervention and eased policy in 1985–86; US interest rate decisions mattered at least as much as intervention for the dollar’s path."
+   },
+   {
+    "who": "Japan’s Ministry of Finance and the Bank of Japan",
+    "role": "Agreed to yen appreciation at the Plaza (the finance minister was Noboru Takeshita), then cut interest rates to cushion exporters, a decision later linked to Japan’s asset bubble."
+   },
+   {
+    "who": "West German government and the Bundesbank",
+    "role": "Supported a weaker dollar but resisted pressure to stimulate demand, and raised interest rates in 1987, causing public friction with the US Treasury."
+   },
+   {
+    "who": "US Congress",
+    "role": "Considered protectionist trade bills in 1985 aimed especially at Japan; this pressure was a main reason the administration acted, and it later passed the 1988 Omnibus Trade and Competitiveness Act."
+   }
+  ],
+  "changed": "The dollar fell a long way: the yen per dollar rate dropped from 238.47 in 1985 to 128.14 in 1988, and the mark rate from 2.94 to 1.76. US exporters regained price competitiveness and protectionist pressure eased. Japanese firms faced a sharp loss of competitiveness and moved production abroad, especially to Southeast Asia. In Japan, low interest rates and abundant credit fed a rapid rise in share and land prices in the late 1980s. The episode became the leading example of deliberate international exchange-rate coordination.",
+  "predict": {
+   "q": "Five governments announce that the dollar should fall, and their central banks sell dollars. Before looking at the mechanism, what is the most likely effect on the US trade deficit within the first year?",
+   "options": [
+    "It narrows quickly as US exports become cheaper",
+    "It may widen at first, then narrow over the following years",
+    "It is unaffected because exchange rates do not influence trade"
+   ],
+   "answer": 1,
+   "explain": "Trade volumes respond slowly because contracts and buying habits take time to change. At first, the US pays more dollars for the same imports, so the deficit in value terms can widen. As volumes adjust, exports rise and imports fall. This pattern is the J-curve, and the US deficit did not start to narrow until 1987–88."
+  },
+  "mechanism": [
+   "Large US budget deficits and tight money → high US real interest rates → capital flows into dollar assets → demand for dollars rises → dollar appreciates (1980–85)",
+   "Strong dollar → US exports dearer abroad and imports cheaper at home → net exports fall → current account deficit widens and protectionist pressure grows",
+   "Plaza announcement and central-bank sales of dollars → supply of dollars on the foreign exchange market rises and traders expect official resistance to a strong dollar → dollar depreciates",
+   "Falling US interest rates in 1985–86 → smaller return on dollar assets → weaker capital inflow → demand for dollars falls → further depreciation",
+   "Dollar depreciation → US goods become cheaper abroad, but volumes respond with a lag → J-curve: the deficit narrows only from 1987–88 if the Marshall–Lerner condition holds",
+   "Yen appreciation → Japanese net exports fall → Japanese AD shifts left → Bank of Japan cuts interest rates → credit expands → share and land prices rise strongly",
+   "Louvre target ranges + differing national interest-rate policies → markets test the commitment → tension over the dollar adds to financial instability in October 1987"
+  ],
+  "charts": [
+   {
+    "series": "fx-japan",
+    "from": "1980",
+    "to": "1990",
+    "title": "Yen per US dollar, 1980–1990",
+    "look": "The rate is high and fairly flat to 1985, then falls steeply after the Plaza Accord. A falling line means a weaker dollar and a stronger yen. Note how the fall slows after the Louvre Accord.",
+    "marks": [
+     {
+      "at": "1985-09",
+      "label": "Plaza Accord"
+     },
+     {
+      "at": "1987-02",
+      "label": "Louvre Accord"
+     }
+    ]
+   },
+   {
+    "series": "fx-germany",
+    "from": "1980",
+    "to": "1990",
+    "title": "Deutsche Marks per US dollar, 1980–1990",
+    "look": "The dollar rises from 1.82 marks in 1980 to 2.94 in 1985, then loses most of that rise by 1987. Compare the turning point with the February 1985 peak.",
+    "marks": [
+     {
+      "at": "1985-02",
+      "label": "Dollar peak"
+     },
+     {
+      "at": "1985-09",
+      "label": "Plaza Accord"
+     }
+    ]
+   },
+   {
+    "series": "sp500",
+    "from": "1987-01",
+    "to": "1987-12",
+    "title": "S&P 500 index, monthly, 1987",
+    "look": "Share prices rise to 329.4 in August 1987, then fall to 245.0 in November after the October crash. Ask how far currency tensions, rather than other factors, explain the fall.",
+    "marks": [
+     {
+      "at": "1987-10",
+      "label": "Black Monday"
+     }
+    ]
+   },
+   {
+    "series": "us10y",
+    "from": "1980",
+    "to": "1990",
+    "title": "US 10-year Treasury yield, 1980–1990",
+    "look": "Yields fall from 12.44% in 1984 to 7.68% in 1986, reducing the return on dollar assets. This helps explain why the dollar was already falling before the Plaza meeting.",
+    "marks": [
+     {
+      "at": "1985-09",
+      "label": "Plaza Accord"
+     }
+    ]
+   }
+  ],
+  "diagrams": [
+   {
+    "dg": "fx",
+    "how": "Draw the market for dollars in terms of yen. Show supply of dollars shifting right as central banks sell dollars, and demand shifting left as US interest rates fall and expectations change. The equilibrium yen price of a dollar falls: the dollar depreciates."
+   },
+   {
+    "dg": "adas",
+    "how": "For Japan, shift AD left as yen appreciation reduces net exports, lowering real output. Then show the Bank of Japan’s rate cuts shifting AD back to the right, and discuss why easy credit may have flowed into asset prices instead."
+   }
+  ],
+  "policy": [
+   {
+    "who": "G5 finance ministers and central bank governors",
+    "when": "1985-09",
+    "what": "Announced at the Plaza Hotel that an orderly appreciation of non-dollar currencies was desirable, and backed the statement with coordinated sales of dollars on the foreign exchange market.",
+    "status": "fact"
+   },
+   {
+    "who": "Federal Reserve",
+    "when": "1986",
+    "what": "Lowered its discount rate several times during 1986 as inflation fell, reducing US interest rates and the return on dollar assets, which reinforced the dollar’s depreciation.",
+    "status": "fact"
+   },
+   {
+    "who": "Bank of Japan",
+    "when": "1986",
+    "what": "Cut its discount rate in a series of steps from January 1986 to 2.5% by February 1987, aiming to offset the contractionary effect of the strong yen on the Japanese economy.",
+    "status": "fact"
+   },
+   {
+    "who": "G5 and Canada",
+    "when": "1987-02",
+    "what": "Agreed at the Louvre to stabilise exchange rates near prevailing levels, with surplus countries to support domestic demand and the United States to reduce its budget deficit.",
+    "status": "fact"
+   },
+   {
+    "who": "Federal Reserve (Greenspan)",
+    "when": "1987-10",
+    "what": "Announced the day after the crash that it stood ready to provide liquidity to support the financial system, and lowered short-term rates, helping to prevent a wider financial crisis.",
+    "status": "fact"
+   },
+   {
+    "who": "US Congress",
+    "when": "1988",
+    "what": "Passed the Omnibus Trade and Competitiveness Act, which strengthened the administration’s powers to act against trading partners judged to be using unfair trade practices, reflecting continuing concern about the deficit.",
+    "status": "fact"
+   }
+  ],
+  "stakeholders": [
+   {
+    "who": "US manufacturers and farmers selling abroad",
+    "effect": "Gained as the dollar fell and their goods became cheaper in foreign markets, though export volumes recovered only gradually after 1986."
+   },
+   {
+    "who": "Japanese exporters",
+    "effect": "Saw yen revenues from dollar sales fall sharply; many cut costs and moved production to the United States and Southeast Asia."
+   },
+   {
+    "who": "US consumers",
+    "effect": "Paid more for imported goods such as cars and electronics as the dollar weakened, losing part of the purchasing power the strong dollar had given them."
+   },
+   {
+    "who": "Foreign holders of dollar assets",
+    "effect": "Lost in their own currencies as the dollar fell; Japanese investors in US bonds and property suffered large currency losses."
+   },
+   {
+    "who": "Southeast Asian economies",
+    "effect": "Received large inflows of Japanese direct investment as firms relocated production, supporting rapid export-led growth in the late 1980s and early 1990s."
+   },
+   {
+    "who": "Japanese households and asset owners",
+    "effect": "Benefited from cheaper imports and rising share and land values in the late 1980s, then faced large losses when the bubble burst after 1990."
+   }
+  ],
+  "short": "In the short run the dollar fell quickly against the yen and the Deutsche Mark, more quickly than many participants expected. Because trade volumes adjust slowly, the US trade deficit did not shrink at first. Japan slipped into a strong-yen slowdown, and the Bank of Japan cut interest rates. By early 1987 governments were more worried about the dollar falling too far, which led to the Louvre Accord and to tension that formed part of the background to the October 1987 crash.",
+  "long": "Over the longer run US export volumes recovered and the current account deficit narrowed from 1988, but the savings–investment imbalance behind it did not disappear. Japan’s low interest rates and credit expansion fed an asset bubble that burst after 1990, followed by a long period of slow growth. Japanese direct investment reshaped manufacturing in Southeast Asia. The episode also left governments more cautious about formal exchange-rate targets, as the Louvre ranges proved hard to defend.",
+  "transmission": "The accord itself was an act of transmission: five governments coordinated policy across borders. Exchange-rate changes then spread through trade, as Japanese and German exporters lost competitiveness, and through investment, as Japanese firms moved production to the United States and Southeast Asia. Economies whose currencies were closely linked to the dollar, including several in East Asia, gained competitiveness against Japan. Financial markets carried the tensions too: the October 1987 crash spread from New York to markets worldwide within days.",
+  "winners": [
+   {
+    "t": "US exporting industries regained price competitiveness as the dollar fell.",
+    "status": "fact"
+   },
+   {
+    "t": "Southeast Asian economies gained from Japanese direct investment in new factories.",
+    "status": "fact"
+   },
+   {
+    "t": "Holders of Japanese shares and land gained during the late-1980s boom, at least until 1990.",
+    "status": "inference"
+   }
+  ],
+  "losers": [
+   {
+    "t": "Japanese exporters lost competitiveness and profits as the yen strengthened.",
+    "status": "fact"
+   },
+   {
+    "t": "Japanese investors holding dollar assets suffered large currency losses.",
+    "status": "fact"
+   },
+   {
+    "t": "US consumers paid higher prices for imported goods.",
+    "status": "inference"
+   }
+  ],
+  "unintended": [
+   {
+    "t": "Easy monetary policy in Japan after the strong-yen shock contributed to a share and land price bubble that burst in the early 1990s.",
+    "status": "controversy"
+   },
+   {
+    "t": "The Louvre commitment to stabilise currencies, combined with conflicting national interest-rate policies, created tension that some link to the October 1987 crash.",
+    "status": "controversy"
+   },
+   {
+    "t": "Relocation of Japanese manufacturing to Southeast Asia helped build the export-led boom in that region, which later formed part of the background to the 1997 crisis.",
+    "status": "inference"
+   }
+  ],
+  "interpretations": [
+   {
+    "view": "Coordination worked",
+    "p": "Supporters argue that the Plaza announcement changed market expectations: by showing that the major governments wanted a weaker dollar, it signalled that future policy, including interest rates, would push in that direction. On this view, intervention mattered mainly as a signal rather than through the amount of dollars sold.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Fundamentals did the work",
+    "p": "Sceptics, including Martin Feldstein, argue that the dollar was already falling from February 1985 because US interest rates were falling and the earlier rise had overshot. On this view sterilised intervention, which leaves the money supply unchanged, has limited power to move a large currency market for long.",
+    "status": "interpretation"
+   },
+   {
+    "view": "The Japanese bubble view",
+    "p": "Some economists, especially in Japan, argue that commitments to support the dollar and expand domestic demand kept Japanese interest rates too low for too long, feeding the late-1980s bubble. Others stress domestic financial deregulation, aggressive bank lending against land and weak supervision instead.",
+    "status": "controversy"
+   },
+   {
+    "view": "Twin-deficits reading",
+    "p": "A current account deficit reflects national saving below investment. On this reading, a weaker dollar could only partly close the US deficit while the budget deficit kept national saving low; changing the exchange rate was treating a symptom rather than the cause.",
+    "status": "interpretation"
+   }
+  ],
+  "explain": [
+   "Supply and demand in the foreign exchange market explain how intervention and lower US interest rates reduced the value of the dollar.",
+   "The J-curve and the Marshall–Lerner condition explain why the US trade deficit narrowed only after a delay of two to three years.",
+   "The AD–AS model shows how yen appreciation reduced Japanese net exports and why the Bank of Japan responded with lower interest rates."
+  ],
+  "miss": [
+   "Simple exchange-rate models give little role to announcements and expectations, which many observers think mattered more than the amount of dollars sold.",
+   "They treat the current account as driven by the exchange rate, overlooking the role of national saving and the US budget deficit.",
+   "They say little about how easy money can flow into asset prices rather than goods prices, as appears to have happened in Japan."
+  ],
+  "differently": [
+   {
+    "t": "Some argue the United States should have reduced its budget deficit earlier, which would have lowered real interest rates and the dollar without relying on intervention, and addressed the low national saving behind the trade deficit.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Some Japanese economists argue the Bank of Japan should have raised interest rates sooner in 1987–88, despite international pressure to support demand, to restrain credit growth, share prices and land prices.",
+    "status": "controversy"
+   },
+   {
+    "t": "Others argue the Louvre Accord should not have set implicit target ranges at all, since markets could test them and conflicts between national interest-rate policies were likely to undermine them.",
+    "status": "interpretation"
+   }
+  ],
+  "whatif": {
+   "q": "Suppose the G5 had not met in September 1985 and no coordinated intervention had taken place. What is the most likely path of the dollar?",
+   "options": [
+    "It would have continued to fall, but probably more slowly and with more uncertainty",
+    "It would have kept rising at its 1980–85 pace",
+    "It would have stayed exactly at its September 1985 level"
+   ],
+   "best": 0,
+   "explain": "The dollar had been falling since February 1985 as US interest rates declined, so a continued fall seems likely even without the accord. What the accord may have changed is the speed and the confidence of the move, and the political pressure for trade restrictions. Economists still disagree about how much of the fall the accord itself caused."
+  },
+  "compare": [
+   {
+    "id": "bretton-woods-1971",
+    "similar": "Both involve the United States seeking a weaker dollar, with major trading partners asked to accept stronger currencies in order to reduce the US external deficit.",
+    "different": "In 1971 the issue was the collapse of a fixed system; in 1985 currencies were already floating and governments tried to steer a market rate by intervention and signals.",
+    "dominant": "In 1971 the end of gold convertibility dominates. In 1985 market expectations and interest-rate differentials, shaped by coordinated signals, dominate."
+   },
+   {
+    "id": "asia-1997",
+    "similar": "Both show large exchange-rate movements reshaping trade and investment in East Asia, and both involve currencies under pressure from shifting international capital flows and changing expectations.",
+    "different": "The Plaza fall was planned by governments and broadly orderly; the 1997 depreciations were forced by capital flight from economies defending pegs with limited foreign reserves.",
+    "dominant": "In 1985 deliberate policy coordination and falling US interest rates dominate. In 1997 sudden capital outflows and weaknesses in domestic banking systems dominate."
+   },
+   {
+    "id": "stagflation-1970s",
+    "similar": "Both are shaped by US monetary policy: the high real interest rates of the Volcker disinflation helped push the dollar up in the years before 1985.",
+    "different": "The 1970s problem was high domestic inflation alongside rising unemployment; the Plaza problem was an over-strong currency, a widening trade deficit and growing protectionist pressure.",
+    "dominant": "Rising inflation expectations and monetary accommodation dominate the 1970s. By contrast, international capital flows and exchange-rate expectations dominate the Plaza episode."
+   }
+  ],
+  "ib": {
+   "subs": [
+    "4.5",
+    "4.6",
+    "3.5",
+    "4.3"
+   ],
+   "kc": [
+    "Interdependence",
+    "Intervention",
+    "Change"
+   ],
+   "note": "The event supports analysis of floating exchange rates, intervention and the current account; the Marshall–Lerner condition and the J-curve are HL only (guide PDF p. 56), which makes the delayed US trade response a useful HL evaluation example."
+  },
+  "cambridge": {
+   "topics": [
+    "exchange rate systems",
+    "balance of payments",
+    "international policy coordination",
+    "protectionism"
+   ],
+   "note": "Useful for showing how exchange rates are influenced by interest rates and intervention, and how they affect trade over time."
+  },
+  "university": {
+   "fields": [
+    "international finance",
+    "open-economy macroeconomics",
+    "economic history"
+   ],
+   "note": "A university course would examine the portfolio-balance and signalling channels of sterilised intervention, exchange-rate overshooting, and the saving–investment identity behind current account balances."
+  },
+  "civil": {
+   "themes": [
+    "external sector",
+    "exchange rate management",
+    "international economic cooperation"
+   ],
+   "note": "The episode shows how major-currency movements affect emerging economies; the Japanese investment that moved into Southeast Asia after 1985 is a useful comparison for debates on attracting manufacturing FDI to India."
+  },
+  "economists": [
+   "friedman"
+  ],
+  "causal": [
+   "currency",
+   "ratehike"
+  ],
+  "concepts": [
+   "Exchange rate",
+   "Floating exchange rate",
+   "Managed exchange rate",
+   "Depreciation",
+   "Appreciation",
+   "Current account",
+   "J-curve",
+   "Marshall-Lerner condition",
+   "Protectionism",
+   "Foreign direct investment",
+   "Budget deficit"
+  ],
+  "cases": [
+   "GLO-026"
+  ],
+  "policies": [
+   "Coordinated foreign exchange intervention",
+   "Exchange-rate target ranges (Louvre Accord)",
+   "Discount-rate cuts (Federal Reserve, Bank of Japan)",
+   "Lender-of-last-resort liquidity support",
+   "Trade legislation (Omnibus Trade and Competitiveness Act)"
+  ],
+  "questions": [
+   {
+    "q": "Explain how the sale of dollars by central banks could cause the dollar to depreciate against the yen.",
+    "kind": "explain"
+   },
+   {
+    "q": "Analyse why the US trade deficit continued to widen for a time after the dollar began to fall in 1985.",
+    "kind": "analyse"
+   },
+   {
+    "q": "Evaluate the view that the Plaza Accord, rather than market forces, caused the fall in the dollar after 1985.",
+    "kind": "evaluate"
+   },
+   {
+    "q": "Using the yen per dollar data for 1984–1988, calculate the percentage change in the exchange rate between 1985 and 1987 and state whether the dollar appreciated or depreciated.",
+    "kind": "data"
+   },
+   {
+    "q": "Compare the Plaza Accord of 1985 with the end of the Bretton Woods system in 1971 as attempts to change the value of the dollar.",
+    "kind": "compare"
+   }
+  ],
+  "retrieval": [
+   {
+    "q": "Which five countries made up the G5 at the Plaza meeting?",
+    "a": "The United States, Japan, West Germany, France and the United Kingdom."
+   },
+   {
+    "q": "What did the Louvre Accord of February 1987 aim to do?",
+    "a": "Stabilise exchange rates around their then current levels after the dollar’s large fall."
+   },
+   {
+    "q": "What is the J-curve?",
+    "a": "The pattern in which a depreciation first worsens the trade balance, then improves it as trade volumes adjust."
+   },
+   {
+    "q": "What happened to the yen per dollar rate between 1985 and 1987?",
+    "a": "It fell from 238.47 to 144.62, meaning the dollar depreciated and the yen appreciated."
+   },
+   {
+    "q": "Why had the dollar risen so strongly before 1985?",
+    "a": "High US real interest rates, linked to tight money and large budget deficits, attracted capital into dollar assets."
+   }
+  ],
+  "reflection": "If a country’s trade deficit reflects low national saving, how much can any exchange-rate agreement achieve on its own?",
+  "reading": [
+   {
+    "t": "Yoichi Funabashi, Managing the Dollar: From the Plaza to the Louvre, 1988",
+    "note": "A detailed account of the negotiations behind both accords, based on interviews with participants."
+   },
+   {
+    "t": "Paul Volcker and Toyoo Gyohten, Changing Fortunes, 1992",
+    "note": "An American and a Japanese official describe the period from both sides, including the Plaza and Louvre meetings."
+   },
+   {
+    "t": "Martin Feldstein (ed.), American Economic Policy in the 1980s, 1994",
+    "note": "Includes discussion of exchange-rate policy and the debate about how far intervention moved the dollar."
+   }
+  ],
+  "numbers": [
+   {
+    "value": "2.5%",
+    "claim": "The Bank of Japan’s discount rate reached 2.5% in February 1987",
+    "basis": "Bank of Japan official discount rate history"
+   },
+   {
+    "value": "more than a fifth",
+    "claim": "US share prices fell by more than a fifth on 19 October 1987",
+    "basis": "The Dow Jones Industrial Average fell about 22.6% that day"
+   },
+   {
+    "value": "G5 (five countries)",
+    "claim": "The Plaza meeting involved the United States, Japan, West Germany, France and the United Kingdom",
+    "basis": "Plaza Accord communiqué, 22 September 1985"
+   },
+   {
+    "value": "two to three years",
+    "claim": "The lag between the dollar’s peak (February 1985) and the start of the narrowing of the US current account deficit (1988)",
+    "basis": "US balance-of-payments data; widely documented"
+   }
+  ]
+ },
+ {
+  "id": "india-1991",
+  "title": "India’s 1991 crisis and the turn to reform",
+  "years": "1990–1994",
+  "start": "1990-08",
+  "end": "1994-08",
+  "region": "India",
+  "kind": "crisis",
+  "standfirst": "In mid-1991 India’s foreign exchange reserves had fallen so low that the country was close to defaulting on its external payments, and its gold was flown to London as security for a loan. The emergency became the starting point for the most far-reaching change in Indian economic policy since independence.",
+  "question": "How did a distant war and years of fiscal deficits push India to the edge of default, and why did the response go beyond rescue to a change of economic model?",
+  "before": {
+   "p": "From the 1950s India followed a planned, state-led strategy. Firms needed government licences to set up or expand capacity, many key industries were reserved for the public sector, and high tariffs and import licensing protected domestic producers: an import-substitution approach. Growth from 1950 to 1980 averaged about 3.5% a year. In the 1980s growth quickened as some controls were relaxed, but government spending ran well ahead of revenue and the gap was increasingly financed by borrowing, including from abroad. By 1990–91 the current account deficit was about 3% of GDP, short-term external debt was rising, and inflation had reached 9.0% in 1990.",
+   "facts": [
+    {
+     "t": "The Industries (Development and Regulation) Act of 1951 required firms to obtain licences to establish or substantially expand industrial capacity.",
+     "status": "fact"
+    },
+    {
+     "t": "The Industrial Policy Resolution of 1956 reserved a list of basic and strategic industries for the state sector.",
+     "status": "fact"
+    },
+    {
+     "t": "India had already borrowed from the IMF under an extended arrangement agreed in 1981, after the second oil shock.",
+     "status": "fact"
+    },
+    {
+     "t": "The rupee was managed against a basket of currencies and depreciated gradually in the late 1980s, from 12.34 per dollar in 1985 to 17.5 in 1990 (annual averages).",
+     "status": "fact"
+    },
+    {
+     "t": "The economist Raj Krishna described India’s long-run growth of about 3.5% a year as the ‘Hindu rate of growth’, a phrase later widely used and criticised.",
+     "status": "fact"
+    }
+   ]
+  },
+  "trigger": {
+   "p": "Iraq invaded Kuwait on 2 August 1990. Oil prices rose sharply, and Brent crude averaged $23.68 a barrel in 1990 against $18.25 in 1989, raising India’s import bill. Remittances from Indian workers in the Gulf fell, many workers were evacuated from Kuwait, and exports to the region were lost. Political instability at home and downgrades by credit-rating agencies then cut India’s access to commercial borrowing, and non-resident Indians withdrew deposits.",
+   "status": "fact"
+  },
+  "timeline": [
+   {
+    "d": "1990-08-02",
+    "t": "Iraq invades Kuwait",
+    "detail": "The Gulf crisis raises oil prices, cuts remittances from Indian workers in the region and disrupts exports. India’s current account, already in deficit, deteriorates quickly.",
+    "status": "fact"
+   },
+   {
+    "d": "1990-11",
+    "t": "Chandra Shekhar forms a minority government",
+    "detail": "V. P. Singh’s government falls. The new minority government, dependent on outside support, cannot present a full budget for 1991–92 and passes only an interim budget in March 1991.",
+    "status": "fact"
+   },
+   {
+    "d": "1991-01",
+    "t": "India draws on IMF credit",
+    "detail": "India borrows from the IMF, including under the Compensatory and Contingency Financing Facility, which supported countries hit by temporary shocks such as higher oil import costs.",
+    "status": "fact"
+   },
+   {
+    "d": "1991-05",
+    "t": "Gold sold with a buy-back option",
+    "detail": "The government authorises the State Bank of India to sell about 20 tonnes of gold, previously confiscated from smugglers, with an option to repurchase it, raising foreign currency for urgent payments.",
+    "status": "fact"
+   },
+   {
+    "d": "1991-06-21",
+    "t": "Narasimha Rao government takes office",
+    "detail": "After an election campaign interrupted by the assassination of Rajiv Gandhi on 21 May, P. V. Narasimha Rao forms a Congress government and appoints Manmohan Singh as finance minister.",
+    "status": "fact"
+   },
+   {
+    "d": "1991-07",
+    "t": "RBI pledges gold abroad",
+    "detail": "The Reserve Bank of India pledges about 47 tonnes of gold with the Bank of England and the Bank of Japan, shipping it to London, to raise about $400 million in loans.",
+    "status": "fact"
+   },
+   {
+    "d": "1991-07-01",
+    "t": "Rupee devalued in two steps",
+    "detail": "The RBI lowers the rupee’s official value on 1 July and again on 3 July 1991, by about 18–19% in total against major currencies, to restore export competitiveness and confidence.",
+    "status": "fact"
+   },
+   {
+    "d": "1991-07-04",
+    "t": "Trade policy reform begins",
+    "detail": "The Ministry of Commerce abolishes cash subsidies for exports and replaces import replenishment licences with tradable Exim scrips, linking import rights to export earnings as a step towards freer trade.",
+    "status": "fact"
+   },
+   {
+    "d": "1991-07-24",
+    "t": "Budget and New Industrial Policy",
+    "detail": "On the same day the government presents a budget aimed at cutting the fiscal deficit and announces a New Industrial Policy that abolishes licensing for most industries and opens the door to foreign investment.",
+    "status": "fact"
+   },
+   {
+    "d": "1991-10",
+    "t": "IMF stand-by arrangement approved",
+    "detail": "The IMF approves a stand-by arrangement supporting India’s stabilisation programme, with conditions on fiscal adjustment and structural reform. World Bank adjustment lending follows.",
+    "status": "fact"
+   },
+   {
+    "d": "1992-03",
+    "t": "Dual exchange rate introduced",
+    "detail": "Under the Liberalised Exchange Rate Management System, exporters convert most foreign earnings at a market-determined rate and the rest at the official rate, a transitional step towards a market rate.",
+    "status": "fact"
+   },
+   {
+    "d": "1993-03",
+    "t": "Unified market-determined rupee",
+    "detail": "The two rates are merged into a single, market-determined exchange rate. The RBI continues to intervene to limit volatility. In August 1994 the rupee becomes convertible on the current account.",
+    "status": "fact"
+   }
+  ],
+  "actors": [
+   {
+    "who": "Government of India (Prime Minister P. V. Narasimha Rao, Finance Minister Manmohan Singh)",
+    "role": "Took office in June 1991 at the height of the crisis, devalued, cut the fiscal deficit and launched industrial, trade and financial reforms while managing a minority position in Parliament."
+   },
+   {
+    "who": "Reserve Bank of India (Governor S. Venkitaramanan)",
+    "role": "Managed the dwindling reserves, arranged the gold pledge, carried out the July devaluation and later oversaw the move to a market-determined exchange rate."
+   },
+   {
+    "who": "Chandra Shekhar government (1990–91)",
+    "role": "Held office as the crisis deepened; drew on IMF credit and authorised the first gold sale, but lacked the parliamentary strength to pass a full budget."
+   },
+   {
+    "who": "International Monetary Fund and World Bank",
+    "role": "Provided emergency credit in January 1991 and a stand-by arrangement in October 1991, with conditions that supported fiscal adjustment and structural reform."
+   },
+   {
+    "who": "Non-resident Indians and Gulf workers",
+    "role": "Their remittances and deposits had helped finance the deficit. The Gulf war cut remittances, and withdrawals of deposits deepened the reserve loss."
+   },
+   {
+    "who": "Credit-rating agencies and international lenders",
+    "role": "Downgraded India and stopped rolling over commercial credit, turning a current account problem into a financing crisis."
+   }
+  ],
+  "changed": "India moved from a licence-based, inward-looking economy towards a more open, market-oriented one. Industrial licensing was largely abolished, tariffs were cut in stages through the 1990s, foreign direct and portfolio investment were permitted, and the rupee became market-determined in 1993 and convertible on the current account in 1994. In the short run growth slowed and inflation reached 13.9% in 1991. Over time reserves were rebuilt and external financing shifted away from short-term borrowing. Above all, the crisis made politically difficult reforms possible.",
+  "predict": {
+   "q": "India keeps the rupee at an officially managed value. The oil import bill jumps, Gulf remittances fall and foreign lenders stop rolling over loans. If the RBI holds the rupee at its existing value, what happens to its foreign exchange reserves?",
+   "options": [
+    "They fall, because the RBI must sell foreign currency to meet the excess demand for it",
+    "They rise, because a fixed rate attracts foreign capital",
+    "They stay the same, because the exchange rate is fixed"
+   ],
+   "answer": 0,
+   "explain": "Demand for foreign currency rises (for oil) while its supply falls (fewer remittances and loans). At the managed rate there is excess demand for foreign currency, so the RBI must sell from its reserves to hold the rate. Reserves fall until the rate is changed, the deficit is financed elsewhere, or demand is reduced."
+  },
+  "mechanism": [
+   "Persistent fiscal deficits in the 1980s → national saving falls short of investment → current account deficits financed by external borrowing → foreign debt, including short-term debt, rises",
+   "Gulf war raises oil prices → demand for oil imports is price-inelastic in the short run → import spending rises → current account deficit widens",
+   "Remittances from Gulf workers and exports to Iraq and Kuwait fall → current transfers and export receipts fall → current account deteriorates further",
+   "Rating downgrades and political uncertainty → lenders stop rolling over credit and non-resident deposits are withdrawn → financial account inflows reverse → the RBI sells reserves to defend the rupee → reserves fall to a few weeks of imports",
+   "Gold pledged and IMF credit obtained → emergency foreign currency covers urgent payments → default is avoided and time is bought for adjustment",
+   "Devaluation → Indian exports cheaper abroad, imports dearer at home → expenditure switching; the current account improves with a lag if the Marshall–Lerner condition holds, while dearer imports add to inflation (cost-push)",
+   "Fiscal tightening and import compression → AD shifts left (expenditure reducing) → growth slows in 1991–92 and the current account deficit narrows",
+   "Delicensing, tariff cuts and openness to FDI → more competition, investment and access to technology → productivity rises → LRAS shifts right over a period of years"
+  ],
+  "charts": [
+   {
+    "series": "fx-india",
+    "from": "1985",
+    "to": "1996",
+    "title": "Rupees per US dollar, 1985–1996",
+    "look": "A rising line means a weaker rupee. Note the gradual slide to 1990, the step in July 1991, and the further move to 31.26 in 1993 as the rate became market-determined.",
+    "marks": [
+     {
+      "at": "1991-07",
+      "label": "Two-step devaluation"
+     },
+     {
+      "at": "1993-03",
+      "label": "Market-determined rate"
+     }
+    ]
+   },
+   {
+    "series": "brent-m",
+    "from": "1987",
+    "to": "1993",
+    "title": "Brent crude oil price, 1987–1993",
+    "look": "The oil price spikes after Iraq invades Kuwait in August 1990 and falls back during 1991. The 1990 average of $23.68 compares with $18.25 in 1989.",
+    "marks": [
+     {
+      "at": "1990-08",
+      "label": "Iraq invades Kuwait"
+     }
+    ]
+   },
+   {
+    "panel": "infl",
+    "entities": [
+     "IND"
+    ],
+    "from": "1985",
+    "to": "1997",
+    "title": "Consumer-price inflation in India, 1985–1997",
+    "look": "Inflation rises from 9.0% in 1990 to 13.9% in 1991, reflecting the oil shock, devaluation and earlier deficits, then falls to 6.3% in 1993 as stabilisation takes hold.",
+    "marks": [
+     {
+      "at": "1991",
+      "label": "Crisis year"
+     }
+    ]
+   },
+   {
+    "panel": "gdp",
+    "entities": [
+     "IND"
+    ],
+    "from": "1985",
+    "to": "2005",
+    "title": "India’s GDP in current US dollars, 1985–2005",
+    "look": "GDP measured in dollars falls from $321.0 billion in 1990 to $270.1 billion in 1991, mainly because each rupee is worth fewer dollars after devaluation. Then it rises to $468.4 billion by 2000.",
+    "marks": [
+     {
+      "at": "1991",
+      "label": "Devaluation year"
+     }
+    ]
+   }
+  ],
+  "diagrams": [
+   {
+    "dg": "fx",
+    "how": "Draw the market for foreign currency (dollars) priced in rupees. Shift demand right (dearer oil) and supply left (lower remittances, capital outflow). At the managed rate, show excess demand met by RBI reserve sales. Then show devaluation as a higher official rupee price of a dollar."
+   },
+   {
+    "dg": "adas",
+    "how": "In the short run, shift AD left for fiscal tightening and import compression, and SRAS left for dearer imported inputs after devaluation: output falls and the price level rises. For the long run, shift LRAS right to show the effect of delicensing, trade opening and investment."
+   }
+  ],
+  "policy": [
+   {
+    "who": "Reserve Bank of India",
+    "when": "1991-07",
+    "what": "Pledged about 47 tonnes of gold with the Bank of England and the Bank of Japan to raise emergency loans, and devalued the rupee in two steps on 1 and 3 July.",
+    "status": "fact"
+   },
+   {
+    "who": "Government of India, Ministry of Commerce",
+    "when": "1991-07",
+    "what": "Abolished cash compensatory support for exports and introduced tradable Exim scrips, the first of a series of measures that reduced import licensing and moved towards tariffs as the main form of protection.",
+    "status": "fact"
+   },
+   {
+    "who": "Government of India, Ministry of Industry",
+    "when": "1991-07",
+    "what": "Announced the New Industrial Policy: industrial licensing abolished except for a short list of industries, the list reserved for the public sector cut sharply, and automatic approval for foreign equity up to 51% in priority industries.",
+    "status": "fact"
+   },
+   {
+    "who": "Government of India, Ministry of Finance",
+    "when": "1991-07",
+    "what": "Presented a budget aimed at reducing the fiscal deficit through spending restraint and revenue measures, and began cutting very high import duties, a process continued in later budgets.",
+    "status": "fact"
+   },
+   {
+    "who": "Government of India and Reserve Bank of India",
+    "when": "1991-08",
+    "what": "Appointed the Narasimham Committee on the financial system; its November 1991 report led to lower pre-emption of bank funds, interest-rate deregulation, prudential norms and entry of new private banks.",
+    "status": "fact"
+   },
+   {
+    "who": "Reserve Bank of India and Government of India",
+    "when": "1992-03",
+    "what": "Introduced a dual exchange rate, unified it into a market-determined rate in March 1993, and made the rupee convertible on the current account in August 1994.",
+    "status": "fact"
+   }
+  ],
+  "stakeholders": [
+   {
+    "who": "Exporters, including textiles, engineering and software services",
+    "effect": "Gained from devaluation and easier access to imported inputs and technology; the later growth of IT services exports built on this more open environment."
+   },
+   {
+    "who": "Firms that had relied on licences and high tariffs",
+    "effect": "Faced new domestic entrants and, as tariffs fell, import competition; some expanded and modernised, while others lost market share or closed."
+   },
+   {
+    "who": "Households and consumers",
+    "effect": "Faced inflation of 13.9% in 1991 and slower income growth; later gained a wider choice of goods and lower relative prices for many manufactured products."
+   },
+   {
+    "who": "Gulf migrant workers and their families",
+    "effect": "Lost jobs and earnings when the Gulf war began; states such as Kerala, which relied heavily on remittances, were especially affected."
+   },
+   {
+    "who": "Public-sector enterprises and their workers",
+    "effect": "Lost protected positions as reserved sectors were opened to private firms; partial sale of government shareholdings began, though large-scale privatisation remained limited."
+   }
+  ],
+  "short": "In the short run the crisis and its remedy were painful. Inflation rose to 13.9% in 1991, real growth slowed sharply in 1991–92, and imports were compressed to save foreign currency. Measured in US dollars, India’s GDP fell from $321.0 billion in 1990 to $270.1 billion in 1991, mainly because the rupee was worth less. Yet emergency borrowing, devaluation and fiscal tightening avoided a default, and reserves began to recover within about a year.",
+  "long": "Over the longer run growth rose above its pre-1980 pace, and GDP in current dollars grew from $270.1 billion in 1991 to $468.4 billion in 2000 and $1,675.6 billion in 2010. Services exports, especially IT, expanded rapidly, foreign investment increased and poverty fell substantially. Reform was gradual: labour law, land, agriculture and privatisation moved slowly. Critics point to limited growth in formal manufacturing jobs and rising inequality; supporters argue the reforms made faster growth sustainable.",
+  "transmission": "This crisis travelled into India rather than out of it. The Gulf war reached India through three channels: a higher oil import bill, lost remittances and lost exports to the region. Global lenders then amplified the shock by withdrawing credit. Because India’s financial links with the rest of the world were limited, the crisis did not spread to other economies. The same limited capital-account openness and lower reliance on short-term debt are often cited to explain why India was little affected in 1997.",
+  "winners": [
+   {
+    "t": "Export-oriented firms gained from a more competitive rupee and freer access to imported inputs.",
+    "status": "fact"
+   },
+   {
+    "t": "Foreign investors gained access to a large market from which they had largely been excluded.",
+    "status": "fact"
+   },
+   {
+    "t": "Consumers gained over time from wider choice and lower relative prices of many manufactured goods.",
+    "status": "inference"
+   }
+  ],
+  "losers": [
+   {
+    "t": "Households faced high inflation in 1991–92, which hit those without indexed incomes hardest.",
+    "status": "fact"
+   },
+   {
+    "t": "Gulf migrant workers lost jobs and earnings when the war began.",
+    "status": "fact"
+   },
+   {
+    "t": "Firms that had relied on licensing and protection faced new competition, and some lost market share or closed.",
+    "status": "inference"
+   }
+  ],
+  "unintended": [
+   {
+    "t": "Devaluation raised the rupee cost of servicing foreign-currency debt and of imported oil, adding to inflation in 1991–92.",
+    "status": "inference"
+   },
+   {
+    "t": "Newly liberalised financial markets outpaced regulation: the 1992 securities scam exposed weaknesses in banks’ and brokers’ controls and prompted stronger oversight.",
+    "status": "fact"
+   },
+   {
+    "t": "The experience of near-default appears to have shaped a lasting preference among Indian policymakers for holding large foreign exchange reserves as insurance.",
+    "status": "interpretation"
+   }
+  ],
+  "interpretations": [
+   {
+    "view": "Fiscal origins (Vijay Joshi and I. M. D. Little, among others)",
+    "p": "The crisis was rooted in the large fiscal deficits of the 1980s, which spilled into current account deficits and rising foreign debt. On this reading the Gulf war was the proximate trigger of a crisis that underlying policies had made likely.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Growth began earlier (Dani Rodrik and Arvind Subramanian)",
+    "p": "India’s growth acceleration began around 1980, before the 1991 reforms, helped by a more pro-business stance by government. The 1991 reforms sustained and broadened growth rather than starting it. Others reply that 1980s growth rested on borrowing that could not continue.",
+    "status": "controversy"
+   },
+   {
+    "view": "Liberalisation was decisive (Jagdish Bhagwati, Arvind Panagariya)",
+    "p": "Decades of licensing, protection and public-sector reservation held back productivity and exports. The 1991 reforms removed many of these constraints and made faster growth sustainable; earlier and deeper liberalisation, on this view, would have brought the gains sooner and to more people.",
+    "status": "interpretation"
+   },
+   {
+    "view": "Social opportunity (Jean Drèze and Amartya Sen)",
+    "p": "Market reforms were useful but insufficient. Without stronger public action on basic education, health and nutrition, many people lacked the capabilities to take up new opportunities in an open economy, so the gains from growth were unevenly shared across regions and social groups.",
+    "status": "interpretation"
+   }
+  ],
+  "explain": [
+   "Balance-of-payments accounting shows how a wider current account deficit plus a reversal of financial inflows must drain official reserves under a managed exchange rate.",
+   "Foreign exchange market analysis explains why devaluation was needed once reserves could no longer hold the rupee at its official value.",
+   "Supply-side analysis explains how removing licensing and lowering tariffs could raise productivity and shift LRAS to the right over time."
+  ],
+  "miss": [
+   "Standard models say little about confidence and politics: the crisis accelerated when ratings fell and governments were unstable, not only when the current account worsened.",
+   "They usually treat reform as a policy choice, whereas in 1991 the crisis itself created the political room for changes that had been resisted for years.",
+   "They do not capture the distributional and regional effects of reform, such as who gained jobs and who lost protection."
+  ],
+  "differently": [
+   {
+    "t": "Many economists argue that fiscal consolidation in the late 1980s, when growth was strong, could have reduced foreign and short-term borrowing and made India far less vulnerable to an oil shock or a loss of lender confidence.",
+    "status": "interpretation"
+   },
+   {
+    "t": "Some argue that broader reform of labour law and land markets in the 1990s would have encouraged more labour-intensive manufacturing and formal jobs; others argue that gradualism made reform politically durable across changes of government.",
+    "status": "controversy"
+   },
+   {
+    "t": "Others argue that larger public investment in basic education, health and rural infrastructure alongside liberalisation would have spread the gains from growth more widely and raised the economy’s long-run productive capacity.",
+    "status": "interpretation"
+   }
+  ],
+  "whatif": {
+   "q": "Suppose India had not pledged its gold or obtained IMF support in 1991. What is the most likely outcome?",
+   "options": [
+    "A default on external payments, with sharper import cuts and a deeper recession",
+    "No change, because the crisis would have resolved itself as oil prices fell in 1991",
+    "Faster growth, because India would have avoided IMF conditions"
+   ],
+   "best": 0,
+   "explain": "With reserves covering only a few weeks of imports and lenders unwilling to roll over credit, missing payments was a real risk. Default would probably have cut India off from credit and forced even deeper import compression. Lower oil prices in 1991 helped, but probably not quickly enough. Other bilateral support might have been found, so the outcome cannot be known."
+  },
+  "compare": [
+   {
+    "id": "asia-1997",
+    "similar": "Both crises involved rapidly falling reserves, a currency that could no longer be held at its managed value, a large depreciation and IMF-supported programmes with structural conditions.",
+    "different": "India’s crisis grew from fiscal and current account deficits with limited capital mobility; the 1997 crises were driven by sudden private capital outflows and weak banks.",
+    "dominant": "In India 1991, current account deficits and the loss of external credit dominate. In Asia 1997, capital-account reversals and banking fragility dominate."
+   },
+   {
+    "id": "oil-1973",
+    "similar": "Both show how a sharp oil price rise widens the current account deficit of an oil-importing economy and adds to cost-push inflation through higher fuel and transport costs.",
+    "different": "In 1973–74 the oil shock was global and long-lasting; in 1990 the oil spike was short, but it hit an economy that already had little room to absorb it.",
+    "dominant": "In 1973 the global supply shock dominates. In 1991 India’s pre-existing fiscal and external weaknesses dominate, with oil as the trigger."
+   },
+   {
+    "id": "eurozone-2010",
+    "similar": "Both involved governments with large fiscal deficits losing access to market borrowing and turning to the IMF and other partners for emergency finance that came with conditions.",
+    "different": "India could devalue its own currency to restore competitiveness; eurozone members such as Greece could not, so adjustment had to come through slower wage and price growth and recession.",
+    "dominant": "In India, devaluation combined with structural reform dominates the adjustment. In the eurozone, internal devaluation and fiscal austerity within a shared currency dominate."
+   }
+  ],
+  "ib": {
+   "subs": [
+    "4.6",
+    "4.5",
+    "3.6",
+    "3.7",
+    "4.2",
+    "4.10"
+   ],
+   "kc": [
+    "Change",
+    "Interdependence",
+    "Intervention",
+    "Economic well-being",
+    "Equity"
+   ],
+   "note": "The event links the balance of payments, exchange-rate adjustment, supply-side policy and development strategy in one case, which supports evaluation in extended responses; the J-curve and Marshall–Lerner condition are HL only (guide PDF p. 56)."
+  },
+  "cambridge": {
+   "topics": [
+    "balance of payments",
+    "exchange rate systems",
+    "supply-side policies",
+    "protectionism and trade liberalisation",
+    "fiscal policy",
+    "economic development"
+   ],
+   "note": "Useful for showing how a current account crisis develops under a managed exchange rate and how devaluation and supply-side reform are used to correct it."
+  },
+  "university": {
+   "fields": [
+    "development economics",
+    "international finance",
+    "political economy",
+    "economic history"
+   ],
+   "note": "A university course would add currency-crisis models in which fiscal deficits under a managed exchange rate drain reserves, debates on sequencing reform and opening the capital account, and the political economy of reform in a crisis."
+  },
+  "civil": {
+   "themes": [
+    "external sector",
+    "balance of payments",
+    "economic reforms (liberalisation, privatisation, globalisation)",
+    "industrial policy",
+    "fiscal policy",
+    "exchange rate management"
+   ],
+   "note": "This is a defining episode for India’s external sector and reform history, linking the RBI’s reserve and exchange-rate management with the Government of India’s fiscal, industrial and trade policy choices."
+  },
+  "economists": [
+   "sen",
+   "ricardo"
+  ],
+  "causal": [
+   "currency",
+   "supplyside",
+   "inflation",
+   "growth"
+  ],
+  "concepts": [
+   "Balance of payments",
+   "Current account",
+   "Financial account",
+   "Current transfers",
+   "Remittance",
+   "Devaluation",
+   "Managed exchange rate",
+   "Fixed exchange rate",
+   "Expenditure switching",
+   "Expenditure reducing",
+   "Marshall-Lerner condition",
+   "J-curve",
+   "Import substitution",
+   "Deregulation",
+   "Privatisation",
+   "Foreign direct investment",
+   "Budget deficit",
+   "Market-based supply-side policies",
+   "Protectionism"
+  ],
+  "cases": [
+   "GLO-014",
+   "GLO-041",
+   "DEV-006"
+  ],
+  "policies": [
+   "Devaluation of the rupee (July 1991)",
+   "Gold pledge to the Bank of England and the Bank of Japan",
+   "IMF stand-by arrangement (1991)",
+   "New Industrial Policy (1991)",
+   "Exim scrips and trade liberalisation",
+   "Fiscal consolidation (Union Budget 1991–92)",
+   "Liberalised Exchange Rate Management System (1992)",
+   "Current account convertibility (1994)",
+   "Financial-sector reform after the Narasimham Committee (1991)"
+  ],
+  "questions": [
+   {
+    "q": "Explain how a rise in oil prices and a fall in remittances could cause India’s foreign exchange reserves to fall under a managed exchange rate.",
+    "kind": "explain"
+   },
+   {
+    "q": "Analyse the likely effects of the July 1991 devaluation on India’s current account and inflation, distinguishing the short run from the long run.",
+    "kind": "analyse"
+   },
+   {
+    "q": "Evaluate the view that India’s 1991 crisis was caused mainly by the Gulf war rather than by domestic policy.",
+    "kind": "evaluate"
+   },
+   {
+    "q": "Using the rupee per dollar data for 1990–1993, calculate the percentage change in the exchange rate between 1990 and 1993 and explain what it shows about the rupee.",
+    "kind": "data"
+   },
+   {
+    "q": "Compare India’s 1991 crisis with the Asian financial crisis of 1997 in terms of causes and policy responses.",
+    "kind": "compare"
+   }
+  ],
+  "retrieval": [
+   {
+    "q": "What event in August 1990 triggered India’s balance-of-payments crisis?",
+    "a": "Iraq’s invasion of Kuwait, which raised oil prices, cut Gulf remittances and disrupted exports."
+   },
+   {
+    "q": "Where was the RBI’s pledged gold sent in July 1991, and why?",
+    "a": "To London, as security for loans from the Bank of England and the Bank of Japan to raise emergency foreign currency."
+   },
+   {
+    "q": "What did the New Industrial Policy of July 1991 do to industrial licensing?",
+    "a": "It abolished licensing for most industries, keeping it only for a short list."
+   },
+   {
+    "q": "When did the rupee become market-determined and when did it become convertible on the current account?",
+    "a": "It became market-determined in March 1993 and current-account convertible in August 1994."
+   },
+   {
+    "q": "What was consumer-price inflation in India in 1991?",
+    "a": "13.9%."
+   }
+  ],
+  "reflection": "Should a country wait for a crisis before making difficult reforms, or does a crisis provide the political room that reform needs?",
+  "reading": [
+   {
+    "t": "Vijay Joshi and I. M. D. Little, India’s Economic Reforms, 1991–2001, 1996",
+    "note": "A careful analysis of the origins of the crisis and the first phase of reform, with attention to fiscal policy."
+   },
+   {
+    "t": "Montek S. Ahluwalia, ‘Economic Reforms in India since 1991: Has Gradualism Worked?’, Journal of Economic Perspectives, 2002",
+    "note": "A concise account of what was reformed, by a senior official involved, with an assessment of the gradual approach."
+   },
+   {
+    "t": "Arvind Panagariya, India: The Emerging Giant, 2008",
+    "note": "Sets the reforms in the long history of Indian policy and argues for their central role in faster growth."
+   },
+   {
+    "t": "Jean Drèze and Amartya Sen, India: Economic Development and Social Opportunity, 1995",
+    "note": "Argues that reform needed to be matched by public action on education and health; a counterweight to purely market-focused accounts."
+   }
+  ],
+  "numbers": [
+   {
+    "value": "about 3.5% a year",
+    "claim": "India’s average growth rate from 1950 to 1980",
+    "basis": "Widely cited national-accounts average; the basis of Raj Krishna’s ‘Hindu rate of growth’ phrase"
+   },
+   {
+    "value": "about 3% of GDP",
+    "claim": "India’s current account deficit in 1990–91",
+    "basis": "Government of India Economic Survey and RBI data, commonly cited as about 3.1% of GDP"
+   },
+   {
+    "value": "a few weeks of imports",
+    "claim": "Foreign exchange reserves had fallen to cover only a few weeks of imports by mid-1991",
+    "basis": "Commonly cited as about two weeks of import cover (Economic Survey 1991–92; RBI accounts)"
+   },
+   {
+    "value": "about 20 tonnes",
+    "claim": "Gold sold through the State Bank of India in May 1991 with a repurchase option",
+    "basis": "Widely documented; government-owned gold confiscated from smugglers"
+   },
+   {
+    "value": "about 47 tonnes; about $400 million",
+    "claim": "Gold pledged by the RBI with the Bank of England and the Bank of Japan in July 1991, and the sum raised",
+    "basis": "RBI history; usually given as 46.91 tonnes"
+   },
+   {
+    "value": "about 18–19%",
+    "claim": "Cumulative devaluation of the rupee on 1 and 3 July 1991 against major currencies",
+    "basis": "RBI history of exchange-rate management"
+   },
+   {
+    "value": "51%",
+    "claim": "Foreign equity share eligible for automatic approval in priority industries under the 1991 New Industrial Policy",
+    "basis": "Statement on Industrial Policy, 24 July 1991"
+   },
+   {
+    "value": "1951; 1956",
+    "claim": "Industries (Development and Regulation) Act; Industrial Policy Resolution",
+    "basis": "Statutes and policy documents of the Government of India"
+   }
+  ]
+ }
+]
