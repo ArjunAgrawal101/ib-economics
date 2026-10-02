@@ -208,7 +208,7 @@ Direct line labels no longer cut to an ambiguous first word: "United States" rea
 
 See the PR for the final run.
 
-The complete suite (`node tests/run-all.mjs`) has 19 suites, including the new `events-scroll` and `final`. The built-in self-test runs 2,079 checks.
+The complete suite (`node tests/run-all.mjs`) has 19 suites, including the new `events-scroll` and `final`. The built-in self-test runs 2,076 checks.
 
 ## 15. Files changed
 

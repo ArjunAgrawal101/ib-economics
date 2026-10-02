@@ -316,7 +316,7 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   required, and neither can leave a gap. Both also travel inside `index.html`, as JSON held in
   function bodies the engine skips until they are called. If the copy in `assets/data` loads, the
   bundled copy is never read; if it does not, the platform adopts the bundled copy and nothing on
-  the screen changes. Served beside its `assets` folder, the build runs the full 2,058 checks with
+  the screen changes. Served beside its `assets` folder, the build runs the full 2,076 checks with
   nothing failing. Opened on its own, without `assets/`, it still works but the checks on the
   lazily loaded files fail, by design.
 - **Diagram Engine 2.0.** Every quantitative diagram is generated from a declared model:
@@ -350,7 +350,7 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   of load; a deep link to any other page skips it (see *The opening sequence*).
 - A command palette opens on `/` or `Ctrl`/`Cmd` + `K` and reaches every section, every printable and
   every indexed item of content.
-- The build includes a self-test of **2,058 checks** reported across every area of the build: startup, printing,
+- The build includes a self-test of **2,076 checks** reported across every area of the build: startup, printing,
   navigation, mobile, desktop, resources, Google Drive, IB Economics, TOK, economics theory, calculations,
   diagrams, mindmap integrity, topic architecture, assessment, IA, student features, teacher features,
   progress, storage, export and import, contact links, tutorials, branding, accessibility, performance,
