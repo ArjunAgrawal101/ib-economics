@@ -35,6 +35,7 @@ npm test               # runs every suite
 | `tabs.mjs` | Every Practise, Teacher, IA and workspace tab opens the page its label names, clicked on the real tab bar; a calculation's own address opens it and leaving returns to `#/calculate`; simulator and worked-case search results open their tabs. |
 | `notices.mjs` | Every Exam DNA page states once that it is historical and not a prediction tool, and no page predicts what will be asked; all sixteen economist profiles show their inquiry question. |
 | `events-scroll.mjs` | An event page scrolls from top to bottom by wheel, Page Down, End and Home, and by touch at 390 px; nothing pulls the page back; it still scrolls after a prediction, a refresh, Back/Forward, a cold deep link and a return from another route; all twelve events reach their end. |
+| `final.mjs` | The final release pages: the five tutorial pathways at exactly the supplied prices, counts and lengths, with enquiry links and no promises; the economists timeline previewing on hover and keyboard focus, drawing relations and opening profiles; the editorial profile with the written profile intact; the influence map with every relation in text; a seven-row comparison; the data reading layer; and the timeline as a list on a phone. |
 | `api-youtube.mjs` | The `/api/youtube` function run in Node against a stubbed YouTube: setup messages, the Data API and RSS paths, caching, stale fallback, timeouts, malformed answers, and that the key is never returned. |
 
 To use an existing Chromium instead of downloading one, set
