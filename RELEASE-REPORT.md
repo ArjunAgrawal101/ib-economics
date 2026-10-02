@@ -208,9 +208,19 @@ Direct line labels no longer cut to an ambiguous first word: "United States" rea
 
 ## 14. Regression testing
 
-See the PR for the final run.
-
 The complete suite (`node tests/run-all.mjs`) has 19 suites, including the new `events-scroll` and `final`. The built-in self-test runs 2,076 checks.
+
+**Final complete run: 18 of 19 suites pass, with 430 browser checks passing.** The suites that pass:
+- api-youtube, selftest, e2e, ecosystem, renaissance, cover, pwa;
+- widths, overlap, routes;
+- course, transform, events, tabs, notices, events-scroll, final.
+
+**The intro suite fails its strictest timing checks intermittently in this container:**
+- One complete run had the sequence finish "late" at 360 px, and an overlay removal of 56.7 ms at 1440 px.
+- On its single re-run, every width and every load type passed except one removal at 1920 px, at 57.6 ms against a 50 ms allowance.
+- In every run the exit fade reached full transparency at exactly start + 5000 ms, so this is the removal of an already invisible node waiting for a free frame.
+
+**This was present before this release.** The same 1920 px check failed (52.6 ms) on the previous release's code earlier in this session. App-ready times at 768 px overlap between `main` and this branch (§4).
 
 ## 15. Files changed
 
@@ -247,6 +257,8 @@ Commit and PR number are given in the PR description and the final message.
 - Production has not been changed.
 
 ## 20. Remaining known issues
+
+- **The intro suite's strictest checks are environment-sensitive.** In this GPU-less test container they fail intermittently (§14) on `main` as well as here. The sequence itself is invisible from exactly 5,000 ms in every run.
 
 - **The Vercel Preview** must be checked by hand. It could not be reached from the build environment.
 - **Firefox** was not available in the test environment. Testing used Chromium, with touch and mobile emulation.
