@@ -39,35 +39,35 @@ the video studio says so and everything else works exactly as before.
 
 | Section | What it does |
 |---|---|
-| **Course** | The reference layer: the course at a glance, the six real-world issues, the nine key concepts, a complete curriculum explorer reading every subtopic three ways, an SL/HL difference explorer, a visual knowledge map, a 157-term economist's dictionary and a command term lab covering all 33 terms in the guide's glossary. |
+| **Course** | The reference layer: the course at a glance, the six real-world issues, the nine key concepts, a complete curriculum explorer reading every subtopic three ways, an SL/HL difference explorer, a visual knowledge map, a 250-term glossary (Glossary 2.0, under **Course › Dictionary**) and a command term lab covering all 33 terms in the guide's glossary. |
 | **Learn** | Every concept in nine stages: the idea, intuition, the model, the diagram, the chain, the application, the stress test, the IB connection, retrieval. Plus a curriculum map and a misconception lab. |
-| **Think** | The Economic Chain: build a mechanism link by link against a live shock, then survive a conditionality test and choose between four judgements. Plus an evaluation stress test across fourteen dimensions, a concept-connection exercise, and a conditions library of the twelve conditions that carry almost every "it depends" in the course, with an assumptions lab and a "when does the model break?" lab beside it. Last, the economist's toolkit: eighteen lenses (incentives to institutions), each with its questions and links into the platform's own material. |
+| **Think** | The Economic Chain: build a mechanism link by link against a live shock, then survive a conditionality test and choose between four judgements. Plus an evaluation stress test across fourteen dimensions, a **Think › Dimension library** setting out those dimensions as *Evaluation is conditionality*, a concept-connection exercise, and a conditions library of the twelve conditions that carry almost every "it depends" in the course, with an assumptions lab and a "when does the model break?" lab beside it. Last, the economist's toolkit: eighteen lenses (incentives to institutions), each with its questions and links into the platform's own material. |
 | **Lab** | Computed market and AD-AS models you can move, a transparent policy simulator, a 35-plate diagram atlas (each plate with a reading guide: what changes, why, what the diagram does not show and the common mistake), a counterfactual "What if?" lab, a policy Decision Room, a "build it yourself" diagram builder, a 20-policy toolkit with a comparison matrix and a two-policy comparator, a Recommend-a-policy lab for HL Paper 3 part (b), an 11-model library stating assumptions before diagrams, a stakeholder / time-horizon / context lab, a predict-before-reveal mode for the diagrams, a "check my diagram" error detector, and three live integrity dashboards: model, content and links. |
 | **Calculate** | The calculation centre: 36 calculations with live working, units, interpretation, common mistakes, linked diagrams and generated practice that hides the solution until you attempt it: plus a printable calculation sheet for the student's own level. |
 | **Real World** | The largest section on the platform. 203 real-world cases remapped to the 2022 guide, each carrying its subtopic, level, papers, key concepts, diagram and evaluation, searchable and filterable by topic, concept, assessment, place, theme, level and case type; twelve of them worked to a full teaching standard. Around them: a twelve-zone case reader, a case-connection graph, Find me an example, Build an evaluation, Compare two cases, Use this case, three transfer challenges, My casebook, a syllabus atlas, a concept index, an assessment matrix and a sources-and-method page. The earlier surfaces are all still here: six recurring economic events, the eight worked cases split into verified fact, interpretation and inference, a data sources library, and an "Economics now" page that states plainly that this platform holds no live data. |
 | **Mindmaps** | Forty-two interactive maps of how an economist moves through a topic, in three classes: ten core maps for the strands of the course, twenty-two topic maps for individual syllabus subtopics, and ten synthesis maps that cross topics deliberately. All are built from the same eighteen-type visual language: concept, determinant, mechanism, model, diagram, calculation, application, evaluation, stakeholder, judgement, TOK, exam, assumption, formula, misconception, evidence, real-world case and policy. Thirteen modes per map, from exploring a node to repairing a claim that is nearly right, to building a chain into another part of the course, to asking what would change the result, to a revision pass, to projecting it in a classroom. Plus a pooled challenge set: find the missing link, spot the economic error, connect two ideas, and build from memory. |
-| **Video learning** | A curated layer rather than a page of links. Thirty-four external videos across nineteen subtopics, each filed against a syllabus code, labelled SL or HL, given a purpose and a reason for inclusion, and paired with three checkpoint questions written from the guide rather than from the video. Nothing is embedded until it is asked for: the grid loads still images only, and the player element is created on the click. Every link was confirmed to resolve at build time and the date is shown. A coverage dashboard names the subtopics that have none. |
+| **Video learning** | A curated layer rather than a page of links. Thirty-four external videos across nineteen subtopics, each filed against a syllabus code, labelled SL or HL, given a purpose and a reason for inclusion, and paired with the three checkpoint questions set for its subtopic, written from the guide rather than from the video. Nothing is embedded until it is asked for: the grid loads still images only, and the player element is created on the click. Every link was confirmed to resolve at build time and the date is shown. A coverage dashboard names the subtopics that have none. **Video › My queue** holds what you set aside and what you flagged as difficult, and **Video › Video of the day** picks one video against your weakest ground. |
 | **Tools** | Eleven working tools in one place: a diagram repair shop with twelve recurring faults, a data detective that asks what a table supports, contradicts and cannot settle, a policy memo lab, an economic debate room that locks the judgement until both benches have been argued, named market scenarios that load the existing simulator, a comparative advantage game with a terms of trade check, a CPI basket builder, a Lorenz curve builder that computes the Gini coefficient and states the grouped-data limit, a balance of payments ledger, an exchange rate lab that derives the Marshall-Lerner condition rather than asserting it, and a multiplier lab that follows the rounds to convergence. |
 | **Timed sessions** | Five, fifteen, thirty, sixty or ninety minutes, assembled when you press start from the subtopics your record shows as weak. Five kinds of step: retrieval, a definition produced from memory, a generated calculation, a mechanism with a missing link, and one paragraph under a command term. The clock counts down and then counts up; nothing is cut off and nothing is marked against it. |
 | **My economics** | One save control and one difficulty flag, used by every surface that needs them, with everything collected in one place. Seven learning paths through the material that already exists, from microeconomics in dependency order to the week before the examination. |
-| **Topic dossier** | One page per syllabus subtopic, in sixteen sections: conceptual core, measurable objectives, before you start, mindmap, key terms, theory, diagram, calculation, common traps, real world, TOK lens, evaluation, exam practice, test yourself, inquiry and reflection, and your own progress. Most of it is assembled from material the platform already holds; only the core, the objectives, the activation prompts and the retrieval set are written for it. |
+| **Lessons** | **Course › Topics**: thirty-one lessons, one per syllabus subtopic, described under *The course* below. The earlier topic dossier became the lesson, and its old address still works. |
 | **Masterclass** | One subtopic worked end to end in ten, twenty, thirty or sixty minutes. A shorter session drops whole steps rather than rushing all of them, and never offers a step the subtopic cannot support. |
 | **Resources** | A curated hub of eleven resource categories (presentations, interactive teaching platforms, handbooks, question banks, tests and assessments, revision, IA, extended essay, teacher resources, real-world economics and TOK × Economics) each with its own drawn mark, an audience filter and a local search. Every card opens the Arjun Agrawal Google Drive library in a new tab. The site is the interface; Drive is the repository, so new material appears there without a change here. |
 | **TOK × Economics** | Sixteen pages on how economic knowledge is established: a hero interrogation of “an increase in interest rates will reduce aggregate demand”, a 109-question knowledge bank across twelve categories, TOK × micro, macro and global, fourteen tests for what counts as economic evidence, a causation lab, an epistemology lab covering all eleven named models, five ways of asking whether a model is true, a perspective lab, a map of where values enter, an uncertainty lab rating eight claims, the nine key concepts and six real-world issues examined, optional lenses for the IA and each paper, ten printable classroom activities, a teacher toolkit and a knowledge-question generator. |
-| **Practise** | Question bank, data response, a data lab with six constructed datasets, the Economist's Gym, a spaced retrieval queue, a ten-minute revision run, five families of thinking drills, six transfer tasks, a "teach it back" mode, a nine-trap data lab, and a writing lab covering causal, conditional, comparative, evaluative and judgement sentences. |
-| **Exam** | An exam cockpit for Papers 1, 2 and 3 with plan-write-review, timer, word count and autosave; a sentence-by-sentence answer diagnostic; "Why did I lose marks?"; a Level 7 deconstructor; the IB reference layer; an assessment centre covering every component; and a paper architecture explainer. |
+| **Practise** | Twelve tabs: Question bank, Data response, the Economist's Gym, a spaced retrieval queue (**Retrieval**), a ten-minute revision run (**Ten-minute revision**), five families of **Thinking drills**, six **Transfer tasks**, a **Teach it back** mode, **Explain it like an economist**, **The data lab** with six constructed datasets, a nine-trap **Data trap lab**, and a **Writing lab** covering causal, conditional, comparative, evaluative and judgement sentences. |
+| **Exam** | An exam cockpit for Papers 1, 2 and 3 with plan-write-review, timer, word count and autosave; **Exam › Compose**, a free writing surface (paste from elsewhere, or describe a diagram in words) that feeds the diagnostic; a sentence-by-sentence answer diagnostic; "Why did I lose marks?"; a Level 7 deconstructor; the IB reference layer; an assessment centre covering every component; and a paper architecture explainer. |
 | **My syllabus** | Every topic tracked on three separate layers (learn, practise, master) with manual states from *Not started* to *Mastered*, spaced revision dates and private notes. |
 | **Dashboard** | A twelve-dimension learning model built only from evidence you generated, plus topic health in green, amber and red, a revision priority engine, an optional examination countdown and a metacognitive confidence check. |
-| **My workspace** | Weekly study plan, a mistake book that surfaces the pattern rather than the incident, categorised flashcards with spaced review, your calculation history ranked weakest first, and every note you have written in one searchable place. |
-| **IA** | An internal assessment command centre that checks the portfolio against the rubric conditions in the guide, a student checklist, a portfolio tracker, a ten-question article quality screen and the supervisor gates. |
-| **Teacher tools** | An assignment builder that assembles items the platform already holds into a printable sheet and a link that carries the assignment inside itself with no server and nothing about any student, a teacher desk, class dashboard with local import of student exports, a fillable IA feedback checklist, a lesson planner with success criteria, differentiation and extension, a five-minute retrieval starter generator, an exam builder with answer key, printable marking sheets, a resource centre, a feedback bank, an annotated exemplar library and a best-fit IA moderation workspace. |
+| **My workspace** | Weekly study plan, a mistake book that surfaces the pattern rather than the incident, categorised flashcards with spaced review, your calculation history ranked weakest first, every note you have written in one searchable place, and **My workspace › Revision priority**, which orders subtopics by how weak they are, how much assessed machinery they carry and how many others depend on them. |
+| **IA** | An internal assessment command centre that checks the portfolio against the rubric conditions in the guide, a student checklist (**IA › Student checklist**), a portfolio tracker (**IA › Portfolio tracker**), a ten-question article quality screen (**IA › Article checker**) and the supervisor gates. |
+| **Teacher tools** | An assignment builder that assembles items the platform already holds into a printable sheet and a link that carries the assignment inside itself with no server and nothing about any student, a teacher desk, class dashboard with local import of student exports, a fillable IA feedback checklist (**Teacher › IA checklist**), a lesson planner with success criteria, differentiation and extension (**Teacher › Lesson planner**), a five-minute retrieval starter generator (**Teacher › Retrieval starter**), an exam builder with answer key (**Teacher › Exam builder**), printable marking sheets (**Teacher › Marking sheets**), a resource centre, a feedback bank, an annotated exemplar library of two teacher-written responses and a best-fit IA moderation workspace. Each opens its own page. |
 | **Exam DNA** | A structural analysis of 212 released examination questions and their 990 parts, across twelve sessions of Papers 1, 2 and 3 at both levels. It holds no question text: each part is recorded only as its syllabus subtopic, command term, mark tariff and what the task demands, so the pattern is visible and the copyright is untouched. Seven surfaces read it: an explorer, eleven question archetypes, a mark lens, a subtopic heatmap, a morpher that rebuilds an original task from a recorded shape, a museum of how the paper has changed, and a source register naming every paper analysed. |
 | **Exam practice** | Original examination material written for this platform: eight Paper 1 tasks, four Paper 2 data sets with twenty-eight parts and their own stimulus, four Paper 3 cases with twelve calculations, and a five-run simulator from a ten-minute drill to a full mock. Every figure is constructed teaching data and every stated answer is recomputed from the table it sits beside. |
 | **Case room** | Eight cases, each worked in eleven sections: context, what is verified, how it is read, what may be inferred, the model, the diagram, the calculation, the stakeholders, the evaluation, the examination use and the sourcing. Fact, interpretation and inference are never run together. |
-| **Media room** | Every video, diagram, map, case and printable in one filterable place, so a teacher planning a lesson looks in one room rather than seven sections. |
-| **Analytical layers** | Five cross-cutting surfaces rather than new content: a skills matrix over the twelve tracked dimensions, a topic dependency graph, a concept network, "Explain it like an economist" against a timer with self-check criteria, "Model or reality" on the eleven named models, and "What would change your mind?" attached to every evaluation surface. |
+| **Media room** | **Resources › Media room**: everything external in one place, clearly marked as external: video, data and visualisation, and official sources. Its video panel is a door into the video library rather than a second copy. |
+| **Analytical layers** | Six cross-cutting surfaces rather than new content: a skills matrix over the twelve tracked dimensions, a topic dependency graph, a concept network, "Explain it like an economist" against a timer with self-check criteria, "Model or reality" on the eleven named models, and "What would change your mind?" attached to every evaluation surface. |
 | **Economics in 60 Seconds** | Ten original visual essays inside Learn, each one idea taken from the story to the syllabus. Every issue carries its real cover, a ten-page outline, the syllabus link, why it matters for IB Economics, a page-by-page accuracy note and original retrieval questions with answers. The ten-page file opens only when it is asked for. |
-| **About** | An editorial educator profile rather than a résumé: three photographs at their own aspect ratios with a lightbox, three roles, an interactive five-stage academic timeline, the teaching philosophy, a six-part teaching portfolio, the UPSC CSE mentorship, and why the platform exists. |
+| **About** | An editorial educator profile rather than a résumé: three photographs at their own aspect ratios with a lightbox, five positions, an interactive six-stage academic timeline, the teaching philosophy, a six-part teaching portfolio, the UPSC CSE mentorship, and why the platform exists. |
 | **Economics, Everywhere** | The public-facing layer: *the economics behind the world around us*. Nineteen big questions (why flights cost more tomorrow, why queues exist, how an app can be free), each with a short answer, the economic idea, the mechanism revealed a step at a time, a labelled real example, a lab or sorting task, a prediction to commit to, an explanation at four levels from beginner to university, the confusion to avoid, links into the rest of the platform, a pathway onward and sources. Twelve *Economics in real life* cards, sixteen *One economic idea* cards, fifteen interactive labs, the *Economist's eye* game, and *Where the numbers live*, which routes current figures to the institutions that publish them. |
 | **Economics EE Studio** | A research workspace for the Economics extended essay, in nineteen areas: what the essay is (every statement labelled by its source), the journey, a topic explorer across twenty areas of economics, a research question lab that diagnoses twelve dimensions and asks questions rather than writing a question, a model lab, sources, a data lab that separates what data show, suggest and do not establish, an evidence matrix, an argument map, a diagram studio, an evaluation lab, writing and structure, a reflection studio, academic integrity and AI, an EE red team, supervisor mode, a qualitative quality check and resources. It approves nothing and predicts no mark. |
 | **Arjun Agrawal · Video studio** | *Economics. Politics. International Relations.* The channel's own videos, read automatically from YouTube: featured, latest, by category, Shorts and playlists. Kept separate from the curated videos by other creators. |
@@ -109,8 +109,10 @@ The platform reads as an economics publication rather than a long page of cards.
     the supplied profile. Nothing is drawn behind the photograph at any width.
   - **The platform in numbers.** Cases, mindmaps, plates, calculations and Exam DNA questions, set
     in the data face along the foot. They are counted from the data, and each opens what it counts.
-  - **Eleven chapters, one verb each:** Think, Learn, See, Interact, Connect, Practise, Research,
+  - **Eleven chapters:** Think, The course, Learn, See the world, Master the models, Exam, Research,
     Explore, Watch, Teach and About.
+    - The Exam chapter holds *Today's challenge*, five minutes chosen for you, with a weekly streak
+      strip that is stored on this device only.
     - "Economics is a way of seeing." opens chapter 01.
     - Between some chapters the transition is itself economic: two curves meeting at equilibrium,
       a cycle around trend, or a data grid thinning into paper.
@@ -149,8 +151,8 @@ The platform reads as an economics publication rather than a long page of cards.
     before and after as two rectangles.
   - It is labelled as a teacher-created tool.
 - **Discovery.**
-  - *Random Economics* surfaces a concept, case, diagram, mindmap, calculation, video, question,
-    puzzle, idea or term.
+  - *Random Economics* surfaces a lesson, concept, case, diagram, mindmap, calculation, video,
+    question, puzzle, idea or term.
   - Search ranks a term at the start of a word above the same letters inside one, and knows common
     abbreviations (PED, GDP, LRAS, PPC).
   - Every concept page and case ends with lens questions from the economist's toolkit.
@@ -304,9 +306,9 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   `file://` path with no server. Parse cost was measured rather than assumed, over three cold
   loads of the packaged file: first contentful paint 280 to 288 ms, `DOMContentLoaded` 1.66 to
   1.70 s, 964 DOM nodes after the home page renders, a 20 MB heap, and the slowest render in the
-  build is the 34-plate diagram atlas at 42 ms. Sixty navigations across all 151 routes leave the
-  heap unchanged. The parse figure grew with the bundled copies of the two corpora, which is the
-  cost of a file that still works when it arrives on its own. Splitting the remaining datasets
+  build is the diagram atlas, now 35 plates. Sixty navigations across the routes (34 sections and
+  194 tabs) leave the heap unchanged. The parse figure grew with the bundled copies of the two
+  corpora, which is the cost of a file that still works when it arrives on its own. Splitting the remaining datasets
   would have traded that for a tree of files that breaks the moment one of them is lost. The one
   exception is the pair of reference corpora, `assets/data/exam-dna.js` and
   `assets/data/real-world.js`, which are loaded with a plain `<script src>` because they are
@@ -314,14 +316,15 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   required, and neither can leave a gap. Both also travel inside `index.html`, as JSON held in
   function bodies the engine skips until they are called. If the copy in `assets/data` loads, the
   bundled copy is never read; if it does not, the platform adopts the bundled copy and nothing on
-  the screen changes. A single copied `index.html` runs the full 1,923 checks with nothing failing
-  and has all 203 cases, all 212 analysed questions and all ten carousels.
+  the screen changes. Served beside its `assets` folder, the build runs the full 2,058 checks with
+  nothing failing. Opened on its own, without `assets/`, it still works but the checks on the
+  lazily loaded files fail, by design.
 - **Diagram Engine 2.0.** Every quantitative diagram is generated from a declared model:
   equations, parameters, an equilibrium solver, then curves plotted from those same equations.
   No intersection is positioned by hand. After rendering, the engine measures the distance in
   rendered pixels between every labelled point and the curves it is supposed to lie on; a point
   that misses fails validation and the diagram is reported as failed rather than displayed as
-  correct. **27 model-driven diagrams, 27 validated, 0 failed, largest miss 0.000 px against a
+  correct. **28 model-driven diagrams, 28 validated, 0 failed, largest miss 0.03 px against a
   0.75 px tolerance.** The seven remaining plates are flow diagrams and schematics with no
   equilibrium to solve; they are declared as such rather than counted as validated.
 - The equations, parameters, solved equilibria and per-point validation for every diagram are
@@ -347,7 +350,7 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   of load; a deep link to any other page skips it (see *The opening sequence*).
 - A command palette opens on `/` or `Ctrl`/`Cmd` + `K` and reaches every section, every printable and
   every indexed item of content.
-- The build includes a self-test of **2,052 checks** reported across every area of the build: startup, printing,
+- The build includes a self-test of **2,058 checks** reported across every area of the build: startup, printing,
   navigation, mobile, desktop, resources, Google Drive, IB Economics, TOK, economics theory, calculations,
   diagrams, mindmap integrity, topic architecture, assessment, IA, student features, teacher features,
   progress, storage, export and import, contact links, tutorials, branding, accessibility, performance,
@@ -595,8 +598,8 @@ by level. All six narrow one collection rather than opening six of them.
 **Search that says why it matched.** Searching *price ceiling*, *PED*, *India* or *equity*
 returns cases with the reason each one matched printed under it: the title, the country, the
 syllabus code, the concept, the diagram or the evaluation line. The same cases are in the global
-command-palette search, filed under **Real world**, which now carries 2,294 rows across 49 kinds
-of content.
+command-palette search, filed under **Real world**, which now carries close to 2,900 rows across
+more than sixty kinds of content.
 
 **The twelve-zone case reader.** Context · the economics · model · diagram · stakeholders ·
 evidence · limitations · evaluation · key concept · exam use · IA use · TOK. One zone at a time,
@@ -661,9 +664,7 @@ once:
 
 - 37 of the 42 mindmaps carry one to three real-world cases; the five that do not say so rather
   than borrowing one.
-- Every topic dossier carries a real-world snapshot and an **Economics at a glance** card
-  assembling the key idea, diagram, formula, evaluation, example, command terms, mindmap and key
-  terms from the databases that already hold them.
+- Every lesson carries its real-world cases under *The real world, and an inquiry*.
 - The home page features one case, chosen from the subtopics the student's own record shows them
   working on, with a concept of the week and an original question of the day that rotates across
   recall, calculation, diagram, evaluation, real world and TOK.
@@ -684,7 +685,9 @@ Everything else is one step away:
   there is appended under *More*, so nothing can become unreachable.
 - **On a phone**, the drawer carries the same sections in its own groups.
 - **Search** (`/` or `Ctrl`/`Cmd` + `K`) finds lessons, terms, economists, causal questions, data pages,
-  cases and tools by name.
+  cases and tools by name. A calculation's result, like its address (`#/calculate/0/ped`), opens that
+  calculation; simulator and worked-case results open their tabs.
+- **A built-in calculator** opens from the header's *Open calculator* button and takes keyboard input.
 
 ## Learning paths and saved items
 
@@ -1113,7 +1116,7 @@ file was not supplied, and nothing was invented in its place.
 
 An intellectual biography rather than a CV, read in under a minute:
 
-- **The cover:** the name, four positions and one statement, with the portrait in its own cell.
+- **The cover:** the name, five positions and one statement, with the portrait in its own cell.
 - **Credentials as data:** education, higher education, IB Diploma Programme, subjects, mentorship
   and resource design.
 - **The journey as a map,** ending in this platform, each stage opening what it taught.
@@ -1144,8 +1147,9 @@ supplied profile.
 - **The prose beside each image is about teaching**, not about what the photograph contains: why a
   student is made to argue a side they did not choose, and why current affairs are where a model
   meets something that happened.
-- **Four positions**: teacher, Economics educator, mentor, resource creator.
-- **An interactive journey.** Five stages, each opening to show what was taught, what it taught
+- **Five positions**: Economics educator, IB DP educator, teacher and mentor, academic resource
+  creator, research-oriented educator.
+- **An interactive journey.** Six stages, each opening to show what was taught, what it taught
   him, and what it changed about the way the platform works.
 - **UPSC CSE mentorship**, stated as a fact, with no claim about ranks, selections or results.
 - **No superlative.** No "best", no "number one", no "top IB educator", and a self-test asserts
@@ -1187,7 +1191,7 @@ by the IB syllabus, because the guide is the authoritative classification.
 
 A phone is not a narrow desktop, so the header is rebuilt rather than shrunk. Below 880px it
 becomes four objects in a fixed order (logo, timer, profile, menu), and the section navigation
-moves wholesale into a drawer grouped under Learn, Practise, Progress, Resources, IA, Teacher
+moves wholesale into a drawer grouped under Start, Explore, Practise, Progress, IA, Teacher
 and About. Every section in the build must appear in one of those groups; if one is ever added
 without being placed, it is appended to a **More** group rather than quietly becoming
 unreachable, and a self-test checks that.
@@ -1216,7 +1220,7 @@ Storage is versioned (`AA_IB_ECONOMICS`, schema v6) with migration logic, so fut
 Six corrections applied at source in this release, each checked against the Economics guide held
 in the project rather than against memory:
 
-- **Five macroeconomic objectives, and external balance is not one of them.** The guide's
+- **Four macroeconomic objectives, plus government debt at HL, and external balance is not one of them.** The guide's
   macroeconomic objectives in 3.3 are low unemployment, a low and stable rate of inflation,
   sustainable economic growth, an equitable distribution of income, and, at HL, a sustainable
   level of government (national) debt. External balance appears in the guide as a goal of monetary
@@ -1305,7 +1309,7 @@ application.
 **Student progress stays on the device unless the student exports it.**
 
 No accounts, no sign-in, no analytics, no tracking pixels, no cookies set by this site, and no
-data transmitted anywhere. Export, import and reset are all in **Master → Your data**.
+data transmitted anywhere. Export, import and reset are all in **Settings → Take it with you**.
 
 This holds for everything added in this release. The video player is created only on a click and
 loaded from YouTube's privacy-enhanced domain; watching contacts YouTube, and nothing from this
