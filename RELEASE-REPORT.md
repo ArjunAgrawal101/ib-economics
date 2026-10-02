@@ -150,7 +150,9 @@ The audit found these faults, and every one dates from the first upload:
 - Event-marker labels and line labels overlapped on narrow charts.
 - The events timeline's tablist markup failed an accessibility check.
 
-All four are fixed.
+- Two examiner-guidance lines in the exam builder ("'Always' should be attacked directly") tripped the language self-test once the builder became reachable. They advise attacking an absolute rather than asserting one, and were reworded (`tools/migrations/2026-10-02-exam-guidance-wording.py`). The builder picks questions at random, so the failure showed only on some loads.
+
+All of these are fixed.
 
 ## N. Accessibility
 
@@ -179,7 +181,7 @@ No new load-time measurements were taken in this release.
 | selftest (2,058 checks) | pass |
 | events (new) | pass, 49 checks |
 | tabs (new) | pass; fails on the build before the fix |
-| overlap | pass after the label fixes in §M |
+| overlap, routes | failed on the first run after the tab repair (marker labels at 375–430 px; the exam-builder wording); both fixed and re-run, see §M |
 
 ## R. Documentation
 
