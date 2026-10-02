@@ -51,8 +51,7 @@ They are checked twice:
 
 ## 5. Remaining open items
 
-- **Exam DNA's "not a prediction" notice** appears on the heatmap only, not on every DNA surface as the README says.
-- **The "inquiry question" field** on economist profiles was not found in the rendered text of two profiles that were checked.
+- **Resolved after this audit:** the Exam DNA notice now appears on every DNA page. The economist inquiry question was always rendered, under the label *Investigate*, and is now labelled *An inquiry question*. Both are checked by `tests/notices.mjs`.
 - **Unverifiable from here:** the live YouTube feed, the Vercel deployment, and where the printable calculation sheet is offered.
 
 ## 6. Feature matrix
@@ -118,9 +117,9 @@ The audit's categories:
 | Ten-minute revision run | Yes | No | Yes | tab heading sweep (all 191 tabs) | README.md > What it contains (Practise) | C → Fixed in this release (tests/tabs.mjs) |
 | Workspace 'Revision priority' tab | Yes | No | Yes | tab heading sweep (all 191 tabs); click | undocumented tab (SECTIONS) | C → Fixed in this release (tests/tabs.mjs) |
 | Annotated exemplar library | Yes | Partly | Yes | globals evaluated in page | README.md > What it contains (Teacher tools) | D → README corrected |
-| Exam DNA: no prediction notice on every surface | Yes | Partly | Yes | nav() render + innerText regex | README.md > Exam DNA | D → Open |
+| Exam DNA: no prediction notice on every surface | Yes | Partly | Yes | nav() render + innerText regex | README.md > Exam DNA | D → Fixed after the audit (tests/notices.mjs) |
 | Media room: every video, diagram, map, case and printable in one filterable place | Yes | Partly | Yes | nav() render + innerText regex | README.md > What it contains (Media room) | D → README corrected |
-| Profile fields: problem, ideas, contribution, assumptions, influence, criticisms, why it matters, misreading, inquiry question, works/prizes, links | Yes | Partly | Yes | nav() render + innerText regex | README.md > Economists and ideas | D → Open |
+| Profile fields: problem, ideas, contribution, assumptions, influence, criticisms, why it matters, misreading, inquiry question, works/prizes, links | Yes | Partly | Yes | nav() render + innerText regex | README.md > Economists and ideas | D → Fixed after the audit (tests/notices.mjs) |
 | Macroeconomic objectives: 'five' vs guide's four (+HL debt) | Yes | Yes | Duplicated | doc compare | README.md > Accuracy corrections; docs/releases/2026-09-26-release-report.md §9 | H → README corrected |
 | Supervisor gates | Yes | Yes | Duplicated | tab heading sweep (all 191 tabs) | README.md > What it contains (IA) | H → Fixed in this release (tests/tabs.mjs) |
 | 151 routes | Yes | Yes | Yes | globals evaluated in page | README.md > Technology | I → README corrected |

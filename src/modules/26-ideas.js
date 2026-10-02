@@ -37,7 +37,7 @@ function econPage(id){const D=ideasData(),ix=IDEASIDX.economists.find(e=>e.id===
    ${blk("Why it still matters",`<p>${esc(e.modern)}</p>`)}
   </div><aside class="id-side">
    <div class="id-box"><div class="eb">A common misreading</div><p class="sm mt1">${esc(e.misread)}</p></div>
-   <div class="id-box"><div class="eb">Investigate</div><p class="sm mt1">${esc(e.question)}</p></div>
+   <div class="id-box"><div class="eb">An inquiry question</div><p class="sm mt1">${esc(e.question)}</p></div>
    <div class="id-box"><div class="eb">Key works</div><ul class="ls-list mt1">${e.works.map(w=>`<li><em>${esc(w.t)}</em> (${esc(String(w.y))})</li>`).join("")}</ul></div>
    <div class="id-box"><div class="eb">In the course</div><div class="id-chips mt1">${e.subs.map(idSubBtn).join("")}</div></div>
    <div class="id-box"><div class="eb">Key concepts and terms</div><div class="id-chips mt1">${e.kc.map(k=>`<span class="kcchip">${esc(k)}</span>`).join("")}${e.terms.map(idTermBtn).join("")}</div></div>

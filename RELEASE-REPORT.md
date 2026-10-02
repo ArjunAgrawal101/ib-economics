@@ -21,7 +21,7 @@ It checked 222 documented claims:
 - 23 were broken or unreachable features, all now fixed (§M).
 - 20 were wrong statements in the README, now corrected.
 - 4 were statements in earlier release reports, now superseded.
-- 2 remain open (§T).
+- 2 were incomplete; both are fixed (§T, "Resolved after the first report").
 - 3 could not be verified from this environment.
 
 ## C. Git history and recovered work
@@ -199,10 +199,13 @@ No new load-time measurements were taken in this release.
 
 ## T. Known limitations
 
-- **Exam DNA's "not a prediction" notice** appears on the heatmap only.
-- **The "inquiry question" field** on economist profiles did not render on the two profiles checked.
 - **Event charts before 1987 have no oil price.** The oil-shock events chart output, inflation, real share prices and yields instead.
 - **Cambridge and civil-services pathways** wait for their official syllabus documents.
+
+### Resolved after the first report
+
+- **Exam DNA's "not a prediction" notice** was on the heatmap only. Every Exam DNA page now opens with a *Historical, not predictive* notice, worded for that page and giving the number of analysed sessions. It appears once per page (`src/modules/34-dna-notice.js`; `tests/notices.mjs`).
+- **The inquiry question on economist profiles** was always rendered, under the label *Investigate*. The audit's search for "inquiry question" therefore missed it. It is now labelled *An inquiry question*, as the README describes, and `tests/notices.mjs` checks it on all sixteen profiles.
 
 ## U. Not done
 
@@ -215,7 +218,6 @@ No new load-time measurements were taken in this release.
 1. Open a pull request to `main` and check the preview.
 2. Check the Cambridge 9708 and UPSC documents, then add syllabus maps.
 3. Add events: the 1982 debt crisis, Japan's lost decade and the 2022 inflation.
-4. Put the "not a prediction" notice on every Exam DNA surface.
 
 ## W. Manual tests still required
 
