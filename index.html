@@ -2604,6 +2604,57 @@ nav.ev-rail ol>li>a.on{color:var(--obs);border-bottom-color:#7A2436;font-weight:
 .in-themes{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}.pa-h3{font:600 15px var(--sans,system-ui);border-top:2px solid #C9AE72;padding-top:8px}
 @media (max-width:860px){.pa-band,.pa-lead{grid-template-columns:1fr}}
 .ev-ctab th,.ev-ctab td{text-align:left;vertical-align:top}.ev-ctab tbody th[scope=row]{width:140px;font-size:13px;color:#5E6670}.ev-ctab{min-width:640px}
+/* ── Tutorials ─────────────────────────────────────────────── */
+.tu-hero-price{display:flex;align-items:baseline;gap:10px;color:#fff}
+.tu-hero-price .cur{font-family:var(--dsp);font-size:clamp(22px,2.4vw,30px);color:rgba(255,255,255,.6)}
+.tu-hero-price .amt{font-family:var(--dsp);font-size:clamp(52px,6vw,84px);line-height:.9;letter-spacing:-.03em}
+.tu-hero-price .per{font-size:14px;line-height:1.35;color:rgba(255,255,255,.72);margin-left:6px}
+.tu-why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid var(--hair)}
+.tu-whyc{padding:22px 22px 24px 0;border-bottom:1px solid var(--hair)}.tu-whyc .mn{font-size:12px;color:var(--bur);font-weight:600}.tu-whyc h3{margin-top:8px}
+.tu-how{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:20px 32px}
+.tu-how>div{padding-left:14px;border-left:2px solid var(--bur)}
+.tu-hour{display:flex;gap:4px;margin-top:8px}
+.tu-seg{min-width:0;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.tu-seg .tu-bar{height:8px;background:#2F6FB3;border-radius:1px;margin-bottom:6px}
+.tu-seg:nth-child(2) .tu-bar{background:#1F8C70}.tu-seg:nth-child(3) .tu-bar{background:#C77A2A}.tu-seg:nth-child(4) .tu-bar{background:#7357B8}.tu-seg:nth-child(5) .tu-bar{background:#7A2436}
+.tu-seg .mn{font-size:12px;color:var(--tx-3)}
+.tu-curve{display:block;width:100%;height:56px;margin:-6px 0 6px}.tu-curve path{fill:none;stroke:var(--hair-2,#ddd6c6);stroke-width:1.5}
+.tu-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
+.tu-card .tu-c{display:flex;flex-direction:column;flex:1}
+.tu-card.lead{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr) minmax(0,1fr);column-gap:clamp(20px,3vw,44px)}
+.tu-card.lead .tu-b{padding-top:6px}
+@media (max-width:1100px){.tu-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.tu-card.lead{display:flex}}
+@media (max-width:640px){.tu-grid{grid-template-columns:1fr}}
+.tu-card{display:flex;flex-direction:column;padding:22px 22px 20px;border:1px solid var(--hair);background:var(--white,#fff);scroll-margin-top:110px}
+.tu-card.lead{border-color:#7A2436;box-shadow:inset 0 3px 0 #7A2436}
+.tu-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tu-ic{width:26px;height:26px;fill:none;stroke:#7A2436;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tu-tag{font:600 11px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--tx-3)}
+.tu-n{margin-top:14px;font-size:21px}
+.tu-price{display:flex;align-items:baseline;gap:6px;margin-top:10px}
+.tu-price .cur{font-family:var(--dsp);font-size:20px;color:var(--tx-3)}.tu-price .amt{font-family:var(--dsp);font-size:52px;line-height:.95;letter-spacing:-.02em}
+.tu-price .per{font-size:13px;color:var(--tx-3)}
+.tu-terms{display:flex;gap:22px;margin:12px 0 0;padding:10px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.tu-terms dt{font:600 11px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--tx-4)}.tu-terms dd{margin:2px 0 0;font-weight:600}
+.tu-what{margin-top:12px}
+.tu-k{font:600 11px var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--tx-4);margin-top:14px}
+.tu-do{margin:6px 0 0;padding-left:18px;font-size:14px;line-height:1.55}
+.tu-card .tu-cta{margin-top:auto}.tu-card .tu-c>p.sm{margin-bottom:18px}
+.tu-fit td,.tu-fit th{text-align:left;vertical-align:top}
+.tu-journey{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;counter-reset:none}
+.tu-journey li{position:relative;display:flex;flex-direction:column;gap:4px;padding:16px 18px 16px 0;border-top:2px solid var(--hair)}
+.tu-journey li:first-child{border-top-color:#7A2436}
+.tu-journey .mn{font-size:12px;color:var(--bur);font-weight:600}
+.tu-faq details{border-top:1px solid var(--hair)}.tu-faq details:last-child{border-bottom:1px solid var(--hair)}
+.tu-faq summary{cursor:pointer;min-height:48px;display:flex;align-items:center;font-weight:600;list-style:none;padding:10px 28px 10px 0;position:relative}
+.tu-faq summary::-webkit-details-marker{display:none}
+.tu-faq summary::after{content:"+";position:absolute;right:4px;font-weight:400;font-size:20px;color:var(--bur)}
+.tu-faq details[open] summary::after{content:"–"}
+.tu-faq summary:focus-visible{outline:2px solid var(--brs);outline-offset:2px}
+.tu-faq details p{padding:0 0 16px;max-width:68ch}
+@media (max-width:640px){.tu-hour{flex-direction:column}.tu-seg{flex:none!important}.tu-why .tu-whyc{padding-right:0}}
+@media print{.tu-cta,.tu-curve{display:none}.tu-card{break-inside:avoid}}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -5171,7 +5222,7 @@ VIEWS.home=()=>{
    <div class="split" style="align-items:center">
     <div><div class="kicker">Learn with Arjun Agrawal</div>
      <h2 class="mt3" style="max-width:20ch;color:#fff">Work through the platform independently. Go deeper with personalised sessions.</h2>
-     <p class="sm mt3" style="max-width:56ch">One-to-one IB DP Economics sessions of 90 minutes, across the full syllabus, Papers 1, 2 and 3, the internal assessment and the extended essay: taught the same way this system is built.</p>
+     <p class="sm mt3" style="max-width:56ch">One-to-one IB DP Economics sessions of one hour, from US$20, across the full syllabus, Papers 1, 2 and 3, the internal assessment and the extended essay: taught the same way this system is built.</p>
      <div class="row mt4"><button class="btn a" onclick="nav('tutorials')">Economics tutorials →</button>
       <button class="btn on-ink" onclick="nav('about')">About Arjun</button></div></div>
     <div style="text-align:right"><div style="width:min(240px,60%);height:74px;margin-left:auto;background:var(--lg-rev) right center/contain no-repeat" role="img" aria-label="Arjun Agrawal"></div>
@@ -15793,14 +15844,14 @@ function contactCard(o){
   <p class="sm mt2">One-to-one sessions, and questions about anything on this platform. Messages go to Arjun directly; this site stores nothing and sends nothing on your behalf.</p>
   <div class="clinks mt3">${CONTACT.map(c=>`<a class="clink" href="${c.href}" target="_blank" rel="noopener noreferrer" aria-label="${esc(c.n)}: ${esc(c.v)} (opens in a new tab)">
     ${contactIcon(c)}<span class="n">${c.n}</span><span class="v">${esc(c.v)}</span></a>`).join("")}</div>
-  <p class="xs mt3">US$20 per 90-minute one-to-one online session. Group discounts available.</p></div>`;
+  <p class="xs mt3">US$20 per one-hour one-to-one online session, any topic. IA, EE, Marathon Revision and Exam Practice packages are on the Tutorials page.</p></div>`;
 }
 function contactDrawer(){
  drawer(`<div class="eb">Connect with Arjun</div><h3 class="mt1">IB DP Economics</h3>
   <div class="clinks mt4" style="grid-template-columns:1fr">${CONTACT.map(c=>`<a class="clink" href="${c.href}" target="_blank" rel="noopener noreferrer" aria-label="${esc(c.n)}: ${esc(c.v)} (opens in a new tab)">
     ${contactIcon(c)}<span class="n">${c.n}</span><span class="v">${esc(c.v)}</span></a>`).join("")}</div>
   <p class="sm mt4">Sessions cover the full syllabus, revision, Papers 1, 2 and 3, the internal assessment and the extended essay. Guidance, coaching and feedback, not ghostwriting.</p>
-  <p class="xs mt3">US$20 per 90-minute one-to-one online session. Group discounts available.</p>
+  <p class="xs mt3">US$20 per one-hour one-to-one online session, any topic. IA, EE, Marathon Revision and Exam Practice packages are on the Tutorials page.</p>
   <p class="xs mt3">An independent educational resource by Arjun Agrawal. Not affiliated with, endorsed by, or produced by the International Baccalaureate Organization.</p>`);
 }
 
@@ -31754,7 +31805,7 @@ QAREPORT.length=0;
  {area:"Contact links",re:/^Contact · |^Audit · every external link|^Audit · every asset/,
   what:"That the four contact identifiers are exactly as supplied, that no other account has been invented, and that every external link and every asset resolves."},
  {area:"Tutorials",re:/^Tutorials/,
-  what:"That the tutorial terms are stated exactly as supplied (US$20 per 90-minute one-to-one online session, with group discounts), and that no testimonial, rating, success rate or guarantee appears anywhere."},
+  what:"That the tutorial terms are stated exactly as supplied (a US$20 one-hour session; IA support US$100 for six one-hour sessions; EE supervision support US$150; Marathon Revision US$300 for twenty one-hour sessions; Exam Practice US$200 for twelve one-hour sessions), and that no testimonial, rating, success rate or guarantee appears anywhere."},
  {area:"Branding",re:/^Brand|^About/,
   what:"That the Arjun Agrawal identity resolves as a rendered asset in the header, the footer and every printed document, and that personalisation sits beneath it rather than replacing it."},
  {area:"Accessibility",re:/^Accessibility · /,
@@ -40515,6 +40566,153 @@ EXTRA_SUITES.push(DNAHSUITE);
 QAREPORT.push({area:"Exam DNA notice and profiles",re:/^(Exam DNA · every DNA page|Exam DNA · the notice appears|Profiles · )/,
  what:"That every Exam DNA page, not only the heatmap, states once that it describes the supplied past papers and is not a prediction tool, and that every economist profile shows its inquiry question."});
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   TUTORIALS · the commercial page, rebuilt for the final release
+   A narrative rather than a price list: who it is for, how sessions are
+   taught, what an hour looks like, the five pathways with the exact terms as
+   supplied, how to choose, how to start, and honest answers to the usual
+   questions. Enquiries go through the existing channels only (email,
+   WhatsApp, Instagram, LinkedIn): there is no booking system and none is
+   implied. No testimonial, rating, outcome or guarantee appears.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const TUTP=[
+ {k:"regular",n:"Regular sessions",price:20,unit:"per session",sessions:"1 session",len:"1 hour",tag:"Start here",
+  what:"Personalised Economics sessions focused on the topic, concept or area where the student needs support.",
+  who:"Any student who wants help with a specific topic, a diagram, a paper or a piece of work.",
+  does:["Any topic of your choice","Concepts rebuilt until you can explain them unaided","Diagrams drawn, labelled and used in an argument","Questions worked through together"],
+  expect:"We start from your own work or question, and you leave with one clear next step."},
+ {k:"ia",n:"IA support",price:100,unit:"for the package",sessions:"6 sessions",len:"1 hour each",tag:"Internal assessment",
+  what:"Structured guidance through writing your three commentaries.",
+  who:"Students working on the internal assessment portfolio.",
+  does:["Understanding the task and the criteria","Selecting and using appropriate concepts","Analysis and evaluation","Structure, feedback and refinement of your drafts"],
+  expect:"Guidance on your work at each stage. The commentaries remain entirely your own: I do not write commentaries."},
+ {k:"ee",n:"Economics EE supervisor support",price:150,unit:"for the support",sessions:"Agreed at enquiry",len:"",tag:"Extended essay",
+  what:"Structured academic supervision and guidance for an Economics extended essay.",
+  who:"Students writing, or about to start, an Economics extended essay.",
+  does:["Topic and research question development","The economic theory that will carry the essay","Research direction and structure","Feedback on analysis, evaluation and drafts"],
+  expect:"Academic supervision and guidance, not ghostwriting. The schedule of meetings is agreed when you enquire."},
+ {k:"marathon",n:"Marathon Revision",price:300,unit:"for the package",sessions:"20 sessions",len:"1 hour each",tag:"Before external assessment",
+  what:"A structured, intensive revision pathway: entire syllabus covered before External Assessment.",
+  who:"Students who want the whole course revisited in order before their exams.",
+  does:["Entire syllabus, unit by unit","Concept reinforcement","Diagrams and application","Evaluation and exam preparation"],
+  expect:"A planned sequence across twenty hours, adjusted to where your gaps are."},
+ {k:"exam",n:"Exam Practice",price:200,unit:"for the package",sessions:"12 sessions",len:"1 hour each",tag:"Questions only",
+  what:"Solving and discussing exam-style questions: Paper 1, Paper 2 and Paper 3.",
+  who:"Students who know the content and want to turn it into marks.",
+  does:["Paper 1 extended response","Paper 2 data response","Paper 3 policy paper (HL)","Every answer discussed against the markbands"],
+  expect:"Questions only: we write, read and improve answers rather than re-teach topics."}];
+const TUTWHY=[
+ ["The concept will not click","A mechanism you can recognise but not explain. We rebuild it step by step until you can state it without notes."],
+ ["Content known, marks lost","Answers that describe instead of analyse, or evaluate with a list. We work on the reasoning examiners reward."],
+ ["The IA or the EE","Choosing an article or a question, using theory properly, and knowing what good evaluation looks like."],
+ ["Exams are close","A plan for the time left: what to revise, how to practise, and how to write under time."]];
+const TUTHOW=[
+ ["Understanding first","A mechanism you can explain beats a definition you can recite."],
+ ["Diagrams that argue","Every diagram is drawn, labelled and used in the answer, not decorated."],
+ ["Real-world application","Concepts are attached to markets and policies that exist, with sourced figures."],
+ ["Exam awareness","Answers are written against the published markbands and read the way an examiner reads them."],
+ ["Specific feedback","Which sentence does what, where the reasoning stops, and what to change next time."]];
+const TUTHOUR=[["5","Diagnose","Start from a piece of your work or a question"],["15","Concept","Rebuild the mechanism until it is yours"],
+ ["15","Diagram and application","Draw it, label it, attach it to a real case"],["15","Practice","Write or solve under light time pressure"],
+ ["10","Feedback and next step","What improved, and one thing to do next"]];
+const TUTFAQ=[
+ ["Who are the sessions for?","Mainly IB Diploma Programme Economics students, SL and HL. Regular sessions can also help other Economics students with a specific topic: tell me your course when you enquire."],
+ ["Do you teach SL and HL?","Yes. HL-only material, including Paper 3, is covered for HL students."],
+ ["Can I book a single session?","Yes. A regular session is US$20 for one hour, on any topic of your choice."],
+ ["How long is a session?","One hour, one-to-one, online."],
+ ["What is covered in a regular session?","Whatever you need: one concept, a diagram, a past-paper question, or a piece of your own writing."],
+ ["How does IA support work?","Six one-hour sessions (US$100) of structured guidance through your three commentaries: the task, concepts, analysis, evaluation, structure, feedback and refinement. You write the commentaries; I do not write commentaries."],
+ ["What does EE supervision include?","Academic supervision and guidance for an Economics extended essay (US$150): research question, theory, research direction, structure and feedback on drafts. It is guidance rather than ghostwriting, and the meeting schedule is agreed when you enquire."],
+ ["What is Marathon Revision?","Twenty one-hour sessions (US$300) covering the entire syllabus before External Assessment: concepts, diagrams, application, evaluation and exam preparation."],
+ ["What happens in Exam Practice?","Twelve one-hour sessions (US$200) of questions only, across Paper 1, Paper 2 and Paper 3: we solve them and discuss the answers."],
+ ["Can sessions focus on one specific topic?","Yes. That is what a regular session is for."],
+ ["How do I arrange a session?","Send an email or a WhatsApp message with your level (SL or HL), your school and what you would like help with. I reply personally with available times; there is no automated booking."]];
+function tutMail(subject){return "mailto:"+TUT.email+"?subject="+encodeURIComponent("IB Economics enquiry: "+subject)
+ +"&body="+encodeURIComponent("Hello Arjun,\n\nI would like to enquire about: "+subject+".\n\nSL or HL: \nSchool: \nWhat I would like help with: \nPreferred days/times: \n\nThank you.")}
+const TUTICON={regular:'<path d="M4 20 L20 4 M4 5 C10 9 14 13 20 20"/>',ia:'<path d="M5 3h10l4 4v14H5z M15 3v4h4 M8 12h8 M8 16h6"/>',
+ ee:'<path d="M4 19V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z M8 7h7"/>',marathon:'<path d="M3 17l5-5 4 4 8-8 M14 8h6v6"/>',exam:'<path d="M9 4h6v3H9z M6 6H5v15h14V6h-1 M8 12l2 2 5-5"/>'};
+function tutIcon(k){return `<svg class="tu-ic" viewBox="0 0 24 24" aria-hidden="true">${TUTICON[k]}</svg>`}
+function tutCard(p){return `<article class="tu-card ${p.k==="regular"?"lead":""}" id="tu-${p.k}" aria-labelledby="tu-${p.k}-h">
+  <div class="tu-a"><div class="tu-top">${tutIcon(p.k)}<span class="tu-tag">${esc(p.tag)}</span></div>
+   <h3 class="tu-n" id="tu-${p.k}-h">${esc(p.n)}</h3>
+   <div class="tu-price"><span class="cur">US$</span><span class="amt">${p.price}</span><span class="per">${esc(p.unit)}</span></div>
+   <dl class="tu-terms"><div><dt>Sessions</dt><dd>${esc(p.sessions)}</dd></div>${p.len?`<div><dt>Length</dt><dd>${esc(p.len)}</dd></div>`:""}</dl></div>
+  <div class="tu-b"><p class="sm tu-what">${esc(p.what)}</p>
+   <div class="tu-k">For</div><p class="sm">${esc(p.who)}</p></div>
+  <div class="tu-c"><div class="tu-k">What we do</div><ul class="tu-do">${p.does.map(d=>`<li>${esc(d)}</li>`).join("")}</ul>
+   <div class="tu-k">What to expect</div><p class="sm">${esc(p.expect)}</p>
+   <a class="btn ${p.k==="regular"?"a":"gh"} w tu-cta" href="${tutMail(p.n)}">${p.k==="regular"?"Book your first session":"Ask about "+esc(p.n)}</a></div></article>`}
+function tutorialsPage(){
+ const curve=`<svg class="tu-curve" viewBox="0 0 600 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70 C150 70 200 20 300 20 S450 60 600 10"/></svg>`;
+ return `<section class="hero tu-hero">${heroPlot()}<div class="wrap full in">
+   <div class="kicker">Economics tutorials · Arjun Agrawal</div>
+   <h1 class="mt3" style="max-width:13ch">IB Economics, taught one to one.</h1>
+   <p class="lede mt3" style="max-width:56ch">Understand the concepts. Master the diagrams. Think like an economist. Prepare with purpose. Personalised sessions for SL and HL students, from a single topic to the whole course.</p>
+   <div class="tu-hero-price mt4"><span class="cur">US$</span><span class="amt">20</span><span class="per">one-hour session<br>any topic of your choice</span></div>
+   <div class="row mt4" style="gap:14px"><a class="btn a lg" href="${tutMail("Regular session")}">Enquire about sessions →</a>
+    <button class="btn on-ink lg" onclick="document.getElementById('tu-paths').scrollIntoView({behavior:'smooth'})">See the five pathways</button></div>
+   <div class="statrow mt5" style="max-width:640px">
+    <div class="stat"><span class="k">Session</span><span class="v" style="font-size:26px">1 hour</span><span class="d">one-to-one, online</span></div>
+    <div class="stat"><span class="k">Levels</span><span class="v" style="font-size:26px">SL · HL</span><span class="d">Papers 1, 2 and 3</span></div>
+    <div class="stat"><span class="k">Pathways</span><span class="v" style="font-size:26px">Five</span><span class="d">from US$20</span></div></div>
+  </div></section>
+
+ <div class="wrap full sec">${H.head("01","Why students get in touch","")}
+  <div class="tu-why">${TUTWHY.map(([t,d],i)=>`<div class="tu-whyc"><span class="mn">${String(i+1).padStart(2,"0")}</span><h3>${esc(t)}</h3><p class="sm mt2">${esc(d)}</p></div>`).join("")}</div></div>
+
+ <div class="wrap full sec t">${H.head("02","How I teach","The same way this platform is built")}
+  <div class="tu-how">${TUTHOW.map(([t,d])=>`<div><h3>${esc(t)}</h3><p class="sm mt1">${esc(d)}</p></div>`).join("")}</div>
+  <p class="sm mt4" style="max-width:64ch">Everything on this site, from the concept pages to the labs and the examiner, is how I teach a lesson, written down. Sessions take it to the specific things your own work shows.</p></div>
+
+ <div class="wrap full sec t">${H.head("03","What an hour looks like","A typical shape; it changes with what you need")}
+  <div class="tu-hour" role="list">${TUTHOUR.map(([m,h,d])=>`<div class="tu-seg" role="listitem" style="flex:${m}"><div class="tu-bar"></div><span class="mn">${m} min</span><strong>${esc(h)}</strong><span class="xs">${esc(d)}</span></div>`).join("")}</div></div>
+
+ <div class="wrap full sec t" id="tu-paths">${H.head("04","Pathways and fees","Exact terms; all sessions are one-to-one and online")}
+  ${curve}
+  <div class="tu-grid">${TUTP.map(tutCard).join("")}</div>
+  <div class="note g mt5"><div class="t">A clear line</div>
+   <p class="sm">IA and extended essay work is guidance rather than ghostwriting: coaching on your article or question, theory, diagrams, structure, analysis, evaluation and feedback on your drafts. I do not write commentaries or essays for students, and no session produces text for you to submit.</p></div></div>
+
+ <div class="wrap full sec t">${H.head("05","Which pathway fits?","")}
+  <div class="scrollx" tabindex="0" role="region" aria-label="Which pathway fits"><table class="t tu-fit"><thead><tr><th scope="col">If you…</th><th scope="col">Start with</th></tr></thead><tbody>
+   ${[["need help with one topic, diagram or question","Regular sessions","regular"],["are writing the three IA commentaries","IA support","ia"],["are writing an Economics extended essay","EE supervisor support","ee"],
+      ["want the entire syllabus revisited before your exams","Marathon Revision","marathon"],["know the content and want to practise papers","Exam Practice","exam"],["are not sure","A regular session first","regular"]]
+     .map(([a,b,k])=>`<tr><td>${esc(a)}</td><td><a class="lnk" href="#tu-${k}" onclick="event.preventDefault();document.getElementById('tu-${k}').scrollIntoView({behavior:'smooth',block:'center'})">${esc(b)}</a></td></tr>`).join("")}
+  </tbody></table></div></div>
+
+ <div class="wrap full sec t">${H.head("06","How to get started","")}
+  <ol class="tu-journey">${[["Identify the need","A topic, a paper, the IA, the EE or the whole course."],["Choose the pathway","Use the table above, or start with one session."],
+   ["Enquire","Email or WhatsApp with your level, school and what you need."],["Learn","One-to-one, online, from your own work."],["Practise","Questions and writing between sessions."],["Refine","Feedback, then the next step."]]
+   .map(([t,d],i)=>`<li><span class="mn">${i+1}</span><strong>${esc(t)}</strong><span class="xs">${esc(d)}</span></li>`).join("")}</ol></div>
+
+ <div class="wrap edit sec t">${H.head("07","Questions","")}
+  <div class="tu-faq">${TUTFAQ.map(([q,a])=>`<details><summary>${esc(q)}</summary><p class="sm">${esc(a)}</p></details>`).join("")}</div>
+  <p class="xs mt4" style="max-width:70ch">There are no testimonials, ratings, student counts or grade claims on this page, because none could be verified by you. What you can check is the platform itself: open any page and you are looking at how I teach.</p></div>
+
+ <div class="wrap edit sec t"><div class="panel ink tu-close" style="padding:clamp(28px,4vw,56px)">
+  <div class="kicker">Ask about the right pathway</div>
+  <h2 class="mt3" style="color:#fff;max-width:20ch">Start with one session, or tell me what you need.</h2>
+  <p class="sm mt3" style="max-width:56ch">Write with your level, your school and what you would like help with. I reply personally with available times.</p>
+  <div class="row mt4" style="gap:12px"><a class="btn a" href="${tutMail("Regular session")}">Email Arjun →</a><a class="btn on-ink" href="https://wa.me/917092844945" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+   <button class="btn on-ink" onclick="nav('about')">About Arjun</button></div>
+  <p class="xs mt3" style="color:rgba(255,255,255,.6)">${esc(TUT.email)} · no booking system, no deposit: enquiries are answered personally.</p></div></div>
+ <section class="sec t"><div class="wrap">${contactCard()}</div></section>`}
+VIEWS.tutorials=tutorialsPage;
+
+function TUTSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){det=e.message}out.push({n,ok:!!ok,detail:det})};
+ const h=VIEWS.tutorials(),t=h.replace(/<[^>]+>/g," ").replace(/\s+/g," ");
+ T("Tutorials · the five prices are exactly as supplied",()=>{const want={regular:20,ia:100,ee:150,marathon:300,exam:200};return TUTP.length===5&&TUTP.every(p=>want[p.k]===p.price)});
+ T("Tutorials · session counts and lengths are exactly as supplied",()=>{const m=Object.fromEntries(TUTP.map(p=>[p.k,p]));
+   return m.regular.len==="1 hour"&&m.ia.sessions==="6 sessions"&&m.ia.len==="1 hour each"&&m.marathon.sessions==="20 sessions"&&m.marathon.len==="1 hour each"&&m.exam.sessions==="12 sessions"&&m.exam.len==="1 hour each"&&!m.ee.len});
+ T("Tutorials · no other price appears on the page",()=>{const prices=[...t.matchAll(/US\$ ?(\d+)/g)].map(m=>+m[1]);return prices.length>0&&prices.every(v=>[20,100,150,200,300].includes(v))});
+ T("Tutorials · no session is described as longer than an hour",()=>!/90[- ]min|two-hour|2-hour/i.test(t));
+ T("Tutorials · every pathway has its own enquiry link to the real address",()=>TUTP.every(p=>h.includes(tutMail(p.n).replace(/&/g,"&amp;"))||h.includes(tutMail(p.n))));
+ T("Tutorials · no promise of grades, availability or results",()=>!/guarantee|guaranteed|100%|best teacher|limited (seats|places|slots)|hurry|book now before/i.test(t));
+ T("Tutorials · every question opens and closes as a native disclosure",()=>(h.match(/<details>/g)||[]).length===TUTFAQ.length);
+ return out}
+TUTSUITE.suiteName="Tutorials";
+EXTRA_SUITES.push(TUTSUITE);
+
 /* ▓▓ RENAISSANCE:END ▓▓ */
 /* ═══════════════════════════════════════════════════════════════════════════
    PARTS 4, 39, 77, 110 · the navigation, settled after every section exists
@@ -40866,7 +41064,7 @@ function runQA(){
  A("Routing · an unknown hash such as the skip link's is ignored, and an assignment link opens home",
    routeParse("#main")===null&&routeParse("#/nowhere")===null&&routeParse("#assign=abc").v==="home");
  A("Routing · the address bar is left alone while the self-tests run",routeQuiet()===true);
- A("Brand · tutorials section is routed and priced",(()=>{const h=VIEWS.tutorials();return typeof VIEWS.tutorials==="function"&&/US\$/.test(h)&&/>20</.test(h)&&/90-minute/.test(h)&&!new RegExp("\\u20B9|60[- ]min").test(h)})());
+ A("Brand · tutorials section is routed and priced",(()=>{const h=VIEWS.tutorials();return typeof VIEWS.tutorials==="function"&&/US\$/.test(h)&&/>20</.test(h)&&/1 hour|one-hour/.test(h)&&!/90[- ]min/.test(h)&&!new RegExp("\\u20B9").test(h)})());
  A("Brand · tutorial CTA uses a real mailto to the supplied address",TUT.mailto.startsWith("mailto:arjun1agr@gmail.com"));
  A("Brand · no fabricated social proof on the tutorials page",(()=>{const h=VIEWS.tutorials();
    return !/guaranteed|limited seats|success rate|\d+\+ students|★|\d\.\d ?\/ ?5|hurry|only \d+ (places|slots)/i.test(h)
@@ -40932,7 +41130,7 @@ function runQA(){
     "Economics","Business Management","Global Politics","arjun1agr@gmail.com"].every(x=>h.includes(x))})());
  A("Tutorials · every element of the offer is present",(()=>{const h=VIEWS.tutorials();
    return ["Entire syllabus","Revision","Paper 1","Paper 2","Paper 3","Internal assessment","Extended essay",
-    "90 min","One-to-one","Group discounts","arjun1agr@gmail.com"].every(x=>h.includes(x))})());
+    "One-to-one","arjun1agr@gmail.com"].every(x=>h.includes(x))})());
  A("Tutorials · no ghostwriting is offered",/I do not write commentaries/.test(VIEWS.tutorials())&&/guidance rather than ghostwriting/.test(VIEWS.tutorials()));
  A("Brand · subject identities are drawn, not stock imagery",SUBJ.length===3&&SUBJ.every(x=>x.art.startsWith("<svg")));
  A("About · academic background and professional experience rendered as supplied",ABOUT.journey.length===5&&/BLISS/.test(JSON.stringify(ABOUT.journey))&&/Fergusson/.test(JSON.stringify(ABOUT.journey))&&/St\. Stephen/.test(JSON.stringify(ABOUT.journey)));
