@@ -40133,9 +40133,9 @@ function dataExplorer(){const D=dlData();if(!D)return dlLoading();const d=dlS(),
   <label>To<select onchange="dlS().y1=+this.value;save();render()">${years.filter(y=>y>y0).map(y=>`<option ${y===y1?"selected":""}>${y}</option>`).join("")}</select></label></div>
   <div class="dl-chips mt2" aria-label="Economies shown">${d.ents.map(c=>`<span class="dl-chip"><i style="background:${DLPAL[d.slots[c]||0]}"></i>${esc(dlEnt(c).name)}<button aria-label="Remove ${esc(dlEnt(c).name)}" onclick="const d=dlS();d.ents=d.ents.filter(x=>x!=='${c}');delete d.slots['${c}'];save();render()">×</button></span>`).join("")}</div>
   <div class="dl-card mt3"><div class="dl-head"><h2 class="dl-t">${esc(ind.name)}</h2><span class="xs">${esc(ind.unit)}, ${y0}–${y1}</span></div>
-   ${dlMeta(ind,series,y0,y1,D)}
    ${series.length?dlChart("dl-main",series,{unit:ind.unit,title:ind.name,zero:ind.kind!=="index"})+dlLegend(series)+dlTable(series,ind.unit):`<p class="sm mt3">Choose at least one economy that has values for this indicator.</p>`}
    ${missing.length?`<p class="xs mt2">No values in this source for ${missing.map(c=>esc(dlEnt(c).name)).join(", ")}.</p>`:""}
+   ${dlMeta(ind,series,y0,y1,D)}
    ${dlSrc(ind,D.meta.retrieved)}</div>
   <div class="dl-read mt4"><div><div class="eb">What the numbers show</div><ul class="dl-facts mt2">${dlFacts(ind,series)}</ul><p class="xs mt2">Computed from the values on the chart, nothing more.</p></div>
    <div><div class="eb">Questions an economist would ask</div><ul class="ls-list mt2">${(DLQ[ind.id]||[]).map(q=>`<li>${esc(q)}</li>`).join("")}</ul>

@@ -83,6 +83,8 @@ With reduced motion, the reader sees a single still frame of the axes, the marke
 - Forward from another site: 5,013 ms.
 - Deep links skip the sequence.
 
+**The opening's 4.7 s margin.** In this test container, app-ready occasionally comes later than 4.7 s on `main` as well as here. Over 16 runs at 768 px it ranged 3,822–4,751 ms on `main` and 3,841–4,599 ms on this branch. When that happens the opening holds its last frame rather than uncovering an unready page, as designed.
+
 **Startup is unaffected.** App-ready takes 3.75–3.91 s on this branch and 3.65–3.83 s on `main`.
 
 ## 5. Economist changes
@@ -160,7 +162,7 @@ The page (`src/modules/35-tutorials.js`) is rebuilt as a narrative:
 
 ## 9. Data page changes
 
-The interaction model is unchanged. Above the chart, a strip shows what, where, when, unit and source.
+The interaction model is unchanged. Directly below the chart, a strip shows what, where, when, unit and source. It sits below rather than above so the chart stays above the fold.
 
 Beneath it:
 - why the indicator matters;
