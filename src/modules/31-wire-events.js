@@ -8,6 +8,10 @@ let EVOBS=null;
    browser to reveal a stuck element scrolls the WINDOW back to the rail's
    original place, which pulled readers up the page every time a chapter came
    into view (the "page will not scroll" fault). */
+/* reading progress on the rail: a passive listener that only paints a bar */
+let EVPROG=0;
+window.addEventListener("scroll",()=>{if(EVPROG)return;EVPROG=requestAnimationFrame(()=>{EVPROG=0;const bar=document.querySelector(".ev-railbar i"),b=document.querySelector(".ev-body");if(!bar||!b)return;
+ const r=b.getBoundingClientRect(),tot=r.height-innerHeight*0.6,done=Math.min(1,Math.max(0,(-r.top+innerHeight*0.3)/Math.max(1,tot)));bar.style.transform=`scaleX(${done.toFixed(3)})`})},{passive:true});
 function evRailReveal(a){const ol=a&&a.closest("ol");if(!ol)return;
  const l=a.offsetLeft,r=l+a.offsetWidth;
  if(l<ol.scrollLeft||r>ol.scrollLeft+ol.clientWidth)ol.scrollLeft=Math.max(0,l-(ol.clientWidth-a.offsetWidth)/2)}

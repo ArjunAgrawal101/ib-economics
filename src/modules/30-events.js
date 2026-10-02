@@ -57,6 +57,15 @@ function evChart(c,H2,i,id){
   ${dlChart(id,series,{unit,title,monthly,labels:series.length>1,zero:c.panel==="infl"||/growth|inflation/i.test(unit+title),marks:(c.marks||[]).map(m=>({at:monthly?String(m.at).length===4?m.at+"-01":m.at:+String(m.at).slice(0,4),label:m.label}))})}
   ${series.length>1?dlLegend(series):""}<p class="sm mt2"><strong>What to look for:</strong> ${esc(c.look)}</p>${dlTable(series,unit)}
   <p class="xs dl-src mt1"><strong>Source:</strong> ${esc(src.source)}. <a href="${esc(src.url)}" target="_blank" rel="noopener">Original</a> · <a href="${esc(src.pkg)}" target="_blank" rel="noopener">package</a> (${esc(src.licence)}). Retrieved ${esc(H2.meta.retrieved)}.${src.note?" "+esc(src.note):""}</p></figure>`}
+/* The story of the event in seven stages, each a door into its chapter. The
+   lines are drawn from the event's own text; the mechanism stays behind its
+   prediction gate, so the crisis stage shows the dated span, not the chain. */
+function evFirst(t,n){t=String(t||"");const m=t.match(/^(.+?[.!?])(\s|$)/);t=m?m[1]:t;return t.length>(n||150)?t.slice(0,(n||150)-1).replace(/\s\S*$/,"")+"…":t}
+function evSpine(e){const tl=e.timeline,p=e.policy[0]||{};
+ const st=[["before","Before",evFirst(e.before.p)],["trigger","Trigger",evFirst(e.trigger.p)],["world","Transmission",evFirst(e.transmission)],
+  ["timeline","Crisis",`${tl[0].d}: ${tl[0].t} … ${tl[tl.length-1].d}: ${tl[tl.length-1].t}`],["policy","Policy response",p.who?`${p.who} (${p.when}): ${evFirst(p.what,120)}`:""],
+  ["effects","Consequences",evFirst(e.short)],["effects","Long-term change",evFirst(e.long)]];
+ return `<section class="ev-spine" aria-labelledby="ev-spine-h"><h2 class="eb" id="ev-spine-h">The event in seven stages</h2><ol>${st.map(([k,h,d],i)=>`<li><a class="ev-sa" href="#ev-${k}" onclick="event.preventDefault();document.getElementById('ev-${k}').scrollIntoView({block:'start'})"><span class="ev-sn">${i+1}</span><strong>${h}</strong><span class="ev-sd">${esc(d)}</span></a></li>`).join("")}</ol></section>`}
 function evPage(id){const ix=EVENTSIDX.events.find(e=>e.id===id);if(!ix)return evArchive();const D=evData();
  if(!D)return H.pageHead("History",ix.title,ix.standfirst)+`<section class="sec"><div class="wrap">${evWait("this event","ev")}</div></section>`;
  const e=D.events.find(x=>x.id===id),st=evS(id),H2=evHist(),sec=(k,h,b,cls)=>`<section class="ev-ch ${cls||""}" id="ev-${k}" aria-labelledby="ev-${k}-h"><div class="ev-chn">${String(EVCH.findIndex(c=>c[0]===k)+1).padStart(2,"0")}</div><div class="ev-chb"><h2 class="ev-h2" id="ev-${k}-h">${h}</h2>${b}</div></section>`;
@@ -65,8 +74,9 @@ function evPage(id){const ix=EVENTSIDX.events.find(e=>e.id===id);if(!ix)return e
  return `<section class="ev-hero k-${esc(e.kind)}"><div class="wrap"><div class="ev-hk">${esc(EVKIND[e.kind]||e.kind)} · ${esc(e.region)} · ${esc(e.years)}</div>
   <h1 class="ev-h1">${esc(e.title)}</h1><p class="ev-sf2">${esc(e.standfirst)}</p><p class="ev-bq"><span class="eb">The question</span> ${esc(e.question)}</p>
   ${evAxis(EVENTSIDX.events,id)}</div></section>
- <nav class="ev-rail" aria-label="Chapters of this event"><div class="wrap"><ol>${EVCH.map(([k,n])=>`<li><a class="ev-ch" href="#ev-${k}" onclick="event.preventDefault();document.getElementById('ev-${k}').scrollIntoView({block:'start'})" data-ch="${k}">${n}</a></li>`).join("")}</ol></div></nav>
+ <nav class="ev-rail" aria-label="Chapters of this event"><div class="ev-railbar" aria-hidden="true"><i></i></div><div class="wrap"><ol>${EVCH.map(([k,n])=>`<li><a class="ev-ch" href="#ev-${k}" onclick="event.preventDefault();document.getElementById('ev-${k}').scrollIntoView({block:'start'})" data-ch="${k}">${n}</a></li>`).join("")}</ol></div></nav>
  <div class="wrap ev-body">
+ ${evSpine(e)}
  ${sec("before","The world before",`<p class="ev-p">${esc(e.before.p)}</p><ul class="ev-facts">${e.before.facts.map(f=>`<li>${evBadge(f.status)} ${esc(f.t)}</li>`).join("")}</ul>`)}
  ${sec("trigger","The trigger",`<p class="ev-p">${esc(e.trigger.p)} ${evBadge(e.trigger.status)}</p>`)}
  ${sec("timeline","Timeline",`<ol class="ev-tl" role="tablist" aria-label="Timeline of ${esc(e.title)}">${tl.map((t,i)=>`<li role="presentation"><button role="tab" aria-selected="${i===ti}" class="${i===ti?"on":i<ti?"past":""}" onclick="evS('${id}').tl=${i};save();lsSwap('ev-tlwrap',evTl('${id}'))"><span class="ev-tld">${esc(t.d)}</span><span class="ev-tlt">${esc(t.t)}</span></button></li>`).join("")}</ol>
