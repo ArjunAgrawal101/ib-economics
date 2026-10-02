@@ -1,0 +1,908 @@
+{
+ "schools": [
+  {
+   "id": "classical",
+   "name": "Classical political economy",
+   "span": "1776–1870s",
+   "summary": "Explained growth, value and distribution through labour, capital, land and competition, generally favouring freer trade over mercantilist restriction."
+  },
+  {
+   "id": "marxian",
+   "name": "Marxian economics",
+   "span": "1840s onwards",
+   "summary": "Reworked classical value theory into a critique of capitalism, focusing on class, exploitation, accumulation and recurring crises."
+  },
+  {
+   "id": "neoclassical",
+   "name": "Neoclassical (marginalist) economics",
+   "span": "1870s onwards",
+   "summary": "Analyses choices at the margin, with prices set by demand and supply; built the partial-equilibrium tools still used in introductory courses."
+  },
+  {
+   "id": "welfare",
+   "name": "Welfare economics",
+   "span": "1920s onwards",
+   "summary": "Asks how to judge whether one economic outcome is better than another, from social cost and externalities to social choice and capabilities."
+  },
+  {
+   "id": "keynesian",
+   "name": "Keynesian and post-Keynesian economics",
+   "span": "1930s onwards",
+   "summary": "Treats aggregate demand as a driver of output and employment, so economies can settle below full employment without policy action."
+  },
+  {
+   "id": "austrian",
+   "name": "Austrian school",
+   "span": "1870s onwards",
+   "summary": "Stresses dispersed knowledge, entrepreneurship and market processes over time; sceptical of central planning and discretionary macroeconomic management."
+  },
+  {
+   "id": "chicago",
+   "name": "Monetarism and the Chicago school",
+   "span": "1950s–1980s",
+   "summary": "Emphasised money supply, expectations and rules over discretion, and generally favoured markets over government intervention."
+  },
+  {
+   "id": "institutional",
+   "name": "Institutional economics and political economy",
+   "span": "1970s onwards",
+   "summary": "Explains economic outcomes through rules, property rights, norms and political power, including institutions that communities design for themselves."
+  },
+  {
+   "id": "information",
+   "name": "Information economics",
+   "span": "1970s onwards",
+   "summary": "Studies how asymmetric and imperfect information changes market outcomes, producing adverse selection, moral hazard, signalling and rationing."
+  },
+  {
+   "id": "experimental",
+   "name": "Experimental development economics",
+   "span": "1990s onwards",
+   "summary": "Uses randomised controlled trials and close fieldwork to test which specific policies improve the lives of poor households."
+  }
+ ],
+ "economists": {
+  "smith": {
+   "school": "classical",
+   "majorWork": {
+    "t": "An Inquiry into the Nature and Causes of the Wealth of Nations",
+    "y": 1776
+   },
+   "question": "What makes a nation wealthy, and why do some economies grow while others stagnate?",
+   "core": "Wealth lies in productive labour, not stocks of gold; specialisation and competitive exchange raise output, within a framework of law, institutions and moral norms.",
+   "chain": [
+    "Division of labour",
+    "Rising output per worker",
+    "Specialisation across producers",
+    "Limited by extent of the market",
+    "Case for wider trade"
+   ],
+   "chainNote": "This follows the order of Smith’s own argument in Book I. Linking it to later free-trade policy is a reading of his influence, not his prediction.",
+   "builtOn": [],
+   "challenged": [],
+   "outside": [],
+   "cambridge": [
+    "division of labour",
+    "specialisation",
+    "price mechanism",
+    "free trade",
+    "protectionism",
+    "role of government"
+   ],
+   "university": "History of economic thought and growth theory: specialisation and market size reappear in formal models of increasing returns and trade.",
+   "india": "",
+   "relevance": "Debates on global supply chains, competition policy and collusion, and the role of trust and norms in exchange still use questions Smith raised."
+  },
+  "ricardo": {
+   "school": "classical",
+   "majorWork": {
+    "t": "On the Principles of Political Economy and Taxation",
+    "y": 1817
+   },
+   "question": "How is national income divided between landlords, capitalists and workers, and how does trade affect it?",
+   "core": "Countries gain from trade by specialising according to comparative, not absolute, advantage; rising rents on scarce land can squeeze profits and slow growth.",
+   "chain": [
+    "Smith’s absolute advantage",
+    "Relative opportunity costs",
+    "Comparative advantage",
+    "Gains from specialisation and trade",
+    "Argument against the Corn Laws"
+   ],
+   "chainNote": "The chain traces Ricardo’s trade argument and its use in the Corn Law debate; the wine and cloth example is a simplified two-good illustration.",
+   "builtOn": [
+    {
+     "id": "smith",
+     "why": "Extended Smith’s absolute-advantage case for trade to comparative advantage."
+    }
+   ],
+   "challenged": [
+    {
+     "id": "malthus",
+     "why": "Disagreed with Malthus over the Corn Laws and whether a general glut of goods was possible."
+    }
+   ],
+   "outside": [],
+   "cambridge": [
+    "comparative advantage",
+    "absolute advantage",
+    "opportunity cost",
+    "free trade",
+    "protectionism",
+    "terms of trade"
+   ],
+   "university": "International trade theory: Ricardian models with many goods, technology differences and productivity, extended later by factor-endowment and new trade models.",
+   "india": "India’s post-1991 trade reforms, including the growth of services exports such as information technology, are often discussed using comparative advantage.",
+   "relevance": "Comparative advantage underpins debates about outsourcing, import competition, reshoring and industrial policy, many of which test the limits of his assumptions."
+  },
+  "malthus": {
+   "school": "classical",
+   "majorWork": {
+    "t": "An Essay on the Principle of Population",
+    "y": 1798
+   },
+   "question": "Can living standards rise for long if population tends to grow faster than food supply?",
+   "core": "Population tends to outrun food production, so without checks on births, gains in living standards are likely to be eroded.",
+   "chain": [
+    "Population grows geometrically",
+    "Food supply grows arithmetically",
+    "Pressure on subsistence",
+    "Preventive and positive checks",
+    "Pessimism about lasting improvement"
+   ],
+   "chainNote": "This is Malthus’s own reasoning. Later growth in farm productivity and falling birth rates are the main reasons historians treat it as conditional.",
+   "builtOn": [],
+   "challenged": [
+    {
+     "id": "ricardo",
+     "why": "Argued against Ricardo that a general glut of goods, from insufficient demand, was possible."
+    }
+   ],
+   "outside": [
+    {
+     "name": "William Godwin",
+     "rel": "challenged",
+     "why": "The Essay was written partly in reply to Godwin’s optimism about the improvement of society."
+    }
+   ],
+   "cambridge": [
+    "scarcity",
+    "population growth",
+    "diminishing returns",
+    "economic growth",
+    "sustainability"
+   ],
+   "university": "Economic history and growth theory: the ‘Malthusian trap’ appears in unified growth models explaining the long pre-industrial stagnation of living standards.",
+   "india": "",
+   "relevance": "Arguments about whether natural resources and environmental limits constrain long-run growth echo Malthus; critics stress prices, substitution and innovation."
+  },
+  "marx": {
+   "school": "marxian",
+   "majorWork": {
+    "t": "Capital, Volume I",
+    "y": 1867
+   },
+   "question": "Where do profits come from in a capitalist economy, and why is it prone to crisis?",
+   "core": "Profit arises from surplus value produced by labour; competition drives accumulation and mechanisation, producing inequality, concentration and recurring crises.",
+   "chain": [
+    "Classical labour theory of value",
+    "Labour power as a commodity",
+    "Surplus value and profit",
+    "Accumulation and mechanisation",
+    "Concentration and recurring crises"
+   ],
+   "chainNote": "This sets out Marx’s argument in Capital. Whether its predictions held, and how far planned economies reflected it, are separate and contested questions.",
+   "builtOn": [
+    {
+     "id": "ricardo",
+     "why": "Took Ricardo’s labour theory of value and class-based account of distribution as his starting point."
+    },
+    {
+     "id": "smith",
+     "why": "Read Smith closely and reworked the classical labour theory of value."
+    }
+   ],
+   "challenged": [
+    {
+     "id": "ricardo",
+     "why": "Argued classical economists treated capitalism’s categories as natural rather than historically specific."
+    }
+   ],
+   "outside": [
+    {
+     "name": "G. W. F. Hegel",
+     "rel": "built on",
+     "why": "Adapted Hegel’s dialectical method into a materialist account of history."
+    }
+   ],
+   "cambridge": [
+    "economic systems",
+    "planned economy",
+    "free market economy",
+    "income distribution",
+    "inequality",
+    "labour market"
+   ],
+   "university": "Political economy and history of thought: formal debates on the transformation problem, the labour share and theories of crisis and accumulation.",
+   "india": "",
+   "relevance": "Debates about automation and jobs, the falling labour share and concentrated market power echo questions Marx raised, though rarely his policy conclusions."
+  },
+  "marshall": {
+   "school": "neoclassical",
+   "majorWork": {
+    "t": "Principles of Economics",
+    "y": 1890
+   },
+   "question": "How do demand and supply together determine price and quantity in a single market?",
+   "core": "Price is set by demand and supply acting together, like scissor blades; marginal tools such as elasticity and consumer surplus analyse each market separately.",
+   "chain": [
+    "Marginal utility and cost",
+    "Demand and supply schedules",
+    "Partial equilibrium in one market",
+    "Elasticity and consumer surplus",
+    "Time periods: short and long run"
+   ],
+   "chainNote": "The chain shows how Marshall assembled the toolkit students use; holding other markets constant is a simplifying choice, not a description of reality.",
+   "builtOn": [
+    {
+     "id": "ricardo",
+     "why": "Treated his work as continuous with classical economics, joining cost of production to marginal utility."
+    }
+   ],
+   "challenged": [],
+   "outside": [],
+   "cambridge": [
+    "demand",
+    "supply",
+    "price elasticity of demand",
+    "consumer surplus",
+    "producer surplus",
+    "market equilibrium",
+    "economies of scale"
+   ],
+   "university": "Microeconomics: partial equilibrium is set against general equilibrium, and consumer surplus is derived from utility and demand functions.",
+   "india": "",
+   "relevance": "Supply and demand diagrams, elasticity and surplus remain everyday tools for regulators and tax analysts; external economies help explain industrial clusters."
+  },
+  "pigou": {
+   "school": "welfare",
+   "majorWork": {
+    "t": "The Economics of Welfare",
+    "y": 1920
+   },
+   "question": "When do private decisions fail to maximise social welfare, and how could government correct them?",
+   "core": "Where private and social costs or benefits diverge, markets misallocate resources; a tax or subsidy equal to the gap can improve welfare.",
+   "chain": [
+    "Marshall’s consumer surplus",
+    "Private versus social cost",
+    "Externalities cause misallocation",
+    "Corrective tax or subsidy",
+    "Later carbon and congestion pricing"
+   ],
+   "chainNote": "The last step is later policy uptake of Pigou’s idea, shaped by many others, rather than something Pigou designed.",
+   "builtOn": [
+    {
+     "id": "marshall",
+     "why": "Built welfare economics on Marshall’s consumer surplus and his idea of external effects."
+    }
+   ],
+   "challenged": [],
+   "outside": [
+    {
+     "name": "Ronald Coase",
+     "rel": "influenced",
+     "why": "Coase’s 1960 paper criticised the Pigouvian tax approach, stressing bargaining and transaction costs."
+    }
+   ],
+   "cambridge": [
+    "externalities",
+    "market failure",
+    "social cost",
+    "indirect taxes",
+    "subsidies",
+    "demerit goods"
+   ],
+   "university": "Public economics: optimal corrective taxation, comparison with tradable permits, and the Coase theorem on bargaining and property rights.",
+   "india": "",
+   "relevance": "Carbon pricing, congestion charges and taxes on demerit goods apply Pigou’s reasoning; debate centres on information, feasibility and distributional effects."
+  },
+  "keynes": {
+   "school": "keynesian",
+   "majorWork": {
+    "t": "The General Theory of Employment, Interest and Money",
+    "y": 1936
+   },
+   "question": "Why can an economy remain stuck with mass unemployment, and what can policy do about it?",
+   "core": "Output and employment depend on aggregate demand; when spending falls, an economy can settle below full employment, creating a case for policy intervention.",
+   "chain": [
+    "Great Depression",
+    "Falling aggregate demand",
+    "Underemployment equilibrium",
+    "Case for fiscal intervention",
+    "Postwar demand management"
+   ],
+   "chainNote": "The Depression framed Keynes’s argument; the final step is how governments later used it, which went beyond and sometimes differed from his own proposals.",
+   "builtOn": [
+    {
+     "id": "marshall",
+     "why": "Trained in Marshall’s Cambridge economics, whose methods he used before breaking with it on aggregate demand."
+    },
+    {
+     "id": "malthus",
+     "why": "Saw Malthus’s concern with general gluts as a forerunner of effective demand."
+    }
+   ],
+   "challenged": [
+    {
+     "id": "pigou",
+     "why": "Cast Pigou’s theory of unemployment as the classical view the General Theory set out to replace."
+    }
+   ],
+   "outside": [
+    {
+     "name": "Richard Kahn",
+     "rel": "built on",
+     "why": "Used Kahn’s 1931 employment multiplier in developing the General Theory."
+    }
+   ],
+   "cambridge": [
+    "aggregate demand",
+    "unemployment",
+    "fiscal policy",
+    "multiplier",
+    "government spending",
+    "recession"
+   ],
+   "university": "Macroeconomics: IS–LM and New Keynesian models formalise demand, sticky prices and expectations; debates focus on fiscal multipliers.",
+   "india": "Keynes’s first book, Indian Currency and Finance (1913), analysed India’s monetary system; he had earlier worked at the India Office in London.",
+   "relevance": "Debates about stimulus, austerity, fiscal multipliers and public debt after 2008 and during COVID-19 draw directly on Keynesian reasoning."
+  },
+  "robinson": {
+   "school": "keynesian",
+   "majorWork": {
+    "t": "The Economics of Imperfect Competition",
+    "y": 1933
+   },
+   "question": "How do prices, output and wages behave when firms can set prices rather than take them?",
+   "core": "Most markets lie between perfect competition and monopoly; firms with market power restrict output, and employers with monopsony power can pay below marginal revenue product.",
+   "chain": [
+    "Marshall’s competitive firm",
+    "Downward-sloping firm demand curves",
+    "Marginal revenue and price-setting",
+    "Monopsony in labour markets",
+    "Wider critique of equilibrium economics"
+   ],
+   "chainNote": "The early steps are her 1933 book; the last summarises her later post-Keynesian work, which developed over several decades.",
+   "builtOn": [
+    {
+     "id": "marshall",
+     "why": "Rebuilt Marshall’s theory of the firm for markets with price-setting firms."
+    },
+    {
+     "id": "keynes",
+     "why": "Part of the Cambridge group that helped develop and extend Keynes’s theory."
+    }
+   ],
+   "challenged": [],
+   "outside": [
+    {
+     "name": "Paul Samuelson",
+     "rel": "challenged",
+     "why": "Opposed Samuelson and other MIT economists in the Cambridge capital controversy."
+    }
+   ],
+   "cambridge": [
+    "imperfect competition",
+    "monopoly",
+    "monopsony",
+    "price discrimination",
+    "market power",
+    "labour market"
+   ],
+   "university": "Industrial organisation and labour economics: formal models of oligopoly, price discrimination and monopsony wage-setting.",
+   "india": "",
+   "relevance": "Debates on large digital platforms, supermarkets’ power over suppliers and minimum wages in monopsonistic labour markets use concepts she named."
+  },
+  "hayek": {
+   "school": "austrian",
+   "majorWork": {
+    "t": "The Use of Knowledge in Society",
+    "y": 1945
+   },
+   "question": "How can an economy use knowledge that is dispersed among millions of people and held by no single mind?",
+   "core": "Prices transmit dispersed, local knowledge that no planner could gather, allowing coordination without central direction; this underpins his critique of planning.",
+   "chain": [
+    "Knowledge dispersed among individuals",
+    "Prices summarise local information",
+    "Decentralised coordination",
+    "Limits of central planning",
+    "Case for market order"
+   ],
+   "chainNote": "The chain is Hayek’s own argument; critics accept the knowledge problem but question how far it rules out regulation or public provision.",
+   "builtOn": [
+    {
+     "id": "smith",
+     "why": "Developed Smith’s idea of an unplanned market order into an argument about knowledge and prices."
+    }
+   ],
+   "challenged": [
+    {
+     "id": "keynes",
+     "why": "Debated Keynes in the 1930s over the causes of slumps and the role of policy."
+    },
+    {
+     "id": "marx",
+     "why": "His knowledge argument became a central objection to economies planned in Marx’s name."
+    }
+   ],
+   "outside": [
+    {
+     "name": "Ludwig von Mises",
+     "rel": "built on",
+     "why": "Developed Mises’s critique of economic calculation under socialism."
+    }
+   ],
+   "cambridge": [
+    "price mechanism",
+    "planned economy",
+    "free market economy",
+    "resource allocation",
+    "government failure"
+   ],
+   "university": "Comparative economic systems and mechanism design: the socialist calculation debate and formal models of information in prices.",
+   "india": "",
+   "relevance": "Relevant to debates on whether data and algorithms could support central coordination, to price-based policy design, and to credit-fuelled asset booms."
+  },
+  "friedman": {
+   "school": "chicago",
+   "majorWork": {
+    "t": "A Monetary History of the United States, 1867–1960 (with Anna Schwartz)",
+    "y": 1963
+   },
+   "question": "How much do changes in the money supply explain inflation and the depth of recessions?",
+   "core": "Sustained inflation is mainly a monetary phenomenon; discretionary demand management is unreliable, and no lasting trade-off exists between inflation and unemployment.",
+   "chain": [
+    "Quantity theory of money",
+    "Monetary contraction deepened the Depression",
+    "Adaptive expectations",
+    "Natural rate of unemployment",
+    "Rules over discretion"
+   ],
+   "chainNote": "These are the main steps in Friedman’s case; the reading of the Depression is his and Schwartz’s, and remains debated alongside other explanations.",
+   "builtOn": [],
+   "challenged": [
+    {
+     "id": "keynes",
+     "why": "His monetarism was the leading challenge to postwar Keynesian demand management."
+    }
+   ],
+   "outside": [],
+   "cambridge": [
+    "monetary policy",
+    "money supply",
+    "inflation",
+    "quantity theory of money",
+    "Phillips curve",
+    "expectations"
+   ],
+   "university": "Monetary economics: expectations-augmented Phillips curve, the natural rate hypothesis and the rules-versus-discretion debate in central banking.",
+   "india": "",
+   "relevance": "Central banks now target inflation rather than money growth, but his stress on expectations shapes their communication; 2008 responses drew on his reading of the Depression."
+  },
+  "sen": {
+   "school": "welfare",
+   "majorWork": {
+    "t": "Development as Freedom",
+    "y": 1999
+   },
+   "question": "What should development mean, and why do famines occur even when food is available?",
+   "core": "Development is the expansion of people’s real freedoms and capabilities, not income alone; famines reflect collapsing entitlements as much as falling food supply.",
+   "chain": [
+    "Limits of income as welfare",
+    "Entitlements and famine",
+    "Capabilities and functionings",
+    "Development as expanding freedoms",
+    "Human Development Index"
+   ],
+   "chainNote": "The steps follow Sen’s work from the 1980s to 1999; the HDI is a simplified measure inspired by his approach, not a full statement of it.",
+   "builtOn": [
+    {
+     "id": "smith",
+     "why": "Draws on Smith’s moral philosophy and his account of what people need to live without shame."
+    }
+   ],
+   "challenged": [
+    {
+     "id": "malthus",
+     "why": "His entitlement analysis challenged explanations of famine based only on food supply."
+    }
+   ],
+   "outside": [
+    {
+     "name": "Kenneth Arrow",
+     "rel": "built on",
+     "why": "Extended Arrow’s social choice theory, which Sen developed in his early work."
+    },
+    {
+     "name": "Mahbub ul Haq",
+     "rel": "influenced",
+     "why": "The capability approach informed the Human Development Index that Haq led at the UNDP."
+    }
+   ],
+   "cambridge": [
+    "economic development",
+    "Human Development Index",
+    "poverty",
+    "inequality",
+    "living standards",
+    "GDP per capita"
+   ],
+   "university": "Development and welfare economics: capability theory, social choice, multidimensional poverty indices and entitlement-based analysis of food crises.",
+   "india": "Poverty and Famines analyses the 1943 Bengal famine; his work shapes debates on Indian hunger, education, health and the HDI.",
+   "relevance": "Informs multidimensional poverty measures, debates about the limits of GDP per capita, and responses to hunger during food price shocks."
+  },
+  "ostrom": {
+   "school": "institutional",
+   "majorWork": {
+    "t": "Governing the Commons: The Evolution of Institutions for Collective Action",
+    "y": 1990
+   },
+   "question": "Can communities manage shared resources sustainably without either state control or privatisation?",
+   "core": "Users of common pool resources can sustain them through self-designed rules, monitoring and sanctions when certain institutional conditions, her design principles, are met.",
+   "chain": [
+    "Tragedy of the commons argument",
+    "Field evidence of successful commons",
+    "Self-governing rules and monitoring",
+    "Design principles for durable institutions",
+    "Polycentric governance"
+   ],
+   "chainNote": "The chain follows her empirical programme; her design principles describe conditions associated with success, not a formula that suits every resource.",
+   "builtOn": [],
+   "challenged": [],
+   "outside": [
+    {
+     "name": "Garrett Hardin",
+     "rel": "challenged",
+     "why": "Her evidence challenged Hardin’s view that commons lead to ruin without state control or privatisation."
+    }
+   ],
+   "cambridge": [
+    "common resources",
+    "market failure",
+    "sustainability",
+    "property rights",
+    "government intervention"
+   ],
+   "university": "Institutional and environmental economics: game theory of collective action, repeated interaction and laboratory and field experiments on cooperation.",
+   "india": "Researchers apply her design principles to Indian groundwater, village irrigation and community forest management.",
+   "relevance": "Debates on overfishing, groundwater depletion, community forestry and climate cooperation draw on her findings about self-governance."
+  },
+  "stiglitz": {
+   "school": "information",
+   "majorWork": {
+    "t": "Globalization and Its Discontents",
+    "y": 2002
+   },
+   "question": "What happens to market outcomes when buyers, sellers, lenders and borrowers hold different information?",
+   "core": "With imperfect and asymmetric information, markets can be inefficient, for example through credit rationing, so well-designed government action may improve outcomes.",
+   "chain": [
+    "Perfect-information market models",
+    "Asymmetric information",
+    "Screening and credit rationing",
+    "Markets can be inefficient",
+    "Critique of IMF crisis policies"
+   ],
+   "chainNote": "The early steps are his academic work; the last is his later application of it, set out in Globalization and Its Discontents.",
+   "builtOn": [],
+   "challenged": [
+    {
+     "id": "smith",
+     "why": "Questioned formal invisible-hand results that rely on perfect information, rather than Smith’s own broader argument."
+    },
+    {
+     "id": "friedman",
+     "why": "Challenged the view, associated with Chicago economics, that competitive markets are generally efficient."
+    }
+   ],
+   "outside": [],
+   "cambridge": [
+    "asymmetric information",
+    "market failure",
+    "moral hazard",
+    "adverse selection",
+    "globalisation",
+    "government intervention"
+   ],
+   "university": "Information economics: screening and signalling models, the Stiglitz–Weiss credit rationing model and efficiency-wage theory.",
+   "india": "",
+   "relevance": "Insurance, credit scoring, online reviews and data privacy all raise information problems; disclosure, licensing and standards respond to them."
+  },
+  "banerjee": {
+   "school": "experimental",
+   "majorWork": {
+    "t": "Poor Economics (with Esther Duflo)",
+    "y": 2011
+   },
+   "question": "Which specific policies actually improve the lives of poor households, and how can we know?",
+   "core": "Development questions can be broken into specific, testable problems; randomised trials and fieldwork reveal how poor households decide and which programmes work.",
+   "chain": [
+    "Broad debates over aid",
+    "Specific, testable policy questions",
+    "Randomised controlled trials",
+    "Evidence on household decisions",
+    "Programme design and scale-up"
+   ],
+   "chainNote": "The chain describes the method he and Duflo promoted; critics question how far results from one setting transfer to others.",
+   "builtOn": [],
+   "challenged": [],
+   "outside": [],
+   "cambridge": [
+    "economic development",
+    "poverty",
+    "microfinance",
+    "aid",
+    "education",
+    "health"
+   ],
+   "university": "Development economics and econometrics: causal inference, randomised evaluation, external validity and behavioural models of poor households.",
+   "india": "Born in Mumbai and raised in Kolkata, Banerjee has run many field studies in India, including education programmes with the NGO Pratham.",
+   "relevance": "Shapes how governments, charities and aid agencies design and evaluate cash transfers, school programmes, health campaigns and microfinance."
+  },
+  "duflo": {
+   "school": "experimental",
+   "majorWork": {
+    "t": "Poor Economics (with Abhijit Banerjee)",
+    "y": 2011
+   },
+   "question": "How can rigorous evidence identify development policies that help poor households?",
+   "core": "Randomised evaluations can isolate the effects of specific policies; small design details often decide whether education, health or credit programmes succeed.",
+   "chain": [
+    "Specific policy questions",
+    "Random assignment of programmes",
+    "Measured causal effects",
+    "Attention to design details",
+    "Evidence-based policy and scale-up"
+   ],
+   "chainNote": "This sets out the experimental method she helped spread; how far trial results generalise across contexts remains debated.",
+   "builtOn": [],
+   "challenged": [],
+   "outside": [],
+   "cambridge": [
+    "economic development",
+    "poverty",
+    "education",
+    "health",
+    "gender inequality",
+    "aid"
+   ],
+   "university": "Development economics and econometrics: randomised evaluation design, causal inference and external validity of field experiments.",
+   "india": "Much of her research uses trials in India, including teacher attendance monitoring with the NGO Seva Mandir in Rajasthan.",
+   "relevance": "Cash transfers, women’s empowerment, education and health policy debates regularly cite experimental findings her work helped produce."
+  },
+  "acemoglu": {
+   "school": "institutional",
+   "majorWork": {
+    "t": "Why Nations Fail (with James Robinson)",
+    "y": 2012
+   },
+   "question": "Why are some countries rich and others poor, and why do differences persist?",
+   "core": "Inclusive economic and political institutions encourage investment and innovation; extractive institutions concentrate power and income, limiting long-run growth.",
+   "chain": [
+    "Differences in national prosperity",
+    "Institutions shape incentives",
+    "Inclusive versus extractive institutions",
+    "Political power sustains institutions",
+    "Reform faces elite resistance"
+   ],
+   "chainNote": "The chain summarises the book’s argument; critics debate how institutions are measured and how far geography, culture or policy also matter.",
+   "builtOn": [],
+   "challenged": [],
+   "outside": [
+    {
+     "name": "Douglass North",
+     "rel": "built on",
+     "why": "Built on North’s account of institutions as the rules shaping economic incentives."
+    }
+   ],
+   "cambridge": [
+    "economic growth",
+    "economic development",
+    "property rights",
+    "corruption",
+    "role of government",
+    "inequality"
+   ],
+   "university": "Political economy and growth: formal models of institutional change and historical natural experiments used to estimate institutional effects.",
+   "india": "",
+   "relevance": "Shapes debates on weak institutions, corruption and the state in development; his recent work addresses technology, inequality and the labour share."
+  }
+ },
+ "compare": [
+  {
+   "id": "keynes-hayek",
+   "a": "keynes",
+   "b": "hayek",
+   "title": "Keynes and Hayek",
+   "frame": "A 1930s exchange over why slumps happen and whether governments should respond by managing demand or allow markets to adjust.",
+   "rows": {
+    "question": [
+     "Why can an economy stay at high unemployment, and how can policy restore employment?",
+     "Why do booms and busts occur, and what are the limits of policy in steering a complex economy?"
+    ],
+    "assumptions": [
+     "Prices and wages adjust slowly; expectations and uncertainty can keep spending low for long periods.",
+     "Knowledge is dispersed; market prices coordinate plans, and credit expansion can distort the structure of production."
+    ],
+    "mechanism": [
+     "Falling aggregate demand reduces output and employment, and the multiplier amplifies the fall.",
+     "Credit-driven booms misdirect investment; the bust is the economy correcting earlier distortions."
+    ],
+    "policy": [
+     "Government spending and lower interest rates to support demand during a slump.",
+     "Caution about stimulus; emphasis on stable money, rules and market adjustment."
+    ],
+    "criticisms": [
+     "Critics question the size of fiscal multipliers, the effect on public debt and how well governments time intervention.",
+     "Critics argue that allowing a slump to run its course imposes heavy and avoidable costs in unemployment."
+    ],
+    "context": [
+     "Written during the Great Depression and published in 1936, amid mass unemployment in Britain and elsewhere.",
+     "Shaped by Austrian monetary theory; Hayek was at the London School of Economics during the 1930s debate."
+    ],
+    "relevance": [
+     "Frames debates on stimulus and austerity after 2008 and during the COVID-19 response.",
+     "Cited in discussions of asset bubbles and misallocated investment after long periods of low interest rates."
+    ]
+   }
+  },
+  {
+   "id": "friedman-keynes",
+   "a": "friedman",
+   "b": "keynes",
+   "title": "Friedman and Keynes",
+   "frame": "A postwar debate over what drives inflation and recessions, and whether discretionary demand management stabilises or destabilises the economy.",
+   "rows": {
+    "question": [
+     "How far do changes in the money supply explain inflation and the depth of recessions?",
+     "Why can an economy remain stuck with high unemployment, and what can policy do?"
+    ],
+    "assumptions": [
+     "Markets tend towards a natural rate of unemployment; people adjust their inflation expectations to experience.",
+     "Uncertainty and slow-adjusting wages and prices can leave demand too low for full employment."
+    ],
+    "mechanism": [
+     "Excess money growth raises inflation; attempts to hold unemployment below its natural rate only raise inflation over time.",
+     "Changes in spending alter output and employment through the multiplier, with limited automatic correction."
+    ],
+    "policy": [
+     "Stable, rule-based monetary growth; scepticism about fine-tuning the economy with fiscal policy.",
+     "Active fiscal policy and low interest rates to support demand in a slump."
+    ],
+    "criticisms": [
+     "Critics note that money supply targets were hard to use in practice as money demand became unstable.",
+     "Critics point to inflation in the 1970s and doubts about how accurately governments can time intervention."
+    ],
+    "context": [
+     "Developed in the 1950s and 1960s and influential after stagflation in the 1970s.",
+     "Developed in response to the Great Depression and mass unemployment of the 1930s."
+    ],
+    "relevance": [
+     "Central banks’ attention to inflation expectations and credibility reflects his influence.",
+     "Fiscal stimulus debates after 2008 and during COVID-19 draw on his reasoning."
+    ]
+   }
+  },
+  {
+   "id": "smith-marx",
+   "a": "smith",
+   "b": "marx",
+   "title": "Smith and Marx",
+   "frame": "Two readings of a market economy: one stressing specialisation and growth through exchange, the other stressing class relations, exploitation and crisis.",
+   "rows": {
+    "question": [
+     "What makes a nation wealthy, and how do markets coordinate production without central direction?",
+     "Where do profits come from under capitalism, and why is it prone to inequality and crisis?"
+    ],
+    "assumptions": [
+     "Self-interest operates within law, competition and moral norms; productive labour is the source of wealth.",
+     "Labour creates value; the relationship between owners of capital and wage workers shapes distribution."
+    ],
+    "mechanism": [
+     "Division of labour raises productivity, and competition guides resources through prices towards what people want.",
+     "Capitalists gain surplus value from labour; competition drives accumulation, mechanisation and concentration."
+    ],
+    "policy": [
+     "Removing monopoly privileges and trade restrictions, with the state providing defence, justice and public works.",
+     "Replacing capitalist ownership of the means of production, an argument made more in his political writing."
+    ],
+    "criticisms": [
+     "Critics argue he underrated market power, inequality and instability, though he warned about collusion himself.",
+     "Critics reject the labour theory of value and point to the economic record of centrally planned states."
+    ],
+    "context": [
+     "Enlightenment Scotland in the 1770s, writing against mercantilist trade policy and chartered monopolies.",
+     "Industrialising Britain and Europe in the mid-nineteenth century, amid harsh factory conditions."
+    ],
+    "relevance": [
+     "Supply chains, competition policy and the role of trust in exchange still draw on his questions.",
+     "Debates on automation, the labour share and concentrated market power echo themes he raised."
+    ]
+   }
+  },
+  {
+   "id": "pigou-coase",
+   "a": "pigou",
+   "b": null,
+   "bLabel": "Ronald Coase",
+   "title": "Pigou and Coase",
+   "frame": "Two approaches to externalities: correcting them with taxes and subsidies, or allowing affected parties to bargain once property rights are clear.",
+   "rows": {
+    "question": [
+     "When private and social costs diverge, how can government move output to the socially optimal level?",
+     "When one party’s activity harms another, can the parties reach an efficient outcome through bargaining?"
+    ],
+    "assumptions": [
+     "Government can measure the external cost well enough to set a corrective tax or subsidy.",
+     "Property rights are clearly defined, and the costs of negotiating and enforcing agreements are low."
+    ],
+    "mechanism": [
+     "A tax equal to the marginal external cost raises the private cost to the social cost.",
+     "Affected parties trade rights; with low transaction costs, the efficient outcome can follow whoever holds the rights."
+    ],
+    "policy": [
+     "Taxes on activities with negative externalities and subsidies for those with positive externalities.",
+     "Clear property rights and attention to transaction costs; government action compared case by case."
+    ],
+    "criticisms": [
+     "Critics stress the information needed to set the right tax and the political pressures on tax setting.",
+     "Critics note that many externalities involve many parties, making bargaining costly or impractical."
+    ],
+    "context": [
+     "Developed at Cambridge in the early twentieth century, building on Marshall’s welfare analysis.",
+     "Set out in The Problem of Social Cost (1960), partly as a critique of the Pigouvian approach."
+    ],
+    "relevance": [
+     "Underlies carbon taxes, congestion charges and taxes on demerit goods.",
+     "Informs tradable permit schemes and legal approaches to nuisance, pollution and property rights."
+    ]
+   }
+  },
+  {
+   "id": "sen-income",
+   "a": "sen",
+   "b": null,
+   "bLabel": "Income-based approaches",
+   "title": "Capabilities and income measures",
+   "frame": "Whether development is best measured by income or GDP per capita, or by what people are actually able to do and be.",
+   "rows": {
+    "question": [
+     "What real freedoms and opportunities do people have to live lives they value?",
+     "How much output and income does an economy produce per person, and how fast is it growing?"
+    ],
+    "assumptions": [
+     "People convert income into well-being at different rates, depending on health, gender, disability and environment.",
+     "Income is a useful general measure of command over goods and services, and of the means to well-being."
+    ],
+    "mechanism": [
+     "Development expands capabilities such as health, education and political freedom, which are valued in themselves.",
+     "Rising income per head allows higher consumption and funds health, education and public services."
+    ],
+    "policy": [
+     "Investment in health, education, social protection and democratic participation alongside growth.",
+     "Policies that raise productivity, investment and output, with income growth as the main target."
+    ],
+    "criticisms": [
+     "Critics argue capabilities are hard to select, weight and measure, and that composite indices simplify the approach.",
+     "Critics argue averages hide inequality and omit non-market activity, health, freedom and environmental damage."
+    ],
+    "context": [
+     "Developed from the late 1970s onwards, informed by Sen’s study of famines and welfare economics.",
+     "National income accounting developed in the 1930s and 1940s and became the standard development benchmark."
+    ],
+    "relevance": [
+     "Underlies the Human Development Index and multidimensional poverty measures.",
+     "GDP per capita remains the most widely used single indicator for comparing living standards across countries."
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,264 @@
+[
+ {
+  "path": [
+   "compare",
+   3,
+   "rows",
+   "assumptions",
+   1
+  ],
+  "old": "Property rights are clearly defined, and the costs of negotiating and enforcing agreements are low.",
+  "new": "Harm is reciprocal, and transaction costs are usually significant, so the zero-cost bargaining case is a benchmark rather than a description of most externalities.",
+  "sev": "high",
+  "why": "Coase treated zero transaction costs as a hypothetical benchmark and stressed that real transaction costs are usually high, so presenting low costs as his assumption reverses his argument."
+ },
+ {
+  "path": [
+   "compare",
+   3,
+   "rows",
+   "mechanism",
+   1
+  ],
+  "old": "with low transaction costs, the efficient outcome can follow whoever holds the rights",
+  "new": "with zero transaction costs, the efficient outcome follows whoever holds the rights; with positive costs, how rights are assigned matters",
+  "sev": "medium",
+  "why": "The Coase result holds under zero (not merely low) transaction costs, and Coase’s main point concerned the positive-cost case."
+ },
+ {
+  "path": [
+   "compare",
+   3,
+   "frame"
+  ],
+  "old": "or allowing affected parties to bargain once property rights are clear",
+  "new": "or comparing bargaining, legal rules and government action once transaction costs are taken into account",
+  "sev": "medium",
+  "why": "Coase 1960 argued for comparing institutional arrangements case by case, not for private bargaining as the general alternative to Pigouvian taxes."
+ },
+ {
+  "path": [
+   "compare",
+   3,
+   "rows",
+   "criticisms",
+   1
+  ],
+  "old": "Critics note that many externalities involve many parties, making bargaining costly or impractical.",
+  "new": "Critics argue the analysis neglects how the initial assignment of rights affects distribution and fairness; the difficulty of bargaining among many parties was a point Coase himself stressed.",
+  "sev": "medium",
+  "why": "The many-parties objection was Coase’s own argument, so presenting it as a criticism of him misattributes positions."
+ },
+ {
+  "path": [
+   "compare",
+   3,
+   "rows",
+   "assumptions",
+   0
+  ],
+  "old": "Government can measure the external cost well enough to set a corrective tax or subsidy.",
+  "new": "Government can measure the external cost well enough to set a corrective tax or subsidy, although Pigou himself warned that public authorities may lack the knowledge or independence to do so.",
+  "sev": "low",
+  "why": "Pigou explicitly qualified his case with doubts about government competence, so the row should not imply naive faith in intervention."
+ },
+ {
+  "path": [
+   "economists",
+   "pigou",
+   "chain",
+   0
+  ],
+  "old": "Marshall’s consumer surplus",
+  "new": "Marshall’s external economies",
+  "sev": "low",
+  "why": "Pigou’s private–social divergence grew mainly from Marshall’s external economies (and Sidgwick), not from consumer surplus."
+ },
+ {
+  "path": [
+   "economists",
+   "ricardo",
+   "chainNote"
+  ],
+  "old": "The chain traces Ricardo’s trade argument and its use in the Corn Law debate;",
+  "new": "The chain traces Ricardo’s trade argument; his opposition to the Corn Laws, set out in 1815 before comparative advantage, rested mainly on his theory of rent and falling profits;",
+  "sev": "medium",
+  "why": "Ricardo’s anti-Corn Law case predates and does not derive from comparative advantage, so the chain otherwise implies a false causal sequence."
+ },
+ {
+  "path": [
+   "economists",
+   "ricardo",
+   "india"
+  ],
+  "old": "India’s post-1991 trade reforms, including the growth of services exports such as information technology, are often discussed using comparative advantage.",
+  "new": "",
+  "sev": "medium",
+  "why": "This is a generic application of a textbook concept rather than a genuine connection between Ricardo and India."
+ },
+ {
+  "path": [
+   "schools",
+   7,
+   "name"
+  ],
+  "old": "Institutional economics and political economy",
+  "new": "New institutional economics and political economy",
+  "sev": "medium",
+  "why": "Institutional economics dates from Veblen and Commons in the 1890s–1920s; the 1970s span fits only the new institutional economics."
+ },
+ {
+  "path": [
+   "schools",
+   6,
+   "span"
+  ],
+  "old": "1950s–1980s",
+  "new": "1930s onwards",
+  "sev": "low",
+  "why": "The Chicago school predates monetarism (Knight, Viner, Simons) and continued after the 1980s; only monetarism’s peak fits 1950s–1980s."
+ },
+ {
+  "path": [
+   "compare",
+   0,
+   "rows",
+   "context",
+   0
+  ],
+  "old": "Written during the Great Depression and published in 1936, amid mass unemployment in Britain and elsewhere.",
+  "new": "The 1931–32 exchange with Hayek concerned Keynes’s Treatise on Money (1930); the General Theory (1936), written amid mass unemployment, came later and Hayek never reviewed it in full.",
+  "sev": "medium",
+  "why": "The 1930s Hayek–Keynes debate centred on the Treatise on Money and Prices and Production, not on the 1936 General Theory."
+ },
+ {
+  "path": [
+   "compare",
+   0,
+   "rows",
+   "assumptions",
+   0
+  ],
+  "old": "Prices and wages adjust slowly; expectations and uncertainty can keep spending low for long periods.",
+  "new": "Expectations and uncertainty can keep investment and spending low for long periods; even falling money wages need not restore full employment.",
+  "sev": "medium",
+  "why": "Keynes argued in the General Theory that flexible money wages would not reliably cure unemployment; sticky prices is the later neoclassical-synthesis reading."
+ },
+ {
+  "path": [
+   "compare",
+   1,
+   "rows",
+   "assumptions",
+   1
+  ],
+  "old": "Uncertainty and slow-adjusting wages and prices can leave demand too low for full employment.",
+  "new": "Uncertainty and volatile expectations can leave demand too low for full employment, even if wages fall.",
+  "sev": "low",
+  "why": "Attributing sticky wages and prices as the core Keynes assumption reflects later Keynesian models rather than the General Theory."
+ },
+ {
+  "path": [
+   "compare",
+   1,
+   "frame"
+  ],
+  "old": "A postwar debate over",
+  "new": "A postwar debate between Friedman and Keynesian economists, after Keynes’s death in 1946, over",
+  "sev": "medium",
+  "why": "Friedman’s critique targeted postwar Keynesian economics and demand management, not a debate with Keynes himself."
+ },
+ {
+  "path": [
+   "compare",
+   1,
+   "rows",
+   "criticisms",
+   1
+  ],
+  "old": "Critics point to inflation in the 1970s and doubts about how accurately governments can time intervention.",
+  "new": "Critics point to 1970s inflation under postwar Keynesian policies, which went beyond Keynes’s own proposals, and to doubts about how accurately governments can time intervention.",
+  "sev": "medium",
+  "why": "Keynes died in 1946, so 1970s inflation is a criticism of later Keynesian policy rather than of Keynes directly."
+ },
+ {
+  "path": [
+   "compare",
+   1,
+   "rows",
+   "policy",
+   0
+  ],
+  "old": "scepticism about fine-tuning the economy with fiscal policy",
+  "new": "scepticism about fine-tuning with either monetary or fiscal policy, given long and variable lags",
+  "sev": "low",
+  "why": "Friedman’s case for a monetary rule rested on distrust of discretionary monetary as well as fiscal policy."
+ },
+ {
+  "path": [
+   "economists",
+   "sen",
+   "chainNote"
+  ],
+  "old": "The steps follow Sen’s work from the 1980s to 1999; the HDI is a simplified measure",
+  "new": "The steps follow Sen’s work from the late 1970s to 1999; the HDI (1990) predates Development as Freedom and is a simplified measure",
+  "sev": "medium",
+  "why": "The capability approach dates from Sen’s 1979 lecture and the HDI from 1990, so the chain order otherwise implies the HDI followed Development as Freedom."
+ },
+ {
+  "path": [
+   "economists",
+   "smith",
+   "chainNote"
+  ],
+  "old": "This follows the order of Smith’s own argument in Book I.",
+  "new": "The first four steps follow Smith’s argument in Book I; his case for freer trade is made mainly in Book IV.",
+  "sev": "low",
+  "why": "The extent-of-the-market argument is Book I, chapter 3, but the trade case is in Book IV, so the note overstates."
+ },
+ {
+  "path": [
+   "economists",
+   "keynes",
+   "relevance"
+  ],
+  "old": "draw directly on Keynesian reasoning",
+  "new": "draw on Keynesian reasoning",
+  "sev": "low",
+  "why": "Post-2008 and COVID-19 debates drew on many later models, so ‘directly’ overstates in the platform’s voice."
+ },
+ {
+  "path": [
+   "economists",
+   "robinson",
+   "relevance"
+  ],
+  "old": "concepts she named",
+  "new": "concepts she developed",
+  "sev": "low",
+  "why": "The word monopsony was coined for her by Bertrand Hallward and price discrimination predates her, so ‘named’ overclaims."
+ },
+ {
+  "path": [
+   "economists",
+   "hayek",
+   "chainNote"
+  ],
+  "old": "critics accept the knowledge problem",
+  "new": "many critics accept the knowledge problem",
+  "sev": "low",
+  "why": "Not all critics accept it, so the unqualified statement is an absolute in the platform’s voice."
+ },
+ {
+  "path": [
+   "economists",
+   "ricardo",
+   "chain",
+   4
+  ],
+  "old": "Argument against the Corn Laws",
+  "new": "The classical case for free trade",
+  "sev": "medium",
+  "why": "Ricardo's opposition to the Corn Laws (1815) predates comparative advantage (1817), so placing it at the end of this chain implies a false sequence; added after review."
+ }
+]
