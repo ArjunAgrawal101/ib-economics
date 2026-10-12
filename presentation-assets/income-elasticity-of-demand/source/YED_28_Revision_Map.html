@@ -1,0 +1,35 @@
+<!doctype html><html data-size="1760x960"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:transparent}
+body{position:relative;font-family:Inter,'Helvetica Neue',Arial,sans-serif;color:#0E1E3A}
+.serif{font-family:Lora,Georgia,serif}
+.k{font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.muted{color:#5B6577}
+svg.links{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
+body{width:1760px;height:960px}
+.cl{position:absolute;width:440px}
+.ch{display:flex;align-items:baseline;justify-content:space-between;gap:10px;background:#1B3460;color:#fff;border-radius:16px;padding:9px 16px;margin-bottom:6px}
+.ch.hl{background:#B0412E}
+.cn{font-size:28px;font-weight:800}
+.cs{font-size:23px;font-weight:700;color:#E2C98F;white-space:nowrap}
+.lf{font-size:25px;line-height:1.25;padding:4px 4px 4px 16px;border-left:5px solid #E2D6BC;margin-left:12px;color:#22304A}
+.hub{position:absolute;left:640px;top:330px;width:480px;height:260px;border-radius:130px;background:#0E1E3A;border:7px solid #B08A47;color:#fff;
+     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 30px}
+.hk{font-size:21px;color:#E2C98F}
+.ht{font-size:40px;font-weight:700;line-height:1.1;margin:8px 0}
+.hf{font-size:28px;font-weight:700;color:#E2C98F}
+</style><script>
+function c(el){const r=el.getBoundingClientRect();return {l:r.left,r:r.right,t:r.top,b:r.bottom,x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};}
+</script></head><body><div class="cl" id="c1" style="left:10px;top:10px"><div class="ch" id="c1h"><span class="cn">Definition and formula</span><span class="cs">3, 4</span></div><div class="lf">YED = %ΔQd ÷ %ΔY</div><div class="lf">a coefficient with no units</div></div><div class="cl" id="c2" style="left:10px;top:245px"><div class="ch" id="c2h"><span class="cn">% change calculations</span><span class="cs">4, 5, 17</span></div><div class="lf">original value as the base</div><div class="lf">%ΔQd ≈ YED × %ΔY</div></div><div class="cl" id="c3" style="left:10px;top:480px"><div class="ch" id="c3h"><span class="cn">Sign and magnitude</span><span class="cs">6, 7</span></div><div class="lf">sign first: normal or inferior</div><div class="lf">then size for normal goods: below, at or above 1</div></div><div class="cl" id="c4" style="left:10px;top:715px"><div class="ch" id="c4h"><span class="cn">Normal and inferior goods</span><span class="cs">8, 13</span></div><div class="lf">normal: Qd moves with income</div><div class="lf">inferior: Qd moves against income</div></div><div class="cl" id="c5" style="left:1310px;top:10px"><div class="ch" id="c5h"><span class="cn">Engel curves</span><span class="cs">9 to 11</span></div><div class="lf">income on the vertical axis</div><div class="lf">compare % changes between A and B</div></div><div class="cl" id="c6" style="left:1310px;top:245px"><div class="ch" id="c6h"><span class="cn">Demand shifts</span><span class="cs">8, 11, 12</span></div><div class="lf">income shifts the demand curve</div><div class="lf">price moves along it</div></div><div class="cl" id="c7" style="left:1310px;top:480px"><div class="ch" id="c7h"><span class="cn">Households and income ranges</span><span class="cs">14, 15</span></div><div class="lf">normal at one income, inferior at another</div><div class="lf">tendencies, not labels</div></div><div class="cl" id="c8" style="left:1310px;top:715px"><div class="ch hl" id="c8h"><span class="cn">HL · Business forecasting</span><span class="cs">18 to 20, 24</span></div><div class="lf">predict sales from YED</div><div class="lf">portfolio, capacity, recession risk</div></div><div class="cl" id="c9" style="left:655px;top:30px"><div class="ch hl" id="c9h"><span class="cn">HL · Sectoral change</span><span class="cs">21 to 23</span></div><div class="lf">services grow faster than primary</div><div class="lf">a falling share is not falling output</div></div><div class="cl" id="c10" style="left:655px;top:715px"><div class="ch" id="c10h"><span class="cn">Errors and exam reasoning</span><span class="cs">26, 27</span></div><div class="lf">keep the sign, quantity on top</div><div class="lf">identify, calculate, classify, explain, qualify</div></div>
+<div class="hub" id="hub"><div class="hk k">IB 2.5 · SL and HL</div><div class="ht serif">Income elasticity of demand</div><div class="hf">YED = %ΔQd ÷ %ΔY</div></div>
+<svg class="links" id="lk" width="1760" height="960"></svg><script>
+const s=document.getElementById('lk');const H=c(document.getElementById('hub'));const rx=(H.r-H.l)/2, ry=(H.b-H.t)/2;
+for(const id of ['c1','c2','c3','c4','c5','c6','c7','c8','c9','c10']){const h=c(document.getElementById(id+'h'));
+  let x2,y2;const cl=c(document.getElementById(id));
+  if(h.r<H.l){x2=h.r;y2=h.y;}else if(h.l>H.r){x2=h.l;y2=h.y;}else if(cl.b<H.t){x2=cl.x;y2=cl.b+6;}else{x2=h.x;y2=h.t;}
+  const th=Math.atan2((y2-H.y)/ry,(x2-H.x)/rx);const x1=H.x+rx*Math.cos(th),y1=H.y+ry*Math.sin(th);
+  const vert=Math.abs(x2-x1)<Math.abs(y2-y1);const mx=(x1+x2)/2,my=(y1+y2)/2;
+  const d=vert?`M${x1},${y1} C${x1},${my} ${x2},${my} ${x2},${y2}`:`M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}`;
+  s.insertAdjacentHTML('beforeend',`<path d="${d}" fill="none" stroke="#B08A47" stroke-width="6" stroke-linecap="round"/>`);
+  s.insertAdjacentHTML('beforeend',`<circle cx="${x2}" cy="${y2}" r="8" fill="#B08A47"/>`);}
+</script></body></html>
