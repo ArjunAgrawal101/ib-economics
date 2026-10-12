@@ -97,8 +97,10 @@ Del = lambda q: 60 - 0.4 * q           # through (50,40) and (75,30)
 assert Dinel(50) == 40 and Dinel(55) == 30 and Del(50) == 40 and Del(75) == 30
 assert round(pct(50, 55)) == 10 and round(pct(50, 75)) == 50 and round(pct(40, 30)) == -25
 ax.poly(Dinel, 20, 70, NAVY); ax.poly(Del, 0, 100, GOLD)
-ax.label(21, 99, "D inelastic", size=CURVE - 4, color=NAVY, dx=16, dy=6)
-ax.label(100, 20, "D elastic", size=CURVE - 4, color=GOLD_TXT, anchor="end", dy=-52)
+ax.label(42, 62, "D relatively", size=32, color=NAVY, dx=14)
+ax.label(42, 62, "price inelastic", size=32, color=NAVY, dx=14, dy=38)
+ax.label(2, 78, "D relatively", size=32, color=GOLD_TXT, dx=8)
+ax.label(2, 78, "price elastic", size=32, color=GOLD_TXT, dx=8, dy=38)
 ax.hguide(40, 50, "P₁ $40"); ax.hguide(30, 75, "P₂ $30")
 ax.vguide(50, 40, "Q₁ 50"); ax.vguide(55, 30, "55", dy=76); ax.vguide(75, 30, "75")
 ax.dot(50, 40); ax.dot(55, 30, NAVY); ax.dot(75, 30, GOLD_TXT)
@@ -116,7 +118,7 @@ save("PED_07_Elastic_vs_Inelastic", cv)
 
 # =========================================================== PED_08a/b/c: three special cases
 def special(name, kind):
-    cv = Canvas(900, 820); ax = Ax(cv, 150, 700, 820, 150, ylab=("Price ($)",), xlab=("Quantity",))
+    cv = Canvas(900, 880); ax = Ax(cv, 150, 700, 820, 150, ylab=("Price ($)",), xlab=("Quantity",))
     ax.axes(size=38)
     if kind == "elastic":
         ax.seg(0, 50, 96, 50, NAVY, 8); ax.label(96, 50, "D", size=48, color=NAVY, dx=8, dy=-30, anchor="end")
@@ -124,7 +126,7 @@ def special(name, kind):
         ax.label(48, 72, "price above P:", size=34, color=DEP, anchor="middle")
         ax.label(48, 72, "quantity → 0", size=34, color=DEP, anchor="middle", dy=42)
         ax.label(48, 28, "at P: any quantity", size=34, color=INK, anchor="middle")
-        cv.badge(890, 46, "PED → ∞", NAVY, size=36, anchor="end")
+        cv.badge(890, 46, "|PED| → ∞", NAVY, size=36, anchor="end")
     elif kind == "inelastic":
         ax.seg(50, 0, 50, 96, NAVY, 8); ax.label(50, 96, "D", size=48, color=NAVY, dx=18, dy=8)
         ax.hguide(35, 50, "P₁"); ax.hguide(70, 50, "P₂")
@@ -138,19 +140,23 @@ def special(name, kind):
     else:
         k = 1800
         f = lambda q: k / q
-        ax.rect(0, 0, 30, 60, fill="#1B3460", opacity=0.16, stroke=NAVY)
-        ax.rect(0, 0, 60, 30, fill="#B08A47", opacity=0.22, stroke=GOLD_TXT, dash="10 8")
+        ax.rect(0, 30, 30, 60, fill=DEP, opacity=0.22)          # revenue lost when P falls 60 -> 30
+        ax.rect(30, 0, 60, 30, fill=APP, opacity=0.22)          # revenue gained
+        ax.rect(0, 0, 30, 30, fill="#C9CED6", opacity=0.45)           # revenue kept
         ax.poly(f, 18.5, 100, NAVY, 8)
         assert abs(30 * f(30) - 1800) < 1e-9 and abs(60 * f(60) - 1800) < 1e-9
         ax.label(100, f(100), "D", size=48, color=NAVY, dx=-6, dy=-36, anchor="end")
         ax.hguide(60, 30, "60"); ax.hguide(30, 60, "30")
         ax.vguide(30, 60, "30"); ax.vguide(60, 30, "60")
         ax.dot(30, 60); ax.dot(60, 30, GOLD_TXT)
-        ax.label(15, 44, "1,800", size=34, color=NAVY, anchor="middle")
-        ax.label(45, 14, "1,800", size=34, color=GOLD_TXT, anchor="middle")
-        ax.label(64, 62, "P × Q = 1,800", size=34, color=INK)
-        ax.label(64, 62, "at every point", size=30, color=MUTED, dy=40, weight=600)
-        cv.badge(890, 46, "PED = 1", NAVY, size=36, anchor="end")
+        ax.rect(0, 0, 30, 60, fill="none", opacity=1, stroke=NAVY)
+        ax.rect(0, 0, 60, 30, fill="none", opacity=1, stroke=GOLD_TXT, dash="10 8")
+        ax.label(15, 45, "−900", size=34, color=DEP, anchor="middle", dy=12)
+        ax.label(45, 15, "+900", size=34, color=APP, anchor="middle", dy=12)
+        ax.label(64, 66, "P × Q = 1,800", size=34, color=INK)
+        ax.label(64, 66, "at every point", size=30, color=MUTED, dy=40, weight=600)
+        ax.label(64, 66, "−900 + 900 = 0", size=28, color=MUTED, dy=80, weight=600)
+        cv.badge(890, 46, "|PED| = 1", NAVY, size=36, anchor="end")
     save(name, cv)
 
 special("PED_08a_Perfectly_Elastic", "elastic")
@@ -166,21 +172,21 @@ ax.hguide(45, 45, "$45"); ax.vguide(45, 45, "45")
 ax.label(0, 90, "$90", size=TICK, color=INK, anchor="end", dx=-14)
 ax.label(90, 0, "90", size=TICK, color=INK, anchor="middle", dy=36)
 ax.dot(0, 90, DEP, r=12); ax.dot(45, 45, INK, r=13); ax.dot(90, 0, APP, r=12)
-ax.label(3, 90, "PED → ∞ as Q → 0", size=30, color=DEP, dx=10, dy=-34)
-ax.label(45, 45, "PED = 1 (midpoint)", size=32, color=INK, dx=24, dy=-10)
-ax.label(90, 0, "PED → 0", size=30, color=APP, dx=14, dy=-62)
+ax.label(3, 90, "|PED| → ∞ as Q → 0", size=30, color=DEP, dx=10, dy=-34)
+ax.label(45, 45, "|PED| = 1 (midpoint)", size=32, color=INK, dx=-22, dy=52, anchor="end")
+ax.label(90, 0, "|PED| → 0", size=30, color=APP, dx=14, dy=-62)
 ax.label(90, 0, "as P → 0", size=30, color=APP, dx=14, dy=-26)
 # zone brackets parallel to the line, offset outward
 def zone(q0, q1, text, col, off=56):
     a, b = ax.px(q0, L(q0)); c, d = ax.px(q1, L(q1))
-    nx, ny = -(d - b), (c - a); n = math.hypot(nx, ny); nx, ny = nx / n * off, ny / n * off
+    nx, ny = (d - b), -(c - a); n = math.hypot(nx, ny); nx, ny = nx / n * off, ny / n * off
     cv.line(a + nx, b + ny, c + nx, d + ny, col, 5, arrow_end=True, arrow_start=True)
-    mx, my = (a + c) / 2 + nx * 2.3, (b + d) / 2 + ny * 2.3
-    cv.text(mx, my, text, size=30, color=col, anchor="end", weight=800)
-zone(6, 41, "elastic: PED > 1", DEP)
-zone(49, 84, "inelastic: PED < 1", APP)
-ax.label(58, 72, "constant slope:", size=28, color=MUTED, weight=600)
-ax.label(58, 72, "each $1 fall adds 1 unit", size=28, color=MUTED, dy=36, weight=600)
+    mx, my = (a + c) / 2 + nx * 1.7, (b + d) / 2 + ny * 1.7
+    cv.text(mx, my, text, size=30, color=col, anchor="start", weight=800)
+zone(9, 41, "elastic: |PED| > 1", DEP)
+zone(49, 81, "inelastic: |PED| < 1", APP)
+ax.label(62, 62, "constant slope:", size=28, color=MUTED, weight=600)
+ax.label(62, 62, "each $1 fall adds 1 unit", size=28, color=MUTED, dy=36, weight=600)
 cv.badge(1140, 46, "P = 90 − Q", INK, size=28, anchor="end")
 save("PED_09_HL_Linear_Curve", cv)
 
@@ -192,40 +198,46 @@ pts = [("A", 20), ("B", 45), ("C", 70), ("D", 80)]
 for name, q in pts:
     p = L(q); ped = p / q
     ax.dot(q, p, INK, r=12)
-    txt = f"{name}: {p:.0f} ÷ {q} = {ped:.3f}".rstrip("0").rstrip(".") if name == "D" else f"{name}: {p:.0f} ÷ {q} = {ped:.2f}"
+    txt = f"{name} ({q}, ${p:.0f}): |PED| = {ped:.2f}"
     if name == "D":
-        txt = "D: 10 ÷ 80 = 0.125"
+        txt = "D (80, $10): |PED| = 0.13"
     dx, dy, anc = (26, -20, "start") if name in ("A", "B") else (20, -34, "start")
-    if name == "C":
-        dx, dy = 24, -40
-    if name == "D":
-        dx, dy = 18, -46
-    ax.label(q, p, txt, size=32, color=INK, dx=dx, dy=dy)
+    if name in ("C", "D"):
+        dx, dy, anc = -26, 12, "end"
+    ax.label(q, p, txt, size=32, color=INK, dx=dx, dy=dy, anchor=anc)
 assert [round(L(q) / q, 3) for _, q in pts] == [3.5, 1.0, 0.286, 0.125]
-ax.label(46, 90, "PED magnitude = P ÷ Q here (b = 1)", size=30, color=MUTED, anchor="middle", weight=700)
+ax.label(46, 90, "|PED| = P ÷ Q at each point here (b = 1)", size=30, color=MUTED, anchor="middle", weight=700)
 cv.badge(1140, 46, "P = 90 − Q", INK, size=28, anchor="end")
 save("PED_10_HL_Four_Points", cv)
 
 # =========================================================== PED_17a/b: revenue gain and loss for a price rise
 def revenue(name, f, x_range, p1, q1, p2, q2, title, good):
     cv = Canvas(1100, 960); ax = Ax(cv, 200, 790, 940, 150)
-    ax.axes()
     gain = (p2 - p1) * q2; loss = p1 * (q1 - q2)
     ax.rect(0, 0, q2, p1, fill="#C9CED6", opacity=0.55)
     ax.rect(0, p1, q2, p2, fill=APP, opacity=0.78)
     ax.rect(q2, 0, q1, p1, fill=DEP, opacity=0.78)
     ax.poly(f, *x_range, color=NAVY, w=7)
-    ax.label(x_range[1], f(x_range[1]), "D", size=CURVE, color=NAVY, dx=10, dy=-6)
+    if f(x_range[1]) < 8:
+        ax.label(x_range[0], f(x_range[0]), "D", size=CURVE, color=NAVY, dx=-16, dy=26, anchor="end")
+    else:
+        ax.label(x_range[1], f(x_range[1]), "D", size=CURVE, color=NAVY, dx=10, dy=-6)
+    if q1 - q2 < 12:
+        ax.xtitle_dy = 150
     ax.hguide(p1, q1, f"P₁ ${p1}"); ax.hguide(p2, q2, f"P₂ ${p2}")
     ax.vguide(q2, p2, f"Q₂ {q2}"); ax.vguide(q1, p1, f"Q₁ {q1}", dy=76 if q1 - q2 < 12 else 38)
     ax.dot(q1, p1); ax.dot(q2, p2, NAVY)
+    ax.axes()
     ax.label(q2 / 2, (p1 + p2) / 2, f"gain +${gain:,.0f}", size=32, color="#FFFFFF", anchor="middle", halo=False)
     if q1 - q2 >= 20:
         ax.label((q1 + q2) / 2, p1 / 2, f"loss −${loss:,.0f}", size=32, color="#FFFFFF", anchor="middle", halo=False)
     else:
-        a, b = ax.px((q1 + q2) / 2, p1 * 0.45)
-        cv.line(a + 10, b, a + 70, b, DEP, 4)
-        cv.text(a + 80, b, f"loss −${loss:,.0f}", size=32, color=DEP, anchor="start", weight=800)
+        yl = p1 * 0.45
+        a, b = ax.px((q1 + q2) / 2, yl)
+        qd = next(q for q in [x_range[0] + i * 0.05 for i in range(4000)] if f(q) <= yl)   # where D crosses this height
+        c, _ = ax.px(qd, yl)
+        cv.line(a + 6, b, c + 22, b, DEP, 4)
+        cv.text(c + 32, b, f"loss −${loss:,.0f}", size=32, color=DEP, anchor="start", weight=800)
     tr1, tr2 = p1 * q1, p2 * q2
     assert tr2 - tr1 == gain - loss
     cv.badge(1090, 46, title.format(tr1=tr1, tr2=tr2), APP if good else DEP, size=28, anchor="end")
@@ -250,14 +262,14 @@ ax.dot(45, 2025, INK, r=13)
 for q in (20, 70):
     ax.dot(q, TR(q), NAVY, r=10); ax.label(q, TR(q), f"${TR(q):,.0f}", size=28, color=NAVY, anchor="middle", dy=44)
 assert TR(45) == 2025 and TR(20) == TR(70) == 1400
-ax.label(45, 2025, "TR is highest where PED = 1", size=30, color=INK, dx=26, dy=-30)
-ax.label(22.5, 700, "elastic range:", size=30, color=DEP, anchor="middle")
-ax.label(22.5, 700, "a price cut raises TR", size=30, color=DEP, anchor="middle", dy=40)
-ax.label(66, 700, "inelastic range:", size=30, color=APP, anchor="middle")
-ax.label(66, 700, "a price cut lowers TR", size=30, color=APP, anchor="middle", dy=40)
-a, b = ax.px(10, 260); c, _ = ax.px(34, 260)
+ax.label(45, 2025, "TR is highest where |PED| = 1", size=30, color=INK, dx=26, dy=-30)
+ax.label(24.5, 520, "elastic range:", size=28, color=DEP, anchor="middle")
+ax.label(24.5, 520, "a price cut raises TR", size=28, color=DEP, anchor="middle", dy=38)
+ax.label(65.5, 520, "inelastic range:", size=28, color=APP, anchor="middle")
+ax.label(65.5, 520, "a price cut lowers TR", size=28, color=APP, anchor="middle", dy=38)
+a, b = ax.px(12, 150); c, _ = ax.px(34, 150)
 cv.line(a, b, c, b, MUTED, 4, arrow_end=True); cv.text(c + 12, b, "price falls, Q rises", size=26, color=MUTED, anchor="start", weight=600)
-cv.badge(1140, 46, "P = 90 − Q, so TR = (90 − Q) × Q", INK, size=26, anchor="end")
+cv.badge(1140, 46, "HL · P = 90 − Q, so TR = (90 − Q) × Q", INK, size=26, anchor="end")
 save("PED_18_TR_Curve", cv)
 
 # =========================================================== PED_20/21: indirect tax diagrams
@@ -278,7 +290,7 @@ def taxplot(name, D, Dr, Sf, Sr, Stf, Str, qt, pc, pp, mode, badge, badgecol, dl
     late = []
     if mode == "revenue":
         ax.rect(0, pp, qt, pc, fill=CB, opacity=0.70)
-        late.append(lambda: cv.badge(*ax.px(qt / 2, (pp + pc) / 2), (f"tax revenue ${27 * qt:,.0f}" if qt > 45 else f"revenue ${27 * qt:,.0f}"), CB, size=26, anchor="middle"))
+        late.append(lambda: cv.badge(*ax.px(qt / 2, (pp + pc) / 2), f"tax revenue ${27 * qt:,.0f}", CB, size=26, anchor="middle"))
     else:
         ax.rect(0, 40, qt, pc, fill=NAVY, opacity=0.78)
         ax.rect(0, pp, qt, 40, fill=GOLD, opacity=0.85)
@@ -288,7 +300,7 @@ def taxplot(name, D, Dr, Sf, Sr, Stf, Str, qt, pc, pp, mode, badge, badgecol, dl
             late.append(lambda: ax.label(qt / 2, pp, f"producers ${prod:g}", size=28, color=GOLD_TXT, anchor="middle", dy=30))
         else:
             late.append(lambda: cv.badge(*ax.px(qt / 2, (pp + 40) / 2), f"producers ${prod:g}", GOLD_TXT, size=28, anchor="middle"))
-            late.append(lambda: ax.label(qt / 2, pc, f"consumers ${cons:g}", size=28, color=NAVY, anchor="middle", dy=-30))
+            late.append(lambda: ax.label(qt / 2 - 6, pc, f"consumers ${cons:g}", size=28, color=NAVY, anchor="middle", dy=-30))
     ax.poly(Sf, *Sr, color=NAVY, w=6); ax.poly(Stf, *Str, color=GOLD, w=6)
     ax.poly(D, *Dr, color=INK, w=7)
     ax.label(Sr[1], Sf(Sr[1]), slab[0], size=34, color=NAVY, dx=10, dy=10)
@@ -296,7 +308,10 @@ def taxplot(name, D, Dr, Sf, Sr, Stf, Str, qt, pc, pp, mode, badge, badgecol, dl
         ax.label(Str[1], Stf(Str[1]), slab[1], size=34, color=GOLD_TXT, dx=-14, dy=10, anchor="end")
     else:
         ax.label(Str[1], Stf(Str[1]), slab[1], size=34, color=GOLD_TXT, dx=10, dy=-6)
-    ax.label(Dr[1], D(Dr[1]), dlab, size=36, color=INK, dx=10, dy=-14)
+    if D(Dr[1]) < 8:
+        ax.label(Dr[0], D(Dr[0]), dlab, size=36, color=INK, dx=-16, dy=26, anchor="end")
+    else:
+        ax.label(Dr[1], D(Dr[1]), dlab, size=36, color=INK, dx=10, dy=-14)
     gap_hi, gap_lo = pc - 40, 40 - pp
     ax.hguide(pc, qt, f"${pc:g}", ldy=-14 if gap_hi < 6 else 0)
     ax.hguide(40, 60, "$40", ldy=(14 if gap_hi < 6 else (-14 if gap_lo < 6 else 0)))
@@ -309,9 +324,9 @@ def taxplot(name, D, Dr, Sf, Sr, Stf, Str, qt, pc, pp, mode, badge, badgecol, dl
     save(name, cv)
 
 taxplot("PED_20a_Tax_Revenue_Inelastic", Da, (45, 70), S, (0, 100), St, (0, 100), 54, 64, 37, "revenue",
-        "Q −10% · revenue $1,458", CB, "D", ("S", "S + tax"))
+        "Q −10% · tax revenue $1,458", CB, "D", ("S", "S + tax"))
 taxplot("PED_20b_Tax_Revenue_Elastic", Db, (0, 100), S, (0, 100), St, (0, 100), 33, 53.5, 26.5, "revenue",
-        "Q −45% · revenue $891", CB, "D", ("S", "S + tax"))
+        "Q −45% · tax revenue $891", CB, "D", ("S", "S + tax"))
 taxplot("PED_21a_Incidence_Consumers", Da, (45, 70), S, (0, 100), St, (0, 100), 54, 64, 37, "incidence",
         "Consumers bear $24 of $27", NAVY, "D", ("S", "S + tax"))
 taxplot("PED_21b_Incidence_Producers", Db, (0, 100), Sb, (50.5, 75), Sbt, (43.5, 68.25), 54, 43, 16, "incidence",

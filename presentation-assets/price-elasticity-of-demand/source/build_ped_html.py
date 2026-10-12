@@ -28,9 +28,9 @@ def page(name, w, h, body, extra=""):
 # ------------------------------------------------------------------ spectrum (slide 6)
 zones = [
     ("0", "Perfectly price inelastic", "%ΔQD = 0: quantity demanded does not respond", "#1B3460"),
-    ("0 to 1", "Price inelastic", "%ΔQD is smaller than %ΔP", "#2F5D8C"),
-    ("1", "Unitary price elastic", "%ΔQD equals %ΔP", "#8A6A2E"),
-    ("1 to ∞", "Price elastic", "%ΔQD is larger than %ΔP", "#B0412E"),
+    ("0 to 1", "Price inelastic", "%ΔQD is proportionately smaller than %ΔP", "#2F5D8C"),
+    ("1", "Unitary price elastic", "%ΔQD and %ΔP are equal in magnitude", "#8A6A2E"),
+    ("1 to ∞", "Price elastic", "%ΔQD is proportionately larger than %ΔP", "#B0412E"),
     ("→ ∞", "Perfectly price elastic", "any price rise: quantity demanded falls to zero", "#7A2A1F"),
 ]
 cells = "".join(f'<div class="z"><div class="zv" style="color:{c}">{v}</div><div class="zn">{n}</div><div class="zm xs muted">{m}</div></div>'
@@ -41,7 +41,7 @@ body = f"""
 <div class="zones">{cells}</div>
 <div class="coef"><span class="k muted">Coefficient (usually negative)</span>
 <span class="cv">0</span><span class="arr">→</span><span class="cv">−0.5</span><span class="arr">→</span><span class="cv">−1</span><span class="arr">→</span><span class="cv">−2.0</span><span class="arr">→</span><span class="cv">−∞</span></div>
-<div class="ex"><b>Theatre tickets:</b> coefficient −0.50, magnitude 0.50 → price inelastic &nbsp;·&nbsp; <b>Streaming service:</b> coefficient −2.0, magnitude 2.0 → price elastic</div>
+<div class="ex"><b>Theatre tickets:</b> coefficient −0.50, magnitude 0.50 → price inelastic &nbsp;·&nbsp; <b>A coefficient of −2.0:</b> magnitude 2.0 → price elastic</div>
 """
 page("PED_06_Spectrum", 1500, 560, body, """
 .lab{position:relative;margin:4px 6px 14px}
@@ -77,7 +77,7 @@ body = f"""
   <div class="cr">More and closer substitutes → more price elastic</div>
  </div>
 </div>
-<div class="out"><span class="pill" style="background:#0E1E3A">Determinant</span><span class="ar">→</span><span class="pill" style="background:#1B3460">ability or willingness to switch</span><span class="ar">→</span><span class="pill" style="background:#8A6A2E">size of % response in QD</span><span class="ar">→</span><span class="pill" style="background:#B0412E">|PED|</span></div>
+<div class="out"><span class="pill" style="background:#0E1E3A">Determinant</span><span class="ar">→</span><span class="pill" style="background:#1B3460">ability to switch, delay or do without</span><span class="ar">→</span><span class="pill" style="background:#8A6A2E">size of % response in QD</span><span class="ar">→</span><span class="pill" style="background:#B0412E">|PED|</span></div>
 """
 page("PED_11_TINS", 1500, 760, body, """
 .grid{position:relative;display:grid;grid-template-columns:1fr 1.15fr;grid-template-rows:auto auto auto;gap:16px 26px;margin:4px}
@@ -86,7 +86,6 @@ page("PED_11_TINS", 1500, 760, body, """
 .sn{font-size:25px;font-weight:800}
 .rule{margin-top:6px;font-size:20px;font-weight:800;color:#8A6A2E}
 .core{grid-column:2;grid-row:1 / span 3;background:#0E1E3A;color:#fff;border:5px solid #B08A47;border-radius:28px;padding:26px 30px;display:flex;flex-direction:column;justify-content:center;position:relative}
-.core:before{content:'feeds into';position:absolute;left:-26px;top:50%;transform:translate(-100%,-50%) rotate(-90deg);transform-origin:right center;font-size:16px;color:#8A6A2E;font-weight:800;letter-spacing:2px;text-transform:uppercase}
 .cl{font-family:Lora,Georgia,serif;font-size:96px;font-weight:700;color:#E2C98F;line-height:1}
 .cn{font-size:40px;font-weight:800;margin-top:4px}
 .cq{font-size:30px;color:#E2C98F;font-weight:700;margin-top:6px}
@@ -99,7 +98,7 @@ page("PED_11_TINS", 1500, 760, body, """
 
 # ------------------------------------------------------------------ primary vs manufactured (slide 25)
 rows = [
-    ("S", "Substitutes", "Very few: little replaces crude oil, iron ore or rice as an input", "Many: rival makes and models compete closely"),
+    ("S", "Substitutes", "Very few: little replaces crude oil, iron ore or copper as an input", "Many: rival makes and models compete closely"),
     ("N", "Necessity", "Essential inputs: production stops without them", "Lower: an old laptop or car can be kept longer"),
     ("I", "Share of spending", "Often a small share of the buyer's total production cost", "Often a large share of a household's income"),
     ("T", "Time to adjust", "Buyers need years to redesign processes or switch inputs", "Durable: replacement can simply be postponed"),
@@ -108,12 +107,12 @@ rr = "".join(f'<div class="dl"><span class="lt">{l}</span><span>{n}</span></div>
 body = f"""
 <div class="g">
  <div></div>
- <div class="hp"><div class="ht">Primary commodity</div><div class="hs">crude oil · iron ore · rice<br>buyer: usually a firm buying an input</div></div>
+ <div class="hp"><div class="ht">Primary commodity</div><div class="hs">crude oil · iron ore · copper<br>buyer: usually a firm buying an input</div></div>
  <div class="hm"><div class="ht">Manufactured product</div><div class="hs">laptop · car · watch<br>buyer: usually a household</div></div>
  {rr}
  <div class="dl res"><span>Result</span></div>
- <div class="rp">PED generally below 1: price inelastic</div>
- <div class="rm">PED generally above 1: price elastic</div>
+ <div class="rp">|PED| generally below 1: price inelastic</div>
+ <div class="rm">|PED| generally above 1: price elastic</div>
 </div>
 <div class="note xs"><b>A tendency, not a rule:</b> medicines are manufactured yet usually face price inelastic demand; one brand of rice faces close substitutes on the same shelf.</div>
 """
@@ -135,7 +134,7 @@ page("PED_25_Primary_vs_Manufactured", 1500, 760, body, """
 # ------------------------------------------------------------------ errors that cost marks (slide 27)
 errs = [
     ("Writing %ΔP on top", "Quantity is always the numerator: PED = %ΔQD ÷ %ΔP"),
-    ("\"Elastic means QD falls when price rises\"", "That is the law of demand. Elastic means %ΔQD is larger than %ΔP"),
+    ("\"Elastic means QD falls when price rises\"", "That is the law of demand. Elastic means %ΔQD is proportionately larger than %ΔP"),
     ("Dropping the sign without comment", "\"PED = −0.5; using its magnitude of 0.5, demand is price inelastic\""),
     ("\"The product is elastic\"", "\"Demand for the product is price elastic\", in a stated market and period"),
     ("Mixing up shifts and movements", "A price change moves along D (quantity demanded); other factors shift D (demand)"),
@@ -161,7 +160,7 @@ top = [
     (1, "Concept and formula", "Responsiveness of QD to own price; PED = %ΔQD ÷ %ΔP; %Δ = (new − old) ÷ old × 100", "Cards 2 to 5"),
     (2, "Coefficient and degrees", "Coefficient negative; classify by magnitude: 0, 0 to 1, 1, above 1, → ∞", "Card 6"),
     (3, "Diagrams", "Elastic vs inelastic on the same axes; horizontal, vertical, rectangular hyperbola", "Cards 7, 8"),
-    (4, "TINS determinants", "Time, Income share, Necessity, Substitutes (the key one, minus switching costs)", "Cards 11 to 15"),
+    (4, "TINS determinants", "Time, Income share, Necessity, Substitutes (the key one, minus switching costs)", "Cards 11 to 15, 26"),
 ]
 bottom = [
     (5, "PED and total revenue", "Inelastic: P and TR move together; elastic: opposite; gain vs loss areas", "Cards 16 to 18"),
@@ -175,7 +174,7 @@ def node(n, label, text, cards):
 body = f"""
 <svg id="lines" width="1500" height="900" style="position:absolute;left:0;top:0"></svg>
 <div class="row" id="top">{"".join(node(*t) for t in top)}</div>
-<div class="band"><div class="hub" id="hub"><div class="t1 serif">Price elasticity of demand</div><div class="s1">IB 2.5 · SL AND HL</div></div></div>
+<div class="band"><div class="hub" id="hub"><div class="t1 serif">Price elasticity of demand</div><div class="s1">IB 2.5 (PED) · SL AND HL</div></div></div>
 <div class="row" id="bottom">{"".join(node(*b) for b in bottom)}</div>
 <script>
 const svg=document.getElementById('lines'), hub=document.getElementById('hub').getBoundingClientRect();
