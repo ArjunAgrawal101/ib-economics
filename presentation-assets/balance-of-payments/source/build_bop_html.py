@@ -109,8 +109,8 @@ branches = [
      [comp("Capital transfers", "debt forgiveness, investment grants"),
       comp("Non-produced, non-financial assets", "land, natural-resource rights, licences, brand names")]),
     ("fin", "Financial account", "Ownership of a financial asset, or a loan",
-     [comp("FDI", "a lasting stake with control (usually 10%+ of voting shares)"),
-      comp("Portfolio investment", "shares or bonds without control"),
+     [comp("FDI", "a lasting stake with influence or control (10%+ of voting shares)"),
+      comp("Portfolio investment", "shares or bonds: under 10%, no lasting interest"),
       comp("Reserve assets", "the central bank's foreign currency and gold"),
       comp("Official borrowing", "loans to or from a government")]),
 ]
@@ -153,7 +153,7 @@ body = f"""
          [("Capital transfers", "debt forgiveness, investment grants"),
           ("Non-produced, non-financial assets", "embassy land, resource rights, licences, brands")])}
 {acc_col("fin", "Financial account", "changes in who owns assets", "Can be large and volatile",
-         [("Foreign direct investment", "lasting stakes with control"), ("Portfolio investment", "shares and bonds"),
+         [("Foreign direct investment", "lasting stakes with influence or control"), ("Portfolio investment", "shares and bonds"),
           ("Reserve assets", "central bank's foreign currency and gold"), ("Official borrowing", "government loans from or to abroad")])}
 </div>
 <div class="eo">+ <b>Errors and omissions</b>: a balancing item &nbsp;·&nbsp; <b>Current + Capital + Financial + Errors and omissions = 0</b></div>
@@ -324,7 +324,7 @@ x1, m1 = 100 * (1 + 0.08), 100 * 1.10 * (1 - 0.06)
 x2, m2 = 100 * (1 + 0.03), 100 * 1.10 * (1 - 0.04)
 assert round(x1 - m1, 1) == 4.6 and round(x2 - m2, 1) == -2.6
 body = f"""
-<div class="hdr xs"><b>Illustrative:</b> the ₹ depreciates by 10%. Trade starts balanced: exports ₹100, imports ₹100. Export prices in ₹ and import prices in US$ do not change. Grey bar = before, coloured bar = after.</div>
+<div class="hdr xs"><b>Illustrative, small-change approximation:</b> after a 10% depreciation, exports cost about 10% less abroad and imports about 10% more in ₹. Trade starts balanced at ₹100 each. Grey bar = before, coloured bar = after.</div>
 <div class="pns">
 {panel("Elastic: 0.8 + 0.6 = 1.4 > 1", "|PEDx| = 0.8, |PEDm| = 0.6", x1, m1, x1 - m1, True, 0.8, 0.6)}
 {panel("Inelastic: 0.3 + 0.4 = 0.7 < 1", "|PEDx| = 0.3, |PEDm| = 0.4", x2, m2, x2 - m2, False, 0.3, 0.4)}
