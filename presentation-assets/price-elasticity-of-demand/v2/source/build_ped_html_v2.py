@@ -302,14 +302,14 @@ body = f"""
 <div class="hdr"><div></div><div></div><div class="h1 dep">The error</div><div class="h2 app">What earns the mark</div></div>
 <div class="tb">{''.join(html_rows)}</div>
 """
-page("PED_27_Errors", 1500, 1000, body, """
-.hdr,.tb{position:relative;display:grid;grid-template-columns:170px 70px 520px 1fr;column-gap:12px;margin:0 4px}
+page("PED_27_Errors", 1760, 900, body, """
+.hdr,.tb{position:relative;display:grid;grid-template-columns:170px 66px 600px 1fr;column-gap:12px;margin:0 4px}
 .hdr{margin-bottom:8px}
 .h1,.h2{font-size:24px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
 .tb{row-gap:10px}
 .cat{display:flex;align-items:center;justify-content:center;background:#0E1E3A;border-radius:16px;color:#E2C98F;font-size:25px;font-weight:800;text-align:center;padding:8px;line-height:1.2}
 .no{font-family:Lora,Georgia,serif;font-size:34px;font-weight:700;color:#B08A47;display:flex;align-items:center;justify-content:center}
-.er,.fx{font-size:25px;line-height:1.28;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.er,.fx{font-size:27px;line-height:1.25;border-radius:14px;padding:11px 16px;display:flex;align-items:center;gap:12px}
 .er{background:#F8E7E3;color:#7A2A1F;font-weight:700}
 .fx{background:#E5F1EA;color:#163F2E;font-weight:600}
 .x{font-size:28px;color:#B0412E;font-weight:900;flex:none}
@@ -335,7 +335,7 @@ body = f"""
 <div class="hub" id="hub"><div class="hk k">IB 2.5 · SL and HL</div><div class="ht serif">Price elasticity of demand</div><div class="hf">PED = %ΔQD ÷ %ΔP</div></div>
 <div class="key"><div class="kk2 k">Key relationships</div><div class="kf">%ΔQD = PED × %ΔP</div><div class="kf">TR = P × Q</div></div>
 <div class="foot">Numbers in each branch show the slides to revisit.</div>
-<svg class="links" id="lk" width="1500" height="900"></svg>
+<svg class="links" id="lk" width="1760" height="900"></svg>
 """
 script = """
 const s=document.getElementById('lk');const H=c(document.getElementById('hub'));
@@ -349,23 +349,23 @@ for(const id of ['c1','c2','c3','c4','c5','c6','c7']){const h=c(document.getElem
   s.insertAdjacentHTML('beforeend',`<path d="${d}" fill="none" stroke="#B08A47" stroke-width="6" stroke-linecap="round"/>`);
   s.insertAdjacentHTML('beforeend',`<circle cx="${x2}" cy="${y2}" r="8" fill="#B08A47"/>`);}
 """
-page("PED_28_Revision_Map", 1500, 900, body, """
-.cl{position:absolute;width:400px}
+page("PED_28_Revision_Map", 1760, 900, body, """
+.cl{position:absolute;width:470px}
 .ch{display:flex;align-items:baseline;justify-content:space-between;gap:10px;background:#1B3460;color:#fff;border-radius:16px;padding:10px 18px;margin-bottom:8px}
-.cn{font-size:29px;font-weight:800}
+.cn{font-size:31px;font-weight:800}
 .cs{font-size:21px;font-weight:700;color:#E2C98F;white-space:nowrap}
-.lf{font-size:25px;line-height:1.25;padding:5px 4px 5px 18px;border-left:5px solid #E2D6BC;margin-left:12px;color:#22304A}
+.lf{font-size:27px;line-height:1.25;padding:5px 4px 5px 18px;border-left:5px solid #E2D6BC;margin-left:12px;color:#22304A}
 #c1{left:10px;top:10px}#c2{left:10px;top:315px}#c3{left:10px;top:620px}
-#c4{left:1090px;top:10px}#c5{left:1090px;top:315px}#c6{left:1090px;top:620px}
-#c7{left:550px;top:600px}
+#c4{left:1280px;top:10px}#c5{left:1280px;top:315px}#c6{left:1280px;top:620px}
+#c7{left:645px;top:600px}
 #c7 .ch{background:#B0412E}
-.hub{position:absolute;left:530px;top:290px;width:440px;height:250px;border-radius:125px;background:#0E1E3A;border:7px solid #B08A47;color:#fff;
+.hub{position:absolute;left:640px;top:290px;width:480px;height:250px;border-radius:125px;background:#0E1E3A;border:7px solid #B08A47;color:#fff;
      display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 30px}
 .hk{font-size:19px;color:#E2C98F}
 .ht{font-size:40px;font-weight:700;line-height:1.1;margin:8px 0}
 .hf{font-size:26px;font-weight:700;color:#E2C98F}
-.foot{position:absolute;left:500px;top:858px;width:500px;text-align:center;font-size:21px;color:#5B6577}
-.key{position:absolute;left:560px;top:40px;width:380px;border:3px dashed #D9CCB0;border-radius:20px;padding:16px 20px;text-align:center}
+.foot{position:absolute;left:630px;top:858px;width:500px;text-align:center;font-size:21px;color:#5B6577}
+.key{position:absolute;left:690px;top:40px;width:380px;border:3px dashed #D9CCB0;border-radius:20px;padding:16px 20px;text-align:center}
 .kk2{font-size:19px;color:#8A6A2E;margin-bottom:8px}
 .kf{font-size:30px;font-weight:800;margin:4px 0}
 """, script)
