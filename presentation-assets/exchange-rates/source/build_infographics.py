@@ -176,3 +176,53 @@ page("ER_23b_Systems_Spectrum", 1600, 820, f"""
 </div>
 """)
 print("written", sorted(os.listdir(OUT)))
+
+# ------------------------------------------------------------------ v2 compact versions (larger type, for two-thirds-width placement)
+page("ER_00b_Quote_Anatomy", 1300, 530, """
+<div class="kicker" style="font-size:27px">Reading an exchange-rate quote</div>
+<div style="display:flex;align-items:flex-end;gap:30px;justify-content:center;margin-top:34px">
+ <div style="text-align:center"><div class="serif" style="font-size:124px;font-weight:600;line-height:1">US$1</div>
+   <div style="margin-top:12px;font-size:28px;font-weight:700" class="gold">the currency being priced</div></div>
+ <div class="serif" style="font-size:124px;line-height:1;color:#8C93A0">=</div>
+ <div style="text-align:center"><div class="serif" style="font-size:124px;font-weight:600;line-height:1">₹80</div>
+   <div style="margin-top:12px;font-size:28px;font-weight:700" class="gold">its price, in rupees</div></div>
+</div>
+<div style="display:flex;gap:26px;margin-top:40px">
+ <div class="box gold" style="flex:1;text-align:center">
+   <div style="font-size:26px;font-weight:700" class="gold">Flip it: 1 ÷ 80</div>
+   <div class="serif" style="font-size:46px;font-weight:600;margin-top:6px">₹1 = US$0.0125</div></div>
+ <div class="box" style="flex:1.25">
+   <div style="font-size:26px;font-weight:700">Quote moves to US$1 = ₹88</div>
+   <div style="margin-top:12px;font-size:26px;display:flex;gap:12px;flex-wrap:wrap;align-items:center"><span class="pill app" style="font-size:24px">US$ appreciates</span><span class="pill dep" style="font-size:24px">₹ depreciates</span></div>
+   <div style="margin-top:10px;font-size:25px" class="muted">₹1 now buys US$0.0114, not US$0.0125</div></div>
+</div>
+""")
+
+def col2(items, side, colr):
+    return "".join(
+        f'<div class="box" style="display:flex;gap:14px;align-items:center;padding:12px 16px;border-color:{colr}">'
+        f'<div style="font-size:26px;font-weight:800;min-width:24px;color:{colr}">{i+1}</div>'
+        f'<div style="font-size:26px;line-height:1.2">{t}</div></div>' for i, t in enumerate(items))
+
+L2 = ["Foreigners buy Indian <b>exports</b>", "<b>Inward FDI</b>", "<b>Inward portfolio</b> investment",
+      "<b>Remittances</b> into India", "<b>Speculators</b> buy ₹", "<b>RBI buys</b> ₹ (sells US$)"]
+R2 = ["Indians buy <b>imports</b>", "<b>Outward FDI</b>", "<b>Outward portfolio</b> investment",
+      "<b>Remittances</b> out of India", "<b>Speculators</b> sell ₹", "<b>RBI sells</b> ₹ (buys US$)"]
+page("ER_01b_Forex_Flows", 1300, 660, f"""
+<div class="kicker" style="font-size:27px">Who buys and who sells rupees?</div>
+<div style="display:grid;grid-template-columns:1fr 210px 1fr;gap:24px;margin-top:26px;align-items:start">
+ <div><div style="font-size:29px;font-weight:800" class="app">DEMAND for ₹</div>
+  <div style="font-size:23px;margin:2px 0 14px" class="muted">money flowing <b>into</b> India</div>
+  <div style="display:flex;flex-direction:column;gap:11px">{col2(L2,'L','#2E7D5B')}</div></div>
+ <div style="text-align:center;padding-top:150px">
+  <div style="font-size:48px;color:#2E7D5B;font-weight:700;line-height:1">→</div>
+  <div class="box" style="background:#1B3460;color:#fff;border-color:#1B3460;padding:22px 12px;margin:10px 0">
+   <div class="serif" style="font-size:27px;font-weight:600;line-height:1.2">Foreign exchange market</div>
+   <div style="font-size:34px;margin-top:10px;font-weight:700">₹ ⇄ US$</div></div>
+  <div style="font-size:48px;color:#B0412E;font-weight:700;line-height:1">←</div>
+ </div>
+ <div><div style="font-size:29px;font-weight:800" class="dep">SUPPLY of ₹</div>
+  <div style="font-size:23px;margin:2px 0 14px" class="muted">money flowing <b>out of</b> India</div>
+  <div style="display:flex;flex-direction:column;gap:11px">{col2(R2,'R','#B0412E')}</div></div>
+</div>
+""")
