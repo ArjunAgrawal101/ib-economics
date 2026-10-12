@@ -1,0 +1,43 @@
+<!doctype html><html data-size="1600x660"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:transparent}
+body{font-family:Inter,'Helvetica Neue',Arial,sans-serif;color:#0E1E3A}
+.card{position:absolute;inset:2px;border:3px solid #E2D6BC;border-radius:28px;background:#FFFDF8;padding:46px 56px}
+.kicker{font-size:25px;font-weight:700;letter-spacing:3px;color:#8A6A2E;text-transform:uppercase}
+.sub{font-size:22px;color:#5B6577;margin-top:8px}
+.serif{font-family:Lora,Georgia,serif}
+.app{color:#2E7D5B}.dep{color:#B0412E}.cb{color:#2F5D8C}.gold{color:#8A6A2E}.muted{color:#5B6577}
+.pill{display:inline-block;border-radius:999px;padding:6px 18px;font-weight:700;color:#fff;font-size:22px}
+.pill.app{background:#2E7D5B;color:#fff}.pill.dep{background:#B0412E;color:#fff}.pill.navy{background:#1B3460;color:#fff}
+.box{border:3px solid #1B3460;border-radius:18px;background:#fff;padding:16px 20px}
+.box.gold{border-color:#B08A47}.box.dep{border-color:#B0412E}.box.app{border-color:#2E7D5B}.box.cb{border-color:#2F5D8C}
+.arrow{color:#B08A47;font-size:40px;font-weight:700;line-height:1}
+
+body{width:1600px;height:660px;position:relative}</style></head><body><div class="card">
+<div class="kicker">Reading an exchange-rate quote</div>
+<div class="sub">Every quote prices ONE currency in units of ANOTHER (illustrative rate)</div>
+<div style="display:flex;gap:56px;margin-top:44px;align-items:stretch">
+ <div style="flex:1.25">
+  <div style="display:flex;align-items:flex-end;gap:26px;justify-content:center">
+   <div style="text-align:center"><div class="serif" style="font-size:118px;font-weight:600;line-height:1">US$1</div>
+     <div style="margin-top:14px;font-size:24px;font-weight:700" class="gold">the currency being priced</div></div>
+   <div class="serif" style="font-size:118px;line-height:1;color:#8C93A0">=</div>
+   <div style="text-align:center"><div class="serif" style="font-size:118px;font-weight:600;line-height:1">₹80</div>
+     <div style="margin-top:14px;font-size:24px;font-weight:700" class="gold">its price, in rupees</div></div>
+  </div>
+  <div class="box" style="margin-top:44px;display:flex;align-items:center;gap:24px;border-color:#B08A47">
+   <div style="font-size:24px;font-weight:700;white-space:nowrap" class="gold">Flip it:</div>
+   <div class="serif" style="font-size:48px;font-weight:600;white-space:nowrap">₹1 = US$0.0125</div>
+   <div style="font-size:23px;white-space:nowrap" class="muted">(1 ÷ 80)</div>
+  </div>
+ </div>
+ <div style="flex:1;border-left:3px solid #E2D6BC;padding-left:48px">
+  <div style="font-size:27px;font-weight:700">If the quote moves from ₹80 to ₹88 per US$</div>
+  <div style="margin-top:26px;display:flex;flex-direction:column;gap:20px;font-size:26px">
+   <div><span class="pill app">US$ appreciates</span><div style="margin-top:10px">One dollar now buys <b>more</b> rupees.</div></div>
+   <div><span class="pill dep">₹ depreciates</span><div style="margin-top:10px">One rupee now buys <b>less</b>: US$0.0125 → US$0.0114</div></div>
+  </div>
+  <div style="margin-top:30px;font-size:24px;line-height:1.4" class="muted">A <b style="color:#0E1E3A">higher number</b> is not automatically a stronger currency. First ask: <b style="color:#0E1E3A">which currency is the “1”?</b></div>
+ </div>
+</div>
+</div></body></html>
