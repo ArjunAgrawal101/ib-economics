@@ -10,7 +10,7 @@ body{width:1760px;height:900px}
 .cl{position:absolute;width:470px}
 .ch{display:flex;align-items:baseline;justify-content:space-between;gap:10px;background:#1B3460;color:#fff;border-radius:16px;padding:10px 18px;margin-bottom:8px}
 .cn{font-size:31px;font-weight:800}
-.cs{font-size:21px;font-weight:700;color:#E2C98F;white-space:nowrap}
+.cs{font-size:25px;font-weight:700;color:#E2C98F;white-space:nowrap}
 .lf{font-size:27px;line-height:1.25;padding:5px 4px 5px 18px;border-left:5px solid #E2D6BC;margin-left:12px;color:#22304A}
 #c1{left:10px;top:10px}#c2{left:10px;top:315px}#c3{left:10px;top:620px}
 #c4{left:1280px;top:10px}#c5{left:1280px;top:315px}#c6{left:1280px;top:620px}
@@ -18,12 +18,12 @@ body{width:1760px;height:900px}
 #c7 .ch{background:#B0412E}
 .hub{position:absolute;left:640px;top:290px;width:480px;height:250px;border-radius:125px;background:#0E1E3A;border:7px solid #B08A47;color:#fff;
      display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 30px}
-.hk{font-size:19px;color:#E2C98F}
+.hk{font-size:23px;color:#E2C98F}
 .ht{font-size:40px;font-weight:700;line-height:1.1;margin:8px 0}
 .hf{font-size:26px;font-weight:700;color:#E2C98F}
-.foot{position:absolute;left:630px;top:858px;width:500px;text-align:center;font-size:21px;color:#5B6577}
+.foot{position:absolute;left:480px;top:852px;width:800px;text-align:center;font-size:25px;color:#5B6577}
 .key{position:absolute;left:690px;top:40px;width:380px;border:3px dashed #D9CCB0;border-radius:20px;padding:16px 20px;text-align:center}
-.kk2{font-size:19px;color:#8A6A2E;margin-bottom:8px}
+.kk2{font-size:23px;color:#8A6A2E;margin-bottom:8px}
 .kf{font-size:30px;font-weight:800;margin:4px 0}
 </style>
 <script>
@@ -31,10 +31,10 @@ function c(el){const r=el.getBoundingClientRect();return {l:r.left,r:r.right,t:r
 function arrowDefs(svg,col,id){svg.insertAdjacentHTML('beforeend',`<defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${col}"/></marker></defs>`);}
 </script>
 </head><body>
-<div class="cl" id="c1"><div class="ch" id="c1h"><span class="cn">Measure</span><span class="cs">4, 5, 22</span></div><div class="lf">PED = %ΔQD ÷ %ΔP</div><div class="lf">%Δ from the initial value</div><div class="lf">negative coefficient, classify by |PED|</div></div><div class="cl" id="c2"><div class="ch" id="c2h"><span class="cn">Degrees and diagrams</span><span class="cs">6 to 8</span></div><div class="lf">0 · below 1 · 1 · above 1 · ∞</div><div class="lf">relatively elastic vs inelastic</div><div class="lf">vertical · hyperbola · horizontal</div></div><div class="cl" id="c3"><div class="ch" id="c3h"><span class="cn">TINS determinants</span><span class="cs">11 to 15, 26</span></div><div class="lf">Time · Income share · Necessity</div><div class="lf">Substitutes: the key one</div><div class="lf">switching costs: less elastic</div></div><div class="cl" id="c4"><div class="ch" id="c4h"><span class="cn">Total revenue</span><span class="cs">16 to 18</span></div><div class="lf">inelastic: P and TR move together</div><div class="lf">elastic: they move in opposite directions</div><div class="lf">unit elastic: TR unchanged</div></div><div class="cl" id="c5"><div class="ch" id="c5h"><span class="cn">Firms</span><span class="cs">19, 26</span></div><div class="lf">price discrimination: groups</div><div class="lf">dynamic pricing: times</div><div class="lf">revenue is not profit</div></div><div class="cl" id="c6"><div class="ch" id="c6h"><span class="cn">Government</span><span class="cs">20, 21</span></div><div class="lf">tax revenue = tax × Q traded</div><div class="lf">incidence: PED relative to PES</div></div><div class="cl" id="c7"><div class="ch" id="c7h"><span class="cn">HL extensions</span><span class="cs">9, 10, 25</span></div><div class="lf">linear D: |PED| = (1/b)(P/Q)</div><div class="lf">|PED| = 1 at the midpoint</div><div class="lf">primary vs manufactured</div></div>
+<div class="cl" id="c1"><div class="ch" id="c1h"><span class="cn">Measure and calculate</span><span class="cs">3 to 5, 22 to 24</span></div><div class="lf">PED = %ΔQD ÷ %ΔP</div><div class="lf">%Δ from the initial value</div><div class="lf">negative coefficient, classify by |PED|</div></div><div class="cl" id="c2"><div class="ch" id="c2h"><span class="cn">Degrees and diagrams</span><span class="cs">6 to 8</span></div><div class="lf">0 · below 1 · 1 · above 1 · ∞</div><div class="lf">relatively elastic vs inelastic</div><div class="lf">vertical · hyperbola · horizontal</div></div><div class="cl" id="c3"><div class="ch" id="c3h"><span class="cn">TINS determinants</span><span class="cs">11 to 15, 26</span></div><div class="lf">Time · Income share · Necessity</div><div class="lf">Substitutes: the key one</div><div class="lf">switching costs: less elastic</div></div><div class="cl" id="c4"><div class="ch" id="c4h"><span class="cn">Total revenue</span><span class="cs">16 to 18</span></div><div class="lf">inelastic: P and TR move together</div><div class="lf">elastic: they move in opposite directions</div><div class="lf">unit elastic: TR unchanged</div></div><div class="cl" id="c5"><div class="ch" id="c5h"><span class="cn">Firms</span><span class="cs">19, 26</span></div><div class="lf">price discrimination: groups</div><div class="lf">dynamic pricing: times</div><div class="lf">revenue is not profit</div></div><div class="cl" id="c6"><div class="ch" id="c6h"><span class="cn">Government</span><span class="cs">20, 21, 26</span></div><div class="lf">tax revenue = tax × Q traded</div><div class="lf">incidence: PED relative to PES</div></div><div class="cl" id="c7"><div class="ch" id="c7h"><span class="cn">HL extensions</span><span class="cs">9, 10, 25</span></div><div class="lf">linear D: |PED| = (1/b)(P/Q)</div><div class="lf">|PED| = 1 at the midpoint</div><div class="lf">primary vs manufactured</div></div>
 <div class="hub" id="hub"><div class="hk k">IB 2.5 · SL and HL</div><div class="ht serif">Price elasticity of demand</div><div class="hf">PED = %ΔQD ÷ %ΔP</div></div>
 <div class="key"><div class="kk2 k">Key relationships</div><div class="kf">%ΔQD = PED × %ΔP</div><div class="kf">TR = P × Q</div></div>
-<div class="foot">Numbers in each branch show the slides to revisit.</div>
+<div class="foot">Numbers show the slides to revisit for each branch.</div>
 <svg class="links" id="lk" width="1760" height="900"></svg>
 <script>
 const s=document.getElementById('lk');const H=c(document.getElementById('hub'));

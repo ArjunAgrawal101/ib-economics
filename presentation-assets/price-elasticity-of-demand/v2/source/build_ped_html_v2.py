@@ -83,8 +83,8 @@ page("PED_04_Formula", 1500, 640, body, """
 
 # ============================================================ PED_06: the spectrum, large and legible
 cols = [
-    ("0", "Perfectly price inelastic", "QD does not respond at all", "vertical D", "#1B3460", "pt"),
-    ("0 to 1", "Price inelastic", "%ΔQD is proportionately smaller than %ΔP", "", "#2F5D8C", "rg"),
+    ("0", "Perfectly price inelastic", "QD does not respond at all", "vertical D", "#1F5A40", "pt"),
+    ("0 to 1", "Price inelastic", "%ΔQD is proportionately smaller than %ΔP", "", "#2E7D5B", "rg"),
     ("1", "Unitary", "%ΔQD and %ΔP are equal in magnitude", "rectangular hyperbola", "#8A6A2E", "pt"),
     ("1 to ∞", "Price elastic", "%ΔQD is proportionately larger than %ΔP", "", "#B0412E", "rg"),
     ("∞", "Perfectly price elastic", "any price rise: QD falls to zero", "horizontal D", "#7A2A1F", "pt"),
@@ -102,11 +102,11 @@ body = f"""
  {names}
  {means}
 </div>
-<div class="coef"><span class="k muted ck">Coefficient</span>
- <span class="cv">0</span><span class="arr">→</span><span class="cv">−0.50</span><span class="arr">→</span><span class="cv">−1</span><span class="arr">→</span><span class="cv">−2.0</span><span class="arr">→</span><span class="cv">−∞</span>
- <span class="ex">Theatre tickets: −0.50, magnitude 0.50 → price inelastic</span></div>
+<div class="crow"><div class="cl1 k muted">Coefficient, usually negative</div>
+ <div class="cc"><span class="cv">0</span></div><div class="cc"><span class="cv">e.g. −0.50</span></div><div class="cc"><span class="cv">−1</span></div><div class="cc"><span class="cv">e.g. −2.0</span></div><div class="cc"><span class="cv">→ −∞</span></div></div>
+<div class="ex">Theatre tickets (slide 5): coefficient −0.50, magnitude 0.50 → price inelastic</div>
 """
-page("PED_06_Spectrum", 1500, 660, body, """
+page("PED_06_Spectrum", 1500, 720, body, """
 .top{position:relative;font-size:28px;margin:4px 8px 10px}
 .top .k{font-size:28px}
 .grid{position:relative;display:grid;grid-template-columns:250px 1fr 250px 1fr 250px;column-gap:0;row-gap:12px;margin:0 4px}
@@ -114,7 +114,7 @@ page("PED_06_Spectrum", 1500, 660, body, """
 .v.rg{font-size:36px;align-self:end;opacity:.9}
 .barrow{grid-column:1 / span 5;position:relative;height:76px}
 .bar{position:absolute;left:125px;right:125px;top:14px;height:48px;border-radius:24px;
-     background:linear-gradient(90deg,#1B3460 0%,#2F5D8C 30%,#B08A47 50%,#B0412E 72%,#7A2A1F 100%)}
+     background:linear-gradient(90deg,#1F5A40 0%,#2E7D5B 30%,#B08A47 50%,#B0412E 72%,#7A2A1F 100%)}
 .dot{position:absolute;top:2px;width:72px;height:72px;border-radius:50%;background:#FFFDFA;border:9px solid #0E1E3A;transform:translateX(-50%)}
 .d0{left:125px}.d1{left:50%}.d2{left:calc(100% - 125px)}
 .lbl{position:absolute;top:22px;font-size:28px;font-weight:800;color:#fff;letter-spacing:3px;transform:translateX(-50%)}
@@ -122,11 +122,12 @@ page("PED_06_Spectrum", 1500, 660, body, """
 .nm{font-size:30px;font-weight:800;text-align:center;line-height:1.15;padding:0 10px}
 .me{font-size:26px;line-height:1.3;text-align:center;color:#3A4558;padding:0 14px}
 .sh{margin-top:8px;display:inline-block;font-size:23px;font-weight:700;color:#8A6A2E;border-top:3px solid #E2D6BC;padding-top:6px}
-.coef{position:relative;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:34px 8px 0}
-.ck{font-size:24px}
+.crow{position:relative;display:grid;grid-template-columns:250px 1fr 250px 1fr 250px;row-gap:8px;margin:26px 4px 0;border-top:3px solid #E2D6BC;padding-top:12px}
+.cl1{grid-column:1 / span 5;font-size:23px;text-align:center}
+.cc{text-align:center}
 .cv{font-size:30px;font-weight:800;background:#0E1E3A;color:#fff;border-radius:10px;padding:4px 16px}
 .arr{font-size:28px;color:#B08A47;font-weight:900}
-.ex{font-size:26px;margin-left:22px;color:#3A4558}
+.ex{position:relative;font-size:27px;color:#3A4558;text-align:center;margin-top:16px}
 """)
 
 # ============================================================ PED_11: TINS, with substitutes as the hub
@@ -135,7 +136,7 @@ body = """
 <div class="sat" id="I"><div class="L serif">I</div><div><div class="nm">Income proportion</div><div class="tx">A large share of the budget makes buyers search harder or cut back.</div><div class="ru">Larger share → more price elastic</div></div></div>
 <div class="sat" id="N"><div class="L serif">N</div><div><div class="nm">Necessity</div><div class="tx">If buyers cannot do without it, they keep buying when the price rises.</div><div class="ru">More necessary → more price inelastic</div></div></div>
 <div class="core" id="S"><div class="kk k">Key determinant</div><div class="SL serif">S</div><div class="cn">Substitutes</div><div class="cq">Can buyers switch?</div>
- <div class="cx">Number and closeness of alternatives, minus the cost of switching</div><div class="cr">More and closer substitutes → more price elastic</div></div>
+ <div class="cx">Number and closeness of alternatives, and the cost of switching to them</div><div class="cr">More and closer substitutes → more price elastic</div></div>
 <div class="out" id="o1">How easily buyers can <b>switch, delay or do without</b></div>
 <div class="out" id="o2">Size of the <b>% response</b> in quantity demanded</div>
 <div class="out fin" id="o3">|PED|</div>
@@ -161,7 +162,7 @@ page("PED_11_TINS", 1500, 820, body, """
 .ru{font-size:24px;font-weight:800;color:#8A6A2E;margin-top:8px}
 .core{position:absolute;left:560px;top:120px;width:500px;height:580px;border-radius:250px;background:#0E1E3A;color:#fff;border:8px solid #B08A47;
       display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px 54px}
-.kk{font-size:20px;color:#E2C98F}
+.kk{font-size:25px;color:#E2C98F}
 .SL{font-size:130px;line-height:1;color:#E2C98F;font-weight:700}
 .cn{font-size:44px;font-weight:800}
 .cq{font-size:32px;color:#E2C98F;font-weight:700;margin-top:4px}
@@ -216,7 +217,8 @@ body = f"""
 page("PED_16_TR_Area", 1500, 760, body, """
 .hd{position:relative;display:flex;align-items:baseline;gap:16px;margin:4px 10px 10px}
 .hd .k{font-size:34px}.hdt{font-size:28px;color:#3A4558}
-.row{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px;margin:0 6px}
+.row{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:0 6px}
+.pan svg{width:100%;height:auto}
 .pan{background:#fff;border-radius:22px;border:3px solid #E7DCC4;padding:16px 18px 18px;text-align:center}
 .pt{font-size:36px;font-weight:800}
 .ps{font-size:24px;color:#5B6577;font-weight:600;margin-top:2px}
@@ -250,53 +252,54 @@ body = f"""
 </div>
 <div class="note"><b>A tendency, not a rule:</b> medicines are manufactured yet usually face price inelastic demand; one brand of rice faces close substitutes on the same shelf.</div>
 """
-page("PED_25_Primary_vs_Manufactured", 1400, 980, body, """
-.g{position:relative;display:grid;grid-template-columns:1fr 250px 1fr;column-gap:0;row-gap:14px;margin:4px}
+page("PED_25_Primary_vs_Manufactured", 1500, 1120, body, """
+.g{position:relative;display:grid;grid-template-columns:1fr 230px 1fr;column-gap:0;row-gap:14px;margin:4px}
 .hp,.hm{border-radius:22px;padding:18px 24px;color:#fff}
 .hp{background:#1B3460;text-align:right}.hm{background:#8A6A2E}
-.ht{font-size:38px;font-weight:800}
-.hb{font-size:27px;margin-top:4px;opacity:.95}
-.he{font-size:24px;margin-top:6px;opacity:.85;letter-spacing:.5px}
+.ht{font-size:42px;font-weight:800}
+.hb{font-size:31px;margin-top:4px;opacity:.95}
+.he{font-size:29px;margin-top:6px;opacity:.9;letter-spacing:.5px}
 .hl{display:flex;align-items:center;justify-content:center}
 .hl span{font-size:34px;font-weight:800;color:#fff;background:#B0412E;border-radius:999px;padding:10px 26px;letter-spacing:2px}
-.cl,.cr2{font-size:29px;line-height:1.3;padding:20px 26px;display:flex;align-items:center;border-radius:18px}
+.cl,.cr2{font-size:34px;line-height:1.25;padding:20px 26px;display:flex;align-items:center;border-radius:18px}
 .cl{justify-content:flex-end;text-align:right;background:#EEF1F6;border-right:8px solid #1B3460}
 .cr2{background:#F6EFE2;border-left:8px solid #B08A47}
 .mid{display:flex;flex-direction:column;align-items:center;justify-content:center}
 .ml{width:74px;height:74px;border-radius:50%;background:#0E1E3A;color:#E2C98F;font-size:44px;font-weight:700;display:flex;align-items:center;justify-content:center}
-.mn{font-size:22px;font-weight:800;margin-top:6px;text-align:center;color:#0E1E3A}
-.rp,.rm{font-size:31px;line-height:1.25;color:#fff;border-radius:20px;padding:18px 24px;margin-top:6px}
-.rp{background:#2F5D8C;text-align:right}.rm{background:#B0412E}
-.mid2{display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#5B6577;margin-top:6px}
-.note{position:relative;font-size:24px;line-height:1.35;color:#3A4558;margin:22px 8px 0}
+.mn{font-size:29px;font-weight:800;margin-top:6px;text-align:center;color:#0E1E3A;line-height:1.1}
+.rp,.rm{font-size:36px;line-height:1.25;color:#fff;border-radius:20px;padding:18px 24px;margin-top:6px}
+.rp{background:#2E7D5B;text-align:right}.rm{background:#B0412E}
+.mid2{display:flex;align-items:center;justify-content:center;font-size:29px;font-weight:800;color:#5B6577;margin-top:6px}
+.note{position:relative;font-size:30px;line-height:1.3;color:#3A4558;margin:22px 8px 0}
 """)
 
 # ============================================================ PED_27: diagnostic list of ten errors
 groups = [
     ("Calculating", [
-        ("01", "Writing %ΔP on top", "Quantity is the numerator: PED = %ΔQD ÷ %ΔP"),
-        ("03", "Dropping the sign without comment", "\"PED = −0.5; using its magnitude of 0.5, demand is price inelastic\""),
+        ("A", "Writing %ΔP on top", "Quantity is the numerator: PED = %ΔQD ÷ %ΔP"),
+        ("A", "Dropping the sign without comment", "\"PED = −0.5; using its magnitude of 0.5, demand is price inelastic\""),
     ]),
     ("Wording", [
-        ("02", "\"Elastic means QD falls when price rises\"", "That is the law of demand. Elastic means %ΔQD is proportionately larger than %ΔP"),
-        ("04", "\"The product is elastic\"", "\"Demand for the product is price elastic\", in a stated market and period"),
-        ("10", "Quoting one permanent PED", "PED depends on the buyer, the definition of the market and the time period"),
+        ("A", "\"Elastic means QD falls when price rises\"", "That is the law of demand. Elastic means %ΔQD is proportionately larger than %ΔP"),
+        ("A", "\"The product is elastic\"", "\"Demand for the product is price elastic\", in a stated market and period"),
+        ("A", "Quoting one permanent PED", "PED depends on the buyer, the definition of the market and the time period"),
     ]),
     ("Diagrams", [
-        ("05", "Mixing up shifts and movements", "A price change moves along D (quantity demanded); other factors shift D (demand)"),
-        ("06", "\"A steep curve is inelastic\"", "Compare slopes only on the same axes and scale; PED changes along a straight line"),
+        ("A", "Mixing up shifts and movements", "A price change moves along D (quantity demanded); other factors shift D (demand)"),
+        ("A", "\"A steep curve is inelastic\"", "Compare slopes only on the same axes and scale; PED changes along a straight line"),
     ]),
     ("Revenue and tax", [
-        ("07", "\"A price cut always raises revenue\"", "Only if demand is price elastic over that range"),
-        ("08", "Treating revenue as profit", "TR = P × Q. Profit also depends on costs"),
-        ("09", "\"PED decides who pays a tax\"", "Incidence depends on PED relative to PES"),
+        ("A", "\"A price cut always raises revenue\"", "Only if demand is price elastic over that range"),
+        ("A", "Treating revenue as profit", "TR = P × Q. Profit also depends on costs"),
+        ("A", "\"PED decides who pays a tax\"", "Incidence depends on PED relative to PES"),
     ]),
 ]
-assert sorted(n for _, items in groups for n, _, _ in items) == [f"{i:02d}" for i in range(1, 11)]
 html_rows = []
+_k = 0
 for gname, items in groups:
     html_rows.append(f'<div class="cat" style="grid-row:span {len(items)}"><span>{gname}</span></div>')
     for n, err, fix in items:
+        _k += 1; n = f"{_k:02d}"
         html_rows.append(f'<div class="no">{n}</div><div class="er"><span class="x">✗</span>{err}</div><div class="fx"><span class="ok">✓</span>{fix}</div>')
 body = f"""
 <div class="hdr"><div></div><div></div><div class="h1 dep">The error</div><div class="h2 app">What earns the mark</div></div>
@@ -318,12 +321,12 @@ page("PED_27_Errors", 1760, 900, body, """
 
 # ============================================================ PED_28: radial revision map
 clusters = [
-    ("c1", "Measure", "4, 5, 22", ["PED = %ΔQD ÷ %ΔP", "%Δ from the initial value", "negative coefficient, classify by |PED|"]),
+    ("c1", "Measure and calculate", "3 to 5, 22 to 24", ["PED = %ΔQD ÷ %ΔP", "%Δ from the initial value", "negative coefficient, classify by |PED|"]),
     ("c2", "Degrees and diagrams", "6 to 8", ["0 · below 1 · 1 · above 1 · ∞", "relatively elastic vs inelastic", "vertical · hyperbola · horizontal"]),
     ("c3", "TINS determinants", "11 to 15, 26", ["Time · Income share · Necessity", "Substitutes: the key one", "switching costs: less elastic"]),
     ("c4", "Total revenue", "16 to 18", ["inelastic: P and TR move together", "elastic: they move in opposite directions", "unit elastic: TR unchanged"]),
     ("c5", "Firms", "19, 26", ["price discrimination: groups", "dynamic pricing: times", "revenue is not profit"]),
-    ("c6", "Government", "20, 21", ["tax revenue = tax × Q traded", "incidence: PED relative to PES"]),
+    ("c6", "Government", "20, 21, 26", ["tax revenue = tax × Q traded", "incidence: PED relative to PES"]),
     ("c7", "HL extensions", "9, 10, 25", ["linear D: |PED| = (1/b)(P/Q)", "|PED| = 1 at the midpoint", "primary vs manufactured"]),
 ]
 cl_html = "".join(
@@ -334,7 +337,7 @@ body = f"""
 {cl_html}
 <div class="hub" id="hub"><div class="hk k">IB 2.5 · SL and HL</div><div class="ht serif">Price elasticity of demand</div><div class="hf">PED = %ΔQD ÷ %ΔP</div></div>
 <div class="key"><div class="kk2 k">Key relationships</div><div class="kf">%ΔQD = PED × %ΔP</div><div class="kf">TR = P × Q</div></div>
-<div class="foot">Numbers in each branch show the slides to revisit.</div>
+<div class="foot">Numbers show the slides to revisit for each branch.</div>
 <svg class="links" id="lk" width="1760" height="900"></svg>
 """
 script = """
@@ -353,7 +356,7 @@ page("PED_28_Revision_Map", 1760, 900, body, """
 .cl{position:absolute;width:470px}
 .ch{display:flex;align-items:baseline;justify-content:space-between;gap:10px;background:#1B3460;color:#fff;border-radius:16px;padding:10px 18px;margin-bottom:8px}
 .cn{font-size:31px;font-weight:800}
-.cs{font-size:21px;font-weight:700;color:#E2C98F;white-space:nowrap}
+.cs{font-size:25px;font-weight:700;color:#E2C98F;white-space:nowrap}
 .lf{font-size:27px;line-height:1.25;padding:5px 4px 5px 18px;border-left:5px solid #E2D6BC;margin-left:12px;color:#22304A}
 #c1{left:10px;top:10px}#c2{left:10px;top:315px}#c3{left:10px;top:620px}
 #c4{left:1280px;top:10px}#c5{left:1280px;top:315px}#c6{left:1280px;top:620px}
@@ -361,11 +364,11 @@ page("PED_28_Revision_Map", 1760, 900, body, """
 #c7 .ch{background:#B0412E}
 .hub{position:absolute;left:640px;top:290px;width:480px;height:250px;border-radius:125px;background:#0E1E3A;border:7px solid #B08A47;color:#fff;
      display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10px 30px}
-.hk{font-size:19px;color:#E2C98F}
+.hk{font-size:23px;color:#E2C98F}
 .ht{font-size:40px;font-weight:700;line-height:1.1;margin:8px 0}
 .hf{font-size:26px;font-weight:700;color:#E2C98F}
-.foot{position:absolute;left:630px;top:858px;width:500px;text-align:center;font-size:21px;color:#5B6577}
+.foot{position:absolute;left:480px;top:852px;width:800px;text-align:center;font-size:25px;color:#5B6577}
 .key{position:absolute;left:690px;top:40px;width:380px;border:3px dashed #D9CCB0;border-radius:20px;padding:16px 20px;text-align:center}
-.kk2{font-size:19px;color:#8A6A2E;margin-bottom:8px}
+.kk2{font-size:23px;color:#8A6A2E;margin-bottom:8px}
 .kf{font-size:30px;font-weight:800;margin:4px 0}
 """, script)

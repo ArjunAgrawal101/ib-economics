@@ -1,4 +1,4 @@
-<!doctype html><html data-size="1500x660"><head><meta charset="utf-8"><style>
+<!doctype html><html data-size="1500x720"><head><meta charset="utf-8"><style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:transparent}
 body{position:relative;font-family:Inter,'Helvetica Neue',Arial,sans-serif;color:#0E1E3A}
@@ -6,7 +6,7 @@ body{position:relative;font-family:Inter,'Helvetica Neue',Arial,sans-serif;color
 .k{font-weight:800;letter-spacing:3px;text-transform:uppercase}
 .muted{color:#5B6577}.gold{color:#8A6A2E}.app{color:#2E7D5B}.dep{color:#B0412E}
 svg.links{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
-body{width:1500px;height:660px}
+body{width:1500px;height:720px}
 .top{position:relative;font-size:28px;margin:4px 8px 10px}
 .top .k{font-size:28px}
 .grid{position:relative;display:grid;grid-template-columns:250px 1fr 250px 1fr 250px;column-gap:0;row-gap:12px;margin:0 4px}
@@ -14,7 +14,7 @@ body{width:1500px;height:660px}
 .v.rg{font-size:36px;align-self:end;opacity:.9}
 .barrow{grid-column:1 / span 5;position:relative;height:76px}
 .bar{position:absolute;left:125px;right:125px;top:14px;height:48px;border-radius:24px;
-     background:linear-gradient(90deg,#1B3460 0%,#2F5D8C 30%,#B08A47 50%,#B0412E 72%,#7A2A1F 100%)}
+     background:linear-gradient(90deg,#1F5A40 0%,#2E7D5B 30%,#B08A47 50%,#B0412E 72%,#7A2A1F 100%)}
 .dot{position:absolute;top:2px;width:72px;height:72px;border-radius:50%;background:#FFFDFA;border:9px solid #0E1E3A;transform:translateX(-50%)}
 .d0{left:125px}.d1{left:50%}.d2{left:calc(100% - 125px)}
 .lbl{position:absolute;top:22px;font-size:28px;font-weight:800;color:#fff;letter-spacing:3px;transform:translateX(-50%)}
@@ -22,11 +22,12 @@ body{width:1500px;height:660px}
 .nm{font-size:30px;font-weight:800;text-align:center;line-height:1.15;padding:0 10px}
 .me{font-size:26px;line-height:1.3;text-align:center;color:#3A4558;padding:0 14px}
 .sh{margin-top:8px;display:inline-block;font-size:23px;font-weight:700;color:#8A6A2E;border-top:3px solid #E2D6BC;padding-top:6px}
-.coef{position:relative;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:34px 8px 0}
-.ck{font-size:24px}
+.crow{position:relative;display:grid;grid-template-columns:250px 1fr 250px 1fr 250px;row-gap:8px;margin:26px 4px 0;border-top:3px solid #E2D6BC;padding-top:12px}
+.cl1{grid-column:1 / span 5;font-size:23px;text-align:center}
+.cc{text-align:center}
 .cv{font-size:30px;font-weight:800;background:#0E1E3A;color:#fff;border-radius:10px;padding:4px 16px}
 .arr{font-size:28px;color:#B08A47;font-weight:900}
-.ex{font-size:26px;margin-left:22px;color:#3A4558}
+.ex{position:relative;font-size:27px;color:#3A4558;text-align:center;margin-top:16px}
 </style>
 <script>
 function c(el){const r=el.getBoundingClientRect();return {l:r.left,r:r.right,t:r.top,b:r.bottom,x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};}
@@ -35,14 +36,14 @@ function arrowDefs(svg,col,id){svg.insertAdjacentHTML('beforeend',`<defs><marker
 </head><body>
 <div class="top"><span class="k gold">Magnitude |PED|</span><span class="muted">: this is what you compare with 1</span></div>
 <div class="grid">
- <div class="v pt" style="color:#1B3460">0</div><div class="v rg" style="color:#2F5D8C">0 to 1</div><div class="v pt" style="color:#8A6A2E">1</div><div class="v rg" style="color:#B0412E">1 to ∞</div><div class="v pt" style="color:#7A2A1F">∞</div>
+ <div class="v pt" style="color:#1F5A40">0</div><div class="v rg" style="color:#2E7D5B">0 to 1</div><div class="v pt" style="color:#8A6A2E">1</div><div class="v rg" style="color:#B0412E">1 to ∞</div><div class="v pt" style="color:#7A2A1F">∞</div>
  <div class="barrow"><div class="bar"></div>
    <div class="dot d0"></div><div class="dot d1"></div><div class="dot d2"></div>
    <div class="lbl l1">PRICE INELASTIC</div><div class="lbl l2">PRICE ELASTIC</div></div>
- <div class="nm pt" style="color:#1B3460">Perfectly price inelastic</div><div class="nm rg" style="color:#2F5D8C">Price inelastic</div><div class="nm pt" style="color:#8A6A2E">Unitary</div><div class="nm rg" style="color:#B0412E">Price elastic</div><div class="nm pt" style="color:#7A2A1F">Perfectly price elastic</div>
+ <div class="nm pt" style="color:#1F5A40">Perfectly price inelastic</div><div class="nm rg" style="color:#2E7D5B">Price inelastic</div><div class="nm pt" style="color:#8A6A2E">Unitary</div><div class="nm rg" style="color:#B0412E">Price elastic</div><div class="nm pt" style="color:#7A2A1F">Perfectly price elastic</div>
  <div class="me pt">QD does not respond at all<div class=sh>vertical D</div></div><div class="me rg">%ΔQD is proportionately smaller than %ΔP</div><div class="me pt">%ΔQD and %ΔP are equal in magnitude<div class=sh>rectangular hyperbola</div></div><div class="me rg">%ΔQD is proportionately larger than %ΔP</div><div class="me pt">any price rise: QD falls to zero<div class=sh>horizontal D</div></div>
 </div>
-<div class="coef"><span class="k muted ck">Coefficient</span>
- <span class="cv">0</span><span class="arr">→</span><span class="cv">−0.50</span><span class="arr">→</span><span class="cv">−1</span><span class="arr">→</span><span class="cv">−2.0</span><span class="arr">→</span><span class="cv">−∞</span>
- <span class="ex">Theatre tickets: −0.50, magnitude 0.50 → price inelastic</span></div>
+<div class="crow"><div class="cl1 k muted">Coefficient, usually negative</div>
+ <div class="cc"><span class="cv">0</span></div><div class="cc"><span class="cv">e.g. −0.50</span></div><div class="cc"><span class="cv">−1</span></div><div class="cc"><span class="cv">e.g. −2.0</span></div><div class="cc"><span class="cv">→ −∞</span></div></div>
+<div class="ex">Theatre tickets (slide 5): coefficient −0.50, magnitude 0.50 → price inelastic</div>
 <script></script></body></html>

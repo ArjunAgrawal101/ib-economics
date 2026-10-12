@@ -95,8 +95,8 @@ ax.poly(Dinel, 20, 70, NAVY, 8); ax.poly(Del, 0, 100, GOLD, 8)
 ax.axes()
 ax.label(43, 63, "D relatively", size=36, color=NAVY, dx=14)
 ax.label(43, 63, "price inelastic", size=36, color=NAVY, dx=14, dy=42)
-ax.label(2, 80, "D relatively", size=36, color=GOLD_TXT, dx=8)
-ax.label(2, 80, "price elastic", size=36, color=GOLD_TXT, dx=8, dy=42)
+ax.label(1, 71, "D relatively", size=33, color=GOLD_TXT, dx=8)
+ax.label(1, 71, "price elastic", size=33, color=GOLD_TXT, dx=8, dy=40)
 ax.dot(50, 40); ax.dot(55, 30, NAVY); ax.dot(75, 30, GOLD_TXT)
 a, b = ax.px(50, 19); c, _ = ax.px(55, 19)
 cv.line(a + 4, b, c - 4, b, NAVY, 6, arrow_end=True)
@@ -142,18 +142,19 @@ def special(name, kind):
         ax.rect(0, 30, 30, 60, fill=DEP, opacity=0.24)
         ax.rect(30, 0, 60, 30, fill=APP, opacity=0.26)
         ax.rect(0, 0, 30, 30, fill="#C9CED6", opacity=0.5)
-        ax.hguide(60, 30, "60", size=40); ax.hguide(30, 60, "30", size=40)
-        ax.vguide(30, 60, "30", size=40); ax.vguide(60, 30, "60", size=40)
+        ax.hguide(60, 30, "P₁", size=42); ax.hguide(30, 60, "P₂", size=42)
+        ax.vguide(30, 60, "Q₁", size=42, dy=46); ax.vguide(60, 30, "Q₂", size=42, dy=46)
         ax.rect(0, 0, 30, 60, fill="none", opacity=1, stroke=NAVY)
         ax.rect(0, 0, 60, 30, fill="none", opacity=1, stroke=GOLD_TXT, dash="12 9")
         ax.poly(f, 18.8, 100, NAVY, 10)
         ax.axes(size=42)
         ax.label(100, f(100), "D", size=56, color=NAVY, dx=-4, dy=-44, anchor="end")
         ax.dot(30, 60, INK, 15); ax.dot(60, 30, GOLD_TXT, 15)
-        ax.label(15, 45, "−900", size=40, color=DEP, anchor="middle", dy=4)
-        ax.label(45, 15, "+900", size=40, color=APP, anchor="middle", dy=4)
-        ax.label(57, 74, "P × Q = 1,800", size=38, color=INK)
-        ax.label(57, 74, "at every point", size=34, color=MUTED, dy=44, weight=600)
+        ax.label(15, 45, "loss", size=38, color=DEP, anchor="middle", dy=4)
+        ax.label(45, 15, "gain", size=38, color=APP, anchor="middle", dy=4)
+        ax.label(55, 76, "P × Q is the same", size=36, color=INK)
+        ax.label(55, 76, "at every point", size=36, color=INK, dy=44)
+        ax.label(55, 76, "loss = gain", size=32, color=MUTED, dy=88, weight=700)
         cv.badge(790, 44, "|PED| = 1", NAVY, size=38, anchor="end")
     save(name, cv)
 
@@ -193,19 +194,19 @@ for name, q in pts:
     assert L(q - 10) == p + 10
     ax.seg(q, p + 0.8, q, p + 9.2, GOLD_TXT, 5, arrow_end=True)
     ax.seg(q - 0.6, p + 10, q - 9.4, p + 10, GOLD_TXT, 5, arrow_end=True)
-    ax.dot(q, p, cols[name], 14)
-    ax.dot(q - 10, p + 10, "#FFFDFA", 9)
     a, b = ax.px(q - 10, p + 10); cv.circle(a, b, 9, "#FFFDFA", stroke=NAVY, sw=4)
+for name, q in pts:
+    ax.dot(q, L(q), cols[name], 14)
 vals = {n: L(q) / q for n, q in pts}
 assert [round(v, 3) for v in vals.values()] == [3.5, 1.0, 0.286, 0.125]
-ax.label(20, 70, "A (20, $70)", size=34, color=DEP, dx=24, dy=4)
-ax.label(20, 70, "|PED| 3.50", size=34, color=DEP, dx=24, dy=44, weight=800)
-ax.label(45, 45, "B (45, $45)", size=34, color=INK, dx=24, dy=4)
-ax.label(45, 45, "|PED| 1.00", size=34, color=INK, dx=24, dy=44, weight=800)
+ax.label(20, 70, "A (20, $70)", size=34, color=DEP, dx=30, dy=-52)
+ax.label(20, 70, "|PED| 3.50", size=34, color=DEP, dx=30, dy=-14, weight=800)
+ax.label(45, 45, "B (45, $45)", size=34, color=INK, dx=30, dy=-52)
+ax.label(45, 45, "|PED| 1.00", size=34, color=INK, dx=30, dy=-14, weight=800)
 ax.label(70, 20, "C (70, $20)", size=34, color=APP, dx=-30, dy=40, anchor="end")
 ax.label(70, 20, "|PED| 0.29", size=34, color=APP, dx=-30, dy=80, anchor="end", weight=800)
-ax.label(80, 10, "D (80, $10)", size=34, color=APP, dx=26, dy=-30)
-ax.label(80, 10, "|PED| 0.13", size=34, color=APP, dx=26, dy=8, weight=800)
+ax.label(80, 10, "D (80, $10)", size=34, color=APP, dx=30, dy=-52)
+ax.label(80, 10, "|PED| 0.13", size=34, color=APP, dx=30, dy=-14, weight=800)
 a, b = ax.px(33, 92)
 cv.line(a, b, a, b - 52, GOLD_TXT, 5, arrow_end=True); cv.line(a + 10, b - 62, a - 46, b - 62, GOLD_TXT, 5, arrow_end=True)
 cv.text(a + 26, b - 40, "each step: price +$10, quantity −10", size=30, color=GOLD_TXT, anchor="start", weight=700)
@@ -321,7 +322,7 @@ def taxplot(name, D, Dr, Sf, Sr, Stf, Str, qt, pc, pp, mode, badge, badgecol, sl
         cons, prod = pc - 40, 40 - pp
         if cons >= 10:
             late.append(lambda: cv.badge(*ax.px(qt / 2, (40 + pc) / 2), f"consumers ${cons:g}", NAVY, size=32, anchor="middle"))
-            late.append(lambda: ax.label(qt / 2, pp, f"producers ${prod:g}", size=32, color=GOLD_TXT, anchor="middle", dy=34))
+            late.append(lambda: ax.label(qt * 0.4, pp, f"producers ${prod:g}", size=32, color=GOLD_TXT, anchor="middle", dy=34))
         else:
             late.append(lambda: cv.badge(*ax.px(qt / 2, (pp + 40) / 2), f"producers ${prod:g}", GOLD_TXT, size=32, anchor="middle"))
             late.append(lambda: ax.label(qt / 2 - 7, pc, f"consumers ${cons:g}", size=32, color=NAVY, anchor="middle", dy=-34))
@@ -352,7 +353,7 @@ def taxplot(name, D, Dr, Sf, Sr, Stf, Str, qt, pc, pp, mode, badge, badgecol, sl
 taxplot("PED_20a_Tax_Revenue_Inelastic", Da, (45, 70), S, (0, 98), St, (0, 98), 54, 64, 37, "revenue",
         "Q −10% · tax revenue $1,458", CB, rev_at=(16, 56, 30, 36))
 taxplot("PED_20b_Tax_Revenue_Elastic", Db, (0, 100), S, (0, 98), St, (0, 98), 33, 53.5, 26.5, "revenue",
-        "Q −45% · tax revenue $891", CB, rev_at=(18, 32, 28, 34))
+        "Q −45% · tax revenue $891", CB, rev_at=(18, 35, 28, 34))
 taxplot("PED_21a_Incidence_Consumers", Da, (45, 70), S, (0, 98), St, (0, 98), 54, 64, 37, "incidence",
         "Consumers bear $24 of $27", NAVY)
 taxplot("PED_21b_Incidence_Producers", Db, (0, 100), Sb, (50.5, 75), Sbt, (43.5, 68.25), 54, 43, 16, "incidence",
