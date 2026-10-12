@@ -70,7 +70,39 @@ Branch `claude/upbeat-hawking-69d7gz`. The previous report is in `docs/releases/
 
 ## Tests
 
-<!-- filled from the run below -->
+These results come from `node tests/run-all.mjs`, run on the final head of this branch in headless Chromium.
+
+- **The whole suite passed:** 19 suites and **511 browser checks, with no failures.**
+- **Built-in self-tests:** 2,096 checks run at boot, all passing. Among them, 20 are new checks for the Studio, Learning design, Contact and the home page:
+  - only levels 1 and 2 are published;
+  - every preview is a WebP excerpt with alternative text;
+  - the manifest names no document or private location;
+  - every platform link resolves to a page that exists;
+  - the PED miniature matches the explainer's four points;
+  - the worked calculation is correct;
+  - the seven moves are in order;
+  - the contact page has no form.
+- **New suite, `tests/studio.mjs` (78 checks).** It covers:
+  - filters and addresses;
+  - the viewer by keyboard (Enter, the arrow keys, Escape, focus returned);
+  - enquiry links;
+  - every item rendering with images that load and stay under 1,200 px;
+  - the collections opening the platform's reader;
+  - the miniature (prediction, |PED| = 2 at $60, unit elasticity and $2,025 at $45);
+  - Learning design;
+  - Contact (category and resource prefill, with no request to another server);
+  - the home bands and keyboard tabs;
+  - search;
+  - no sideways scroll on the new pages at 320, 390, 768, 1024 and 1920 px;
+  - axe (WCAG 2.0/2.1 A and AA) on six new routes at 1366 and 390 px, with no violations;
+  - all ten static pages (canonical, preview image, heading, structured data, images);
+  - the sitemap and robots.txt;
+  - a privacy scan of everything the host would serve.
+- **Existing suites updated for the new design:**
+  - `cover`: the primary action now brings the gateway into view and focuses it, Discover My Work opens the Studio, and the chapter order includes Discover.
+  - `transform` and two base-page self-tests: the primary bar has nine items, with the Studio after Economics, Everywhere.
+- **Overlap audit:** 141,669 rendered elements measured over 540 route-widths, with no content over content and no decorative figure under content.
+- **Opening sequence:** the five-second opening on home and the events scroll suite pass unchanged.
 
 ## Not verified here
 
