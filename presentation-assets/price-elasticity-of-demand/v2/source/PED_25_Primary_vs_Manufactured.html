@@ -1,0 +1,44 @@
+<!doctype html><html data-size="1400x980"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:transparent}
+body{position:relative;font-family:Inter,'Helvetica Neue',Arial,sans-serif;color:#0E1E3A}
+.serif{font-family:Lora,Georgia,serif}
+.k{font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.muted{color:#5B6577}.gold{color:#8A6A2E}.app{color:#2E7D5B}.dep{color:#B0412E}
+svg.links{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
+body{width:1400px;height:980px}
+.g{position:relative;display:grid;grid-template-columns:1fr 250px 1fr;column-gap:0;row-gap:14px;margin:4px}
+.hp,.hm{border-radius:22px;padding:18px 24px;color:#fff}
+.hp{background:#1B3460;text-align:right}.hm{background:#8A6A2E}
+.ht{font-size:38px;font-weight:800}
+.hb{font-size:27px;margin-top:4px;opacity:.95}
+.he{font-size:24px;margin-top:6px;opacity:.85;letter-spacing:.5px}
+.hl{display:flex;align-items:center;justify-content:center}
+.hl span{font-size:34px;font-weight:800;color:#fff;background:#B0412E;border-radius:999px;padding:10px 26px;letter-spacing:2px}
+.cl,.cr2{font-size:29px;line-height:1.3;padding:20px 26px;display:flex;align-items:center;border-radius:18px}
+.cl{justify-content:flex-end;text-align:right;background:#EEF1F6;border-right:8px solid #1B3460}
+.cr2{background:#F6EFE2;border-left:8px solid #B08A47}
+.mid{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ml{width:74px;height:74px;border-radius:50%;background:#0E1E3A;color:#E2C98F;font-size:44px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.mn{font-size:22px;font-weight:800;margin-top:6px;text-align:center;color:#0E1E3A}
+.rp,.rm{font-size:31px;line-height:1.25;color:#fff;border-radius:20px;padding:18px 24px;margin-top:6px}
+.rp{background:#2F5D8C;text-align:right}.rm{background:#B0412E}
+.mid2{display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#5B6577;margin-top:6px}
+.note{position:relative;font-size:24px;line-height:1.35;color:#3A4558;margin:22px 8px 0}
+</style>
+<script>
+function c(el){const r=el.getBoundingClientRect();return {l:r.left,r:r.right,t:r.top,b:r.bottom,x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};}
+function arrowDefs(svg,col,id){svg.insertAdjacentHTML('beforeend',`<defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${col}"/></marker></defs>`);}
+</script>
+</head><body>
+<div class="g">
+ <div class="hp"><div class="ht">Primary commodity</div><div class="hb">Buyer: a <b>firm</b> buying an <b>input</b></div><div class="he">crude oil · iron ore · copper</div></div>
+ <div class="hl"><span>HL</span></div>
+ <div class="hm"><div class="ht">Manufactured product</div><div class="hb">Buyer: usually a <b>household</b></div><div class="he">laptop · car · watch</div></div>
+ <div class="cl">Years to redesign processes or switch inputs</div><div class="mid"><div class="ml serif">T</div><div class="mn">Time to adjust</div></div><div class="cr2">Purchase can simply be postponed</div><div class="cl">Often a small share of the firm's total costs</div><div class="mid"><div class="ml serif">I</div><div class="mn">Share of spending</div></div><div class="cr2">Often a large share of household income</div><div class="cl">Essential input: production stops without it</div><div class="mid"><div class="ml serif">N</div><div class="mn">Necessity</div></div><div class="cr2">An old laptop or car can be kept longer</div><div class="cl">Few: little replaces crude oil, iron ore or copper</div><div class="mid"><div class="ml serif">S</div><div class="mn">Substitutes</div></div><div class="cr2">Many rival makes and models</div>
+ <div class="rp">|PED| generally <b>below 1</b><br>price inelastic</div>
+ <div class="mid2">→ result ←</div>
+ <div class="rm">|PED| generally <b>above 1</b><br>price elastic</div>
+</div>
+<div class="note"><b>A tendency, not a rule:</b> medicines are manufactured yet usually face price inelastic demand; one brand of rice faces close substitutes on the same shelf.</div>
+<script></script></body></html>

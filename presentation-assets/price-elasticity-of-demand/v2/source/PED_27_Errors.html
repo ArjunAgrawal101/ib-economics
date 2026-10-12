@@ -1,0 +1,29 @@
+<!doctype html><html data-size="1500x1000"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:transparent}
+body{position:relative;font-family:Inter,'Helvetica Neue',Arial,sans-serif;color:#0E1E3A}
+.serif{font-family:Lora,Georgia,serif}
+.k{font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.muted{color:#5B6577}.gold{color:#8A6A2E}.app{color:#2E7D5B}.dep{color:#B0412E}
+svg.links{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
+body{width:1500px;height:1000px}
+.hdr,.tb{position:relative;display:grid;grid-template-columns:170px 70px 520px 1fr;column-gap:12px;margin:0 4px}
+.hdr{margin-bottom:8px}
+.h1,.h2{font-size:24px;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.tb{row-gap:10px}
+.cat{display:flex;align-items:center;justify-content:center;background:#0E1E3A;border-radius:16px;color:#E2C98F;font-size:25px;font-weight:800;text-align:center;padding:8px;line-height:1.2}
+.no{font-family:Lora,Georgia,serif;font-size:34px;font-weight:700;color:#B08A47;display:flex;align-items:center;justify-content:center}
+.er,.fx{font-size:25px;line-height:1.28;border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.er{background:#F8E7E3;color:#7A2A1F;font-weight:700}
+.fx{background:#E5F1EA;color:#163F2E;font-weight:600}
+.x{font-size:28px;color:#B0412E;font-weight:900;flex:none}
+.ok{font-size:28px;color:#2E7D5B;font-weight:900;flex:none}
+</style>
+<script>
+function c(el){const r=el.getBoundingClientRect();return {l:r.left,r:r.right,t:r.top,b:r.bottom,x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};}
+function arrowDefs(svg,col,id){svg.insertAdjacentHTML('beforeend',`<defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${col}"/></marker></defs>`);}
+</script>
+</head><body>
+<div class="hdr"><div></div><div></div><div class="h1 dep">The error</div><div class="h2 app">What earns the mark</div></div>
+<div class="tb"><div class="cat" style="grid-row:span 2"><span>Calculating</span></div><div class="no">01</div><div class="er"><span class="x">✗</span>Writing %ΔP on top</div><div class="fx"><span class="ok">✓</span>Quantity is the numerator: PED = %ΔQD ÷ %ΔP</div><div class="no">03</div><div class="er"><span class="x">✗</span>Dropping the sign without comment</div><div class="fx"><span class="ok">✓</span>"PED = −0.5; using its magnitude of 0.5, demand is price inelastic"</div><div class="cat" style="grid-row:span 3"><span>Wording</span></div><div class="no">02</div><div class="er"><span class="x">✗</span>"Elastic means QD falls when price rises"</div><div class="fx"><span class="ok">✓</span>That is the law of demand. Elastic means %ΔQD is proportionately larger than %ΔP</div><div class="no">04</div><div class="er"><span class="x">✗</span>"The product is elastic"</div><div class="fx"><span class="ok">✓</span>"Demand for the product is price elastic", in a stated market and period</div><div class="no">10</div><div class="er"><span class="x">✗</span>Quoting one permanent PED</div><div class="fx"><span class="ok">✓</span>PED depends on the buyer, the definition of the market and the time period</div><div class="cat" style="grid-row:span 2"><span>Diagrams</span></div><div class="no">05</div><div class="er"><span class="x">✗</span>Mixing up shifts and movements</div><div class="fx"><span class="ok">✓</span>A price change moves along D (quantity demanded); other factors shift D (demand)</div><div class="no">06</div><div class="er"><span class="x">✗</span>"A steep curve is inelastic"</div><div class="fx"><span class="ok">✓</span>Compare slopes only on the same axes and scale; PED changes along a straight line</div><div class="cat" style="grid-row:span 3"><span>Revenue and tax</span></div><div class="no">07</div><div class="er"><span class="x">✗</span>"A price cut always raises revenue"</div><div class="fx"><span class="ok">✓</span>Only if demand is price elastic over that range</div><div class="no">08</div><div class="er"><span class="x">✗</span>Treating revenue as profit</div><div class="fx"><span class="ok">✓</span>TR = P × Q. Profit also depends on costs</div><div class="no">09</div><div class="er"><span class="x">✗</span>"PED decides who pays a tax"</div><div class="fx"><span class="ok">✓</span>Incidence depends on PED relative to PES</div></div>
+<script></script></body></html>

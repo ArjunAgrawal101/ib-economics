@@ -1,0 +1,36 @@
+<!doctype html><html data-size="1500x760"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:transparent}
+body{position:relative;font-family:Inter,'Helvetica Neue',Arial,sans-serif;color:#0E1E3A}
+.serif{font-family:Lora,Georgia,serif}
+.k{font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.muted{color:#5B6577}.gold{color:#8A6A2E}.app{color:#2E7D5B}.dep{color:#B0412E}
+svg.links{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
+body{width:1500px;height:760px}
+.hd{position:relative;display:flex;align-items:baseline;gap:16px;margin:4px 10px 10px}
+.hd .k{font-size:34px}.hdt{font-size:28px;color:#3A4558}
+.row{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px;margin:0 6px}
+.pan{background:#fff;border-radius:22px;border:3px solid #E7DCC4;padding:16px 18px 18px;text-align:center}
+.pt{font-size:36px;font-weight:800}
+.ps{font-size:24px;color:#5B6577;font-weight:600;margin-top:2px}
+.pq{display:flex;justify-content:center;gap:24px;font-size:25px;font-weight:600;color:#3A4558;margin-top:-6px}
+.pq b{font-weight:800}.pq .g{color:#2E7D5B}.pq .r{color:#B0412E}
+.tr{font-size:32px;font-weight:800;margin-top:10px}
+.vd{font-size:25px;color:#3A4558;font-weight:600;margin-top:2px}
+.key{position:relative;display:flex;align-items:center;gap:12px;justify-content:center;font-size:24px;color:#3A4558;margin-top:18px}
+.sw{display:inline-block;width:30px;height:20px;border-radius:5px;margin-left:18px}
+.sw.g{background:#2E7D5B}.sw.gr{background:#C9CED6}.sw.r{background:#B0412E}
+</style>
+<script>
+function c(el){const r=el.getBoundingClientRect();return {l:r.left,r:r.right,t:r.top,b:r.bottom,x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};}
+function arrowDefs(svg,col,id){svg.insertAdjacentHTML('beforeend',`<defs><marker id="${id}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="${col}"/></marker></defs>`);}
+</script>
+</head><body>
+<div class="hd"><span class="k gold">TR = P × Q</span><span class="hdt">is the area of the rectangle. Dashed: before. Solid: after the price rise.</span></div>
+<div class="row">
+ <div class="pan"><div class="pt" style="color:#2E7D5B">Price inelastic</div><div class="ps">PED = −10% ÷ +25% = −0.40</div><svg width="450" height="350" viewBox="0 0 450 350"><rect x="26" y="67.5" width="270.0" height="52.5" fill="#2E7D5B" opacity=".85"/><rect x="26" y="120" width="270.0" height="210" fill="#C9CED6" opacity=".7"/><rect x="296.0" y="120" width="30.0" height="210" fill="#B0412E" opacity=".85"/><rect x="26" y="120" width="300" height="210" fill="none" stroke="#0E1E3A" stroke-width="4" stroke-dasharray="12 8"/><rect x="26" y="67.5" width="270.0" height="262.5" fill="none" stroke="#0E1E3A" stroke-width="4"/><text x="161.0" y="103.8" text-anchor="middle" font-size="27" font-weight="800" fill="#fff">+$900</text><text x="340" y="235.0" text-anchor="start" font-size="27" font-weight="800" fill="#B0412E">−$400</text></svg><div class="pq"><span>P $40 → $50 <b class="g">+25%</b></span><span>QD 100 → 90 <b class="r">−10%</b></span></div><div class="tr" style="color:#2E7D5B">TR $4,000 → $4,500</div><div class="vd">gain &gt; loss: TR rises</div></div>
+ <div class="pan"><div class="pt" style="color:#8A6A2E">Unit elastic</div><div class="ps">along a unit-elastic curve</div><svg width="450" height="350" viewBox="0 0 450 350"><rect x="26" y="67.5" width="240.0" height="52.5" fill="#2E7D5B" opacity=".85"/><rect x="26" y="120" width="240.0" height="210" fill="#C9CED6" opacity=".7"/><rect x="266.0" y="120" width="60.0" height="210" fill="#B0412E" opacity=".85"/><rect x="26" y="120" width="300" height="210" fill="none" stroke="#0E1E3A" stroke-width="4" stroke-dasharray="12 8"/><rect x="26" y="67.5" width="240.0" height="262.5" fill="none" stroke="#0E1E3A" stroke-width="4"/><text x="146.0" y="103.8" text-anchor="middle" font-size="25" font-weight="800" fill="#fff">gain</text><text x="296.0" y="235.0" text-anchor="middle" font-size="25" font-weight="800" fill="#fff">loss</text></svg><div class="pq"><span>price up, quantity down</span></div><div class="tr" style="color:#8A6A2E">TR unchanged</div><div class="vd">gain = loss: the effects offset</div></div>
+ <div class="pan"><div class="pt" style="color:#B0412E">Price elastic</div><div class="ps">PED = −50% ÷ +25% = −2.0</div><svg width="450" height="350" viewBox="0 0 450 350"><rect x="26" y="67.5" width="150.0" height="52.5" fill="#2E7D5B" opacity=".85"/><rect x="26" y="120" width="150.0" height="210" fill="#C9CED6" opacity=".7"/><rect x="176.0" y="120" width="150.0" height="210" fill="#B0412E" opacity=".85"/><rect x="26" y="120" width="300" height="210" fill="none" stroke="#0E1E3A" stroke-width="4" stroke-dasharray="12 8"/><rect x="26" y="67.5" width="150.0" height="262.5" fill="none" stroke="#0E1E3A" stroke-width="4"/><text x="101.0" y="103.8" text-anchor="middle" font-size="27" font-weight="800" fill="#fff">+$500</text><text x="251.0" y="235.0" text-anchor="middle" font-size="27" font-weight="800" fill="#fff">−$2,000</text></svg><div class="pq"><span>P $40 → $50 <b class="g">+25%</b></span><span>QD 100 → 50 <b class="r">−50%</b></span></div><div class="tr" style="color:#B0412E">TR $4,000 → $2,500</div><div class="vd">loss &gt; gain: TR falls</div></div>
+</div>
+<div class="key"><span class="sw g"></span>revenue gained on units still sold <span class="sw gr"></span>revenue kept <span class="sw r"></span>revenue lost on units no longer sold</div>
+<script></script></body></html>
