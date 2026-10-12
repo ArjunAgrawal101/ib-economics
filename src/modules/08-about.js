@@ -38,7 +38,7 @@ function abCover(){const A=ABOUT;
    <p class="ab-lede mt4">${esc(A.lede)}</p>
    <p class="ab-meta mt3"><span>${esc(A.role)}</span>${A.subjects.map(s=>`<span>${esc(s)}</span>`).join("")}</p>
    <div class="row mt4"><button class="btn a" onclick="nav('tutorials')">Learn with Arjun →</button><a class="btn gh" href="mailto:${A.email}">Email</a>
-    <button class="btn gh" onclick="nav('home')">Explore the platform</button></div></div>
+    <button class="btn gh" onclick="nav('home')">Explore the platform</button><a class="btn gh" href="#/studio">Resource Studio</a></div></div>
   ${abFigure("hero","ab-portrait")}
  </div></section>`}
 

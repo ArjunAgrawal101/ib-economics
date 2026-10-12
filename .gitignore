@@ -34,3 +34,9 @@ tests/overlap-report.json
 # the build scripts are source; only their download cache is ignored
 !tools/build/
 tools/build/.cache/
+
+# Private master resources. Keep them outside this public repository; if a
+# local copy is ever placed here for the preview builder, it is never committed.
+private/
+masters/
+*.master.*

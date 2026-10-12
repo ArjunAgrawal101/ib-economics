@@ -785,6 +785,40 @@ from a stale copy, and the offline panel on the About page says exactly this. In
 icon and opens the platform in its own window. It creates no account, signs you in to nothing and
 sends nothing anywhere.
 
+## The Resource Studio, Learning design and Contact
+
+**Resource Studio** (`#/studio`) is a curated showcase of Arjun's wider work, shown in part.
+- **Items.** It holds nine pieces:
+  - three visual explainers: price elasticity of demand, exchange rates, and the balance of payments;
+  - two guides: the examiner's scoring guide, and the curriculum roadmap for teachers;
+  - two interactive pieces: the Extended Essay Navigator, and the learning lab;
+  - two collections: Economics in 60 Seconds, and the mindmaps.
+- **Treatments.** Each item is presented in the way that suits it:
+  - real excerpts that open in a viewer;
+  - a working miniature or a walkthrough;
+  - a learning journey through a collection.
+- **What is published.** The complete resources are not published. Every image is a screen-resolution excerpt in `assets/studio/`, and each item has its own address (`#/studio/<type>/<item>`), an enquiry link and a crawlable page at `studio/<item>/`.
+- **Adding resources.** The workflow is in `docs/studio/ADDING-RESOURCES.md`. Metadata lives in `content/studio/showcase.json`. `tools/studio/build_studio.py` validates it, refuses anything private and writes the app module, the static pages and `sitemap.xml`.
+
+**Learning design** (`#/design`) follows one topic, price elasticity of demand, through seven moves:
+1. concept
+2. visual understanding
+3. economic model
+4. real-world application
+5. analysis
+6. evaluation
+7. judgement
+
+It uses the platform's own concept page, an excerpt from the PED explainer, a working miniature on P = 90 − Q, a dated case, a worked calculation and an original practice question.
+
+**Contact and collaboration** (`#/contact`) offers six kinds of enquiry. Choosing one prefills an email or a WhatsApp message to the address and number the site already publishes. There is no form, nothing is sent from the page, and nothing is stored.
+
+**The home page** now opens with "Economics is not just a subject to study. It is a way to think." It has two actions:
+- **Explore Economics** goes down to the gateway, which now leads with five ways in.
+- **Discover My Work** goes to the Studio.
+
+A new chapter, *Discover*, holds four bands: selected work, one topic seen five ways, a working lab miniature, and the principles behind the resources. The About chapter closes with "Interested in exploring more?".
+
 ## The resource hub
 
 Eleven categories, each a card with its own drawn mark, an audience label and a description.

@@ -20,7 +20,7 @@
    Cache-first for the static assets, which change only when the version below
    changes.
    ═══════════════════════════════════════════════════════════════════════════ */
-const VERSION = "aa-ibdp-econ-v17";
+const VERSION = "aa-ibdp-econ-v18";
 const CACHE = VERSION + "-static";
 
 /* Relative to the service worker's own location, so the platform works from a
@@ -105,11 +105,16 @@ self.addEventListener("fetch", event => {
     (req.headers.get("accept") || "").includes("text/html");
 
   if (isPage) {
+    /* Only the app itself is stored as the app shell. The Resource Studio's
+       plain pages (studio/...) are separate documents: each is kept under its
+       own address, so visiting one can never replace the offline platform. */
+    const scope = new URL(self.registration.scope);
+    const shell = url.pathname === scope.pathname || url.pathname === scope.pathname + "index.html";
     event.respondWith((async () => {
       try {
         const fresh = await fetch(req);
         const cache = await caches.open(CACHE);
-        cache.put("./index.html", fresh.clone()).catch(() => {});
+        if (fresh && fresh.ok) cache.put(shell ? "./index.html" : req, fresh.clone()).catch(() => {});
         return fresh;
       } catch (e) {
         const cache = await caches.open(CACHE);

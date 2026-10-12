@@ -64,12 +64,12 @@ function rnCover(old){
  const m=PHOTOMETA.hero;
  return `<section class="hero rn-home cv" aria-labelledby="cv-h"><div class="wrap full in cv-grid">
   <div class="cv-copy">
-   <div class="eb">IB DP Economics</div>
-   <h1 class="cv-h mt2" id="cv-h">Think like an <em>economist</em>.</h1>
-   <p class="cv-lede mt3">A laboratory, a textbook and a research studio for IB Diploma Programme Economics: see a model move, question what it assumes, and test it against the world.</p>
+   <div class="eb">Think like an economist.</div>
+   <h1 class="cv-h mt2" id="cv-h">Economics is not just a subject to study. <em>It is a way to think.</em></h1>
+   <p class="cv-lede mt3">An interactive learning ecosystem for IB DP Economics, connecting concepts, visual understanding, real-world evidence and exam thinking.</p>
+   <div class="row mt4 cv-cta"><button class="btn lg a" onclick="cvExplore()">Explore Economics →</button><a class="btn lg on-ink" href="#/studio">Discover My Work</a></div>
    <nav class="cv-verbs mt3" aria-label="Five ways in">${CV_VERBS.map(([t,go,d])=>`<button class="cv-verb" onclick="${go||goTab("think",TLAE_TAB)}" title="${esA(d)}">${esc(t)}</button>`).join('<span aria-hidden="true">·</span>')}</nav>
-   <div class="row mt4 cv-cta"><button class="btn lg a" onclick="nav('learn')">Start learning →</button><button class="btn lg on-ink" onclick="nav('world')">Explore Real World</button><button class="btn lg gh on-ink" onclick="nav('lab')">Explore the Lab</button></div>
-   <p class="cv-more mt3">Or go straight to <button class="lnk" onclick="nav('practise',0)">the question bank</button> or <button class="lnk" onclick="nav('learn',1)">the curriculum</button>.</p>
+   <p class="cv-more mt3">Or go straight to <button class="lnk" onclick="nav('learn')">the concepts</button>, <button class="lnk" onclick="nav('practise',0)">the question bank</button> or <button class="lnk" onclick="nav('learn',1)">the curriculum</button>.</p>
    <div class="rn-kept">${kept}</div></div>
   <div class="cv-lab">
    <div class="cv-plate"><div class="cv-plate-h"><span class="kicker">The model, live</span><span class="cv-note">tap a marked point · illustrative units</span></div>
@@ -84,6 +84,10 @@ function rnCover(old){
     <button class="lnk" onclick="nav('about')">The academic behind the platform →</button></figcaption></figure>
   <ul class="cv-scale" aria-label="What the platform holds">${cvScale()}</ul>
  </div></section>`}
+/* "Explore Economics" is the gateway band just below the cover: scroll to it and move focus with it */
+function cvExplore(){const g=document.getElementById("explore");if(!g){nav("course");return}
+ const h=g.querySelector("h2");g.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+ if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true})}}
 /* the definition a chip reveals on hover or focus, taken from the concept page it opens */
 function cvDef(go){const m=/'(c-[a-z0-9-]+)'/.exec(go);const c=m&&typeof CONCEPTS!=="undefined"?CONCEPTS.find(x=>x.id===m[1]):null;
  return c?String(c.def).split(/(?<=\.)\s/)[0]:""}
@@ -166,5 +170,5 @@ function rnHorizon(kind){
  return `<div class="hz hz-grid" aria-hidden="true"></div>`}
 function rnChapter(n,t){
  if(n==="01")return `<div class="rn-hinge"><div class="wrap full"><div class="rn-chap"><span class="ch-n">${n}</span><span class="ch-t">${esc(t)}</span></div>
-  <p class="hg-h">Economics is a way of <em>seeing</em>.</p><p class="hg-l">Choices, incentives, institutions and the world around us. Learn a concept, see it happen, move the model, connect it, test it, research it: every door below opens onto the same economics.</p></div></div>`;
+  <p class="hg-h">Five ways in. <em>One way of thinking.</em></p><p class="hg-l">Explore a concept, understand a diagram, connect it to the world, practise the calculation, then think like an examiner. Every door below opens onto the same economics.</p></div></div>`;
  return `${RN_HZ[n]?`<div class="wrap full">${rnHorizon(RN_HZ[n])}</div>`:""}<div class="wrap full rn-chap"><span class="ch-n">${n}</span><span class="ch-t">${esc(t)}</span></div>`}
