@@ -341,3 +341,46 @@ if __name__ == "__main__":
         json.dump(REG, f, indent=1, default=str)
     for r in REG:
         print(r["file"], "|", r.get("labels"), "|", {k: v for k, v in r.items() if k.startswith("eq") or k.startswith("e")})
+
+
+# ============================================================== v2 single-panel replacements (fit half-width slide columns)
+# ER_04b: movement along vs shift, on one set of axes
+cv = Canvas(1200, 1060, header="Movement along vs shift of the curve", sub="Market for the Indian rupee (demand side)")
+p = Plot(cv, 230, 860, 990, 200, ylab=("Price of the rupee", "(US$ per ₹)"), xlab=("Quantity of ₹",)); p.axes()
+Dm = L(-1, 9.6); D2m = L(-1, 11.6)
+p.curve(Dm, NAVY, label="D_{1}", dx=12, dy=4)
+p.curve(D2m, GOLD, label="D_{2}", dx=12, dy=4, label_color=GOLD_TXT)
+ya, yb = 6.6, 3.6
+pa = (Dm.x_at(ya), ya); pb = (Dm.x_at(yb), yb); pc = (D2m.x_at(ya), ya)
+p.hguide(ya, "ER_{1}", xend=pc[0]); p.hguide(yb, "ER_{2}", xend=pb[0])
+p.point(*pa, INK, label="a", ldx=-20, ldy=-22)
+p.point(*pb, INK, label="b", ldx=-22, ldy=26)
+p.point(*pc, GOLD, label="c", ldx=18, ldy=-24, lcol=GOLD_TXT)
+a1, b1 = p.px(pa[0] + 0.45, ya - 0.45); a2, b2 = p.px(pb[0] - 0.45, yb + 0.45)
+ox, oy = 0.66 * 30, -0.76 * 30   # perpendicular (up-right) offset from D1 in pixel space
+cv.line(a1 + ox, b1 + oy, a2 + ox, b2 + oy, INK, 5, arrow_end=True)
+cv.step((a1 + a2) / 2 + 0.66 * 66, (b1 + b2) / 2 - 0.76 * 66, 1, INK)
+c1, d1 = p.px(pa[0] + 0.2, ya); c2, d2 = p.px(pc[0] - 0.2, ya)
+cv.line(c1, d1 - 22, c2, d2 - 22, GOLD, 5, arrow_end=True)
+cv.step((c1 + c2) / 2, d1 - 58, 2, GOLD_TXT)
+cv.step(70, 966, 1, INK, r=18); cv.text(100, 966, "Movement along D (a to b): caused by a change in the exchange rate", size=24, weight=600)
+cv.step(70, 1012, 2, GOLD_TXT, r=18); cv.text(100, 1012, "Shift of D (a to c): caused by a change in a determinant", size=24, weight=600)
+save("ER_04b_Shift_vs_Movement", cv, dict(title="Movement along vs shift of the demand-for-rupee curve (single panel)",
+     labels="a->b along D1 (ER1 to ER2); a->c shift D1 to D2 at ER1"))
+
+# ER_22b: overvalued and undervalued on one set of axes
+cv = Canvas(1200, 1000, header="Overvalued and undervalued currencies", sub="OR = official rate above ER_{e} (overvalued); UR = official rate below ER_{e} (undervalued)")
+p = std_plot(cv, generic=True)
+p.curve(D1, NAVY, label="D", dx=12, dy=4)
+p.curve(S1, NAVY, label="S", dx=12, dy=-8)
+e = intersect(D1, S1)
+p.hguide(e[1], "ER_{e}", xend=e[0]); p.point(*e, INK)
+for rate, lab, col, txt, cbt, above in [(6.9, "OR", DEP, "Excess supply of DC", "CB buys DC", True),
+                                         (3.3, "UR", APP, "Excess demand for DC", "CB sells DC", False)]:
+    p.hguide(rate, lab, color=col, xend=9.6, w=3.5, dash="16 8", lcol=col)
+    xa, xb = sorted([D1.x_at(rate), S1.x_at(rate)])
+    bracket(cv, p, xa, xb, rate, txt, col, above=above, size=22)
+    tx, ty = p.px(9.6, rate)
+    cv.text(tx, ty + (-26 if above else 28), cbt, size=23, color=CB, anchor="end", weight=700)
+save("ER_22b_Over_Undervalued", cv, dict(title="Overvalued vs undervalued currency (single panel)",
+     labels="OR above ERe -> excess supply, CB buys DC; UR below ERe -> excess demand, CB sells DC"))

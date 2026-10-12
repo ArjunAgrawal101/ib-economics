@@ -156,12 +156,12 @@ rows = [("Who sets the rate?", "Government or central bank sets a fixed rate (FR
         ("Central bank role", "Buys and sells currency continuously to hold FR", "Intervenes periodically: smooths swings or keeps the rate inside a band", "No intervention to influence the rate"),
         ("A fall in value is called", "<b class='dep'>Devaluation</b> (official decision)", "<b class='dep'>Depreciation</b> (a peg can also be devalued)", "<b class='dep'>Depreciation</b>"),
         ("A rise in value is called", "<b class='app'>Revaluation</b> (official decision)", "<b class='app'>Appreciation</b> (a peg can also be revalued)", "<b class='app'>Appreciation</b>"),
-        ("Real-world example", "Hong Kong dollar: held at HK$7.75 to 7.85 per US$ (hard peg)", "Indian rupee: market-led, RBI acts to curb excessive volatility", "US dollar, euro: free floats")]
+        ("Real-world example", "<b>Hong Kong dollar</b> (hard peg): linked at HK$7.80 per US$ since 1983; held at HK$7.75 to 7.85 since 2005", "<b>Indian rupee</b>: RBI says it lets \"markets determine the prices\" and acts only against excessive volatility (Dec 2025)", "<b>US dollar, euro</b>: free floats")]
 grid = "".join(
     f'<div style="font-size:22px;font-weight:700;padding:14px 10px;border-top:2px solid #E2D6BC">{r[0]}</div>'
     + "".join(f'<div style="font-size:22px;line-height:1.3;padding:14px 16px;border-top:2px solid #E2D6BC">{c}</div>' for c in r[1:])
     for r in rows)
-page("ER_23_Systems_Spectrum", 1600, 800, f"""
+page("ER_23b_Systems_Spectrum", 1600, 820, f"""
 <div class="kicker">Three exchange-rate systems</div>
 <div class="sub">A spectrum from government control to market control</div>
 <div style="margin-top:30px;display:grid;grid-template-columns:270px 1fr 1fr 1fr">
