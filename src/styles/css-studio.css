@@ -48,7 +48,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 @media (max-width:520px){.sw-card{grid-template-columns:1fr}}
 /* covers used where a collection or demo has no single image */
 .st-fan{position:relative;display:block;height:100%;min-height:170px;background:linear-gradient(160deg,var(--obs-2),var(--obs))}
-.st-fan img{position:absolute;top:14%;width:34%;height:auto;left:calc(12% + var(--i)*22%);transform:rotate(calc((var(--i) - 1)*6deg));border-radius:6px;box-shadow:0 12px 26px -10px rgba(0,0,0,.6)}
+.st-fan img{position:absolute;top:calc(12% + var(--i)*5%);width:28%;height:auto;left:calc(6% + var(--i)*31%);border-radius:6px;box-shadow:0 12px 26px -10px rgba(0,0,0,.6)}
 .st-net,.st-demo-th{display:flex;align-items:center;justify-content:center;height:100%;min-height:170px;background:var(--obs)}
 .st-net svg,.st-demo-th svg{width:78%;max-width:260px;height:auto}
 .st-net line{stroke:rgba(201,174,114,.6);stroke-width:1.5}.st-net circle{fill:var(--obs-2);stroke:var(--brs-l);stroke-width:2}

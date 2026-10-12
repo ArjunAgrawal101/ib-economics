@@ -12,7 +12,7 @@ check(req.length === 0, 'neither new data file is fetched until a page needs it'
 
 /* navigation */
 const bar = await p.evaluate(() => SECTIONS.filter(s => s.pri).map(s => s.v));
-check(bar.length === 8 && bar[0] === 'course', `the bar keeps eight items (${bar.join(', ')})`);
+check(bar.length === 9 && bar[0] === 'course' && bar[8] === 'studio', `the bar keeps nine items, the Resource Studio last (${bar.join(', ')})`);
 await p.locator('#moreBtn').click();
 const menu = await p.locator('#menu').innerText();
 check(/Economic data/.test(menu) && /Economists and ideas/.test(menu) && /Why did this happen\?/.test(menu) && /EE Studio/.test(menu), 'the More menu groups the new surfaces with the studios');

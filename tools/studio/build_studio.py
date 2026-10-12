@@ -153,7 +153,8 @@ FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="p
 
 def page(m, facts, *, title, desc, canonical, up, body, image=None, ld=None):
     site = m['site']
-    og_img = site + 'assets/studio/' + image if image else site + 'assets/brand/social-card.png'
+    # link previews use the PNG card: several services do not accept WebP for og:image
+    og_img = site + 'assets/brand/social-card.png'
     ldjs = ('<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False).replace('</', '<\\/') + '</script>') if ld else ''
     return f"""<!doctype html>
 <html lang="en-GB">
