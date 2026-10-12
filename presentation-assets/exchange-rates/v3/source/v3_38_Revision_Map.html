@@ -1,0 +1,35 @@
+<!doctype html><html data-size="1300x760"><head><meta charset="utf-8"><style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:transparent}
+body{width:1300px;height:760px;position:relative;font-family:Inter,'Helvetica Neue',Arial,sans-serif;color:#0E1E3A}
+svg{position:absolute;left:0;top:0;z-index:0}
+.row{position:relative;z-index:1;display:flex;gap:28px;align-items:stretch;padding:4px}
+.node{flex:1;background:#FFFFFF;border:3px solid #1B3460;border-radius:18px;padding:14px 18px 14px;display:flex;flex-direction:column}
+.head{display:flex;align-items:center;gap:12px}
+.num{flex:none;width:36px;height:36px;border-radius:50%;background:#B08A47;color:#fff;font-weight:700;font-size:21px;display:flex;align-items:center;justify-content:center}
+.label{font-weight:700;font-size:27px;line-height:1.1;white-space:nowrap}
+.text{font-size:22px;line-height:1.27;margin-top:9px;flex:1}
+.cards{font-size:18px;font-weight:700;color:#8A6A2E;letter-spacing:.4px;margin-top:8px}
+.band{position:relative;z-index:1;height:150px;display:flex;align-items:center;justify-content:center}
+.hub{width:330px;height:88px;border-radius:44px;background:#0E1E3A;border:4px solid #B08A47;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hub .t{font-family:Lora,Georgia,serif;font-size:37px;font-weight:700;line-height:1}
+.hub .s{font-size:16px;letter-spacing:3px;color:#E2C98F;margin-top:6px;font-weight:700}
+</style></head><body>
+<svg id="lines" width="1300" height="760"></svg>
+<div class="row" id="top"><div class="node"><div class="head"><span class="num">1</span><span class="label">Determination</span></div><div class="text">Demand for and supply of ₹ set a floating rate; the price mechanism removes surpluses and shortages</div><div class="cards">Cards 4 to 6</div></div><div class="node"><div class="head"><span class="num">2</span><span class="label">Changes</span></div><div class="text">Appreciation and depreciation; four curve shifts; movement along versus shift</div><div class="cards">Cards 7 to 9 and 12</div></div><div class="node"><div class="head"><span class="num">3</span><span class="label">Calculations</span></div><div class="text">Convert prices between currencies; percentage change (flip the quote for the other currency)</div><div class="cards">Cards 10 and 11</div></div></div>
+<div class="band"><div class="hub" id="hub"><div class="t">Exchange rates</div><div class="s">IB UNIT 4.5</div></div></div>
+<div class="row" id="bottom"><div class="node"><div class="head"><span class="num">4</span><span class="label">Determinants</span></div><div class="text">Trade, investment, remittances, speculation, relative inflation, interest and growth rates, intervention</div><div class="cards">Cards 13 to 22</div></div><div class="node"><div class="head"><span class="num">5</span><span class="label">Consequences</span></div><div class="text">Demand and cost channels; inflation, growth, jobs, current account; winners and losers</div><div class="cards">Cards 23 to 29</div></div><div class="node"><div class="head"><span class="num">6</span><span class="label">Systems</span></div><div class="text">Fixed (reserves, devaluation, revaluation); managed (bands, over and undervaluation); floating</div><div class="cards">Cards 30 to 35</div></div><div class="node"><div class="head"><span class="num">7</span><span class="label">Fixed or floating?</span></div><div class="text">The trade-offs of each system, and which system suits which economy</div><div class="cards">Cards 36 and 37 · HL only</div></div></div>
+<script>
+const svg=document.getElementById('lines'), hub=document.getElementById('hub').getBoundingClientRect();
+const cx=hub.left+hub.width/2; let out='';
+function link(el, fromTop){
+  const r=el.getBoundingClientRect(), x=r.left+r.width/2, y=fromTop? r.bottom : r.top;
+  const hx=cx+(x-cx)*0.38, hy=fromTop? hub.top : hub.bottom;
+  out+=`<line x1="${x}" y1="${y}" x2="${hx}" y2="${hy}" stroke="#B08A47" stroke-width="4" stroke-linecap="round"/>`+
+       `<circle cx="${x}" cy="${y}" r="7" fill="#B08A47"/>`;
+}
+document.querySelectorAll('#top .node').forEach(n=>link(n,true));
+document.querySelectorAll('#bottom .node').forEach(n=>link(n,false));
+svg.innerHTML=out;
+</script>
+</body></html>
