@@ -100,7 +100,7 @@ page("MF_04_Transaction_and_Third_Party", 1760, 760, body, f"""
 
 # ============================================================ MF_06 four types of externality
 cells = [("Negative production", "MSC > MPC", "factory pollution harms nearby residents", "Q<sub>e</sub> > Q<sub>opt</sub>: overproduction", RED),
-         ("Negative consumption", "MSB < MPB", "second-hand smoke harms non-smokers", "Q<sub>e</sub> > Q<sub>opt</sub>: overconsumption", BLUE),
+         ("Negative consumption", "MSB < MPB", "second-hand smoke harms non‑smokers", "Q<sub>e</sub> > Q<sub>opt</sub>: overconsumption", BLUE),
          ("Positive production", "MSC < MPC", "a firm’s research is used by other firms", "Q<sub>e</sub> < Q<sub>opt</sub>: underproduction", RED),
          ("Positive consumption", "MSB > MPB", "vaccination protects other people", "Q<sub>e</sub> < Q<sub>opt</sub>: underconsumption", BLUE)]
 G = [(f'<div class="cell" style="border-top:10px solid {c}"><div class="t">{t}</div><div class="rel" style="color:{c}">{rel}</div>'
@@ -115,8 +115,8 @@ body = f"""
  <div class="rh"><span class="mono q">Cost or benefit?</span><b>Benefit to others</b><span>positive</span></div>
  {G[2]}{G[3]}
 </div>"""
-page("MF_06_Four_Types_of_Externality", 1760, 900, body, f"""
-.grid{{display:grid;grid-template-columns:300px 1fr 1fr;grid-template-rows:auto 1fr 1fr;gap:20px;padding:10px;height:100%}}
+page("MF_06_Four_Types_of_Externality", 1500, 820, body, f"""
+.grid{{display:grid;grid-template-columns:250px 1fr 1fr;grid-template-rows:auto 1fr 1fr;gap:20px;padding:10px;height:100%}}
 .ch{{display:flex;flex-direction:column;gap:4px;padding:6px 10px}}
 .ch b{{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:42px}}
 .ch span:last-child{{font-size:28px;font-weight:700}}
@@ -184,7 +184,7 @@ page("MF_13_Vaccination_External_Benefits", 1700, 860, body, f"""
 # ============================================================ MF_18 choosing a policy
 body = f"""
 <div class="tree">
- <div class="root card"><div class="mono k">Start here</div><div class="rt">Which externality, and who creates it?</div></div>
+ <div class="root card"><div class="rt"><span class="mono k">START HERE&nbsp;&nbsp;</span>Which externality, and who creates it?</div></div>
  <div class="branches">
   <div class="br neg">
    <div class="bh" style="background:{RED}">External cost: reduce the activity</div>
@@ -200,14 +200,12 @@ body = f"""
    <div class="opt"><b>Require or inform</b><span>legislation (e.g. compulsory schooling), education</span></div>
   </div>
  </div>
- <div class="test card"><div class="mono k">Then test the fit</div>
-  <div class="chips"><span>Can the harm be measured?</span><span>How many sources?</span><span>How elastic is demand?</span><span>Can it be monitored and enforced?</span><span>Does it cross borders?</span><span>Who bears the cost?</span></div></div>
 </div>"""
-page("MF_18_Policy_Selector", 1760, 960, body, f"""
+page("MF_18_Policy_Selector", 1500, 700, body, f"""
 .tree{{display:flex;flex-direction:column;gap:22px;padding:10px}}
-.root{{padding:22px 30px;border:4px solid {NAVY};text-align:center}}
+.root{{padding:16px 26px;border:4px solid {NAVY};text-align:center}}
 .k{{font-size:23px;color:{GOLDD}}}
-.rt{{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:42px;margin-top:6px}}
+.rt{{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:40px}}
 .branches{{display:flex;gap:26px}}
 .br{{flex:1;display:flex;flex-direction:column;gap:12px}}
 .bh{{color:#fff;font-weight:800;font-size:32px;border-radius:16px;padding:16px 22px}}
