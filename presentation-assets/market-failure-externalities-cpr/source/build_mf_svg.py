@@ -29,7 +29,7 @@ for k, (f, side, qo, po) in KINDS.items():
 
 
 def ext_panel(cv, X0, Y0, X1, Y1, kind, s=1.0, legend_terms=True, arrow_q=None, show_title=None, wl_label=True,
-              outcome_label=True, guides=True, ext_label=False, plabels=True, xlab_dy=None):
+              outcome_label=True, guides=True, ext_label=False, plabels=True, xlab_dy=None, qnudge=0, xlab_right=False):
     """Draw one externality diagram. s scales fonts/strokes."""
     soc, side, QO, PO = KINDS[kind]
     col = RED if side == "cost" else BLUE
@@ -48,8 +48,13 @@ def ext_panel(cv, X0, Y0, X1, Y1, kind, s=1.0, legend_terms=True, arrow_q=None, 
     # guides
     if guides:
         lo, hi = (QO, QE) if QO < QE else (QE, QO)
-        ax.vguide(QE, PE, "Q_{e}", size=fs, color=NAVY)
-        ax.vguide(QO, PO, "Q_{opt}", size=fs, color=GOLDD)
+        ax.vguide(QE, PE, None if qnudge else "Q_{e}", size=fs, color=NAVY)
+        ax.vguide(QO, PO, None if qnudge else "Q_{opt}", size=fs, color=GOLDD)
+        if qnudge:
+            sgn = 1 if QE > QO else -1
+            for q, lab, cl, d in [(QE, "Q_{e}", NAVY, sgn * qnudge), (QO, "Q_{opt}", GOLDD, -sgn * qnudge)]:
+                a, _ = ax.px(q, 0)
+                cv.text(a + d, Y0 + fs * 1.05, lab, size=fs, color=cl, anchor="middle", weight=700)
         ax.hguide(QE, PE, "P_{e}" if plabels else None, size=fs, color=NAVY)
         ax.hguide(QO, PO, "P_{opt}" if plabels else None, size=fs, color=GOLDD)
     # curves
@@ -72,7 +77,11 @@ def ext_panel(cv, X0, Y0, X1, Y1, kind, s=1.0, legend_terms=True, arrow_q=None, 
         ax.label(95, MPC(95), "MPC = MSC", size=fs * 1.08, color=NAVY, dx=16 * s)
         ax.label(95, MPB(95), "MPB", size=fs * 1.08, color=NAVY, dx=22 * s, dy=(-6 if kind == "negcons" else 10) * s)
         ax.label(q1, soc(q1), "MSB", size=fs * 1.08, color=col, dx=22 * s, dy=(6 if kind == "negcons" else -6) * s)
-    ax.axes(size=fs * 0.92, xlab_dy=xlab_dy)
+    if xlab_right:
+        ax.axes(size=fs * 0.92, xlab="")
+        cv.text(X1 + 50, Y0 + fs * 1.05, "Quantity", size=fs * 0.92, color=NAVY, anchor="start", weight=700)
+    else:
+        ax.axes(size=fs * 0.92, xlab_dy=xlab_dy)
     # external effect double arrow
     aq = arrow_q if arrow_q is not None else {"negprod": 18, "negcons": 20, "posprod": 86, "poscons": 20}[kind]
     if side == "cost":
@@ -108,7 +117,7 @@ def ext_panel(cv, X0, Y0, X1, Y1, kind, s=1.0, legend_terms=True, arrow_q=None, 
     if wl_label:
         cx = sum(p[0] for p in tri) / 3
         cy = sum(p[1] for p in tri) / 3
-        tx, ty = {"negprod": (70, 52), "negcons": (46, 14), "posprod": (63, 16), "poscons": (31, 139)}[kind]
+        tx, ty = {"negprod": (74, 24), "negcons": (46, 14), "posprod": (63, 16), "poscons": (63, 16)}[kind]
         a, b = ax.px(cx, cy)
         c, d = ax.px(tx, ty)
         cv.line(c, d, a, b, WL, 3 * s, end=True, head=16)
@@ -117,10 +126,10 @@ def ext_panel(cv, X0, Y0, X1, Y1, kind, s=1.0, legend_terms=True, arrow_q=None, 
     return ax
 
 
-def legend(cv, x, y, s=1.0, side="cost", rows=2, gap=None):
+def legend(cv, x, y, s=1.0, side="cost", rows=2, gap=None, col=None):
     """Two-row legend matching the atlas: market, optimum / welfare loss, external effect per unit."""
     fs = 28 * s
-    col = RED if side == "cost" else BLUE
+    col = col or (RED if side == "cost" else BLUE)
     lh = gap or fs * 1.6
     cv.circle(x + 12 * s, y, 11 * s, NAVY)
     cv.text(x + 34 * s, y, "Market outcome: MPB = MPC", size=fs, color=NAVY, weight=600)
@@ -167,31 +176,41 @@ cv.text(60, 905, "Community surplus = consumer + producer surplus,", size=30, co
 cv.text(60, 950, "maximised where MSB = MSC.", size=30, color=GOLDD, weight=700)
 cv.save(OUT, "MF_05_Allocative_Efficiency")
 
-# ===================================================== MF_15 four-panel atlas
-cv = Canvas(2440, 1420)
-panels = [("negprod", 0, 0, "Negative production", "MSC > MPC", "MPB = MSB", "Q_{e} > Q_{opt}", "power-station pollution"),
-          ("negcons", 1, 0, "Negative consumption", "MSB < MPB", "MPC = MSC", "Q_{e} > Q_{opt}", "second-hand smoke"),
-          ("posprod", 0, 1, "Positive production", "MSC < MPC", "MPB = MSB", "Q_{e} < Q_{opt}", "R&D spillovers"),
-          ("poscons", 1, 1, "Positive consumption", "MSB > MPB", "MPC = MSC", "Q_{e} < Q_{opt}", "vaccination")]
-cv.text(30, 34, "PRODUCTION: THE COST SIDE DIVERGES", size=30, color=RED, weight=700, family=MONO, spacing=2)
-cv.text(1250, 34, "CONSUMPTION: THE BENEFIT SIDE DIVERGES", size=30, color=BLUE, weight=700, family=MONO, spacing=2)
+# ===================================================== MF_15 four-panel atlas (large labels for projection)
+cv = Canvas(2600, 1260)
+panels = [("negprod", 0, 0, ("Negative", "production"), "MSC > MPC", "MPB = MSB", "Q_{e} > Q_{opt}", "power-plant smoke"),
+          ("negcons", 1, 0, ("Negative", "consumption"), "MSB < MPB", "MPC = MSC", "Q_{e} > Q_{opt}", "second-hand smoke"),
+          ("posprod", 0, 1, ("Positive", "production"), "MSC < MPC", "MPB = MSB", "Q_{e} < Q_{opt}", "R&D spillovers"),
+          ("poscons", 1, 1, ("Positive", "consumption"), "MSB > MPB", "MPC = MSC", "Q_{e} < Q_{opt}", "vaccination")]
+cv.text(30, 34, "PRODUCTION: THE COST SIDE DIVERGES", size=34, color=RED, weight=700, family=MONO, spacing=2)
+cv.text(1330, 34, "CONSUMPTION: THE BENEFIT SIDE DIVERGES", size=34, color=BLUE, weight=700, family=MONO, spacing=2)
 for kind, col_i, row_i, title, r1, r2, r3, ex in panels:
-    ox, oy = 20 + col_i * 1220, 70 + row_i * 630
+    ox, oy = 20 + col_i * 1300, 70 + row_i * 560
     side = KINDS[kind][1]
     c = RED if side == "cost" else BLUE
-    cv.rect(ox, oy, 1180, 600, fill="#F7F2E8", rx=18)
-    cv.rect(ox, oy, 12, 600, fill=c, rx=4)
-    ext_panel(cv, ox + 130, oy + 465, ox + 520, oy + 95, kind, s=0.82, wl_label=False, outcome_label=False, plabels=False, xlab_dy=92)
-    tx = ox + 720
-    cv.text(tx, oy + 70, title, size=39, color=NAVY, weight=600, family=SERIF)
-    cv.text(tx, oy + 150, r1, size=40, color=c, weight=800)
-    cv.text(tx, oy + 215, r2, size=40, color=NAVY, weight=700)
-    cv.text(tx, oy + 290, r3, size=48, color=GOLDD, weight=800)
+    cv.rect(ox, oy, 1270, 540, fill="#F7F2E8", rx=18)
+    cv.rect(ox, oy, 12, 540, fill=c, rx=4)
+    X0, Y0, X1, Y1 = ox + 120, oy + 455, ox + 630, oy + 120
+    ext_panel(cv, X0, Y0, X1, Y1, kind, s=1.25, wl_label=False, outcome_label=False, plabels=False, qnudge=10, xlab_right=True)
+    tx = ox + 950
+    cv.text(tx, oy + 70, title[0], size=44, color=NAVY, weight=600, family=SERIF)
+    cv.text(tx, oy + 120, title[1], size=44, color=NAVY, weight=600, family=SERIF)
+    cv.text(tx, oy + 195, r1, size=46, color=c, weight=800)
+    cv.text(tx, oy + 255, r2, size=44, color=NAVY, weight=700)
+    cv.text(tx, oy + 330, r3, size=52, color=GOLDD, weight=800)
     word = {"negprod": "overproduction", "negcons": "overconsumption", "posprod": "underproduction", "poscons": "underconsumption"}[kind]
-    cv.text(tx, oy + 355, word, size=34, color=c, weight=700)
-    cv.text(tx, oy + 450, "Example:", size=30, color=GREY, weight=600)
-    cv.text(tx, oy + 495, ex, size=30, color=GREY, weight=600)
-legend(cv, 560, 1340, s=1.0)
+    cv.text(tx, oy + 392, word, size=34, color=c, weight=700)
+    cv.text(tx, oy + 448, "Example:", size=30, color=GREY, weight=600)
+    cv.text(tx, oy + 490, ex, size=30, color=GREY, weight=600)
+# single-row legend
+y = 1222; x = 120
+cv.circle(x + 14, y, 14, NAVY); cv.text(x + 44, y, "Market outcome: MPB = MPC", size=36, color=NAVY, weight=600)
+x = 760
+cv.ring(x + 16, y, 17, GOLDD); cv.text(x + 48, y, "Social optimum: MSB = MSC", size=36, color=GOLDD, weight=600)
+x = 1420
+cv.poly([(x, y + 16), (x + 34, y + 16), (x + 34, y - 16)], WL, 0.45); cv.text(x + 48, y, "Welfare loss", size=36, color=WL, weight=600)
+x = 1780
+cv.line(x + 14, y - 20, x + 14, y + 20, GREY, 5, end=True, start=True, head=14); cv.text(x + 40, y, "External effect per unit", size=36, color=GREY, weight=600)
 cv.save(OUT, "MF_15_Four_Externalities_Atlas")
 
 # ===================================================== MF_16 HL welfare loss calculation (atlas E07 values)
@@ -235,8 +254,9 @@ cv.line(xa, yb, xb, yb, PURPLE, 4, end=True, start=True, head=16)
 cv.text((xa + xb) / 2, yb - 30, "base = 50 − 40 = 10", size=31, color=PURPLE, anchor="middle", weight=700)
 xh = xb + 46
 cv.line(xh, ytop, xh, ybot, PURPLE, 4, end=True, start=True, head=16)
-cv.text(xh + 18, (ytop + ybot) / 2 - 18, "height = 90 − 70", size=31, color=PURPLE, weight=700)
-cv.text(xh + 18, (ytop + ybot) / 2 + 20, "= $20", size=31, color=PURPLE, weight=700)
+_, yl1 = ax.px(0, 74.5); _, yl2 = ax.px(0, 66.5)
+cv.text(xh + 18, yl1, "height = 90 − 70", size=31, color=PURPLE, weight=700)
+cv.text(xh + 18, yl2, "= $20", size=31, color=PURPLE, weight=700)
 ax.dot(qe, pe, 12, NAVY)
 ax.ring(qo, po, 14, GOLDD)
 cv.pill(1180, 40, "Illustrative values", GREY, size=26, anchor="end")
@@ -428,7 +448,7 @@ cv.text(1380, 975, "only P_{net} = P_{opt} − s, and use rises to Q_{opt}.", si
 cv.save(OUT, "MF_25_Subsidies_Producer_and_Consumer")
 
 # ===================================================== MF_34 common pool resource: one-season extraction model
-cv = Canvas(1180, 1110)
+cv = Canvas(1180, 1210)
 ax = Ax(cv, 230, 760, 880, 170, xmax=100, ymax=150)
 DEP = lambda q: MPC(q) + E
 ax.area([(40, 90), (QE, DEP(QE)), (QE, MPB(QE))], WL, 0.30)
@@ -439,65 +459,70 @@ ax.label(95, MPC(95), "fuel, crew, gear", size=26, color=GREY, dx=16, dy=36, wei
 ax.label(90, DEP(90), "MSC = MPC + depletion cost", size=33, color=GREEN, dx=-6, dy=-40, anchor="end")
 ax.label(95, MPB(95), "MPB = MSB", size=36, dx=16)
 ax.label(95, MPB(95), "value of the catch", size=26, color=GREY, dx=16, dy=36, weight=600)
-ax.axes(ylab="Costs and benefits ($ per tonne)", xlab="Catch this season (tonnes)", size=31, xlab_dy=190)
+ax.axes(ylab="Costs and benefits ($ per tonne)", xlab="Catch this season (tonnes)", size=31, xlab_dy=185)
 ax.seg(18, MPC(18) + 3, 18, DEP(18) - 3, GREEN, 5, end=True, start=True, head=18)
 ax.dot(QE, PE, 12, NAVY); ax.ring(40, 90, 15, GOLDD)
 a, _ = ax.px(40, 0); b, _ = ax.px(QE, 0)
 cv.line(a, 760 + 85, b, 760 + 85, GREEN, 5, end=True, head=20)
 cv.text((a + b) / 2, 760 + 122, "overfishing", size=29, color=GREEN, anchor="middle", weight=700)
-cv.text(60, 1020, "Depletion cost: a smaller stock raises other fishers' costs", size=29, color=GREEN, weight=700)
-cv.text(60, 1064, "and lowers future catches. Simplified: one season only.", size=29, color=GREY, weight=600)
+cx_, cy_ = ax.px(50, 90); lx_, ly_ = ax.px(64, 12)
+cv.line(lx_, ly_, cx_, cy_, WL, 3, end=True, head=16)
+cv.text(lx_ + 8, ly_ + 14, "welfare loss", size=28, color=WL, weight=700)
+legend(cv, 60, 1010, side="cost", col=GREEN)
+cv.text(60, 1120, "Depletion cost: a smaller stock raises other fishers’ costs", size=29, color=GREEN, weight=700)
+cv.text(60, 1164, "and lowers future catches. Simplified: one season only.", size=29, color=GREY, weight=600)
 cv.pill(1170, 40, "Simplified model", GREY, size=26, anchor="end")
 cv.save(OUT, "MF_34_CPR_Extraction_Model")
 
-# ===================================================== MF_33 stock, extraction and regeneration
-cv = Canvas(2400, 1050)
+# ===================================================== MF_33 stock, extraction and regeneration (larger type)
+cv = Canvas(2400, 1080)
 
 def tank(cx, top, w, h, level, inflow, label, sub, col):
     x0 = cx - w / 2
     cv.rect(x0, top, w, h, fill="#FFFFFF", stroke=NAVY, sw=5, rx=18)
     lh = h * level
     cv.rect(x0 + 6, top + h - lh, w - 12, lh - 6, fill=col, op=0.28, rx=12)
-    cv.text(cx, top + h - lh / 2, "STOCK", size=34, color=NAVY, anchor="middle", weight=800, family=MONO, spacing=3)
-    cv.text(cx, top - 95, label, size=40, color=NAVY, anchor="middle", weight=600, family=SERIF, halo=False)
-    cv.text(cx, top - 45, sub, size=28, color=GREY, anchor="middle", weight=600, halo=False)
-    # outflow
-    cv.line(x0 + w, top + h - 60, x0 + w + 200, top + h - 60, RED, 18, end=True, head=46, cap="butt")
-    cv.text(x0 + w + 110, top + h - 10, "Extraction", size=31, color=RED, anchor="middle", weight=800)
+    cv.text(cx, top + h - lh / 2, "STOCK", size=38, color=NAVY, anchor="middle", weight=800, family=MONO, spacing=3)
+    cv.text(cx, top - 100, label, size=48, color=NAVY, anchor="middle", weight=600, family=SERIF, halo=False)
+    cv.text(cx, top - 45, sub, size=34, color=GREY, anchor="middle", weight=600, halo=False)
+    cv.line(x0 + w, top + h - 60, x0 + w + 190, top + h - 60, RED, 18, end=True, head=46, cap="butt")
+    cv.text(x0 + w + 100, top + h, "Extraction", size=38, color=RED, anchor="middle", weight=800)
     if inflow:
-        cv.line(x0 - 200, top + 60, x0, top + 60, GREEN, 18, end=True, head=46, cap="butt")
-        cv.text(x0 - 110, top + 10, "Regeneration", size=31, color=GREEN, anchor="middle", weight=800)
-        cv.text(x0 - 110, top + 118, "natural growth", size=26, color=GREEN, anchor="middle", weight=600)
+        cv.line(x0 - 190, top + 70, x0, top + 70, GREEN, 18, end=True, head=46, cap="butt")
+        cv.text(x0 - 275, top + 15, "Regeneration", size=38, color=GREEN, anchor="start", weight=800)
+        cv.text(x0 - 275, top + 130, "natural growth", size=32, color=GREEN, anchor="start", weight=600)
     else:
-        cv.text(x0 - 110, top + 60, "no inflow", size=29, color=GREY, anchor="middle", weight=700)
-        cv.text(x0 - 110, top + 100, "(or negligible)", size=26, color=GREY, anchor="middle", weight=600)
+        cv.text(x0 - 110, top + 60, "no inflow", size=34, color=GREY, anchor="middle", weight=700)
+        cv.text(x0 - 110, top + 104, "(or negligible)", size=30, color=GREY, anchor="middle", weight=600)
 
-tank(520, 230, 360, 340, 0.62, True, "Renewable resource", "fish, groundwater, forests", GREEN)
-cv.text(80, 680, "Extraction ≤ regeneration", size=31, color=GREEN, weight=800)
-cv.text(80, 722, "→ stock is maintained: sustainable use", size=29, color=NAVY, weight=600)
-cv.text(80, 790, "Extraction > regeneration, year after year", size=31, color=RED, weight=800)
-cv.text(80, 832, "→ stock falls: depletion; past a threshold,", size=29, color=NAVY, weight=600)
-cv.text(80, 872, "    regeneration itself can collapse", size=29, color=NAVY, weight=600)
-tank(1300, 230, 300, 340, 0.45, False, "Non-renewable resource", "coal, oil, minerals", GREY)
-cv.text(980, 680, "Any extraction depletes a", size=31, color=RED, weight=800)
-cv.text(980, 722, "finite stock over the relevant period", size=29, color=NAVY, weight=600)
-cv.text(980, 790, "Sustainability question: the rate of use,", size=29, color=NAVY, weight=600)
-cv.text(980, 832, "substitutes, and external costs of use", size=29, color=NAVY, weight=600)
+tank(650, 250, 300, 300, 0.62, True, "Renewable resource", "fish, groundwater, forests", GREEN)
+cv.text(60, 680, "Extraction ≤ regeneration", size=38, color=GREEN, weight=800)
+cv.text(60, 728, "→ the stock is maintained or grows", size=34, color=NAVY, weight=600)
+cv.text(60, 806, "Extraction > regeneration", size=38, color=RED, weight=800)
+cv.text(60, 854, "→ the stock falls; past a threshold,", size=34, color=NAVY, weight=600)
+cv.text(60, 898, "regeneration itself can collapse", size=34, color=NAVY, weight=600)
+tank(1290, 250, 260, 300, 0.45, False, "Non-renewable resource", "coal, oil, minerals", GREY)
+cv.text(960, 680, "Any extraction depletes", size=38, color=RED, weight=800)
+cv.text(960, 726, "a finite stock", size=38, color=RED, weight=800)
+cv.text(960, 806, "Sustainability questions:", size=34, color=NAVY, weight=700)
+cv.text(960, 854, "the rate of use, substitutes,", size=34, color=NAVY, weight=600)
+cv.text(960, 898, "external costs of use", size=34, color=NAVY, weight=600)
 # growth curve panel
-ax = Ax(cv, 1760, 760, 2280, 250, xmax=100, ymax=30)
+ax = Ax(cv, 1800, 760, 2300, 300, xmax=100, ymax=30)
 G = lambda S: 0.4 * S * (1 - S / 100) / 1.0
 assert abs(G(50) - 10) < 1e-9
 pts = [ax.px(S, G(S)) for S in [i for i in range(0, 101, 2)]]
 cv.path("M" + " L".join(f"{a:.1f},{b:.1f}" for a, b in pts), GREEN, 7)
 ax.seg(0, 10, 100, 10, GUIDE, 3, dash="10 9")
-ax.ring(50, 10, 14, GOLDD)
-ax.label(50, 10, "MSY", size=34, color=GOLDD, dy=-40, anchor="middle")
+ax.ring(50, 10, 15, GOLDD)
+ax.label(50, 10, "MSY", size=40, color=GOLDD, dy=-44, anchor="middle")
 ax.seg(0, 6.4, 100, 6.4, RED, 4)
-ax.label(100, 6.4, "catch h", size=28, color=RED, dx=-4, dy=-24, anchor="end")
-ax.axes(ylab="Natural growth per year", xlab="Stock size", size=28, xlab_dy=60, origin=True)
-cv.text(1700, 70, "Maximum sustainable yield", size=36, color=NAVY, weight=600, family=SERIF)
-cv.pill(1700, 130, "Supplementary · simplified model", GREY, size=24)
-cv.text(1700, 880, "Growth is largest at a middle stock size.", size=27, color=NAVY, weight=600)
-cv.text(1700, 922, "Real ecosystems: uncertain, shifting, with", size=27, color=GREY, weight=600)
-cv.text(1700, 962, "tipping points; MSY is hard to know.", size=27, color=GREY, weight=600)
+ax.label(50, 3.4, "catch below MSY", size=30, color=RED, anchor="middle")
+ax.axes(ylab="Natural growth per year", xlab="Stock size", size=32, xlab_dy=62, origin=True)
+cv.text(1720, 60, "Maximum sustainable yield", size=42, color=NAVY, weight=600, family=SERIF)
+cv.pill(1720, 128, "Supplementary · simplified model", GREY, size=28)
+cv.text(1720, 900, "Growth is largest at a", size=34, color=NAVY, weight=600)
+cv.text(1720, 944, "middle stock size.", size=34, color=NAVY, weight=600)
+cv.text(1720, 1000, "Real ecosystems shift and are uncertain:", size=30, color=GREY, weight=600)
+cv.text(1720, 1040, "MSY is hard to know.", size=30, color=GREY, weight=600)
 cv.save(OUT, "MF_33_Stock_Extraction_Regeneration")

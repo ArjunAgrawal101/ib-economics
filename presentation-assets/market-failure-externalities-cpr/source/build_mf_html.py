@@ -101,7 +101,7 @@ page("MF_04_Transaction_and_Third_Party", 1760, 760, body, f"""
 # ============================================================ MF_06 four types of externality
 cells = [("Negative production", "MSC > MPC", "factory pollution harms nearby residents", "Q<sub>e</sub> > Q<sub>opt</sub>: overproduction", RED),
          ("Negative consumption", "MSB < MPB", "second-hand smoke harms non-smokers", "Q<sub>e</sub> > Q<sub>opt</sub>: overconsumption", BLUE),
-         ("Positive production", "MSC < MPC", "a firm's research is used by other firms", "Q<sub>e</sub> < Q<sub>opt</sub>: underproduction", RED),
+         ("Positive production", "MSC < MPC", "a firm’s research is used by other firms", "Q<sub>e</sub> < Q<sub>opt</sub>: underproduction", RED),
          ("Positive consumption", "MSB > MPB", "vaccination protects other people", "Q<sub>e</sub> < Q<sub>opt</sub>: underconsumption", BLUE)]
 G = [(f'<div class="cell" style="border-top:10px solid {c}"><div class="t">{t}</div><div class="rel" style="color:{c}">{rel}</div>'
       f'<div class="ex">{ex}</div><div class="out">{out}</div></div>') for t, rel, ex, out, c in cells]
@@ -148,7 +148,7 @@ body = f"""
  <div class="side">
   <div class="mono k">External benefits</div>
   <div class="big">95%</div>
-  <div class="t">two-dose measles coverage needed to stop transmission and protect communities</div>
+  <div class="t">at least this two-dose measles coverage is needed to stop transmission and protect communities</div>
   <div class="rule"></div>
   <div class="row"><div class="n">84%</div><div class="d">first dose, worldwide, 2024</div></div>
   <div class="row"><div class="n">76%</div><div class="d">second dose, worldwide, 2024</div></div>
@@ -195,7 +195,7 @@ body = f"""
   </div>
   <div class="br pos">
    <div class="bh" style="background:{GREEN}">External benefit: expand the activity</div>
-   <div class="opt"><b>Lower the price</b><span>subsidies to producers or consumers</span></div>
+   <div class="opt"><b>Lower the cost or net price</b><span>subsidies to producers or consumers</span></div>
    <div class="opt"><b>Provide it</b><span>government provision, free at the point of use</span></div>
    <div class="opt"><b>Require or inform</b><span>legislation (e.g. compulsory schooling), education</span></div>
   </div>
@@ -228,7 +228,7 @@ body = f"""
    <div class="bar"><div class="v" style="height:{250/1520*300:.0f}px"></div><b>SEK 250</b><span>1991</span></div>
    <div class="bar"><div class="v" style="height:300px"></div><b>SEK 1,520</b><span>2026 (EUR 138)</span></div>
   </div>
-  <div class="sm">per tonne of CO<sub>2</sub>; 2026 rate for natural gas and coal. Industry in the EU ETS is exempt.</div>
+  <div class="sm">nominal SEK per tonne of CO<sub>2</sub>; 2026 rate for natural gas and coal. Industry in the EU ETS is exempt.</div>
  </div>
  <div class="ar">→</div>
  <div class="c card"><div class="mono k">Incentive</div>
@@ -239,10 +239,10 @@ body = f"""
  <div class="ar">→</div>
  <div class="c card"><div class="mono k">Evidence</div>
   <div class="stat"><b>−33%</b><span>domestic emissions, 1990 to 2021, while real GDP rose 92%</span></div>
-  <div class="stat"><b>about −11%</b><span>transport CO<sub>2</sub> versus a comparison group, mostly due to the tax (peer-reviewed study, 2019)</span></div>
+  <div class="stat"><b>about −11%</b><span>transport CO<sub>2</sub> versus a comparison group on average, 1990 to 2005, with the largest share due to the tax (peer-reviewed study, 2019)</span></div>
  </div>
 </div>
-<div class="caution"><b>What the evidence cannot show:</b> the tax did not cause the whole fall in emissions. Nuclear and hydro power, district heating and the EU ETS also played a part.</div>
+<div class="caution"><b>What the evidence cannot show:</b> that the tax caused the whole fall in emissions. The EU ETS, nuclear and hydro power and district heating also played a part.</div>
 <div class="src">Sources: Government Offices of Sweden (2026); Ministry of Finance (2023); Andersson, American Economic Journal: Economic Policy (2019)</div>
 """
 page("MF_21_Sweden_Carbon_Tax_Evidence", 1800, 900, body, f"""
@@ -275,7 +275,7 @@ body = f"""
  <div class="q"><b>Private goods</b><span>food, clothing, a phone</span></div>
  <div class="q cpr"><b>Common pool resources</b><span>ocean fish, groundwater, forests, grazing land, clean air</span></div>
  <div class="rowh">Non-rivalrous</div>
- <div class="q dim"><b>Club goods</b><span>a streaming service, an uncrowded toll road</span><i>for comparison: not in the IB guide</i></div>
+ <div class="q dim"><b>Club goods</b><span>a streaming service, an uncrowded toll road</span><i>for comparison only</i></div>
  <div class="q"><b>Public goods</b><span>street lighting, flood defences, national defence</span></div>
 </div>
 <div class="note">Exclusion may be <b>difficult or costly</b> rather than impossible, and shared rules can still govern access.</div>
@@ -361,16 +361,16 @@ page("MF_35_India_Groundwater_2025", 1800, 840, body, f"""
 """)
 
 # ============================================================ MF_36 Northern cod timeline
-ev = [("1992", "Moratorium", "Commercial fishery closed on 2 July; about 30,000 jobs lost in Newfoundland and Labrador", RED),
-      ("2005", "Low point", "Spawning stock about 3% of its 1980s average (earlier assessment model)", RED),
-      ("2024", "Reopened", "New assessment model and reference point; stock judged out of the critical zone. Canadian TAC 18,000 t", GOLDD),
+ev = [("1992", "Collapse and closure", "Moratorium announced 2 July; about 30,000 jobs lost in Newfoundland and Labrador", RED),
+      ("2005", "Still depleted", "Spawning stock about 3% of its 1980s average (earlier assessment model)", RED),
+      ("2024", "Reopened", "New assessment model and reference point; stock judged out of the critical zone. Canadian total allowable catch (TAC) 18,000 t", GOLDD),
       ("2025", "Quota raised", "TAC 38,000 t", GOLDD),
       ("2026", "“Healthy zone”", "TAC 59,000 t; first healthy-zone assessment since 1992", GREEN)]
 items = "".join(f'<div class="ev"><div class="yr" style="color:{c}">{y}</div><div class="dot" style="background:{c}"></div><div class="tt">{t}</div><div class="dd">{d}</div></div>' for y, t, d, c in ev)
 body = f"""
 <div class="line"></div>
 <div class="evs">{items}</div>
-<div class="warn"><b>A policy decision is not proof of recovery.</b> The zone changed mainly because the reference point was redefined, not because fish numbers suddenly jumped. “Healthy zone” is a model-based category, not a return to pre-collapse abundance.</div>
+<div class="warn"><b>A policy decision is not proof of recovery.</b> In 2024 the stock left the critical zone mainly because the reference point was redefined; estimated fish numbers changed little. “Healthy zone” is a model-based category, not a return to pre-collapse abundance.</div>
 <div class="src">Sources: Fisheries and Oceans Canada (science advisory reports 2022/041, 2024/046; news releases June 2024 and June 2026; 2025 management decision); The Canadian Encyclopedia</div>
 """
 page("MF_36_Northern_Cod_Timeline", 1840, 780, body, f"""
@@ -393,7 +393,7 @@ pr = [("Clear boundaries", "who may use the resource, and where it ends"),
       ("Monitoring", "by users, or monitors accountable to them"),
       ("Graduated sanctions", "penalties start small and rise for repeat breaches"),
       ("Conflict resolution", "quick, cheap and local"),
-      ("Rights recognised", "government accepts users' right to organise"),
+      ("Rights recognised", "government accepts users’ right to organise"),
       ("Nested layers", "larger systems governed at several linked levels")]
 cells = "".join(f'<div class="p"><div class="n">{i}</div><div><b>{t}</b><span>{d}</span></div></div>' for i, (t, d) in enumerate(pr, 1))
 body = f"""<div class="g">{cells}</div>
