@@ -62,7 +62,36 @@ All 34 sections and their tabs; search; the labs, mindmaps, diagrams, calculatio
 
 ## Tests
 
-<!-- filled from the run -->
+Run with `node tests/run-all.mjs` on this branch, in headless Chromium.
+
+- **The whole suite passed:** 19 suites and **522 browser checks, with no failures.**
+- **Built-in self-tests:** 2,105 checks run at boot, all passing. Among them, ten new Project Atlas checks confirm:
+  - the pathways open real pages and show the platform's own counts;
+  - the exhibition holds five pieces in five forms, using Studio excerpts and public covers only;
+  - the journey has six stages;
+  - the lab uses the platform's own predictions, and those predictions agree with the model;
+  - the rupee example's numbers hold;
+  - the cover carries one headline, one line, two actions and no statistics strip.
+- **`tests/studio.mjs` (89 checks)** now also covers:
+  - the exhibition and its viewer;
+  - the journey's keyboard tabs;
+  - a full run through the lab with focus management and the model's diagram at the end;
+  - the resource-specific enquiry;
+  - the Learning design's nine steps and stakeholder figures;
+  - a check that no page contacts another server (fonts included);
+  - axe (WCAG 2.0/2.1 A and AA) on every new home section, every journey stage and the lab's finished state, at 1440 and 390 px, with no violations.
+- **Overlap audit:** 142,210 rendered elements over 540 route-widths, with no overlaps.
+- **Existing suites updated for the new cover:** `cover` and `renaissance` now expect the pathway counts and the action "Discover the Learning Studio".
+
+**Visual review** was done on screenshots captured and inspected in this session. Each section was shot at 1440, 1024, 768, 390 and 320 px. Problems found and fixed:
+- a stranded word in the headline;
+- unbalanced figure columns;
+- tracked small Bodoni;
+- page excerpts cropped through text;
+- a series shelf that scrolled on desktop;
+- heavy black watermark strips;
+- an empty lab card before the first answer;
+- side diagrams too small to read on phones (now hidden there).
 
 ## Not verified here
 
