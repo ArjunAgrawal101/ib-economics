@@ -1,4 +1,4 @@
-"""Build the Resource Studio from its public manifest.
+"""Build the Learning Studio from its public manifest.
 
   python3 tools/studio/build_studio.py          # validate, then write everything
   python3 tools/studio/build_studio.py --check  # validate only
@@ -34,8 +34,9 @@ FORBIDDEN_VALUE = re.compile(r'(\.(pdf|pptx?|docx?|key|zip|psd|ai|indd|html?)\b)
 TYPES = {'visual', 'guide', 'interactive', 'collection'}
 TREATMENTS = {'A', 'B', 'C'}
 STATUSES = {'published', 'draft', 'retired'}
-REQUIRED = ['id', 'status', 'disclosure', 'type', 'treatment', 'title', 'kicker', 'topics', 'level', 'audience', 'format',
-            'previewFormat', 'summary', 'objectives', 'approach', 'previews', 'related', 'enquiry']
+REQUIRED = ['id', 'status', 'disclosure', 'type', 'treatment', 'exhibit', 'title', 'kicker', 'topics', 'level', 'audience', 'format',
+            'previewFormat', 'summary', 'objectives', 'approach', 'previews', 'related', 'enquiry', 'verified', 'checks']
+EXHIBITS = {'visual', 'interactive', 'editorial', 'series'}
 
 
 def fail(msg):
@@ -89,6 +90,10 @@ def validate(m):
             fail(f'{w}: disclosure {it["disclosure"]} cannot be published (only levels 1 and 2 are public)')
         if it['type'] not in TYPES or it['treatment'] not in TREATMENTS:
             fail(f'{w}: unknown type or treatment')
+        if it['exhibit'] not in EXHIBITS:
+            fail(f'{w}: exhibit must be one of {sorted(EXHIBITS)}')
+        if it['status'] == 'published' and not re.fullmatch(r'\d{4}-\d{2}-\d{2}', str(it.get('verified', ''))):
+            fail(f'{w}: a published item needs the date its content was verified (verified: YYYY-MM-DD)')
         if it['enquiry'] not in enq:
             fail(f'{w}: unknown enquiry category "{it["enquiry"]}"')
         for r in it['related'] + ([{'route': it['interaction']['live']}] if it.get('interaction', {}).get('live') else []):
@@ -148,7 +153,8 @@ ul{padding-left:1.2em}li{margin:4px 0}.cards{list-style:none;padding:0;display:g
 footer{border-top:1px solid var(--line);margin-top:48px}footer .in{font:14px/1.6 Manrope,system-ui,sans-serif;color:var(--tx-2)}
 @media (max-width:600px){body{font-size:16px}.lede{font-size:18px}}"""
 
-FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">'
+# the typefaces are served by the site itself (assets/fonts/, SIL Open Font License)
+FONTS = '<link rel="stylesheet" href="{up}assets/fonts/fonts.css">'
 
 
 def page(m, facts, *, title, desc, canonical, up, body, image=None, ld=None):
@@ -173,13 +179,13 @@ def page(m, facts, *, title, desc, canonical, up, body, image=None, ld=None):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#16181C">
 <link rel="icon" href="{up}favicon.svg" type="image/svg+xml">
-{FONTS}
+{FONTS.format(up=up)}
 <style>{CSS}</style>
 {ldjs}
 </head>
 <body>
 <header class="top"><div class="in"><a class="brand" href="{up}"><img src="{up}assets/brand/monogram-reversed.svg" alt="" width="34" height="34">IB DP Economics · Arjun Agrawal</a>
-<nav aria-label="Site"><a href="{up}#/">Explore Economics</a><a href="{up}studio/">Resource Studio</a><a href="{up}#/design">Learning design</a><a href="{up}#/about">About</a><a href="{up}#/contact">Contact</a></nav></div></header>
+<nav aria-label="Site"><a href="{up}#/">Explore Economics</a><a href="{up}studio/">Learning Studio</a><a href="{up}#/design">Learning design</a><a href="{up}#/about">About</a><a href="{up}#/contact">Contact</a></nav></div></header>
 <main class="in">
 {body}
 <p class="note">Independent resources by Arjun Agrawal. They are not produced or endorsed by the International Baccalaureate Organization, and none of the questions shown is an IB examination question.</p>
@@ -208,7 +214,7 @@ def item_page(m, facts, it, tmap):
     else:
         access = 'This part of the work is open on the platform: use the links below to explore it in full.'
     note = it.get('interaction', {}).get('note')
-    body = f"""<p class="crumb"><a href="{up}">Home</a> / <a href="{up}studio/">Resource Studio</a> / {esc(it['title'])}</p>
+    body = f"""<p class="crumb"><a href="{up}">Home</a> / <a href="{up}studio/">Learning Studio</a> / {esc(it['title'])}</p>
 <p class="kicker">{esc(it['kicker'])}</p>
 <h1>{esc(it['title'])}</h1>
 <p class="lede">{esc(it['summary'])}</p>
@@ -230,7 +236,7 @@ def item_page(m, facts, it, tmap):
           'author': {'@type': 'Person', 'name': 'Arjun Agrawal', 'url': site + '#/about'}}
     if it['previews']:
         ld['image'] = site + 'assets/studio/' + it['previews'][0]['src']
-    return page(m, facts, title=f'{it["title"]} · Resource Studio · Arjun Agrawal', desc=trim(it['summary']),
+    return page(m, facts, title=f'{it["title"]} · Learning Studio · Arjun Agrawal', desc=trim(it['summary']),
                 canonical=f'{site}studio/{it["id"]}/', up=up, body=body,
                 image=it['previews'][0]['src'] if it['previews'] else None, ld=ld)
 
@@ -253,18 +259,18 @@ def index_page(m, facts, items, tmap):
         secs += f'<h2>{esc(t["n"])}</h2><p>{esc(t["d"])}</p><ul class="cards">' + ''.join(
             f'<li><a class="card" href="{esc(i["id"])}/"><span>{esc(i["kicker"])}</span><b>{esc(i["title"])}</b><span>{esc(trim(i["summary"], 170))}</span></a></li>'
             for i in its) + '</ul>'
-    body = f"""<p class="crumb"><a href="{up}">Home</a> / Resource Studio</p>
-<p class="kicker">Resource Studio</p>
+    body = f"""<p class="crumb"><a href="{up}">Home</a> / Learning Studio</p>
+<p class="kicker">Learning Studio</p>
 <h1>A glimpse of a wider body of work</h1>
 <p class="lede">Original IB DP Economics resources by Arjun Agrawal: visual explainers, guides for students and teachers, interactive applications and series. Each is shown through a few real excerpts and an explanation of how it teaches; the complete resources are not published here.</p>
 {secs}
 <section class="access" aria-labelledby="acc-h"><h2 id="acc-h">Interested in exploring more?</h2>
 <p>The website offers a glimpse of a wider collection of Economics learning resources and interactive experiences. If you are an educator, student or school interested in learning more or exploring a possible collaboration, I would be happy to hear from you.</p>
 <a class="btn" href="{up}#/contact">Get in touch</a><a class="btn gh" href="{up}#/studio">Open the Studio</a></section>"""
-    ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': 'Resource Studio · Arjun Agrawal', 'url': site + 'studio/',
+    ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': 'Learning Studio · Arjun Agrawal', 'url': site + 'studio/',
           'about': 'IB Diploma Programme Economics', 'author': {'@type': 'Person', 'name': 'Arjun Agrawal'},
           'hasPart': [{'@type': 'LearningResource', 'name': i['title'], 'url': f'{site}studio/{i["id"]}/'} for i in items]}
-    return page(m, facts, title='Resource Studio · IB DP Economics · Arjun Agrawal',
+    return page(m, facts, title='Learning Studio · IB DP Economics · Arjun Agrawal',
                 desc='Original IB DP Economics resources by Arjun Agrawal: visual explainers, guides, interactive applications and series, shown through real excerpts.',
                 canonical=site + 'studio/', up=up, body=body, ld=ld)
 

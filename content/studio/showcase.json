@@ -1,5 +1,5 @@
 {
- "_about": "Public showcase metadata for the Resource Studio. Everything in this file is published: titles, descriptions, objectives and the paths of preview images in assets/studio/. Never put a private file path, a master file, a download link to a private resource or an internal note here. tools/studio/build_studio.py validates this file, writes src/modules/37-studio-data.js and the static pages under studio/, and refuses disclosure level 3. See docs/studio/ADDING-RESOURCES.md.",
+ "_about": "Public showcase metadata for the Learning Studio. Everything in this file is published: titles, descriptions, objectives and the paths of preview images in assets/studio/. Never put a private file path, a master file, a download link to a private resource or an internal note here. tools/studio/build_studio.py validates this file, writes src/modules/37-studio-data.js and the static pages under studio/, and refuses disclosure level 3. See docs/studio/ADDING-RESOURCES.md.",
  "site": "https://ib-economics-pi.vercel.app/",
  "enquiries": [
   {
@@ -106,7 +106,7 @@
    "previews": [
     {
      "src": "price-elasticity-of-demand/01-elastic-inelastic.webp",
-     "alt": "Two demand curves through the same point at a price of $40. When the price falls to $30, a fall of 25 percent, quantity on the relatively elastic curve rises 50 percent, from 50 to 75, while on the relatively inelastic curve it rises 10 percent, from 50 to 55.",
+     "alt": "Two demand curves through the same point at a price of $40, on the same axes and scale. When the price falls 25% to $30, quantity on the flatter curve, labelled relatively price elastic, rises 50% from 50 to 75; on the steeper curve, labelled relatively price inelastic, it rises 10% from 50 to 55.",
      "cap": "Same axes, same scale: a 25% price cut, two very different responses."
     },
     {
@@ -121,12 +121,12 @@
     },
     {
      "src": "price-elasticity-of-demand/04-primary-manufactured.webp",
-     "alt": "A comparison table: primary commodities bought by firms as inputs, such as crude oil, iron ore and copper, tend to have price-inelastic demand; manufactured products bought by households, such as laptops and cars, tend to be price elastic. Each row ties the difference to time, income share, necessity or substitutes.",
-     "cap": "Determinants applied: a tendency, not a rule."
+     "alt": "HL content. A comparison table: primary commodities bought by firms as inputs, such as crude oil, iron ore and copper, tend to have price-inelastic demand; manufactured products bought by households, such as laptops and cars, tend to be price elastic. Each row ties the difference to time, income share, necessity or substitutes.",
+     "cap": "HL: determinants applied, as a tendency rather than a rule."
     },
     {
      "src": "price-elasticity-of-demand/05-revision-map.webp",
-     "alt": "Part of a revision map with price elasticity of demand at its centre and branches for key relationships, firms, government and total revenue.",
+     "alt": "A branch of the one-page revision map: price elasticity of demand at the hub (PED = %ΔQD ÷ %ΔP), with the degrees-and-diagrams branch, the TINS determinants and the HL extensions, each listing the slides to revisit.",
      "cap": "Excerpt from the one-page revision map."
     }
    ],
@@ -148,7 +148,10 @@
      "route": "#/mind/mindmaps/ped"
     }
    ],
-   "enquiry": "resource"
+   "enquiry": "resource",
+   "exhibit": "visual",
+   "verified": "2026-10-15",
+   "checks": "All 20 slides read. Every figure on the five excerpts recomputed. The elastic and inelastic labels on the first excerpt were moved to sit on their own curves (corrected at source, 15 October 2026)."
   },
   {
    "id": "exchange-rates",
@@ -232,7 +235,10 @@
      "route": "#/learn/concept-spine/c-fx"
     }
    ],
-   "enquiry": "resource"
+   "enquiry": "resource",
+   "exhibit": "visual",
+   "verified": "2026-10-15",
+   "checks": "All 21 slides read. Quote arithmetic, the direction of each shift and the central-bank actions at the band limits checked."
   },
   {
    "id": "balance-of-payments",
@@ -311,7 +317,10 @@
      "route": "#/studio/visual-explainers/exchange-rates"
     }
    ],
-   "enquiry": "resource"
+   "enquiry": "resource",
+   "exhibit": "visual",
+   "verified": "2026-10-15",
+   "checks": "All 15 slides read. The current-account sum, the identity and the Marshall-Lerner arithmetic recomputed."
   },
   {
    "id": "examiner-guide",
@@ -379,7 +388,10 @@
      "route": "#/dna"
     }
    ],
-   "enquiry": "resource"
+   "enquiry": "resource",
+   "exhibit": "editorial",
+   "verified": "2026-10-15",
+   "checks": "All 21 pages read. Excerpts limited to the contents and the opening of Part II."
   },
   {
    "id": "curriculum-roadmap",
@@ -440,7 +452,10 @@
      "route": "#/course/curriculum-explorer"
     }
    ],
-   "enquiry": "school"
+   "enquiry": "school",
+   "exhibit": "editorial",
+   "verified": "2026-10-15",
+   "checks": "All 11 pages read. Excerpts limited to two partial pages."
   },
   {
    "id": "ee-navigator",
@@ -507,7 +522,10 @@
      "route": "#/ees/research-question-lab"
     }
    ],
-   "enquiry": "school"
+   "enquiry": "school",
+   "exhibit": "editorial",
+   "verified": "2026-10-15",
+   "checks": "The application was opened and its sections read. Only its own title card and a list of contents are shown."
   },
   {
    "id": "learning-lab",
@@ -564,7 +582,10 @@
      "route": "#/lab/diagram-atlas"
     }
    ],
-   "enquiry": "collaboration"
+   "enquiry": "collaboration",
+   "exhibit": "interactive",
+   "verified": "2026-10-15",
+   "checks": "The miniature is computed from P = 90 − Q and checked against the explainer's four worked points."
   },
   {
    "id": "economics-in-60-seconds",
@@ -606,7 +627,10 @@
      "route": "#/learn/economics-in-60-seconds"
     }
    ],
-   "enquiry": "resource"
+   "enquiry": "resource",
+   "exhibit": "series",
+   "verified": "2026-10-15",
+   "checks": "All ten issues are public on the platform and were reviewed page by page when they were added."
   },
   {
    "id": "mindmaps",
@@ -656,7 +680,10 @@
      "route": "#/mind/connect-two-ideas"
     }
    ],
-   "enquiry": "resource"
+   "enquiry": "resource",
+   "exhibit": "series",
+   "verified": "2026-10-15",
+   "checks": "The journey uses four maps that exist on the platform; node counts are read from them."
   }
  ]
 }

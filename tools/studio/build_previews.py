@@ -1,4 +1,4 @@
-"""Build the Resource Studio's preview images from private master files.
+"""Build the Learning Studio's preview images from private master files.
 
 The masters never enter this repository, and neither do the recipes, because
 the recipes name the masters' files. Keep both in a private folder outside the
@@ -10,7 +10,8 @@ read-only and never modified, copied or renamed.
 
 --recipes defaults to <masters>/previews.json. Its shape is
   {"<item-id>": [{"out": "<item-id>/01-name.webp", "src": "<path inside masters>",
-                  "page": 2, "crop": [0, 0, 1, 0.5], "width": 960, "mark": true}]}
+                  "page": 2, "crop": [0, 0, 1, 0.5], "width": 960, "mark": true, "bg": "FFFDF8", "pad": 0.03}]}
+A transparent master is laid on "bg" (default FFFDF8, the decks' panel colour).
 
 Each recipe names a master by its path relative to --masters, an optional PDF
 page (1-based), an optional crop (fractions of the page: left, top, right,
@@ -40,18 +41,19 @@ def render_pdf(path, page, dpi):
 
 
 def watermark(im, text):
-    """A footer strip under the image rather than a stamp over it: the excerpt
-    stays readable and the mark cannot be cropped without losing the edge."""
-    size = max(11, im.width // 72)
+    """A quiet footer strip in the panel colour under the image, rather than a stamp over it: the
+    excerpt stays readable, the mark stays discreet, and it cannot be cropped off without losing
+    the edge of the excerpt."""
+    size = max(11, im.width // 80)
     font = ImageFont.truetype(FONT, size) if FONT else ImageFont.load_default()
     pad = size
     strip = size + 2 * pad
-    out = Image.new('RGB', (im.width, im.height + strip), (20, 16, 18))
+    out = Image.new('RGB', (im.width, im.height + strip), (241, 236, 226))
     out.paste(im, (0, 0))
     d = ImageDraw.Draw(out)
     l, t, r, b = d.textbbox((0, 0), text, font=font)
-    d.text((pad - l, im.height + (strip - (b - t)) // 2 - t), text, font=font, fill=(236, 230, 222))
-    d.line([(0, im.height), (im.width, im.height)], fill=(122, 30, 46), width=max(2, size // 6))
+    d.text((pad - l, im.height + (strip - (b - t)) // 2 - t), text, font=font, fill=(112, 106, 98))
+    d.line([(0, im.height), (im.width, im.height)], fill=(207, 201, 188), width=1)
     return out
 
 
@@ -63,10 +65,25 @@ def build(rec, masters):
     if src.lower().endswith('.pdf'):
         im = render_pdf(src, rec.get('page', 1), rec.get('dpi', 110))
     else:
-        im = Image.open(src).convert('RGB')
+        im = Image.open(src)
+        if im.mode in ('RGBA', 'LA') or 'transparency' in im.info:
+            # transparent masters are laid on their deck's panel colour: converting straight to RGB
+            # turns the transparent background black and the text halos into harsh outlines
+            im = im.convert('RGBA')
+            bg = Image.new('RGBA', im.size, tuple(int(rec.get('bg', 'FFFDF8')[i:i + 2], 16) for i in (0, 2, 4)) + (255,))
+            bg.alpha_composite(im)
+            im = bg
+        im = im.convert('RGB')
     if 'crop' in rec:
         a, b, c, d = rec['crop']
         im = im.crop((int(a * im.width), int(b * im.height), int(c * im.width), int(d * im.height)))
+    if rec.get('pad'):
+        # breathing room in the panel colour, so an excerpt never sits hard against its frame
+        m = round(rec['pad'] * im.width)
+        c = tuple(int(rec.get('bg', 'FFFDF8')[i:i + 2], 16) for i in (0, 2, 4))
+        framed = Image.new('RGB', (im.width + 2 * m, im.height + 2 * m), c)
+        framed.paste(im, (m, m))
+        im = framed
     w = min(rec.get('width', 960), MAX_SIDE)
     if im.width > w:
         im = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
@@ -74,7 +91,7 @@ def build(rec, masters):
         k = MAX_SIDE / max(im.size)
         im = im.resize((round(im.width * k), round(im.height * k)), Image.LANCZOS)
     if rec.get('mark', True):
-        im = watermark(im, 'Preview excerpt · Arjun Agrawal · not for redistribution')
+        im = watermark(im, 'Selected preview · Arjun Agrawal')
     out = os.path.join(OUT, rec['out'])
     os.makedirs(os.path.dirname(out), exist_ok=True)
     im.save(out, 'WEBP', quality=rec.get('q', 72), method=6)

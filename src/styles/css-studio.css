@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    LEARNING STUDIO · the cover's new statement, the Discover chapter, the
-   Resource Studio, Learning design and Contact. Same tokens as the rest of the
+   Learning Studio, Learning design and Contact. Same tokens as the rest of the
    site (obsidian, burgundy, chalk, brass), same type (Bodoni Moda for display,
    Source Serif for reading, Manrope for interface). Real excerpts carry the
    visual weight; cards differ by what they show rather than repeating one box.
@@ -33,7 +33,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .sw-card:hover{border-color:var(--bur);box-shadow:0 10px 30px -18px rgba(22,24,28,.4)}
 .sw-card:focus-visible{outline:2px solid var(--bur);outline-offset:3px}
 .sw-li.lead .sw-card{grid-template-columns:1fr;align-content:start;padding:18px}
-.sw-fig{display:block;min-width:0;overflow:hidden;border-radius:8px;background:var(--obs)}
+.sw-fig{display:block;min-width:0;overflow:hidden;border-radius:8px;background:var(--sf-plate)}
 .sw-fig img.st-im{display:block;width:100%;height:100%;max-height:220px;object-fit:cover;object-position:top}
 .sw-li.lead .sw-fig img.st-im{max-height:none;height:auto;object-fit:contain}
 .sw-tx,.st-tx{display:flex;flex-direction:column;gap:6px;min-width:0}
@@ -66,7 +66,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .rnt-p>:not(.ld-fig){grid-column:2}
 .rnt-p>.ld-calc,.rnt-p>.ld-q{grid-column:1/-1;max-width:70ch}
 @media (max-width:780px){.rnt-p{grid-template-columns:1fr}.rnt-p>.ld-fig{grid-row:auto}.rnt-p>:not(.ld-fig){grid-column:auto}.rnt-tabs button{flex:1 1 45%;border-bottom:1px solid var(--hair)}}
-.ld-fig{display:block;width:100%;padding:0;border:1px solid var(--hair);border-radius:10px;background:var(--obs);overflow:hidden;cursor:zoom-in}
+.ld-fig{display:block;width:100%;padding:0;border:1px solid var(--hair);border-radius:10px;background:var(--sf-plate);overflow:hidden;cursor:zoom-in}
 .ld-fig img{display:block;width:100%;height:auto}
 .ld-fig:focus-visible{outline:2px solid var(--bur);outline-offset:3px}
 /* ── the miniature lab ────────────────────────────────────────────────── */
@@ -112,7 +112,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .st-enq .lede{max-width:62ch;font-size:clamp(17px,1.35vw,20px)}
 .st-enq-a{display:flex;flex-wrap:wrap;gap:12px}
 @media (max-width:860px){.st-enq-in{grid-template-columns:1fr}}
-/* ── Resource Studio ──────────────────────────────────────────────────── */
+/* ── Learning Studio ──────────────────────────────────────────────────── */
 .st-hero .in{padding-block:clamp(36px,4vw,64px) clamp(28px,3vw,44px)}
 .st-hin{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 40px;align-items:end}
 .st-h1{font-family:var(--dsp);font-weight:400;font-size:clamp(32px,3.6vw,56px);line-height:1.04;letter-spacing:-.015em;color:#fff;max-width:20ch}
@@ -134,11 +134,11 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .st-card{display:flex;flex-direction:column;height:100%;border:1px solid var(--hair);border-radius:12px;background:#fff;color:var(--tx);text-decoration:none;overflow:hidden;transition:border-color .2s,box-shadow .2s,transform .2s}
 .st-card:hover{border-color:var(--bur);box-shadow:0 14px 34px -22px rgba(22,24,28,.5)}
 .st-card:focus-visible{outline:2px solid var(--bur);outline-offset:3px}
-.st-fig{display:block;aspect-ratio:16/10;overflow:hidden;background:var(--obs)}
+.st-fig{display:block;aspect-ratio:16/10;overflow:hidden;background:var(--sf-plate)}
 .st-fig img.st-im{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
 .st-guide .st-fig{background:var(--chalk-2);padding:14px 14px 0}
 .st-guide .st-fig img.st-im{border-radius:4px 4px 0 0;box-shadow:0 6px 20px -10px rgba(0,0,0,.35);object-fit:cover}
-.st-visual .st-fig img.st-im{object-fit:contain;background:var(--obs)}
+.st-visual .st-fig img.st-im{object-fit:contain;background:var(--sf-plate)}
 .st-li.lead .st-card{flex-direction:row}
 .st-li.lead .st-fig{flex:1.3;aspect-ratio:auto;min-height:280px}
 .st-li.lead .st-tx{flex:1}
@@ -172,7 +172,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .st-obj,.st-ins{margin:0;padding-left:1.2em;font-family:var(--ser);font-size:17px;line-height:1.55}
 .st-obj li+li,.st-ins li+li{margin-top:6px}
 .st-ins{columns:2 300px;column-gap:40px}.st-ins li{break-inside:avoid}
-.st-lead{position:relative;display:block;width:100%;padding:0;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:var(--obs);cursor:zoom-in}
+.st-lead{position:relative;display:block;width:100%;padding:0;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:var(--sf-plate);cursor:zoom-in}
 .st-lead img{display:block;width:100%;height:auto}
 .st-cov img,.ld-fig img,.st-dlg-f img{height:auto}
 .st-lead:focus-visible,.st-th:focus-visible,.st-cov:focus-visible,.st-jn:focus-visible{outline:2px solid var(--bur);outline-offset:3px}
@@ -180,7 +180,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .st-cap{margin-top:8px;font-family:var(--ui);font-size:13px;color:var(--tx-3)}
 .st-strip{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));gap:12px}
 .st-th{display:flex;flex-direction:column;gap:6px;width:100%;padding:0;border:0;background:transparent;text-align:left;cursor:zoom-in}
-.st-th img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:center;border-radius:8px;border:1px solid var(--hair);background:var(--obs)}
+.st-th img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:center;border-radius:8px;border:1px solid var(--hair);background:var(--sf-plate)}
 .st-th span{font-family:var(--ui);font-size:12.5px;line-height:1.4;color:var(--tx-2)}
 .st-walk{display:grid;gap:18px}
 .st-wk{padding:18px 20px;border-left:3px solid var(--bur);background:var(--chalk)}

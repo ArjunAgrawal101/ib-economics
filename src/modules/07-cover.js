@@ -46,51 +46,33 @@ function cvSet(v){CV.s=+v;const p=document.getElementById("cv-plate-fig"),r=docu
 const CV_SPOTS=[["Demand",s=>[2.2+s,CVF.D(2.2+s,s)],"nav('learn',0,'c-ped')","The curve that moves"],["Supply",()=>[8,CVF.S(8)],"nav('mind',0,'supply')","How sellers respond"],
  ["Equilibrium",s=>{const e=CVF.eq(s);return [e.q,e.p]},"nav('mind',0,'market')","Where plans agree"]];
 const cvPos=f=>{const [q,p]=f(CV.s);return [(cx(q)/CV_W*100).toFixed(2),(cy(p)/CV_H*100).toFixed(2)]};
-const CV_CHIPS=[["Elasticity","nav('learn',0,'c-ped')"],["Inflation","nav('learn',0,'c-inf')"],["Trade","nav('learn',0,'c-cadv')"],
- ["Externalities","nav('learn',0,'c-ext')"],["Inequality","nav('learn',0,'c-gini')"],["Exchange rates","nav('learn',0,'c-fx')"]];
-function cvScale(){const n=rnCount();
- return [["cases","Real World cases","nav('world',1)"],["maps","mindmaps","nav('mind')"],["diagrams","diagram plates","nav('lab',3)"],
-  ["calcs","calculations","nav('calculate')"],["dna","Exam DNA questions","nav('dna')"]].filter(([k])=>typeof n[k]==="number")
-  .map(([k,l,go])=>`<li><button class="cv-sig" onclick="${go}"><b>${fmtN(n[k])}</b><span>${esc(l)}</span></button></li>`).join("")
-  +`<li><button class="cv-sig" onclick="nav('ees')"><b>IA · EE</b><span>research studios</span></button></li>`}
-/* the verbs of the cover, each a door: see it, learn it, move it, question it, master it */
-const CV_VERBS=[["Explore","nav('world')","Real World: economics happening now"],["Learn","nav('learn')","Concepts, models and the course"],
- ["Apply","nav('lab')","Labs where the model moves"],["Question",null,"The economist's toolkit"],["Master","nav('practise')","Practice, exam rooms and Exam DNA"]];
 /* who the author is, stated only from the supplied profile (ABOUT, ABOUT2): no degree, date or title is added */
 const CV_AUTHOR=[["Studied","Economics, St. Stephen's College, University of Delhi"],["Taught","Undergraduate Economics, Fergusson College, Pune"],
  ["Teaches","IB DP Economics, Business Management and Global Politics"],["Mentors","UPSC Civil Services aspirants in Economics"]];
 function rnCover(old){
- const kept=old?[...old.querySelectorAll(".in > *")].filter(e=>!e.matches(".eb,.kicker,h1,.lede,.row")).map(e=>e.outerHTML).join(""):"";
- const m=PHOTOMETA.hero;
- return `<section class="hero rn-home cv" aria-labelledby="cv-h"><div class="wrap full in cv-grid">
-  <div class="cv-copy">
-   <div class="eb">Think like an economist.</div>
-   <h1 class="cv-h mt2" id="cv-h">Economics is not just a subject to study. <em>It is a way to think.</em></h1>
-   <p class="cv-lede mt3">An interactive learning ecosystem for IB DP Economics, connecting concepts, visual understanding, real-world evidence and exam thinking.</p>
-   <div class="row mt4 cv-cta"><button class="btn lg a" onclick="cvExplore()">Explore Economics →</button><a class="btn lg on-ink" href="#/studio">Discover My Work</a></div>
-   <nav class="cv-verbs mt3" aria-label="Five ways in">${CV_VERBS.map(([t,go,d])=>`<button class="cv-verb" onclick="${go||goTab("think",TLAE_TAB)}" title="${esA(d)}">${esc(t)}</button>`).join('<span aria-hidden="true">·</span>')}</nav>
-   <p class="cv-more mt3">Or go straight to <button class="lnk" onclick="nav('learn')">the concepts</button>, <button class="lnk" onclick="nav('practise',0)">the question bank</button> or <button class="lnk" onclick="nav('learn',1)">the curriculum</button>.</p>
-   <div class="rn-kept">${kept}</div></div>
-  <div class="cv-lab">
-   <div class="cv-plate"><div class="cv-plate-h"><span class="kicker">The model, live</span><span class="cv-note">tap a marked point · illustrative units</span></div>
-    <div class="cv-plate-in"><div id="cv-plate-fig">${cvSVG()}</div>
+ const m=PHOTOMETA.hero,f2=(typeof ldPrev==="function")?ldPrev("price-elasticity-of-demand",0):null,f3=(typeof ldPrev==="function")?ldPrev("price-elasticity-of-demand",4):null;
+ const fig=(n,p,cap,href,cls)=>p?`<figure class="at-fig ${cls}"><a class="at-fl" href="${href}">${stImg(p,"",true)}</a><figcaption><span class="at-fn">Fig. ${n}</span> ${cap}</figcaption></figure>`:"";
+ return `<section class="hero rn-home cv at-hero" aria-labelledby="cv-h"><div class="wrap full in at-hgrid">
+  <div class="cv-copy at-copy">
+   <div class="eb">IB DP Economics · Think like an economist.</div>
+   <h1 class="cv-h" id="cv-h">Economics is not just a subject to study. <em>It is a way to think.</em></h1>
+   <p class="cv-lede">An interactive learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking.</p>
+   <div class="row cv-cta"><button class="btn lg a" onclick="cvExplore()">Explore Economics →</button><a class="btn lg on-ink" href="#/studio">Discover the Learning Studio</a></div>
+   <figure class="cv-portrait at-sig"><div class="at-sigf"><img src="${photoURL("hero")}" alt="${esc(m.alt)}" width="${m.w}" height="${m.h}" style="object-position:${m.pos}" decoding="async"></div>
+    <figcaption><b>Arjun Agrawal</b><span>IB DP Economics educator and resource designer</span><button class="lnk" onclick="nav('about')">About the author →</button></figcaption></figure></div>
+  <div class="at-figs" role="group" aria-label="One idea in three forms: a live model, a diagram and a mindmap branch">
+   <figure class="at-fig at-f1"><div class="cv-plate"><div class="cv-plate-in"><div id="cv-plate-fig">${cvSVG()}</div>
      ${CV_SPOTS.map(([t,f,go,d],i)=>{const [x,y]=cvPos(f);return `<button class="cv-spot" id="cv-spot-${i}" style="left:${x}%;top:${y}%" onclick="${go}" aria-label="${esc(t)}: ${esc(d)}. Open it"><span class="cv-dot" aria-hidden="true"></span><span class="cv-tip"><b>${esc(t)}</b>${esc(d)} →</span></button>`}).join("")}</div>
     <label class="cv-ctl" for="cv-shift"><span>Move demand</span><input id="cv-shift" type="range" min="-2" max="2" step="0.5" value="${CV.s}" oninput="cvSet(this.value)" aria-describedby="cv-read"></label>
-    <p class="cv-read" id="cv-read" aria-live="polite">${esc(cvRead())}</p>
-    <div class="cv-chips" role="group" aria-label="Explore a concept">${CV_CHIPS.map(([t,go])=>`<button class="cv-chip" onclick="${go}" data-def="${esA(cvDef(go))}">${esc(t)}</button>`).join("")}</div></div></div>
-  <figure class="cv-portrait"><div class="cv-frame"><img src="${photoURL("hero")}" alt="${esc(m.alt)}" width="${m.w}" height="${m.h}" style="object-position:${m.pos}" decoding="async"></div>
-   <figcaption><span class="cv-role">Author and guide</span><b>Arjun Agrawal</b>
-    <dl class="cv-auth">${CV_AUTHOR.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-    <button class="lnk" onclick="nav('about')">The academic behind the platform →</button></figcaption></figure>
-  <ul class="cv-scale" aria-label="What the platform holds">${cvScale()}</ul>
- </div></section>`}
+    <p class="cv-read" id="cv-read" aria-live="polite">${esc(cvRead())}</p></div>
+    <figcaption><span class="at-fn">Fig. 1</span> The model, live: move demand, or tap a marked point. <span class="at-fu">Illustrative units.</span></figcaption></figure>
+   ${fig(2,f2,"From the visual explainers: one price cut, two responses.","#/studio/visual-explainers/price-elasticity-of-demand","at-f2")}
+   ${fig(3,f3,"From the mindmaps: a branch of the elasticity map.","#/studio/visual-explainers/price-elasticity-of-demand","at-f3")}
+  </div></div></section>`}
 /* "Explore Economics" is the gateway band just below the cover: scroll to it and move focus with it */
 function cvExplore(){const g=document.getElementById("explore");if(!g){nav("course");return}
  const h=g.querySelector("h2");g.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
  if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true})}}
-/* the definition a chip reveals on hover or focus, taken from the concept page it opens */
-function cvDef(go){const m=/'(c-[a-z0-9-]+)'/.exec(go);const c=m&&typeof CONCEPTS!=="undefined"?CONCEPTS.find(x=>x.id===m[1]):null;
- return c?String(c.def).split(/(?<=\.)\s/)[0]:""}
 /* ── the story continues: chapters and the bands they need ─────────────── */
 function goTab(v,name){const s=SECTIONS.find(x=>x.v===v);const i=s&&s.tabs?s.tabs.indexOf(name):-1;return `nav('${v}',${i<0?0:i})`}
 function rnBand(o){return `<section class="sec rn-band rn-split ${o.cls||""}"><div class="wrap full"><div class="sp-grid">
@@ -152,6 +134,7 @@ function rnCreatorBand(){const m=PHOTOMETA.teaching||PHOTOMETA.students,k=PHOTOM
    <figcaption>${esc(m.cap)}</figcaption></figure>
   <div class="cr-copy"><div class="shead fx"><span class="n">00</span><h2>The academic behind the platform</h2></div>
    <p class="cr-quote mt3">“${esc(ABOUT.lede)}”</p>
+   <dl class="cv-auth cr-auth mt3">${CV_AUTHOR.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
    <p class="ed mt3">Every model, case, question and tool here was written and drawn for this platform, and every statement about the IB course names the document it comes from.</p>
    <div class="row mt4"><button class="btn" onclick="nav('about')">About Arjun Agrawal</button><button class="btn gh" onclick="nav('arjun')">Watch the videos</button><button class="btn gh" onclick="nav('tutorials')">Learn with Arjun</button></div></div>
  </div></div></section>`}

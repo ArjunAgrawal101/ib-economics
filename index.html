@@ -35,8 +35,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="IB DP Economics">
 <meta name="application-name" content="Arjun Agrawal · IB DP Economics">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+<!-- Typefaces served by the site itself (SIL Open Font License 1.1; see assets/fonts/). The stylesheet
+     never blocks the first frame; the three faces the first screen uses are preloaded. -->
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/bodoni-moda-latin-7.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="assets/fonts/source-serif-4-latin-5.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="assets/fonts/manrope-latin-2.woff2" crossorigin>
+<link href="assets/fonts/fonts.css" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="assets/fonts/fonts.css" rel="stylesheet"></noscript>
 <style>
 /* ═══════════════════════════════════════════════════════════
    ARJUN AGRAWAL · IB DP ECONOMICS: V4
@@ -2747,7 +2749,7 @@ nav.ev-rail ol>li>a.on{color:var(--obs);border-bottom-color:#7A2436;font-weight:
 
 /* ═══════════════════════════════════════════════════════════════════════════
    LEARNING STUDIO · the cover's new statement, the Discover chapter, the
-   Resource Studio, Learning design and Contact. Same tokens as the rest of the
+   Learning Studio, Learning design and Contact. Same tokens as the rest of the
    site (obsidian, burgundy, chalk, brass), same type (Bodoni Moda for display,
    Source Serif for reading, Manrope for interface). Real excerpts carry the
    visual weight; cards differ by what they show rather than repeating one box.
@@ -2780,7 +2782,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .sw-card:hover{border-color:var(--bur);box-shadow:0 10px 30px -18px rgba(22,24,28,.4)}
 .sw-card:focus-visible{outline:2px solid var(--bur);outline-offset:3px}
 .sw-li.lead .sw-card{grid-template-columns:1fr;align-content:start;padding:18px}
-.sw-fig{display:block;min-width:0;overflow:hidden;border-radius:8px;background:var(--obs)}
+.sw-fig{display:block;min-width:0;overflow:hidden;border-radius:8px;background:var(--sf-plate)}
 .sw-fig img.st-im{display:block;width:100%;height:100%;max-height:220px;object-fit:cover;object-position:top}
 .sw-li.lead .sw-fig img.st-im{max-height:none;height:auto;object-fit:contain}
 .sw-tx,.st-tx{display:flex;flex-direction:column;gap:6px;min-width:0}
@@ -2813,7 +2815,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .rnt-p>:not(.ld-fig){grid-column:2}
 .rnt-p>.ld-calc,.rnt-p>.ld-q{grid-column:1/-1;max-width:70ch}
 @media (max-width:780px){.rnt-p{grid-template-columns:1fr}.rnt-p>.ld-fig{grid-row:auto}.rnt-p>:not(.ld-fig){grid-column:auto}.rnt-tabs button{flex:1 1 45%;border-bottom:1px solid var(--hair)}}
-.ld-fig{display:block;width:100%;padding:0;border:1px solid var(--hair);border-radius:10px;background:var(--obs);overflow:hidden;cursor:zoom-in}
+.ld-fig{display:block;width:100%;padding:0;border:1px solid var(--hair);border-radius:10px;background:var(--sf-plate);overflow:hidden;cursor:zoom-in}
 .ld-fig img{display:block;width:100%;height:auto}
 .ld-fig:focus-visible{outline:2px solid var(--bur);outline-offset:3px}
 /* ── the miniature lab ────────────────────────────────────────────────── */
@@ -2859,7 +2861,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .st-enq .lede{max-width:62ch;font-size:clamp(17px,1.35vw,20px)}
 .st-enq-a{display:flex;flex-wrap:wrap;gap:12px}
 @media (max-width:860px){.st-enq-in{grid-template-columns:1fr}}
-/* ── Resource Studio ──────────────────────────────────────────────────── */
+/* ── Learning Studio ──────────────────────────────────────────────────── */
 .st-hero .in{padding-block:clamp(36px,4vw,64px) clamp(28px,3vw,44px)}
 .st-hin{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px 40px;align-items:end}
 .st-h1{font-family:var(--dsp);font-weight:400;font-size:clamp(32px,3.6vw,56px);line-height:1.04;letter-spacing:-.015em;color:#fff;max-width:20ch}
@@ -2881,11 +2883,11 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .st-card{display:flex;flex-direction:column;height:100%;border:1px solid var(--hair);border-radius:12px;background:#fff;color:var(--tx);text-decoration:none;overflow:hidden;transition:border-color .2s,box-shadow .2s,transform .2s}
 .st-card:hover{border-color:var(--bur);box-shadow:0 14px 34px -22px rgba(22,24,28,.5)}
 .st-card:focus-visible{outline:2px solid var(--bur);outline-offset:3px}
-.st-fig{display:block;aspect-ratio:16/10;overflow:hidden;background:var(--obs)}
+.st-fig{display:block;aspect-ratio:16/10;overflow:hidden;background:var(--sf-plate)}
 .st-fig img.st-im{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
 .st-guide .st-fig{background:var(--chalk-2);padding:14px 14px 0}
 .st-guide .st-fig img.st-im{border-radius:4px 4px 0 0;box-shadow:0 6px 20px -10px rgba(0,0,0,.35);object-fit:cover}
-.st-visual .st-fig img.st-im{object-fit:contain;background:var(--obs)}
+.st-visual .st-fig img.st-im{object-fit:contain;background:var(--sf-plate)}
 .st-li.lead .st-card{flex-direction:row}
 .st-li.lead .st-fig{flex:1.3;aspect-ratio:auto;min-height:280px}
 .st-li.lead .st-tx{flex:1}
@@ -2919,7 +2921,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .st-obj,.st-ins{margin:0;padding-left:1.2em;font-family:var(--ser);font-size:17px;line-height:1.55}
 .st-obj li+li,.st-ins li+li{margin-top:6px}
 .st-ins{columns:2 300px;column-gap:40px}.st-ins li{break-inside:avoid}
-.st-lead{position:relative;display:block;width:100%;padding:0;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:var(--obs);cursor:zoom-in}
+.st-lead{position:relative;display:block;width:100%;padding:0;border:1px solid var(--hair);border-radius:12px;overflow:hidden;background:var(--sf-plate);cursor:zoom-in}
 .st-lead img{display:block;width:100%;height:auto}
 .st-cov img,.ld-fig img,.st-dlg-f img{height:auto}
 .st-lead:focus-visible,.st-th:focus-visible,.st-cov:focus-visible,.st-jn:focus-visible{outline:2px solid var(--bur);outline-offset:3px}
@@ -2927,7 +2929,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .st-cap{margin-top:8px;font-family:var(--ui);font-size:13px;color:var(--tx-3)}
 .st-strip{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,180px),1fr));gap:12px}
 .st-th{display:flex;flex-direction:column;gap:6px;width:100%;padding:0;border:0;background:transparent;text-align:left;cursor:zoom-in}
-.st-th img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:center;border-radius:8px;border:1px solid var(--hair);background:var(--obs)}
+.st-th img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:center;border-radius:8px;border:1px solid var(--hair);background:var(--sf-plate)}
 .st-th span{font-family:var(--ui);font-size:12.5px;line-height:1.4;color:var(--tx-2)}
 .st-walk{display:grid;gap:18px}
 .st-wk{padding:18px 20px;border-left:3px solid var(--bur);background:var(--chalk)}
@@ -3059,6 +3061,263 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .st-lo span{padding-left:16px;position:relative}.st-lo span::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:2px;background:var(--bur)}
 .ld-step .ld-fig{max-width:640px}
 .st-hubnote{margin-top:24px}.st-hubnote .sm{padding:14px 18px;border-left:3px solid var(--brs);background:var(--chalk);max-width:80ch}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PROJECT ATLAS · design tokens and the landing experience
+   One small palette (ink, chalk, burgundy, brass) with the explainers' own
+   diagram inks (navy, gold) used only inside figures. Bodoni Moda for display,
+   Source Serif 4 for reading, Manrope for interface and metadata, JetBrains
+   Mono for numbers and figure marks. All served from assets/fonts/.
+   Breakpoints (media queries cannot read custom properties, so they are fixed
+   and listed here): 520 narrow phone · 640 phone · 900 tablet · 1100 small
+   desktop · 1440 wide.  See docs/design-system.md.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root{
+ /* surfaces */
+ --sf-page:#F8F6F1;--sf-band:#F2EDE2;--sf-card:#FFFFFF;--sf-plate:#FFFDF8;--sf-ink:#16181C;--sf-ink-2:#22262C;
+ /* text */
+ --tx-strong:#1A1C20;--tx-body:#43484F;--tx-quiet:#5F656B;--tx-on-ink:rgba(255,255,255,.92);--tx-on-ink-quiet:rgba(255,255,255,.7);
+ /* accents */
+ --ac-bur:#7A2436;--ac-bur-deep:#5B1826;--ac-bur-tint:#F6E9EC;--ac-brass:#C9AE72;--ac-brass-deep:#8C6D2F;
+ /* inks taken from the explainers, used inside figures only */
+ --dg-ink:#0E1E3A;--dg-navy:#1B3460;--dg-gold:#B08A47;--dg-ok:#2E6E52;--dg-ok-tint:#E6F0EA;--dg-no:#A8432F;--dg-no-tint:#F7E6E1;
+ /* lines */
+ --ln-hair:#E3DED3;--ln-rule:#CFC9BC;--ln-on-ink:rgba(255,255,255,.14);
+ /* type */
+ --ff-display:var(--dsp);--ff-text:var(--ser);--ff-ui:var(--ui);--ff-mono:var(--mono);
+ --fs-xs:12px;--fs-sm:14px;--fs-md:16px;--fs-lg:clamp(17px,1.3vw,19px);--fs-xl:clamp(21px,1.7vw,26px);--fs-2xl:clamp(26px,2.4vw,36px);--fs-3xl:clamp(32px,3.4vw,52px);
+ /* space, on an 8-point scale */
+ --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:24px;--sp-6:32px;--sp-7:48px;--sp-8:64px;--sp-9:96px;
+ /* shape, depth, motion */
+ --rd-sm:6px;--rd-md:10px;--rd-lg:14px;--rd-pill:999px;
+ --sh-1:0 1px 2px rgba(22,24,28,.06),0 10px 26px -18px rgba(22,24,28,.38);
+ --sh-2:0 2px 4px rgba(22,24,28,.08),0 24px 52px -30px rgba(22,24,28,.6);
+ --mo-fast:140ms;--mo-base:240ms;--mo-slow:420ms;--mo-ease:cubic-bezier(.2,.7,.2,1);
+ /* proportions */
+ --ar-plate:16/10;--ar-page:3/4;--ar-cover:4/5;
+ --fc-ring:2px solid var(--ac-bur);--fc-ring-ink:2px solid var(--ac-brass)}
+
+/* ── the opening frame: statement and a three-figure plate ─────────────── */
+.at-hero .in.at-hgrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:none;gap:var(--sp-7);align-items:center;padding-block:clamp(36px,4.5vw,72px)}
+.at-copy{grid-area:auto}
+.cv.at-hero h1.cv-h{font-size:clamp(36px,3.5vw,62px);line-height:1.03;max-width:15ch;margin-top:var(--sp-3)}
+.at-hero .cv-lede{margin-top:var(--sp-4);max-width:38ch;font-size:clamp(17px,1.35vw,20px);color:var(--tx-on-ink-quiet)}
+.at-hero .cv-cta{margin-top:var(--sp-5);gap:var(--sp-3)}
+.at-sig{display:flex!important;flex-direction:row!important;align-items:center;gap:var(--sp-4);margin-top:var(--sp-6)!important;padding-top:var(--sp-4);border-top:1px solid var(--ln-on-ink);grid-area:auto!important}
+.at-sigf{flex:none;width:72px;height:90px;overflow:hidden;border-radius:var(--rd-sm);border:1px solid rgba(201,174,114,.5)}
+.at-sigf img{width:100%;height:100%;object-fit:cover;display:block}
+.at-sig figcaption{display:flex;flex-direction:column;gap:2px;font-family:var(--ff-ui)}
+.at-sig b{font-family:var(--ff-display);font-weight:400;font-size:21px;color:#fff}
+.at-sig span{font-size:13px;color:var(--tx-on-ink-quiet)}
+.at-sig .lnk{color:var(--ac-brass);font-size:13px;font-weight:600;margin-top:2px}
+.at-figs{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,1fr);gap:var(--sp-4);align-items:start}
+.at-fig{margin:0;background:var(--sf-plate);border-radius:var(--rd-md);padding:var(--sp-3);box-shadow:var(--sh-2);display:flex;flex-direction:column;min-width:0}
+.at-f1{grid-row:1/span 2}
+.at-fl{display:block;border-radius:var(--rd-sm);overflow:hidden}
+.at-fl:focus-visible{outline:var(--fc-ring);outline-offset:3px}
+.at-fig img{display:block;width:100%;height:auto}
+.at-fig figcaption{margin-top:var(--sp-2);font-family:var(--ff-ui);font-size:12.5px;line-height:1.45;color:var(--tx-quiet)}
+.at-fn{font-family:var(--ff-mono);font-size:11px;font-weight:600;color:var(--ac-bur);letter-spacing:.04em;margin-right:4px}
+.at-fu{color:var(--tx-quiet);font-style:italic}
+/* the live model, drawn in the explainers' inks on a light plate */
+.at-f1 .cv-plate{border:0;background:transparent;padding:0}
+.at-f1 .m-ax line{stroke:var(--dg-ink)}
+.at-f1 .m-c.dem{stroke:var(--dg-navy)}.at-f1 .m-c.sup{stroke:var(--dg-gold)}
+.at-f1 .m-t{fill:var(--dg-ink)}.at-f1 .m-axl{fill:var(--tx-quiet)}.at-f1 .m-tick{fill:var(--tx-body)}
+.at-f1 .m-drop line{stroke:var(--ln-rule)}.at-f1 .m-pt{fill:var(--ac-bur)}.at-f1 .m-ring{stroke:var(--ac-bur)}
+.at-f1 .cv-dot{border-color:var(--ac-bur);background:#fff}
+.at-f1 .cv-spot:hover .cv-dot,.at-f1 .cv-spot:focus-visible .cv-dot{background:var(--ac-bur)}
+.at-f1 .cv-tip{background:var(--sf-ink);color:#fff}
+.at-f1 .cv-ctl{color:var(--tx-strong);margin-top:var(--sp-2)}
+.at-f1 .cv-ctl input[type=range]{background:linear-gradient(transparent 12px,var(--ln-rule) 12px,var(--ln-rule) 16px,transparent 16px)}
+.at-f1 .cv-ctl input[type=range]::-webkit-slider-thumb{background:var(--ac-bur);border-color:#fff;box-shadow:0 0 0 1px var(--ac-bur)}
+.at-f1 .cv-ctl input[type=range]::-moz-range-thumb{background:var(--ac-bur);border-color:#fff}
+.at-f1 .cv-ctl input[type=range]:focus-visible{outline-color:var(--ac-bur)}
+.at-f1 .cv-read{color:var(--tx-body);min-height:3em}
+@media (max-width:1100px){.at-hero .in.at-hgrid{grid-template-columns:1fr;gap:var(--sp-6)}.at-copy{max-width:760px}}
+@media (max-width:640px){.at-figs{grid-template-columns:1fr}.at-f1{grid-row:auto}.at-f2,.at-f3{display:none}.cv.at-hero h1.cv-h{font-size:clamp(32px,9vw,40px)}
+ .at-hero .cv-cta .btn{width:100%}}
+
+/* ── six pathways, drawn as one route ─────────────────────────────────── */
+.at-route{list-style:none;margin:var(--sp-5) 0 var(--sp-7);padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));position:relative}
+.at-route::before{content:"";position:absolute;left:20px;right:20px;top:39px;height:2px;background:var(--ln-rule)}
+.at-sa{display:flex;flex-direction:column;gap:6px;height:100%;padding:0 var(--sp-4) var(--sp-4) 0;color:var(--tx-strong);text-decoration:none;position:relative}
+.at-sn{font-family:var(--ff-mono);font-size:11px;font-weight:600;color:var(--ac-bur);letter-spacing:.06em}
+.at-gl{width:44px;height:44px;padding:8px;border-radius:50%;border:2px solid var(--ln-rule);background:var(--sf-page);fill:none;stroke:var(--tx-body);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;position:relative;transition:border-color var(--mo-base),stroke var(--mo-base)}
+.at-gl text{fill:var(--tx-body);stroke:none;font-family:var(--ff-mono);font-size:8px;font-weight:600}
+.at-st{font-family:var(--ff-display);font-size:clamp(19px,1.45vw,23px);line-height:1.15;margin-top:6px}
+.at-sd{font-family:var(--ff-ui);font-size:13.5px;line-height:1.45;color:var(--tx-quiet)}
+.at-sc{font-family:var(--ff-mono);font-size:11.5px;color:var(--ac-bur);margin-top:auto;padding-top:4px}
+.at-sa:hover .at-gl,.at-sa:focus-visible .at-gl{border-color:var(--ac-bur);stroke:var(--ac-bur)}
+.at-sa:hover .at-st{color:var(--ac-bur)}
+.at-sa:focus-visible{outline:var(--fc-ring);outline-offset:4px;border-radius:var(--rd-sm)}
+@media (max-width:1100px){.at-route{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:var(--sp-5)}.at-route::before{display:none}.at-stop{border-top:2px solid var(--ln-hair);padding-top:var(--sp-4)}}
+@media (max-width:640px){.at-route{grid-template-columns:1fr;row-gap:0}.at-route::before{display:block;left:21px;right:auto;top:20px;bottom:20px;width:2px;height:auto}
+ .at-stop{border:0;padding:0}.at-sa{display:grid;grid-template-columns:44px 1fr;column-gap:var(--sp-4);row-gap:2px;padding:0 0 var(--sp-5)}
+ .at-sa .at-gl{grid-row:1/span 4;grid-column:1}.at-sa>:not(.at-gl){grid-column:2}.at-sn{grid-row:1}.at-st{margin-top:0}}
+
+/* ── inside the Learning Studio: an exhibition in five forms ──────────── */
+.at-intro{max-width:64ch;margin-top:var(--sp-3);color:var(--tx-body)}
+.ex{background:var(--sf-card);border:1px solid var(--ln-hair);border-radius:var(--rd-lg);overflow:hidden;min-width:0}
+.ex-k{font-family:var(--ff-mono);font-size:11px;font-weight:600;letter-spacing:.05em;color:var(--ac-bur)}
+.ex-t{font-family:var(--ff-display);font-weight:400;font-size:var(--fs-xl);line-height:1.12;color:var(--tx-strong);margin-top:6px}
+.ex-p{font-family:var(--ff-text);font-size:16px;line-height:1.55;color:var(--tx-body);margin-top:var(--sp-2)}
+.ex-l{display:flex;flex-wrap:wrap;gap:6px var(--sp-4);margin-top:var(--sp-3);font-family:var(--ff-ui);font-size:14px}
+.ex-body{padding:var(--sp-4) var(--sp-5) var(--sp-5);display:flex;flex-direction:column}
+.ex-feature{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--sp-6);margin-top:var(--sp-6);padding:var(--sp-5);box-shadow:var(--sh-1)}
+.ex-spread{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);align-content:start}
+.ex-main{grid-column:1/-1}
+.ex-spread .ld-fig{box-shadow:none}
+.ex-copy{display:flex;flex-direction:column;justify-content:center}
+.ex-tl{font-size:var(--fs-3xl);line-height:1.04;margin-top:var(--sp-2)}
+.ex-copy .ex-p{font-size:var(--fs-lg)}
+.ex-why{margin-top:var(--sp-4);padding-left:var(--sp-4);border-left:3px solid var(--ac-brass)}
+.ex-wk{font-family:var(--ff-ui);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--tx-quiet)}
+.ex-why p{font-family:var(--ff-text);font-size:15.5px;line-height:1.55;color:var(--tx-body);margin-top:4px}
+.ex-meta{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin:var(--sp-4) 0 0;font-family:var(--ff-ui);font-size:13.5px}
+.ex-meta dt{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tx-quiet)}.ex-meta dd{margin:2px 0 0;color:var(--tx-strong)}
+.ex-act{margin-top:var(--sp-5);gap:var(--sp-3)}
+.ex-row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:var(--sp-5);margin-top:var(--sp-5)}
+.ex-row .ex{display:flex;flex-direction:column}
+.ex-fig{display:block;background:var(--sf-plate);border-bottom:1px solid var(--ln-hair)}
+.ex-fig img{display:block;width:100%;height:auto}
+.ex-visual .ex-fig img{aspect-ratio:var(--ar-plate);object-fit:contain;padding:var(--sp-2)}
+.ex-app .ex-fig{background:var(--sf-ink)}
+.ex-fig:focus-visible{outline:var(--fc-ring);outline-offset:-3px}
+.ex-pages{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);padding:var(--sp-4) var(--sp-4) 0;background:var(--sf-band);align-items:start}
+.ex-page{border:0!important;border-radius:3px 3px 0 0!important;background:#fff!important;box-shadow:0 1px 2px rgba(0,0,0,.08),0 10px 22px -14px rgba(0,0,0,.35)}
+.ex-page img{object-fit:cover;object-position:left top;aspect-ratio:var(--ar-page)}
+.ex-toc{margin:var(--sp-3) 0 0;padding-left:1.3em;font-family:var(--ff-ui);font-size:13.5px;line-height:1.45;color:var(--tx-body)}
+.ex-toc li+li{margin-top:4px}
+.ex-series{margin-top:var(--sp-5);background:var(--sf-ink);border-color:var(--sf-ink);color:var(--tx-on-ink);padding:var(--sp-5) var(--sp-5) var(--sp-4)}
+.ex-shead{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:var(--sp-5);align-items:end}
+.ex-series .ex-k{color:var(--ac-brass)}.ex-series .ex-t{color:#fff}.ex-series .ex-p{color:var(--tx-on-ink-quiet);margin:0}
+.ex-shelf{list-style:none;margin:var(--sp-5) 0 0;padding:0 0 var(--sp-2);display:grid;grid-auto-flow:column;grid-auto-columns:minmax(118px,1fr);gap:var(--sp-4);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.ex-shelf li{scroll-snap-align:start}
+.ex-issue{display:flex;flex-direction:column;gap:4px;width:100%;padding:0;border:0;background:transparent;text-align:left;cursor:pointer;color:inherit}
+.ex-issue img{display:block;width:100%;height:auto;aspect-ratio:var(--ar-cover);object-fit:cover;border-radius:4px;box-shadow:0 10px 24px -14px rgba(0,0,0,.8);transition:transform var(--mo-base) var(--mo-ease)}
+.ex-issue:hover img{transform:translateY(-3px)}
+.ex-issue:focus-visible{outline:var(--fc-ring-ink);outline-offset:4px;border-radius:4px}
+.ex-in{font-family:var(--ff-mono);font-size:10.5px;color:var(--ac-brass);margin-top:6px}
+.ex-it{font-family:var(--ff-display);font-size:15px;line-height:1.2;color:#fff}
+.at-more{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-3) var(--sp-5);margin-top:var(--sp-6)}
+.at-more .xs{color:var(--tx-quiet)}
+@media (max-width:1100px){.ex-feature{grid-template-columns:1fr}.ex-row{grid-template-columns:1fr 1fr}.ex-row .ex-visual{grid-column:1/-1}}
+@media (max-width:640px){.ex-feature{padding:var(--sp-4)}.ex-row{grid-template-columns:1fr}.ex-shead{grid-template-columns:1fr}.ex-tl{font-size:clamp(28px,8vw,36px)}}
+
+/* ── one topic, six perspectives ──────────────────────────────────────── */
+.aj{display:grid;grid-template-columns:minmax(240px,300px) minmax(0,1fr);gap:var(--sp-6);margin-top:var(--sp-5);align-items:start}
+.aj-rail{list-style:none;margin:0;padding:0;position:relative}
+.aj-rail::before{content:"";position:absolute;left:19px;top:22px;bottom:22px;width:2px;background:var(--ln-rule)}
+.aj-rail li{position:relative}
+.aj-rail button{display:grid;grid-template-columns:40px 1fr;column-gap:var(--sp-3);row-gap:2px;width:100%;padding:var(--sp-3) var(--sp-2) var(--sp-3) 0;border:0;background:transparent;text-align:left;cursor:pointer;color:var(--tx-strong);border-radius:var(--rd-md)}
+.aj-n{grid-row:1/span 2;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--ff-mono);font-size:12px;font-weight:600;background:var(--sf-band);border:2px solid var(--ln-rule);color:var(--tx-body);position:relative;z-index:1;transition:background var(--mo-base),border-color var(--mo-base),color var(--mo-base)}
+.aj-t{font-family:var(--ff-display);font-size:21px;line-height:1.15;align-self:end}
+.aj-d{font-family:var(--ff-ui);font-size:13px;line-height:1.4;color:var(--tx-quiet)}
+.aj-rail li.done .aj-n{border-color:var(--ac-bur);color:var(--ac-bur)}
+.aj-rail li.on .aj-n{background:var(--ac-bur);border-color:var(--ac-bur);color:#fff}
+.aj-rail li.on .aj-t{color:var(--ac-bur)}
+.aj-rail button:hover .aj-t{color:var(--ac-bur)}
+.aj-rail button:focus-visible{outline:var(--fc-ring);outline-offset:2px}
+.aj-panel{background:var(--sf-card);border:1px solid var(--ln-hair);border-radius:var(--rd-lg);padding:var(--sp-6);box-shadow:var(--sh-1);min-height:480px;min-width:0}
+.aj-panel:focus-visible{outline:var(--fc-ring);outline-offset:3px}
+.aj-ph{display:flex;align-items:baseline;gap:var(--sp-4);padding-bottom:var(--sp-4);border-bottom:1px solid var(--ln-hair)}
+.aj-pn{font-family:var(--ff-mono);font-size:13px;font-weight:600;color:var(--ac-bur)}
+.aj-pt{font-family:var(--ff-display);font-weight:400;font-size:var(--fs-2xl);line-height:1.08}
+.aj-pd{font-family:var(--ff-ui);font-size:14px;color:var(--tx-quiet);margin-top:2px}
+.aj-pb{margin-top:var(--sp-5)}
+.aj-pb .ld-fig{max-width:620px}
+.aj-pb .pd{margin-top:0}
+.aj-nav{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-3);margin-top:var(--sp-6);padding-top:var(--sp-4);border-top:1px solid var(--ln-hair)}
+@media (max-width:900px){.aj{grid-template-columns:1fr;gap:var(--sp-4)}
+ .aj-rail{display:flex;overflow-x:auto;gap:var(--sp-2);padding-bottom:var(--sp-2);scrollbar-width:thin}.aj-rail::before{display:none}
+ .aj-rail li{flex:0 0 auto}.aj-rail button{grid-template-columns:auto auto;align-items:center;padding:var(--sp-2) var(--sp-3) var(--sp-2) var(--sp-2);border:1px solid var(--ln-hair);background:var(--sf-card);border-radius:var(--rd-pill)}
+ .aj-n{grid-row:auto;width:28px;height:28px;font-size:11px}.aj-t{font-size:16px;align-self:center}.aj-d{display:none}
+ .aj-rail li.on button{border-color:var(--ac-bur)}.aj-panel{padding:var(--sp-4);min-height:0}}
+
+/* ── the learning lab: predict, then see the model ────────────────────── */
+.al-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--sp-7);align-items:start}
+.al-band .shead h2,.al-band .shead .n{color:#fff}.al-band .shead{border-color:var(--ln-on-ink)}
+.al-band .lede{color:var(--tx-on-ink)}
+.al-src{margin-top:var(--sp-4);color:var(--tx-on-ink-quiet)}
+.al-card{background:var(--sf-plate);color:var(--tx-strong);border-radius:var(--rd-lg);padding:var(--sp-6);box-shadow:var(--sh-2);min-height:360px}
+.al-dots{list-style:none;margin:0;padding:0;display:flex;gap:var(--sp-2)}
+.al-dots li{flex:1;height:6px;border-radius:3px;background:var(--ln-rule)}
+.al-dots li.cur{background:var(--tx-quiet)}.al-dots li.ok{background:var(--dg-ok)}.al-dots li.no{background:var(--dg-no)}
+.al-q{font-family:var(--ff-display);font-size:clamp(22px,1.9vw,28px);line-height:1.2;margin:var(--sp-5) 0 var(--sp-4)}
+.al-opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-3)}
+.al-o{min-height:52px;padding:var(--sp-3);border:1.5px solid var(--ln-rule);border-radius:var(--rd-md);background:#fff;font-family:var(--ff-ui);font-size:15px;font-weight:700;color:var(--tx-strong);cursor:pointer;transition:border-color var(--mo-fast),background var(--mo-fast)}
+.al-o:hover:not([disabled]){border-color:var(--ac-bur)}
+.al-o:focus-visible{outline:var(--fc-ring);outline-offset:3px}
+.al-o[disabled]{cursor:default;opacity:.6}
+.al-o.right{border-color:var(--dg-ok);background:var(--dg-ok-tint);opacity:1}.al-o.wrong{border-color:var(--dg-no);background:var(--dg-no-tint);opacity:1}
+.al-fb{margin-top:var(--sp-4);min-height:2em}
+.al-v{font-family:var(--ff-ui);font-weight:700;font-size:15px}.al-v.ok{color:var(--dg-ok)}.al-v.no{color:var(--dg-no)}
+.al-x{font-family:var(--ff-text);font-size:16px;line-height:1.55;color:var(--tx-body);margin-top:4px}
+.al-next{margin-top:var(--sp-4)}
+.al-done{margin-top:var(--sp-5)}
+.al-score{display:flex;align-items:baseline;gap:var(--sp-2)}
+.al-sv{font-family:var(--ff-display);font-size:64px;line-height:1;color:var(--ac-bur)}.al-so{font-family:var(--ff-ui);font-size:16px;color:var(--tx-quiet)}
+.al-sm{font-family:var(--ff-text);font-size:16px;color:var(--tx-body);margin-top:var(--sp-2)}
+.al-fig{margin-top:var(--sp-4);max-width:560px}
+.al-fig svg{width:100%;height:auto}
+.al-rev{margin:var(--sp-4) 0 0;padding-left:1.2em;font-family:var(--ff-text);font-size:14.5px;line-height:1.5;color:var(--tx-body)}
+.al-rev li+li{margin-top:6px}.al-rev li.ok::marker{color:var(--dg-ok)}.al-rev li.no::marker{color:var(--dg-no)}
+.al-rev b{font-family:var(--ff-ui);font-size:13.5px;color:var(--tx-strong)}.al-rev span{font-weight:600;color:var(--tx-strong)}
+.al-act{margin-top:var(--sp-5);gap:var(--sp-3)}
+@media (max-width:1100px){.al-grid{grid-template-columns:1fr;gap:var(--sp-5)}}
+@media (max-width:640px){.al-opts{grid-template-columns:1fr}.al-card{padding:var(--sp-4)}}
+
+/* ── from concept to judgement ────────────────────────────────────────── */
+.ap-lead{max-width:72ch;margin-top:var(--sp-3)}
+.ap-flow{list-style:none;margin:var(--sp-6) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--sp-6)}
+.ap-s{position:relative;padding:var(--sp-5) 0 var(--sp-5) 0;border-top:2px solid var(--ln-rule);display:flex;flex-direction:column;gap:6px}
+.ap-s:last-child{border-top-color:var(--ac-bur)}
+.ap-n{position:absolute;top:-13px;left:0;padding-right:var(--sp-2);background:var(--sf-page);font-family:var(--ff-mono);font-size:12px;font-weight:600;color:var(--ac-bur)}
+.ap-t{font-family:var(--ff-display);font-weight:400;font-size:22px;line-height:1.15;color:var(--tx-strong)}
+.ap-x{font-family:var(--ff-text);font-size:15.5px;line-height:1.55;color:var(--tx-body)}
+.ap-l{margin-top:auto;padding-top:4px;font-family:var(--ff-ui);font-size:13px;font-weight:600;color:var(--ac-bur);text-decoration:underline;text-underline-offset:3px}
+.ap-l:focus-visible{outline:var(--fc-ring);outline-offset:3px}
+@media (max-width:900px){.ap-flow{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.ap-flow{grid-template-columns:1fr}}
+
+/* ── the enquiry band: a prefill by resource ──────────────────────────── */
+.st-enq-a{display:flex;flex-direction:column;gap:var(--sp-2);min-width:min(100%,380px)}
+.st-enq-l{font-family:var(--ff-ui);font-size:13px;font-weight:600;color:var(--tx-on-ink)}.st-enq-l span{font-weight:400;color:var(--tx-on-ink-quiet)}
+.st-enq-a select{min-height:46px;padding:var(--sp-2) var(--sp-3);border:1px solid rgba(255,255,255,.3);border-radius:var(--rd-sm);background:var(--sf-ink-2);color:#fff;font:15px var(--ff-ui);width:100%}
+.st-enq-a select:focus-visible{outline:var(--fc-ring-ink);outline-offset:2px}
+.st-enq-b{gap:var(--sp-3);margin-top:var(--sp-2)}
+.st-enq-n{color:var(--tx-on-ink-quiet)}
+
+/* ── Learning design: the stakeholder step, and the credentials on the home page ── */
+.ld-stake{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-4);margin:0}
+.ld-stake div{padding:var(--sp-4);border:1px solid var(--ln-hair);border-radius:var(--rd-md);background:var(--sf-card)}
+.ld-stake dt{font-family:var(--ff-ui);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ac-bur)}
+.ld-stake dd{margin:6px 0 0;font-family:var(--ff-text);font-size:15.5px;line-height:1.5;color:var(--tx-body)}
+@media (max-width:900px){.ld-stake{grid-template-columns:1fr}}
+.cr-auth{display:grid;grid-template-columns:auto 1fr;gap:6px var(--sp-4)}
+.cr-auth div{display:contents}
+.cr-auth dt{font-family:var(--ff-mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tx-quiet);padding-top:3px}
+.cr-auth dd{margin:0;font-family:var(--ff-text);font-size:15.5px;color:var(--tx-strong)}
+@media (prefers-reduced-motion:reduce){.at-gl,.aj-n,.al-o,.ex-issue img{transition:none}.ex-issue:hover img{transform:none}}
+
+/* ── refinements after the first rendered review ─────────────────────── */
+.cv.at-hero h1.cv-h em{display:block}
+.at-figs{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
+.at-f1{align-self:stretch}
+.at-f1 figcaption{margin-top:auto;padding-top:var(--sp-2)}
+.at-sig figcaption{border:0!important;padding:0!important;margin:0!important}
+.at-sig b{letter-spacing:normal;line-height:1.1}
+.ex-page img{aspect-ratio:auto;object-fit:initial}
+@media (min-width:1100px){.ex-shelf{grid-auto-flow:row;grid-template-columns:repeat(10,minmax(0,1fr));overflow:visible}}
+@media (max-width:640px){.ex-side{display:none}}
+.al-next-list{list-style:none;margin:var(--sp-5) 0 0;padding:var(--sp-4) 0 0;border-top:1px dashed var(--ln-rule);display:grid;gap:6px;font-family:var(--ff-ui);font-size:13.5px;color:var(--tx-quiet)}
+.al-next-list li{display:flex;gap:var(--sp-2)}
+.al-next-list li span{font-family:var(--ff-mono);font-size:11px;color:var(--ln-rule);min-width:18px;padding-top:2px}
+.al-next-note{margin-top:var(--sp-3);font-family:var(--ff-ui);font-size:12.5px;color:var(--tx-quiet)}
+.al-card{min-height:0}
+.at-figs{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}
+.at-sig b{font-family:var(--ff-text);font-weight:600;font-size:19px}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -3249,7 +3508,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
     <button class="lnk" onclick="nav('ia')">IA support</button></div>
    <div><div class="kicker">Connect</div>
     <button class="lnk" onclick="nav('tutorials')">Economics tutorials</button>
-    <button class="lnk" onclick="nav('studio')">Resource Studio</button>
+    <button class="lnk" onclick="nav('studio')">Learning Studio</button>
     <button class="lnk" onclick="nav('design')">Learning design</button>
     <button class="lnk" onclick="nav('contact')">Contact and collaboration</button>
     <button class="lnk" onclick="nav('about')">About Arjun Agrawal</button>
@@ -28930,7 +29189,7 @@ function SPLASHSUITE(){
  T("Opening · the home page plays the full sequence on every kind of load; only a deep link to another page skips it",
    /I\.route=/.test(clock)&&/if\(I\.route!=="home"\)I\.mode="cover"/.test(clock)&&!/type==="reload"/.test(clock)&&!/again\|\|/.test(clock));
  T("Opening · the font stylesheet cannot hold the first frame",
-   (()=>{const l=[...document.querySelectorAll('link[href*="fonts.googleapis.com/css2"]')].filter(x=>x.rel==="stylesheet");
+   (()=>{const l=[...document.querySelectorAll('link[href*="assets/fonts/fonts.css"]')].filter(x=>x.rel==="stylesheet");
      return l.length>=1&&l.every(x=>x.media==="all"||x.media==="print"||x.getAttribute("onload"))})());
  T("Opening · a slow start holds the final frame instead of uncovering an unfinished page",
    /__APP_READY/.test(clock)&&/window\.__APP_READY=true/.test(html));
@@ -38129,7 +38388,7 @@ function rnAtlas(){const n=rnCount();
  const has=v=>SECTIONS.some(s=>s.v===v);
  return `<section class="sec rn-band rn-atlas-band" id="explore"><div class="wrap full">
   <div class="shead fx"><span class="n">01</span><h2>Explore Economics</h2><span class="aside">What can I do here?</span></div>
-  ${typeof rnEcosystem==="function"?rnEcosystem():""}
+  ${typeof rnPathways==="function"?rnPathways():""}
   <div class="rn-atlas">${A.filter(d=>has(d[0])).map((d,i)=>`<button class="atl${i===0?" atl-lead":""}" onclick="nav('${d[0]}')">
    <span class="atl-fig" data-motif="${d[3]}"></span>
    <span class="atl-tx"><span class="atl-n">${String(i+1).padStart(2,"0")}</span><span class="atl-t">${esc(d[1])}</span>
@@ -38197,14 +38456,15 @@ function rnDivider(t,s){return `<div class="wrap full rn-divider"><span class="r
 /* the home page reads as a story in twelve chapters, one verb each: think,
    discover, learn, see, interact, connect, practise, research, explore,
    watch, teach, and the person behind it. "#n|Title" marks a chapter opener. */
-/* The Learning Studio brief adds a second chapter, Discover: selected work,
-   one topic seen five ways, a working lab and the principles behind it. The
-   enquiry band closes the About chapter. Later modules register their bands
+/* The Learning Studio and Atlas briefs add a second chapter, Discover: the
+   exhibition of original work, one topic seen six ways and a working
+   prediction lab. The About chapter opens with the progression the resources
+   are designed around and closes with the enquiry band. Later modules register their bands
    in RN_BANDS, so this list names them without the home page knowing how
    they are drawn. */
 const RN_BANDS={};
 const RN_ORDER=["#01|Think","Start your journey","@atlas","@paths",
- "#02|Discover","@work","@onetopic","@labdemo","@thinking",
+ "#02|Discover","@work","@onetopic","@labdemo",
  "#03|The course","@course",
  "#04|Learn","@learn","Timeless ideas","Inflation targeting",
  "#05|See the world","@lead","Economics, right now",
@@ -38214,7 +38474,7 @@ const RN_ORDER=["#01|Think","Start your journey","@atlas","@paths",
  "#09|Explore","@today","@ideas","Economics, Everywhere",
  "#10|Watch","Latest from Arjun",
  "#11|Teach","@educator",
- "#12|About","@creator","Work through the platform","@enquire",
+ "#12|About","@thinking","@creator","Work through the platform","@enquire",
  "@desk","One next step","Continue where you left off","What should I do next?","Six ways in","The Arjun method","@glance","@final"];
 function rnHome(html){
  if(typeof document==="undefined")return html;
@@ -38369,51 +38629,33 @@ function cvSet(v){CV.s=+v;const p=document.getElementById("cv-plate-fig"),r=docu
 const CV_SPOTS=[["Demand",s=>[2.2+s,CVF.D(2.2+s,s)],"nav('learn',0,'c-ped')","The curve that moves"],["Supply",()=>[8,CVF.S(8)],"nav('mind',0,'supply')","How sellers respond"],
  ["Equilibrium",s=>{const e=CVF.eq(s);return [e.q,e.p]},"nav('mind',0,'market')","Where plans agree"]];
 const cvPos=f=>{const [q,p]=f(CV.s);return [(cx(q)/CV_W*100).toFixed(2),(cy(p)/CV_H*100).toFixed(2)]};
-const CV_CHIPS=[["Elasticity","nav('learn',0,'c-ped')"],["Inflation","nav('learn',0,'c-inf')"],["Trade","nav('learn',0,'c-cadv')"],
- ["Externalities","nav('learn',0,'c-ext')"],["Inequality","nav('learn',0,'c-gini')"],["Exchange rates","nav('learn',0,'c-fx')"]];
-function cvScale(){const n=rnCount();
- return [["cases","Real World cases","nav('world',1)"],["maps","mindmaps","nav('mind')"],["diagrams","diagram plates","nav('lab',3)"],
-  ["calcs","calculations","nav('calculate')"],["dna","Exam DNA questions","nav('dna')"]].filter(([k])=>typeof n[k]==="number")
-  .map(([k,l,go])=>`<li><button class="cv-sig" onclick="${go}"><b>${fmtN(n[k])}</b><span>${esc(l)}</span></button></li>`).join("")
-  +`<li><button class="cv-sig" onclick="nav('ees')"><b>IA · EE</b><span>research studios</span></button></li>`}
-/* the verbs of the cover, each a door: see it, learn it, move it, question it, master it */
-const CV_VERBS=[["Explore","nav('world')","Real World: economics happening now"],["Learn","nav('learn')","Concepts, models and the course"],
- ["Apply","nav('lab')","Labs where the model moves"],["Question",null,"The economist's toolkit"],["Master","nav('practise')","Practice, exam rooms and Exam DNA"]];
 /* who the author is, stated only from the supplied profile (ABOUT, ABOUT2): no degree, date or title is added */
 const CV_AUTHOR=[["Studied","Economics, St. Stephen's College, University of Delhi"],["Taught","Undergraduate Economics, Fergusson College, Pune"],
  ["Teaches","IB DP Economics, Business Management and Global Politics"],["Mentors","UPSC Civil Services aspirants in Economics"]];
 function rnCover(old){
- const kept=old?[...old.querySelectorAll(".in > *")].filter(e=>!e.matches(".eb,.kicker,h1,.lede,.row")).map(e=>e.outerHTML).join(""):"";
- const m=PHOTOMETA.hero;
- return `<section class="hero rn-home cv" aria-labelledby="cv-h"><div class="wrap full in cv-grid">
-  <div class="cv-copy">
-   <div class="eb">Think like an economist.</div>
-   <h1 class="cv-h mt2" id="cv-h">Economics is not just a subject to study. <em>It is a way to think.</em></h1>
-   <p class="cv-lede mt3">An interactive learning ecosystem for IB DP Economics, connecting concepts, visual understanding, real-world evidence and exam thinking.</p>
-   <div class="row mt4 cv-cta"><button class="btn lg a" onclick="cvExplore()">Explore Economics →</button><a class="btn lg on-ink" href="#/studio">Discover My Work</a></div>
-   <nav class="cv-verbs mt3" aria-label="Five ways in">${CV_VERBS.map(([t,go,d])=>`<button class="cv-verb" onclick="${go||goTab("think",TLAE_TAB)}" title="${esA(d)}">${esc(t)}</button>`).join('<span aria-hidden="true">·</span>')}</nav>
-   <p class="cv-more mt3">Or go straight to <button class="lnk" onclick="nav('learn')">the concepts</button>, <button class="lnk" onclick="nav('practise',0)">the question bank</button> or <button class="lnk" onclick="nav('learn',1)">the curriculum</button>.</p>
-   <div class="rn-kept">${kept}</div></div>
-  <div class="cv-lab">
-   <div class="cv-plate"><div class="cv-plate-h"><span class="kicker">The model, live</span><span class="cv-note">tap a marked point · illustrative units</span></div>
-    <div class="cv-plate-in"><div id="cv-plate-fig">${cvSVG()}</div>
+ const m=PHOTOMETA.hero,f2=(typeof ldPrev==="function")?ldPrev("price-elasticity-of-demand",0):null,f3=(typeof ldPrev==="function")?ldPrev("price-elasticity-of-demand",4):null;
+ const fig=(n,p,cap,href,cls)=>p?`<figure class="at-fig ${cls}"><a class="at-fl" href="${href}">${stImg(p,"",true)}</a><figcaption><span class="at-fn">Fig. ${n}</span> ${cap}</figcaption></figure>`:"";
+ return `<section class="hero rn-home cv at-hero" aria-labelledby="cv-h"><div class="wrap full in at-hgrid">
+  <div class="cv-copy at-copy">
+   <div class="eb">IB DP Economics · Think like an economist.</div>
+   <h1 class="cv-h" id="cv-h">Economics is not just a subject to study. <em>It is a way to think.</em></h1>
+   <p class="cv-lede">An interactive learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking.</p>
+   <div class="row cv-cta"><button class="btn lg a" onclick="cvExplore()">Explore Economics →</button><a class="btn lg on-ink" href="#/studio">Discover the Learning Studio</a></div>
+   <figure class="cv-portrait at-sig"><div class="at-sigf"><img src="${photoURL("hero")}" alt="${esc(m.alt)}" width="${m.w}" height="${m.h}" style="object-position:${m.pos}" decoding="async"></div>
+    <figcaption><b>Arjun Agrawal</b><span>IB DP Economics educator and resource designer</span><button class="lnk" onclick="nav('about')">About the author →</button></figcaption></figure></div>
+  <div class="at-figs" role="group" aria-label="One idea in three forms: a live model, a diagram and a mindmap branch">
+   <figure class="at-fig at-f1"><div class="cv-plate"><div class="cv-plate-in"><div id="cv-plate-fig">${cvSVG()}</div>
      ${CV_SPOTS.map(([t,f,go,d],i)=>{const [x,y]=cvPos(f);return `<button class="cv-spot" id="cv-spot-${i}" style="left:${x}%;top:${y}%" onclick="${go}" aria-label="${esc(t)}: ${esc(d)}. Open it"><span class="cv-dot" aria-hidden="true"></span><span class="cv-tip"><b>${esc(t)}</b>${esc(d)} →</span></button>`}).join("")}</div>
     <label class="cv-ctl" for="cv-shift"><span>Move demand</span><input id="cv-shift" type="range" min="-2" max="2" step="0.5" value="${CV.s}" oninput="cvSet(this.value)" aria-describedby="cv-read"></label>
-    <p class="cv-read" id="cv-read" aria-live="polite">${esc(cvRead())}</p>
-    <div class="cv-chips" role="group" aria-label="Explore a concept">${CV_CHIPS.map(([t,go])=>`<button class="cv-chip" onclick="${go}" data-def="${esA(cvDef(go))}">${esc(t)}</button>`).join("")}</div></div></div>
-  <figure class="cv-portrait"><div class="cv-frame"><img src="${photoURL("hero")}" alt="${esc(m.alt)}" width="${m.w}" height="${m.h}" style="object-position:${m.pos}" decoding="async"></div>
-   <figcaption><span class="cv-role">Author and guide</span><b>Arjun Agrawal</b>
-    <dl class="cv-auth">${CV_AUTHOR.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-    <button class="lnk" onclick="nav('about')">The academic behind the platform →</button></figcaption></figure>
-  <ul class="cv-scale" aria-label="What the platform holds">${cvScale()}</ul>
- </div></section>`}
+    <p class="cv-read" id="cv-read" aria-live="polite">${esc(cvRead())}</p></div>
+    <figcaption><span class="at-fn">Fig. 1</span> The model, live: move demand, or tap a marked point. <span class="at-fu">Illustrative units.</span></figcaption></figure>
+   ${fig(2,f2,"From the visual explainers: one price cut, two responses.","#/studio/visual-explainers/price-elasticity-of-demand","at-f2")}
+   ${fig(3,f3,"From the mindmaps: a branch of the elasticity map.","#/studio/visual-explainers/price-elasticity-of-demand","at-f3")}
+  </div></div></section>`}
 /* "Explore Economics" is the gateway band just below the cover: scroll to it and move focus with it */
 function cvExplore(){const g=document.getElementById("explore");if(!g){nav("course");return}
  const h=g.querySelector("h2");g.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
  if(h){h.setAttribute("tabindex","-1");h.focus({preventScroll:true})}}
-/* the definition a chip reveals on hover or focus, taken from the concept page it opens */
-function cvDef(go){const m=/'(c-[a-z0-9-]+)'/.exec(go);const c=m&&typeof CONCEPTS!=="undefined"?CONCEPTS.find(x=>x.id===m[1]):null;
- return c?String(c.def).split(/(?<=\.)\s/)[0]:""}
 /* ── the story continues: chapters and the bands they need ─────────────── */
 function goTab(v,name){const s=SECTIONS.find(x=>x.v===v);const i=s&&s.tabs?s.tabs.indexOf(name):-1;return `nav('${v}',${i<0?0:i})`}
 function rnBand(o){return `<section class="sec rn-band rn-split ${o.cls||""}"><div class="wrap full"><div class="sp-grid">
@@ -38475,6 +38717,7 @@ function rnCreatorBand(){const m=PHOTOMETA.teaching||PHOTOMETA.students,k=PHOTOM
    <figcaption>${esc(m.cap)}</figcaption></figure>
   <div class="cr-copy"><div class="shead fx"><span class="n">00</span><h2>The academic behind the platform</h2></div>
    <p class="cr-quote mt3">“${esc(ABOUT.lede)}”</p>
+   <dl class="cv-auth cr-auth mt3">${CV_AUTHOR.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
    <p class="ed mt3">Every model, case, question and tool here was written and drawn for this platform, and every statement about the IB course names the document it comes from.</p>
    <div class="row mt4"><button class="btn" onclick="nav('about')">About Arjun Agrawal</button><button class="btn gh" onclick="nav('arjun')">Watch the videos</button><button class="btn gh" onclick="nav('tutorials')">Learn with Arjun</button></div></div>
  </div></div></section>`}
@@ -38536,7 +38779,7 @@ function abCover(){const A=ABOUT;
    <p class="ab-lede mt4">${esc(A.lede)}</p>
    <p class="ab-meta mt3"><span>${esc(A.role)}</span>${A.subjects.map(s=>`<span>${esc(s)}</span>`).join("")}</p>
    <div class="row mt4"><button class="btn a" onclick="nav('tutorials')">Learn with Arjun →</button><a class="btn gh" href="mailto:${A.email}">Email</a>
-    <button class="btn gh" onclick="nav('home')">Explore the platform</button><a class="btn gh" href="#/studio">Resource Studio</a></div></div>
+    <button class="btn gh" onclick="nav('home')">Explore the platform</button><a class="btn gh" href="#/studio">Learning Studio</a></div></div>
   ${abFigure("hero","ab-portrait")}
  </div></section>`}
 
@@ -38858,9 +39101,9 @@ function COVSUITE(){
  T("Cover model · more demand raises both price and quantity; less demand lowers both",()=>S.slice(1).every((s,i)=>{const a=CVF.eq(S[i]),b=CVF.eq(s);return b.p>a.p&&b.q>a.q}));
  T("Cover model · the reading names the shortage or surplus that moves price, never price moving demand",()=>{const k=CV.s;try{CV.s=1;const up=cvRead();CV.s=-1;const dn=cvRead();
    return /shortage/.test(up)&&/surplus/.test(dn)&&!/price rises[^.]*demand (rises|increases)/i.test(up+dn)}finally{CV.s=k}});
- T("Cover model · every scale signal is counted from the data it names",()=>{const n=rnCount(),h=cvScale();
-   return ["cases","maps","diagrams","calcs","dna"].every(k=>typeof n[k]!=="number"||h.includes(`<b>${fmtN(n[k])}</b>`))&&(h.match(/class="cv-sig"/g)||[]).length>=4});
- T("Cover frame · the portrait sits in its own frame, which holds no figure",()=>{const h=VIEWS.home();const i=h.indexOf('<figure class="cv-portrait"');if(i<0)return false;
+ T("Cover model · the counts beside the pathways are the platform's own, not on the cover",()=>{const n=rnCount(),h=rnPathways();
+   return ["cases","diagrams","calcs","dna"].every(k=>typeof n[k]!=="number"||h.includes(fmtN(n[k])))&&!/cv-sig/.test(VIEWS.home())});
+ T("Cover frame · the portrait sits in its own frame, which holds no figure",()=>{const h=VIEWS.home();const i=h.indexOf('<figure class="cv-portrait');if(i<0)return false;
    const f=h.slice(i,h.indexOf("</figure>",i));return !/<svg|data-motif/.test(f)&&/<img/.test(f)});
  T("Profile frame · the About portrait is its own cell, and the cover draws no figure that could sit over it",()=>{const h=abCover();
    const i=h.indexOf('class="abfig ab-portrait');return i>0&&!/<svg|data-motif|rn-plot/.test(h)&&h.split('class="abfig').length===2});
@@ -40642,7 +40885,7 @@ moreMenu=function(e){e.stopPropagation();if(document.getElementById("menu")){clo
   ["Exam and research",[["practise","Practise"],["examiner","Exam"],["papers","Paper labs"],["dna","Exam DNA"],["calculate","Calculate"],["session","Timed session"],["ees","EE Studio"],["ia","IA studio"]]],
   ["Your work",[["master","Dashboard"],["syllabus","My syllabus"],["saved","My economics"],["workspace","My workspace"]]],
   ["Teach",[["educator","Educator studio"],["teacher","Teacher tools"]]],
-  ["About",[["about","About"],["studio","Resource Studio"],["design","Learning design"],["contact","Contact and collaboration"],["tutorials","Tutorials"],["settings","Settings"],["tools","Tools"]]]];
+  ["About",[["about","About"],["studio","Learning Studio"],["design","Learning design"],["contact","Contact and collaboration"],["tutorials","Tutorials"],["settings","Settings"],["tools","Tools"]]]];
  const placed=new Set(["home",...G.flatMap(g=>g[1].map(x=>x[0]))]);
  const rest=SECTIONS.filter(s=>!placed.has(s.v)).map(s=>[s.v,s.n]);
  const groups=(rest.length?G.concat([["More",rest]]):G).map(([h,it])=>[h,it.filter(([v])=>v==="@why"||SECTIONS.some(s=>s.v===v))]).filter(([,it])=>it.length);
@@ -41349,7 +41592,7 @@ QAREPORT.push({area:"Economists and ideas (editorial layer)",re:/^Economists · 
    Written by tools/studio/build_studio.py from content/studio/showcase.json.
    Titles, descriptions and preview paths only: no private file is named here.
    ═══════════════════════════════════════════════════════════════════════════ */
-const STUDIO={"site":"https://ib-economics-pi.vercel.app/","types":[{"k":"visual","n":"Visual explainers","d":"Diagram-led slide sequences that take one topic from definition to evaluation."},{"k":"guide","n":"Guides","d":"Written guides for students and teachers: how assessment works and how a course can be planned."},{"k":"interactive","n":"Interactive","d":"Applications and simulations, shown through a working demonstration."},{"k":"collection","n":"Collections","d":"Series of related resources, shown as a learning journey."}],"enquiries":[{"k":"resource","n":"Economics resource enquiries","d":"You have seen a resource here and would like to know more about it, or whether it suits your class.","subject":"Resource enquiry"},{"k":"school","n":"School and classroom use","d":"Using a resource, or this platform, with a class, a department or a whole school.","subject":"School and classroom use"},{"k":"collaboration","n":"Educational collaboration","d":"Working together on a project, a publication or a platform.","subject":"Collaboration"},{"k":"workshop","n":"Workshops and professional learning","d":"Sessions for teachers or students on Economics teaching, assessment or the Extended Essay.","subject":"Workshop or professional learning"},{"k":"custom","n":"Custom resource development","d":"A resource designed for a particular course, topic or group of learners.","subject":"Custom resource development"},{"k":"other","n":"Other academic opportunities","d":"Anything else related to Economics education.","subject":"Academic enquiry"}],"items":[{"id":"price-elasticity-of-demand","status":"published","disclosure":1,"type":"visual","treatment":"A","title":"Price elasticity of demand","kicker":"Visual explainer · Unit 2.5, with HL extension","topics":["Microeconomics","Elasticity","Total revenue","Tax incidence"],"level":"SL and HL (HL slides labelled)","audience":["Students","Teachers"],"format":"Slide sequence: 20 diagrams and infographics","previewFormat":"Five excerpts at screen resolution","summary":"Price elasticity of demand taught as a sequence of drawn models rather than a formula to memorise: from the coefficient and its sign, through the five cases on the same axes, to what elasticity does to revenue, tax revenue and who pays a tax.","objectives":["Calculate PED and classify it from its magnitude, handling the negative sign explicitly","Compare elastic and inelastic demand on the same axes and the same scale","Use rectangles of P × Q to explain why a price rise can raise or lower total revenue","Explain how PED decides the share of an indirect tax paid by consumers and producers","HL: show why PED changes along a straight-line demand curve"],"approach":"Every comparison is drawn on the same axes and the same scale, so the reader sees the difference in responsiveness instead of being told about it. Revenue is shown as areas that gain and lose, with the figures printed on the diagram so each one can be checked by hand. Determinants are taught as a tendency, not a rule.","inside":["The coefficient, the sign convention and the spectrum from perfectly inelastic to perfectly elastic","Elastic and inelastic demand compared on one set of axes","The perfectly elastic, perfectly inelastic and unit-elastic cases","HL: PED along a linear demand curve, worked at four points","Determinants: time, share of income, necessity and substitutes","Total revenue as an area, and the total-revenue curve","Tax revenue and tax incidence under elastic and inelastic demand","Primary commodities against manufactured products","Ten common errors, and a one-page revision map"],"previews":[{"src":"price-elasticity-of-demand/01-elastic-inelastic.webp","alt":"Two demand curves through the same point at a price of $40. When the price falls to $30, a fall of 25 percent, quantity on the relatively elastic curve rises 50 percent, from 50 to 75, while on the relatively inelastic curve it rises 10 percent, from 50 to 55.","cap":"Same axes, same scale: a 25% price cut, two very different responses.","w":960,"h":875},{"src":"price-elasticity-of-demand/03-revenue-calculation.webp","alt":"A steep demand curve. Price rises from $40 to $60 and quantity falls from 70 to 63. The revenue gained on units still sold, $1,260, is shaded green; the revenue lost on units no longer sold, $280, is shaded red. Total revenue rises from $2,800 to $3,780.","cap":"Inelastic demand: the gain rectangle outweighs the loss.","w":960,"h":925},{"src":"price-elasticity-of-demand/02-revenue-areas.webp","alt":"Three panels comparing a 25 percent price rise under price-inelastic, unit-elastic and price-elastic demand, with total revenue rising from $4,000 to $4,500, unchanged, and falling to $2,500.","cap":"Total revenue read as the area P × Q.","w":960,"h":494},{"src":"price-elasticity-of-demand/04-primary-manufactured.webp","alt":"A comparison table: primary commodities bought by firms as inputs, such as crude oil, iron ore and copper, tend to have price-inelastic demand; manufactured products bought by households, such as laptops and cars, tend to be price elastic. Each row ties the difference to time, income share, necessity or substitutes.","cap":"Determinants applied: a tendency, not a rule.","w":960,"h":679},{"src":"price-elasticity-of-demand/05-revision-map.webp","alt":"Part of a revision map with price elasticity of demand at its centre and branches for key relationships, firms, government and total revenue.","cap":"Excerpt from the one-page revision map.","w":960,"h":578}],"related":[{"label":"The concept page","route":"#/learn/concept-spine/c-ped"},{"label":"Elasticity lab","route":"#/lab/elasticity-lab"},{"label":"Calculate PED","route":"#/calculate/0/ped"},{"label":"The PED mindmap","route":"#/mind/mindmaps/ped"}],"enquiry":"resource"},{"id":"exchange-rates","status":"published","disclosure":1,"type":"visual","treatment":"A","title":"Exchange rates","kicker":"Visual explainer · Unit 4.5","topics":["Global economy","Exchange rates","Rupee","AD-AS"],"level":"SL and HL","audience":["Students","Teachers"],"format":"Slide sequence: 21 diagrams and infographics","previewFormat":"Five excerpts at screen resolution","summary":"The foreign exchange market built from a single real currency, the rupee: who demands it and who supplies it, what moves each curve, and how a depreciation travels through the economy to prices and output.","objectives":["Read an exchange-rate quote both ways and convert between currencies","Identify the flows behind the demand for and supply of a currency","Distinguish a shift of a curve from a movement along it","Explain appreciation and depreciation from each of four curve shifts","Trace a depreciation through net exports and import costs to AD and SRAS","Compare floating, fixed and managed systems, including central-bank intervention"],"approach":"One currency throughout. Every flow is named with an Indian example, so the abstract diagram always has a real transaction behind it. Each shift is drawn on its own diagram, and the macro effects are shown as two channels that work at once rather than one chain.","inside":["Anatomy of a quote, and who buys and sells rupees","Floating equilibrium, disequilibrium, and shift versus movement","Appreciation and depreciation from each curve shift","Inflation and interest rates moving both curves","How a depreciation spreads through the economy, and its AD-AS effects","Fixed rates, devaluation and a managed band","Over- and undervalued currencies, and a spectrum of systems","A one-page revision map"],"previews":[{"src":"exchange-rates/01-forex-flows.webp","alt":"Two columns of flows meeting in the foreign exchange market. Demand for rupees: foreigners buying Indian exports, inward FDI, inward portfolio investment, remittances into India, speculators buying rupees, and the RBI buying rupees. Supply of rupees: the corresponding outward flows.","cap":"Every curve has real transactions behind it.","w":960,"h":475},{"src":"exchange-rates/02-appreciation.webp","alt":"Demand for the rupee shifts right from D1 to D2 against a fixed supply curve. The exchange rate rises from ER1 to ER2 and quantity rises from Q1 to Q2: the rupee appreciates.","cap":"Appreciation from an increase in demand.","w":960,"h":814},{"src":"exchange-rates/03-transmission.webp","alt":"A flow chart of how a rupee depreciation spreads: a demand channel through cheaper exports and dearer imports to higher net exports and AD, and a cost channel through dearer imported inputs to a leftward SRAS shift and cost-push inflation.","cap":"Two channels at once, so the net effect is a judgement.","w":960,"h":493},{"src":"exchange-rates/04-managed-band.webp","alt":"A managed exchange-rate band with an upper limit, a target and a lower limit. When demand rises towards the upper limit the central bank sells the currency; when it falls towards the lower limit the central bank buys it.","cap":"A managed band, and what the central bank does at each edge.","w":960,"h":930},{"src":"exchange-rates/05-revision-map.webp","alt":"Part of a revision map for exchange rates, with branches for determination, changes and calculations.","cap":"Excerpt from the revision map.","w":960,"h":310}],"related":[{"label":"Exchange-rate lab","route":"#/everywhere/labs/fx"},{"label":"The rupee against the dollar","route":"#/data/markets-and-prices"},{"label":"Concept page: depreciation","route":"#/learn/concept-spine/c-fx"}],"enquiry":"resource"},{"id":"balance-of-payments","status":"published","disclosure":1,"type":"visual","treatment":"A","title":"Balance of payments","kicker":"Visual explainer · Unit 4.6, with HL extension","topics":["Global economy","Balance of payments","Current account","Marshall-Lerner"],"level":"SL and HL (HL slides labelled)","audience":["Students","Teachers"],"format":"Slide sequence: 15 diagrams and infographics","previewFormat":"Five excerpts at screen resolution","summary":"The balance of payments as a set of accounts a student can actually fill in: what is recorded where, why the accounts must sum to zero, and what a persistent current-account deficit does and does not tell you.","objectives":["Classify a transaction into the current, capital or financial account, as a credit or a debit","Build a current-account balance from its four components","Explain why the accounts sum to zero, and why that identity says nothing about cause","Link current-account imbalances to exchange-rate pressure","HL: apply the Marshall-Lerner condition and explain the J-curve"],"approach":"Accounts before arguments: the student first records real transactions and builds the balance, so the identity is something they have seen hold. The HL material is taught through numbers that can be checked, with the elastic and inelastic cases side by side.","inside":["Transactions between residents and the rest of the world, as credits and debits","A classification tree and the architecture of the three accounts","A current-account waterfall built from goods, services, income and transfers","The identity, and how the accounts depend on one another","Deficits, surpluses and exchange-rate pressure","When a persistent deficit matters, and the policy choices","HL: the Marshall-Lerner condition and the J-curve","A one-page revision map"],"previews":[{"src":"balance-of-payments/02-current-account.webp","alt":"A waterfall chart of a current account in US dollar billions: trade in goods minus 60, trade in services plus 60, income minus 15, current transfers plus 20, giving a current-account surplus of 5.","cap":"The current account, built from its components.","w":960,"h":562},{"src":"balance-of-payments/03-marshall-lerner.webp","alt":"Two panels after a 10 percent depreciation. With export and import elasticities of 0.8 and 0.6, summing to 1.4, the balance of trade improves from 0 to plus 4.6. With 0.3 and 0.4, summing to 0.7, it worsens from 0 to minus 2.6.","cap":"HL: the Marshall-Lerner condition with numbers you can check.","w":960,"h":383},{"src":"balance-of-payments/04-j-curve.webp","alt":"A J-curve: after a depreciation at point A, the balance of trade first worsens to point B because demand is inelastic in the short run, then improves to point C once the Marshall-Lerner condition holds.","cap":"HL: the J-curve, short run and long run.","w":960,"h":575},{"src":"balance-of-payments/01-architecture.webp","alt":"The architecture of the balance of payments: the current account, the capital account and the financial account, with the main components listed under each.","cap":"Three accounts, and what each records.","w":960,"h":433},{"src":"balance-of-payments/05-revision-map.webp","alt":"Part of a revision map for the balance of payments, with branches for records and signs, the three accounts, the current account and the capital and financial accounts.","cap":"Excerpt from the revision map.","w":960,"h":236}],"related":[{"label":"Concept page: current-account deficits","route":"#/learn/concept-spine/c-ca"},{"label":"Exchange rates explainer","route":"#/studio/visual-explainers/exchange-rates"}],"enquiry":"resource"},{"id":"examiner-guide","status":"published","disclosure":1,"type":"guide","treatment":"A","title":"How to Think Like an IB Economics Examiner","kicker":"Guide · assessment, SL and HL","topics":["Assessment","Markbands","Common mistakes","Paper 1","Paper 2","Paper 3"],"level":"SL and HL","audience":["Students","Teachers"],"format":"Written guide: 21 pages","previewFormat":"Contents page and one excerpt","summary":"A scoring guide that explains how scripts are marked and turns that into habits a student can practise: the assessment objectives, the three papers, the markband ladders, and one hundred common mistakes grouped by skill.","objectives":["Understand how extended responses are marked against markbands","Recognise the most common ways marks are lost, skill by skill","Plan, write and review answers the way an examiner reads them","Know what separates an average answer from a good and an excellent one"],"approach":"It starts from how marking actually works and works back to what a student should do. The mistakes are numbered and grouped by skill (definitions, diagrams, explanation, evaluation, calculation, examples) so they can be drilled and ticked off.","inside":["Part I: how your script is actually marked","Part II: the 100 most common mistakes, grouped by skill","Part III: where the marks leak, skill by skill","Part IV: patterns across the three papers","Part V: what the most recent sessions showed","Parts VI to VIII: average against good against excellent, what is rewarded and penalised, and how to think like an examiner","Appendix: the structure of the assessment at a glance"],"previews":[{"src":"examiner-guide/01-contents.webp","alt":"The contents page of the guide, listing Parts I to VIII and an appendix, from how a script is marked to how to think like an examiner.","cap":"The structure of the guide.","w":820,"h":585},{"src":"examiner-guide/02-common-mistakes.webp","alt":"The opening of Part II, The 100 Most Common Mistakes, showing the first six mistakes about definitions, such as defining the wrong term and circular definitions.","cap":"Excerpt: the first of one hundred mistakes.","w":820,"h":479}],"related":[{"label":"Exam room","route":"#/examiner"},{"label":"Why did I lose marks?","route":"#/examiner/why-did-i-lose-marks"},{"label":"Exam DNA","route":"#/dna"}],"enquiry":"resource"},{"id":"curriculum-roadmap","status":"published","disclosure":1,"type":"guide","treatment":"A","title":"Curriculum Architecture and Strategic Teaching Roadmap","kicker":"Guide for teachers · course planning","topics":["Teaching","Curriculum planning","Sequencing","Misconceptions"],"level":"SL and HL","audience":["Teachers","Heads of department","Coordinators"],"format":"Planning document: 11 pages","previewFormat":"Two cropped excerpts","summary":"A planning instrument for teachers that treats the syllabus as a system to be sequenced: where the difficulty sits in each unit, the misconceptions to pre-empt, the evaluation traps, which teaching method suits which topic, and a two-year delivery plan.","objectives":["See the course as one structure built on the key concepts, rather than a list of topics","Rank topics by difficulty and plan time where it is needed","Match a teaching method to each kind of topic","Sequence two years so that the assessment skills are built continuously"],"approach":"It starts from how the course is assessed and plans backwards, so that analysis and evaluation are taught from the first term rather than added at the end.","inside":["Part 1: the underlying logic of the course","Part 2: a curriculum map, unit by unit, with difficulties and misconceptions","Part 3: topics ranked from easiest to hardest","Part 4: matching the teaching method to the topic","Part 5: a two-year strategic roadmap"],"previews":[{"src":"curriculum-roadmap/01-how-to-use.webp","alt":"The page How to use this document, describing the roadmap as a planning instrument rather than teaching notes, followed by the start of Part 1, the underlying logic of the course.","cap":"How the roadmap is meant to be used.","w":820,"h":479},{"src":"curriculum-roadmap/02-topics-ranked.webp","alt":"The top of a table ranking syllabus topics from easiest to hardest, with columns for difficulty, indicative weight, common mistakes and a recommended teaching approach.","cap":"Excerpt: topics ranked by difficulty.","w":820,"h":286}],"related":[{"label":"Educator Studio","route":"#/educator"},{"label":"Curriculum explorer","route":"#/course/curriculum-explorer"}],"enquiry":"school"},{"id":"ee-navigator","status":"published","disclosure":1,"type":"interactive","treatment":"B","title":"The Extended Essay Navigator","kicker":"Interactive application · Extended Essay, first assessment 2027","topics":["Extended essay","Research","Supervision","Academic integrity"],"level":"All Diploma Programme subjects, with subject notes for Economics, Global Politics and Business Management","audience":["Students","EE supervisors","Coordinators"],"format":"Interactive web application","previewFormat":"Overview and module list (the application itself is not public)","summary":"An independent interactive guide to the Extended Essay for first assessment in 2027. It lets a student, a supervisor or a coordinator start from where they are and move through the framework, the criteria, research questions and supervision.","objectives":["Find a way into the Extended Essay from your own starting point","Understand the assessment criteria as questions asked about the essay","Develop a research question that is clear, focused and arguable","Distinguish methodology from research methods","Plan supervision, reflection and academic integrity"],"approach":"Built around roles rather than chapters: choosing a role reorders what the Navigator recommends first, and nothing is hidden from anyone. What the guide states is kept separate from professional interpretation, and where the guide is silent the Navigator says so.","inside":["Several ways in, depending on where you are","The journey from interest to submission, step by step","What changed for 2027, and a filter for every change","Choosing between the pathways","Positioning an inquiry, and research questions that are clear, focused and arguable","The criteria explained as questions about the essay","Academic integrity and AI: scenarios rated green, amber or red, and where the guide is silent","Supervision: what may be said about a draft, and what crosses the line","Supervisor allocation, reflection timeline and support plans","Interpretation for Economics, Global Politics and Business Management, labelled as professional interpretation rather than IB policy","A professional-development mode: twelve modules with facilitator notes"],"previews":[{"src":"ee-navigator/01-cover.webp","alt":"The title card of The Extended Essay Navigator, first assessment 2027, created and developed by Arjun Agrawal, with the Arjun Agrawal monogram.","cap":"The Navigator's title card.","w":960,"h":504}],"interaction":{"kind":"walkthrough","note":"The Navigator is a private application and is not hosted on this site. For a school, a walkthrough can be arranged on request. The Economics EE Studio on this platform is the public, Economics-only counterpart."},"related":[{"label":"Economics EE Studio","route":"#/ees"},{"label":"Research question lab","route":"#/ees/research-question-lab"}],"enquiry":"school"},{"id":"learning-lab","status":"published","disclosure":2,"type":"interactive","treatment":"B","title":"The learning lab","kicker":"Interactive · on this platform","topics":["Microeconomics","Macroeconomics","Diagrams","Elasticity"],"level":"SL and HL","audience":["Students","Teachers"],"format":"Interactive simulations in the browser","previewFormat":"A working miniature demonstration","summary":"Labs in which the reader moves a parameter, predicts what will happen, and watches the model answer. Each one is built from stated equations, so the diagram and the numbers cannot disagree.","objectives":["Predict the effect of a change before seeing it","Connect a diagram to the numbers it represents","See which conclusions depend on the assumptions of the model"],"approach":"Prediction first. The lab asks what will happen before it shows the answer, because a wrong prediction that is corrected is remembered better than a right answer that was only read.","inside":["Market lab: shifts, movements, shortage and surplus","Elasticity lab: PED, its class and what happens to revenue","AD-AS lab: output gaps and the effects of a shift","Policy simulator, What if? and the Decision room","A diagram atlas and a diagram builder"],"previews":[],"interaction":{"kind":"demo","demo":"ped-revenue","live":"#/lab"},"related":[{"label":"Open the lab","route":"#/lab"},{"label":"Elasticity lab","route":"#/lab/elasticity-lab"},{"label":"Diagram atlas","route":"#/lab/diagram-atlas"}],"enquiry":"collaboration"},{"id":"economics-in-60-seconds","status":"published","disclosure":2,"type":"collection","treatment":"C","title":"Economics in 60 Seconds","kicker":"Collection · ten issues, free on this platform","topics":["Big ideas","Market failure","Trade","Game theory","Decision-making"],"level":"SL and HL, and general readers","audience":["Students","General readers"],"format":"Carousel series: ten issues of ten pages","previewFormat":"Every issue, read in full on the platform","summary":"A series of short carousels, each telling one big economic idea as a story in ten pages, from the market for lemons to the sunk cost fallacy. Every issue is linked to the syllabus and has its own retrieval questions on the platform.","objectives":["Understand one big idea quickly, through a story","Connect it to the part of the syllabus where it is assessed","Test the idea with retrieval questions"],"approach":"One idea per issue, told through a familiar situation before it is named. Each issue ends by handing the idea back to the reader as a question.","inside":[],"collection":{"from":"c60"},"previews":[],"related":[{"label":"Read the series","route":"#/learn/economics-in-60-seconds"}],"enquiry":"resource"},{"id":"mindmaps","status":"published","disclosure":2,"type":"collection","treatment":"C","title":"Mindmaps","kicker":"Collection · on this platform","topics":["Revision","Connections","Every unit"],"level":"SL and HL","audience":["Students","Teachers"],"format":"Interactive mindmaps","previewFormat":"One learning journey through four maps","summary":"Mindmaps that follow an economist through a topic, from the concept to the mechanism, the model and the judgement, with synthesis maps that connect one topic to another.","objectives":["See the whole of a topic before its parts","Follow the connections between topics","Rebuild a map from memory"],"approach":"Maps are built to be connected: a topic map leads into a synthesis map that joins it to another part of the course, which is where evaluation usually comes from.","inside":[],"collection":{"from":"mindmaps","journey":["elasticity","ped","syn-elastax","syn-elasgov"]},"previews":[],"related":[{"label":"Open the mindmaps","route":"#/mind"},{"label":"Connect two ideas","route":"#/mind/connect-two-ideas"}],"enquiry":"resource"}]};
+const STUDIO={"site":"https://ib-economics-pi.vercel.app/","types":[{"k":"visual","n":"Visual explainers","d":"Diagram-led slide sequences that take one topic from definition to evaluation."},{"k":"guide","n":"Guides","d":"Written guides for students and teachers: how assessment works and how a course can be planned."},{"k":"interactive","n":"Interactive","d":"Applications and simulations, shown through a working demonstration."},{"k":"collection","n":"Collections","d":"Series of related resources, shown as a learning journey."}],"enquiries":[{"k":"resource","n":"Economics resource enquiries","d":"You have seen a resource here and would like to know more about it, or whether it suits your class.","subject":"Resource enquiry"},{"k":"school","n":"School and classroom use","d":"Using a resource, or this platform, with a class, a department or a whole school.","subject":"School and classroom use"},{"k":"collaboration","n":"Educational collaboration","d":"Working together on a project, a publication or a platform.","subject":"Collaboration"},{"k":"workshop","n":"Workshops and professional learning","d":"Sessions for teachers or students on Economics teaching, assessment or the Extended Essay.","subject":"Workshop or professional learning"},{"k":"custom","n":"Custom resource development","d":"A resource designed for a particular course, topic or group of learners.","subject":"Custom resource development"},{"k":"other","n":"Other academic opportunities","d":"Anything else related to Economics education.","subject":"Academic enquiry"}],"items":[{"id":"price-elasticity-of-demand","status":"published","disclosure":1,"type":"visual","treatment":"A","title":"Price elasticity of demand","kicker":"Visual explainer · Unit 2.5, with HL extension","topics":["Microeconomics","Elasticity","Total revenue","Tax incidence"],"level":"SL and HL (HL slides labelled)","audience":["Students","Teachers"],"format":"Slide sequence: 20 diagrams and infographics","previewFormat":"Five excerpts at screen resolution","summary":"Price elasticity of demand taught as a sequence of drawn models rather than a formula to memorise: from the coefficient and its sign, through the five cases on the same axes, to what elasticity does to revenue, tax revenue and who pays a tax.","objectives":["Calculate PED and classify it from its magnitude, handling the negative sign explicitly","Compare elastic and inelastic demand on the same axes and the same scale","Use rectangles of P × Q to explain why a price rise can raise or lower total revenue","Explain how PED decides the share of an indirect tax paid by consumers and producers","HL: show why PED changes along a straight-line demand curve"],"approach":"Every comparison is drawn on the same axes and the same scale, so the reader sees the difference in responsiveness instead of being told about it. Revenue is shown as areas that gain and lose, with the figures printed on the diagram so each one can be checked by hand. Determinants are taught as a tendency, not a rule.","inside":["The coefficient, the sign convention and the spectrum from perfectly inelastic to perfectly elastic","Elastic and inelastic demand compared on one set of axes","The perfectly elastic, perfectly inelastic and unit-elastic cases","HL: PED along a linear demand curve, worked at four points","Determinants: time, share of income, necessity and substitutes","Total revenue as an area, and the total-revenue curve","Tax revenue and tax incidence under elastic and inelastic demand","Primary commodities against manufactured products","Ten common errors, and a one-page revision map"],"previews":[{"src":"price-elasticity-of-demand/01-elastic-inelastic.webp","alt":"Two demand curves through the same point at a price of $40, on the same axes and scale. When the price falls 25% to $30, quantity on the flatter curve, labelled relatively price elastic, rises 50% from 50 to 75; on the steeper curve, labelled relatively price inelastic, it rises 10% from 50 to 55.","cap":"Same axes, same scale: a 25% price cut, two very different responses.","w":960,"h":880},{"src":"price-elasticity-of-demand/03-revenue-calculation.webp","alt":"A steep demand curve. Price rises from $40 to $60 and quantity falls from 70 to 63. The revenue gained on units still sold, $1,260, is shaded green; the revenue lost on units no longer sold, $280, is shaded red. Total revenue rises from $2,800 to $3,780.","cap":"Inelastic demand: the gain rectangle outweighs the loss.","w":960,"h":926},{"src":"price-elasticity-of-demand/02-revenue-areas.webp","alt":"Three panels comparing a 25 percent price rise under price-inelastic, unit-elastic and price-elastic demand, with total revenue rising from $4,000 to $4,500, unchanged, and falling to $2,500.","cap":"Total revenue read as the area P × Q.","w":960,"h":520},{"src":"price-elasticity-of-demand/04-primary-manufactured.webp","alt":"HL content. A comparison table: primary commodities bought by firms as inputs, such as crude oil, iron ore and copper, tend to have price-inelastic demand; manufactured products bought by households, such as laptops and cars, tend to be price elastic. Each row ties the difference to time, income share, necessity or substitutes.","cap":"HL: determinants applied, as a tendency rather than a rule.","w":960,"h":694},{"src":"price-elasticity-of-demand/05-revision-map.webp","alt":"A branch of the one-page revision map: price elasticity of demand at the hub (PED = %ΔQD ÷ %ΔP), with the degrees-and-diagrams branch, the TINS determinants and the HL extensions, each listing the slides to revisit.","cap":"Excerpt from the one-page revision map.","w":960,"h":510}],"related":[{"label":"The concept page","route":"#/learn/concept-spine/c-ped"},{"label":"Elasticity lab","route":"#/lab/elasticity-lab"},{"label":"Calculate PED","route":"#/calculate/0/ped"},{"label":"The PED mindmap","route":"#/mind/mindmaps/ped"}],"enquiry":"resource","exhibit":"visual","verified":"2026-10-15","checks":"All 20 slides read. Every figure on the five excerpts recomputed. The elastic and inelastic labels on the first excerpt were moved to sit on their own curves (corrected at source, 15 October 2026)."},{"id":"exchange-rates","status":"published","disclosure":1,"type":"visual","treatment":"A","title":"Exchange rates","kicker":"Visual explainer · Unit 4.5","topics":["Global economy","Exchange rates","Rupee","AD-AS"],"level":"SL and HL","audience":["Students","Teachers"],"format":"Slide sequence: 21 diagrams and infographics","previewFormat":"Five excerpts at screen resolution","summary":"The foreign exchange market built from a single real currency, the rupee: who demands it and who supplies it, what moves each curve, and how a depreciation travels through the economy to prices and output.","objectives":["Read an exchange-rate quote both ways and convert between currencies","Identify the flows behind the demand for and supply of a currency","Distinguish a shift of a curve from a movement along it","Explain appreciation and depreciation from each of four curve shifts","Trace a depreciation through net exports and import costs to AD and SRAS","Compare floating, fixed and managed systems, including central-bank intervention"],"approach":"One currency throughout. Every flow is named with an Indian example, so the abstract diagram always has a real transaction behind it. Each shift is drawn on its own diagram, and the macro effects are shown as two channels that work at once rather than one chain.","inside":["Anatomy of a quote, and who buys and sells rupees","Floating equilibrium, disequilibrium, and shift versus movement","Appreciation and depreciation from each curve shift","Inflation and interest rates moving both curves","How a depreciation spreads through the economy, and its AD-AS effects","Fixed rates, devaluation and a managed band","Over- and undervalued currencies, and a spectrum of systems","A one-page revision map"],"previews":[{"src":"exchange-rates/01-forex-flows.webp","alt":"Two columns of flows meeting in the foreign exchange market. Demand for rupees: foreigners buying Indian exports, inward FDI, inward portfolio investment, remittances into India, speculators buying rupees, and the RBI buying rupees. Supply of rupees: the corresponding outward flows.","cap":"Every curve has real transactions behind it.","w":960,"h":502},{"src":"exchange-rates/02-appreciation.webp","alt":"Demand for the rupee shifts right from D1 to D2 against a fixed supply curve. The exchange rate rises from ER1 to ER2 and quantity rises from Q1 to Q2: the rupee appreciates.","cap":"Appreciation from an increase in demand.","w":960,"h":821},{"src":"exchange-rates/03-transmission.webp","alt":"A flow chart of how a rupee depreciation spreads: a demand channel through cheaper exports and dearer imports to higher net exports and AD, and a cost channel through dearer imported inputs to a leftward SRAS shift and cost-push inflation.","cap":"Two channels at once, so the net effect is a judgement.","w":960,"h":518},{"src":"exchange-rates/04-managed-band.webp","alt":"A managed exchange-rate band with an upper limit, a target and a lower limit. When demand rises towards the upper limit the central bank sells the currency; when it falls towards the lower limit the central bank buys it.","cap":"A managed band, and what the central bank does at each edge.","w":960,"h":931},{"src":"exchange-rates/05-revision-map.webp","alt":"Part of a revision map for exchange rates, with branches for determination, changes and calculations.","cap":"Excerpt from the revision map.","w":960,"h":339}],"related":[{"label":"Exchange-rate lab","route":"#/everywhere/labs/fx"},{"label":"The rupee against the dollar","route":"#/data/markets-and-prices"},{"label":"Concept page: depreciation","route":"#/learn/concept-spine/c-fx"}],"enquiry":"resource","exhibit":"visual","verified":"2026-10-15","checks":"All 21 slides read. Quote arithmetic, the direction of each shift and the central-bank actions at the band limits checked."},{"id":"balance-of-payments","status":"published","disclosure":1,"type":"visual","treatment":"A","title":"Balance of payments","kicker":"Visual explainer · Unit 4.6, with HL extension","topics":["Global economy","Balance of payments","Current account","Marshall-Lerner"],"level":"SL and HL (HL slides labelled)","audience":["Students","Teachers"],"format":"Slide sequence: 15 diagrams and infographics","previewFormat":"Five excerpts at screen resolution","summary":"The balance of payments as a set of accounts a student can actually fill in: what is recorded where, why the accounts must sum to zero, and what a persistent current-account deficit does and does not tell you.","objectives":["Classify a transaction into the current, capital or financial account, as a credit or a debit","Build a current-account balance from its four components","Explain why the accounts sum to zero, and why that identity says nothing about cause","Link current-account imbalances to exchange-rate pressure","HL: apply the Marshall-Lerner condition and explain the J-curve"],"approach":"Accounts before arguments: the student first records real transactions and builds the balance, so the identity is something they have seen hold. The HL material is taught through numbers that can be checked, with the elastic and inelastic cases side by side.","inside":["Transactions between residents and the rest of the world, as credits and debits","A classification tree and the architecture of the three accounts","A current-account waterfall built from goods, services, income and transfers","The identity, and how the accounts depend on one another","Deficits, surpluses and exchange-rate pressure","When a persistent deficit matters, and the policy choices","HL: the Marshall-Lerner condition and the J-curve","A one-page revision map"],"previews":[{"src":"balance-of-payments/02-current-account.webp","alt":"A waterfall chart of a current account in US dollar billions: trade in goods minus 60, trade in services plus 60, income minus 15, current transfers plus 20, giving a current-account surplus of 5.","cap":"The current account, built from its components.","w":960,"h":584},{"src":"balance-of-payments/03-marshall-lerner.webp","alt":"Two panels after a 10 percent depreciation. With export and import elasticities of 0.8 and 0.6, summing to 1.4, the balance of trade improves from 0 to plus 4.6. With 0.3 and 0.4, summing to 0.7, it worsens from 0 to minus 2.6.","cap":"HL: the Marshall-Lerner condition with numbers you can check.","w":960,"h":415},{"src":"balance-of-payments/04-j-curve.webp","alt":"A J-curve: after a depreciation at point A, the balance of trade first worsens to point B because demand is inelastic in the short run, then improves to point C once the Marshall-Lerner condition holds.","cap":"HL: the J-curve, short run and long run.","w":960,"h":595},{"src":"balance-of-payments/01-architecture.webp","alt":"The architecture of the balance of payments: the current account, the capital account and the financial account, with the main components listed under each.","cap":"Three accounts, and what each records.","w":960,"h":462},{"src":"balance-of-payments/05-revision-map.webp","alt":"Part of a revision map for the balance of payments, with branches for records and signs, the three accounts, the current account and the capital and financial accounts.","cap":"Excerpt from the revision map.","w":960,"h":285}],"related":[{"label":"Concept page: current-account deficits","route":"#/learn/concept-spine/c-ca"},{"label":"Exchange rates explainer","route":"#/studio/visual-explainers/exchange-rates"}],"enquiry":"resource","exhibit":"visual","verified":"2026-10-15","checks":"All 15 slides read. The current-account sum, the identity and the Marshall-Lerner arithmetic recomputed."},{"id":"examiner-guide","status":"published","disclosure":1,"type":"guide","treatment":"A","title":"How to Think Like an IB Economics Examiner","kicker":"Guide · assessment, SL and HL","topics":["Assessment","Markbands","Common mistakes","Paper 1","Paper 2","Paper 3"],"level":"SL and HL","audience":["Students","Teachers"],"format":"Written guide: 21 pages","previewFormat":"Contents page and one excerpt","summary":"A scoring guide that explains how scripts are marked and turns that into habits a student can practise: the assessment objectives, the three papers, the markband ladders, and one hundred common mistakes grouped by skill.","objectives":["Understand how extended responses are marked against markbands","Recognise the most common ways marks are lost, skill by skill","Plan, write and review answers the way an examiner reads them","Know what separates an average answer from a good and an excellent one"],"approach":"It starts from how marking actually works and works back to what a student should do. The mistakes are numbered and grouped by skill (definitions, diagrams, explanation, evaluation, calculation, examples) so they can be drilled and ticked off.","inside":["Part I: how your script is actually marked","Part II: the 100 most common mistakes, grouped by skill","Part III: where the marks leak, skill by skill","Part IV: patterns across the three papers","Part V: what the most recent sessions showed","Parts VI to VIII: average against good against excellent, what is rewarded and penalised, and how to think like an examiner","Appendix: the structure of the assessment at a glance"],"previews":[{"src":"examiner-guide/01-contents.webp","alt":"The contents page of the guide, listing Parts I to VIII and an appendix, from how a script is marked to how to think like an examiner.","cap":"The structure of the guide.","w":820,"h":585},{"src":"examiner-guide/02-common-mistakes.webp","alt":"The opening of Part II, The 100 Most Common Mistakes, showing the first six mistakes about definitions, such as defining the wrong term and circular definitions.","cap":"Excerpt: the first of one hundred mistakes.","w":820,"h":479}],"related":[{"label":"Exam room","route":"#/examiner"},{"label":"Why did I lose marks?","route":"#/examiner/why-did-i-lose-marks"},{"label":"Exam DNA","route":"#/dna"}],"enquiry":"resource","exhibit":"editorial","verified":"2026-10-15","checks":"All 21 pages read. Excerpts limited to the contents and the opening of Part II."},{"id":"curriculum-roadmap","status":"published","disclosure":1,"type":"guide","treatment":"A","title":"Curriculum Architecture and Strategic Teaching Roadmap","kicker":"Guide for teachers · course planning","topics":["Teaching","Curriculum planning","Sequencing","Misconceptions"],"level":"SL and HL","audience":["Teachers","Heads of department","Coordinators"],"format":"Planning document: 11 pages","previewFormat":"Two cropped excerpts","summary":"A planning instrument for teachers that treats the syllabus as a system to be sequenced: where the difficulty sits in each unit, the misconceptions to pre-empt, the evaluation traps, which teaching method suits which topic, and a two-year delivery plan.","objectives":["See the course as one structure built on the key concepts, rather than a list of topics","Rank topics by difficulty and plan time where it is needed","Match a teaching method to each kind of topic","Sequence two years so that the assessment skills are built continuously"],"approach":"It starts from how the course is assessed and plans backwards, so that analysis and evaluation are taught from the first term rather than added at the end.","inside":["Part 1: the underlying logic of the course","Part 2: a curriculum map, unit by unit, with difficulties and misconceptions","Part 3: topics ranked from easiest to hardest","Part 4: matching the teaching method to the topic","Part 5: a two-year strategic roadmap"],"previews":[{"src":"curriculum-roadmap/01-how-to-use.webp","alt":"The page How to use this document, describing the roadmap as a planning instrument rather than teaching notes, followed by the start of Part 1, the underlying logic of the course.","cap":"How the roadmap is meant to be used.","w":820,"h":479},{"src":"curriculum-roadmap/02-topics-ranked.webp","alt":"The top of a table ranking syllabus topics from easiest to hardest, with columns for difficulty, indicative weight, common mistakes and a recommended teaching approach.","cap":"Excerpt: topics ranked by difficulty.","w":820,"h":286}],"related":[{"label":"Educator Studio","route":"#/educator"},{"label":"Curriculum explorer","route":"#/course/curriculum-explorer"}],"enquiry":"school","exhibit":"editorial","verified":"2026-10-15","checks":"All 11 pages read. Excerpts limited to two partial pages."},{"id":"ee-navigator","status":"published","disclosure":1,"type":"interactive","treatment":"B","title":"The Extended Essay Navigator","kicker":"Interactive application · Extended Essay, first assessment 2027","topics":["Extended essay","Research","Supervision","Academic integrity"],"level":"All Diploma Programme subjects, with subject notes for Economics, Global Politics and Business Management","audience":["Students","EE supervisors","Coordinators"],"format":"Interactive web application","previewFormat":"Overview and module list (the application itself is not public)","summary":"An independent interactive guide to the Extended Essay for first assessment in 2027. It lets a student, a supervisor or a coordinator start from where they are and move through the framework, the criteria, research questions and supervision.","objectives":["Find a way into the Extended Essay from your own starting point","Understand the assessment criteria as questions asked about the essay","Develop a research question that is clear, focused and arguable","Distinguish methodology from research methods","Plan supervision, reflection and academic integrity"],"approach":"Built around roles rather than chapters: choosing a role reorders what the Navigator recommends first, and nothing is hidden from anyone. What the guide states is kept separate from professional interpretation, and where the guide is silent the Navigator says so.","inside":["Several ways in, depending on where you are","The journey from interest to submission, step by step","What changed for 2027, and a filter for every change","Choosing between the pathways","Positioning an inquiry, and research questions that are clear, focused and arguable","The criteria explained as questions about the essay","Academic integrity and AI: scenarios rated green, amber or red, and where the guide is silent","Supervision: what may be said about a draft, and what crosses the line","Supervisor allocation, reflection timeline and support plans","Interpretation for Economics, Global Politics and Business Management, labelled as professional interpretation rather than IB policy","A professional-development mode: twelve modules with facilitator notes"],"previews":[{"src":"ee-navigator/01-cover.webp","alt":"The title card of The Extended Essay Navigator, first assessment 2027, created and developed by Arjun Agrawal, with the Arjun Agrawal monogram.","cap":"The Navigator's title card.","w":960,"h":504}],"interaction":{"kind":"walkthrough","note":"The Navigator is a private application and is not hosted on this site. For a school, a walkthrough can be arranged on request. The Economics EE Studio on this platform is the public, Economics-only counterpart."},"related":[{"label":"Economics EE Studio","route":"#/ees"},{"label":"Research question lab","route":"#/ees/research-question-lab"}],"enquiry":"school","exhibit":"editorial","verified":"2026-10-15","checks":"The application was opened and its sections read. Only its own title card and a list of contents are shown."},{"id":"learning-lab","status":"published","disclosure":2,"type":"interactive","treatment":"B","title":"The learning lab","kicker":"Interactive · on this platform","topics":["Microeconomics","Macroeconomics","Diagrams","Elasticity"],"level":"SL and HL","audience":["Students","Teachers"],"format":"Interactive simulations in the browser","previewFormat":"A working miniature demonstration","summary":"Labs in which the reader moves a parameter, predicts what will happen, and watches the model answer. Each one is built from stated equations, so the diagram and the numbers cannot disagree.","objectives":["Predict the effect of a change before seeing it","Connect a diagram to the numbers it represents","See which conclusions depend on the assumptions of the model"],"approach":"Prediction first. The lab asks what will happen before it shows the answer, because a wrong prediction that is corrected is remembered better than a right answer that was only read.","inside":["Market lab: shifts, movements, shortage and surplus","Elasticity lab: PED, its class and what happens to revenue","AD-AS lab: output gaps and the effects of a shift","Policy simulator, What if? and the Decision room","A diagram atlas and a diagram builder"],"previews":[],"interaction":{"kind":"demo","demo":"ped-revenue","live":"#/lab"},"related":[{"label":"Open the lab","route":"#/lab"},{"label":"Elasticity lab","route":"#/lab/elasticity-lab"},{"label":"Diagram atlas","route":"#/lab/diagram-atlas"}],"enquiry":"collaboration","exhibit":"interactive","verified":"2026-10-15","checks":"The miniature is computed from P = 90 − Q and checked against the explainer's four worked points."},{"id":"economics-in-60-seconds","status":"published","disclosure":2,"type":"collection","treatment":"C","title":"Economics in 60 Seconds","kicker":"Collection · ten issues, free on this platform","topics":["Big ideas","Market failure","Trade","Game theory","Decision-making"],"level":"SL and HL, and general readers","audience":["Students","General readers"],"format":"Carousel series: ten issues of ten pages","previewFormat":"Every issue, read in full on the platform","summary":"A series of short carousels, each telling one big economic idea as a story in ten pages, from the market for lemons to the sunk cost fallacy. Every issue is linked to the syllabus and has its own retrieval questions on the platform.","objectives":["Understand one big idea quickly, through a story","Connect it to the part of the syllabus where it is assessed","Test the idea with retrieval questions"],"approach":"One idea per issue, told through a familiar situation before it is named. Each issue ends by handing the idea back to the reader as a question.","inside":[],"collection":{"from":"c60"},"previews":[],"related":[{"label":"Read the series","route":"#/learn/economics-in-60-seconds"}],"enquiry":"resource","exhibit":"series","verified":"2026-10-15","checks":"All ten issues are public on the platform and were reviewed page by page when they were added."},{"id":"mindmaps","status":"published","disclosure":2,"type":"collection","treatment":"C","title":"Mindmaps","kicker":"Collection · on this platform","topics":["Revision","Connections","Every unit"],"level":"SL and HL","audience":["Students","Teachers"],"format":"Interactive mindmaps","previewFormat":"One learning journey through four maps","summary":"Mindmaps that follow an economist through a topic, from the concept to the mechanism, the model and the judgement, with synthesis maps that connect one topic to another.","objectives":["See the whole of a topic before its parts","Follow the connections between topics","Rebuild a map from memory"],"approach":"Maps are built to be connected: a topic map leads into a synthesis map that joins it to another part of the course, which is where evaluation usually comes from.","inside":[],"collection":{"from":"mindmaps","journey":["elasticity","ped","syn-elastax","syn-elasgov"]},"previews":[],"related":[{"label":"Open the mindmaps","route":"#/mind"},{"label":"Connect two ideas","route":"#/mind/connect-two-ideas"}],"enquiry":"resource","exhibit":"series","verified":"2026-10-15","checks":"The journey uses four maps that exist on the platform; node counts are read from them."}]};
 
 /* ═══════════════════════════════════════════════════════════════════════════
    RESOURCE STUDIO · LEARNING DESIGN · CONTACT AND COLLABORATION
@@ -41366,7 +41609,7 @@ const STUDIO={"site":"https://ib-economics-pi.vercel.app/","types":[{"k":"visual
    ═══════════════════════════════════════════════════════════════════════════ */
 const ST={aud:"all",ret:null,dlg:null};
 const ST_AUD=[["all","Everyone"],["Students","For students"],["Teachers","For teachers"]];
-SECTIONS.push({v:"studio",n:"Resource Studio",tabs:["All work"].concat(STUDIO.types.map(t=>t.n))});
+SECTIONS.push({v:"studio",n:"Learning Studio",tabs:["All work"].concat(STUDIO.types.map(t=>t.n))});
 SECTIONS.push({v:"design",n:"Learning design",hide:1});
 SECTIONS.push({v:"contact",n:"Contact and collaboration",hide:1});
 const stItem=id=>STUDIO.items.find(i=>i.id===id);
@@ -41463,7 +41706,7 @@ function studioIndex(){
    <ul class="st-grid st-grid-${t.k}${a.length===3?" has-lead":""}">${a.map((it,i)=>stCard(it,i===0&&a.length===3)).join("")}</ul></section>`).join("")
   :`<div class="st-empty"><p>Nothing in this group is aimed at that audience yet.</p><button class="btn sm" onclick="ST.aud='all';render()">Show everything</button></div>`;
  return `<section class="hero st-hero bg-ink"><div class="wrap full in st-hin">
-  <div><div class="eb">Resource Studio</div><h1 class="st-h1 mt2">A glimpse of a wider body of work.</h1>
+  <div><div class="eb">Learning Studio</div><h1 class="st-h1 mt2">A glimpse of a wider body of work.</h1>
    <p class="lede mt3">Original resources for IB DP Economics: visual explainers, guides for students and teachers, interactive applications and series. Each is shown through a few real excerpts and an account of how it teaches; the complete resources are not published here.</p></div>
   <div class="st-aud" role="group" aria-label="Show resources for">${ST_AUD.map(([k,n])=>`<button class="st-chip" aria-pressed="${ST.aud===k}" onclick="ST.aud='${k}';render()">${esc(n)}</button>`).join("")}</div></div></section>
  <div class="wrap full st-body">${body}
@@ -41483,7 +41726,7 @@ function stItemPage(it){const t=stType(it.type),tab=stTab(it),cat=stCat(it.enqui
  else if(it.treatment==="C")show=stCollection(it);
  const inside=(it.inside||[]).length?`<section class="st-sec"><h2>What the complete resource contains</h2><ul class="st-ins">${it.inside.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></section>`:"";
  return `<section class="hero st-hero st-ih bg-ink"><div class="wrap full in">
-  <nav class="st-crumb" aria-label="Breadcrumb"><a class="st-rel" href="#/studio">Resource Studio</a> <span aria-hidden="true">/</span> <a class="st-rel" href="${routeFormat("studio",tab)}">${esc(t.n)}</a></nav>
+  <nav class="st-crumb" aria-label="Breadcrumb"><a class="st-rel" href="#/studio">Learning Studio</a> <span aria-hidden="true">/</span> <a class="st-rel" href="${routeFormat("studio",tab)}">${esc(t.n)}</a></nav>
   <div class="eb mt3">${esc(it.kicker)}</div><h1 class="st-h1 mt2">${esc(it.title)}</h1><p class="lede mt3">${esc(it.summary)}</p></div></section>
  <div class="wrap full st-body st-item">
   <div class="st-main">${show}
@@ -41513,59 +41756,78 @@ VIEWS.studio=function(){const it=ARG?stItem(ARG):null;
  if(ARG&&!it)return `<section class="sec"><div class="wrap"><h1>That resource is not in the Studio</h1><p class="mt2">It may have been renamed or retired.</p><p class="mt3"><a class="btn" href="#/studio">See everything in the Studio</a></p></div></section>`;
  return it?stItemPage(it):studioIndex()};
 /* ── the enquiry band, shared by the home page, the Studio and Learning design ── */
-function stEnquireBand(){return `<section class="sec st-enq bg-ink" aria-labelledby="st-enq-h"><div class="wrap full st-enq-in">
+function stEnquireBand(){const sel=STUDIO.items.map(i=>`<option value="${i.id}">${esc(i.title)}</option>`).join("");
+ return `<section class="sec st-enq bg-ink" aria-labelledby="st-enq-h"><div class="wrap full st-enq-in">
   <div><h2 class="st-enq-h" id="st-enq-h">Interested in exploring more?</h2>
-   <p class="lede mt3">The website offers a glimpse of a wider collection of Economics learning resources and interactive experiences. If you are an educator, student or school interested in learning more or exploring a possible collaboration, I would be happy to hear from you.</p></div>
-  <div class="st-enq-a"><a class="btn lg a" href="#/contact">Get in touch</a><a class="btn lg on-ink" href="#/studio">See the Resource Studio</a></div></div></section>`}
+   <p class="lede mt3">The website offers a selection of original Economics learning resources and interactive experiences. If you are an educator, student or school interested in learning more or discussing a possible collaboration, I would be happy to hear from you.</p></div>
+  <div class="st-enq-a"><label class="st-enq-l" for="st-enq-r">What caught your interest? <span>(optional)</span></label>
+   <select id="st-enq-r" onchange="stEnqSet(this.value)"><option value="">Something else, or nothing in particular</option>${sel}</select>
+   <div class="row st-enq-b"><a class="btn lg a" id="st-enq-m" href="${esA(stMail("other",""))}">Write to Arjun</a><a class="btn lg on-ink" href="#/contact">Other ways to get in touch</a></div>
+   <p class="xs st-enq-n">Opens your own email app with the message started. Nothing is sent from this page.</p></div></div></section>`}
+/* the band's email names the resource the visitor chose, under that resource's own enquiry category */
+function stEnqSet(id){const it=id?stItem(id):null,a=document.getElementById("st-enq-m");if(a)a.href=it?stMail(it.enquiry,it.title):stMail("other","")}
 /* ═══ LEARNING DESIGN: seven moves, one real topic ═══════════════════════ */
 const LD_STEPS=[
  ["Concept","Name the idea precisely, and say why it matters."],
- ["Visual understanding","See the idea before formalising it."],
- ["Economic model","Make the idea move, and predict what it will do."],
- ["Real-world application","Attach the model to a market that exists."],
- ["Analysis","Work it through, with numbers that can be checked."],
+ ["Model","Make the idea move, and predict what it will do."],
+ ["Diagram","Draw it so the difference is seen before it is calculated."],
+ ["Evidence","Attach the model to a market that exists."],
+ ["Quantitative reasoning","Work it through, with numbers that can be checked."],
+ ["Stakeholder perspectives","Ask who gains, who pays, and how much."],
+ ["Analysis","Explain the mechanism that produces the result."],
  ["Evaluation","Ask where the model stops being true."],
  ["Judgement","Decide, for a stated aim, and say for whom."]];
 const LD_CALC={p0:40,p1:60,q0:70,q1:63};
 /* the practice question is written once and read by the home page and Learning design */
 const LD_Q="A government wants to raise revenue with an indirect tax. Using a diagram, explain why it might choose a good with price-inelastic demand, and evaluate whether it should.";
 function ldCalc(){const c=LD_CALC,dq=(c.q1-c.q0)/c.q0*100,dp=(c.p1-c.p0)/c.p0*100;return {dq,dp,ped:dq/dp,tr0:c.p0*c.q0,tr1:c.p1*c.q1,gain:(c.p1-c.p0)*c.q1,loss:c.p0*(c.q0-c.q1)}}
+/* the incidence and revenue figures from the explainer's tax slides: one $27 tax, two markets */
+const LD_TAX={tax:27,inel:{pc:64,pp:37,p0:40,q0:60,q1:54},el:{pc:43,pp:16,p0:40,q0:60,q1:54},rev:{inel:[60,54],el:[60,33]}};
 function ldPrev(id,i){const it=stItem(id);return it&&it.previews[i]?it.previews[i]:null}
 function ldFig(id,i){const p=ldPrev(id,i);return p?`<button class="ld-fig" onclick="stView('${id}',${i})" aria-label="Open in the viewer: ${esA(p.cap||"")}">${stImg(p)}</button>`:""}
 function ldCase(){let c=null;try{c=RW_CASES.find(x=>x.id==="MIC-002")}catch(e){}return c}
-function designPage(){const r=ldCalc(),C=(()=>{try{return CONCEPTS.find(x=>x.id==="c-ped")}catch(e){return null}})(),cs=ldCase();
- const step=(i,body)=>`<li class="ld-step" id="ld-${i+1}"><div class="ld-h"><span class="ld-n">${String(i+1).padStart(2,"0")}</span><h2>${esc(LD_STEPS[i][0])}</h2><p>${esc(LD_STEPS[i][1])}</p></div><div class="ld-b">${body}</div></li>`;
- return `<section class="hero ld-hero bg-ink"><div class="wrap full in">
-  <div class="eb">Learning design</div><h1 class="st-h1 mt2">From a concept to a judgement.</h1>
-  <p class="lede mt3">The resources here are built on one sequence. A student meets an idea, sees it, makes it move, finds it in the world, works it through, tests its limits and finally decides. This page follows a single real topic, price elasticity of demand, through all seven moves, using the platform's own materials.</p>
-  <ol class="ld-rail" aria-label="The seven moves">${LD_STEPS.map(([t],i)=>`<li><a class="ld-r" href="#ld-${i+1}" onclick="event.preventDefault();document.getElementById('ld-${i+1}').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})"><span>${String(i+1).padStart(2,"0")}</span>${esc(t)}</a></li>`).join("")}</ol></div></section>
- <div class="wrap full ld-body"><ol class="ld-steps">
-  ${step(0,`<p class="ld-def">${esc(C?C.def:"Price elasticity of demand measures how strongly quantity demanded responds to a change in price: %ΔQd ÷ %ΔP.")}</p>
-   ${C?`<p class="sm mt2">${esc(C.why)}</p>`:""}<p class="mt2"><a class="st-rel" href="#/learn/concept-spine/c-ped">The concept page →</a></p>`)}
-  ${step(1,`${ldFig("price-elasticity-of-demand",0)}<p class="sm mt2">Two demand curves through the same point, on the same axes and the same scale. The same 25% price cut brings a 50% response on one and 10% on the other: the difference is seen before it is calculated.</p>`)}
-  ${step(2,pdDemo({k:"The model, live"}))}
-  ${step(3,`${ldFig("price-elasticity-of-demand",3)}${cs?`<div class="ld-case"><div class="eb">A case on the platform · ${esc([cs.c,cs.y].filter(Boolean).join(" · "))}</div><h3 class="mt1">${esc(cs.t)}</h3>${cs.is?`<p class="sm mt1">${esc(cs.is)}</p>`:""}<p class="mt2"><a class="st-rel" href="${esA(routeFormat("world",0,cs.id))}">Read the case →</a></p></div>`:""}`)}
-  ${step(4,`${ldFig("price-elasticity-of-demand",1)}<div class="ld-calc"><p><b>A worked example.</b> The price rises from $${LD_CALC.p0} to $${LD_CALC.p1}; quantity demanded falls from ${LD_CALC.q0} to ${LD_CALC.q1}.</p>
+function ldConcept(){let C=null;try{C=CONCEPTS.find(x=>x.id==="c-ped")}catch(e){}return C}
+/* ── shared fragments: each explanation is written once, for Learning design and the home journey ── */
+const LD={
+ concept:()=>{const C=ldConcept();return `<p class="ld-def">${esc(C?C.def:"Price elasticity of demand measures how strongly quantity demanded responds to a change in price: %ΔQd ÷ %ΔP.")}</p>
+  ${C?`<p class="sm mt2">${esc(C.why)}</p>`:""}<p class="mt2"><a class="st-rel" href="#/learn/concept-spine/c-ped">The concept page →</a></p>`},
+ map:()=>`${ldFig("price-elasticity-of-demand",4)}<p class="sm mt2">A branch of the one-page revision map that closes the explainer: the degrees of elasticity, the TINS determinants and the HL extensions, each with the slides to revisit.</p><p class="mt2"><a class="st-rel" href="#/mind/mindmaps/ped">Open the interactive PED mindmap →</a></p>`,
+ diagram:()=>`${ldFig("price-elasticity-of-demand",0)}<p class="sm mt2">Two demand curves through the same point, on the same axes and the same scale. The same 25% price cut raises quantity demanded by 50% on the flatter curve (|PED| = 50 ÷ 25 = 2, relatively elastic) and by 10% on the steeper one (|PED| = 10 ÷ 25 = 0.4, relatively inelastic).</p><p class="mt2"><a class="st-rel" href="#/lab/diagram-atlas/ped">The PED plate in the diagram atlas →</a></p>`,
+ evidence:()=>{const cs=ldCase();return `${ldFig("price-elasticity-of-demand",3)}<p class="xs mt2">HL: primary commodities and manufactured products.</p>${cs?`<div class="ld-case"><div class="eb">A case on the platform · ${esc([cs.c,cs.y].filter(Boolean).join(" · "))}</div><h3 class="mt1">${esc(cs.t)}</h3>${cs.is?`<p class="sm mt1">${esc(cs.is)}</p>`:""}<p class="sm mt1">Fuel taxes raise steady revenue because demand for fuel is price inelastic in the short run.</p><p class="mt2"><a class="st-rel" href="${esA(routeFormat("world",0,cs.id))}">Read the case →</a></p></div>`:""}`},
+ calc:fig=>{const r=ldCalc();return `${fig?ldFig("price-elasticity-of-demand",1):""}<div class="ld-calc"><p><b>A worked example.</b> The price rises from $${LD_CALC.p0} to $${LD_CALC.p1}; quantity demanded falls from ${LD_CALC.q0} to ${LD_CALC.q1}.</p>
    <ol class="ld-work"><li>%ΔQd = (${LD_CALC.q1} − ${LD_CALC.q0}) ÷ ${LD_CALC.q0} × 100 = ${r.dq.toFixed(0)}%</li><li>%ΔP = (${LD_CALC.p1} − ${LD_CALC.p0}) ÷ ${LD_CALC.p0} × 100 = +${r.dp.toFixed(0)}%</li>
     <li>PED = ${r.dq.toFixed(0)}% ÷ ${r.dp.toFixed(0)}% = ${r.ped.toFixed(1)}: |PED| &lt; 1, so demand is price inelastic</li>
     <li>Total revenue rises from $${r.tr0.toLocaleString("en-GB")} to $${r.tr1.toLocaleString("en-GB")}: a gain of $${r.gain.toLocaleString("en-GB")} on the units still sold outweighs the loss of $${r.loss.toLocaleString("en-GB")} on the units no longer sold</li></ol>
-   <p class="mt2"><a class="st-rel" href="#/calculate/0/ped">Practise with the PED calculator →</a></p></div>`)}
-  ${step(5,`<ul class="ld-ev"><li><b>A tendency, not a rule.</b> Manufactured goods tend to face more elastic demand than primary commodities, but a medicine is manufactured and usually inelastic.</li>
+   <p class="mt2"><a class="st-rel" href="#/calculate/0/ped">Practise with the PED calculator →</a></p></div>`},
+ stake:()=>{const T=LD_TAX,ri=T.tax*T.rev.inel[1],re=T.tax*T.rev.el[1];return `<dl class="ld-stake">
+   <div><dt>Consumers</dt><dd>When demand is less elastic than supply, consumers bear most of a $${T.tax} tax: the price they pay rises from $${T.inel.p0} to $${T.inel.pc}, so $${T.inel.pc-T.inel.p0} of the $${T.tax}.</dd></div>
+   <div><dt>Producers</dt><dd>When demand is more elastic than supply, producers bear most: the price they keep falls from $${T.el.p0} to $${T.el.pp}, so $${T.el.p0-T.el.pp} of the $${T.tax}.</dd></div>
+   <div><dt>Government</dt><dd>With the same $${T.tax} tax, revenue is $${ri.toLocaleString("en-GB")} when quantity falls ${Math.round((T.rev.inel[0]-T.rev.inel[1])/T.rev.inel[0]*100)}% and $${re.toLocaleString("en-GB")} when it falls ${Math.round((T.rev.el[0]-T.rev.el[1])/T.rev.el[0]*100)}%.</dd></div></dl>
+   <p class="xs mt2">Figures from the explainer's tax-revenue and incidence slides. Incidence depends on PED relative to PES.</p>`},
+ analysis:()=>`${ldFig("price-elasticity-of-demand",2)}<p class="sm mt2">Total revenue is the rectangle P × Q. When |PED| &lt; 1 the higher price on the units still sold outweighs the units lost, so revenue rises with price; when |PED| &gt; 1 the units lost dominate and revenue falls; at |PED| = 1 the two effects offset.</p>`,
+ evaluate:()=>`<ul class="ld-ev"><li><b>A tendency, not a rule.</b> Manufactured goods tend to face more elastic demand than primary commodities, but a medicine is manufactured and usually inelastic.</li>
    <li><b>Time changes the answer.</b> Demand is usually more elastic in the long run, as buyers find substitutes.</li>
    <li><b>Where you measure matters (HL).</b> On a straight-line demand curve PED changes at every point, so one figure describes one price.</li>
    <li><b>Other things are rarely equal.</b> An estimate taken while incomes or rival prices are changing mixes several effects together.</li></ul>
-   <p class="mt2"><a class="st-rel" href="${esA(routeFormat("think",1))}">Stress-test an evaluation →</a></p>`)}
-  ${step(6,`<div class="ld-q"><div class="eb">Practice question, written for this page</div>
+   <p class="mt2"><a class="st-rel" href="${esA(routeFormat("think",1))}">Stress-test an evaluation →</a></p>`,
+ question:()=>`<div class="ld-q"><div class="eb">Practice question, written for this page</div>
    <p class="ld-qt mt1">${esc(LD_Q)}</p>
    <details class="ld-plan"><summary>Plan an answer</summary><ol>
     <li><b>Diagram.</b> Supply shifts up by the tax per unit against a steep demand curve; quantity falls only a little.</li>
     <li><b>Revenue.</b> Tax revenue is the tax per unit times the new quantity, so a small fall in quantity keeps revenue high. With the same $27 tax, revenue is $1,458 when quantity falls 10% and $891 when it falls 45%.</li>
-    <li><b>Incidence.</b> With inelastic demand most of the tax is passed on to consumers as a higher price.</li>
+    <li><b>Incidence.</b> When demand is less elastic than supply, most of the tax is passed on to consumers as a higher price.</li>
     <li><b>Judgement.</b> It depends on the aim. Inelastic demand suits raising revenue but works against reducing consumption, and the burden may fall heavily on households that cannot switch. A strong answer says which aim matters more, and over what period.</li></ol></details>
-   <p class="xs mt2">An original question by Arjun Agrawal. It is not an IB examination question.</p></div>`)}
- </ol>
- <section class="ld-why"><h2>Why this order</h2><p class="ed">Each move needs the one before it. A diagram drawn before the concept is clear becomes decoration; a calculation without a model is arithmetic; an evaluation without analysis is a list. The sequence is the same whether the resource is a slide, a mindmap, a lab or a question, which is why they can be used together.</p>
-  <p class="mt3"><a class="btn" href="#/studio/visual-explainers/price-elasticity-of-demand">See the PED explainer in the Studio</a> <a class="btn gh" href="#/studio">All the work</a></p></section></div>
+   <p class="xs mt2">An original question by Arjun Agrawal. It is not an IB examination question.</p></div>`};
+function designPage(){
+ const body=[LD.concept(),pdDemo({k:"The model, live"}),LD.diagram(),LD.evidence(),LD.calc(false),LD.stake(),LD.analysis(),LD.evaluate(),LD.question()];
+ const step=(i,html)=>`<li class="ld-step" id="ld-${i+1}"><div class="ld-h"><span class="ld-n">${String(i+1).padStart(2,"0")}</span><h2>${esc(LD_STEPS[i][0])}</h2><p>${esc(LD_STEPS[i][1])}</p></div><div class="ld-b">${html}</div></li>`;
+ return `<section class="hero ld-hero bg-ink"><div class="wrap full in">
+  <div class="eb">Learning design</div><h1 class="st-h1 mt2">From a concept to a judgement.</h1>
+  <p class="lede mt3">The resources are built around one progression. A concept becomes a model, the model a diagram; the diagram is tested against evidence, worked through with numbers and seen from each stakeholder's side; then it is analysed, its limits are evaluated and a judgement is made. This page follows a single real topic, price elasticity of demand, through all nine steps, using the platform's own materials.</p>
+  <ol class="ld-rail" aria-label="The nine steps">${LD_STEPS.map(([t],i)=>`<li><a class="ld-r" href="#ld-${i+1}" onclick="event.preventDefault();document.getElementById('ld-${i+1}').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})"><span>${String(i+1).padStart(2,"0")}</span>${esc(t)}</a></li>`).join("")}</ol></div></section>
+ <div class="wrap full ld-body"><ol class="ld-steps">${body.map((h,i)=>step(i,h)).join("")}</ol>
+ <section class="ld-why"><h2>Why this order</h2><p class="ed">Each step needs the one before it. A diagram drawn before the concept is clear becomes decoration; a calculation without a model is arithmetic; an evaluation without analysis is a list. The progression is the same whether the resource is a slide, a mindmap, a lab or a question, which is why they can be used together.</p>
+  <p class="mt3"><a class="btn" href="#/studio/visual-explainers/price-elasticity-of-demand">See the PED explainer in the Learning Studio</a> <a class="btn gh" href="#/studio">All the work</a></p></section></div>
  ${stEnquireBand()}`}
 VIEWS.design=designPage;
 /* ═══ CONTACT AND COLLABORATION ═══════════════════════════════════════════ */
@@ -41591,78 +41853,23 @@ function contactPage(){
    <p class="xs mt2">Looking for one-to-one tutorials? The <button class="lnk" onclick="nav('tutorials')">Tutorials page</button> has the sessions and their terms.</p></div></div>
   <div class="ct-more"><div class="eb">Other ways to reach me</div><ul class="ct-ch">${["whatsapp","linkedin","instagram"].map(k=>CONTACT.find(c=>c.k===k)).filter(Boolean).map(c=>`<li><a class="st-rel" href="${esA(c.href)}" target="_blank" rel="noopener noreferrer">${esc(c.n)}</a></li>`).join("")}</ul></div></div>`}
 VIEWS.contact=()=>{const h=contactPage();window._after=()=>ctLinks();return h};
-/* ── the home page's new bands ────────────────────────────────────────── */
-const RN_ECO=[["Explore a concept","Twenty concepts told as cause and effect","#/learn/concept-spine"],
- ["Understand a diagram","Plates you can study, and labs that move","#/lab/diagram-atlas"],
- ["Connect theory to the real world","Dated cases across many economies","#/world"],
- ["Practise calculations","Worked methods with instant checking","#/calculate"],
- ["Develop exam thinking","Markbands, past-paper patterns and practice","#/examiner"]];
-function rnEcosystem(){return `<ol class="eco" aria-label="Five ways to engage with Economics">${RN_ECO.map(([t,d,h],i)=>`<li><a class="eco-a" href="${h}"><span class="eco-n">${String(i+1).padStart(2,"0")}</span><span class="eco-t">${esc(t)}</span><span class="eco-d">${esc(d)}</span></a></li>`).join("")}</ol>`}
-function rnWorkBand(){const pick=["price-elasticity-of-demand","examiner-guide","ee-navigator","economics-in-60-seconds"].map(stItem).filter(Boolean);
- return `<section class="sec rn-band st-work" id="selected-work"><div class="wrap full">
-  <div class="shead fx"><span class="n">00</span><h2>Selected work</h2><span class="aside">Original resources, shown in part</span></div>
-  <ul class="sw-grid">${pick.map((it,i)=>`<li class="sw-li ${i===0?"lead":""}"><a class="sw-card st-${it.type}" href="${stHref(it)}">
-   <span class="sw-fig">${stCover(it,i===0)}</span>
-   <span class="sw-tx"><span class="st-k">${esc(stType(it.type).n)} · ${esc(it.topics.slice(0,2).join(", "))}</span><span class="st-t">${esc(it.title)}</span>
-    <span class="sw-do"><b>Helps learners</b> ${esc(it.objectives[0].charAt(0).toLowerCase()+it.objectives[0].slice(1))}.</span>
-    <span class="sw-ap">${esc(it.approach.split(/(?<=\.)\s/)[0])}</span><span class="sw-go">${it.disclosure===1?"See the excerpts":"Explore it"} →</span></span></a></li>`).join("")}</ul>
-  <p class="mt4"><a class="btn" href="#/studio">Everything in the Resource Studio</a></p></div></section>`}
-const RN_TOPIC=[["map","Mindmap excerpt"],["diagram","Diagram"],["world","Real-world example"],["calc","Calculation"],["question","Practice question"]];
-const RNT={k:"map"};
-function rnTopicPanel(k){const r=ldCalc(),cs=ldCase();
- if(k==="map")return `${ldFig("price-elasticity-of-demand",4)}<p class="sm mt2">A branch of the one-page revision map that closes the PED explainer: every relationship on one sheet, with the slides to revisit for each.</p><p class="mt2"><a class="st-rel" href="#/mind/mindmaps/ped">Open the interactive PED mindmap →</a></p>`;
- if(k==="diagram")return `${ldFig("price-elasticity-of-demand",0)}<p class="sm mt2">The same price cut, two responses: drawn on the same axes and the same scale, so the difference in elasticity is visible before it is calculated.</p><p class="mt2"><a class="st-rel" href="#/lab/diagram-atlas/ped">The PED plate in the diagram atlas →</a></p>`;
- if(k==="world")return `${ldFig("price-elasticity-of-demand",3)}${cs?`<p class="sm mt2"><b>${esc(cs.t)}</b> (${esc([cs.c,cs.y].filter(Boolean).join(", "))}): fuel taxes raise steady revenue because demand for fuel is price inelastic in the short run.</p><p class="mt2"><a class="st-rel" href="${esA(routeFormat("world",0,cs.id))}">Read the case →</a></p>`:""}`;
- if(k==="calc")return `<div class="ld-calc"><p>The price rises from $${LD_CALC.p0} to $${LD_CALC.p1} and quantity demanded falls from ${LD_CALC.q0} to ${LD_CALC.q1}.</p>
-  <details class="ld-plan"><summary>Show the working</summary><ol class="ld-work"><li>%ΔQd = ${r.dq.toFixed(0)}%, %ΔP = +${r.dp.toFixed(0)}%</li><li>PED = ${r.dq.toFixed(0)} ÷ ${r.dp.toFixed(0)} = ${r.ped.toFixed(1)}, so demand is price inelastic</li><li>Total revenue: $${r.tr0.toLocaleString("en-GB")} → $${r.tr1.toLocaleString("en-GB")} (gain $${r.gain.toLocaleString("en-GB")}, loss $${r.loss.toLocaleString("en-GB")})</li></ol></details>
-  <p class="mt2"><a class="st-rel" href="#/calculate/0/ped">Try the PED calculator →</a></p></div>`;
- return `<div class="ld-q"><p class="ld-qt">${esc(LD_Q)}</p>
-  <p class="xs mt2">An original question by Arjun Agrawal, not an IB examination question.</p><p class="mt2"><a class="st-rel" href="#/design">Plan it step by step in Learning design →</a></p></div>`}
-function rnTopicSet(k){RNT.k=k;const w=document.getElementById("rnt");if(!w)return;
- w.querySelectorAll('[role="tab"]').forEach(b=>{const on=b.dataset.k===k;b.setAttribute("aria-selected",on);b.tabIndex=on?0:-1});
- const p=document.getElementById("rnt-p");if(p){p.innerHTML=rnTopicPanel(k);p.setAttribute("aria-labelledby","rnt-"+k)}}
-function rnTopicKey(e){const ks=RN_TOPIC.map(x=>x[0]);let i=ks.indexOf(RNT.k);
- if(e.key==="ArrowRight")i=(i+1)%ks.length;else if(e.key==="ArrowLeft")i=(i-1+ks.length)%ks.length;else if(e.key==="Home")i=0;else if(e.key==="End")i=ks.length-1;else return;
- e.preventDefault();rnTopicSet(ks[i]);const b=document.getElementById("rnt-"+ks[i]);if(b)b.focus()}
-function rnTopicBand(){return `<section class="sec rn-band rnt-band bg-paper"><div class="wrap full">
-  <div class="shead fx"><span class="n">00</span><h2>One topic, five ways in</h2><span class="aside">Price elasticity of demand</span></div>
-  <p class="ed mt2">The resources are designed to work together. Here is one topic, price elasticity of demand, as a mindmap, a diagram, a real case, a calculation and a question.</p>
-  <div class="rnt" id="rnt"><div class="rnt-tabs" role="tablist" aria-label="Price elasticity of demand, five ways" onkeydown="rnTopicKey(event)">
-   ${RN_TOPIC.map(([k,n])=>`<button role="tab" id="rnt-${k}" data-k="${k}" aria-selected="${RNT.k===k}" aria-controls="rnt-p" tabindex="${RNT.k===k?0:-1}" onclick="rnTopicSet('${k}')">${esc(n)}</button>`).join("")}</div>
-   <div class="rnt-p" id="rnt-p" role="tabpanel" aria-labelledby="rnt-${RNT.k}" tabindex="0">${rnTopicPanel(RNT.k)}</div></div>
-  <p class="mt3"><a class="st-rel" href="#/design">See the whole sequence, from concept to judgement →</a></p></div></section>`}
-function rnLabDemoBand(){return `<section class="sec rn-band pd-band bg-ink"><div class="wrap full">
-  <div class="shead fx on-ink"><span class="n">00</span><h2>Inside the learning lab</h2><span class="aside">A working miniature</span></div>
-  <p class="lede mt2">Predict first, then move the model and check. This is one small part of the elasticity lab, on the same demand curve the PED explainer uses.</p>
-  ${pdDemo({cls:"on-ink"})}<p class="mt3"><a class="btn on-ink" href="#/lab/elasticity-lab">Open the full elasticity lab</a> <a class="btn gh on-ink" href="#/lab">All the labs</a></p></div></section>`}
-const RN_THINK=[["Mechanism before definition","A concept is stored as a chain of cause and effect, so a student can explain it rather than recite it.","#/learn/concept-spine","The concept spine"],
- ["Same axes, same scale","Comparisons are drawn so that the difference is seen, not asserted.","#/studio/visual-explainers/price-elasticity-of-demand","The PED explainer"],
- ["Predict, then check","The labs ask what will happen before they show it, because a corrected prediction is remembered.","#/lab","The labs"],
- ["Numbers that can be checked","Every figure on a diagram can be recomputed by hand, so the model and the arithmetic agree.","#/studio/visual-explainers/balance-of-payments","The balance of payments explainer"],
- ["Connections make transfer","Topics are joined to each other, which is where application to unfamiliar cases comes from.","#/mind/connect-two-ideas","Connect two ideas"],
- ["Judgement, not lists","Evaluation asks what a conclusion depends on, for whom and over what time, and then decides.","#/think/evaluation-stress-test","The evaluation stress test"]];
-function rnThinkingBand(){return `<section class="sec rn-band rnk-band"><div class="wrap full">
-  <div class="shead fx"><span class="n">00</span><h2>The thinking behind the resources</h2><span class="aside">From understanding to independent thinking</span></div>
-  <ol class="rnk">${RN_THINK.map(([t,d,h,l],i)=>`<li><span class="rnk-n">${String(i+1).padStart(2,"0")}</span><h3>${esc(t)}</h3><p class="sm">${esc(d)}</p><a class="st-rel" href="${h}">See it: ${esc(l)} →</a></li>`).join("")}</ol>
-  <p class="mt3"><a class="btn gh" href="#/design">Learning design: one topic, seven moves</a></p></div></section>`}
-Object.assign(RN_BANDS,{"@work":rnWorkBand,"@onetopic":rnTopicBand,"@labdemo":rnLabDemoBand,"@thinking":rnThinkingBand,"@enquire":stEnquireBand});
 /* the Resource hub and the Studio point at each other: the hub is the free
    library, the Studio is the wider work shown in part */
 (function(){const prev=VIEWS.resources;if(typeof prev!=="function")return;VIEWS.resources=function(){const h=prev.apply(this,arguments);if(TAB!==0)return h;
  const i=h.indexOf("</section>");if(i<0)return h;
- return h.slice(0,i+10)+`<div class="wrap st-hubnote"><p class="sm"><b>Looking for original resources that are not in the library?</b> The <a class="st-rel" href="#/studio">Resource Studio</a> shows a selection of Arjun's wider work, in part, with a way to ask about each piece.</p></div>`+h.slice(i+10)}})();
+ return h.slice(0,i+10)+`<div class="wrap st-hubnote"><p class="sm"><b>Looking for original resources that are not in the library?</b> The <a class="st-rel" href="#/studio">Learning Studio</a> shows a selection of Arjun's wider work, in part, with a way to ask about each piece.</p></div>`+h.slice(i+10)}})();
 /* a dialog left open must not survive a change of page */
 /* and an item has its own title in the tab, in history and when shared */
 (function(){const prev=render;render=function(){const d=document.getElementById("st-dlg");if(d&&d.open)d.close();const r=prev.apply(this,arguments);
- if(VIEW==="studio"&&ARG){const it=stItem(ARG);if(it)document.title=it.title+" · Resource Studio · Arjun Agrawal"}return r}})();
+ if(VIEW==="studio"&&ARG){const it=stItem(ARG);if(it)document.title=it.title+" · Learning Studio · Arjun Agrawal"}return r}})();
 /* ── search: every Studio item, and the two new pages ── */
 (function(){if(typeof buildIndex!=="function")return;const prev=buildIndex;
  buildIndex=function(){if(SIDX)return SIDX;const I=prev().slice();
-  STUDIO.items.forEach(it=>I.push({k:"Resource Studio",t:it.title,d:it.summary,go:`nav('studio',${stTab(it)},'${it.id}')`,s:[it.id,it.kicker,it.topics.join(" "),it.audience.join(" "),it.format,"resource studio original work arjun"].join(" ")}));
-  I.push({k:"Resource Studio",t:"Learning design: from a concept to a judgement",d:"Seven moves, followed through price elasticity of demand",go:"nav('design')",s:"learning design pedagogy approach sequence concept model evaluation judgement ped"});
-  I.push({k:"Resource Studio",t:"Contact and collaboration",d:"Resource enquiries, school use, collaboration, workshops and custom resources",go:"nav('contact')",s:"contact email enquiry collaboration school workshop professional learning custom resource"});
+  STUDIO.items.forEach(it=>I.push({k:"Learning Studio",t:it.title,d:it.summary,go:`nav('studio',${stTab(it)},'${it.id}')`,s:[it.id,it.kicker,it.topics.join(" "),it.audience.join(" "),it.format,"resource studio original work arjun"].join(" ")}));
+  I.push({k:"Learning Studio",t:"Learning design: from a concept to a judgement",d:"Seven moves, followed through price elasticity of demand",go:"nav('design')",s:"learning design pedagogy approach sequence concept model evaluation judgement ped"});
+  I.push({k:"Learning Studio",t:"Contact and collaboration",d:"Resource enquiries, school use, collaboration, workshops and custom resources",go:"nav('contact')",s:"contact email enquiry collaboration school workshop professional learning custom resource"});
   return SIDX=I};
- if(typeof RN_KIND_W!=="undefined")RN_KIND_W["Resource Studio"]=2.2;try{SIDX=null}catch(e){}})();
+ if(typeof RN_KIND_W!=="undefined")RN_KIND_W["Learning Studio"]=2.2;try{SIDX=null}catch(e){}})();
 /* ── self-tests ─────────────────────────────────────────────────────────── */
 function STUDIOSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){det=e.message}out.push({n,ok:!!ok,detail:det})};
  const txt=h=>h.replace(/<[^>]+>/g," ").replace(/\s+/g," ");
@@ -41684,16 +41891,193 @@ function STUDIOSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{cons
  T("Lab miniature · PED along P = 90 − Q matches the explainer's four points",()=>[[70,3.5],[45,1],[20,0.2857],[10,0.125]].every(([p,e])=>Math.abs(pdCalc(p).ped-e)<0.001)&&pdCalc(45).tr===2025&&pdClass(1)==="unit elastic");
  T("Lab miniature · the revenue verdict follows the elasticity",()=>[10,20,30,40].every(p=>pdCalc(p+5).tr>pdCalc(p).tr)&&[50,60,70,80].every(p=>pdCalc(p+5).tr<pdCalc(p).tr));
  T("Learning design · the worked calculation is correct",()=>{const r=ldCalc();return Math.abs(r.dq+10)<1e-9&&Math.abs(r.dp-50)<1e-9&&Math.abs(r.ped+0.2)<1e-9&&r.tr0===2800&&r.tr1===3780&&r.gain===1260&&r.loss===280&&r.tr1-r.tr0===r.gain-r.loss});
- T("Learning design · the seven moves appear in order",()=>{const h=txt(designPage());let i=-1;return LD_STEPS.every(([s])=>{const j=h.indexOf(s,i+1);if(j<0)return false;i=j;return true})});
+ T("Learning design · the nine steps appear in order",()=>{const h=txt(designPage());let i=-1;return LD_STEPS.every(([s])=>{const j=h.indexOf(s,i+1);if(j<0)return false;i=j;return true})});
  T("Learning design · the practice question is labelled as original, not an IB question",()=>/not an IB examination question/.test(txt(designPage())));
  T("Contact · six categories, real addresses, and no form that pretends to send",()=>{const h=contactPage();return STUDIO.enquiries.length===6&&STUDIO.enquiries.every(e=>h.includes(esc(e.n)))&&!/<form/i.test(h)&&h.includes("mailto:"+TUT.email)&&/Nothing is sent from this page/.test(h)});
- T("Home · the hero carries the headline, the copy and both actions",()=>{const h=txt(VIEWS.home());return h.includes("Economics is not just a subject to study. It is a way to think.")&&h.includes("An interactive learning ecosystem for IB DP Economics, connecting concepts, visual understanding, real-world evidence and exam thinking.")&&/Explore Economics/.test(h)&&/Discover My Work/.test(h)});
- T("Home · selected work, one topic, the lab, the thinking and the enquiry band are present",()=>{const h=txt(VIEWS.home());return ["Selected work","One topic, five ways in","Inside the learning lab","The thinking behind the resources","Interested in exploring more?"].every(x=>h.includes(x))});
- T("Home · the five ecosystem pathways open real pages",()=>RN_ECO.every(([,,h])=>!!routeParse(h)));
+ T("Home · the hero carries the headline, the copy and both actions",()=>{const h=txt(VIEWS.home());return h.includes("Economics is not just a subject to study. It is a way to think.")&&h.includes("An interactive learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking.")&&/Explore Economics/.test(h)&&/Discover the Learning Studio/.test(h)});
+ T("Home · the exhibition, the six perspectives, the lab, the progression and the enquiry band are present",()=>{const h=txt(VIEWS.home());return ["Inside the Economics Learning Studio","One topic, six perspectives","Inside the learning lab","From concept to judgement","Interested in exploring more?"].every(x=>h.includes(x))});
  return out}
-STUDIOSUITE.suiteName="Resource Studio";
+STUDIOSUITE.suiteName="Learning Studio";
 EXTRA_SUITES.push(STUDIOSUITE);
-QAREPORT.push({area:"Resource Studio",re:/^(Studio|Lab miniature|Learning design|Contact|Home ·)/,what:"The showcase publishes only level 1 and 2 metadata and screen-resolution excerpts; links, enquiries, the PED miniature, the worked calculation and the new home bands are checked."});
+QAREPORT.push({area:"Learning Studio",re:/^(Studio|Lab miniature|Learning design|Contact|Home ·)/,what:"The showcase publishes only level 1 and 2 metadata and screen-resolution excerpts; links, enquiries, the PED miniature, the worked calculation and the new home bands are checked."});
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PROJECT ATLAS · the landing experience
+   The home page's opening sequence, rebuilt as one argument: six pathways into
+   the platform; an exhibition of the original work, each piece shown in the
+   form that suits it; one topic followed through six perspectives; a working
+   prediction lab drawn from the platform's own Predict-a-diagram data; and the
+   progression the resources are designed around, illustrated with a second
+   real topic (a rupee depreciation) so the method is seen to travel.
+   Every number shown is counted or computed, every link opens a real page, and
+   every resource image is a screen-resolution excerpt from assets/studio/.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1 · Six pathways into the platform ──────────────────────────────────── */
+const AT_GLYPH={
+ concept:'<circle cx="8" cy="10" r="3"/><circle cx="30" cy="8" r="3"/><circle cx="20" cy="28" r="3.5"/><path d="M10.6 11.4 17.8 25.6M27.6 10.2 21.6 25M11 9.6 27 8.4"/>',
+ diagram:'<path d="M4 4v32h32"/><path d="M8 8l26 22M8 30 34 8"/><circle cx="21" cy="19" r="2.4"/>',
+ world:'<path d="M4 30 12 22l6 4 8-12 10 6"/><circle cx="26" cy="14" r="2.4"/><path d="M4 36h32"/>',
+ calc:'<path d="M8 13h24M8 27h24"/><text x="20" y="10" text-anchor="middle">%ΔQ</text><text x="20" y="38" text-anchor="middle">%ΔP</text>',
+ test:'<rect x="5" y="5" width="30" height="30" rx="3"/><path d="M12 20l6 6 11-13"/>',
+ exam:'<path d="M5 34h8v-8h8v-8h8v-8h6"/><path d="M5 34h30"/>'};
+function atGlyph(k){return `<svg class="at-gl" viewBox="0 0 40 40" aria-hidden="true" focusable="false">${AT_GLYPH[k]}</svg>`}
+function atPaths(){const n=(()=>{try{return rnCount()}catch(e){return {}}})();let C=0;try{C=CONCEPTS.length}catch(e){}
+ return [["concept","Understand a concept","Each idea told as a chain of cause and effect, with what it explains.","#/learn/concept-spine",C?`${C} concepts`:""],
+  ["diagram","Explore a diagram","Plates you can study, and labs where the curves move.","#/lab/diagram-atlas",n.diagrams?`${fmtN(n.diagrams)} diagram plates`:""],
+  ["world","Investigate a real-world issue","Dated cases, each read through a model.","#/world",n.cases?`${fmtN(n.cases)} cases · ${fmtN(n.economies)} economies`:""],
+  ["calc","Practise a calculation","Worked methods, with your own numbers checked.","#/calculate",n.calcs?`${fmtN(n.calcs)} calculations`:""],
+  ["test","Test understanding","Questions, retrieval and drills that show what has stuck.","#/practise",""],
+  ["exam","Develop exam thinking","Markbands, past-paper patterns and the habits that earn marks.","#/examiner",n.dna?`${fmtN(n.dna)} Exam DNA records`:""]]}
+function rnPathways(){const P=atPaths();
+ return `<ol class="at-route" aria-label="Six ways into Economics">${P.map(([k,t,d,h,c],i)=>`<li class="at-stop"><a class="at-sa" href="${h}">
+   <span class="at-sn">${String(i+1).padStart(2,"0")}</span>${atGlyph(k)}
+   <span class="at-st">${esc(t)}</span><span class="at-sd">${esc(d)}</span>${c?`<span class="at-sc">${esc(c)}</span>`:""}</a></li>`).join("")}</ol>`}
+
+/* ── 2 · Inside the Economics Learning Studio: an exhibition, not a card wall ── */
+function atImg(id,i,cls,eager){const p=ldPrev(id,i);return p?stImg(p,cls||"",eager):""}
+function atExhibitHead(it,label){return `<div class="ex-k">${esc(label)} · ${esc(it.kicker.split(" · ").slice(1).join(" · ")||stType(it.type).n)}</div><h3 class="ex-t">${esc(it.title)}</h3>`}
+function atFeatured(it){
+ return `<article class="ex ex-feature" aria-labelledby="ex-f-t">
+  <div class="ex-spread">
+   <button class="ex-main ld-fig" onclick="stView('${it.id}',0)" aria-label="Open in the viewer: ${esA(it.previews[0].cap)}">${atImg(it.id,0,"",false)}</button>
+   <button class="ex-side ld-fig" onclick="stView('${it.id}',1)" aria-label="Open in the viewer: ${esA(it.previews[1].cap)}">${atImg(it.id,1)}</button>
+   <button class="ex-side ld-fig" onclick="stView('${it.id}',3)" aria-label="Open in the viewer: ${esA(it.previews[3].cap)}">${atImg(it.id,3)}</button>
+  </div>
+  <div class="ex-copy"><div class="ex-k">Featured exhibit · Visual explainer · Unit 4.5</div>
+   <h3 class="ex-t ex-tl" id="ex-f-t">${esc(it.title)}, told through one currency</h3>
+   <p class="ex-p">${esc(it.summary)}</p>
+   <div class="ex-why"><div class="ex-wk">What makes it useful</div><p>${esc(it.approach)}</p></div>
+   <dl class="ex-meta"><div><dt>Format</dt><dd>${esc(it.format)}</dd></div><div><dt>Level</dt><dd>${esc(it.level)}</dd></div></dl>
+   <div class="row ex-act"><a class="btn a" href="${stHref(it)}">Explore the explainer</a><a class="btn gh" href="${esA(stMail(it.enquiry,it.title))}">Ask about it</a></div></div></article>`}
+function atVisual(it){
+ return `<article class="ex ex-visual"><a class="ex-fig" href="${stHref(it)}" aria-label="${esA(it.title)}: open in the Learning Studio">${atImg(it.id,0)}</a>
+  <div class="ex-body">${atExhibitHead(it,"Visual explainer")}<p class="ex-p">${esc(it.objectives[1]||it.objectives[0])}.</p>
+   <p class="ex-l"><a class="st-rel" href="${stHref(it)}">See five excerpts →</a> <a class="st-rel" href="#at-journey">Follow it through six perspectives ↓</a></p></div></article>`}
+function atEditorial(it){
+ return `<article class="ex ex-editorial"><div class="ex-pages" aria-hidden="false">
+   <button class="ex-page ld-fig" onclick="stView('${it.id}',0)" aria-label="Open in the viewer: ${esA(it.previews[0].cap)}">${atImg(it.id,0)}</button>
+   ${it.previews[1]?`<button class="ex-page ld-fig" onclick="stView('${it.id}',1)" aria-label="Open in the viewer: ${esA(it.previews[1].cap)}">${atImg(it.id,1)}</button>`:""}</div>
+  <div class="ex-body">${atExhibitHead(it,"Editorial")}<p class="ex-p">${esc(it.summary)}</p>
+   <p class="ex-l"><a class="st-rel" href="${stHref(it)}">Read the excerpts →</a></p></div></article>`}
+function atApp(it){
+ return `<article class="ex ex-app"><a class="ex-fig" href="${stHref(it)}" aria-label="${esA(it.title)}: open in the Learning Studio">${atImg(it.id,0)}</a>
+  <div class="ex-body">${atExhibitHead(it,"Interactive application")}<p class="ex-p">${esc(it.objectives[0])}; ${esc(it.objectives[1].charAt(0).toLowerCase()+it.objectives[1].slice(1))}.</p>
+   <ol class="ex-toc">${(it.inside||[]).slice(0,4).map(x=>`<li>${esc(x)}</li>`).join("")}</ol>
+   <p class="ex-l"><a class="st-rel" href="${stHref(it)}">What the Navigator covers →</a></p></div></article>`}
+function atSeries(it){let C=[];try{C=C60}catch(e){}
+ return `<article class="ex ex-series" aria-labelledby="ex-s-t"><div class="ex-shead"><div>${atExhibitHead(it,"Series").replace('<h3 class="ex-t">','<h3 class="ex-t" id="ex-s-t">')}</div>
+   <p class="ex-p">${esc(it.summary)}</p></div>
+  <ol class="ex-shelf" aria-label="Ten issues">${C.map(c=>`<li><button class="ex-issue" onclick="c60Open('${c.id}')">${stC60(c.id)?`<img src="${stC60(c.id)}" alt="" width="360" height="450" loading="lazy" decoding="async">`:""}<span class="ex-in">Issue ${c.id}</span><span class="ex-it">${esc(c.t)}</span></button></li>`).join("")}</ol></article>`}
+function rnObservatory(){const g=id=>stItem(id);const F=g("exchange-rates"),P=g("price-elasticity-of-demand"),E=g("examiner-guide"),N=g("ee-navigator"),S=g("economics-in-60-seconds");
+ if(!F||!P||!E||!N||!S)return "";
+ return `<section class="sec rn-band at-obs" id="selected-work" aria-labelledby="at-obs-h"><div class="wrap full">
+  <div class="shead fx"><span class="n">00</span><h2 id="at-obs-h">Inside the Economics Learning Studio</h2><span class="aside">Original work, shown in part</span></div>
+  <p class="ed at-intro">Selected visual explanations, interactive experiences and assessment resources, designed to help learners connect economic theory with application.</p>
+  ${atFeatured(F)}
+  <div class="ex-row">${atVisual(P)}${atEditorial(E)}${atApp(N)}</div>
+  ${atSeries(S)}
+  <p class="at-more"><a class="btn" href="#/studio">Visit the Learning Studio</a><span class="xs">Selected previews. The complete resources are not included.</span></p></div></section>`}
+
+/* ── 3 · One topic, six perspectives ─────────────────────────────────────── */
+const AT_J=[
+ ["understand","Understand","Meet the idea and see where it sits.",()=>LD.concept()+LD.map()],
+ ["visualise","Visualise","See the difference before calculating it.",()=>LD.diagram()],
+ ["apply","Apply","Find it in a market that exists.",()=>LD.evidence()],
+ ["calculate","Calculate","Work it through, with figures that can be checked.",()=>LD.calc(true)],
+ ["interact","Interact","Predict, then let the model answer.",()=>pdDemo({k:"Predict, then check"})],
+ ["evaluate","Evaluate","Ask where it stops being true, then decide.",()=>LD.evaluate()+LD.question()]];
+const ATJ={i:0};
+function atJPanel(i){const [k,t,d,f]=AT_J[i];
+ return `<div class="aj-ph"><span class="aj-pn">${String(i+1).padStart(2,"0")}</span><div><h3 class="aj-pt">${esc(t)}</h3><p class="aj-pd">${esc(d)}</p></div></div><div class="aj-pb">${f()}</div>
+  <div class="aj-nav">${i>0?`<button class="btn gh sm" onclick="atJGo(${i-1},true)">← ${esc(AT_J[i-1][1])}</button>`:"<span></span>"}${i<AT_J.length-1?`<button class="btn sm" onclick="atJGo(${i+1},true)">${esc(AT_J[i+1][1])} →</button>`:`<a class="btn sm" href="#/design">The full progression, in nine steps →</a>`}</div>`}
+function atJGo(i,focus){ATJ.i=i;const w=document.getElementById("at-journey");if(!w)return;
+ w.querySelectorAll('[role="tab"]').forEach((b,j)=>{const on=j===i;b.setAttribute("aria-selected",on);b.tabIndex=on?0:-1;b.closest("li").classList.toggle("on",on);b.closest("li").classList.toggle("done",j<i)});
+ const p=document.getElementById("aj-panel");if(p){p.innerHTML=atJPanel(i);p.setAttribute("aria-labelledby","aj-t-"+AT_J[i][0]);if(AT_J[i][0]==="interact")pdPaint()}
+ if(focus){const b=document.getElementById("aj-t-"+AT_J[i][0]);if(b)b.focus()}}
+function atJKey(e){const n=AT_J.length;let i=ATJ.i;
+ if(e.key==="ArrowDown"||e.key==="ArrowRight")i=(i+1)%n;else if(e.key==="ArrowUp"||e.key==="ArrowLeft")i=(i-1+n)%n;else if(e.key==="Home")i=0;else if(e.key==="End")i=n-1;else return;
+ e.preventDefault();atJGo(i,true)}
+function rnJourney(){const i=ATJ.i;
+ return `<section class="sec rn-band at-journey bg-paper" id="at-journey" aria-labelledby="aj-h"><div class="wrap full">
+  <div class="shead fx"><span class="n">00</span><h2 id="aj-h">One topic, six perspectives</h2><span class="aside">Price elasticity of demand</span></div>
+  <p class="ed at-intro">The resources are designed to work together. Follow one topic from a first idea to a judgement, through a mindmap, a diagram, a real case, a calculation, a working model and an original question. Each stage stands on its own: start anywhere.</p>
+  <div class="aj">
+   <ol class="aj-rail" role="tablist" aria-orientation="vertical" aria-label="Six perspectives on price elasticity of demand" onkeydown="atJKey(event)">
+    ${AT_J.map(([k,t,d],j)=>`<li class="${j===i?"on":""}${j<i?" done":""}"><button role="tab" id="aj-t-${k}" aria-selected="${j===i}" aria-controls="aj-panel" tabindex="${j===i?0:-1}" onclick="atJGo(${j})"><span class="aj-n">${String(j+1).padStart(2,"0")}</span><span class="aj-t">${esc(t)}</span><span class="aj-d">${esc(d)}</span></button></li>`).join("")}</ol>
+   <div class="aj-panel" id="aj-panel" role="tabpanel" aria-labelledby="aj-t-${AT_J[i][0]}" tabindex="0">${atJPanel(i)}</div></div></div></section>`}
+
+/* ── 4 · The learning lab: predict, then see the model ───────────────────────
+   A miniature of the platform's Predict-a-diagram lab, using its own questions
+   and explanations for an indirect tax (DMPREDICT.tax), so nothing is copied
+   or invented. One prediction at a time, immediate feedback, then the model's
+   own diagram and a way into the five other diagrams. */
+const AL={k:"tax",i:0,ans:[]};
+function alQs(){try{return DMPREDICT[AL.k]||[]}catch(e){return []}}
+function alPick(o){const q=alQs()[AL.i];if(!q||AL.ans[AL.i]!==undefined)return;AL.ans[AL.i]=o;alPaint(true)}
+function alNext(){AL.i++;alPaint(true)}
+function alReset(){AL.i=0;AL.ans=[];alPaint(true)}
+function alBody(){const Q=alQs(),n=Q.length;if(!n)return "";
+ const dots=`<ol class="al-dots" aria-label="Progress">${Q.map((q,j)=>`<li class="${AL.ans[j]===undefined?"":AL.ans[j]===q[3]?"ok":"no"}${j===AL.i?" cur":""}"><span class="sr">Prediction ${j+1}${AL.ans[j]===undefined?"":AL.ans[j]===q[3]?": matched the model":": the model differs"}</span></li>`).join("")}</ol>`;
+ if(AL.i>=n){const s=Q.filter((q,j)=>AL.ans[j]===q[3]).length;let fig="";try{fig=dgm(AL.k,{note:false,src:"Generated from the model"})}catch(e){}
+  return `${dots}<div class="al-done"><div class="al-score"><span class="al-sv">${s}</span><span class="al-so">of ${n}</span></div>
+   <p class="al-sm">${s===n?"Every prediction matched what the model does: that is understanding rather than recognition.":"The predictions the model disagreed with are where the learning is. Each explanation below shows why."}</p>
+   <div class="al-fig">${fig}</div>
+   <ol class="al-rev">${Q.map((q,j)=>`<li class="${AL.ans[j]===q[3]?"ok":"no"}"><b>${esc(q[1])}</b> <span>${esc(q[2][q[3]])}.</span> ${esc(q[4])}</li>`).join("")}</ol>
+   <div class="row al-act"><a class="btn a" href="${esA(routeFormat("lab",11))}">Predict five more diagrams in the lab</a><button class="btn gh" onclick="alReset()">Start again</button></div></div>`}
+ const q=Q[AL.i],a=AL.ans[AL.i],done=a!==undefined;
+ return `${dots}<p class="al-q" id="al-q">${esc(q[1])}</p>
+  <div class="al-opts" role="group" aria-labelledby="al-q">${q[2].map((o,oi)=>`<button class="al-o${done?(oi===q[3]?" right":oi===a?" wrong":""):""}" ${done?"disabled":""} onclick="alPick(${oi})">${esc(o)}</button>`).join("")}</div>
+  <div class="al-fb" aria-live="polite">${done?`<p class="al-v ${a===q[3]?"ok":"no"}">${a===q[3]?"That is what the model does.":`The model says: ${esc(q[2][q[3]].toLowerCase())}.`}</p><p class="al-x">${esc(q[4])}</p>
+   <button class="btn sm al-next" onclick="alNext()">${AL.i<n-1?"Next prediction →":"See the model →"}</button>`:""}</div>
+  ${AL.i<n-1?`<ol class="al-next-list" aria-label="Still to predict">${Q.slice(AL.i+1).map((x,j)=>`<li><span>${String(AL.i+j+2).padStart(2,"0")}</span>${esc(x[1])}</li>`).join("")}</ol>`:""}
+  <p class="al-next-note">The diagram stays hidden until all five predictions are made.</p>`}
+function alPaint(focus){const w=document.getElementById("al-body");if(!w)return;w.innerHTML=alBody();
+ if(focus){const t=w.querySelector(".al-next")||w.querySelector(".al-o:not([disabled])")||w.querySelector(".al-act .btn");if(t)t.focus()}}
+function rnLabBand(){if(!alQs().length)return "";
+ return `<section class="sec rn-band al-band bg-ink" aria-labelledby="al-h"><div class="wrap full al-grid">
+  <div class="al-intro"><div class="shead fx on-ink"><span class="n">00</span><h2 id="al-h">Inside the learning lab</h2></div>
+   <p class="lede mt2">Predict first, then let the model answer. A government places an indirect tax on a good. Before the diagram is shown, say what happens to five things, one at a time.</p>
+   <p class="sm al-src">From <a class="st-rel" href="${esA(routeFormat("lab",11))}">Predict a diagram</a>, one of the platform's labs: the same questions and explanations, for one of its six diagrams.</p></div>
+  <div class="al-card" id="al-body">${alBody()}</div></div></section>`}
+
+/* ── 5 · From concept to judgement: the progression, with a second real topic ── */
+const AT_P=[
+ ["Concept","Depreciation: the rupee buys fewer dollars. A quote moving from US$1 = ₹80 to US$1 = ₹88 means each rupee is worth less.","#/learn/concept-spine/c-fx","The concept page"],
+ ["Model","The rupee's price is set by demand for and supply of rupees in the foreign exchange market.","#/studio/visual-explainers/exchange-rates","Exchange rates explainer"],
+ ["Diagram","Demand for rupees falls from D₁ to D₂: the exchange rate falls from ER₁ to ER₂.","#/everywhere/labs/fx","Exchange-rate lab"],
+ ["Evidence","The rupee against the dollar, from sourced data on the platform.","#/data/markets-and-prices","Economic data"],
+ ["Quantitative reasoning","Marshall-Lerner: export and import elasticities of 0.8 and 0.6 sum to 1.4 > 1, so a 10% depreciation moves balanced trade to +₹4.6 per ₹100.","#/studio/visual-explainers/balance-of-payments","Balance of payments explainer"],
+ ["Stakeholder perspectives","Exporters become more competitive; importers, and firms with debts in US$, pay more; households receiving remittances get more rupees per dollar.","#/studio/visual-explainers/exchange-rates","The transmission slide"],
+ ["Analysis","Two channels at once: higher net exports raise aggregate demand, while dearer imported inputs shift short-run aggregate supply left.","#/studio/visual-explainers/exchange-rates","Exchange rates explainer"],
+ ["Evaluation","In the short run demand is inelastic, so the trade balance can worsen before it improves: the J-curve.","#/studio/visual-explainers/balance-of-payments","Balance of payments explainer"],
+ ["Judgement","Should the central bank let the rupee fall, or intervene? It depends on whether the inflation cost outweighs the competitiveness gain, and over what horizon.","#/think/evaluation-stress-test","Evaluation stress test"]];
+function rnPhilosophy(){
+ return `<section class="sec rn-band at-phil" aria-labelledby="ap-h"><div class="wrap full">
+  <div class="shead fx"><span class="n">00</span><h2 id="ap-h">From concept to judgement</h2><span class="aside">How the resources are designed</span></div>
+  <div class="ap-lead"><p class="ed">Economics is learnt as a connected way of reasoning, not as a list of definitions and diagrams. Every resource here is built to move a learner along the same progression, from naming an idea to deciding what should be done about it, and to make each step visible. One real topic shows it: a depreciation of the rupee, followed through the platform's own explainers and data.</p>
+   <p class="mt3"><a class="st-rel" href="#/design">The same progression for price elasticity, step by step →</a></p></div>
+  <ol class="ap-flow">${AT_P.map(([t,x,h,l],i)=>`<li class="ap-s"><span class="ap-n">${String(i+1).padStart(2,"0")}</span><h3 class="ap-t">${esc(t)}</h3><p class="ap-x">${esc(x)}</p><a class="ap-l" href="${h}">${esc(l)} →</a></li>`).join("")}</ol></div></section>`}
+
+Object.assign(RN_BANDS,{"@work":rnObservatory,"@onetopic":rnJourney,"@labdemo":rnLabBand,"@thinking":rnPhilosophy,"@enquire":stEnquireBand});
+
+/* ── self-tests ─────────────────────────────────────────────────────────── */
+function ATLASSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){det=e.message}out.push({n,ok:!!ok,detail:det})};
+ const txt=h=>h.replace(/<[^>]+>/g," ").replace(/\s+/g," ");
+ T("Atlas · six pathways, each opening a real page",()=>{const P=atPaths();return P.length===6&&P.every(p=>!!routeParse(p[3]))});
+ T("Atlas · every count beside a pathway is the platform's own",()=>{const n=rnCount(),h=txt(rnPathways());return h.includes(fmtN(n.cases)+" cases")&&h.includes(fmtN(n.calcs)+" calculations")&&h.includes(fmtN(n.diagrams)+" diagram plates")});
+ T("Atlas · the exhibition shows five pieces in five different forms",()=>{const h=rnObservatory();return ["ex-feature","ex-visual","ex-editorial","ex-app","ex-series"].every(c=>h.includes(c))&&(h.match(/class="ex ex-/g)||[]).length===5});
+ T("Atlas · every exhibit image is a Studio excerpt or a public carousel cover",()=>{const h=rnObservatory();const src=[...h.matchAll(/<img[^>]+src="([^"]+)"/g)].map(m=>m[1]);return src.length>0&&src.every(s=>/^assets\/studio\/[a-z0-9-]+\/[a-z0-9-]+\.webp$/.test(s)||/^data:image\/(jpeg|png)/.test(s)||/^blob:/.test(s))});
+ T("Atlas · the journey has six stages, each with its own content",()=>AT_J.length===6&&AT_J.every((s,i)=>atJPanel(i).length>200)&&AT_J.map(s=>s[1]).join("|")==="Understand|Visualise|Apply|Calculate|Interact|Evaluate");
+ T("Atlas · the lab miniature uses the platform's own predictions and answers them correctly",()=>{const Q=alQs();const k=[AL.i,AL.ans.slice()];try{AL.i=0;AL.ans=[];Q.forEach((q,j)=>{AL.ans[j]=q[3]});AL.i=Q.length;const h=txt(alBody());return Q.length===5&&Q===DMPREDICT.tax&&/5 of 5/.test(h)}finally{AL.i=k[0];AL.ans=k[1]}});
+ T("Atlas · the tax predictions agree with the model: price paid up, quantity down, revenue up from zero, welfare down",()=>{const Q=DMPREDICT.tax,a=Q.map(q=>q[2][q[3]]);return a[0]==="Rises"&&a[1]==="Falls"&&a[2]==="Falls"&&a[3]==="Rises from zero"&&a[4]==="Falls"});
+ T("Atlas · the progression runs from concept to judgement in nine steps, each linked to a real page",()=>AT_P.length===9&&AT_P[0][0]==="Concept"&&AT_P[8][0]==="Judgement"&&AT_P.every(p=>!!routeParse(p[2])));
+ T("Atlas · the rupee example's numbers hold: ₹80 to ₹88 is a depreciation; 0.8 + 0.6 > 1",()=>(1/88<1/80)&&(0.8+0.6>1)&&Math.abs((100*1.08)-(100*1.10*0.94)-4.6)<1e-9);
+ T("Atlas · the cover is uncluttered: one headline, one line of copy, two actions, no statistics strip",()=>{const h=VIEWS.home();const c=h.slice(h.indexOf('class="hero rn-home'),h.indexOf("</section>",h.indexOf('class="hero rn-home')));return (c.match(/<h1/g)||[]).length===1&&(c.match(/class="btn lg/g)||[]).length===2&&!/cv-scale|cv-verbs/.test(c)});
+ return out}
+ATLASSUITE.suiteName="Project Atlas";
+EXTRA_SUITES.push(ATLASSUITE);
+QAREPORT.push({area:"Project Atlas",re:/^Atlas ·/,what:"The landing sequence: real pathways and counts, an exhibition of five pieces in five forms from Studio excerpts only, a six-stage topic journey, a prediction lab built on the platform's own Predict-a-diagram data, and a nine-step progression with verified figures."});
 
 /* ▓▓ RENAISSANCE:END ▓▓ */
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -41731,7 +42115,7 @@ MOBGROUPS.length=0;
  ["Progress",[["master","Dashboard"],["syllabus","My syllabus"],["saved","My economics"],["workspace","My workspace"]]],
  ["IA",[["ia","IA studio"],["ees","Economics EE Studio"]]],
  ["Teacher",[["educator","Educator Studio"],["teacher","Teacher tools"],["tools","Tools"]]],
- ["About",[["about","About"],["studio","Resource Studio"],["design","Learning design"],["contact","Contact and collaboration"],["tutorials","Tutorials"],["settings","Settings"]]]].forEach(g=>MOBGROUPS.push(g));
+ ["About",[["about","About"],["studio","Learning Studio"],["design","Learning design"],["contact","Contact and collaboration"],["tutorials","Tutorials"],["settings","Settings"]]]].forEach(g=>MOBGROUPS.push(g));
 
 
 /* PART 110 · every section must still be reachable from the drawer */

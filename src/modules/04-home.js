@@ -47,7 +47,7 @@ function rnAtlas(){const n=rnCount();
  const has=v=>SECTIONS.some(s=>s.v===v);
  return `<section class="sec rn-band rn-atlas-band" id="explore"><div class="wrap full">
   <div class="shead fx"><span class="n">01</span><h2>Explore Economics</h2><span class="aside">What can I do here?</span></div>
-  ${typeof rnEcosystem==="function"?rnEcosystem():""}
+  ${typeof rnPathways==="function"?rnPathways():""}
   <div class="rn-atlas">${A.filter(d=>has(d[0])).map((d,i)=>`<button class="atl${i===0?" atl-lead":""}" onclick="nav('${d[0]}')">
    <span class="atl-fig" data-motif="${d[3]}"></span>
    <span class="atl-tx"><span class="atl-n">${String(i+1).padStart(2,"0")}</span><span class="atl-t">${esc(d[1])}</span>
@@ -115,14 +115,15 @@ function rnDivider(t,s){return `<div class="wrap full rn-divider"><span class="r
 /* the home page reads as a story in twelve chapters, one verb each: think,
    discover, learn, see, interact, connect, practise, research, explore,
    watch, teach, and the person behind it. "#n|Title" marks a chapter opener. */
-/* The Learning Studio brief adds a second chapter, Discover: selected work,
-   one topic seen five ways, a working lab and the principles behind it. The
-   enquiry band closes the About chapter. Later modules register their bands
+/* The Learning Studio and Atlas briefs add a second chapter, Discover: the
+   exhibition of original work, one topic seen six ways and a working
+   prediction lab. The About chapter opens with the progression the resources
+   are designed around and closes with the enquiry band. Later modules register their bands
    in RN_BANDS, so this list names them without the home page knowing how
    they are drawn. */
 const RN_BANDS={};
 const RN_ORDER=["#01|Think","Start your journey","@atlas","@paths",
- "#02|Discover","@work","@onetopic","@labdemo","@thinking",
+ "#02|Discover","@work","@onetopic","@labdemo",
  "#03|The course","@course",
  "#04|Learn","@learn","Timeless ideas","Inflation targeting",
  "#05|See the world","@lead","Economics, right now",
@@ -132,7 +133,7 @@ const RN_ORDER=["#01|Think","Start your journey","@atlas","@paths",
  "#09|Explore","@today","@ideas","Economics, Everywhere",
  "#10|Watch","Latest from Arjun",
  "#11|Teach","@educator",
- "#12|About","@creator","Work through the platform","@enquire",
+ "#12|About","@thinking","@creator","Work through the platform","@enquire",
  "@desk","One next step","Continue where you left off","What should I do next?","Six ways in","The Arjun method","@glance","@final"];
 function rnHome(html){
  if(typeof document==="undefined")return html;

@@ -44,7 +44,7 @@ await p.locator('.cv-cta .btn').first().click(); await p.waitForTimeout(700);
 check(await p.evaluate(() => { const g = document.getElementById('explore'); const r = g && g.getBoundingClientRect(); return !!r && r.top < innerHeight * 0.5 && r.bottom > 0 && document.activeElement === g.querySelector('h2') }),
   'Explore Economics brings the gateway into view and moves focus to it');
 await p.locator('.cv-cta a.btn', { hasText: 'Discover My Work' }).click(); await p.waitForTimeout(300);
-check((await st(p)).v === 'studio', 'Discover My Work opens the Resource Studio');
+check((await st(p)).v === 'studio', 'Discover My Work opens the Learning Studio');
 await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
 check(await p.locator('.rn-hinge').count() === 1 && await p.locator('.rn-final').count() === 1, 'the home page runs from the hinge to the closing invitation');
 const order = await p.evaluate(() => [...document.querySelectorAll('.rn-chap .ch-t, .rn-hinge .ch-t')].map(e => e.textContent.trim()));

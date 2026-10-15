@@ -1,4 +1,4 @@
-/* The Learning Studio release in a real browser: the Resource Studio (filters,
+/* The Learning Studio release in a real browser: the Learning Studio (filters,
    the three treatments, the excerpt viewer by mouse and keyboard, enquiry
    links), the home page's new bands, the lab miniature, Learning design,
    Contact, the crawlable studio/ pages, the sitemap, search, widths and axe.
@@ -102,7 +102,7 @@ check(await p.locator('footer .ft-reslink').getAttribute('href') === 'https://ib
 
 /* search */
 const found = await p.evaluate(() => { SIDX = null; return cpMatch('extended essay navigator').slice(0, 6).map(x => x.k + ':' + x.t) });
-check(found.some(x => x === 'Resource Studio:The Extended Essay Navigator'), 'search finds a Studio item by name', found.join(' | '));
+check(found.some(x => x === 'Learning Studio:The Extended Essay Navigator'), 'search finds a Studio item by name', found.join(' | '));
 
 /* widths: nothing scrolls sideways on the new pages */
 for (const w of [320, 390, 768, 1024, 1920]) {

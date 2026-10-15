@@ -13,7 +13,7 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 const ST={aud:"all",ret:null,dlg:null};
 const ST_AUD=[["all","Everyone"],["Students","For students"],["Teachers","For teachers"]];
-SECTIONS.push({v:"studio",n:"Resource Studio",tabs:["All work"].concat(STUDIO.types.map(t=>t.n))});
+SECTIONS.push({v:"studio",n:"Learning Studio",tabs:["All work"].concat(STUDIO.types.map(t=>t.n))});
 SECTIONS.push({v:"design",n:"Learning design",hide:1});
 SECTIONS.push({v:"contact",n:"Contact and collaboration",hide:1});
 const stItem=id=>STUDIO.items.find(i=>i.id===id);
@@ -110,7 +110,7 @@ function studioIndex(){
    <ul class="st-grid st-grid-${t.k}${a.length===3?" has-lead":""}">${a.map((it,i)=>stCard(it,i===0&&a.length===3)).join("")}</ul></section>`).join("")
   :`<div class="st-empty"><p>Nothing in this group is aimed at that audience yet.</p><button class="btn sm" onclick="ST.aud='all';render()">Show everything</button></div>`;
  return `<section class="hero st-hero bg-ink"><div class="wrap full in st-hin">
-  <div><div class="eb">Resource Studio</div><h1 class="st-h1 mt2">A glimpse of a wider body of work.</h1>
+  <div><div class="eb">Learning Studio</div><h1 class="st-h1 mt2">A glimpse of a wider body of work.</h1>
    <p class="lede mt3">Original resources for IB DP Economics: visual explainers, guides for students and teachers, interactive applications and series. Each is shown through a few real excerpts and an account of how it teaches; the complete resources are not published here.</p></div>
   <div class="st-aud" role="group" aria-label="Show resources for">${ST_AUD.map(([k,n])=>`<button class="st-chip" aria-pressed="${ST.aud===k}" onclick="ST.aud='${k}';render()">${esc(n)}</button>`).join("")}</div></div></section>
  <div class="wrap full st-body">${body}
@@ -130,7 +130,7 @@ function stItemPage(it){const t=stType(it.type),tab=stTab(it),cat=stCat(it.enqui
  else if(it.treatment==="C")show=stCollection(it);
  const inside=(it.inside||[]).length?`<section class="st-sec"><h2>What the complete resource contains</h2><ul class="st-ins">${it.inside.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></section>`:"";
  return `<section class="hero st-hero st-ih bg-ink"><div class="wrap full in">
-  <nav class="st-crumb" aria-label="Breadcrumb"><a class="st-rel" href="#/studio">Resource Studio</a> <span aria-hidden="true">/</span> <a class="st-rel" href="${routeFormat("studio",tab)}">${esc(t.n)}</a></nav>
+  <nav class="st-crumb" aria-label="Breadcrumb"><a class="st-rel" href="#/studio">Learning Studio</a> <span aria-hidden="true">/</span> <a class="st-rel" href="${routeFormat("studio",tab)}">${esc(t.n)}</a></nav>
   <div class="eb mt3">${esc(it.kicker)}</div><h1 class="st-h1 mt2">${esc(it.title)}</h1><p class="lede mt3">${esc(it.summary)}</p></div></section>
  <div class="wrap full st-body st-item">
   <div class="st-main">${show}
@@ -160,59 +160,78 @@ VIEWS.studio=function(){const it=ARG?stItem(ARG):null;
  if(ARG&&!it)return `<section class="sec"><div class="wrap"><h1>That resource is not in the Studio</h1><p class="mt2">It may have been renamed or retired.</p><p class="mt3"><a class="btn" href="#/studio">See everything in the Studio</a></p></div></section>`;
  return it?stItemPage(it):studioIndex()};
 /* ── the enquiry band, shared by the home page, the Studio and Learning design ── */
-function stEnquireBand(){return `<section class="sec st-enq bg-ink" aria-labelledby="st-enq-h"><div class="wrap full st-enq-in">
+function stEnquireBand(){const sel=STUDIO.items.map(i=>`<option value="${i.id}">${esc(i.title)}</option>`).join("");
+ return `<section class="sec st-enq bg-ink" aria-labelledby="st-enq-h"><div class="wrap full st-enq-in">
   <div><h2 class="st-enq-h" id="st-enq-h">Interested in exploring more?</h2>
-   <p class="lede mt3">The website offers a glimpse of a wider collection of Economics learning resources and interactive experiences. If you are an educator, student or school interested in learning more or exploring a possible collaboration, I would be happy to hear from you.</p></div>
-  <div class="st-enq-a"><a class="btn lg a" href="#/contact">Get in touch</a><a class="btn lg on-ink" href="#/studio">See the Resource Studio</a></div></div></section>`}
+   <p class="lede mt3">The website offers a selection of original Economics learning resources and interactive experiences. If you are an educator, student or school interested in learning more or discussing a possible collaboration, I would be happy to hear from you.</p></div>
+  <div class="st-enq-a"><label class="st-enq-l" for="st-enq-r">What caught your interest? <span>(optional)</span></label>
+   <select id="st-enq-r" onchange="stEnqSet(this.value)"><option value="">Something else, or nothing in particular</option>${sel}</select>
+   <div class="row st-enq-b"><a class="btn lg a" id="st-enq-m" href="${esA(stMail("other",""))}">Write to Arjun</a><a class="btn lg on-ink" href="#/contact">Other ways to get in touch</a></div>
+   <p class="xs st-enq-n">Opens your own email app with the message started. Nothing is sent from this page.</p></div></div></section>`}
+/* the band's email names the resource the visitor chose, under that resource's own enquiry category */
+function stEnqSet(id){const it=id?stItem(id):null,a=document.getElementById("st-enq-m");if(a)a.href=it?stMail(it.enquiry,it.title):stMail("other","")}
 /* ═══ LEARNING DESIGN: seven moves, one real topic ═══════════════════════ */
 const LD_STEPS=[
  ["Concept","Name the idea precisely, and say why it matters."],
- ["Visual understanding","See the idea before formalising it."],
- ["Economic model","Make the idea move, and predict what it will do."],
- ["Real-world application","Attach the model to a market that exists."],
- ["Analysis","Work it through, with numbers that can be checked."],
+ ["Model","Make the idea move, and predict what it will do."],
+ ["Diagram","Draw it so the difference is seen before it is calculated."],
+ ["Evidence","Attach the model to a market that exists."],
+ ["Quantitative reasoning","Work it through, with numbers that can be checked."],
+ ["Stakeholder perspectives","Ask who gains, who pays, and how much."],
+ ["Analysis","Explain the mechanism that produces the result."],
  ["Evaluation","Ask where the model stops being true."],
  ["Judgement","Decide, for a stated aim, and say for whom."]];
 const LD_CALC={p0:40,p1:60,q0:70,q1:63};
 /* the practice question is written once and read by the home page and Learning design */
 const LD_Q="A government wants to raise revenue with an indirect tax. Using a diagram, explain why it might choose a good with price-inelastic demand, and evaluate whether it should.";
 function ldCalc(){const c=LD_CALC,dq=(c.q1-c.q0)/c.q0*100,dp=(c.p1-c.p0)/c.p0*100;return {dq,dp,ped:dq/dp,tr0:c.p0*c.q0,tr1:c.p1*c.q1,gain:(c.p1-c.p0)*c.q1,loss:c.p0*(c.q0-c.q1)}}
+/* the incidence and revenue figures from the explainer's tax slides: one $27 tax, two markets */
+const LD_TAX={tax:27,inel:{pc:64,pp:37,p0:40,q0:60,q1:54},el:{pc:43,pp:16,p0:40,q0:60,q1:54},rev:{inel:[60,54],el:[60,33]}};
 function ldPrev(id,i){const it=stItem(id);return it&&it.previews[i]?it.previews[i]:null}
 function ldFig(id,i){const p=ldPrev(id,i);return p?`<button class="ld-fig" onclick="stView('${id}',${i})" aria-label="Open in the viewer: ${esA(p.cap||"")}">${stImg(p)}</button>`:""}
 function ldCase(){let c=null;try{c=RW_CASES.find(x=>x.id==="MIC-002")}catch(e){}return c}
-function designPage(){const r=ldCalc(),C=(()=>{try{return CONCEPTS.find(x=>x.id==="c-ped")}catch(e){return null}})(),cs=ldCase();
- const step=(i,body)=>`<li class="ld-step" id="ld-${i+1}"><div class="ld-h"><span class="ld-n">${String(i+1).padStart(2,"0")}</span><h2>${esc(LD_STEPS[i][0])}</h2><p>${esc(LD_STEPS[i][1])}</p></div><div class="ld-b">${body}</div></li>`;
- return `<section class="hero ld-hero bg-ink"><div class="wrap full in">
-  <div class="eb">Learning design</div><h1 class="st-h1 mt2">From a concept to a judgement.</h1>
-  <p class="lede mt3">The resources here are built on one sequence. A student meets an idea, sees it, makes it move, finds it in the world, works it through, tests its limits and finally decides. This page follows a single real topic, price elasticity of demand, through all seven moves, using the platform's own materials.</p>
-  <ol class="ld-rail" aria-label="The seven moves">${LD_STEPS.map(([t],i)=>`<li><a class="ld-r" href="#ld-${i+1}" onclick="event.preventDefault();document.getElementById('ld-${i+1}').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})"><span>${String(i+1).padStart(2,"0")}</span>${esc(t)}</a></li>`).join("")}</ol></div></section>
- <div class="wrap full ld-body"><ol class="ld-steps">
-  ${step(0,`<p class="ld-def">${esc(C?C.def:"Price elasticity of demand measures how strongly quantity demanded responds to a change in price: %ΔQd ÷ %ΔP.")}</p>
-   ${C?`<p class="sm mt2">${esc(C.why)}</p>`:""}<p class="mt2"><a class="st-rel" href="#/learn/concept-spine/c-ped">The concept page →</a></p>`)}
-  ${step(1,`${ldFig("price-elasticity-of-demand",0)}<p class="sm mt2">Two demand curves through the same point, on the same axes and the same scale. The same 25% price cut brings a 50% response on one and 10% on the other: the difference is seen before it is calculated.</p>`)}
-  ${step(2,pdDemo({k:"The model, live"}))}
-  ${step(3,`${ldFig("price-elasticity-of-demand",3)}${cs?`<div class="ld-case"><div class="eb">A case on the platform · ${esc([cs.c,cs.y].filter(Boolean).join(" · "))}</div><h3 class="mt1">${esc(cs.t)}</h3>${cs.is?`<p class="sm mt1">${esc(cs.is)}</p>`:""}<p class="mt2"><a class="st-rel" href="${esA(routeFormat("world",0,cs.id))}">Read the case →</a></p></div>`:""}`)}
-  ${step(4,`${ldFig("price-elasticity-of-demand",1)}<div class="ld-calc"><p><b>A worked example.</b> The price rises from $${LD_CALC.p0} to $${LD_CALC.p1}; quantity demanded falls from ${LD_CALC.q0} to ${LD_CALC.q1}.</p>
+function ldConcept(){let C=null;try{C=CONCEPTS.find(x=>x.id==="c-ped")}catch(e){}return C}
+/* ── shared fragments: each explanation is written once, for Learning design and the home journey ── */
+const LD={
+ concept:()=>{const C=ldConcept();return `<p class="ld-def">${esc(C?C.def:"Price elasticity of demand measures how strongly quantity demanded responds to a change in price: %ΔQd ÷ %ΔP.")}</p>
+  ${C?`<p class="sm mt2">${esc(C.why)}</p>`:""}<p class="mt2"><a class="st-rel" href="#/learn/concept-spine/c-ped">The concept page →</a></p>`},
+ map:()=>`${ldFig("price-elasticity-of-demand",4)}<p class="sm mt2">A branch of the one-page revision map that closes the explainer: the degrees of elasticity, the TINS determinants and the HL extensions, each with the slides to revisit.</p><p class="mt2"><a class="st-rel" href="#/mind/mindmaps/ped">Open the interactive PED mindmap →</a></p>`,
+ diagram:()=>`${ldFig("price-elasticity-of-demand",0)}<p class="sm mt2">Two demand curves through the same point, on the same axes and the same scale. The same 25% price cut raises quantity demanded by 50% on the flatter curve (|PED| = 50 ÷ 25 = 2, relatively elastic) and by 10% on the steeper one (|PED| = 10 ÷ 25 = 0.4, relatively inelastic).</p><p class="mt2"><a class="st-rel" href="#/lab/diagram-atlas/ped">The PED plate in the diagram atlas →</a></p>`,
+ evidence:()=>{const cs=ldCase();return `${ldFig("price-elasticity-of-demand",3)}<p class="xs mt2">HL: primary commodities and manufactured products.</p>${cs?`<div class="ld-case"><div class="eb">A case on the platform · ${esc([cs.c,cs.y].filter(Boolean).join(" · "))}</div><h3 class="mt1">${esc(cs.t)}</h3>${cs.is?`<p class="sm mt1">${esc(cs.is)}</p>`:""}<p class="sm mt1">Fuel taxes raise steady revenue because demand for fuel is price inelastic in the short run.</p><p class="mt2"><a class="st-rel" href="${esA(routeFormat("world",0,cs.id))}">Read the case →</a></p></div>`:""}`},
+ calc:fig=>{const r=ldCalc();return `${fig?ldFig("price-elasticity-of-demand",1):""}<div class="ld-calc"><p><b>A worked example.</b> The price rises from $${LD_CALC.p0} to $${LD_CALC.p1}; quantity demanded falls from ${LD_CALC.q0} to ${LD_CALC.q1}.</p>
    <ol class="ld-work"><li>%ΔQd = (${LD_CALC.q1} − ${LD_CALC.q0}) ÷ ${LD_CALC.q0} × 100 = ${r.dq.toFixed(0)}%</li><li>%ΔP = (${LD_CALC.p1} − ${LD_CALC.p0}) ÷ ${LD_CALC.p0} × 100 = +${r.dp.toFixed(0)}%</li>
     <li>PED = ${r.dq.toFixed(0)}% ÷ ${r.dp.toFixed(0)}% = ${r.ped.toFixed(1)}: |PED| &lt; 1, so demand is price inelastic</li>
     <li>Total revenue rises from $${r.tr0.toLocaleString("en-GB")} to $${r.tr1.toLocaleString("en-GB")}: a gain of $${r.gain.toLocaleString("en-GB")} on the units still sold outweighs the loss of $${r.loss.toLocaleString("en-GB")} on the units no longer sold</li></ol>
-   <p class="mt2"><a class="st-rel" href="#/calculate/0/ped">Practise with the PED calculator →</a></p></div>`)}
-  ${step(5,`<ul class="ld-ev"><li><b>A tendency, not a rule.</b> Manufactured goods tend to face more elastic demand than primary commodities, but a medicine is manufactured and usually inelastic.</li>
+   <p class="mt2"><a class="st-rel" href="#/calculate/0/ped">Practise with the PED calculator →</a></p></div>`},
+ stake:()=>{const T=LD_TAX,ri=T.tax*T.rev.inel[1],re=T.tax*T.rev.el[1];return `<dl class="ld-stake">
+   <div><dt>Consumers</dt><dd>When demand is less elastic than supply, consumers bear most of a $${T.tax} tax: the price they pay rises from $${T.inel.p0} to $${T.inel.pc}, so $${T.inel.pc-T.inel.p0} of the $${T.tax}.</dd></div>
+   <div><dt>Producers</dt><dd>When demand is more elastic than supply, producers bear most: the price they keep falls from $${T.el.p0} to $${T.el.pp}, so $${T.el.p0-T.el.pp} of the $${T.tax}.</dd></div>
+   <div><dt>Government</dt><dd>With the same $${T.tax} tax, revenue is $${ri.toLocaleString("en-GB")} when quantity falls ${Math.round((T.rev.inel[0]-T.rev.inel[1])/T.rev.inel[0]*100)}% and $${re.toLocaleString("en-GB")} when it falls ${Math.round((T.rev.el[0]-T.rev.el[1])/T.rev.el[0]*100)}%.</dd></div></dl>
+   <p class="xs mt2">Figures from the explainer's tax-revenue and incidence slides. Incidence depends on PED relative to PES.</p>`},
+ analysis:()=>`${ldFig("price-elasticity-of-demand",2)}<p class="sm mt2">Total revenue is the rectangle P × Q. When |PED| &lt; 1 the higher price on the units still sold outweighs the units lost, so revenue rises with price; when |PED| &gt; 1 the units lost dominate and revenue falls; at |PED| = 1 the two effects offset.</p>`,
+ evaluate:()=>`<ul class="ld-ev"><li><b>A tendency, not a rule.</b> Manufactured goods tend to face more elastic demand than primary commodities, but a medicine is manufactured and usually inelastic.</li>
    <li><b>Time changes the answer.</b> Demand is usually more elastic in the long run, as buyers find substitutes.</li>
    <li><b>Where you measure matters (HL).</b> On a straight-line demand curve PED changes at every point, so one figure describes one price.</li>
    <li><b>Other things are rarely equal.</b> An estimate taken while incomes or rival prices are changing mixes several effects together.</li></ul>
-   <p class="mt2"><a class="st-rel" href="${esA(routeFormat("think",1))}">Stress-test an evaluation →</a></p>`)}
-  ${step(6,`<div class="ld-q"><div class="eb">Practice question, written for this page</div>
+   <p class="mt2"><a class="st-rel" href="${esA(routeFormat("think",1))}">Stress-test an evaluation →</a></p>`,
+ question:()=>`<div class="ld-q"><div class="eb">Practice question, written for this page</div>
    <p class="ld-qt mt1">${esc(LD_Q)}</p>
    <details class="ld-plan"><summary>Plan an answer</summary><ol>
     <li><b>Diagram.</b> Supply shifts up by the tax per unit against a steep demand curve; quantity falls only a little.</li>
     <li><b>Revenue.</b> Tax revenue is the tax per unit times the new quantity, so a small fall in quantity keeps revenue high. With the same $27 tax, revenue is $1,458 when quantity falls 10% and $891 when it falls 45%.</li>
-    <li><b>Incidence.</b> With inelastic demand most of the tax is passed on to consumers as a higher price.</li>
+    <li><b>Incidence.</b> When demand is less elastic than supply, most of the tax is passed on to consumers as a higher price.</li>
     <li><b>Judgement.</b> It depends on the aim. Inelastic demand suits raising revenue but works against reducing consumption, and the burden may fall heavily on households that cannot switch. A strong answer says which aim matters more, and over what period.</li></ol></details>
-   <p class="xs mt2">An original question by Arjun Agrawal. It is not an IB examination question.</p></div>`)}
- </ol>
- <section class="ld-why"><h2>Why this order</h2><p class="ed">Each move needs the one before it. A diagram drawn before the concept is clear becomes decoration; a calculation without a model is arithmetic; an evaluation without analysis is a list. The sequence is the same whether the resource is a slide, a mindmap, a lab or a question, which is why they can be used together.</p>
-  <p class="mt3"><a class="btn" href="#/studio/visual-explainers/price-elasticity-of-demand">See the PED explainer in the Studio</a> <a class="btn gh" href="#/studio">All the work</a></p></section></div>
+   <p class="xs mt2">An original question by Arjun Agrawal. It is not an IB examination question.</p></div>`};
+function designPage(){
+ const body=[LD.concept(),pdDemo({k:"The model, live"}),LD.diagram(),LD.evidence(),LD.calc(false),LD.stake(),LD.analysis(),LD.evaluate(),LD.question()];
+ const step=(i,html)=>`<li class="ld-step" id="ld-${i+1}"><div class="ld-h"><span class="ld-n">${String(i+1).padStart(2,"0")}</span><h2>${esc(LD_STEPS[i][0])}</h2><p>${esc(LD_STEPS[i][1])}</p></div><div class="ld-b">${html}</div></li>`;
+ return `<section class="hero ld-hero bg-ink"><div class="wrap full in">
+  <div class="eb">Learning design</div><h1 class="st-h1 mt2">From a concept to a judgement.</h1>
+  <p class="lede mt3">The resources are built around one progression. A concept becomes a model, the model a diagram; the diagram is tested against evidence, worked through with numbers and seen from each stakeholder's side; then it is analysed, its limits are evaluated and a judgement is made. This page follows a single real topic, price elasticity of demand, through all nine steps, using the platform's own materials.</p>
+  <ol class="ld-rail" aria-label="The nine steps">${LD_STEPS.map(([t],i)=>`<li><a class="ld-r" href="#ld-${i+1}" onclick="event.preventDefault();document.getElementById('ld-${i+1}').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})"><span>${String(i+1).padStart(2,"0")}</span>${esc(t)}</a></li>`).join("")}</ol></div></section>
+ <div class="wrap full ld-body"><ol class="ld-steps">${body.map((h,i)=>step(i,h)).join("")}</ol>
+ <section class="ld-why"><h2>Why this order</h2><p class="ed">Each step needs the one before it. A diagram drawn before the concept is clear becomes decoration; a calculation without a model is arithmetic; an evaluation without analysis is a list. The progression is the same whether the resource is a slide, a mindmap, a lab or a question, which is why they can be used together.</p>
+  <p class="mt3"><a class="btn" href="#/studio/visual-explainers/price-elasticity-of-demand">See the PED explainer in the Learning Studio</a> <a class="btn gh" href="#/studio">All the work</a></p></section></div>
  ${stEnquireBand()}`}
 VIEWS.design=designPage;
 /* ═══ CONTACT AND COLLABORATION ═══════════════════════════════════════════ */
@@ -238,78 +257,23 @@ function contactPage(){
    <p class="xs mt2">Looking for one-to-one tutorials? The <button class="lnk" onclick="nav('tutorials')">Tutorials page</button> has the sessions and their terms.</p></div></div>
   <div class="ct-more"><div class="eb">Other ways to reach me</div><ul class="ct-ch">${["whatsapp","linkedin","instagram"].map(k=>CONTACT.find(c=>c.k===k)).filter(Boolean).map(c=>`<li><a class="st-rel" href="${esA(c.href)}" target="_blank" rel="noopener noreferrer">${esc(c.n)}</a></li>`).join("")}</ul></div></div>`}
 VIEWS.contact=()=>{const h=contactPage();window._after=()=>ctLinks();return h};
-/* ── the home page's new bands ────────────────────────────────────────── */
-const RN_ECO=[["Explore a concept","Twenty concepts told as cause and effect","#/learn/concept-spine"],
- ["Understand a diagram","Plates you can study, and labs that move","#/lab/diagram-atlas"],
- ["Connect theory to the real world","Dated cases across many economies","#/world"],
- ["Practise calculations","Worked methods with instant checking","#/calculate"],
- ["Develop exam thinking","Markbands, past-paper patterns and practice","#/examiner"]];
-function rnEcosystem(){return `<ol class="eco" aria-label="Five ways to engage with Economics">${RN_ECO.map(([t,d,h],i)=>`<li><a class="eco-a" href="${h}"><span class="eco-n">${String(i+1).padStart(2,"0")}</span><span class="eco-t">${esc(t)}</span><span class="eco-d">${esc(d)}</span></a></li>`).join("")}</ol>`}
-function rnWorkBand(){const pick=["price-elasticity-of-demand","examiner-guide","ee-navigator","economics-in-60-seconds"].map(stItem).filter(Boolean);
- return `<section class="sec rn-band st-work" id="selected-work"><div class="wrap full">
-  <div class="shead fx"><span class="n">00</span><h2>Selected work</h2><span class="aside">Original resources, shown in part</span></div>
-  <ul class="sw-grid">${pick.map((it,i)=>`<li class="sw-li ${i===0?"lead":""}"><a class="sw-card st-${it.type}" href="${stHref(it)}">
-   <span class="sw-fig">${stCover(it,i===0)}</span>
-   <span class="sw-tx"><span class="st-k">${esc(stType(it.type).n)} · ${esc(it.topics.slice(0,2).join(", "))}</span><span class="st-t">${esc(it.title)}</span>
-    <span class="sw-do"><b>Helps learners</b> ${esc(it.objectives[0].charAt(0).toLowerCase()+it.objectives[0].slice(1))}.</span>
-    <span class="sw-ap">${esc(it.approach.split(/(?<=\.)\s/)[0])}</span><span class="sw-go">${it.disclosure===1?"See the excerpts":"Explore it"} →</span></span></a></li>`).join("")}</ul>
-  <p class="mt4"><a class="btn" href="#/studio">Everything in the Resource Studio</a></p></div></section>`}
-const RN_TOPIC=[["map","Mindmap excerpt"],["diagram","Diagram"],["world","Real-world example"],["calc","Calculation"],["question","Practice question"]];
-const RNT={k:"map"};
-function rnTopicPanel(k){const r=ldCalc(),cs=ldCase();
- if(k==="map")return `${ldFig("price-elasticity-of-demand",4)}<p class="sm mt2">A branch of the one-page revision map that closes the PED explainer: every relationship on one sheet, with the slides to revisit for each.</p><p class="mt2"><a class="st-rel" href="#/mind/mindmaps/ped">Open the interactive PED mindmap →</a></p>`;
- if(k==="diagram")return `${ldFig("price-elasticity-of-demand",0)}<p class="sm mt2">The same price cut, two responses: drawn on the same axes and the same scale, so the difference in elasticity is visible before it is calculated.</p><p class="mt2"><a class="st-rel" href="#/lab/diagram-atlas/ped">The PED plate in the diagram atlas →</a></p>`;
- if(k==="world")return `${ldFig("price-elasticity-of-demand",3)}${cs?`<p class="sm mt2"><b>${esc(cs.t)}</b> (${esc([cs.c,cs.y].filter(Boolean).join(", "))}): fuel taxes raise steady revenue because demand for fuel is price inelastic in the short run.</p><p class="mt2"><a class="st-rel" href="${esA(routeFormat("world",0,cs.id))}">Read the case →</a></p>`:""}`;
- if(k==="calc")return `<div class="ld-calc"><p>The price rises from $${LD_CALC.p0} to $${LD_CALC.p1} and quantity demanded falls from ${LD_CALC.q0} to ${LD_CALC.q1}.</p>
-  <details class="ld-plan"><summary>Show the working</summary><ol class="ld-work"><li>%ΔQd = ${r.dq.toFixed(0)}%, %ΔP = +${r.dp.toFixed(0)}%</li><li>PED = ${r.dq.toFixed(0)} ÷ ${r.dp.toFixed(0)} = ${r.ped.toFixed(1)}, so demand is price inelastic</li><li>Total revenue: $${r.tr0.toLocaleString("en-GB")} → $${r.tr1.toLocaleString("en-GB")} (gain $${r.gain.toLocaleString("en-GB")}, loss $${r.loss.toLocaleString("en-GB")})</li></ol></details>
-  <p class="mt2"><a class="st-rel" href="#/calculate/0/ped">Try the PED calculator →</a></p></div>`;
- return `<div class="ld-q"><p class="ld-qt">${esc(LD_Q)}</p>
-  <p class="xs mt2">An original question by Arjun Agrawal, not an IB examination question.</p><p class="mt2"><a class="st-rel" href="#/design">Plan it step by step in Learning design →</a></p></div>`}
-function rnTopicSet(k){RNT.k=k;const w=document.getElementById("rnt");if(!w)return;
- w.querySelectorAll('[role="tab"]').forEach(b=>{const on=b.dataset.k===k;b.setAttribute("aria-selected",on);b.tabIndex=on?0:-1});
- const p=document.getElementById("rnt-p");if(p){p.innerHTML=rnTopicPanel(k);p.setAttribute("aria-labelledby","rnt-"+k)}}
-function rnTopicKey(e){const ks=RN_TOPIC.map(x=>x[0]);let i=ks.indexOf(RNT.k);
- if(e.key==="ArrowRight")i=(i+1)%ks.length;else if(e.key==="ArrowLeft")i=(i-1+ks.length)%ks.length;else if(e.key==="Home")i=0;else if(e.key==="End")i=ks.length-1;else return;
- e.preventDefault();rnTopicSet(ks[i]);const b=document.getElementById("rnt-"+ks[i]);if(b)b.focus()}
-function rnTopicBand(){return `<section class="sec rn-band rnt-band bg-paper"><div class="wrap full">
-  <div class="shead fx"><span class="n">00</span><h2>One topic, five ways in</h2><span class="aside">Price elasticity of demand</span></div>
-  <p class="ed mt2">The resources are designed to work together. Here is one topic, price elasticity of demand, as a mindmap, a diagram, a real case, a calculation and a question.</p>
-  <div class="rnt" id="rnt"><div class="rnt-tabs" role="tablist" aria-label="Price elasticity of demand, five ways" onkeydown="rnTopicKey(event)">
-   ${RN_TOPIC.map(([k,n])=>`<button role="tab" id="rnt-${k}" data-k="${k}" aria-selected="${RNT.k===k}" aria-controls="rnt-p" tabindex="${RNT.k===k?0:-1}" onclick="rnTopicSet('${k}')">${esc(n)}</button>`).join("")}</div>
-   <div class="rnt-p" id="rnt-p" role="tabpanel" aria-labelledby="rnt-${RNT.k}" tabindex="0">${rnTopicPanel(RNT.k)}</div></div>
-  <p class="mt3"><a class="st-rel" href="#/design">See the whole sequence, from concept to judgement →</a></p></div></section>`}
-function rnLabDemoBand(){return `<section class="sec rn-band pd-band bg-ink"><div class="wrap full">
-  <div class="shead fx on-ink"><span class="n">00</span><h2>Inside the learning lab</h2><span class="aside">A working miniature</span></div>
-  <p class="lede mt2">Predict first, then move the model and check. This is one small part of the elasticity lab, on the same demand curve the PED explainer uses.</p>
-  ${pdDemo({cls:"on-ink"})}<p class="mt3"><a class="btn on-ink" href="#/lab/elasticity-lab">Open the full elasticity lab</a> <a class="btn gh on-ink" href="#/lab">All the labs</a></p></div></section>`}
-const RN_THINK=[["Mechanism before definition","A concept is stored as a chain of cause and effect, so a student can explain it rather than recite it.","#/learn/concept-spine","The concept spine"],
- ["Same axes, same scale","Comparisons are drawn so that the difference is seen, not asserted.","#/studio/visual-explainers/price-elasticity-of-demand","The PED explainer"],
- ["Predict, then check","The labs ask what will happen before they show it, because a corrected prediction is remembered.","#/lab","The labs"],
- ["Numbers that can be checked","Every figure on a diagram can be recomputed by hand, so the model and the arithmetic agree.","#/studio/visual-explainers/balance-of-payments","The balance of payments explainer"],
- ["Connections make transfer","Topics are joined to each other, which is where application to unfamiliar cases comes from.","#/mind/connect-two-ideas","Connect two ideas"],
- ["Judgement, not lists","Evaluation asks what a conclusion depends on, for whom and over what time, and then decides.","#/think/evaluation-stress-test","The evaluation stress test"]];
-function rnThinkingBand(){return `<section class="sec rn-band rnk-band"><div class="wrap full">
-  <div class="shead fx"><span class="n">00</span><h2>The thinking behind the resources</h2><span class="aside">From understanding to independent thinking</span></div>
-  <ol class="rnk">${RN_THINK.map(([t,d,h,l],i)=>`<li><span class="rnk-n">${String(i+1).padStart(2,"0")}</span><h3>${esc(t)}</h3><p class="sm">${esc(d)}</p><a class="st-rel" href="${h}">See it: ${esc(l)} →</a></li>`).join("")}</ol>
-  <p class="mt3"><a class="btn gh" href="#/design">Learning design: one topic, seven moves</a></p></div></section>`}
-Object.assign(RN_BANDS,{"@work":rnWorkBand,"@onetopic":rnTopicBand,"@labdemo":rnLabDemoBand,"@thinking":rnThinkingBand,"@enquire":stEnquireBand});
 /* the Resource hub and the Studio point at each other: the hub is the free
    library, the Studio is the wider work shown in part */
 (function(){const prev=VIEWS.resources;if(typeof prev!=="function")return;VIEWS.resources=function(){const h=prev.apply(this,arguments);if(TAB!==0)return h;
  const i=h.indexOf("</section>");if(i<0)return h;
- return h.slice(0,i+10)+`<div class="wrap st-hubnote"><p class="sm"><b>Looking for original resources that are not in the library?</b> The <a class="st-rel" href="#/studio">Resource Studio</a> shows a selection of Arjun's wider work, in part, with a way to ask about each piece.</p></div>`+h.slice(i+10)}})();
+ return h.slice(0,i+10)+`<div class="wrap st-hubnote"><p class="sm"><b>Looking for original resources that are not in the library?</b> The <a class="st-rel" href="#/studio">Learning Studio</a> shows a selection of Arjun's wider work, in part, with a way to ask about each piece.</p></div>`+h.slice(i+10)}})();
 /* a dialog left open must not survive a change of page */
 /* and an item has its own title in the tab, in history and when shared */
 (function(){const prev=render;render=function(){const d=document.getElementById("st-dlg");if(d&&d.open)d.close();const r=prev.apply(this,arguments);
- if(VIEW==="studio"&&ARG){const it=stItem(ARG);if(it)document.title=it.title+" · Resource Studio · Arjun Agrawal"}return r}})();
+ if(VIEW==="studio"&&ARG){const it=stItem(ARG);if(it)document.title=it.title+" · Learning Studio · Arjun Agrawal"}return r}})();
 /* ── search: every Studio item, and the two new pages ── */
 (function(){if(typeof buildIndex!=="function")return;const prev=buildIndex;
  buildIndex=function(){if(SIDX)return SIDX;const I=prev().slice();
-  STUDIO.items.forEach(it=>I.push({k:"Resource Studio",t:it.title,d:it.summary,go:`nav('studio',${stTab(it)},'${it.id}')`,s:[it.id,it.kicker,it.topics.join(" "),it.audience.join(" "),it.format,"resource studio original work arjun"].join(" ")}));
-  I.push({k:"Resource Studio",t:"Learning design: from a concept to a judgement",d:"Seven moves, followed through price elasticity of demand",go:"nav('design')",s:"learning design pedagogy approach sequence concept model evaluation judgement ped"});
-  I.push({k:"Resource Studio",t:"Contact and collaboration",d:"Resource enquiries, school use, collaboration, workshops and custom resources",go:"nav('contact')",s:"contact email enquiry collaboration school workshop professional learning custom resource"});
+  STUDIO.items.forEach(it=>I.push({k:"Learning Studio",t:it.title,d:it.summary,go:`nav('studio',${stTab(it)},'${it.id}')`,s:[it.id,it.kicker,it.topics.join(" "),it.audience.join(" "),it.format,"resource studio original work arjun"].join(" ")}));
+  I.push({k:"Learning Studio",t:"Learning design: from a concept to a judgement",d:"Seven moves, followed through price elasticity of demand",go:"nav('design')",s:"learning design pedagogy approach sequence concept model evaluation judgement ped"});
+  I.push({k:"Learning Studio",t:"Contact and collaboration",d:"Resource enquiries, school use, collaboration, workshops and custom resources",go:"nav('contact')",s:"contact email enquiry collaboration school workshop professional learning custom resource"});
   return SIDX=I};
- if(typeof RN_KIND_W!=="undefined")RN_KIND_W["Resource Studio"]=2.2;try{SIDX=null}catch(e){}})();
+ if(typeof RN_KIND_W!=="undefined")RN_KIND_W["Learning Studio"]=2.2;try{SIDX=null}catch(e){}})();
 /* ── self-tests ─────────────────────────────────────────────────────────── */
 function STUDIOSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){det=e.message}out.push({n,ok:!!ok,detail:det})};
  const txt=h=>h.replace(/<[^>]+>/g," ").replace(/\s+/g," ");
@@ -331,13 +295,12 @@ function STUDIOSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{cons
  T("Lab miniature · PED along P = 90 − Q matches the explainer's four points",()=>[[70,3.5],[45,1],[20,0.2857],[10,0.125]].every(([p,e])=>Math.abs(pdCalc(p).ped-e)<0.001)&&pdCalc(45).tr===2025&&pdClass(1)==="unit elastic");
  T("Lab miniature · the revenue verdict follows the elasticity",()=>[10,20,30,40].every(p=>pdCalc(p+5).tr>pdCalc(p).tr)&&[50,60,70,80].every(p=>pdCalc(p+5).tr<pdCalc(p).tr));
  T("Learning design · the worked calculation is correct",()=>{const r=ldCalc();return Math.abs(r.dq+10)<1e-9&&Math.abs(r.dp-50)<1e-9&&Math.abs(r.ped+0.2)<1e-9&&r.tr0===2800&&r.tr1===3780&&r.gain===1260&&r.loss===280&&r.tr1-r.tr0===r.gain-r.loss});
- T("Learning design · the seven moves appear in order",()=>{const h=txt(designPage());let i=-1;return LD_STEPS.every(([s])=>{const j=h.indexOf(s,i+1);if(j<0)return false;i=j;return true})});
+ T("Learning design · the nine steps appear in order",()=>{const h=txt(designPage());let i=-1;return LD_STEPS.every(([s])=>{const j=h.indexOf(s,i+1);if(j<0)return false;i=j;return true})});
  T("Learning design · the practice question is labelled as original, not an IB question",()=>/not an IB examination question/.test(txt(designPage())));
  T("Contact · six categories, real addresses, and no form that pretends to send",()=>{const h=contactPage();return STUDIO.enquiries.length===6&&STUDIO.enquiries.every(e=>h.includes(esc(e.n)))&&!/<form/i.test(h)&&h.includes("mailto:"+TUT.email)&&/Nothing is sent from this page/.test(h)});
- T("Home · the hero carries the headline, the copy and both actions",()=>{const h=txt(VIEWS.home());return h.includes("Economics is not just a subject to study. It is a way to think.")&&h.includes("An interactive learning ecosystem for IB DP Economics, connecting concepts, visual understanding, real-world evidence and exam thinking.")&&/Explore Economics/.test(h)&&/Discover My Work/.test(h)});
- T("Home · selected work, one topic, the lab, the thinking and the enquiry band are present",()=>{const h=txt(VIEWS.home());return ["Selected work","One topic, five ways in","Inside the learning lab","The thinking behind the resources","Interested in exploring more?"].every(x=>h.includes(x))});
- T("Home · the five ecosystem pathways open real pages",()=>RN_ECO.every(([,,h])=>!!routeParse(h)));
+ T("Home · the hero carries the headline, the copy and both actions",()=>{const h=txt(VIEWS.home());return h.includes("Economics is not just a subject to study. It is a way to think.")&&h.includes("An interactive learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking.")&&/Explore Economics/.test(h)&&/Discover the Learning Studio/.test(h)});
+ T("Home · the exhibition, the six perspectives, the lab, the progression and the enquiry band are present",()=>{const h=txt(VIEWS.home());return ["Inside the Economics Learning Studio","One topic, six perspectives","Inside the learning lab","From concept to judgement","Interested in exploring more?"].every(x=>h.includes(x))});
  return out}
-STUDIOSUITE.suiteName="Resource Studio";
+STUDIOSUITE.suiteName="Learning Studio";
 EXTRA_SUITES.push(STUDIOSUITE);
-QAREPORT.push({area:"Resource Studio",re:/^(Studio|Lab miniature|Learning design|Contact|Home ·)/,what:"The showcase publishes only level 1 and 2 metadata and screen-resolution excerpts; links, enquiries, the PED miniature, the worked calculation and the new home bands are checked."});
+QAREPORT.push({area:"Learning Studio",re:/^(Studio|Lab miniature|Learning design|Contact|Home ·)/,what:"The showcase publishes only level 1 and 2 metadata and screen-resolution excerpts; links, enquiries, the PED miniature, the worked calculation and the new home bands are checked."});

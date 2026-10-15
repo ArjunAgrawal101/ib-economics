@@ -12,7 +12,7 @@ moreMenu=function(e){e.stopPropagation();if(document.getElementById("menu")){clo
   ["Exam and research",[["practise","Practise"],["examiner","Exam"],["papers","Paper labs"],["dna","Exam DNA"],["calculate","Calculate"],["session","Timed session"],["ees","EE Studio"],["ia","IA studio"]]],
   ["Your work",[["master","Dashboard"],["syllabus","My syllabus"],["saved","My economics"],["workspace","My workspace"]]],
   ["Teach",[["educator","Educator studio"],["teacher","Teacher tools"]]],
-  ["About",[["about","About"],["studio","Resource Studio"],["design","Learning design"],["contact","Contact and collaboration"],["tutorials","Tutorials"],["settings","Settings"],["tools","Tools"]]]];
+  ["About",[["about","About"],["studio","Learning Studio"],["design","Learning design"],["contact","Contact and collaboration"],["tutorials","Tutorials"],["settings","Settings"],["tools","Tools"]]]];
  const placed=new Set(["home",...G.flatMap(g=>g[1].map(x=>x[0]))]);
  const rest=SECTIONS.filter(s=>!placed.has(s.v)).map(s=>[s.v,s.n]);
  const groups=(rest.length?G.concat([["More",rest]]):G).map(([h,it])=>[h,it.filter(([v])=>v==="@why"||SECTIONS.some(s=>s.v===v))]).filter(([,it])=>it.length);

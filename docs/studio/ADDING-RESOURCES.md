@@ -1,6 +1,6 @@
-# Resource Studio: adding, updating and retiring a resource
+# Learning Studio: adding, updating and retiring a resource
 
-The Resource Studio shows a selection of original work in part. It shows real excerpts, an account of how each piece teaches, and a way to ask about it. The complete resources are never published. This page describes the workflow. It needs no database, account or CMS: one manifest file, the preview images, and two build commands.
+The Learning Studio shows a selection of original work in part. It shows real excerpts, an account of how each piece teaches, and a way to ask about it. The complete resources are never published. This page describes the workflow. It needs no database, account or CMS: one manifest file, the preview images, and two build commands.
 
 ## The five kinds of material, kept apart
 
