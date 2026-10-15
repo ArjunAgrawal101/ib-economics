@@ -18,7 +18,7 @@ await p.evaluate(() => nav('course')); await p.evaluate(() => nav('home')); awai
 check(await p.locator('details.rn-desk').evaluate(d => d.open), 'the desk stays as the reader left it');
 check(/One next step/.test(await p.locator('details.rn-desk').innerText()), 'the folded desk still holds the existing bands');
 check(await p.locator('.rn-home.cv svg.cv-svg').count() === 1, 'the home opener draws its model');
-check(await p.locator('.cv-sig').count() >= 5, 'the opener shows the platform\'s scale, counted from its data');
+check(await p.locator('.at-route .at-sc').count() >= 5, 'the pathways show the platform\'s scale, counted from its data');
 check(await p.locator('.rn-atlas .atl').count() >= 4 && await p.locator('.atl-index .atx').count() >= 5, 'the gateway offers every major destination in two tiers');
 await p.locator('.rn-atlas .atl', { hasText: 'Real World' }).first().click(); await p.waitForTimeout(200);
 check((await st()).v === 'world', 'a gateway card opens its section');

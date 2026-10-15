@@ -14,7 +14,7 @@ const { p, errors } = await open(ctx, base + '#/studio');
 await p.waitForTimeout(500);
 const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/studio/showcase.json'), 'utf8'));
 const items = manifest.items.filter(i => i.status === 'published');
-const requests = []; p.on('request', r => { if (!r.url().startsWith(base) && !/fonts\.(googleapis|gstatic)/.test(r.url())) requests.push(r.url()); });
+const requests = []; p.on('request', r => { if (!r.url().startsWith(base)) requests.push(r.url()); });
 
 /* the Studio index */
 check(await p.locator('.st-card').count() === items.length, `the Studio shows every published item (${items.length})`);
@@ -75,7 +75,8 @@ check(/unit elastic/.test(await p.locator('#pd-read').innerText()) && await p.lo
 
 /* Learning design */
 await p.evaluate(() => nav('design')); await p.waitForTimeout(400);
-check(await p.locator('.ld-step').count() === 7 && (await p.locator('.ld-step h2').allInnerTexts()).join('|') === 'Concept|Visual understanding|Economic model|Real-world application|Analysis|Evaluation|Judgement', 'Learning design walks the seven moves in order');
+check(await p.locator('.ld-step').count() === 9 && (await p.locator('.ld-step h2').allInnerTexts()).join('|') === 'Concept|Model|Diagram|Evidence|Quantitative reasoning|Stakeholder perspectives|Analysis|Evaluation|Judgement', 'Learning design walks the nine steps in order');
+check(/consumers bear most of a \$27 tax[^.]*\$24 of the \$27/.test(await p.locator('.ld-stake').innerText()) && /\$1,458/.test(await p.locator('.ld-stake').innerText()), 'the stakeholder step carries the explainer\'s incidence and revenue figures');
 await p.locator('.ld-plan summary').first().click(); await p.waitForTimeout(100);
 check(await p.locator('.ld-plan').first().evaluate(d => d.open) && /not an IB examination question/.test(await p.locator('#view').innerText()), 'the answer plan opens, and the question is labelled as original');
 check(/PED = -10% ÷ 50% = -0\.2/.test(await p.locator('.ld-work').first().innerText()), 'the worked calculation shows PED = -0.2');
@@ -91,12 +92,30 @@ check(requests.length === 0, 'nothing on these pages contacts another server', r
 
 /* the home page */
 await p.evaluate(() => nav('home')); await p.waitForTimeout(600);
-check(await p.locator('#cv-h').innerText() === 'Economics is not just a subject to study. It is a way to think.', 'the cover carries the headline');
-check(await p.locator('.cv-lede').innerText() === 'An interactive learning ecosystem for IB DP Economics, connecting concepts, visual understanding, real-world evidence and exam thinking.', 'and the supporting line');
-check(await p.locator('.eco a').count() === 5 && await p.locator('.sw-card').count() === 4, 'five ways in, and four pieces of selected work');
-await p.locator('#rnt-diagram').click(); await p.waitForTimeout(100); await p.keyboard.press('ArrowRight'); await p.waitForTimeout(150);
-check(await p.locator('#rnt-world').getAttribute('aria-selected') === 'true' && await p.evaluate(() => document.activeElement.id) === 'rnt-world', 'the five ways into PED are tabs that the arrow keys move between');
-check(/Petrol and diesel excise duties/.test(await p.locator('#rnt-p').innerText()), 'the real-world tab names a dated case from the platform');
+check((await p.locator('#cv-h').innerText()).replace(/\s+/g, ' ').trim() === 'Economics is not just a subject to study. It is a way to think.', 'the cover carries the headline');
+check(await p.locator('.cv-lede').innerText() === 'An interactive learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking.' && /IB DP Economics/.test(await p.locator('.at-copy .eb').innerText()), 'and the supporting line, with IB DP Economics named above it');
+check(await p.locator('.at-route .at-stop').count() === 6 && await p.locator('#selected-work .ex').count() === 5, 'six pathways, and an exhibition of five pieces');
+check(await p.locator('#selected-work .ex-shelf .ex-issue').count() === 10, 'the series shelf holds all ten issues');
+check((await p.locator('.at-fig a.at-fl').evaluateAll(a => a.map(x => x.getAttribute('href')))).every(h => h.startsWith('#/studio/')), 'the cover\'s excerpts open their Learning Studio item');
+await p.locator('.ex-feature .ex-main').click(); await p.waitForTimeout(300);
+check(await p.locator('#st-dlg[open]').count() === 1 && /Exchange rates/.test(await p.locator('#st-dlg-t').innerText()), 'the featured exhibit opens in the viewer');
+await p.keyboard.press('Escape'); await p.waitForTimeout(200);
+/* the journey: tabs on a vertical rail, moved by the arrow keys */
+await p.locator('#aj-t-visualise').click(); await p.waitForTimeout(150); await p.keyboard.press('ArrowDown'); await p.waitForTimeout(200);
+check(await p.locator('#aj-t-apply').getAttribute('aria-selected') === 'true' && await p.evaluate(() => document.activeElement.id) === 'aj-t-apply', 'the six perspectives are tabs that the arrow keys move between');
+check(/Petrol and diesel excise duties/.test(await p.locator('#aj-panel').innerText()), 'the Apply stage names a dated case from the platform');
+await p.locator('#aj-t-interact').click(); await p.waitForTimeout(200);
+check(await p.locator('#aj-panel #pd-p').count() === 1 && /\|PED\|/.test(await p.locator('#aj-panel').innerText()), 'the Interact stage holds the working PED model');
+/* the lab: five predictions from the platform's own data, then the model */
+const preds = await p.evaluate(() => DMPREDICT.tax.map(q => q[3]));
+for (let i = 0; i < 5; i++) { await p.locator('#al-body .al-o').nth(preds[i]).click(); await p.waitForTimeout(80);
+  if (i === 0) check(/That is what the model does/.test(await p.locator('#al-body .al-fb').innerText()) && await p.evaluate(() => document.activeElement.classList.contains('al-next')), 'a prediction gets immediate feedback, and focus moves to the next step');
+  await p.locator('#al-body .al-next').click(); await p.waitForTimeout(80) }
+check(/5\s*of 5/.test(await p.locator('#al-body .al-score').innerText()) && await p.locator('#al-body .al-fig svg').count() === 1, 'five correct predictions end with the model\'s own diagram');
+check((await p.locator('#al-body .al-act a').getAttribute('href')) === '#/lab/predict-a-diagram', 'the lab leads on to the full Predict-a-diagram lab');
+/* the enquiry names the resource the visitor chose */
+await p.locator('#st-enq-r').selectOption('examiner-guide'); await p.waitForTimeout(100);
+check(decodeURIComponent(await p.locator('#st-enq-m').getAttribute('href')).includes('Resource enquiry: How to Think Like an IB Economics Examiner'), 'the enquiry band names the chosen resource in the email');
 check(await p.locator('.st-enq h2').innerText() === 'Interested in exploring more?', 'the home page closes with the invitation');
 check(await p.locator('footer .ft-reslink').getAttribute('href') === 'https://ib-economics-pi.vercel.app/' && /For more resources:/.test(await p.locator('footer').innerText()), 'the footer carries the resource link');
 
@@ -127,6 +146,18 @@ for (const w of [1366, 390]) {
   }
   check(!viol.length, `${w}px · axe finds no WCAG A/AA violation on the new pages`, viol.join(' | '));
 }
+/* the home page's new sections, including every journey stage and the lab's finished state */
+for (const w of [1440, 390]) {
+  await p.setViewportSize({ width: w, height: 900 }); await p.evaluate(() => nav('home')); await p.waitForTimeout(600);
+  if (!(await p.evaluate(() => typeof axe !== 'undefined'))) await p.addScriptTag({ content: axe });
+  const run = sel => p.evaluate(async s => (await axe.run(document.querySelector(s), { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } })).violations.map(x => s + ' ' + x.id + ':' + x.nodes.length), sel);
+  let viol = [];
+  for (const s of ['section.at-hero', '#explore', '#selected-work', '#at-journey', '.al-band', '.at-phil', '.st-enq']) viol = viol.concat(await run(s));
+  for (let i = 0; i < 6; i++) { await p.evaluate(i => atJGo(i), i); viol = viol.concat(await run('#at-journey')) }
+  await p.evaluate(() => { AL.i = 5; AL.ans = DMPREDICT.tax.map(q => q[3]); alPaint() }); viol = viol.concat(await run('.al-band'));
+  check(!viol.length, `${w}px · axe finds no WCAG A/AA violation in the home page's new sections`, [...new Set(viol)].join(' | '));
+}
+await p.setViewportSize({ width: 1366, height: 900 });
 check(errors.length === 0, `no page errors (${errors.join(' | ')})`);
 
 /* the crawlable pages and the sitemap */

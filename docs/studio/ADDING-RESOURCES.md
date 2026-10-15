@@ -29,7 +29,9 @@ A password screen, a blurred image or a hidden button in the browser is not acce
    - the master's path relative to the masters folder;
    - for a PDF, the page;
    - optionally a crop, as fractions `[left, top, right, bottom]`;
-   - the width.
+   - the width;
+   - optionally `bg`, the colour a transparent master is laid on (default `FFFDF8`, the decks' panel colour);
+   - optionally `pad`, a margin in the same colour, as a fraction of the width (the decks use `0.03`).
 
    The full shape is at the top of `tools/studio/build_previews.py`. Then run:
 
@@ -37,9 +39,9 @@ A password screen, a blurred image or a hidden button in the browser is not acce
    python3 tools/studio/build_previews.py --masters /path/outside/the/repo --only <item-id>
    ```
 
-   It writes WebP excerpts of at most 1,200 px to `assets/studio/<item-id>/`. Each one carries a footer strip reading "Preview excerpt · Arjun Agrawal · not for redistribution". It opens masters read-only, never copies them, and refuses to run if the masters or the recipes are inside the repository.
+   It writes WebP excerpts of at most 1,200 px to `assets/studio/<item-id>/`. Each one carries a discreet footer strip reading "Selected preview · Arjun Agrawal". It opens masters read-only, never copies them, and refuses to run if the masters or the recipes are inside the repository.
 
-   Choose excerpts that teach something on their own, and check every figure on them. Do not excerpt anything that reproduces IB examination papers, markschemes, grade boundaries or other third-party material.
+   Choose excerpts that teach something on their own, and check every figure and label on them. Crop to complete regions or branches, never through a word or a box. If an excerpt shows an error, correct the master at its source and rebuild it, rather than hiding it with a crop or a caption. Do not excerpt anything that reproduces IB examination papers, markschemes, grade boundaries or other third-party material.
 
 2. **Describe it.** Add an entry to `items` in `content/studio/showcase.json`. The fields are:
 
@@ -50,6 +52,9 @@ A password screen, a blurred image or a hidden button in the browser is not acce
    | `disclosure` | `1` or `2` |
    | `type` | `visual`, `guide`, `interactive` or `collection` |
    | `treatment` | `A` (visual: excerpts open in a viewer), `B` (interactive: a working miniature or a walkthrough), `C` (collection: a learning journey) |
+   | `exhibit` | `visual`, `editorial`, `interactive` or `series`: the form the item takes in exhibitions (see `docs/design-system.md`) |
+   | `verified` | the date the content was checked, as `YYYY-MM-DD`. A published item must have one |
+   | `checks` | one public sentence saying what was checked, such as "All slides read; every figure on the excerpts recomputed" |
    | `title`, `kicker` | the name, and a short line such as "Visual explainer · Unit 2.5" |
    | `topics`, `level`, `audience`, `format`, `previewFormat` | facts shown beside the resource |
    | `summary` | one or two sentences on what it is |

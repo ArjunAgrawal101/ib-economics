@@ -3211,7 +3211,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .aj-rail::before{content:"";position:absolute;left:19px;top:22px;bottom:22px;width:2px;background:var(--ln-rule)}
 .aj-rail li{position:relative}
 .aj-rail button{display:grid;grid-template-columns:40px 1fr;column-gap:var(--sp-3);row-gap:2px;width:100%;padding:var(--sp-3) var(--sp-2) var(--sp-3) 0;border:0;background:transparent;text-align:left;cursor:pointer;color:var(--tx-strong);border-radius:var(--rd-md)}
-.aj-n{grid-row:1/span 2;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--ff-mono);font-size:12px;font-weight:600;background:var(--sf-band);border:2px solid var(--ln-rule);color:var(--tx-body);position:relative;z-index:1;transition:background var(--mo-base),border-color var(--mo-base),color var(--mo-base)}
+.aj-n{grid-row:1/span 2;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--ff-mono);font-size:12px;font-weight:600;background:var(--sf-band);border:2px solid var(--ln-rule);color:var(--tx-body);position:relative;z-index:1}
 .aj-t{font-family:var(--ff-display);font-size:21px;line-height:1.15;align-self:end}
 .aj-d{font-family:var(--ff-ui);font-size:13px;line-height:1.4;color:var(--tx-quiet)}
 .aj-rail li.done .aj-n{border-color:var(--ac-bur);color:var(--ac-bur)}
@@ -3313,7 +3313,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 @media (max-width:640px){.ex-side{display:none}}
 .al-next-list{list-style:none;margin:var(--sp-5) 0 0;padding:var(--sp-4) 0 0;border-top:1px dashed var(--ln-rule);display:grid;gap:6px;font-family:var(--ff-ui);font-size:13.5px;color:var(--tx-quiet)}
 .al-next-list li{display:flex;gap:var(--sp-2)}
-.al-next-list li span{font-family:var(--ff-mono);font-size:11px;color:var(--ln-rule);min-width:18px;padding-top:2px}
+.al-next-list li span{font-family:var(--ff-mono);font-size:11px;color:var(--tx-quiet);min-width:18px;padding-top:2px}
 .al-next-note{margin-top:var(--sp-3);font-family:var(--ff-ui);font-size:12.5px;color:var(--tx-quiet)}
 .al-card{min-height:0}
 .at-figs{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}
@@ -41630,6 +41630,7 @@ function stWa(k,title){const c=stCat(k),w=(CONTACT.find(x=>x.k==="whatsapp")||{h
 function stAccess(it){return it.disclosure===1
  ?"Shown here: "+it.previewFormat.toLowerCase()+". The complete resource is not published online; ask if you would like to know more."
  :"Open on this platform: "+it.previewFormat.toLowerCase()+"."}
+function stDate(d){try{return new Date(d+"T12:00:00Z").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"})}catch(e){return d}}
 function stCopy(url){const done=()=>toast("Link copied: "+url);
  try{navigator.clipboard.writeText(url).then(done,()=>toast(url))}catch(e){toast(url)}}
 /* ── the viewer: a native dialog, so focus is held and Escape closes it ── */
@@ -41713,7 +41714,7 @@ function studioIndex(){
   <aside class="st-aside"><p class="sm"><b>Looking for free materials to download?</b> The <button class="lnk" onclick="nav('resources')">Resource hub</button> links to the free library. The Studio is different: it shows work that is not published in full, so you can see how it teaches and ask about it.</p></aside></div>
  ${stEnquireBand()}`}
 function stItemPage(it){const t=stType(it.type),tab=stTab(it),cat=stCat(it.enquiry);
- const facts=[["Format",it.format],["Level",it.level],["For",it.audience.join(", ")],["Topics",it.topics.join(", ")],["What you can see",stAccess(it)]];
+ const facts=[["Format",it.format],["Level",it.level],["For",it.audience.join(", ")],["Topics",it.topics.join(", ")],["What you can see",stAccess(it)],["Checked",stDate(it.verified)+". "+it.checks]];
  let show="";
  if(it.treatment==="A"){const [lead,...rest]=it.previews;
   show=`<div class="st-a"><button class="st-lead" onclick="stView('${it.id}',0)" aria-label="Open excerpt 1 of ${it.previews.length} in the viewer: ${esA(lead.cap||"")}">${stImg(lead,"",true)}</button>
@@ -42004,7 +42005,7 @@ function rnJourney(){const i=ATJ.i;
   <p class="ed at-intro">The resources are designed to work together. Follow one topic from a first idea to a judgement, through a mindmap, a diagram, a real case, a calculation, a working model and an original question. Each stage stands on its own: start anywhere.</p>
   <div class="aj">
    <ol class="aj-rail" role="tablist" aria-orientation="vertical" aria-label="Six perspectives on price elasticity of demand" onkeydown="atJKey(event)">
-    ${AT_J.map(([k,t,d],j)=>`<li class="${j===i?"on":""}${j<i?" done":""}"><button role="tab" id="aj-t-${k}" aria-selected="${j===i}" aria-controls="aj-panel" tabindex="${j===i?0:-1}" onclick="atJGo(${j})"><span class="aj-n">${String(j+1).padStart(2,"0")}</span><span class="aj-t">${esc(t)}</span><span class="aj-d">${esc(d)}</span></button></li>`).join("")}</ol>
+    ${AT_J.map(([k,t,d],j)=>`<li role="presentation" class="${j===i?"on":""}${j<i?" done":""}"><button role="tab" id="aj-t-${k}" aria-selected="${j===i}" aria-controls="aj-panel" tabindex="${j===i?0:-1}" onclick="atJGo(${j})"><span class="aj-n">${String(j+1).padStart(2,"0")}</span><span class="aj-t">${esc(t)}</span><span class="aj-d">${esc(d)}</span></button></li>`).join("")}</ol>
    <div class="aj-panel" id="aj-panel" role="tabpanel" aria-labelledby="aj-t-${AT_J[i][0]}" tabindex="0">${atJPanel(i)}</div></div></div></section>`}
 
 /* ── 4 · The learning lab: predict, then see the model ───────────────────────

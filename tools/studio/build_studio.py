@@ -219,7 +219,7 @@ def item_page(m, facts, it, tmap):
 <h1>{esc(it['title'])}</h1>
 <p class="lede">{esc(it['summary'])}</p>
 <dl class="facts"><div><dt>Type</dt><dd>{esc(tmap[it['type']]['n'])}</dd></div><div><dt>Format</dt><dd>{esc(it['format'])}</dd></div>
-<div><dt>Level</dt><dd>{esc(it['level'])}</dd></div><div><dt>For</dt><dd>{esc(', '.join(it['audience']))}</dd></div><div><dt>Topics</dt><dd>{esc(', '.join(it['topics']))}</dd></div></dl>
+<div><dt>Level</dt><dd>{esc(it['level'])}</dd></div><div><dt>For</dt><dd>{esc(', '.join(it['audience']))}</dd></div><div><dt>Topics</dt><dd>{esc(', '.join(it['topics']))}</dd></div><div><dt>Checked</dt><dd>{esc(fdate(it['verified']))}. {esc(it['checks'])}</dd></div></dl>
 {figs}
 <h2>What it helps learners do</h2><ul>{''.join(f'<li>{esc(o)}</li>' for o in it['objectives'])}</ul>
 <h2>The thinking behind it</h2><p>{esc(it['approach'])}</p>
@@ -239,6 +239,12 @@ def item_page(m, facts, it, tmap):
     return page(m, facts, title=f'{it["title"]} · Learning Studio · Arjun Agrawal', desc=trim(it['summary']),
                 canonical=f'{site}studio/{it["id"]}/', up=up, body=body,
                 image=it['previews'][0]['src'] if it['previews'] else None, ld=ld)
+
+
+def fdate(d):
+    import datetime
+    x = datetime.date.fromisoformat(d)
+    return f'{x.day} {x.strftime("%B")} {x.year}'
 
 
 def slug(t):

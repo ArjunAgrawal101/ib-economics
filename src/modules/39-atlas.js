@@ -101,7 +101,7 @@ function rnJourney(){const i=ATJ.i;
   <p class="ed at-intro">The resources are designed to work together. Follow one topic from a first idea to a judgement, through a mindmap, a diagram, a real case, a calculation, a working model and an original question. Each stage stands on its own: start anywhere.</p>
   <div class="aj">
    <ol class="aj-rail" role="tablist" aria-orientation="vertical" aria-label="Six perspectives on price elasticity of demand" onkeydown="atJKey(event)">
-    ${AT_J.map(([k,t,d],j)=>`<li class="${j===i?"on":""}${j<i?" done":""}"><button role="tab" id="aj-t-${k}" aria-selected="${j===i}" aria-controls="aj-panel" tabindex="${j===i?0:-1}" onclick="atJGo(${j})"><span class="aj-n">${String(j+1).padStart(2,"0")}</span><span class="aj-t">${esc(t)}</span><span class="aj-d">${esc(d)}</span></button></li>`).join("")}</ol>
+    ${AT_J.map(([k,t,d],j)=>`<li role="presentation" class="${j===i?"on":""}${j<i?" done":""}"><button role="tab" id="aj-t-${k}" aria-selected="${j===i}" aria-controls="aj-panel" tabindex="${j===i?0:-1}" onclick="atJGo(${j})"><span class="aj-n">${String(j+1).padStart(2,"0")}</span><span class="aj-t">${esc(t)}</span><span class="aj-d">${esc(d)}</span></button></li>`).join("")}</ol>
    <div class="aj-panel" id="aj-panel" role="tabpanel" aria-labelledby="aj-t-${AT_J[i][0]}" tabindex="0">${atJPanel(i)}</div></div></div></section>`}
 
 /* ── 4 · The learning lab: predict, then see the model ───────────────────────

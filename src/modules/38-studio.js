@@ -34,6 +34,7 @@ function stWa(k,title){const c=stCat(k),w=(CONTACT.find(x=>x.k==="whatsapp")||{h
 function stAccess(it){return it.disclosure===1
  ?"Shown here: "+it.previewFormat.toLowerCase()+". The complete resource is not published online; ask if you would like to know more."
  :"Open on this platform: "+it.previewFormat.toLowerCase()+"."}
+function stDate(d){try{return new Date(d+"T12:00:00Z").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"})}catch(e){return d}}
 function stCopy(url){const done=()=>toast("Link copied: "+url);
  try{navigator.clipboard.writeText(url).then(done,()=>toast(url))}catch(e){toast(url)}}
 /* ── the viewer: a native dialog, so focus is held and Escape closes it ── */
@@ -117,7 +118,7 @@ function studioIndex(){
   <aside class="st-aside"><p class="sm"><b>Looking for free materials to download?</b> The <button class="lnk" onclick="nav('resources')">Resource hub</button> links to the free library. The Studio is different: it shows work that is not published in full, so you can see how it teaches and ask about it.</p></aside></div>
  ${stEnquireBand()}`}
 function stItemPage(it){const t=stType(it.type),tab=stTab(it),cat=stCat(it.enquiry);
- const facts=[["Format",it.format],["Level",it.level],["For",it.audience.join(", ")],["Topics",it.topics.join(", ")],["What you can see",stAccess(it)]];
+ const facts=[["Format",it.format],["Level",it.level],["For",it.audience.join(", ")],["Topics",it.topics.join(", ")],["What you can see",stAccess(it)],["Checked",stDate(it.verified)+". "+it.checks]];
  let show="";
  if(it.treatment==="A"){const [lead,...rest]=it.previews;
   show=`<div class="st-a"><button class="st-lead" onclick="stView('${it.id}',0)" aria-label="Open excerpt 1 of ${it.previews.length} in the viewer: ${esA(lead.cap||"")}">${stImg(lead,"",true)}</button>
