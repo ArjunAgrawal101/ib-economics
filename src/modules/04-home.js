@@ -45,8 +45,9 @@ function rnAtlas(){const n=rnCount();
   ["educator","Educators","A studio for teachers, supervisors and coordinators.","ppc","5 roles · 10 modules"],
   ["tok","TOK × Economics","What economic knowledge is, and how it is made.","model","Knowledge questions"]];
  const has=v=>SECTIONS.some(s=>s.v===v);
- return `<section class="sec rn-band rn-atlas-band"><div class="wrap full">
+ return `<section class="sec rn-band rn-atlas-band" id="explore"><div class="wrap full">
   <div class="shead fx"><span class="n">01</span><h2>Explore Economics</h2><span class="aside">What can I do here?</span></div>
+  ${typeof rnPathways==="function"?rnPathways():""}
   <div class="rn-atlas">${A.filter(d=>has(d[0])).map((d,i)=>`<button class="atl${i===0?" atl-lead":""}" onclick="nav('${d[0]}')">
    <span class="atl-fig" data-motif="${d[3]}"></span>
    <span class="atl-tx"><span class="atl-n">${String(i+1).padStart(2,"0")}</span><span class="atl-t">${esc(d[1])}</span>
@@ -111,20 +112,28 @@ function rnGlance(){const n=rnCount();
  </div></section>`}
 function rnDivider(t,s){return `<div class="wrap full rn-divider"><span class="rn-dv-t">${esc(t)}</span><span class="rn-dv-s">${esc(s)}</span></div>`}
 /* the order the home page reads in; bands are matched by their heading */
-/* the home page reads as a story in eleven chapters, one verb each: think,
-   learn, see, interact, connect, practise, research, explore, watch, teach,
-   and the person behind it. "#n|Title" marks a chapter opener. */
+/* the home page reads as a story in twelve chapters, one verb each: think,
+   discover, learn, see, interact, connect, practise, research, explore,
+   watch, teach, and the person behind it. "#n|Title" marks a chapter opener. */
+/* The Learning Studio and Atlas briefs add a second chapter, Discover: the
+   exhibition of original work, one topic seen six ways and a working
+   prediction lab. The About chapter opens with the progression the resources
+   are designed around and closes with the enquiry band. Later modules register their bands
+   in RN_BANDS, so this list names them without the home page knowing how
+   they are drawn. */
+const RN_BANDS={};
 const RN_ORDER=["#01|Think","Start your journey","@atlas","@paths",
- "#02|The course","@course",
- "#03|Learn","@learn","Timeless ideas","Inflation targeting",
- "#04|See the world","@lead","Economics, right now",
- "#05|Master the models","@labs","What happens next?","@mind",
- "#06|Exam","@exam","Today's challenge",
- "#07|Research","@research",
- "#08|Explore","@today","@ideas","Economics, Everywhere",
- "#09|Watch","Latest from Arjun",
- "#10|Teach","@educator",
- "#11|About","@creator","Work through the platform",
+ "#02|Discover","@work","@onetopic","@labdemo",
+ "#03|The course","@course",
+ "#04|Learn","@learn","Timeless ideas","Inflation targeting",
+ "#05|See the world","@lead","Economics, right now",
+ "#06|Master the models","@labs","What happens next?","@mind",
+ "#07|Exam","@exam","Today's challenge",
+ "#08|Research","@research",
+ "#09|Explore","@today","@ideas","Economics, Everywhere",
+ "#10|Watch","Latest from Arjun",
+ "#11|Teach","@educator",
+ "#12|About","@thinking","@creator","Work through the platform","@enquire",
  "@desk","One next step","Continue where you left off","What should I do next?","Six ways in","The Arjun method","@glance","@final"];
 function rnHome(html){
  if(typeof document==="undefined")return html;
@@ -139,7 +148,8 @@ function rnHome(html){
  const used=new Set();let out=rnCover(hero);
  for(const k of RN_ORDER){
   if(k[0]==="#"){const [n,t]=k.slice(1).split("|");out+=rnChapter(n,t);continue}
-  if(NEW[k]){try{out+=NEW[k]()}catch(e){}continue}
+  const band=NEW[k]||RN_BANDS[k];
+  if(band){try{out+=band()}catch(e){}continue}
   rest.forEach(el=>{if(!used.has(el)&&title(el).startsWith(k)){used.add(el);out+=el.outerHTML}})}
  /* anything this list does not name keeps its place at the end: nothing is dropped */
  rest.forEach(el=>{if(!used.has(el))out+=el.outerHTML});

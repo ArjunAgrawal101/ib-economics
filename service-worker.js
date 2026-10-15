@@ -20,7 +20,7 @@
    Cache-first for the static assets, which change only when the version below
    changes.
    ═══════════════════════════════════════════════════════════════════════════ */
-const VERSION = "aa-ibdp-econ-v17";
+const VERSION = "aa-ibdp-econ-v19";
 const CACHE = VERSION + "-static";
 
 /* Relative to the service worker's own location, so the platform works from a
@@ -42,7 +42,11 @@ const PRECACHE = [
   "./assets/icons/icon-512.png",
   "./assets/icons/icon-maskable-192.png",
   "./assets/icons/icon-maskable-512.png",
-  "./assets/icons/apple-touch-icon.png"
+  "./assets/icons/apple-touch-icon.png",
+  "./assets/fonts/fonts.css",
+  "./assets/fonts/bodoni-moda-latin-7.woff2",
+  "./assets/fonts/source-serif-4-latin-5.woff2",
+  "./assets/fonts/manrope-latin-2.woff2"
 ];
 
 self.addEventListener("install", event => {
@@ -75,8 +79,9 @@ self.addEventListener("fetch", event => {
   const url = new URL(req.url);
 
   /* Anything on another origin is left entirely alone: YouTube, the still
-     image hosts, Google Fonts and Google Drive are never cached here, and a
-     request to them is never answered from a stale copy. */
+     image hosts and Google Drive are never cached here, and a request to them
+     is never answered from a stale copy. (The typefaces are now served by the
+     site itself, from assets/fonts/, and are cached like any other asset.) */
   if (url.origin !== self.location.origin) return;
 
   /* The platform's own API (the YouTube feed): always ask the network first,
@@ -105,11 +110,16 @@ self.addEventListener("fetch", event => {
     (req.headers.get("accept") || "").includes("text/html");
 
   if (isPage) {
+    /* Only the app itself is stored as the app shell. The Resource Studio's
+       plain pages (studio/...) are separate documents: each is kept under its
+       own address, so visiting one can never replace the offline platform. */
+    const scope = new URL(self.registration.scope);
+    const shell = url.pathname === scope.pathname || url.pathname === scope.pathname + "index.html";
     event.respondWith((async () => {
       try {
         const fresh = await fetch(req);
         const cache = await caches.open(CACHE);
-        cache.put("./index.html", fresh.clone()).catch(() => {});
+        if (fresh && fresh.ok) cache.put(shell ? "./index.html" : req, fresh.clone()).catch(() => {});
         return fresh;
       } catch (e) {
         const cache = await caches.open(CACHE);

@@ -8,7 +8,7 @@ import sys, os, glob
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SRC = os.path.join(ROOT, 'index.html')
 OUT = sys.argv[sys.argv.index('--out') + 1] if '--out' in sys.argv else SRC
-STYLES = ['css.css', 'css-course.css', 'css-t6.css']
+STYLES = ['css.css', 'css-course.css', 'css-t6.css', 'css-studio.css', 'css-atlas.css']
 s = open(SRC, encoding='utf-8').read()
 JB, JE = '/* ▓▓ RENAISSANCE:BEGIN ▓▓ */', '/* ▓▓ RENAISSANCE:END ▓▓ */'
 CB, CE = '/* ▓▓ REN-CSS:BEGIN ▓▓ */', '/* ▓▓ REN-CSS:END ▓▓ */'

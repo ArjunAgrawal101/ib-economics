@@ -37,15 +37,18 @@ const r1 = await p.textContent('#cv-read');
 check(r0 !== r1 && /shortage/.test(r1), 'moving demand on the cover redraws the market and explains the shortage', r1);
 await p.locator('#cv-shift').fill('-2'); await p.dispatchEvent('#cv-shift', 'input');
 check(/surplus/.test(await p.textContent('#cv-read')), 'moving demand down explains the surplus');
-await p.locator('.cv-sig').first().click(); await p.waitForTimeout(200);
-check((await st(p)).v === 'world', 'a scale signal opens what it counts');
+await p.locator('.at-route a.at-sa', { hasText: 'Investigate a real-world issue' }).click(); await p.waitForTimeout(300);
+check((await st(p)).v === 'world', 'a pathway opens what it counts');
 await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
-await p.locator('.cv-cta .btn').first().click(); await p.waitForTimeout(200);
-check((await st(p)).v !== 'home', 'Start learning leaves the cover');
+await p.locator('.cv-cta .btn').first().click(); await p.waitForTimeout(700);
+check(await p.evaluate(() => { const g = document.getElementById('explore'); const r = g && g.getBoundingClientRect(); return !!r && r.top < innerHeight * 0.5 && r.bottom > 0 && document.activeElement === g.querySelector('h2') }),
+  'Explore Economics brings the gateway into view and moves focus to it');
+await p.locator('.cv-cta a.btn', { hasText: 'Discover the Learning Studio' }).click(); await p.waitForTimeout(300);
+check((await st(p)).v === 'studio', 'Discover the Learning Studio opens it');
 await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
 check(await p.locator('.rn-hinge').count() === 1 && await p.locator('.rn-final').count() === 1, 'the home page runs from the hinge to the closing invitation');
 const order = await p.evaluate(() => [...document.querySelectorAll('.rn-chap .ch-t, .rn-hinge .ch-t')].map(e => e.textContent.trim()));
-check([...new Set(order)].join('|').startsWith('Think|The course|Learn|See the world|Master the models|Exam|Research|Explore|Watch|Teach|About'), 'the chapters run in the narrative order', order.join('|'));
+check([...new Set(order)].join('|').startsWith('Think|Discover|The course|Learn|See the world|Master the models|Exam|Research|Explore|Watch|Teach|About'), 'the chapters run in the narrative order', order.join('|'));
 /* case links */
 const id = await p.evaluate(() => RW_CASES[3].id);
 await p.evaluate(i => nav('world', 0, i), id); await p.waitForTimeout(300);

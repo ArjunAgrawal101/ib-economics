@@ -329,7 +329,7 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   equilibrium to solve; they are declared as such rather than counted as validated.
 - The equations, parameters, solved equilibria and per-point validation for every diagram are
   visible to teachers at **Lab → Model integrity**.
-- Fonts load from Google Fonts when online and fall back to system fonts when not. Nothing
+- The typefaces (Bodoni Moda, Source Serif 4, Manrope, JetBrains Mono; SIL Open Font License) are served from `assets/fonts/`, so no font request leaves the site. Nothing
   else is fetched.
 - Progress is stored in `localStorage` on the student's own device. Migration from an earlier schema
   is tested end-to-end and preserves keys the current build does not recognise. The rename from
@@ -784,6 +784,36 @@ Drive. The service worker leaves other origins entirely alone and never answers 
 from a stale copy, and the offline panel on the About page says exactly this. Installing adds an
 icon and opens the platform in its own window. It creates no account, signs you in to nothing and
 sends nothing anywhere.
+
+## The landing experience, the Learning Studio, Learning design and Contact
+
+**The home page** opens with "Economics is not just a subject to study. It is a way to think.", then an interactive learning ecosystem in one line and two actions:
+- **Explore Economics** goes down to the gateway.
+- **Discover the Learning Studio** opens the Studio.
+
+Beside the statement sits a plate of three numbered figures: the live market model (Fig. 1), the corrected elasticity diagram from the PED explainer (Fig. 2) and a branch of its revision map (Fig. 3). The page then reads as follows.
+
+- **Explore Economics.** Six pathways drawn as one route: understand a concept, explore a diagram, investigate a real-world issue, practise a calculation, test understanding and develop exam thinking. Each opens a real page and shows its own count, followed by the existing gateway.
+- **Inside the Economics Learning Studio.** An exhibition of five pieces in five forms:
+  - a featured spread (exchange rates);
+  - a visual explainer (PED);
+  - an editorial guide shown as pages (the examiner's guide);
+  - an application shown by its title card and contents (the EE Navigator);
+  - a series shelf (Economics in 60 Seconds).
+- **One topic, six perspectives.** Price elasticity of demand as understand, visualise, apply, calculate, interact and evaluate. These are keyboard tabs on a vertical rail, each stage independent.
+- **Inside the learning lab.** A miniature of the platform's *Predict a diagram* lab, using its own questions and explanations for an indirect tax. There are five predictions with immediate feedback, then the model's own diagram.
+- **From concept to judgement** (in the About chapter). The nine-step progression the resources are designed around, shown with a second real topic, a depreciation of the rupee.
+- **Interested in exploring more?** An email prefilled with the resource the visitor chose.
+
+**Learning Studio** (`#/studio`; the address is unchanged from the earlier name, Resource Studio):
+- **Items:** nine pieces of original work, shown in part.
+- **Data model:** each item has an exhibit form (visual, editorial, interactive or series), a disclosure level, a verification date and a public line saying what was checked.
+- **Workflow:** in `docs/studio/ADDING-RESOURCES.md`.
+- **Visual system:** tokens, typefaces, figures and exhibit forms are in `docs/design-system.md`.
+
+**Learning design** (`#/design`) follows price elasticity of demand through the nine steps: concept, model, diagram, evidence, quantitative reasoning, stakeholder perspectives, analysis, evaluation and judgement.
+
+**Contact and collaboration** (`#/contact`) offers six kinds of enquiry, each prefilling an email or WhatsApp message to the published address and number. Nothing is sent from the page.
 
 ## The resource hub
 
