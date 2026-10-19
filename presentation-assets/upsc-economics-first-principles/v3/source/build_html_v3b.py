@@ -156,3 +156,23 @@ body = ('<div style="display:grid;grid-template-columns:380px 1fr 1fr;gap:26px;a
         + '</div><div style="margin-top:28px;background:#F6EFDF;border-radius:24px;padding:24px 36px;font-size:38px;font-weight:700">'
         'One person, two roles: a mill worker earns wages from one firm and spends them in other firms\' shops.</div>')
 page("V26b_Two_Roles", 2400, 860, body)
+
+
+# ================================================================ V16c one budget, three projects, ranked (wide and short)
+opt = lambda rank, t, ben, c, label, fill: (
+    f'<div class="card" style="width:600px;height:430px;padding:30px 34px;display:flex;flex-direction:column;border-top:16px solid {c};background:{fill}">'
+    f'<div style="display:flex;align-items:center;gap:20px"><div style="width:76px;height:76px;border-radius:50%;background:{c};color:#fff;display:flex;'
+    f'align-items:center;justify-content:center;font-size:42px;font-weight:850;flex-shrink:0">{rank}</div>'
+    f'<div style="font-size:44px;font-weight:850;line-height:1.1">{t}</div></div>'
+    f'<div class="muted" style="font-size:36px;font-weight:600;margin-top:22px;line-height:1.3">{ben}</div>'
+    f'<div style="flex:1"></div><div style="font-size:36px;font-weight:850;color:{c};line-height:1.25">{label}</div></div>')
+body = ('<div style="display:flex;align-items:center;gap:18px">'
+        '<div class="navy" style="width:400px;height:430px;padding:34px;display:flex;flex-direction:column;justify-content:center;flex-shrink:0">'
+        '<div style="font-size:64px;font-weight:850;line-height:1.05">₹500 crore</div><div style="font-size:36px;font-weight:600;margin-top:14px;line-height:1.25">for one new project this year</div>'
+        '<div style="font-size:30px;font-style:italic;color:#E2C98F;margin-top:18px">hypothetical state budget</div></div>'
+        f'{arrow(70)}'
+        + opt(1, "Irrigation canals", "Assured water for drought-prone farms", "#2E7D5B", "Chosen", "#F4FAF6")
+        + opt(2, "Hospital upgrade", "More beds and specialist care in the district", "#8A6A2E", "Next-best: its benefits are the opportunity cost", "#FBF5E8")
+        + opt(3, "Electric buses", "Cleaner, faster city commuting", "#8C93A0", "Also forgone, but not counted", "#F7F7F8")
+        + '</div><div style="font-size:32px;font-weight:750;color:#8A6A2E;margin-top:18px">Ranking by one hypothetical decision-maker; another district could rank them differently.</div>')
+page("V16c_Budget_Ranking", 2400, 560, body)
