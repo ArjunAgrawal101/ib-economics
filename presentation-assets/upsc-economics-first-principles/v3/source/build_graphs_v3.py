@@ -568,3 +568,35 @@ lab(ax, 130, Sp(130), "S", NAVY, dx=12, dy=-28, size=46)
 axes(ax)
 tag(cv, 1170, 120, TAG)
 cv.save("G12_Shortage_Mini")
+
+
+# ================================================================ G22b why bowed out, shorter (2400x860)
+cv = Canvas(2400, 860)
+ax = Ax(cv, 220, 690, 1120, 160, xmax=60, ymax=110, ylab="Textiles (units)", xlab="Food (units)", size=AXS)
+ax.xtitle_dy = 92
+grid(ax, range(10, 60, 10), range(10, 110, 10))
+ax.poly(sched, 0, 50, NAVY, CW)
+axes(ax)
+ax.xticks(range(10, 60, 10), size=TICK); ax.yticks(range(20, 110, 20), size=TICK)
+for i in range(5):
+    x0, y0, x1, y1 = PX[i], PY[i], PX[i + 1], PY[i + 1]
+    ax.seg(x0, y0, x1, y0, GREEN, 6, gap=6)
+    ax.seg(x1, y0, x1, y1, RED, 8, arrow_end=True, gap=4)
+    ax.label(x1, (y0 + y1) / 2, str(steps[i]), size=42, color=RED, weight=850, dx=20)
+for (x, y), k in zip(zip(PX, PY), "ABCDEF"):
+    dot(ax, x, y, NAVY, 12)
+    ax.label(x, y, k, size=36, color=INK, weight=850, dx=-16 if k != "A" else 24, dy=34 if k != "A" else -34,
+             anchor="end" if k != "A" else "start")
+bx, by, bw = 1380, 190, 960
+cv.text(bx, by - 96, "Textiles given up for each", size=42, color=INK, weight=800)
+cv.text(bx, by - 46, "extra 10 units of food", size=42, color=INK, weight=800)
+labels = ["A to B", "B to C", "C to D", "D to E", "E to F"]
+for i, s in enumerate(steps):
+    y = by + 10 + i * 104
+    L = s / 30 * (bw - 280)
+    cv.rect(bx + 160, y, L, 78, fill=RED, rx=10, opacity=0.28 + 0.16 * i)
+    cv.text(bx + 140, y + 39, labels[i], size=36, color=MUTED, anchor="end", weight=650)
+    cv.text(bx + 160 + L + 16, y + 39, str(s), size=46, color=RED, weight=850)
+cv.text(bx + 160, by + 570, "Each step costs more than the last", size=38, color=INK, weight=750, italic=True)
+tag(cv, 2380, 830, "Hypothetical schedule")
+cv.save("G22b_Bowed_Out")
