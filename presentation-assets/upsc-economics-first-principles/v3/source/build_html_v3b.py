@@ -30,13 +30,13 @@ card = lambda q, s, ex, c: (f'<div class="card" style="width:710px;height:720px;
                             f'<div style="font-size:52px;font-weight:700;margin-top:28px;line-height:1.25">{s}</div>'
                             f'<div style="flex:1"></div><div style="height:4px;background:#E2D6BC;margin-bottom:26px"></div>'
                             f'<div class="cap" style="font-size:28px;margin-bottom:12px">In the village</div>'
-                            f'<div style="font-size:50px;font-weight:650;line-height:1.25">{ex}</div></div>')
+                            f'<div style="font-size:50px;font-weight:650;line-height:1.25;height:190px">{ex}</div></div>')
 body = ('<div style="display:flex;justify-content:space-between;align-items:center">'
         + card("What?", "Which goods and services, and how much of each", "More rice, and so less cotton?", "#0E1E3A")
         + arrow(90, "#B08A47")
         + card("How?", "Which techniques: more labour, more machines, or a mix", "Tractors or hired farm workers?", "#1B3460")
         + arrow(90, "#B08A47")
-        + card("For whom?", "How the output is shared among people", "Who earns the wages, and so who can afford the rice?", "#8A6A2E")
+        + card("For whom?", "How the output is shared among people", "Who earns wages, and so who can buy the rice?", "#8A6A2E")
         + '</div><div style="margin-top:28px;display:flex;justify-content:space-between;align-items:center">'
         '<div style="font-size:40px;font-weight:800;color:#8A6A2E">Change one answer and the others change too.</div>'
         '<div class="tag" style="font-size:28px">Hypothetical village with limited land and labour</div></div>')
