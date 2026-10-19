@@ -181,7 +181,7 @@ cv.save("UFP_22_Bowed_Out")
 
 
 # ================================================================ UFP_23 movement vs shifts
-cv = Canvas(2400, 940)
+cv = Canvas(2400, 830)
 titles = ["Movement along the PPC", "Outward shift", "Inward shift"]
 caps = [["Existing resources are", "reallocated between goods"],
         ["More resources, better", "technology or skills"],
@@ -189,7 +189,7 @@ caps = [["Existing resources are", "reallocated between goods"],
 for p in range(3):
     ox = 30 + p * 800
     panel_title(cv, ox, 52, p + 1, titles[p])
-    ax = Ax(cv, ox + 130, 700, ox + 690, 200, xmax=75, ymax=135, ylab="Textiles", xlab="Food", size=30)
+    ax = Ax(cv, ox + 130, 640, ox + 690, 190, xmax=75, ymax=135, ylab="Textiles", xlab="Food", size=30)
     ax.xtitle_dy = 54
     if p == 0:
         ax.poly(ppc, 0, 55, NAVY, 7)
@@ -214,10 +214,10 @@ for p in range(3):
         else:
             ax.label(2, 100 * k, "PPC_{2}", size=32, color=GOLD_TXT, weight=800, dx=6, dy=-34)
     ax.axes()
-    cv.lines(ox + 410, 845, caps[p], size=30, color=MUTED, weight=600)
+    cv.lines(ox + 410, 770, caps[p], size=30, color=MUTED, weight=600)
     if p < 2:
-        cv.line(ox + 785, 120, ox + 785, 880, EDGE, 3)
-cv.save("UFP_23_Movement_vs_Shift")
+        cv.line(ox + 785, 120, ox + 785, 800, EDGE, 3)
+cv.save("UFP_23_Movement_vs_Shift_v2")
 
 
 # ================================================================ UFP_24 PPC and growth
@@ -286,11 +286,11 @@ cv.save("UFP_32_Demand_Curve")
 
 
 # ================================================================ UFP_34 movement along vs shift of demand
-cv = Canvas(2240, 1000)
+cv = Canvas(2240, 860)
 for p in range(2):
     ox = 20 + p * 1120
     panel_title(cv, ox, 52, p + 1, ["Own price falls: movement along D", "Income rises: demand shifts right"][p])
-    ax = market_ax(cv, ox + 190, 800, ox + 1000, 220, xlab="Quantity of tomatoes", size=30)
+    ax = market_ax(cv, ox + 190, 690, ox + 1000, 175, xlab="Quantity of tomatoes", size=30)
     ax.xtitle_dy = 84
     if p == 0:
         ax.hguide(40, 40, "₹40"); ax.hguide(30, 60, "₹30")
@@ -301,7 +301,7 @@ for p in range(2):
         ax.label(40, 40, "a", size=36, color=INK, weight=800, dx=10, dy=-36)
         ax.label(60, 30, "b", size=36, color=INK, weight=800, dx=14, dy=-34)
         ax.label(114, Dp(114), "D", size=44, color=NAVY, weight=800, dx=16, dy=-24)
-        cv.lines(ox + 700, 300, ["Change in quantity", "demanded (40 to 60)"], size=30, color=GOLD_TXT, weight=750)
+        cv.lines(ox + 700, 265, ["Change in quantity", "demanded (40 to 60)"], size=30, color=GOLD_TXT, weight=750)
     else:
         D2 = lambda q: 60 - (q - 30) / 2   # Qd = 150 - 2P
         assert D2(70) == 40
@@ -314,11 +314,11 @@ for p in range(2):
         ax.dot(40, 40, INK, 13); ax.dot(70, 40, INK, 13)
         ax.label(114, Dp(114), "D_{1}", size=40, color=NAVY, weight=800, dx=10, dy=-30)
         ax.label(126, D2(126), "D_{2}", size=40, color=GOLD_TXT, weight=800, dx=18, dy=-30)
-        cv.lines(ox + 700, 300, ["Increase in demand at", "every price (40 to 70)"], size=30, color=GOLD_TXT, weight=750)
+        cv.lines(ox + 700, 265, ["Increase in demand at", "every price (40 to 70)"], size=30, color=GOLD_TXT, weight=750)
     ax.axes()
     if p == 0:
-        cv.line(ox + 1110, 110, ox + 1110, 940, EDGE, 3)
-cv.save("UFP_34_Movement_vs_Shift_Demand")
+        cv.line(ox + 1110, 110, ox + 1110, 820, EDGE, 3)
+cv.save("UFP_34_Movement_vs_Shift_Demand_v2")
 
 
 # ================================================================ UFP_36 supply curve
@@ -336,11 +336,11 @@ cv.save("UFP_36_Supply_Curve")
 
 
 # ================================================================ UFP_37 movement along vs shift of supply
-cv = Canvas(2240, 1000)
+cv = Canvas(2240, 860)
 for p in range(2):
     ox = 20 + p * 1120
     panel_title(cv, ox, 52, p + 1, ["Own price rises: movement along S", "Better seeds: supply shifts right"][p])
-    ax = market_ax(cv, ox + 190, 800, ox + 1000, 220, xlab="Quantity of rice", size=30)
+    ax = market_ax(cv, ox + 190, 690, ox + 1000, 175, xlab="Quantity of rice", size=30)
     ax.xtitle_dy = 84
     if p == 0:
         ax.hguide(30, 60, "₹30"); ax.hguide(40, 90, "₹40")
@@ -351,7 +351,7 @@ for p in range(2):
         ax.label(60, 30, "a", size=36, color=INK, weight=800, dx=14, dy=34)
         ax.label(90, 40, "b", size=36, color=INK, weight=800, dx=14, dy=34)
         ax.label(130, Sp(130), "S", size=44, color=NAVY, weight=800, dx=12, dy=-26)
-        cv.lines(ox + 520, 300, ["Change in quantity", "supplied (60 to 90)"], size=30, color=GOLD_TXT, weight=750)
+        cv.lines(ox + 520, 265, ["Change in quantity", "supplied (60 to 90)"], size=30, color=GOLD_TXT, weight=750)
     else:
         S2 = lambda q: (q / 3)            # Qs = 3P
         assert S2(90) == 30
@@ -364,22 +364,22 @@ for p in range(2):
         ax.dot(60, 30, INK, 13); ax.dot(90, 30, INK, 13)
         ax.label(130, Sp(130), "S_{1}", size=40, color=NAVY, weight=800, dx=-10, dy=-34, anchor="end")
         ax.label(136, S2(136), "S_{2}", size=40, color=GOLD_TXT, weight=800, dx=14, dy=-12)
-        cv.lines(ox + 520, 300, ["Increase in supply at", "every price (60 to 90)"], size=30, color=GOLD_TXT, weight=750)
+        cv.lines(ox + 520, 265, ["Increase in supply at", "every price (60 to 90)"], size=30, color=GOLD_TXT, weight=750)
     ax.axes()
     if p == 0:
-        cv.line(ox + 1110, 110, ox + 1110, 940, EDGE, 3)
-cv.save("UFP_37_Movement_vs_Shift_Supply")
+        cv.line(ox + 1110, 110, ox + 1110, 820, EDGE, 3)
+cv.save("UFP_37_Movement_vs_Shift_Supply_v2")
 
 
 # ================================================================ UFP_38 equilibrium and a change in demand
-cv = Canvas(2240, 1000)
+cv = Canvas(2240, 860)
 D2 = lambda q: 60 - (q - 30) / 2       # Qd = 150 - 2P
 P2 = 36; Q2 = 78
 assert 150 - 2 * P2 == Q2 == 3 * P2 - 30
 for p in range(2):
     ox = 20 + p * 1120
     panel_title(cv, ox, 52, p + 1, ["Market equilibrium", "Demand rises: new equilibrium"][p])
-    ax = market_ax(cv, ox + 190, 800, ox + 1000, 220, xlab="Quantity (tonnes per week)", size=30)
+    ax = market_ax(cv, ox + 190, 690, ox + 1000, 175, xlab="Quantity (tonnes per week)", size=30)
     ax.xtitle_dy = 84
     if p == 0:
         ax.hguide(30, 60, "₹30"); ax.vguide(60, 30, "60")
@@ -388,7 +388,7 @@ for p in range(2):
         ax.label(60, 30, "E", size=44, color=GOLD_TXT, weight=800, dx=-4, dy=-48, anchor="middle")
         ax.label(114, Dp(114), "D", size=44, color=NAVY, weight=800, dx=16, dy=-24)
         ax.label(130, Sp(130), "S", size=44, color=NAVY, weight=800, dx=12, dy=-26)
-        cv.lines(ox + 560, 290, ["Quantity demanded =", "quantity supplied = 60"], size=30, color=GOLD_TXT, weight=750)
+        cv.lines(ox + 560, 255, ["Quantity demanded =", "quantity supplied = 60"], size=30, color=GOLD_TXT, weight=750)
     else:
         ax.hguide(30, 60, "₹30"); ax.vguide(60, 30, "60")
         ax.hguide(P2, Q2, "₹36", color=GOLD_TXT); ax.vguide(Q2, P2, "78", color=GOLD_TXT)
@@ -400,15 +400,15 @@ for p in range(2):
         ax.label(114, Dp(114), "D_{1}", size=38, color=NAVY, weight=800, dx=10, dy=-30)
         ax.label(126, D2(126), "D_{2}", size=38, color=GOLD_TXT, weight=800, dx=18, dy=-30)
         ax.label(130, Sp(130), "S", size=40, color=NAVY, weight=800, dx=12, dy=-26)
-        cv.lines(ox + 560, 290, ["Price rises (₹30 to ₹36)", "Quantity rises (60 to 78)"], size=30, color=GOLD_TXT, weight=750)
+        cv.lines(ox + 760, 205, ["Price rises (₹30 to ₹36)", "Quantity rises (60 to 78)"], size=30, color=GOLD_TXT, weight=750)
     ax.axes()
     if p == 0:
-        cv.line(ox + 1110, 110, ox + 1110, 940, EDGE, 3)
-cv.save("UFP_38_Equilibrium")
+        cv.line(ox + 1110, 110, ox + 1110, 820, EDGE, 3)
+cv.save("UFP_38_Equilibrium_v2")
 
 
 # ================================================================ UFP_39 shortage and surplus
-cv = Canvas(2240, 1000)
+cv = Canvas(2240, 860)
 for p in range(2):
     ox = 20 + p * 1120
     low = p == 0
@@ -416,7 +416,7 @@ for p in range(2):
     qd, qs = Qd(price), Qs(price)
     assert (qd, qs) == ((80, 30) if low else (40, 90))
     panel_title(cv, ox, 52, p + 1, ["Price below equilibrium: shortage", "Price above equilibrium: surplus"][p])
-    ax = market_ax(cv, ox + 190, 800, ox + 1000, 220, xlab="Quantity (tonnes per week)", size=30)
+    ax = market_ax(cv, ox + 190, 690, ox + 1000, 175, xlab="Quantity (tonnes per week)", size=30)
     ax.xtitle_dy = 84
     ax.hguide(30, 60, "₹30", color=MUTED)
     ax.poly(Dp, 6, 114, NAVY, 8); ax.poly(Sp, 0, 130, NAVY, 8)
@@ -439,12 +439,12 @@ for p in range(2):
     xa, _ = ax.px(0, 0)
     _, y1 = ax.px(0, price); _, y2 = ax.px(0, 30)
     cv.line(xa + 34, y1 - (10 if low else -10), xa + 34, y2 + (14 if low else -14), GOLD_TXT, 7, arrow_end=True)
-    cv.lines(ox + 600, 290, (["Qd 80 > Qs 30:", "price tends to rise"] if low else ["Qs 90 > Qd 40:", "price tends to fall"]),
+    cv.lines(ox + 600, 205, (["Qd 80 > Qs 30:", "price tends to rise"] if low else ["Qs 90 > Qd 40:", "price tends to fall"]),
              size=30, color=col, weight=750)
     ax.axes()
     if p == 0:
-        cv.line(ox + 1110, 110, ox + 1110, 940, EDGE, 3)
-cv.save("UFP_39_Shortage_Surplus")
+        cv.line(ox + 1110, 110, ox + 1110, 820, EDGE, 3)
+cv.save("UFP_39_Shortage_Surplus_v2")
 
 
 # ================================================================ UFP_40 onion supply falls
