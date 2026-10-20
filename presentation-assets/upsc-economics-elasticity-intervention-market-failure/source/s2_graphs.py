@@ -519,7 +519,7 @@ for p in range(2):
         lab(ax, 124, S(124), "MPC", NAVY, dx=-6, dy=-46, size=44, anchor="end")
     axes(ax, origin=False)
 cv.line(1205, 100, 1205, 890, EDGE, 3)
-tag(cv, 2390, 925, "Same hypothetical markets as the two previous slides", size=32)
+tag(cv, 2390, 925, "Same hypothetical markets as the two previous slides. Results depend on measurement, design and enforcement.", size=32)
 cv.save("G36_Correction")
 
 

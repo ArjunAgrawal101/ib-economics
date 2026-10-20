@@ -92,7 +92,7 @@ S.append(card(head(E1, "How to Interpret PED: Five Standard Categories")
 S.append(card(head(E1, "Why Does PED Differ Across Goods?") + img("S07_PED_Determinants_v2", "Five determinants of PED", 372)))
 
 # 8 PED and spending
-S.append(card(head(E1, "PED and Total Expenditure") + img("G08_PED_Expenditure_v2", "Price cuts with elastic and inelastic demand", 330)
+S.append(card(head(E1, "PED and Total Expenditure") + img("G08_PED_Expenditure_v2", "Price cuts with elastic and inelastic demand", 314)
               + '<p><b>Unit elastic:</b> spending stays the same. Elastic: price and spending move in opposite directions; inelastic: in the same direction. Sellers and governments need to know which case they face.</p>'))
 
 # 9 YED calculation
@@ -228,7 +228,7 @@ S.append(card(head(E2, "When Government Intervention Can Fail") + img("S30_Gover
               + '<p>Government action can improve an outcome, but it can also create new costs or miss the underlying problem.</p>'))
 
 # 31 Mains framework
-S.append(card(head(E2, "A Framework for Evaluating Intervention in GS Mains") + img("S31_Mains_Framework_v2", "Six-step policy evaluation framework", 330)
+S.append(card(head(E2, "A Framework for Evaluating Intervention in GS Mains") + img("S31_Mains_Framework_v2", "Six-step policy evaluation framework", 316)
               + '<p>Use the six steps as the skeleton of an answer: each step is one short paragraph, ending with a qualified judgement.</p>'))
 
 # 32 Opener III
@@ -265,10 +265,10 @@ S.append(card(head(E3, "Positive Externalities: Benefits Beyond the Consumer")
                      (31, img("G35_Positive_Externality_v2", "Positive consumption externality", 372)))))
 
 # 36 Correcting externalities
-S.append(card(head(E3, "Correcting Externalities: Match the Tool to the Problem") + img("G36_Correction_v2", "Tax and subsidy corrections", 262)
-              + cols((20, '<p><b>Corrective tax:</b> raises private cost towards social cost</p><p><b>Subsidy:</b> raises private benefit towards social benefit</p>', 'cell-style="subtle" padding="8pt 12pt"'),
-                     (20, '<p><b>Regulation, standards:</b> limit the harmful activity directly</p><p><b>Tradable permits:</b> cap total emissions; firms trade allowances</p>', 'cell-style="subtle" padding="8pt 12pt"'),
-                     (20, '<p><b>Public provision:</b> where private supply falls short</p><p><b>Information:</b> where people misjudge costs or benefits. <i>Each depends on measurement, design and enforcement.</i></p>', 'cell-style="subtle" padding="8pt 12pt"'), spacing="small")))
+S.append(card(head(E3, "Correcting Externalities: Match the Tool to the Problem") + img("G36_Correction_v3", "Tax and subsidy corrections", 236)
+              + cols((20, '<p><b>Corrective tax:</b> raises private cost to social cost</p><p><b>Subsidy:</b> raises private benefit to social benefit</p>', 'cell-style="subtle" padding="8pt 12pt"'),
+                     (20, '<p><b>Regulation:</b> limits the harmful activity directly</p><p><b>Tradable permits:</b> cap emissions and allow trading</p>', 'cell-style="subtle" padding="8pt 12pt"'),
+                     (20, '<p><b>Public provision:</b> fills gaps in private supply</p><p><b>Information:</b> corrects misjudged costs or benefits</p>', 'cell-style="subtle" padding="8pt 12pt"'), spacing="small")))
 
 # 37 Public goods
 S.append(card(head(E3, "Public Goods: Two Defining Characteristics")
