@@ -105,7 +105,7 @@ cv.save("G05_PED_Mini")
 
 
 # ================================================================ G06 PED spectrum (five panels)
-cv = Canvas(2400, 760)
+cv = Canvas(2400, 800)
 names = [("Perfectly inelastic", "|PED| = 0"), ("Relatively inelastic", "0 < |PED| < 1"), ("Unit elastic", "|PED| = 1"),
          ("Relatively elastic", "|PED| > 1"), ("Perfectly elastic", "|PED| → ∞")]
 cols = [NAVY, NAVY, GOLD_TXT, NAVY, NAVY]
@@ -124,17 +124,17 @@ for i in range(5):
     else:
         ax.seg(0.4, 5, 9.6, 5, NAVY, CW)
     axes(ax, origin=False)
-    cv.text(ox + 240, 600, names[i][0], size=36, color=INK, anchor="middle", weight=800)
-    cv.text(ox + 240, 662, names[i][1], size=40, color=cols[i], anchor="middle", weight=850)
+    cv.text(ox + 240, 604, names[i][0], size=38, color=INK, anchor="middle", weight=800)
+    cv.text(ox + 240, 672, names[i][1], size=48, color=cols[i], anchor="middle", weight=850)
     if i < 4:
         cv.line(ox + 466, 110, ox + 466, 700, EDGE, 3)
-cv.text(1200, 738, "Shapes compare responsiveness at the same point on the same scales; along a straight line, elasticity changes from point to point.",
-        size=28, color=MUTED, anchor="middle", weight=600, italic=True)
+cv.text(1200, 770, "Introductory categories: real markets rarely sit at an extreme, and along a straight line elasticity changes from point to point.",
+        size=32, color=MUTED, anchor="middle", weight=650, italic=True)
 cv.save("G06_PED_Spectrum")
 
 
 # ================================================================ G08 PED and total expenditure (two panels)
-cv = Canvas(2400, 1000)
+cv = Canvas(2400, 1110)
 # elastic: biscuits brand, P 10 -> 8 (-20%), Q 1000 -> 1500 (+50%), PED -2.5, TE 10000 -> 12000
 De = lambda q: 14 - q / 250
 eq(De(1000), 10); eq(De(1500), 8)
@@ -144,20 +144,20 @@ eq(Di(1000), 20); eq(Di(1100), 16)
 assert 10 * 1000 == 10000 and 8 * 1500 == 12000 and 20 * 1000 == 20000 and 16 * 1100 == 17600
 panels = [("Elastic: one brand of biscuits", De, (1000, 10), (1500, 8), 2000, 14, "packets per week", (300, 2000),
            "PED = +50% ÷ -20% = -2.5", "Spending rises: ₹10,000 to ₹12,000", GREEN),
-          ("Inelastic: table salt", Di, (1000, 20), (1100, 16), 1400, 28, "kg per week", (900, 1320),
+          ("Inelastic: table salt", Di, (1000, 20), (1100, 16), 1400, 28, "kg per week", (900, 1250),
            "PED = +10% ÷ -20% = -0.5", "Spending falls: ₹20,000 to ₹17,600", RED)]
 for p, (ttl, f, A, B, xm, ym, ql, rng, ped, res, rc) in enumerate(panels):
     ox = 10 + p * 1200
-    title(cv, ox, 52, p + 1, ttl, size=40)
-    ax = Ax(cv, ox + 200, 720, ox + 1090, 200, xmax=xm, ymax=ym, ylab="P (₹)", xlab="Q (" + ql + ")", size=36)
+    title(cv, ox, 52, p + 1, ttl, size=46)
+    ax = Ax(cv, ox + 200, 720, ox + 1090, 230, xmax=xm, ymax=ym, ylab="P (₹)", xlab="Q (" + ql + ")", size=40)
     ax.xtitle_dy = 92
     box(ax, 0, B[1], A[0], A[1], RED, 0.32)
     box(ax, A[0], 0, B[0], B[1], GREEN, 0.32)
     box(ax, 0, 0, A[0], B[1], "#E9E2D2", 0.55)
-    hg(ax, A[1], A[0], "₹%d" % A[1]); hg(ax, B[1], B[0], "₹%d" % B[1])
-    vg(ax, A[0], A[1], "{:,}".format(A[0])); vg(ax, B[0], B[1], "{:,}".format(B[0]), dy=44 if p == 0 else 86)
+    hg(ax, A[1], A[0], "₹%d" % A[1], size=40, ldy=-6); hg(ax, B[1], B[0], "₹%d" % B[1], size=40, ldy=8)
+    vg(ax, A[0], A[1], "{:,}".format(A[0]), size=40); vg(ax, B[0], B[1], "{:,}".format(B[0]), size=40, dy=46 if p == 0 else 92)
     if p == 1:
-        ax.xtitle_dy = 136
+        ax.xtitle_dy = 142
     ax.poly(f, rng[0], rng[1], NAVY, CW)
     dot(ax, *A); dot(ax, *B)
     if p == 0:
@@ -167,17 +167,20 @@ for p, (ttl, f, A, B, xm, ym, ql, rng, ped, res, rc) in enumerate(panels):
     axes(ax)
     lost = (A[1] - B[1]) * A[0]; gained = B[1] * (B[0] - A[0])
     a, b = ax.px(A[0] * 0.5, (A[1] + B[1]) / 2)
-    cv.text(a, b, "Lost ₹{:,}".format(lost), size=34, color=RED, anchor="middle", weight=850)
+    cv.text(a, b + 4, "Lost ₹{:,}".format(lost), size=40, color=RED, anchor="middle", weight=850)
     gx, gy = ax.px((A[0] + B[0]) / 2, B[1] * 0.5)
     if p == 0:
-        cv.text(gx, gy, "Gained ₹{:,}".format(gained), size=34, color=GREEN, anchor="middle", weight=850)
+        cv.text(gx, gy, "Gained ₹{:,}".format(gained), size=40, color=GREEN, anchor="middle", weight=850)
     else:
         gx2, gy2 = ax.px(B[0], 3)
-        cv.text(gx2 + 22, gy2, "Gained ₹{:,}".format(gained), size=34, color=GREEN, anchor="start", weight=850)
-    cv.text(ox + 1090, 124, ped, size=34, color=INK, anchor="end", weight=800)
-    cv.text(ox + 1090, 170, res, size=34, color=rc, anchor="end", weight=850)
-cv.line(1205, 100, 1205, 940, EDGE, 3)
-tag(cv, 2390, 982, "Hypothetical markets; other things held constant")
+        cv.lines(gx2 + 26, gy2 - 30, [("Gained", {}), ("₹{:,}".format(gained), {})], size=40, color=GREEN, anchor="start", weight=850)
+    cv.text(ox + 1120, 134, ped, size=40, color=INK, anchor="end", weight=800)
+    cv.text(ox + 1120, 186, res, size=40, color=rc, anchor="end", weight=850)
+    rule = "Elastic: a price cut raises spending" if p == 0 else "Inelastic: a price cut lowers spending"
+    cv.rect(ox + 170, 952, 960, 92, fill="#F4FAF6" if p == 0 else "#FBEDEA", rx=18)
+    cv.text(ox + 650, 1012, rule, size=44, color=rc, anchor="middle", weight=850)
+cv.line(1205, 100, 1205, 1040, EDGE, 3)
+tag(cv, 2390, 1094, "Hypothetical markets; other things held constant", size=32)
 cv.save("G08_PED_Expenditure")
 
 
@@ -217,7 +220,7 @@ ax.poly(Slr, 0, 120, GOLD, CW)
 dot(ax, 60, 30); dot(ax, 65, 40, NAVY); dot(ax, 90, 40, GOLD_TXT)
 ax.seg(60, 30, 65, 40, NAVY, 7, arrow_end=True, gap=22)
 ax.seg(65, 40, 90, 40, GOLD_TXT, 7, arrow_end=True, gap=22)
-lab(ax, 47, Ssr(47), "S_{short run}", NAVY, dx=18, dy=8, size=40)
+lab(ax, 47, Ssr(47), "S_{short run}", NAVY, dx=-18, dy=8, size=40, anchor="end")
 lab(ax, 120, Slr(120), "S_{long run}", GOLD_TXT, dx=-10, dy=-48, size=42, anchor="end")
 axes(ax)
 cv.rect(660, 600, 420, 140, fill="#F6EFDF", rx=18)
@@ -286,56 +289,56 @@ cases = [("Inelastic demand, elastic supply", lambda q: 160 - 2 * q, lambda q: 1
 for p, (ttl, d, s, st, dr, sr, str_, pc, pp, msg, mc) in enumerate(cases):
     eq(d(60), 40); eq(s(60), 40); eq(d(56), pc); eq(st(56), pc); eq(s(56), pp)
     ox = 10 + p * 1200
-    title(cv, ox, 52, p + 1, ttl, size=40)
-    ax = market_ax(cv, ox + 200, 730, ox + 1060, 190, xmax=120, ymax=70, xlab="Q (thousand units)", size=36)
+    title(cv, ox, 52, p + 1, ttl, size=46)
+    ax = market_ax(cv, ox + 200, 730, ox + 1060, 190, xmax=120, ymax=70, xlab="Q (thousand units)", size=40)
     ax.xtitle_dy = 90
     box(ax, 0, 40, 56, pc, GOLD, 0.45)
     box(ax, 0, pp, 56, 40, BLUE, 0.35)
     if p == 0:
-        hg(ax, pc, 56, "₹%d" % pc, color=GOLD_TXT); hg(ax, 40, 60, "₹40", ldy=-12); hg(ax, pp, 56, "₹%d" % pp, color=BLUE, ldy=14)
+        hg(ax, pc, 56, "₹%d" % pc, color=GOLD_TXT, size=38, ldy=-6); hg(ax, 40, 60, "₹40", size=38, ldy=-14); hg(ax, pp, 56, "₹%d" % pp, color=BLUE, size=38, ldy=20)
     else:
-        hg(ax, pc, 56, "₹%d" % pc, color=GOLD_TXT, ldy=-14); hg(ax, 40, 60, "₹40", ldy=12); hg(ax, pp, 56, "₹%d" % pp, color=BLUE)
-    vg(ax, 56, pc, "56"); vg(ax, 60, 40, "60", dy=84)
+        hg(ax, pc, 56, "₹%d" % pc, color=GOLD_TXT, size=38, ldy=-20); hg(ax, 40, 60, "₹40", size=38, ldy=10); hg(ax, pp, 56, "₹%d" % pp, color=BLUE, size=38, ldy=6)
+    vg(ax, 56, pc, "56", size=38); vg(ax, 60, 40, "60", size=38, dy=88)
     ax.poly(d, *dr, NAVY, CW); ax.poly(s, *sr, NAVY, CW); ax.poly(st, *str_, GOLD, CW)
     dot(ax, 60, 40, INK, 13); dot(ax, 56, pc, GOLD, 16); dot(ax, 56, pp, BLUE, 13)
     if p == 0:
         lab(ax, 75, d(75), "D", NAVY, dx=14, dy=6, size=44)
         lab(ax, 104, s(104), "S", NAVY, dx=14, dy=12, size=44)
         lab(ax, 96, st(96), "S + tax", GOLD_TXT, dx=-14, dy=-40, anchor="end", size=38)
-        bx, by = ax.px(80, 26)
+        bx, by = ax.px(88, 34)
     else:
         lab(ax, 120, d(120), "D", NAVY, dx=12, dy=-30, size=44)
         lab(ax, 45, s(45), "S", NAVY, dx=18, dy=4, size=44)
         lab(ax, 70, st(70), "S + tax", GOLD_TXT, dx=-14, dy=-6, anchor="end", size=38)
         bx, by = ax.px(77, 66)
     axes(ax)
-    cv.rect(bx, by, 300, 120, fill="#FBF9F3", stroke=EDGE, sw=3, rx=16)
+    cv.rect(bx - 20, by - 6, 340, 132, fill="#FBF9F3", stroke=EDGE, sw=3, rx=16)
     w1, w2 = msg.split(" ₹8 ")
-    cv.lines(bx + 150, by + 60, [w1, "₹8 " + w2], size=32, color=mc, weight=850)
+    cv.lines(bx + 150, by + 60, [w1, "₹8 " + w2], size=38, color=mc, weight=850)
 cv.line(1205, 100, 1205, 930, EDGE, 3)
-tag(cv, 2390, 945, "Hypothetical markets, same starting point (₹40, 60) and the same ₹10 tax")
+tag(cv, 2390, 945, "Hypothetical markets, same starting point (₹40, 60) and the same ₹10 tax", size=32)
 cv.save("G19_Tax_Incidence")
 
 
 # ================================================================ G20 producer subsidy
-Ssub = lambda q: 5 + q / 3
-eq(D(66), 27); eq(Ssub(66), 27); eq(S(66), 32)
+Ssub = lambda q: q / 3
+eq(D(72), 24); eq(Ssub(72), 24); eq(S(72), 34)
 cv = Canvas(1200, 1040)
 ax = market_ax(cv, 230, 840, 1080, 200)
-box(ax, 0, 27, 66, 32, GREEN, 0.30)
-hg(ax, 32, 66, "₹32", color=BLUE, ldy=-16); hg(ax, 30, 60, "₹30", size=30, ldy=4); hg(ax, 27, 66, "₹27", color=GOLD_TXT, ldy=20)
-vg(ax, 60, 30); vg(ax, 66, 27, "66")
-ax.poly(D, 6, 114, NAVY, CW); ax.poly(S, 0, 100, NAVY, CW); ax.poly(Ssub, 0, 100, GOLD, CW)
-dot(ax, 60, 30, INK, 14); dot(ax, 66, 27, GOLD, 17, ring=True); dot(ax, 66, 32, BLUE, 14)
+box(ax, 0, 24, 72, 34, GREEN, 0.30)
+hg(ax, 34, 72, "₹34", color=BLUE, ldy=-6); hg(ax, 30, 60, "₹30", size=32, ldy=4); hg(ax, 24, 72, "₹24", color=GOLD_TXT, ldy=8)
+vg(ax, 60, 30, "60"); vg(ax, 72, 24, "72")
+ax.poly(D, 6, 114, NAVY, CW); ax.poly(S, 0, 100, NAVY, CW); ax.poly(Ssub, 9, 100, GOLD, CW)
+dot(ax, 60, 30, INK, 14); dot(ax, 72, 24, GOLD, 17, ring=True); dot(ax, 72, 34, BLUE, 14)
 lab(ax, 114, D(114), "D", NAVY, dx=16, dy=-28)
 lab(ax, 100, S(100), "S", NAVY, dx=14, dy=-24)
 lab(ax, 100, Ssub(100), "S_{2}", GOLD_TXT, dx=14, dy=18, size=46)
 axes(ax)
-assert abs(5 * 66000 - 330000) < 1e-9
+assert 10 * 72000 == 720000
 cv.rect(615, 104, 560, 236, fill="#FBF9F3", stroke=EDGE, sw=3, rx=16)
-cv.lines(895, 222, [("S_{2} = S shifted down by ₹5", dict(color=GOLD_TXT, weight=750)), ("Buyers pay ₹27 (₹3 less)", dict(color=GOLD_TXT)), ("Sellers receive ₹32 (₹2 more)", dict(color=BLUE)),
-                    ("Fiscal cost a week:", dict(color=GREEN)), ("₹5 × 66,000 = ₹3.3 lakh", dict(color=GREEN))], size=30, weight=850)
-tag(cv, 1180, 70, "Hypothetical ₹5 per-unit subsidy paid to producers")
+cv.lines(895, 222, [("S_{2} = S shifted down by ₹10", dict(color=GOLD_TXT, weight=750)), ("Buyers pay ₹24 (₹6 less)", dict(color=GOLD_TXT)), ("Sellers receive ₹34 (₹4 more)", dict(color=BLUE)),
+                    ("Fiscal cost a week:", dict(color=GREEN)), ("₹10 × 72,000 = ₹7.2 lakh", dict(color=GREEN))], size=30, weight=850)
+tag(cv, 1180, 70, "Hypothetical ₹10 per-unit subsidy paid to producers")
 cv.save("G20_Subsidy")
 
 
@@ -366,7 +369,6 @@ def control(name, kind):
         if not binding:
             dot(ax, 60, 30, GOLD, 17, ring=True)
             vg(ax, 60, 30, "60")
-            lab(ax, 60, 30, "E", GOLD_TXT, dx=0, dy=-62, size=42, anchor="middle")
             cv.text(ox + 1080, 136, "No effect: market stays at ₹30 and 60", size=34, color=INK, anchor="end", weight=850)
         else:
             qd, qs = Qd(price), Qs(price)
@@ -436,7 +438,7 @@ ax.poly(DL, 10, 104, NAVY, CW); ax.poly(SL, 0, 92, NAVY, CW)
 dot(ax, 20, 500, INK, 15); dot(ax, 60, 500, INK, 15); dot(ax, 40, 400, GOLD, 13)
 ax.seg(20, 560, 60, 560, BLUE, 7, arrow_end=True, arrow_start=True, gap=4)
 ax.label(40, 560, "Excess supply = 40", size=34, color=BLUE, weight=850, anchor="middle", dy=-40)
-lab(ax, 104, DL(104), "D_{L}", NAVY, dx=-6, dy=-40, size=44, anchor="end")
+lab(ax, 104, DL(104), "D_{L}", NAVY, dx=16, dy=14, size=44)
 lab(ax, 92, SL(92), "S_{L}", NAVY, dx=14, dy=10, size=44)
 axes(ax)
 tag(cv, 1180, 70, "Hypothetical labour market")
@@ -451,12 +453,12 @@ ax = market_ax(cv, 230, 840, 1080, 200, ylab="Cost, benefit (₹)", xlab="Q (uni
 tri(ax, [(48, 36), (60, 40), (60, 30)], RED, 0.35)
 hg(ax, 36, 48, "₹36", color=GOLD_TXT); hg(ax, 30, 60, "₹30")
 vg(ax, 48, 36, "Q*", color=GOLD_TXT); vg(ax, 60, 40, "Q_{m}")
-ax.poly(D, 6, 114, NAVY, CW); ax.poly(S, 0, 124, NAVY, CW); ax.poly(MSC, 0, 120, GOLD, CW)
+ax.poly(D, 6, 108, NAVY, CW); ax.poly(S, 0, 124, NAVY, CW); ax.poly(MSC, 0, 120, GOLD, CW)
 ax.seg(60, 30.8, 60, 39.2, RED, 6, arrow_end=True, arrow_start=True)
 dot(ax, 60, 30, INK, 15); dot(ax, 48, 36, GOLD, 17, ring=True)
-lab(ax, 114, D(114), "MPB = MSB", NAVY, dx=-4, dy=-44, size=40, anchor="end")
-lab(ax, 124, S(124), "MPC", NAVY, dx=-6, dy=40, size=42, anchor="end")
-lab(ax, 120, MSC(120), "MSC", GOLD_TXT, dx=-12, dy=-40, size=42, anchor="end")
+lab(ax, 108, D(108), "MPB = MSB", NAVY, dx=14, dy=14, size=38)
+lab(ax, 124, S(124), "MPC", NAVY, dx=14, dy=14, size=42)
+lab(ax, 120, MSC(120), "MSC", GOLD_TXT, dx=14, dy=10, size=42)
 axes(ax)
 cv.text(1180, 128, "Q_{m} = 60, Q* = 48", size=36, color=INK, anchor="end", weight=850)
 cv.text(1180, 172, "External cost ₹10 a unit leads to overproduction", size=30, color=RED, anchor="end", weight=800)
@@ -472,11 +474,11 @@ ax = market_ax(cv, 230, 840, 1080, 200, ylab="Cost, benefit (₹)", xlab="Q (vac
 tri(ax, [(60, 30), (60, 40), (72, 34)], GREEN, 0.35)
 hg(ax, 34, 72, "₹34", color=GOLD_TXT); hg(ax, 30, 60, "₹30")
 vg(ax, 60, 40, "Q_{m}"); vg(ax, 72, 34, "Q*", color=GOLD_TXT)
-ax.poly(D, 6, 114, NAVY, CW); ax.poly(MSB, 26, 126, GOLD, CW); ax.poly(S, 0, 124, NAVY, CW)
+ax.poly(D, 6, 108, NAVY, CW); ax.poly(MSB, 26, 112, GOLD, CW); ax.poly(S, 0, 124, NAVY, CW)
 ax.seg(60, 30.8, 60, 39.2, GREEN, 6, arrow_end=True, arrow_start=True)
 dot(ax, 60, 30, INK, 15); dot(ax, 72, 34, GOLD, 17, ring=True)
-lab(ax, 114, D(114), "MPB", NAVY, dx=12, dy=-28, size=42)
-lab(ax, 126, MSB(126), "MSB", GOLD_TXT, dx=-6, dy=-42, size=42, anchor="end")
+lab(ax, 108, D(108), "MPB", NAVY, dx=14, dy=16, size=42)
+lab(ax, 112, MSB(112), "MSB", GOLD_TXT, dx=14, dy=8, size=42)
 lab(ax, 124, S(124), "MPC = MSC", NAVY, dx=-6, dy=-44, size=40, anchor="end")
 axes(ax)
 cv.text(1180, 128, "Q_{m} = 60, Q* = 72", size=36, color=INK, anchor="end", weight=850)
@@ -486,57 +488,55 @@ cv.save("G35_Positive_Externality")
 
 
 # ================================================================ G36 corrective tax and subsidy
-cv = Canvas(2400, 920)
+cv = Canvas(2400, 940)
 for p in range(2):
     ox = 10 + p * 1200
     neg = p == 0
-    title(cv, ox, 52, p + 1, "Tax equal to the external cost" if neg else "Subsidy equal to the external benefit", size=40)
-    ax = market_ax(cv, ox + 200, 700, ox + 1060, 190, ylab="₹", xlab="Q", size=36)
-    ax.xtitle_dy = 84
-    ax.poly(D, 6, 114, NAVY, CW); ax.poly(S, 0, 124, NAVY, CW)
+    title(cv, ox, 52, p + 1, "Tax equal to the external cost" if neg else "Subsidy equal to the external benefit", size=46)
+    ax = market_ax(cv, ox + 200, 710, ox + 1060, 190, ylab="₹", xlab="Q", size=40)
+    ax.xtitle_dy = 92
+    ax.poly(D, 6, 108, NAVY, CW); ax.poly(S, 0, 124, NAVY, CW)
     if neg:
         ax.poly(MSC, 0, 120, GOLD, CW)
         ax.seg(80, S(80), 80, MSC(80), GOLD_TXT, 7, arrow_end=True, gap=8)
         ax.seg(60, 18, 48, 18, GOLD_TXT, 8, arrow_end=True, gap=6)
-        ax.label(54, 18, "60 to 48", size=34, color=GOLD_TXT, weight=850, dy=40, anchor="middle")
+        ax.label(54, 18, "60 to 48", size=40, color=GOLD_TXT, weight=850, dy=44, anchor="middle")
         dot(ax, 60, 30, INK, 13); dot(ax, 48, 36, GOLD, 16, ring=True)
-        vg(ax, 48, 36, "Q*", color=GOLD_TXT, size=32); vg(ax, 60, 30, "Q_{m}", size=32)
-        lab(ax, 120, MSC(120), "MPC + tax = MSC", GOLD_TXT, dx=-10, dy=-44, size=36, anchor="end")
-        lab(ax, 124, S(124), "MPC", NAVY, dx=-6, dy=42, size=38, anchor="end")
-        lab(ax, 114, D(114), "MPB", NAVY, dx=10, dy=-28, size=38)
+        vg(ax, 48, 36, "Q*", color=GOLD_TXT, size=38); vg(ax, 60, 30, "Q_{m}", size=38)
+        lab(ax, 120, MSC(120), "MPC + tax = MSC", GOLD_TXT, dx=-10, dy=-46, size=42, anchor="end")
+        lab(ax, 124, S(124), "MPC", NAVY, dx=14, dy=14, size=44)
+        lab(ax, 108, D(108), "MPB", NAVY, dx=14, dy=16, size=44)
     else:
-        ax.poly(MSB, 26, 126, GOLD, CW)
+        ax.poly(MSB, 26, 112, GOLD, CW)
         ax.seg(30, D(30), 30, MSB(30), GOLD_TXT, 7, arrow_end=True, gap=8)
         ax.seg(60, 18, 72, 18, GOLD_TXT, 8, arrow_end=True, gap=6)
-        ax.label(66, 18, "60 to 72", size=34, color=GOLD_TXT, weight=850, dy=40, anchor="middle")
+        ax.label(66, 18, "60 to 72", size=40, color=GOLD_TXT, weight=850, dy=44, anchor="middle")
         dot(ax, 60, 30, INK, 13); dot(ax, 72, 34, GOLD, 16, ring=True)
-        vg(ax, 60, 30, "Q_{m}", size=32); vg(ax, 72, 34, "Q*", color=GOLD_TXT, size=32)
-        lab(ax, 26, MSB(26), "MPB + subsidy = MSB", GOLD_TXT, dx=10, dy=-40, size=36)
-        lab(ax, 114, D(114), "MPB", NAVY, dx=12, dy=-28, size=38)
-        lab(ax, 124, S(124), "MPC", NAVY, dx=-6, dy=-44, size=38, anchor="end")
+        vg(ax, 60, 30, "Q_{m}", size=38); vg(ax, 72, 34, "Q*", color=GOLD_TXT, size=38)
+        lab(ax, 26, MSB(26), "MPB + subsidy = MSB", GOLD_TXT, dx=10, dy=-42, size=42)
+        lab(ax, 108, D(108), "MPB", NAVY, dx=14, dy=16, size=44)
+        lab(ax, 112, MSB(112), "MSB", GOLD_TXT, dx=14, dy=6, size=44)
+        lab(ax, 124, S(124), "MPC", NAVY, dx=-6, dy=-46, size=44, anchor="end")
     axes(ax, origin=False)
 cv.line(1205, 100, 1205, 890, EDGE, 3)
-tag(cv, 2390, 905, "Same hypothetical markets as the two previous slides")
+tag(cv, 2390, 925, "Same hypothetical markets as the two previous slides", size=32)
 cv.save("G36_Correction")
 
 
 # ================================================================ G42 natural monopoly (falling average cost)
 AC = lambda q: 600 / q + 10
 eq(AC(60), 20); eq(AC(30), 30)
-Dn = lambda q: 44 - 0.4 * q
-eq(Dn(60), 20)
 cv = Canvas(1200, 1040)
-ax = Ax(cv, 230, 840, 1080, 200, xmax=110, ymax=50, ylab="₹ per unit", xlab="Q (households served, thousand)", size=AXS)
+ax = Ax(cv, 230, 840, 1080, 200, xmax=110, ymax=50, ylab="₹ per household", xlab="Q (households served, thousand)", size=AXS)
 ax.xtitle_dy = 100
 hg(ax, 30, 30, "₹30", color=RED); hg(ax, 20, 60, "₹20", color=GREEN)
 vg(ax, 30, 30, "30"); vg(ax, 60, 20, "60")
 ax.poly(AC, 16, 106, NAVY, CW)
-ax.poly(Dn, 0, 104, GOLD, CW - 2, dash="20 12")
 dot(ax, 60, 20, GREEN, 17); dot(ax, 30, 30, RED, 17)
-lab(ax, 106, AC(106), "Average cost", NAVY, dx=-6, dy=-40, size=38, anchor="end")
-lab(ax, 104, Dn(104), "Market demand", GOLD_TXT, dx=-10, dy=-34, size=36, anchor="end")
-cv.rect(620, 230, 540, 170, fill="#FBF9F3", stroke=EDGE, sw=3, rx=16)
-cv.lines(890, 315, [("Two networks, half each: ₹30", dict(color=RED)), ("One network for all: ₹20", dict(color=GREEN))], size=34, weight=850)
+lab(ax, 106, AC(106), "Average cost", NAVY, dx=0, dy=-62, size=40, anchor="end")
+cv.rect(560, 214, 615, 196, fill="#FBF9F3", stroke=EDGE, sw=3, rx=16)
+cv.lines(868, 312, [("Market: 60 thousand households", dict(color=INK)), ("Two networks, 30 thousand each: ₹30", dict(color=RED)),
+                    ("One network serving all 60: ₹20", dict(color=GREEN))], size=30, weight=850)
 axes(ax)
 tag(cv, 1180, 70, "Hypothetical piped-water network")
 cv.save("G42_Natural_Monopoly")

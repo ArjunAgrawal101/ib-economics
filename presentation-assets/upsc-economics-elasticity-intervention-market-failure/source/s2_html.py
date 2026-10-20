@@ -18,7 +18,7 @@ CSS = """
 html,body{background:transparent}
 body{font-family:Inter,'DejaVu Sans',sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.25}
 .wrap{position:relative;overflow:hidden;padding:8px}
-.cap{font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--goldt);font-size:22px}
+.cap{font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--goldt);font-size:24px}
 .serif{font-family:Lora,Georgia,serif}
 .card{background:#fff;border:3px solid var(--edge);border-radius:22px}
 .navy{background:var(--ink);color:#fff;border-radius:22px}
@@ -176,10 +176,10 @@ dets = [("Substitutes", "close substitutes exist", "One brand of tea, not tea in
 body = ('<div class="row" style="gap:18px;align-items:stretch;height:500px">'
         + "".join(f'<div class="card col" style="flex:1 1 0;min-width:0;padding:26px 24px;border-top:14px solid {c}">'
                   f'<div class="serif" style="font-size:35px;font-weight:700;min-height:86px;line-height:1.2">{t}</div>'
-                  f'<div class="cap" style="margin-top:10px;font-size:19px">More elastic when</div>'
+                  f'<div class="cap" style="margin-top:10px;font-size:22px">More elastic when</div>'
                   f'<div style="font-size:29px;font-weight:700;margin-top:6px;line-height:1.25">{w}</div>'
                   f'<div style="flex:1"></div><div style="height:3px;background:var(--edge);margin:14px 0"></div>'
-                  f'<div class="cap" style="font-size:19px;color:var(--muted)">For example</div>'
+                  f'<div class="cap" style="font-size:22px;color:var(--muted)">For example</div>'
                   f'<div style="font-size:27px;font-weight:600;margin-top:6px;line-height:1.25" class="muted">{e}</div></div>'
                   for (t, w, e), c in zip(dets, ["#0E1E3A", "#1B3460", "#2F5D8C", "#8A6A2E", "#B08A47"]))
         + '</div><div style="font-size:28px;font-weight:700;color:var(--goldt);margin-top:20px">These are tendencies, not rules: the same good can be more elastic for some households, places and periods than for others.</div>')
@@ -205,19 +205,17 @@ page("S09_YED_Calculation", 1600, 590, body)
 
 
 # ================================================================ S10 interpreting YED: number line
-zone = lambda w, c, t1, t2, ex: (f'<div class="col" style="width:{w}px"><div style="height:24px;background:{c};border-radius:12px"></div>'
+zone = lambda w, c, t1, t2, ex, rng: (f'<div class="col" style="width:{w}px"><div style="font-size:30px;font-weight:800;margin-bottom:8px">{rng}</div><div style="height:24px;background:{c};border-radius:12px"></div>'
                                  f'<div style="font-size:34px;font-weight:850;color:{c};margin-top:20px">{t1}</div>'
                                  f'<div style="font-size:28px;font-weight:700;margin-top:4px">{t2}</div>'
                                  f'<div class="card" style="padding:18px 22px;margin-top:16px;font-size:27px;font-weight:600;line-height:1.3">{ex}</div></div>')
-body = ('<div class="row" style="justify-content:space-between;font-size:30px;font-weight:800;margin-bottom:8px;padding:0 4px">'
-        '<span style="width:460px">YED below 0</span><span style="width:520px;text-align:left">0 to 1</span><span style="width:520px">Above 1</span></div>'
-        '<div class="row" style="gap:20px;align-items:flex-start">'
+body = ('<div class="row" style="gap:20px;align-items:flex-start">'
         + zone(460, "#B0412E", "Inferior good", "Demand falls as income rises",
-               "Bus trips for a household that switches to its own two-wheeler as income rises")
+               "Bus trips for a household that switches to its own two-wheeler as income rises", "YED below 0")
         + zone(520, "#2F5D8C", "Normal, income inelastic", "Often called a necessity",
-               "Staple cereals for many households: demand rises, but by less than income")
+               "Staple cereals for many households: demand rises, but by less than income", "YED from 0 to 1")
         + zone(520, "#2E7D5B", "Normal, income elastic", "Often called a luxury",
-               "Air travel or dining out: demand rises by more than income")
+               "Air travel or dining out: demand rises by more than income", "YED above 1")
         + '</div>'
         '<div class="soft row" style="margin-top:22px;padding:18px 28px;gap:18px">'
         '<div style="font-size:30px;font-weight:850;color:#B0412E;white-space:nowrap">Not "cheap"</div>'
@@ -320,7 +318,7 @@ body = ('<div class="row" style="gap:22px;align-items:center">'
         + leaf("Public good", "Collective financing or provision", "#8A6A2E")
         + '</div></div>'
         '<div style="height:3px;background:#E2D6BC;margin:4px 0"></div>'
-        '<div class="row" style="gap:18px;align-items:center">' + branch("No", "#2E7D5B", "Is the concern access or fairness?") + arrow(56)
+        '<div class="row" style="gap:18px;align-items:center">' + branch("Also", "#2E7D5B", "Is access or fairness a concern?") + arrow(56)
         + '<div class="col" style="flex:1">' + leaf("Affordability or access", "Targeted transfers, well-designed support", "#5B6577") + '</div></div>'
         '</div></div><div style="font-size:28px;font-weight:750;color:var(--goldt);margin-top:20px">Each is a possible response, not a universal answer: the instrument must fit the problem.</div>')
 page("S17_Decision_Tree", 1600, 660, body)
@@ -352,7 +350,7 @@ pairs = [("Unsafe products", "Safety and quality standards", "Food safety and pr
          ("Pollution", "Environmental regulation", "Emission and effluent limits"),
          ("Unqualified providers", "Licensing and compliance", "Registration of doctors and pharmacies"),
          ("Hidden information", "Disclosure and reporting", "Labels, published accounts")]
-body = ('<div class="row" style="gap:20px;align-items:stretch;height:420px">'
+body = ('<div class="row" style="gap:20px;align-items:stretch;height:450px">'
         + "".join(f'<div class="card col" style="flex:1;padding:26px 26px"><div class="cap" style="color:#B0412E">Problem</div>'
                   f'<div style="font-size:32px;font-weight:800;margin-top:6px">{p}</div><div style="margin:12px 0">{darrow(54)}</div>'
                   f'<div class="cap">Tool</div><div class="serif" style="font-size:34px;font-weight:700;margin-top:6px;line-height:1.2">{t}</div>'
@@ -360,7 +358,7 @@ body = ('<div class="row" style="gap:20px;align-items:stretch;height:420px">'
         + '</div><div class="navy row" style="margin-top:22px;padding:24px 32px;gap:22px">'
         '<div class="cap" style="color:var(--gl);white-space:nowrap">Monitoring and enforcement</div>'
         '<div style="font-size:30px;font-weight:700">Rules change behaviour only when they are monitored and breaches carry penalties.</div></div>')
-page("S26_Regulation", 1600, 580, body)
+page("S26_Regulation", 1600, 620, body)
 
 
 # ================================================================ S27 financing versus delivery
@@ -437,7 +435,7 @@ page("S30_Government_Failure", 1600, 600, body)
 # ================================================================ S31 Mains framework with a hypothetical illustration
 steps = [("Problem and objective", "Patients cannot afford an essential medicine"),
          ("Mechanism", "A binding ceiling creates excess demand"),
-         ("Who gains, who pays", "Buyers who find it gain; producers and unserved buyers lose"),
+         ("Who gains, who pays", "Buyers who get it gain; producers and unserved buyers lose"),
          ("Efficiency, equity, fiscal", "Lower supply; fairer prices for some; little budget cost"),
          ("Implementation", "Shortages, quality cuts, informal sales"),
          ("Balanced judgement", "Pair with supply support or targeted aid; review regularly")]
@@ -609,8 +607,8 @@ sc = lambda t, knows, unsure, eff: (f'<div class="card col" style="flex:1;paddin
 body = ('<div class="row" style="gap:26px;align-items:stretch;height:350px">'
         + sc("Second-hand two-wheeler", "Seller: accident history, upkeep", "Buyer: sees only the outside",
              "Buyers offer an average price, so owners of good vehicles may not sell.")
-        + sc("Health insurance", "Customer: own health and habits", "Insurer: sees only what is declared",
-             "Premiums based on averages can drive low-risk buyers away.")
+        + sc("Vehicle repair or medical advice", "Mechanic or doctor: what is really needed", "Customer: cannot judge the advice",
+             "Customers may pay for more work than they need, or distrust honest advice.")
         + '</div><div class="row" style="gap:16px;margin-top:22px">'
         + "".join(f'<div class="chip" style="background:#F6EFDF;color:#0E1E3A;font-size:26px;padding:12px 24px">{t}</div>'
                   for t in ["Poorer choices", "Mispricing", "Loss of trust", "Markets can shrink"])
