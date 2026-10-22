@@ -1,6 +1,6 @@
 # Design system
 
-This is the visual system behind the platform and the Learning Studio. Tokens are CSS custom properties defined in `src/styles/css-atlas.css`, on top of the original tokens in `src/styles/css.css`. Components should use the tokens, not raw values.
+This is the visual system behind the platform and the Learning Studio. Tokens are CSS custom properties defined in `src/styles/css-atlas.css`, on top of the original tokens in `src/styles/css.css`. The launch layer, `src/styles/css-launch.css`, uses the same tokens. Components should use the tokens, not raw values.
 
 ## Character
 
@@ -101,4 +101,39 @@ The Learning Studio's exhibits take one of four forms, chosen by the asset:
 | Interactive | Applications and labs | A working miniature, or the application's own title card and contents |
 | Series | Collections | A shelf of consistent covers |
 
-The home page's featured exhibit is a three-excerpt spread with a short editorial account beside it.
+The home page's featured exhibit is a three-excerpt spread with a short editorial account beside it. It should never be the tallest thing on the page, so its side excerpts have a fixed height.
+
+- **Form badge.** Each exhibit's kicker leads with its form as a small outlined badge (`.ex-ty`), so a visual, an editorial guide, an application and a series are told apart at a glance.
+- **Guides on the home page.** A guide shows one page in front of a stacked second page, at a size where its headings can be read.
+
+## Header
+
+- **One bar, eight destinations.**
+  - Course, Learn, Lab, Real World, Practise, Exam, Mindmaps and Resources; More and Tutorials close it.
+  - Items are withdrawn only when measured to collide, and Resources is the last to go.
+  - Fixed width tiers are not used, because they withdrew items that fitted.
+- **Folded tools.**
+  - The timer is one stopwatch control while it is idle, and its readout returns once it runs.
+  - The profile shows its initial.
+  - Each tool is 36px square, with a hairline border that darkens on hover.
+- **Link states.**
+  - Hover draws a hairline underline from the left.
+  - The current page carries the 2px burgundy rule.
+  - Focus is the burgundy ring.
+- **Below 1180px.** A Resources button (`.resdoor`, outlined burgundy) sits between the brand and the menu. Below 360px it gives way to the wordmark.
+
+## Resource doors
+
+The home page's resources band uses one card form (`.rs-a`):
+- a figure plate in the explainers' inks (5:3), drawn to its model and asserted in the self-tests;
+- the name in Bodoni;
+- one line in Manrope;
+- the count in JetBrains Mono.
+
+Hover lifts the card by 2px, deepens its border and moves the arrow. Below 720px the doors become two columns of short cards, and below 520px the description is dropped.
+
+## Motion
+
+- **Reveals** fade blocks up by 14px over 560ms as they arrive. They apply only to blocks the script marks as below the fold, only while the motion layer (`body.rn-anim`) is on, and never during the self-test.
+- **Which blocks.** Large blocks only: cards, exhibits and panels, never paragraphs or labels.
+- **Reduced motion** removes every reveal and transition.

@@ -125,7 +125,7 @@ function lnReveal(){if(typeof document==="undefined"||!document.body)return;
  if(!document.body.classList.contains("rn-anim")||typeof IntersectionObserver==="undefined"||(typeof QARUNNING!=="undefined"&&QARUNNING))return;
  const v=document.getElementById("view");if(!v)return;
  if(RN.lio)RN.lio.disconnect();
- RN.lio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove("rv-wait");RN.lio.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
+ RN.lio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("rv-in");e.target.classList.remove("rv-wait");RN.lio.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
  const H=innerHeight;v.querySelectorAll(LN_REVEAL).forEach(el=>{if(el.getBoundingClientRect().top>H*.92){el.classList.add("rv-wait");RN.lio.observe(el)}})}
 (function(){if(typeof rnDecorate!=="function")return;const prev=rnDecorate;rnDecorate=function(){prev.apply(this,arguments);try{lnReveal()}catch(e){}}})();
 

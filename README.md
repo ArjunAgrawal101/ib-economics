@@ -683,9 +683,19 @@ right edge, which that clip would otherwise hide.
 ## Navigation
 
 The primary bar keeps the eight places most visits start from: **Course · Learn · Lab · Real World ·
-Practise · Exam · Mindmaps · Everywhere**, with **More** and **Tutorials** closing it. When the header is
-tight, items are withdrawn in a declared order. Real World and Mindmaps are the last two the bar gives
-up, and the IB course outranks the general-reader section.
+Practise · Exam · Mindmaps · Resources**, with **More** and **Tutorials** closing it. **Resources** opens
+the Resource hub (`#/resources`). Economics, Everywhere and the Learning Studio are in the More menu,
+the drawer, the footer and search, and the home page opens a door to each.
+
+The bar is measured after every paint, and again once the typefaces arrive. An item is withdrawn only
+when it would otherwise meet the brand, in a declared order; Resources is the last to go, then Real World
+and Mindmaps. At 1440px and wider all eight fit. To give the bar that room, the tools beside it fold:
+- **The timer** is a single stopwatch control while it is idle. It opens the paper presets, and the
+  readout and pause control return once it runs.
+- **The profile** shows its initial, and keeps its name for assistive technology.
+- **Below 1180px**, where the bar gives way to the drawer, a **Resources** button stands in the header
+  between the brand and the menu. Below 360px it gives the wordmark its room, and Resources leads the
+  drawer instead.
 
 Everything else is one step away:
 - **The More menu** groups every section by what a visitor came to do: *Learn and explore* (Resources
@@ -788,12 +798,22 @@ sends nothing anywhere.
 ## The landing experience, the Learning Studio, Learning design and Contact
 
 **The home page** opens with "Economics is not just a subject to study. It is a way to think.", then an interactive learning ecosystem in one line and two actions:
-- **Explore Economics** goes down to the gateway.
+- **Explore Economics** goes down to Explore Economics Resources.
 - **Discover the Learning Studio** opens the Studio.
 
 Beside the statement sits a plate of three numbered figures: the live market model (Fig. 1), the corrected elasticity diagram from the PED explainer (Fig. 2) and a branch of its revision map (Fig. 3). The page then reads as follows.
 
-- **Explore Economics.** Six pathways drawn as one route: understand a concept, explore a diagram, investigate a real-world issue, practise a calculation, test understanding and develop exam thinking. Each opens a real page and shows its own count, followed by the existing gateway.
+- **Explore Economics Resources**, directly after the cover. It has eight doors, each a real page with a small figure and a count taken from the platform's data:
+  - topic lessons;
+  - mindmaps and visual explanations;
+  - Economics diagrams;
+  - real-world examples;
+  - calculations;
+  - exam practice and revision;
+  - Economics in 60 Seconds;
+  - Extended Essay support.
+
+  The Resource hub's library follows, listing its own eleven categories, then Random Economics, Find a topic and the economist's toolkit. A single line points to the Learning Studio, which stays separate: the hub is the free library, and the Studio shows selected previews of original work. This band takes the place of the earlier six pathways and gateway, which led to the same pages.
 - **Inside the Economics Learning Studio.** An exhibition of five pieces in five forms:
   - a featured spread (exchange rates);
   - a visual explainer (PED);
@@ -1262,7 +1282,7 @@ by the IB syllabus, because the guide is the authoritative classification.
 ## The mobile layer
 
 A phone is not a narrow desktop, so the header is rebuilt rather than shrunk. Below 880px it
-becomes four objects in a fixed order (logo, timer, profile, menu), and the section navigation
+becomes objects in a fixed order (logo, Resources, timer, profile, menu; the profile gives way below 430px), and the section navigation
 moves wholesale into a drawer grouped under Start, Explore, Practise, Progress, IA, Teacher
 and About. Every section in the build must appear in one of those groups; if one is ever added
 without being placed, it is appended to a **More** group rather than quietly becoming

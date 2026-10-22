@@ -3471,6 +3471,13 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .ex-editorial .ex-page:nth-child(2){display:none}
 .ex-editorial .ex-page:first-child{box-shadow:6px -6px 0 -1px #fff,6px -6px 0 0 var(--ln-rule),12px -12px 0 -1px #fff,12px -12px 0 0 var(--ln-hair),0 12px 24px -16px rgba(0,0,0,.4)}
 
+/* ── the Resource hub: the library begins near the top of the page ────────── */
+body[data-sec="resources"] #view>section.hero .in{padding-block:clamp(32px,3.8vw,60px) clamp(28px,3.2vw,52px)}
+body[data-sec="resources"] #view>section.hero h1{font-size:clamp(40px,4.6vw,72px);line-height:1}
+body[data-sec="resources"] #view>.st-hubnote+section.sec{padding-top:clamp(28px,3vw,48px)}
+/* on a phone the hero's circular-flow figure would be too small to read */
+@media (max-width:640px){body[data-sec="resources"] #view>section.hero svg.motif{display:none}}
+
 /* ── cards: one set of hover and focus states ─────────────────────────────── */
 .ex,.td-card,.t6-b,.al-card{transition:border-color var(--mo-base) var(--mo-ease),box-shadow var(--mo-base) var(--mo-ease)}
 .ex-fig img,.ex-page img,.ex-main img,.ex-side img{transition:transform var(--mo-slow) var(--mo-ease)}
@@ -3480,11 +3487,12 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .hero .btn:focus-visible,.rs-lib .btn:focus-visible,.at-hero .btn:focus-visible{outline:var(--fc-ring-ink)}
 
 /* ── a restrained reveal ───────────────────────────────────────────────── */
-/* Only blocks the script marks as waiting, below the fold, while motion is on. */
-body.rn-anim .rv-wait{opacity:0;transform:translateY(14px)}
-body.rn-anim .rv,body.rn-anim #selected-work .ex,body.rn-anim .aj,body.rn-anim .al-card,body.rn-anim .ap-grid,body.rn-anim .td-grid,body.rn-anim .t6-band{
- transition:opacity 560ms var(--mo-ease),transform 560ms var(--mo-ease)}
-body.rn-anim .rs-i.rv{transition-delay:calc(var(--i,0) * 50ms)}
+/* Only blocks the script marks as waiting, below the fold, while motion is on.
+   The waiting state applies at once (no transition), so nothing is ever seen
+   fading out; only the reveal itself is animated. */
+body.rn-anim .rv-wait{opacity:0;transform:translateY(14px);transition:none}
+body.rn-anim .rv-in{transition:opacity 560ms var(--mo-ease),transform 560ms var(--mo-ease)}
+body.rn-anim .rs-i.rv-in{transition-delay:calc(var(--i,0) * 50ms)}
 @media (prefers-reduced-motion:reduce){
  .rv-wait{opacity:1!important;transform:none!important}
  .rs-a,.rs-fig svg,.rs-covers img,.rs-go,.mainnav button::before,.ex-fig img,.ex-page img,.ex-main img,.ex-side img,.btn{transition:none!important}
@@ -42364,7 +42372,7 @@ function lnReveal(){if(typeof document==="undefined"||!document.body)return;
  if(!document.body.classList.contains("rn-anim")||typeof IntersectionObserver==="undefined"||(typeof QARUNNING!=="undefined"&&QARUNNING))return;
  const v=document.getElementById("view");if(!v)return;
  if(RN.lio)RN.lio.disconnect();
- RN.lio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove("rv-wait");RN.lio.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
+ RN.lio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("rv-in");e.target.classList.remove("rv-wait");RN.lio.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
  const H=innerHeight;v.querySelectorAll(LN_REVEAL).forEach(el=>{if(el.getBoundingClientRect().top>H*.92){el.classList.add("rv-wait");RN.lio.observe(el)}})}
 (function(){if(typeof rnDecorate!=="function")return;const prev=rnDecorate;rnDecorate=function(){prev.apply(this,arguments);try{lnReveal()}catch(e){}}})();
 
