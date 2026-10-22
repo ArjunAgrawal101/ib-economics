@@ -106,6 +106,27 @@ The home page's featured exhibit is a three-excerpt spread with a short editoria
 - **Form badge.** Each exhibit's kicker leads with its form as a small outlined badge (`.ex-ty`), so a visual, an editorial guide, an application and a series are told apart at a glance.
 - **Guides on the home page.** A guide shows one page in front of a stacked second page, at a size where its headings can be read.
 
+## The cover
+
+- **The signature leads.**
+  - "Think like an economist." is the page's only `h1`, set in Bodoni Moda at 44–80px.
+  - It always breaks as "Think like / an economist.", with no line holding a single word. The second line is italic, in brass.
+- **The supporting lines.**
+  - The idea follows in Source Serif at 19–22px, at most about 40 characters per line.
+  - One line on the platform follows in Manrope at 15.5px.
+- **Two actions:** Explore Economics, which goes down the page, and Explore Resources, which opens the Resource hub.
+- **The author signature.**
+  - The original photograph at 4:5, 118–134px wide (104px on a phone), with a 10px radius and a hairline border.
+  - The name in Bodoni, the role in Manrope, and two brass links.
+  - It sits level with the foot of the figures, not under a rule.
+- **The figures.**
+  - The live model leads at 1.6 times the width of the two excerpts, which share its height and keep their own proportions.
+  - All three use the same padding, radius, shadow and caption type.
+- **The background.**
+  - The grid fades out behind the words and stays behind the figures.
+  - The burgundy light is held to one corner at low strength.
+- **Where it meets the paper.** A brass hairline marks the edge, and a short warm band fades into the cream.
+
 ## Header
 
 - **One bar, eight destinations.**
@@ -136,4 +157,7 @@ Hover lifts the card by 2px, deepens its border and moves the arrow. Below 720px
 
 - **Reveals** fade blocks up by 14px over 560ms as they arrive. They apply only to blocks the script marks as below the fold, only while the motion layer (`body.rn-anim`) is on, and never during the self-test.
 - **Which blocks.** Large blocks only: cards, exhibits and panels, never paragraphs or labels.
-- **Reduced motion** removes every reveal and transition.
+- **The cover's entrance.**
+  - When a reader returns to the home page from another page, the words, the signature and the figures rise 10px and fade in over 340ms, 36ms apart, all within 0.6s.
+  - It does not play on a first visit, because the opening sequence is the entrance there.
+- **Reduced motion** removes every reveal, transition and entrance.

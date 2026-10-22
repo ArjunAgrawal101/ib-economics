@@ -115,6 +115,10 @@ for (const w of WIDTHS) {
   for (const r of ROUTES) {
     await p.evaluate(h => { location.hash = h || '#/'; }, r); await p.waitForTimeout(350);
     await p.evaluate(async () => { /* fill lazy figures the way scrolling would */ for (let y = 0; y < document.body.scrollHeight; y += innerHeight) { scrollTo(0, y); await new Promise(f => setTimeout(f, 30)) } scrollTo(0, 0); await new Promise(f => setTimeout(f, 120)) });
+    /* the audit measures the page at rest: the cursor is moved off the page first, so a hover
+       label (for instance on the cover's model, where the welcome dialog's button was clicked)
+       is not measured as if it were part of the layout */
+    await p.mouse.move(0, 0); await p.waitForTimeout(30);
     const m = await p.evaluate(audit);
     report.push({ w, route: r || 'home', atoms: m.n, overflow: m.ov, found: m.found });
   }

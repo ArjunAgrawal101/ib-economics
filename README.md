@@ -797,11 +797,24 @@ sends nothing anywhere.
 
 ## The landing experience, the Learning Studio, Learning design and Contact
 
-**The home page** opens with "Economics is not just a subject to study. It is a way to think.", then an interactive learning ecosystem in one line and two actions:
-- **Explore Economics** goes down to Explore Economics Resources.
-- **Discover the Learning Studio** opens the Studio.
+**The home page** leads with the platform's signature, **"Think like an economist."**:
+- **The idea:** "Economics is not just a subject to study. It is a way to understand the world."
+- **What the platform is:** "An interactive IB DP Economics learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking."
+- **Two actions:**
+  - **Explore Economics** moves down to Explore Economics Resources.
+  - **Explore Resources** opens the Resource hub (`#/resources`).
 
-Beside the statement sits a plate of three numbered figures: the live market model (Fig. 1), the corrected elasticity diagram from the PED explainer (Fig. 2) and a branch of its revision map (Fig. 3). The page then reads as follows.
+**The author signature** sits level with the foot of the figures. It shows:
+- the original photograph, cropped to 4:5 (`assets/brand/arjun-agrawal-portrait-4x5.webp`, made from `assets/brand/arjun-agrawal-portrait.jpg`, which is unchanged);
+- the name, and "IB DP Economics Educator and Resource Designer";
+- links to About and to the Learning Studio.
+
+**The figures** beside the words are three, numbered:
+1. The live market model. It is drawn taller, so it fills its figure.
+2. The corrected elasticity diagram, with the same axes and the same scale.
+3. The revenue diagram from the same explainer.
+
+The two excerpts share the model's height. Between 900 and 1100px only the model is shown beside the words. On a phone the order is statement, idea, actions, model, then the signature. The page then reads as follows.
 
 - **Explore Economics Resources**, directly after the cover. It has eight doors, each a real page with a small figure and a count taken from the platform's data:
   - topic lessons;
