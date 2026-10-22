@@ -3138,23 +3138,6 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 @media (max-width:640px){.at-figs{grid-template-columns:1fr}.at-f1{grid-row:auto}.at-f2,.at-f3{display:none}.cv.at-hero h1.cv-h{font-size:clamp(32px,9vw,40px)}
  .at-hero .cv-cta .btn{width:100%}}
 
-/* ── six pathways, drawn as one route ─────────────────────────────────── */
-.at-route{list-style:none;margin:var(--sp-5) 0 var(--sp-7);padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));position:relative}
-.at-route::before{content:"";position:absolute;left:20px;right:20px;top:39px;height:2px;background:var(--ln-rule)}
-.at-sa{display:flex;flex-direction:column;gap:6px;height:100%;padding:0 var(--sp-4) var(--sp-4) 0;color:var(--tx-strong);text-decoration:none;position:relative}
-.at-sn{font-family:var(--ff-mono);font-size:11px;font-weight:600;color:var(--ac-bur);letter-spacing:.06em}
-.at-gl{width:44px;height:44px;padding:8px;border-radius:50%;border:2px solid var(--ln-rule);background:var(--sf-page);fill:none;stroke:var(--tx-body);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;position:relative;transition:border-color var(--mo-base),stroke var(--mo-base)}
-.at-gl text{fill:var(--tx-body);stroke:none;font-family:var(--ff-mono);font-size:8px;font-weight:600}
-.at-st{font-family:var(--ff-display);font-size:clamp(19px,1.45vw,23px);line-height:1.15;margin-top:6px}
-.at-sd{font-family:var(--ff-ui);font-size:13.5px;line-height:1.45;color:var(--tx-quiet)}
-.at-sc{font-family:var(--ff-mono);font-size:11.5px;color:var(--ac-bur);margin-top:auto;padding-top:4px}
-.at-sa:hover .at-gl,.at-sa:focus-visible .at-gl{border-color:var(--ac-bur);stroke:var(--ac-bur)}
-.at-sa:hover .at-st{color:var(--ac-bur)}
-.at-sa:focus-visible{outline:var(--fc-ring);outline-offset:4px;border-radius:var(--rd-sm)}
-@media (max-width:1100px){.at-route{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:var(--sp-5)}.at-route::before{display:none}.at-stop{border-top:2px solid var(--ln-hair);padding-top:var(--sp-4)}}
-@media (max-width:640px){.at-route{grid-template-columns:1fr;row-gap:0}.at-route::before{display:block;left:21px;right:auto;top:20px;bottom:20px;width:2px;height:auto}
- .at-stop{border:0;padding:0}.at-sa{display:grid;grid-template-columns:44px 1fr;column-gap:var(--sp-4);row-gap:2px;padding:0 0 var(--sp-5)}
- .at-sa .at-gl{grid-row:1/span 4;grid-column:1}.at-sa>:not(.at-gl){grid-column:2}.at-sn{grid-row:1}.at-st{margin-top:0}}
 
 /* ── inside the Learning Studio: an exhibition in five forms ──────────── */
 .at-intro{max-width:64ch;margin-top:var(--sp-3);color:var(--tx-body)}
@@ -3299,7 +3282,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .cr-auth div{display:contents}
 .cr-auth dt{font-family:var(--ff-mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tx-quiet);padding-top:3px}
 .cr-auth dd{margin:0;font-family:var(--ff-text);font-size:15.5px;color:var(--tx-strong)}
-@media (prefers-reduced-motion:reduce){.at-gl,.aj-n,.al-o,.ex-issue img{transition:none}.ex-issue:hover img{transform:none}}
+@media (prefers-reduced-motion:reduce){.aj-n,.al-o,.ex-issue img{transition:none}.ex-issue:hover img{transform:none}}
 
 /* ── refinements after the first rendered review ─────────────────────── */
 .cv.at-hero h1.cv-h em{display:block}
@@ -3318,6 +3301,196 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 .al-card{min-height:0}
 .at-figs{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}
 .at-sig b{font-family:var(--ff-text);font-weight:600;font-size:19px}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LAUNCH · the final pre-launch pass
+   The header given room and a clear Resources destination; the Explore
+   Economics Resources band; a clean edge between the cover and the paper; one
+   set of hover and focus states for cards; and a restrained reveal.
+   Built on the Atlas tokens (css-atlas.css). See docs/design-system.md.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── the header ─────────────────────────────────────────────────────────── */
+/* The bar is measured after every paint, and items are withdrawn only when they
+   would meet the brand. The earlier fixed width tiers withdrew items that fitted. */
+@media (min-width:1181px){
+ .mainnav button.hideable-1,.mainnav button.hideable-2,.mainnav button.hideable-3,.mainnav button.hideable-4,.mainnav button.hideable-5{display:inline-block}
+ .mainnav button{padding:9px 10px;font-size:13.5px}
+}
+.mainnav{gap:0}
+.mainnav button:not(.cta):not(.more)::before{content:"";position:absolute;left:10px;right:10px;bottom:3px;height:1px;background:currentColor;opacity:.55;
+ transform:scaleX(0);transform-origin:left center;transition:transform var(--mo-base) var(--mo-ease)}
+.mainnav button:not(.cta):hover{background:transparent;color:var(--tx-strong)}
+.mainnav button:not(.cta):hover::before,.mainnav button:not(.cta):focus-visible::before{transform:scaleX(1)}
+.mainnav button.on::before{display:none}
+.mainnav button.on::after{left:10px;right:10px;bottom:2px}
+.mainnav button:focus-visible,.topR button:focus-visible,.resdoor:focus-visible,.brand:focus-visible{outline:var(--fc-ring);outline-offset:2px}
+.mainnav .more:hover{background:var(--chalk-2)}
+.mainnav button.cta{border-radius:var(--rd-sm);margin-left:12px;transition:background var(--mo-fast) var(--mo-ease)}
+/* the tools: one control each, quiet until used */
+.topR{gap:6px}
+.topR .iconbtn,.topR .tmr,.topR .who,.topR .seg{transition:border-color var(--mo-fast) var(--mo-ease),background var(--mo-fast) var(--mo-ease)}
+.topR .iconbtn:hover,.topR .tmr:hover,.topR .who:hover{border-color:var(--ln-rule)}
+.tmr .tm-ic{display:none}
+.tmr.idle{width:36px;height:36px;padding:0;gap:0;justify-content:center;background:var(--white,#fff)}
+.tmr.idle #tmrToggle,.tmr.idle .rd,.tmr.idle .tm-cv{display:none}
+.tmr.idle .tm-ic,.top .tmr.idle button svg.tm-ic{display:block;width:17px;height:17px}
+.tmr.idle #tmrOpen{width:34px;height:34px;color:var(--tx-strong)}
+.tmr.idle #tmrOpen:hover{background:transparent}
+/* the profile shows its initial; the name stays in the accessible label */
+@media (max-width:1680px){
+ .topR .who{padding:3px;gap:0}
+ .topR .who .nm{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+ .topR .who .av{width:28px;height:28px}
+}
+/* Resources in the header where the bar gives way to the drawer */
+.resdoor{display:none;align-items:center;gap:7px;height:36px;padding:0 12px;border:1px solid var(--ln-rule);border-radius:var(--rd-sm);
+ background:var(--white,#fff);color:var(--ac-bur);font-family:var(--ff-ui);font-size:13px;font-weight:700;letter-spacing:.01em;text-decoration:none;white-space:nowrap;
+ transition:border-color var(--mo-fast) var(--mo-ease),background var(--mo-fast) var(--mo-ease)}
+.resdoor:hover{border-color:var(--ac-bur);background:var(--ac-bur-tint)}
+.resdoor.on{background:var(--ac-bur);border-color:var(--ac-bur);color:#fff}
+/* below 1180px the header is a row in a fixed order: brand, Resources, tools, menu */
+@media (max-width:1180px){
+ .top .in>.resdoor{display:inline-flex;order:2;flex:0 0 auto}
+ .top .in>.topR{order:2}
+}
+@media (max-width:430px){
+ .top .in{gap:6px;column-gap:6px}
+ .resdoor{height:34px;padding:0 10px;font-size:12.5px;gap:6px}
+ /* the profile opens the dashboard, which the drawer also lists */
+ .top .in>.topR .who{display:none}
+}
+/* on the narrowest phones the wordmark keeps its room; Resources leads the drawer */
+@media (max-width:374px){.resdoor svg{display:none}.resdoor{padding:0 9px}}
+@media (max-width:359px){.top .in>.resdoor{display:none}}
+/* anchors land below the sticky header */
+#view section[id],#view [id^="rs-"],#view h2[tabindex]{scroll-margin-top:calc(var(--top) + 16px)}
+
+/* ── the cover: a little less height, so the resources begin near the fold ── */
+.at-hero .in.at-hgrid{padding-block:clamp(30px,3.4vw,54px)}
+.at-hero .cv-cta .btn{transition:background var(--mo-fast) var(--mo-ease),transform var(--mo-fast) var(--mo-ease)}
+.at-hero .cv-cta .btn:hover{transform:translateY(-1px)}
+
+/* ── the edge between the cover and the paper ─────────────────────────────── */
+/* A clean edge with a fine brass rule, in place of the grey gradient. */
+.rn-hinge{background:var(--sf-page);padding:clamp(20px,2.4vw,32px) 0 0;border-top:1px solid var(--ac-brass);box-shadow:inset 0 1px 0 rgba(201,174,114,.35)}
+.rn-hinge .rn-chap{padding-top:0}
+
+/* ── Explore Economics Resources ───────────────────────────────────────── */
+.rs-band{background:var(--sf-page);padding:clamp(16px,2vw,26px) 0 clamp(48px,6vw,88px)}
+.rs-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:var(--sp-5) var(--sp-7);padding-bottom:var(--sp-5);border-bottom:1px solid var(--ln-rule)}
+.rs-k{font-family:var(--ff-ui);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ac-bur)}
+.rs-t{font-family:var(--ff-display);font-weight:400;font-size:var(--fs-3xl);line-height:1.04;letter-spacing:-.012em;color:var(--tx-strong);margin-top:var(--sp-3)}
+.rs-l{margin-top:var(--sp-3);max-width:62ch;font-family:var(--ff-text);font-size:var(--fs-lg);line-height:1.55;color:var(--tx-body)}
+.rs-hub{white-space:nowrap}
+.rs-grid{list-style:none;margin:var(--sp-6) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-4)}
+.rs-i{min-width:0}
+.rs-a{position:relative;display:flex;flex-direction:column;height:100%;background:var(--sf-card);border:1px solid var(--ln-hair);border-radius:var(--rd-md);
+ overflow:hidden;color:inherit;text-decoration:none;transition:transform var(--mo-base) var(--mo-ease),border-color var(--mo-base) var(--mo-ease),box-shadow var(--mo-base) var(--mo-ease)}
+.rs-fig{display:block;aspect-ratio:5/3;background:var(--sf-plate);border-bottom:1px solid var(--ln-hair);overflow:hidden}
+.rs-fig svg{display:block;width:100%;height:100%;padding:6% 8%;box-sizing:border-box;transition:transform var(--mo-slow) var(--mo-ease)}
+.rs-covers{display:flex;justify-content:center;align-items:center;gap:4%;height:100%;padding:0 7%;box-sizing:border-box}
+.rs-covers img{width:28%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:3px;box-shadow:0 1px 2px rgba(22,24,28,.12),0 8px 18px -12px rgba(22,24,28,.5);
+ transition:transform var(--mo-slow) var(--mo-ease)}
+.rs-tx{display:flex;flex-direction:column;gap:6px;flex:1;padding:var(--sp-4) var(--sp-5) var(--sp-5) var(--sp-4)}
+.rs-n{font-family:var(--ff-display);font-size:clamp(19px,1.45vw,22px);line-height:1.15;color:var(--tx-strong);transition:color var(--mo-fast) var(--mo-ease)}
+.rs-d{font-family:var(--ff-ui);font-size:13.5px;line-height:1.5;color:var(--tx-quiet)}
+.rs-m{margin-top:auto;padding-top:var(--sp-2);font-family:var(--ff-mono);font-size:11.5px;letter-spacing:.02em;color:var(--ac-bur)}
+.rs-go{position:absolute;right:var(--sp-4);bottom:var(--sp-4);font-family:var(--ff-ui);font-size:15px;color:var(--ac-bur);opacity:.45;
+ transition:transform var(--mo-base) var(--mo-ease),opacity var(--mo-base) var(--mo-ease)}
+.rs-a:hover,.rs-a:focus-visible{border-color:var(--ln-rule);box-shadow:var(--sh-1);transform:translateY(-2px)}
+.rs-a:hover .rs-n,.rs-a:focus-visible .rs-n{color:var(--ac-bur)}
+.rs-a:hover .rs-go,.rs-a:focus-visible .rs-go{opacity:1;transform:translateX(3px)}
+.rs-a:hover .rs-fig svg{transform:scale(1.03)}
+.rs-a:hover .rs-covers img:nth-child(2){transform:translateY(-3px)}
+.rs-a:focus-visible{outline:var(--fc-ring);outline-offset:3px}
+/* figure inks */
+.rs-fig svg *{vector-effect:non-scaling-stroke}
+.rs-fig .f-ax{fill:none;stroke:var(--dg-ink);stroke-width:1.4}
+.rs-fig .f-ink{fill:none;stroke:var(--dg-ink);stroke-width:1.8}
+.rs-fig .f-n{fill:none;stroke:var(--dg-navy);stroke-width:1.8}
+.rs-fig .f-g{fill:none;stroke:var(--dg-gold);stroke-width:1.8}
+.rs-fig .f-gd{fill:none;stroke:#9AA3AE;stroke-width:1;stroke-dasharray:3 3}
+.rs-fig .f-ar{fill:none;stroke:var(--dg-gold);stroke-width:1.4}
+.rs-fig .f-arh{fill:none;stroke:var(--dg-gold);stroke-width:1.4;stroke-linejoin:round}
+.rs-fig .f-ln{fill:none;stroke:#B9B2A4;stroke-width:1.1}
+.rs-fig .f-dot{fill:var(--dg-navy)}.rs-fig .f-dot.g{fill:var(--dg-gold)}
+.rs-fig .f-nd{fill:var(--sf-plate);stroke:var(--dg-navy);stroke-width:1.5}.rs-fig .f-nd.g{stroke:var(--dg-gold)}
+.rs-fig .f-core{fill:var(--dg-navy);stroke:none}
+.rs-fig .f-box{fill:var(--sf-card);stroke:#CFC9BC;stroke-width:1}.rs-fig .f-box.on{fill:#F4EFE3;stroke:var(--dg-gold)}
+.rs-fig .f-t{font-family:var(--ff-ui);font-size:10px;font-weight:600;fill:var(--tx-body)}
+.rs-fig .f-t.n{fill:var(--dg-navy)}.rs-fig .f-t.g{fill:var(--dg-gold)}.rs-fig .f-t.c{fill:#fff;font-size:9.5px;letter-spacing:.04em}
+.rs-fig .f-mono{font-family:var(--ff-mono);font-size:10px;fill:var(--dg-ink)}.rs-fig .f-mono.b{font-size:11.5px;font-weight:600}
+.rs-fig .f-mono.n{fill:var(--dg-navy)}.rs-fig .f-mono.g{fill:#8C6D2F}
+/* the library strip */
+.rs-lib{display:grid;grid-template-columns:minmax(200px,.34fr) minmax(0,1fr) auto;align-items:center;gap:var(--sp-3) var(--sp-6);margin-top:var(--sp-5);
+ padding:var(--sp-5) var(--sp-6);background:var(--sf-ink);color:var(--tx-on-ink);border-radius:var(--rd-md)}
+.rs-lk{display:flex;align-items:center;gap:10px;font-family:var(--ff-display);font-size:var(--fs-xl);line-height:1.1;color:#fff}
+.rs-li{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(201,174,114,.55);color:var(--ac-brass);flex:none}
+.rs-lt{font-family:var(--ff-text);font-size:16px;line-height:1.5;color:var(--tx-on-ink)}
+.rs-lt b{color:#fff;font-weight:600}
+.rs-lc{grid-column:2;font-family:var(--ff-ui);font-size:12.5px;line-height:1.7;color:var(--tx-on-ink-quiet)}
+.rs-lgo{grid-row:1/span 2;grid-column:3;align-self:center;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border:1px solid rgba(201,174,114,.6);
+ border-radius:var(--rd-sm);color:#fff;font-family:var(--ff-ui);font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;
+ transition:background var(--mo-fast) var(--mo-ease),border-color var(--mo-fast) var(--mo-ease)}
+.rs-lgo:hover{background:rgba(201,174,114,.14);border-color:var(--ac-brass)}
+.rs-lgo:focus-visible{outline:var(--fc-ring-ink);outline-offset:3px}
+.rs-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--sp-3) var(--sp-5);margin-top:var(--sp-5)}
+.rs-disc{gap:var(--sp-2)}
+.rs-studio{font-family:var(--ff-ui);font-size:13.5px;color:var(--tx-quiet)}
+.rs-studio a{color:var(--ac-bur);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+@media (max-width:1180px){.rs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .rs-lib{grid-template-columns:minmax(0,1fr) auto}.rs-lk{grid-column:1/-1}.rs-lc{grid-column:1}.rs-lgo{grid-row:2/span 2;grid-column:2}}
+@media (max-width:720px){
+ .rs-head{grid-template-columns:minmax(0,1fr);align-items:start}
+ .rs-hub{justify-self:start}
+ /* on a phone the doors are a two-column grid of short cards: figure, name, count */
+ .rs-grid{gap:var(--sp-3);margin-top:var(--sp-5)}
+ .rs-fig svg{padding:5% 4%}
+ .rs-tx{padding:var(--sp-3) var(--sp-3) var(--sp-4);gap:4px}
+ .rs-n{font-size:17px}
+ .rs-go{display:none}
+ .rs-lib{grid-template-columns:minmax(0,1fr);padding:var(--sp-5)}
+ .rs-lc{grid-column:1}.rs-lgo{grid-row:auto;grid-column:1;justify-self:start}
+}
+@media (max-width:520px){.rs-d{display:none}.rs-m{font-size:11px;padding-top:2px}}
+@media (max-width:340px){.rs-n{font-size:15.5px}.rs-tx{padding:var(--sp-2) var(--sp-2) var(--sp-3)}}
+
+/* ── the Learning Studio exhibition: lighter feature, legible forms ───────── */
+.ex-k{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.ex-ty{display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 8px;border:1px solid rgba(122,36,54,.35);border-radius:var(--rd-pill);
+ font-family:var(--ff-ui);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ac-bur);background:var(--sf-card)}
+.ex-ty::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+.ex-km{font-family:var(--ff-mono);font-size:11px;letter-spacing:.03em;color:var(--tx-quiet)}
+.ex-series .ex-ty{color:var(--ac-brass);border-color:rgba(201,174,114,.45);background:transparent}
+.ex-series .ex-km{color:var(--tx-on-ink-quiet)}
+.ex-feature .ex-tl{font-size:var(--fs-2xl);line-height:1.08}
+.ex-spread .ex-side img{height:clamp(170px,17vw,240px);width:100%;object-fit:contain;background:var(--sf-plate)}
+/* the guide: one page in front, the next behind it */
+.ex-editorial .ex-pages{grid-template-columns:minmax(0,1fr);padding:var(--sp-5) var(--sp-6) 0 var(--sp-5)}
+.ex-editorial .ex-page:nth-child(2){display:none}
+.ex-editorial .ex-page:first-child{box-shadow:6px -6px 0 -1px #fff,6px -6px 0 0 var(--ln-rule),12px -12px 0 -1px #fff,12px -12px 0 0 var(--ln-hair),0 12px 24px -16px rgba(0,0,0,.4)}
+
+/* ── cards: one set of hover and focus states ─────────────────────────────── */
+.ex,.td-card,.t6-b,.al-card{transition:border-color var(--mo-base) var(--mo-ease),box-shadow var(--mo-base) var(--mo-ease)}
+.ex-fig img,.ex-page img,.ex-main img,.ex-side img{transition:transform var(--mo-slow) var(--mo-ease)}
+.ex-fig:hover img,.ex-page:hover img,.ex-main:hover img,.ex-side:hover img{transform:scale(1.015)}
+.btn{transition:background var(--mo-fast) var(--mo-ease),border-color var(--mo-fast) var(--mo-ease),color var(--mo-fast) var(--mo-ease),transform var(--mo-fast) var(--mo-ease)}
+.btn:focus-visible{outline:var(--fc-ring);outline-offset:3px}
+.hero .btn:focus-visible,.rs-lib .btn:focus-visible,.at-hero .btn:focus-visible{outline:var(--fc-ring-ink)}
+
+/* ── a restrained reveal ───────────────────────────────────────────────── */
+/* Only blocks the script marks as waiting, below the fold, while motion is on. */
+body.rn-anim .rv-wait{opacity:0;transform:translateY(14px)}
+body.rn-anim .rv,body.rn-anim #selected-work .ex,body.rn-anim .aj,body.rn-anim .al-card,body.rn-anim .ap-grid,body.rn-anim .td-grid,body.rn-anim .t6-band{
+ transition:opacity 560ms var(--mo-ease),transform 560ms var(--mo-ease)}
+body.rn-anim .rs-i.rv{transition-delay:calc(var(--i,0) * 50ms)}
+@media (prefers-reduced-motion:reduce){
+ .rv-wait{opacity:1!important;transform:none!important}
+ .rs-a,.rs-fig svg,.rs-covers img,.rs-go,.mainnav button::before,.ex-fig img,.ex-page img,.ex-main img,.ex-side img,.btn{transition:none!important}
+ .rs-a:hover,.rs-a:focus-visible{transform:none}.rs-a:hover .rs-fig svg{transform:none}
+}
+@media print{.rv-wait{opacity:1!important;transform:none!important}.resdoor{display:none!important}}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -33326,20 +33499,20 @@ function FINALSUITE(){
 
  /* ── PARTS 16 to 21 · the frozen information architecture ── */
  T("Navigation · the primary order is exactly the one the brief sets",
-   (()=>{ const want=["course","learn","lab","world","practise","examiner","mind","everywhere","studio"];
+   (()=>{ const want=["course","learn","lab","world","practise","examiner","mind","resources"];
      const got=SECTIONS.filter(s=>s.pri).map(s=>s.v);
      return JSON.stringify(got)===JSON.stringify(want)})());
- T("Navigation · Mindmaps and Real World are primary, Resources is not",
+ T("Navigation · Mindmaps, Real World and Resources are primary",
    (()=>{const pri=SECTIONS.filter(s=>s.pri).map(s=>s.v);
-     return pri.includes("mind")&&pri.includes("world")&&!pri.includes("resources")})());
+     return pri.includes("mind")&&pri.includes("world")&&pri.includes("resources")})());
  T("Navigation · the mobile drawer carries the prescribed groups in order",
    (()=>{const want=["Start","Explore","Practise","Progress","IA","Teacher","About"];
      const got=MOBGROUPS.map(g=>g[0]);
      return want.every((w,i)=>got[i]===w)})());
- T("Navigation · Economics, Everywhere, Real World, Mindmaps and Resources lead the drawer's second group",
+ T("Navigation · Resources leads the drawer; Economics, Everywhere, Real World and Mindmaps lead its second group",
    (()=>{const g=MOBGROUPS.find(x=>x[0]==="Explore");
      if(!g)return false;const keys=g[1].map(i=>i[0]);
-     return keys.indexOf("everywhere")===0&&keys.indexOf("world")===1&&keys.indexOf("mind")===2&&keys.indexOf("resources")===3})());
+     return MOBGROUPS[0][1][0][0]==="resources"&&keys.indexOf("everywhere")===0&&keys.indexOf("world")===1&&keys.indexOf("mind")===2})());
  T("Navigation · every section is reachable from the drawer",
    (()=>{const placed=new Set(MOBGROUPS.flatMap(([,it])=>it.map(i=>i[0])));
      return SECTIONS.filter(s=>s.v!=="home").every(s=>placed.has(s.v))})());
@@ -33554,18 +33727,18 @@ function RWSUITE(){
    RW_CASES.filter(c=>(c.kc||[]).length).every(c=>{const t=rwTok(c);return !t||!!t.kq}));
 
  /* ── PART 110 · reachability ── */
- T("Navigation · Real World and Mindmaps are the last two items the bar gives up",
+ T("Navigation · Resources, Real World and Mindmaps are the last three items the bar gives up",
    (()=>{const ranks=Object.entries(NAVKEEP).sort((a,b)=>b[1]-a[1]).map(x=>x[0]);
-     return ranks[0]==="world"&&ranks[1]==="mind"})());
+     return ranks[0]==="resources"&&ranks[1]==="world"&&ranks[2]==="mind"})());
  T("Navigation · Real World and Mindmaps are primary items on the bar",
    ["world","mind"].every(v=>{const s=SECTIONS.find(x=>x.v===v);return s&&s.pri}));
- T("Navigation · Resources is off the bar but first in the More menu and high in the drawer",
+ T("Navigation · Resources is on the bar, first in the More menu and first in the drawer",
    (()=>{const r=SECTIONS.find(x=>x.v==="resources");
      const flat=MOBGROUPS.flatMap(([,i])=>i.map(x=>x[0]));
-     return r&&!r.pri&&flat.indexOf("resources")>=0&&flat.indexOf("resources")<10
+     return r&&r.pri&&flat.indexOf("resources")===0
        &&/\[\"Learn and explore\",\[\[\"resources\"/.test(String(moreMenu))})());
  T("Navigation · the primary bar follows the order the brief sets",
-   (()=>{ const want=["course","learn","lab","world","practise","examiner","mind","everywhere","studio"];
+   (()=>{ const want=["course","learn","lab","world","practise","examiner","mind","resources"];
      const got=SECTIONS.filter(s=>s.pri).map(s=>s.v);
      /* Tutorials closes the bar as its own call to action rather than as a primary item */
      return JSON.stringify(got)===JSON.stringify(want)
@@ -35924,9 +36097,9 @@ function EESUITE(){
  T("Everywhere · the search reaches every question, card, idea and lab",
    (()=>{const keep=SIDX;SIDX=null;const I=buildIndex();SIDX=keep;
     return EE_ALL().every(x=>I.some(r=>r.t===x.t&&r.go===eeGo(x.id)))&&Object.keys(EELABS).every(k=>I.some(r=>r.t===EELABS[k].n))})());
- T("Everywhere · the section sits on the bar, in the drawer and in the More menu, and the home page opens a door to it",
+ T("Everywhere · the section sits in the More menu and the drawer, and the home page opens a door to it",
    (()=>{const s=SECTIONS.find(x=>x.v==="everywhere");const flat=MOBGROUPS.flatMap(([,i])=>i.map(x=>x[0]));
-    return s&&s.pri&&flat.includes("everywhere")&&/Economics, Everywhere/.test(VIEWS.home())})());
+    return s&&/\["everywhere",/.test(String(moreMenu))&&flat.includes("everywhere")&&/Economics, Everywhere/.test(VIEWS.home())})());
  T("Everywhere · the search filters return only their own kind, and every filter finds something",
    CPGROUPS.filter(g=>g[2]).every(g=>{const r=cpGroupItems(g,"");return r.length>0&&r.every(x=>g[2].test(x.k))})
    &&cpGroupItems(CPGROUPS.find(g=>g[0]==="ee"),"flight").some(x=>/flight/i.test(x.t)));
@@ -38386,9 +38559,8 @@ function rnAtlas(){const n=rnCount();
   ["educator","Educators","A studio for teachers, supervisors and coordinators.","ppc","5 roles · 10 modules"],
   ["tok","TOK × Economics","What economic knowledge is, and how it is made.","model","Knowledge questions"]];
  const has=v=>SECTIONS.some(s=>s.v===v);
- return `<section class="sec rn-band rn-atlas-band" id="explore"><div class="wrap full">
-  <div class="shead fx"><span class="n">01</span><h2>Explore Economics</h2><span class="aside">What can I do here?</span></div>
-  ${typeof rnPathways==="function"?rnPathways():""}
+ return `<section class="sec rn-band rn-atlas-band"><div class="wrap full">
+  <div class="shead fx"><span class="n">01</span><h2>Across the platform</h2><span class="aside">What can I do here?</span></div>
   <div class="rn-atlas">${A.filter(d=>has(d[0])).map((d,i)=>`<button class="atl${i===0?" atl-lead":""}" onclick="nav('${d[0]}')">
    <span class="atl-fig" data-motif="${d[3]}"></span>
    <span class="atl-tx"><span class="atl-n">${String(i+1).padStart(2,"0")}</span><span class="atl-t">${esc(d[1])}</span>
@@ -38456,14 +38628,18 @@ function rnDivider(t,s){return `<div class="wrap full rn-divider"><span class="r
 /* the home page reads as a story in twelve chapters, one verb each: think,
    discover, learn, see, interact, connect, practise, research, explore,
    watch, teach, and the person behind it. "#n|Title" marks a chapter opener. */
-/* The Learning Studio and Atlas briefs add a second chapter, Discover: the
+/* The launch brief opens chapter 01 with Explore Economics Resources: direct
+   doors into the platform's resources and the Resource hub's library. It takes
+   the place of the earlier gateway, which led to the same places; the gateway
+   (rnAtlas) is kept for anything that still draws it.
+   The Learning Studio and Atlas briefs add a second chapter, Discover: the
    exhibition of original work, one topic seen six ways and a working
    prediction lab. The About chapter opens with the progression the resources
    are designed around and closes with the enquiry band. Later modules register their bands
    in RN_BANDS, so this list names them without the home page knowing how
    they are drawn. */
 const RN_BANDS={};
-const RN_ORDER=["#01|Think","Start your journey","@atlas","@paths",
+const RN_ORDER=["#01|Think","@resources","Start your journey","@paths",
  "#02|Discover","@work","@onetopic","@labdemo",
  "#03|The course","@course",
  "#04|Learn","@learn","Timeless ideas","Inflation targeting",
@@ -38736,7 +38912,7 @@ function rnHorizon(kind){
  return `<div class="hz hz-grid" aria-hidden="true"></div>`}
 function rnChapter(n,t){
  if(n==="01")return `<div class="rn-hinge"><div class="wrap full"><div class="rn-chap"><span class="ch-n">${n}</span><span class="ch-t">${esc(t)}</span></div>
-  <p class="hg-h">Five ways in. <em>One way of thinking.</em></p><p class="hg-l">Explore a concept, understand a diagram, connect it to the world, practise the calculation, then think like an examiner. Every door below opens onto the same economics.</p></div></div>`;
+  </div></div>`;
  return `${RN_HZ[n]?`<div class="wrap full">${rnHorizon(RN_HZ[n])}</div>`:""}<div class="wrap full rn-chap"><span class="ch-n">${n}</span><span class="ch-t">${esc(t)}</span></div>`}
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -39101,7 +39277,7 @@ function COVSUITE(){
  T("Cover model · more demand raises both price and quantity; less demand lowers both",()=>S.slice(1).every((s,i)=>{const a=CVF.eq(S[i]),b=CVF.eq(s);return b.p>a.p&&b.q>a.q}));
  T("Cover model · the reading names the shortage or surplus that moves price, never price moving demand",()=>{const k=CV.s;try{CV.s=1;const up=cvRead();CV.s=-1;const dn=cvRead();
    return /shortage/.test(up)&&/surplus/.test(dn)&&!/price rises[^.]*demand (rises|increases)/i.test(up+dn)}finally{CV.s=k}});
- T("Cover model · the counts beside the pathways are the platform's own, not on the cover",()=>{const n=rnCount(),h=rnPathways();
+ T("Cover model · the counts beside the resource doors are the platform's own, not on the cover",()=>{const n=rnCount(),h=rnResources();
    return ["cases","diagrams","calcs","dna"].every(k=>typeof n[k]!=="number"||h.includes(fmtN(n[k])))&&!/cv-sig/.test(VIEWS.home())});
  T("Cover frame · the portrait sits in its own frame, which holds no figure",()=>{const h=VIEWS.home();const i=h.indexOf('<figure class="cv-portrait');if(i<0)return false;
    const f=h.slice(i,h.indexOf("</figure>",i));return !/<svg|data-motif/.test(f)&&/<img/.test(f)});
@@ -40946,8 +41122,8 @@ function T6SUITE(){const out=[];const T=(n,f,d)=>{let ok=false,det=d||"";try{con
    return IDEASIDX.economists.every(e=>a.includes(e.name)&&b.includes(esc(e.name)))&&/Keynes/.test(c)&&(window.__IDEAS__?/The problem they faced/.test(c):/Loading this profile|could not be loaded/.test(c))});
  T("Why · the tab sits at the end of Think, so no older tab changes its address",()=>{const t=SECTIONS.find(s=>s.v==="think").tabs;return t[t.length-1]==="Why did this happen?"&&t.indexOf("Economist's toolkit")===6&&t.indexOf("Inquiry tools")===7});
  T("Why · the list offers all eleven questions and marks HL content",()=>{VIEW="think";TAB=WHYTAB();ARG=null;const h=txt(VIEWS.think());return IDEASIDX.causal.every(c=>h.includes(c.q))&&/includes HL/.test(h)});
- T("Navigation · the bar keeps nine items and the More menu reaches every section",()=>{const pri=SECTIONS.filter(s=>s.pri).map(s=>s.v);const src=String(moreMenu);
-   return pri.length===9&&SECTIONS.every(s=>s.v==="home"||src.includes('"'+s.v+'"')||/rest=SECTIONS\.filter/.test(src))&&["data","ideas"].every(v=>src.includes('"'+v+'"'))});
+ T("Navigation · the bar keeps eight items, Resources among them, and the More menu reaches every section",()=>{const pri=SECTIONS.filter(s=>s.pri).map(s=>s.v);const src=String(moreMenu);
+   return pri.length===8&&pri.includes("resources")&&SECTIONS.every(s=>s.v==="home"||src.includes('"'+s.v+'"')||/rest=SECTIONS\.filter/.test(src))&&["data","ideas"].every(v=>src.includes('"'+v+'"'))});
  T("Navigation · the drawer reaches the data lab and the economists",()=>MOBGROUPS.some(([,it])=>it.some(i=>i[0]==="data"))&&MOBGROUPS.some(([,it])=>it.some(i=>i[0]==="ideas")));
  T("Search · economists, causal questions and data pages are found by name",()=>{SIDX=null;const k=q=>cpMatch(q).map(x=>x.k);const r=k("keynes").includes("Economist")&&k("why did inflation").includes("Why did this happen?")&&k("exchange rate data").includes("Data");SIDX=null;return r});
  T("Discoverability · the page carries structured data that claims no URL, endorsement or affiliation",()=>{const s=document.querySelector('script[type="application/ld+json"]');if(!s)return false;const j=JSON.parse(s.textContent);
@@ -41904,8 +42080,7 @@ QAREPORT.push({area:"Learning Studio",re:/^(Studio|Lab miniature|Learning design
 
 /* ═══════════════════════════════════════════════════════════════════════════
    PROJECT ATLAS · the landing experience
-   The home page's opening sequence, rebuilt as one argument: six pathways into
-   the platform; an exhibition of the original work, each piece shown in the
+   The home page's opening sequence, rebuilt as one argument: an exhibition of the original work, each piece shown in the
    form that suits it; one topic followed through six perspectives; a working
    prediction lab drawn from the platform's own Predict-a-diagram data; and the
    progression the resources are designed around, illustrated with a second
@@ -41914,30 +42089,14 @@ QAREPORT.push({area:"Learning Studio",re:/^(Studio|Lab miniature|Learning design
    every resource image is a screen-resolution excerpt from assets/studio/.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ── 1 · Six pathways into the platform ──────────────────────────────────── */
-const AT_GLYPH={
- concept:'<circle cx="8" cy="10" r="3"/><circle cx="30" cy="8" r="3"/><circle cx="20" cy="28" r="3.5"/><path d="M10.6 11.4 17.8 25.6M27.6 10.2 21.6 25M11 9.6 27 8.4"/>',
- diagram:'<path d="M4 4v32h32"/><path d="M8 8l26 22M8 30 34 8"/><circle cx="21" cy="19" r="2.4"/>',
- world:'<path d="M4 30 12 22l6 4 8-12 10 6"/><circle cx="26" cy="14" r="2.4"/><path d="M4 36h32"/>',
- calc:'<path d="M8 13h24M8 27h24"/><text x="20" y="10" text-anchor="middle">%ΔQ</text><text x="20" y="38" text-anchor="middle">%ΔP</text>',
- test:'<rect x="5" y="5" width="30" height="30" rx="3"/><path d="M12 20l6 6 11-13"/>',
- exam:'<path d="M5 34h8v-8h8v-8h8v-8h6"/><path d="M5 34h30"/>'};
-function atGlyph(k){return `<svg class="at-gl" viewBox="0 0 40 40" aria-hidden="true" focusable="false">${AT_GLYPH[k]}</svg>`}
-function atPaths(){const n=(()=>{try{return rnCount()}catch(e){return {}}})();let C=0;try{C=CONCEPTS.length}catch(e){}
- return [["concept","Understand a concept","Each idea told as a chain of cause and effect, with what it explains.","#/learn/concept-spine",C?`${C} concepts`:""],
-  ["diagram","Explore a diagram","Plates you can study, and labs where the curves move.","#/lab/diagram-atlas",n.diagrams?`${fmtN(n.diagrams)} diagram plates`:""],
-  ["world","Investigate a real-world issue","Dated cases, each read through a model.","#/world",n.cases?`${fmtN(n.cases)} cases · ${fmtN(n.economies)} economies`:""],
-  ["calc","Practise a calculation","Worked methods, with your own numbers checked.","#/calculate",n.calcs?`${fmtN(n.calcs)} calculations`:""],
-  ["test","Test understanding","Questions, retrieval and drills that show what has stuck.","#/practise",""],
-  ["exam","Develop exam thinking","Markbands, past-paper patterns and the habits that earn marks.","#/examiner",n.dna?`${fmtN(n.dna)} Exam DNA records`:""]]}
-function rnPathways(){const P=atPaths();
- return `<ol class="at-route" aria-label="Six ways into Economics">${P.map(([k,t,d,h,c],i)=>`<li class="at-stop"><a class="at-sa" href="${h}">
-   <span class="at-sn">${String(i+1).padStart(2,"0")}</span>${atGlyph(k)}
-   <span class="at-st">${esc(t)}</span><span class="at-sd">${esc(d)}</span>${c?`<span class="at-sc">${esc(c)}</span>`:""}</a></li>`).join("")}</ol>`}
+/* ── 1 · The six pathways now live in the launch band, Explore Economics
+   Resources (40-launch.js), which opens the same pages with the same counts. ── */
 
 /* ── 2 · Inside the Economics Learning Studio: an exhibition, not a card wall ── */
 function atImg(id,i,cls,eager){const p=ldPrev(id,i);return p?stImg(p,cls||"",eager):""}
-function atExhibitHead(it,label){return `<div class="ex-k">${esc(label)} · ${esc(it.kicker.split(" · ").slice(1).join(" · ")||stType(it.type).n)}</div><h3 class="ex-t">${esc(it.title)}</h3>`}
+/* the kicker leads with the exhibit's form as a small badge, so a visual, an
+   editorial guide, an application and a series are told apart at a glance */
+function atExhibitHead(it,label){return `<div class="ex-k"><span class="ex-ty">${esc(label)}</span><span class="ex-km">${esc(it.kicker.split(" · ").slice(1).join(" · ")||stType(it.type).n)}</span></div><h3 class="ex-t">${esc(it.title)}</h3>`}
 function atFeatured(it){
  return `<article class="ex ex-feature" aria-labelledby="ex-f-t">
   <div class="ex-spread">
@@ -41945,7 +42104,7 @@ function atFeatured(it){
    <button class="ex-side ld-fig" onclick="stView('${it.id}',1)" aria-label="Open in the viewer: ${esA(it.previews[1].cap)}">${atImg(it.id,1)}</button>
    <button class="ex-side ld-fig" onclick="stView('${it.id}',3)" aria-label="Open in the viewer: ${esA(it.previews[3].cap)}">${atImg(it.id,3)}</button>
   </div>
-  <div class="ex-copy"><div class="ex-k">Featured exhibit · Visual explainer · Unit 4.5</div>
+  <div class="ex-copy"><div class="ex-k"><span class="ex-ty">Visual explainer</span><span class="ex-km">Featured exhibit · Unit 4.5</span></div>
    <h3 class="ex-t ex-tl" id="ex-f-t">${esc(it.title)}, told through one currency</h3>
    <p class="ex-p">${esc(it.summary)}</p>
    <div class="ex-why"><div class="ex-wk">What makes it useful</div><p>${esc(it.approach)}</p></div>
@@ -42065,8 +42224,6 @@ Object.assign(RN_BANDS,{"@work":rnObservatory,"@onetopic":rnJourney,"@labdemo":r
 /* ── self-tests ─────────────────────────────────────────────────────────── */
 function ATLASSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){det=e.message}out.push({n,ok:!!ok,detail:det})};
  const txt=h=>h.replace(/<[^>]+>/g," ").replace(/\s+/g," ");
- T("Atlas · six pathways, each opening a real page",()=>{const P=atPaths();return P.length===6&&P.every(p=>!!routeParse(p[3]))});
- T("Atlas · every count beside a pathway is the platform's own",()=>{const n=rnCount(),h=txt(rnPathways());return h.includes(fmtN(n.cases)+" cases")&&h.includes(fmtN(n.calcs)+" calculations")&&h.includes(fmtN(n.diagrams)+" diagram plates")});
  T("Atlas · the exhibition shows five pieces in five different forms",()=>{const h=rnObservatory();return ["ex-feature","ex-visual","ex-editorial","ex-app","ex-series"].every(c=>h.includes(c))&&(h.match(/class="ex ex-/g)||[]).length===5});
  T("Atlas · every exhibit image is a Studio excerpt or a public carousel cover",()=>{const h=rnObservatory();const src=[...h.matchAll(/<img[^>]+src="([^"]+)"/g)].map(m=>m[1]);return src.length>0&&src.every(s=>/^assets\/studio\/[a-z0-9-]+\/[a-z0-9-]+\.webp$/.test(s)||/^data:image\/(jpeg|png)/.test(s)||/^blob:/.test(s))});
  T("Atlas · the journey has six stages, each with its own content",()=>AT_J.length===6&&AT_J.every((s,i)=>atJPanel(i).length>200)&&AT_J.map(s=>s[1]).join("|")==="Understand|Visualise|Apply|Calculate|Interact|Evaluate");
@@ -42078,7 +42235,159 @@ function ATLASSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const
  return out}
 ATLASSUITE.suiteName="Project Atlas";
 EXTRA_SUITES.push(ATLASSUITE);
-QAREPORT.push({area:"Project Atlas",re:/^Atlas ·/,what:"The landing sequence: real pathways and counts, an exhibition of five pieces in five forms from Studio excerpts only, a six-stage topic journey, a prediction lab built on the platform's own Predict-a-diagram data, and a nine-step progression with verified figures."});
+QAREPORT.push({area:"Project Atlas",re:/^Atlas ·/,what:"The landing sequence: an exhibition of five pieces in five forms from Studio excerpts only, a six-stage topic journey, a prediction lab built on the platform's own Predict-a-diagram data, and a nine-step progression with verified figures."});
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LAUNCH · the final pre-launch pass
+   1 · The header. Resources is on the primary bar (its order is settled at the
+       end of the build; see tools/migrations/2026-10-22-launch-navigation.py).
+       The tools beside the bar are folded so the bar has room: the timer shows
+       one control while it is idle, the profile shows its initial, and a
+       Resources door stands in the header on tablets and phones, where the bar
+       itself is replaced by the drawer.
+   2 · Explore Economics Resources. The home page's first band after the cover:
+       direct doors into the platform's own resources, each a real page with a
+       count taken from the data, and the Resource hub's library. It replaces
+       the six pathways, which led to the same places.
+   3 · Motion. A restrained reveal for a few large blocks, under the existing
+       motion layer (body.rn-anim), so reduced motion, the self-test sweep and
+       a failed script all leave every block in place and visible.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1 · the header ─────────────────────────────────────────────────────── */
+const LN_ICON={
+ watch:'<svg class="tm-ic" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.6v4l2.6 1.6M9.5 2.8h5M12 3v3M18.4 6.4l1.5-1.5"/></svg>',
+ book:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5C17 4.5 14 5 12 6.5z"/><path d="M12 6.5v13"/></svg>'};
+/* idle: unset and not running. Once it runs, or is paused part-way, the readout returns. */
+function lnTimerIdle(){try{return !TM.run&&!TM.done&&TM.left===(TM.mode==="down"?TM.total:0)}catch(e){return false}}
+function lnTimerState(){const el=document.getElementById("tmr"),o=document.getElementById("tmrOpen");if(!el)return;
+ const idle=lnTimerIdle();
+ if(o)o.setAttribute("aria-label",idle?"Exam timer: choose a paper or a time":"Timer presets");
+ if(el.classList.contains("idle")===idle)return;
+ el.classList.toggle("idle",idle);
+ try{if(typeof fitNav==="function")fitNav()}catch(e){}}
+function lnHeader(){if(typeof document==="undefined")return;
+ const o=document.getElementById("tmrOpen");
+ if(o&&!o.querySelector(".tm-ic")){const cv=o.querySelector("svg");if(cv)cv.classList.add("tm-cv");o.insertAdjacentHTML("afterbegin",LN_ICON.watch)}
+ const w=document.getElementById("whobtn");
+ if(w&&!w.getAttribute("title"))w.setAttribute("title","Your dashboard");
+ const inn=document.querySelector(".top .in"),tr=document.querySelector(".top .in>.topR");
+ if(inn&&tr&&!document.getElementById("resdoor")){
+  const b=document.createElement("a");b.id="resdoor";b.className="resdoor";b.href="#/resources";
+  b.innerHTML=LN_ICON.book+"<span>Resources</span>";
+  b.addEventListener("click",e=>{e.preventDefault();nav("resources")});
+  inn.insertBefore(b,tr)}
+ lnTimerState()}
+function lnHeaderState(){const d=document.getElementById("resdoor");if(!d)return;
+ const on=typeof VIEW!=="undefined"&&VIEW==="resources";
+ d.classList.toggle("on",on);if(on)d.setAttribute("aria-current","page");else d.removeAttribute("aria-current")}
+(function(){if(typeof document==="undefined")return;
+ if(typeof tmrPaint==="function"){const prev=tmrPaint;tmrPaint=function(){const r=prev.apply(this,arguments);try{lnTimerState()}catch(e){}return r}}
+ if(typeof paintNav==="function"){const prev=paintNav;paintNav=function(){const r=prev.apply(this,arguments);try{lnHeaderState()}catch(e){}return r}}
+ const go=()=>{try{lnHeader();lnHeaderState()}catch(e){}};
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go();
+ /* the bar is measured after each paint; measure again once the typefaces arrive,
+    because they are wider than the fallback the first measurement used */
+ try{if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{try{fitNav()}catch(e){}})}catch(e){}
+ try{if(document.fonts)document.fonts.addEventListener("loadingdone",()=>{try{fitNav()}catch(e){}})}catch(e){}})();
+
+/* ── 2 · Explore Economics Resources ────────────────────────────────────── */
+/* Small figures in the explainers' inks. The diagram is computed: demand rises
+   from D1 to D2 along a fixed supply curve, so price and quantity both rise. */
+function rsSD(){const S=x=>80-.58*(x-30),D1=x=>20+.64*(x-30),D2=x=>20+.64*(x-52);
+ const meet=(a,b)=>{let lo=30,hi=150;for(let i=0;i<40;i++){const m=(lo+hi)/2;if(a(m)>b(m))lo=m;else hi=m}return [lo,a(lo)]};
+ const e1=meet(S,D1),e2=meet(S,D2),f=v=>v.toFixed(1);
+ return {e1,e2,svg:`<path class="f-ax" d="M16 8V88H152"/>
+  <path class="f-gd" d="M16 ${f(e1[1])}H${f(e1[0])}V88M16 ${f(e2[1])}H${f(e2[0])}V88"/>
+  <path class="f-ink" d="M30 ${f(S(30))}L140 ${f(S(140))}"/><path class="f-n" d="M30 ${f(D1(30))}L122 ${f(D1(122))}"/><path class="f-g" d="M52 ${f(D2(52))}L144 ${f(D2(144))}"/>
+  <path class="f-ar" d="M${f(30+10/.64+3)} 30H${f(52+10/.64-4)}"/><path class="f-arh" d="M${f(52+10/.64-8)} 27 ${f(52+10/.64-3)} 30 ${f(52+10/.64-8)} 33"/>
+  <circle class="f-dot" cx="${f(e1[0])}" cy="${f(e1[1])}" r="2.6"/><circle class="f-dot g" cx="${f(e2[0])}" cy="${f(e2[1])}" r="2.6"/>
+  <text class="f-t" x="143" y="${f(S(140)+3)}">S</text><text class="f-t n" x="124" y="${f(D1(122)+2)}">D₁</text><text class="f-t g" x="146" y="${f(D2(144)+2)}">D₂</text>`}}
+const RS_FIG={
+ lessons:()=>[["1","Introduction"],["2","Microeconomics"],["3","Macroeconomics"],["4","Global economy"]].map(([n,t],i)=>
+  `<g transform="translate(20 ${10+i*20})"><rect class="f-box${i===1?" on":""}" width="120" height="15" rx="2"/><text class="f-mono" x="7" y="11">${n}</text><text class="f-t" x="20" y="11">${t}</text></g>`).join(""),
+ mind:()=>{const C=[80,48],P=[[28,20],[132,20],[22,66],[138,66],[80,87],[80,9]];
+  return P.map(p=>`<path class="f-ln" d="M${C[0]} ${C[1]}L${p[0]} ${p[1]}"/>`).join("")+P.map((p,i)=>`<circle class="f-nd${i%2?" g":""}" cx="${p[0]}" cy="${p[1]}" r="5.5"/>`).join("")+
+   `<circle class="f-core" cx="${C[0]}" cy="${C[1]}" r="14"/><text class="f-t c" x="80" y="51.5" text-anchor="middle">PED</text>`},
+ diagram:()=>rsSD().svg,
+ world:()=>`<circle class="f-ax" cx="80" cy="48" r="36"/><ellipse class="f-ln" cx="80" cy="48" rx="15" ry="36"/><ellipse class="f-ln" cx="80" cy="48" rx="28" ry="36"/>
+  <path class="f-ln" d="M46 36H114M44 48H116M46 60H114"/><circle class="f-dot g" cx="66" cy="38" r="3"/><circle class="f-dot" cx="98" cy="54" r="3"/><circle class="f-dot g" cx="84" cy="66" r="3"/>`,
+ calc:()=>`<text class="f-mono b" x="80" y="27" text-anchor="middle">PED = %ΔQd ÷ %ΔP</text><path class="f-ln" d="M16 37H144"/>
+  <text class="f-mono" x="80" y="56" text-anchor="middle">+10% ÷ −25%</text><text class="f-mono b n" x="80" y="80" text-anchor="middle">= −0.4 · inelastic</text>`,
+ exam:()=>`<rect class="f-box" x="38" y="6" width="84" height="84" rx="2"/><text class="f-mono" x="46" y="20">Paper 1</text><path class="f-ln" d="M46 26H114"/>
+  <text class="f-mono" x="46" y="42">(a)</text><path class="f-ln" d="M64 38H94"/><text class="f-mono g" x="115" y="42" text-anchor="end">[10]</text><path class="f-ln" d="M46 50H114M46 56H106"/>
+  <text class="f-mono" x="46" y="72">(b)</text><path class="f-ln" d="M64 68H94"/><text class="f-mono g" x="115" y="72" text-anchor="end">[15]</text><path class="f-ln" d="M46 80H114"/>`,
+ ee:()=>`<path class="f-ln" d="M20 20H140M36 44H124M54 68H106"/><path class="f-ax" d="M20 20 68 88M140 20 92 88"/><circle class="f-dot g" cx="80" cy="88" r="3.4"/>
+  <text class="f-t" x="80" y="15" text-anchor="middle">topic</text><text class="f-t" x="80" y="39" text-anchor="middle">focus</text><text class="f-t" x="80" y="63" text-anchor="middle">question</text>`};
+function rsFig(k){
+ if(k==="c60"){let C=[];try{C=C60.slice(0,3)}catch(e){}const im=C.map(c=>stC60(c.id)).filter(Boolean);
+  if(im.length)return `<span class="rs-covers">${im.map(s=>`<img src="${s}" alt="" width="360" height="450" loading="lazy" decoding="async">`).join("")}</span>`}
+ const f=RS_FIG[k];return f?`<svg viewBox="0 0 160 96" aria-hidden="true" focusable="false">${f()}</svg>`:""}
+function rsDoors(){const n=(()=>{try{return rnCount()}catch(e){return {}}})();
+ const tabs=v=>(SECTIONS.find(s=>s.v===v)||{}).tabs||[];let c60=[];try{c60=C60}catch(e){}
+ const ti=tabs("course").indexOf("Topics");
+ return [
+  {k:"lessons",t:"Topic lessons",d:"Every subtopic in the course as a complete lesson, with a check you mark yourself.",h:ti>0?routeFormat("course",ti):"#/course",m:n.subtopics?`4 units · ${fmtN(n.subtopics)} subtopics`:"4 units"},
+  {k:"mind",t:"Mindmaps and visual explanations",d:"How an economist moves through a topic, node by node.",h:"#/mind",m:n.maps?`${fmtN(n.maps)} maps · ${fmtN(n.nodes)} nodes`:""},
+  {k:"diagram",t:"Economics diagrams",d:"Plates you can study, and labs where the curves move.",h:"#/lab/diagram-atlas",m:n.diagrams?`${fmtN(n.diagrams)} diagram plates`:""},
+  {k:"world",t:"Real-world examples",d:"Dated cases from around the world, each read through a model.",h:"#/world",m:n.cases?`${fmtN(n.cases)} cases · ${fmtN(n.economies)} economies`:""},
+  {k:"calc",t:"Calculations",d:"Worked methods for each calculation, with your own numbers checked.",h:"#/calculate",m:n.calcs?`${fmtN(n.calcs)} calculations`:""},
+  {k:"exam",t:"Exam practice and revision",d:"Question bank, data response, retrieval and ten-minute revision.",h:"#/practise",m:tabs("practise").length?`${tabs("practise").length} ways to practise`:""},
+  {k:"c60",t:"Economics in 60 Seconds",d:"Big ideas told in ten pages each, linked to the syllabus.",h:routeFormat("learn",tabs("learn").indexOf("Economics in 60 Seconds")),m:c60.length?`${c60.length} issues`:""},
+  {k:"ee",t:"Extended Essay support",d:"Research like an economist, from a topic to a research question and beyond.",h:"#/ees",m:"Economics EE Studio"}]
+  .filter(x=>x.h&&routeParse(x.h))}
+function rnResources(){const D=rsDoors();let R=[];try{R=RCARDS}catch(e){}
+ return `<section class="sec rs-band" id="explore" aria-labelledby="rs-h"><div class="wrap full">
+  <header class="rs-head"><div class="rs-hc"><div class="rs-k">Resources</div>
+    <h2 class="rs-t" id="rs-h">Explore Economics Resources</h2>
+    <p class="rs-l">Move from understanding economic concepts to applying them through visual explanations, interactive tools, real-world examples and exam practice.</p></div>
+   <a class="btn a rs-hub" href="#/resources">Open the Resource hub <span aria-hidden="true">→</span></a></header>
+  <ul class="rs-grid">${D.map((x,i)=>`<li class="rs-i rv" style="--i:${i}"><a class="rs-a" href="${x.h}" data-k="${x.k}">
+   <span class="rs-fig">${rsFig(x.k)}</span>
+   <span class="rs-tx"><span class="rs-n">${esc(x.t)}</span><span class="rs-d">${esc(x.d)}</span>${x.m?`<span class="rs-m">${esc(x.m)}</span>`:""}</span>
+   <span class="rs-go" aria-hidden="true">→</span></a></li>`).join("")}</ul>
+  ${R.length?`<div class="rs-lib rv"><div class="rs-lk"><span class="rs-li">${LN_ICON.book}</span>The Resource hub</div>
+   <p class="rs-lt">The free library: <b>${R.length} categories</b> of material for students and teachers, kept in Google Drive and opened from the hub.</p>
+   <p class="rs-lc">${R.map(r=>esc(r.n)).join('<span aria-hidden="true"> · </span>')}</p>
+   <a class="rs-lgo" href="#/resources">Browse the library <span aria-hidden="true">→</span></a></div>`:""}
+  <div class="rs-foot"><div class="row rs-disc"><button class="btn gh sm" onclick="randomOpen('')">Surprise me: Random Economics</button>
+    <button class="btn gh sm" onclick="cpOpen()">Find a topic</button><button class="btn gh sm" onclick="openToolkit()">The economist's toolkit</button></div>
+   <p class="rs-studio">Looking for Arjun's original decks and guides? <a href="#/studio">The Learning Studio</a> shows selected previews.</p></div>
+ </div></section>`}
+RN_BANDS["@resources"]=rnResources;
+
+/* ── 3 · a restrained reveal ────────────────────────────────────────────── */
+/* Large blocks only, never paragraphs or labels. The waiting state is added by
+   script to blocks below the fold, and only while the motion layer is on. */
+const LN_REVEAL=".rv,#selected-work .ex,#selected-work .ex-series,.aj,.al-card,.ap-grid,.st-enq .st-enq-in,.td-grid,.t6-band";
+function lnReveal(){if(typeof document==="undefined"||!document.body)return;
+ if(!document.body.classList.contains("rn-anim")||typeof IntersectionObserver==="undefined"||(typeof QARUNNING!=="undefined"&&QARUNNING))return;
+ const v=document.getElementById("view");if(!v)return;
+ if(RN.lio)RN.lio.disconnect();
+ RN.lio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove("rv-wait");RN.lio.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
+ const H=innerHeight;v.querySelectorAll(LN_REVEAL).forEach(el=>{if(el.getBoundingClientRect().top>H*.92){el.classList.add("rv-wait");RN.lio.observe(el)}})}
+(function(){if(typeof rnDecorate!=="function")return;const prev=rnDecorate;rnDecorate=function(){prev.apply(this,arguments);try{lnReveal()}catch(e){}}})();
+
+/* ── self-tests ─────────────────────────────────────────────────────────── */
+function LAUNCHSUITE(){const out=[];const T=(n,f)=>{let ok=false,d="";try{ok=!!f()}catch(e){d=e.message}out.push({name:n,ok,detail:d})};
+ const txt=h=>String(h).replace(/<[^>]+>/g," ").replace(/\s+/g," ");
+ T("Launch · Resources is on the primary bar and opens the Resource hub",()=>{const s=SECTIONS.find(x=>x.v==="resources");return s&&s.pri&&typeof VIEWS.resources==="function"&&routeParse("#/resources").v==="resources"});
+ T("Launch · the home page carries Explore Economics Resources directly after the cover",()=>{const h=VIEWS.home();const a=h.indexOf('class="hero'),r=h.indexOf('id="explore"'),c=h.indexOf('class="rn-chap"',h.indexOf('class="rn-hinge"')+1);
+  return a>=0&&r>a&&/Explore Economics Resources/.test(h)&&(h.match(/id="explore"/g)||[]).length===1&&h.indexOf("Start your journey")>r});
+ T("Launch · every resource door opens a real page",()=>{const D=rsDoors();return D.length===8&&D.every(x=>{const p=routeParse(x.h);return p&&SECTIONS.some(s=>s.v===p.v)})});
+ T("Launch · the counts on the doors are the platform's own",()=>{const n=rnCount(),h=txt(rnResources());return h.includes(fmtN(n.cases)+" cases")&&h.includes(fmtN(n.calcs)+" calculations")&&h.includes(fmtN(n.diagrams)+" diagram plates")&&h.includes(fmtN(n.maps)+" maps")&&h.includes(fmtN(n.subtopics)+" subtopics")});
+ T("Launch · the library strip names the Resource hub's own categories and links to it",()=>{const h=rnResources();return RCARDS.every(r=>h.includes(esc(r.n)))&&(h.match(/href="#\/resources"/g)||[]).length>=2&&new RegExp(RCARDS.length+" categories").test(txt(h))});
+ T("Launch · the Resources band is distinct from the Learning Studio: no Studio excerpt appears in it",()=>!/assets\/studio\//.test(rnResources())&&/href="#\/studio"/.test(rnResources()));
+ T("Launch · the diagram door is drawn to its model: a rise in demand raises price and quantity",()=>{const r=rsSD();return r.e2[0]>r.e1[0]&&r.e2[1]<r.e1[1]});
+ T("Launch · the calculation door's arithmetic holds: +10% ÷ −25% = −0.4, inelastic",()=>Math.abs(10/-25-(-0.4))<1e-12&&Math.abs(10/-25)<1&&/\+10% ÷ −25%[\s\S]*−0\.4 · inelastic/.test(RS_FIG.calc()));
+ T("Launch · the exam door matches Paper 1: part (a) is out of 10 and part (b) out of 15",()=>/\[10\][\s\S]*\[15\]/.test(RS_FIG.exam()));
+ T("Launch · the unit door numbers the four units of the course in order",()=>{const h=RS_FIG.lessons();return ["Introduction","Microeconomics","Macroeconomics","Global economy"].every((u,i)=>h.indexOf(u)>h.indexOf(">"+(i+1)+"<"))});
+ T("Launch · the timer folds while idle and keeps its controls",()=>!!document.getElementById("tmrToggle")&&!!document.getElementById("tmrOpen")&&typeof tmrPop==="function"&&typeof lnTimerIdle==="function");
+ T("Launch · reveals wait only while the motion layer is on, and never during the self-test",()=>/rn-anim/.test(String(lnReveal))&&/QARUNNING/.test(String(lnReveal)));
+ return out}
+LAUNCHSUITE.suiteName="Launch";
+EXTRA_SUITES.push(LAUNCHSUITE);
+QAREPORT.push({area:"Launch",re:/^Launch ·/,what:"Resources on the primary bar and in the drawer, the Explore Economics Resources band directly after the cover with doors into real pages and counts from the data, the Resource hub's own categories, a header whose tools fold to make room, and reveals that respect reduced motion."});
 
 /* ▓▓ RENAISSANCE:END ▓▓ */
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -42089,11 +42398,12 @@ QAREPORT.push({area:"Project Atlas",re:/^Atlas ·/,what:"The landing sequence: r
    ═══════════════════════════════════════════════════════════════════════════ */
 (function(){
  /* ── PART 39 · the primary bar, in the order the brief sets ────────────── */
- /* PART 2 · Mindmaps is a primary item. Resources sits in the More menu,
-    because Real World and Mindmaps are more central to the learning itself. */
+ /* PART 2 · Mindmaps is a primary item. The launch brief adds Resources to the bar as a
+    first-class destination; Economics, Everywhere and the Learning Studio move to the
+    More menu, which lists every section. */
  /* The transformation brief (§6, §59): the bar keeps the eight places most visits start from;
     the rest are grouped in the More menu, the drawer, search and contextual links. */
- const ORDER=["course","learn","lab","world","practise","examiner","mind","everywhere","studio","tutorials"];
+ const ORDER=["course","learn","lab","world","practise","examiner","mind","resources","tutorials"];
  SECTIONS.forEach(s=>{s.pri=ORDER.includes(s.v)?1:0});
  SECTIONS.sort((a,b)=>{
   if(a.v==="home")return -1; if(b.v==="home")return 1;
@@ -42110,8 +42420,8 @@ QAREPORT.push({area:"Project Atlas",re:/^Atlas ·/,what:"The landing sequence: r
 })();
 
 MOBGROUPS.length=0;
-[["Start",[["course","Course"],["learn","Learn"],["think","Think"],["lab","Lab"]]],
- ["Explore",[["everywhere","Economics, Everywhere"],["world","Real World"],["mind","Mindmaps"],["resources","Resources"],["arjun","Arjun Agrawal · Video studio"],["video","Curated videos"],["tok","TOK × Economics"],["events","Economic events"],["data","Economic data"],["ideas","Economists and ideas"],["paths","Pathways"]]],
+[["Start",[["resources","Resources"],["course","Course"],["learn","Learn"],["think","Think"],["lab","Lab"]]],
+ ["Explore",[["everywhere","Economics, Everywhere"],["world","Real World"],["mind","Mindmaps"],["arjun","Arjun Agrawal · Video studio"],["video","Curated videos"],["tok","TOK × Economics"],["events","Economic events"],["data","Economic data"],["ideas","Economists and ideas"],["paths","Pathways"]]],
  ["Practise",[["practise","Practise"],["calculate","Calculate"],["examiner","Exam"],["dna","Exam DNA"],["papers","Exam practice"]]],
  ["Progress",[["master","Dashboard"],["syllabus","My syllabus"],["saved","My economics"],["workspace","My workspace"]]],
  ["IA",[["ia","IA studio"],["ees","Economics EE Studio"]]],
@@ -42134,7 +42444,7 @@ MOBGROUPS.length=0;
    makes them first-class destinations. Everything withdrawn is still one click
    away in the More menu, which lists every section.
    ═══════════════════════════════════════════════════════════════════════════ */
-const NAVKEEP={world:100,mind:96,course:95,examiner:94,learn:93,practise:92,lab:91,everywhere:90,studio:89.5,ees:89,arjun:86,
+const NAVKEEP={resources:101,world:100,mind:96,course:95,examiner:94,learn:93,practise:92,lab:91,everywhere:90,studio:89.5,ees:89,arjun:86,
  think:68,master:64,ia:60,educator:58,about:56};
 (function(){
  const paint=paintNav;

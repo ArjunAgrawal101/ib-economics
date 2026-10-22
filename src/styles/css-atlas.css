@@ -74,23 +74,6 @@
 @media (max-width:640px){.at-figs{grid-template-columns:1fr}.at-f1{grid-row:auto}.at-f2,.at-f3{display:none}.cv.at-hero h1.cv-h{font-size:clamp(32px,9vw,40px)}
  .at-hero .cv-cta .btn{width:100%}}
 
-/* ── six pathways, drawn as one route ─────────────────────────────────── */
-.at-route{list-style:none;margin:var(--sp-5) 0 var(--sp-7);padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));position:relative}
-.at-route::before{content:"";position:absolute;left:20px;right:20px;top:39px;height:2px;background:var(--ln-rule)}
-.at-sa{display:flex;flex-direction:column;gap:6px;height:100%;padding:0 var(--sp-4) var(--sp-4) 0;color:var(--tx-strong);text-decoration:none;position:relative}
-.at-sn{font-family:var(--ff-mono);font-size:11px;font-weight:600;color:var(--ac-bur);letter-spacing:.06em}
-.at-gl{width:44px;height:44px;padding:8px;border-radius:50%;border:2px solid var(--ln-rule);background:var(--sf-page);fill:none;stroke:var(--tx-body);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;position:relative;transition:border-color var(--mo-base),stroke var(--mo-base)}
-.at-gl text{fill:var(--tx-body);stroke:none;font-family:var(--ff-mono);font-size:8px;font-weight:600}
-.at-st{font-family:var(--ff-display);font-size:clamp(19px,1.45vw,23px);line-height:1.15;margin-top:6px}
-.at-sd{font-family:var(--ff-ui);font-size:13.5px;line-height:1.45;color:var(--tx-quiet)}
-.at-sc{font-family:var(--ff-mono);font-size:11.5px;color:var(--ac-bur);margin-top:auto;padding-top:4px}
-.at-sa:hover .at-gl,.at-sa:focus-visible .at-gl{border-color:var(--ac-bur);stroke:var(--ac-bur)}
-.at-sa:hover .at-st{color:var(--ac-bur)}
-.at-sa:focus-visible{outline:var(--fc-ring);outline-offset:4px;border-radius:var(--rd-sm)}
-@media (max-width:1100px){.at-route{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:var(--sp-5)}.at-route::before{display:none}.at-stop{border-top:2px solid var(--ln-hair);padding-top:var(--sp-4)}}
-@media (max-width:640px){.at-route{grid-template-columns:1fr;row-gap:0}.at-route::before{display:block;left:21px;right:auto;top:20px;bottom:20px;width:2px;height:auto}
- .at-stop{border:0;padding:0}.at-sa{display:grid;grid-template-columns:44px 1fr;column-gap:var(--sp-4);row-gap:2px;padding:0 0 var(--sp-5)}
- .at-sa .at-gl{grid-row:1/span 4;grid-column:1}.at-sa>:not(.at-gl){grid-column:2}.at-sn{grid-row:1}.at-st{margin-top:0}}
 
 /* ── inside the Learning Studio: an exhibition in five forms ──────────── */
 .at-intro{max-width:64ch;margin-top:var(--sp-3);color:var(--tx-body)}
@@ -235,7 +218,7 @@
 .cr-auth div{display:contents}
 .cr-auth dt{font-family:var(--ff-mono);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tx-quiet);padding-top:3px}
 .cr-auth dd{margin:0;font-family:var(--ff-text);font-size:15.5px;color:var(--tx-strong)}
-@media (prefers-reduced-motion:reduce){.at-gl,.aj-n,.al-o,.ex-issue img{transition:none}.ex-issue:hover img{transform:none}}
+@media (prefers-reduced-motion:reduce){.aj-n,.al-o,.ex-issue img{transition:none}.ex-issue:hover img{transform:none}}
 
 /* ── refinements after the first rendered review ─────────────────────── */
 .cv.at-hero h1.cv-h em{display:block}

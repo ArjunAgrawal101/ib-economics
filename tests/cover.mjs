@@ -37,8 +37,8 @@ const r1 = await p.textContent('#cv-read');
 check(r0 !== r1 && /shortage/.test(r1), 'moving demand on the cover redraws the market and explains the shortage', r1);
 await p.locator('#cv-shift').fill('-2'); await p.dispatchEvent('#cv-shift', 'input');
 check(/surplus/.test(await p.textContent('#cv-read')), 'moving demand down explains the surplus');
-await p.locator('.at-route a.at-sa', { hasText: 'Investigate a real-world issue' }).click(); await p.waitForTimeout(300);
-check((await st(p)).v === 'world', 'a pathway opens what it counts');
+await p.locator('#explore .rs-grid a.rs-a', { hasText: 'Real-world examples' }).click(); await p.waitForTimeout(300);
+check((await st(p)).v === 'world', 'a resource door opens what it counts');
 await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
 await p.locator('.cv-cta .btn').first().click(); await p.waitForTimeout(700);
 check(await p.evaluate(() => { const g = document.getElementById('explore'); const r = g && g.getBoundingClientRect(); return !!r && r.top < innerHeight * 0.5 && r.bottom > 0 && document.activeElement === g.querySelector('h2') }),

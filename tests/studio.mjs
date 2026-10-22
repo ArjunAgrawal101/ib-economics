@@ -94,7 +94,7 @@ check(requests.length === 0, 'nothing on these pages contacts another server', r
 await p.evaluate(() => nav('home')); await p.waitForTimeout(600);
 check((await p.locator('#cv-h').innerText()).replace(/\s+/g, ' ').trim() === 'Economics is not just a subject to study. It is a way to think.', 'the cover carries the headline');
 check(await p.locator('.cv-lede').innerText() === 'An interactive learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking.' && /IB DP Economics/.test(await p.locator('.at-copy .eb').innerText()), 'and the supporting line, with IB DP Economics named above it');
-check(await p.locator('.at-route .at-stop').count() === 6 && await p.locator('#selected-work .ex').count() === 5, 'six pathways, and an exhibition of five pieces');
+check(await p.locator('#explore .rs-a').count() === 8 && await p.locator('#selected-work .ex').count() === 5, 'eight resource doors, and an exhibition of five pieces');
 check(await p.locator('#selected-work .ex-shelf .ex-issue').count() === 10, 'the series shelf holds all ten issues');
 check((await p.locator('.at-fig a.at-fl').evaluateAll(a => a.map(x => x.getAttribute('href')))).every(h => h.startsWith('#/studio/')), 'the cover\'s excerpts open their Learning Studio item');
 await p.locator('.ex-feature .ex-main').click(); await p.waitForTimeout(300);

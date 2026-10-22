@@ -45,9 +45,8 @@ function rnAtlas(){const n=rnCount();
   ["educator","Educators","A studio for teachers, supervisors and coordinators.","ppc","5 roles · 10 modules"],
   ["tok","TOK × Economics","What economic knowledge is, and how it is made.","model","Knowledge questions"]];
  const has=v=>SECTIONS.some(s=>s.v===v);
- return `<section class="sec rn-band rn-atlas-band" id="explore"><div class="wrap full">
-  <div class="shead fx"><span class="n">01</span><h2>Explore Economics</h2><span class="aside">What can I do here?</span></div>
-  ${typeof rnPathways==="function"?rnPathways():""}
+ return `<section class="sec rn-band rn-atlas-band"><div class="wrap full">
+  <div class="shead fx"><span class="n">01</span><h2>Across the platform</h2><span class="aside">What can I do here?</span></div>
   <div class="rn-atlas">${A.filter(d=>has(d[0])).map((d,i)=>`<button class="atl${i===0?" atl-lead":""}" onclick="nav('${d[0]}')">
    <span class="atl-fig" data-motif="${d[3]}"></span>
    <span class="atl-tx"><span class="atl-n">${String(i+1).padStart(2,"0")}</span><span class="atl-t">${esc(d[1])}</span>
@@ -115,14 +114,18 @@ function rnDivider(t,s){return `<div class="wrap full rn-divider"><span class="r
 /* the home page reads as a story in twelve chapters, one verb each: think,
    discover, learn, see, interact, connect, practise, research, explore,
    watch, teach, and the person behind it. "#n|Title" marks a chapter opener. */
-/* The Learning Studio and Atlas briefs add a second chapter, Discover: the
+/* The launch brief opens chapter 01 with Explore Economics Resources: direct
+   doors into the platform's resources and the Resource hub's library. It takes
+   the place of the earlier gateway, which led to the same places; the gateway
+   (rnAtlas) is kept for anything that still draws it.
+   The Learning Studio and Atlas briefs add a second chapter, Discover: the
    exhibition of original work, one topic seen six ways and a working
    prediction lab. The About chapter opens with the progression the resources
    are designed around and closes with the enquiry band. Later modules register their bands
    in RN_BANDS, so this list names them without the home page knowing how
    they are drawn. */
 const RN_BANDS={};
-const RN_ORDER=["#01|Think","Start your journey","@atlas","@paths",
+const RN_ORDER=["#01|Think","@resources","Start your journey","@paths",
  "#02|Discover","@work","@onetopic","@labdemo",
  "#03|The course","@course",
  "#04|Learn","@learn","Timeless ideas","Inflation targeting",

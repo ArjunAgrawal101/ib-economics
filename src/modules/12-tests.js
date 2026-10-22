@@ -15,7 +15,7 @@ function COVSUITE(){
  T("Cover model · more demand raises both price and quantity; less demand lowers both",()=>S.slice(1).every((s,i)=>{const a=CVF.eq(S[i]),b=CVF.eq(s);return b.p>a.p&&b.q>a.q}));
  T("Cover model · the reading names the shortage or surplus that moves price, never price moving demand",()=>{const k=CV.s;try{CV.s=1;const up=cvRead();CV.s=-1;const dn=cvRead();
    return /shortage/.test(up)&&/surplus/.test(dn)&&!/price rises[^.]*demand (rises|increases)/i.test(up+dn)}finally{CV.s=k}});
- T("Cover model · the counts beside the pathways are the platform's own, not on the cover",()=>{const n=rnCount(),h=rnPathways();
+ T("Cover model · the counts beside the resource doors are the platform's own, not on the cover",()=>{const n=rnCount(),h=rnResources();
    return ["cases","diagrams","calcs","dna"].every(k=>typeof n[k]!=="number"||h.includes(fmtN(n[k])))&&!/cv-sig/.test(VIEWS.home())});
  T("Cover frame · the portrait sits in its own frame, which holds no figure",()=>{const h=VIEWS.home();const i=h.indexOf('<figure class="cv-portrait');if(i<0)return false;
    const f=h.slice(i,h.indexOf("</figure>",i));return !/<svg|data-motif/.test(f)&&/<img/.test(f)});

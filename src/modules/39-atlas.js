@@ -1,7 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    PROJECT ATLAS · the landing experience
-   The home page's opening sequence, rebuilt as one argument: six pathways into
-   the platform; an exhibition of the original work, each piece shown in the
+   The home page's opening sequence, rebuilt as one argument: an exhibition of the original work, each piece shown in the
    form that suits it; one topic followed through six perspectives; a working
    prediction lab drawn from the platform's own Predict-a-diagram data; and the
    progression the resources are designed around, illustrated with a second
@@ -10,30 +9,14 @@
    every resource image is a screen-resolution excerpt from assets/studio/.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ── 1 · Six pathways into the platform ──────────────────────────────────── */
-const AT_GLYPH={
- concept:'<circle cx="8" cy="10" r="3"/><circle cx="30" cy="8" r="3"/><circle cx="20" cy="28" r="3.5"/><path d="M10.6 11.4 17.8 25.6M27.6 10.2 21.6 25M11 9.6 27 8.4"/>',
- diagram:'<path d="M4 4v32h32"/><path d="M8 8l26 22M8 30 34 8"/><circle cx="21" cy="19" r="2.4"/>',
- world:'<path d="M4 30 12 22l6 4 8-12 10 6"/><circle cx="26" cy="14" r="2.4"/><path d="M4 36h32"/>',
- calc:'<path d="M8 13h24M8 27h24"/><text x="20" y="10" text-anchor="middle">%ΔQ</text><text x="20" y="38" text-anchor="middle">%ΔP</text>',
- test:'<rect x="5" y="5" width="30" height="30" rx="3"/><path d="M12 20l6 6 11-13"/>',
- exam:'<path d="M5 34h8v-8h8v-8h8v-8h6"/><path d="M5 34h30"/>'};
-function atGlyph(k){return `<svg class="at-gl" viewBox="0 0 40 40" aria-hidden="true" focusable="false">${AT_GLYPH[k]}</svg>`}
-function atPaths(){const n=(()=>{try{return rnCount()}catch(e){return {}}})();let C=0;try{C=CONCEPTS.length}catch(e){}
- return [["concept","Understand a concept","Each idea told as a chain of cause and effect, with what it explains.","#/learn/concept-spine",C?`${C} concepts`:""],
-  ["diagram","Explore a diagram","Plates you can study, and labs where the curves move.","#/lab/diagram-atlas",n.diagrams?`${fmtN(n.diagrams)} diagram plates`:""],
-  ["world","Investigate a real-world issue","Dated cases, each read through a model.","#/world",n.cases?`${fmtN(n.cases)} cases · ${fmtN(n.economies)} economies`:""],
-  ["calc","Practise a calculation","Worked methods, with your own numbers checked.","#/calculate",n.calcs?`${fmtN(n.calcs)} calculations`:""],
-  ["test","Test understanding","Questions, retrieval and drills that show what has stuck.","#/practise",""],
-  ["exam","Develop exam thinking","Markbands, past-paper patterns and the habits that earn marks.","#/examiner",n.dna?`${fmtN(n.dna)} Exam DNA records`:""]]}
-function rnPathways(){const P=atPaths();
- return `<ol class="at-route" aria-label="Six ways into Economics">${P.map(([k,t,d,h,c],i)=>`<li class="at-stop"><a class="at-sa" href="${h}">
-   <span class="at-sn">${String(i+1).padStart(2,"0")}</span>${atGlyph(k)}
-   <span class="at-st">${esc(t)}</span><span class="at-sd">${esc(d)}</span>${c?`<span class="at-sc">${esc(c)}</span>`:""}</a></li>`).join("")}</ol>`}
+/* ── 1 · The six pathways now live in the launch band, Explore Economics
+   Resources (40-launch.js), which opens the same pages with the same counts. ── */
 
 /* ── 2 · Inside the Economics Learning Studio: an exhibition, not a card wall ── */
 function atImg(id,i,cls,eager){const p=ldPrev(id,i);return p?stImg(p,cls||"",eager):""}
-function atExhibitHead(it,label){return `<div class="ex-k">${esc(label)} · ${esc(it.kicker.split(" · ").slice(1).join(" · ")||stType(it.type).n)}</div><h3 class="ex-t">${esc(it.title)}</h3>`}
+/* the kicker leads with the exhibit's form as a small badge, so a visual, an
+   editorial guide, an application and a series are told apart at a glance */
+function atExhibitHead(it,label){return `<div class="ex-k"><span class="ex-ty">${esc(label)}</span><span class="ex-km">${esc(it.kicker.split(" · ").slice(1).join(" · ")||stType(it.type).n)}</span></div><h3 class="ex-t">${esc(it.title)}</h3>`}
 function atFeatured(it){
  return `<article class="ex ex-feature" aria-labelledby="ex-f-t">
   <div class="ex-spread">
@@ -41,7 +24,7 @@ function atFeatured(it){
    <button class="ex-side ld-fig" onclick="stView('${it.id}',1)" aria-label="Open in the viewer: ${esA(it.previews[1].cap)}">${atImg(it.id,1)}</button>
    <button class="ex-side ld-fig" onclick="stView('${it.id}',3)" aria-label="Open in the viewer: ${esA(it.previews[3].cap)}">${atImg(it.id,3)}</button>
   </div>
-  <div class="ex-copy"><div class="ex-k">Featured exhibit · Visual explainer · Unit 4.5</div>
+  <div class="ex-copy"><div class="ex-k"><span class="ex-ty">Visual explainer</span><span class="ex-km">Featured exhibit · Unit 4.5</span></div>
    <h3 class="ex-t ex-tl" id="ex-f-t">${esc(it.title)}, told through one currency</h3>
    <p class="ex-p">${esc(it.summary)}</p>
    <div class="ex-why"><div class="ex-wk">What makes it useful</div><p>${esc(it.approach)}</p></div>
@@ -161,8 +144,6 @@ Object.assign(RN_BANDS,{"@work":rnObservatory,"@onetopic":rnJourney,"@labdemo":r
 /* ── self-tests ─────────────────────────────────────────────────────────── */
 function ATLASSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){det=e.message}out.push({n,ok:!!ok,detail:det})};
  const txt=h=>h.replace(/<[^>]+>/g," ").replace(/\s+/g," ");
- T("Atlas · six pathways, each opening a real page",()=>{const P=atPaths();return P.length===6&&P.every(p=>!!routeParse(p[3]))});
- T("Atlas · every count beside a pathway is the platform's own",()=>{const n=rnCount(),h=txt(rnPathways());return h.includes(fmtN(n.cases)+" cases")&&h.includes(fmtN(n.calcs)+" calculations")&&h.includes(fmtN(n.diagrams)+" diagram plates")});
  T("Atlas · the exhibition shows five pieces in five different forms",()=>{const h=rnObservatory();return ["ex-feature","ex-visual","ex-editorial","ex-app","ex-series"].every(c=>h.includes(c))&&(h.match(/class="ex ex-/g)||[]).length===5});
  T("Atlas · every exhibit image is a Studio excerpt or a public carousel cover",()=>{const h=rnObservatory();const src=[...h.matchAll(/<img[^>]+src="([^"]+)"/g)].map(m=>m[1]);return src.length>0&&src.every(s=>/^assets\/studio\/[a-z0-9-]+\/[a-z0-9-]+\.webp$/.test(s)||/^data:image\/(jpeg|png)/.test(s)||/^blob:/.test(s))});
  T("Atlas · the journey has six stages, each with its own content",()=>AT_J.length===6&&AT_J.every((s,i)=>atJPanel(i).length>200)&&AT_J.map(s=>s[1]).join("|")==="Understand|Visualise|Apply|Calculate|Interact|Evaluate");
@@ -174,4 +155,4 @@ function ATLASSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const
  return out}
 ATLASSUITE.suiteName="Project Atlas";
 EXTRA_SUITES.push(ATLASSUITE);
-QAREPORT.push({area:"Project Atlas",re:/^Atlas ·/,what:"The landing sequence: real pathways and counts, an exhibition of five pieces in five forms from Studio excerpts only, a six-stage topic journey, a prediction lab built on the platform's own Predict-a-diagram data, and a nine-step progression with verified figures."});
+QAREPORT.push({area:"Project Atlas",re:/^Atlas ·/,what:"The landing sequence: an exhibition of five pieces in five forms from Studio excerpts only, a six-stage topic journey, a prediction lab built on the platform's own Predict-a-diagram data, and a nine-step progression with verified figures."});

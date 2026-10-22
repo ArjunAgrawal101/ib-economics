@@ -153,5 +153,5 @@ function rnHorizon(kind){
  return `<div class="hz hz-grid" aria-hidden="true"></div>`}
 function rnChapter(n,t){
  if(n==="01")return `<div class="rn-hinge"><div class="wrap full"><div class="rn-chap"><span class="ch-n">${n}</span><span class="ch-t">${esc(t)}</span></div>
-  <p class="hg-h">Five ways in. <em>One way of thinking.</em></p><p class="hg-l">Explore a concept, understand a diagram, connect it to the world, practise the calculation, then think like an examiner. Every door below opens onto the same economics.</p></div></div>`;
+  </div></div>`;
  return `${RN_HZ[n]?`<div class="wrap full">${rnHorizon(RN_HZ[n])}</div>`:""}<div class="wrap full rn-chap"><span class="ch-n">${n}</span><span class="ch-t">${esc(t)}</span></div>`}

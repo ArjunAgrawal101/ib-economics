@@ -1,0 +1,189 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   LAUNCH · the final pre-launch pass
+   The header given room and a clear Resources destination; the Explore
+   Economics Resources band; a clean edge between the cover and the paper; one
+   set of hover and focus states for cards; and a restrained reveal.
+   Built on the Atlas tokens (css-atlas.css). See docs/design-system.md.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── the header ─────────────────────────────────────────────────────────── */
+/* The bar is measured after every paint, and items are withdrawn only when they
+   would meet the brand. The earlier fixed width tiers withdrew items that fitted. */
+@media (min-width:1181px){
+ .mainnav button.hideable-1,.mainnav button.hideable-2,.mainnav button.hideable-3,.mainnav button.hideable-4,.mainnav button.hideable-5{display:inline-block}
+ .mainnav button{padding:9px 10px;font-size:13.5px}
+}
+.mainnav{gap:0}
+.mainnav button:not(.cta):not(.more)::before{content:"";position:absolute;left:10px;right:10px;bottom:3px;height:1px;background:currentColor;opacity:.55;
+ transform:scaleX(0);transform-origin:left center;transition:transform var(--mo-base) var(--mo-ease)}
+.mainnav button:not(.cta):hover{background:transparent;color:var(--tx-strong)}
+.mainnav button:not(.cta):hover::before,.mainnav button:not(.cta):focus-visible::before{transform:scaleX(1)}
+.mainnav button.on::before{display:none}
+.mainnav button.on::after{left:10px;right:10px;bottom:2px}
+.mainnav button:focus-visible,.topR button:focus-visible,.resdoor:focus-visible,.brand:focus-visible{outline:var(--fc-ring);outline-offset:2px}
+.mainnav .more:hover{background:var(--chalk-2)}
+.mainnav button.cta{border-radius:var(--rd-sm);margin-left:12px;transition:background var(--mo-fast) var(--mo-ease)}
+/* the tools: one control each, quiet until used */
+.topR{gap:6px}
+.topR .iconbtn,.topR .tmr,.topR .who,.topR .seg{transition:border-color var(--mo-fast) var(--mo-ease),background var(--mo-fast) var(--mo-ease)}
+.topR .iconbtn:hover,.topR .tmr:hover,.topR .who:hover{border-color:var(--ln-rule)}
+.tmr .tm-ic{display:none}
+.tmr.idle{width:36px;height:36px;padding:0;gap:0;justify-content:center;background:var(--white,#fff)}
+.tmr.idle #tmrToggle,.tmr.idle .rd,.tmr.idle .tm-cv{display:none}
+.tmr.idle .tm-ic,.top .tmr.idle button svg.tm-ic{display:block;width:17px;height:17px}
+.tmr.idle #tmrOpen{width:34px;height:34px;color:var(--tx-strong)}
+.tmr.idle #tmrOpen:hover{background:transparent}
+/* the profile shows its initial; the name stays in the accessible label */
+@media (max-width:1680px){
+ .topR .who{padding:3px;gap:0}
+ .topR .who .nm{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+ .topR .who .av{width:28px;height:28px}
+}
+/* Resources in the header where the bar gives way to the drawer */
+.resdoor{display:none;align-items:center;gap:7px;height:36px;padding:0 12px;border:1px solid var(--ln-rule);border-radius:var(--rd-sm);
+ background:var(--white,#fff);color:var(--ac-bur);font-family:var(--ff-ui);font-size:13px;font-weight:700;letter-spacing:.01em;text-decoration:none;white-space:nowrap;
+ transition:border-color var(--mo-fast) var(--mo-ease),background var(--mo-fast) var(--mo-ease)}
+.resdoor:hover{border-color:var(--ac-bur);background:var(--ac-bur-tint)}
+.resdoor.on{background:var(--ac-bur);border-color:var(--ac-bur);color:#fff}
+/* below 1180px the header is a row in a fixed order: brand, Resources, tools, menu */
+@media (max-width:1180px){
+ .top .in>.resdoor{display:inline-flex;order:2;flex:0 0 auto}
+ .top .in>.topR{order:2}
+}
+@media (max-width:430px){
+ .top .in{gap:6px;column-gap:6px}
+ .resdoor{height:34px;padding:0 10px;font-size:12.5px;gap:6px}
+ /* the profile opens the dashboard, which the drawer also lists */
+ .top .in>.topR .who{display:none}
+}
+/* on the narrowest phones the wordmark keeps its room; Resources leads the drawer */
+@media (max-width:374px){.resdoor svg{display:none}.resdoor{padding:0 9px}}
+@media (max-width:359px){.top .in>.resdoor{display:none}}
+/* anchors land below the sticky header */
+#view section[id],#view [id^="rs-"],#view h2[tabindex]{scroll-margin-top:calc(var(--top) + 16px)}
+
+/* ── the cover: a little less height, so the resources begin near the fold ── */
+.at-hero .in.at-hgrid{padding-block:clamp(30px,3.4vw,54px)}
+.at-hero .cv-cta .btn{transition:background var(--mo-fast) var(--mo-ease),transform var(--mo-fast) var(--mo-ease)}
+.at-hero .cv-cta .btn:hover{transform:translateY(-1px)}
+
+/* ── the edge between the cover and the paper ─────────────────────────────── */
+/* A clean edge with a fine brass rule, in place of the grey gradient. */
+.rn-hinge{background:var(--sf-page);padding:clamp(20px,2.4vw,32px) 0 0;border-top:1px solid var(--ac-brass);box-shadow:inset 0 1px 0 rgba(201,174,114,.35)}
+.rn-hinge .rn-chap{padding-top:0}
+
+/* ── Explore Economics Resources ───────────────────────────────────────── */
+.rs-band{background:var(--sf-page);padding:clamp(16px,2vw,26px) 0 clamp(48px,6vw,88px)}
+.rs-head{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:var(--sp-5) var(--sp-7);padding-bottom:var(--sp-5);border-bottom:1px solid var(--ln-rule)}
+.rs-k{font-family:var(--ff-ui);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ac-bur)}
+.rs-t{font-family:var(--ff-display);font-weight:400;font-size:var(--fs-3xl);line-height:1.04;letter-spacing:-.012em;color:var(--tx-strong);margin-top:var(--sp-3)}
+.rs-l{margin-top:var(--sp-3);max-width:62ch;font-family:var(--ff-text);font-size:var(--fs-lg);line-height:1.55;color:var(--tx-body)}
+.rs-hub{white-space:nowrap}
+.rs-grid{list-style:none;margin:var(--sp-6) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-4)}
+.rs-i{min-width:0}
+.rs-a{position:relative;display:flex;flex-direction:column;height:100%;background:var(--sf-card);border:1px solid var(--ln-hair);border-radius:var(--rd-md);
+ overflow:hidden;color:inherit;text-decoration:none;transition:transform var(--mo-base) var(--mo-ease),border-color var(--mo-base) var(--mo-ease),box-shadow var(--mo-base) var(--mo-ease)}
+.rs-fig{display:block;aspect-ratio:5/3;background:var(--sf-plate);border-bottom:1px solid var(--ln-hair);overflow:hidden}
+.rs-fig svg{display:block;width:100%;height:100%;padding:6% 8%;box-sizing:border-box;transition:transform var(--mo-slow) var(--mo-ease)}
+.rs-covers{display:flex;justify-content:center;align-items:center;gap:4%;height:100%;padding:0 7%;box-sizing:border-box}
+.rs-covers img{width:28%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:3px;box-shadow:0 1px 2px rgba(22,24,28,.12),0 8px 18px -12px rgba(22,24,28,.5);
+ transition:transform var(--mo-slow) var(--mo-ease)}
+.rs-tx{display:flex;flex-direction:column;gap:6px;flex:1;padding:var(--sp-4) var(--sp-5) var(--sp-5) var(--sp-4)}
+.rs-n{font-family:var(--ff-display);font-size:clamp(19px,1.45vw,22px);line-height:1.15;color:var(--tx-strong);transition:color var(--mo-fast) var(--mo-ease)}
+.rs-d{font-family:var(--ff-ui);font-size:13.5px;line-height:1.5;color:var(--tx-quiet)}
+.rs-m{margin-top:auto;padding-top:var(--sp-2);font-family:var(--ff-mono);font-size:11.5px;letter-spacing:.02em;color:var(--ac-bur)}
+.rs-go{position:absolute;right:var(--sp-4);bottom:var(--sp-4);font-family:var(--ff-ui);font-size:15px;color:var(--ac-bur);opacity:.45;
+ transition:transform var(--mo-base) var(--mo-ease),opacity var(--mo-base) var(--mo-ease)}
+.rs-a:hover,.rs-a:focus-visible{border-color:var(--ln-rule);box-shadow:var(--sh-1);transform:translateY(-2px)}
+.rs-a:hover .rs-n,.rs-a:focus-visible .rs-n{color:var(--ac-bur)}
+.rs-a:hover .rs-go,.rs-a:focus-visible .rs-go{opacity:1;transform:translateX(3px)}
+.rs-a:hover .rs-fig svg{transform:scale(1.03)}
+.rs-a:hover .rs-covers img:nth-child(2){transform:translateY(-3px)}
+.rs-a:focus-visible{outline:var(--fc-ring);outline-offset:3px}
+/* figure inks */
+.rs-fig svg *{vector-effect:non-scaling-stroke}
+.rs-fig .f-ax{fill:none;stroke:var(--dg-ink);stroke-width:1.4}
+.rs-fig .f-ink{fill:none;stroke:var(--dg-ink);stroke-width:1.8}
+.rs-fig .f-n{fill:none;stroke:var(--dg-navy);stroke-width:1.8}
+.rs-fig .f-g{fill:none;stroke:var(--dg-gold);stroke-width:1.8}
+.rs-fig .f-gd{fill:none;stroke:#9AA3AE;stroke-width:1;stroke-dasharray:3 3}
+.rs-fig .f-ar{fill:none;stroke:var(--dg-gold);stroke-width:1.4}
+.rs-fig .f-arh{fill:none;stroke:var(--dg-gold);stroke-width:1.4;stroke-linejoin:round}
+.rs-fig .f-ln{fill:none;stroke:#B9B2A4;stroke-width:1.1}
+.rs-fig .f-dot{fill:var(--dg-navy)}.rs-fig .f-dot.g{fill:var(--dg-gold)}
+.rs-fig .f-nd{fill:var(--sf-plate);stroke:var(--dg-navy);stroke-width:1.5}.rs-fig .f-nd.g{stroke:var(--dg-gold)}
+.rs-fig .f-core{fill:var(--dg-navy);stroke:none}
+.rs-fig .f-box{fill:var(--sf-card);stroke:#CFC9BC;stroke-width:1}.rs-fig .f-box.on{fill:#F4EFE3;stroke:var(--dg-gold)}
+.rs-fig .f-t{font-family:var(--ff-ui);font-size:10px;font-weight:600;fill:var(--tx-body)}
+.rs-fig .f-t.n{fill:var(--dg-navy)}.rs-fig .f-t.g{fill:var(--dg-gold)}.rs-fig .f-t.c{fill:#fff;font-size:9.5px;letter-spacing:.04em}
+.rs-fig .f-mono{font-family:var(--ff-mono);font-size:10px;fill:var(--dg-ink)}.rs-fig .f-mono.b{font-size:11.5px;font-weight:600}
+.rs-fig .f-mono.n{fill:var(--dg-navy)}.rs-fig .f-mono.g{fill:#8C6D2F}
+/* the library strip */
+.rs-lib{display:grid;grid-template-columns:minmax(200px,.34fr) minmax(0,1fr) auto;align-items:center;gap:var(--sp-3) var(--sp-6);margin-top:var(--sp-5);
+ padding:var(--sp-5) var(--sp-6);background:var(--sf-ink);color:var(--tx-on-ink);border-radius:var(--rd-md)}
+.rs-lk{display:flex;align-items:center;gap:10px;font-family:var(--ff-display);font-size:var(--fs-xl);line-height:1.1;color:#fff}
+.rs-li{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(201,174,114,.55);color:var(--ac-brass);flex:none}
+.rs-lt{font-family:var(--ff-text);font-size:16px;line-height:1.5;color:var(--tx-on-ink)}
+.rs-lt b{color:#fff;font-weight:600}
+.rs-lc{grid-column:2;font-family:var(--ff-ui);font-size:12.5px;line-height:1.7;color:var(--tx-on-ink-quiet)}
+.rs-lgo{grid-row:1/span 2;grid-column:3;align-self:center;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border:1px solid rgba(201,174,114,.6);
+ border-radius:var(--rd-sm);color:#fff;font-family:var(--ff-ui);font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;
+ transition:background var(--mo-fast) var(--mo-ease),border-color var(--mo-fast) var(--mo-ease)}
+.rs-lgo:hover{background:rgba(201,174,114,.14);border-color:var(--ac-brass)}
+.rs-lgo:focus-visible{outline:var(--fc-ring-ink);outline-offset:3px}
+.rs-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--sp-3) var(--sp-5);margin-top:var(--sp-5)}
+.rs-disc{gap:var(--sp-2)}
+.rs-studio{font-family:var(--ff-ui);font-size:13.5px;color:var(--tx-quiet)}
+.rs-studio a{color:var(--ac-bur);font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+@media (max-width:1180px){.rs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .rs-lib{grid-template-columns:minmax(0,1fr) auto}.rs-lk{grid-column:1/-1}.rs-lc{grid-column:1}.rs-lgo{grid-row:2/span 2;grid-column:2}}
+@media (max-width:720px){
+ .rs-head{grid-template-columns:minmax(0,1fr);align-items:start}
+ .rs-hub{justify-self:start}
+ /* on a phone the doors are a two-column grid of short cards: figure, name, count */
+ .rs-grid{gap:var(--sp-3);margin-top:var(--sp-5)}
+ .rs-fig svg{padding:5% 4%}
+ .rs-tx{padding:var(--sp-3) var(--sp-3) var(--sp-4);gap:4px}
+ .rs-n{font-size:17px}
+ .rs-go{display:none}
+ .rs-lib{grid-template-columns:minmax(0,1fr);padding:var(--sp-5)}
+ .rs-lc{grid-column:1}.rs-lgo{grid-row:auto;grid-column:1;justify-self:start}
+}
+@media (max-width:520px){.rs-d{display:none}.rs-m{font-size:11px;padding-top:2px}}
+@media (max-width:340px){.rs-n{font-size:15.5px}.rs-tx{padding:var(--sp-2) var(--sp-2) var(--sp-3)}}
+
+/* ── the Learning Studio exhibition: lighter feature, legible forms ───────── */
+.ex-k{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.ex-ty{display:inline-flex;align-items:center;gap:6px;padding:3px 10px 3px 8px;border:1px solid rgba(122,36,54,.35);border-radius:var(--rd-pill);
+ font-family:var(--ff-ui);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ac-bur);background:var(--sf-card)}
+.ex-ty::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+.ex-km{font-family:var(--ff-mono);font-size:11px;letter-spacing:.03em;color:var(--tx-quiet)}
+.ex-series .ex-ty{color:var(--ac-brass);border-color:rgba(201,174,114,.45);background:transparent}
+.ex-series .ex-km{color:var(--tx-on-ink-quiet)}
+.ex-feature .ex-tl{font-size:var(--fs-2xl);line-height:1.08}
+.ex-spread .ex-side img{height:clamp(170px,17vw,240px);width:100%;object-fit:contain;background:var(--sf-plate)}
+/* the guide: one page in front, the next behind it */
+.ex-editorial .ex-pages{grid-template-columns:minmax(0,1fr);padding:var(--sp-5) var(--sp-6) 0 var(--sp-5)}
+.ex-editorial .ex-page:nth-child(2){display:none}
+.ex-editorial .ex-page:first-child{box-shadow:6px -6px 0 -1px #fff,6px -6px 0 0 var(--ln-rule),12px -12px 0 -1px #fff,12px -12px 0 0 var(--ln-hair),0 12px 24px -16px rgba(0,0,0,.4)}
+
+/* ── cards: one set of hover and focus states ─────────────────────────────── */
+.ex,.td-card,.t6-b,.al-card{transition:border-color var(--mo-base) var(--mo-ease),box-shadow var(--mo-base) var(--mo-ease)}
+.ex-fig img,.ex-page img,.ex-main img,.ex-side img{transition:transform var(--mo-slow) var(--mo-ease)}
+.ex-fig:hover img,.ex-page:hover img,.ex-main:hover img,.ex-side:hover img{transform:scale(1.015)}
+.btn{transition:background var(--mo-fast) var(--mo-ease),border-color var(--mo-fast) var(--mo-ease),color var(--mo-fast) var(--mo-ease),transform var(--mo-fast) var(--mo-ease)}
+.btn:focus-visible{outline:var(--fc-ring);outline-offset:3px}
+.hero .btn:focus-visible,.rs-lib .btn:focus-visible,.at-hero .btn:focus-visible{outline:var(--fc-ring-ink)}
+
+/* ── a restrained reveal ───────────────────────────────────────────────── */
+/* Only blocks the script marks as waiting, below the fold, while motion is on. */
+body.rn-anim .rv-wait{opacity:0;transform:translateY(14px)}
+body.rn-anim .rv,body.rn-anim #selected-work .ex,body.rn-anim .aj,body.rn-anim .al-card,body.rn-anim .ap-grid,body.rn-anim .td-grid,body.rn-anim .t6-band{
+ transition:opacity 560ms var(--mo-ease),transform 560ms var(--mo-ease)}
+body.rn-anim .rs-i.rv{transition-delay:calc(var(--i,0) * 50ms)}
+@media (prefers-reduced-motion:reduce){
+ .rv-wait{opacity:1!important;transform:none!important}
+ .rs-a,.rs-fig svg,.rs-covers img,.rs-go,.mainnav button::before,.ex-fig img,.ex-page img,.ex-main img,.ex-side img,.btn{transition:none!important}
+ .rs-a:hover,.rs-a:focus-visible{transform:none}.rs-a:hover .rs-fig svg{transform:none}
+}
+@media print{.rv-wait{opacity:1!important;transform:none!important}.resdoor{display:none!important}}
