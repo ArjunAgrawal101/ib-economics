@@ -9,7 +9,7 @@ import { chromium } from 'playwright';
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TYPES = { '.html':'text/html; charset=utf-8', '.js':'text/javascript', '.json':'application/json',
   '.webmanifest':'application/manifest+json', '.svg':'image/svg+xml', '.png':'image/png', '.jpg':'image/jpeg',
-  '.pdf':'application/pdf', '.txt':'text/plain', '.md':'text/plain' };
+  '.pdf':'application/pdf', '.txt':'text/plain', '.md':'text/plain', '.webp':'image/webp', '.xml':'application/xml' };
 
 export function serve(port = 0) {
   return new Promise(resolve => {

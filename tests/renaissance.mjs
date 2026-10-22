@@ -18,10 +18,10 @@ await p.evaluate(() => nav('course')); await p.evaluate(() => nav('home')); awai
 check(await p.locator('details.rn-desk').evaluate(d => d.open), 'the desk stays as the reader left it');
 check(/One next step/.test(await p.locator('details.rn-desk').innerText()), 'the folded desk still holds the existing bands');
 check(await p.locator('.rn-home.cv svg.cv-svg').count() === 1, 'the home opener draws its model');
-check(await p.locator('.cv-sig').count() >= 5, 'the opener shows the platform\'s scale, counted from its data');
-check(await p.locator('.rn-atlas .atl').count() >= 4 && await p.locator('.atl-index .atx').count() >= 5, 'the gateway offers every major destination in two tiers');
-await p.locator('.rn-atlas .atl', { hasText: 'Real World' }).first().click(); await p.waitForTimeout(200);
-check((await st()).v === 'world', 'a gateway card opens its section');
+check(await p.locator('#explore .rs-m').count() >= 7, 'the resource doors show the platform\'s scale, counted from its data');
+check(await p.locator('#explore .rs-a').count() === 8 && await p.locator('#explore .rs-lib a[href="#/resources"]').count() === 1, 'the resources band offers eight doors and the Resource hub\'s library');
+await p.locator('#explore .rs-a', { hasText: 'Real-world examples' }).first().click(); await p.waitForTimeout(200);
+check((await st()).v === 'world', 'a resource door opens its section');
 await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
 check(await p.locator('.td-card').count() === 4, 'Today in Economics shows an idea, a case, a question and a word');
 await p.locator('.td-card').first().getByRole('button', { name: /Read it/ }).click(); await p.waitForTimeout(200);

@@ -329,7 +329,7 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   equilibrium to solve; they are declared as such rather than counted as validated.
 - The equations, parameters, solved equilibria and per-point validation for every diagram are
   visible to teachers at **Lab → Model integrity**.
-- Fonts load from Google Fonts when online and fall back to system fonts when not. Nothing
+- The typefaces (Bodoni Moda, Source Serif 4, Manrope, JetBrains Mono; SIL Open Font License) are served from `assets/fonts/`, so no font request leaves the site. Nothing
   else is fetched.
 - Progress is stored in `localStorage` on the student's own device. Migration from an earlier schema
   is tested end-to-end and preserves keys the current build does not recognise. The rename from
@@ -683,9 +683,19 @@ right edge, which that clip would otherwise hide.
 ## Navigation
 
 The primary bar keeps the eight places most visits start from: **Course · Learn · Lab · Real World ·
-Practise · Exam · Mindmaps · Everywhere**, with **More** and **Tutorials** closing it. When the header is
-tight, items are withdrawn in a declared order. Real World and Mindmaps are the last two the bar gives
-up, and the IB course outranks the general-reader section.
+Practise · Exam · Mindmaps · Resources**, with **More** and **Tutorials** closing it. **Resources** opens
+the Resource hub (`#/resources`). Economics, Everywhere and the Learning Studio are in the More menu,
+the drawer, the footer and search, and the home page opens a door to each.
+
+The bar is measured after every paint, and again once the typefaces arrive. An item is withdrawn only
+when it would otherwise meet the brand, in a declared order; Resources is the last to go, then Real World
+and Mindmaps. At 1440px and wider all eight fit. To give the bar that room, the tools beside it fold:
+- **The timer** is a single stopwatch control while it is idle. It opens the paper presets, and the
+  readout and pause control return once it runs.
+- **The profile** shows its initial, and keeps its name for assistive technology.
+- **Below 1180px**, where the bar gives way to the drawer, a **Resources** button stands in the header
+  between the brand and the menu. Below 360px it gives the wordmark its room, and Resources leads the
+  drawer instead.
 
 Everything else is one step away:
 - **The More menu** groups every section by what a visitor came to do: *Learn and explore* (Resources
@@ -784,6 +794,59 @@ Drive. The service worker leaves other origins entirely alone and never answers 
 from a stale copy, and the offline panel on the About page says exactly this. Installing adds an
 icon and opens the platform in its own window. It creates no account, signs you in to nothing and
 sends nothing anywhere.
+
+## The landing experience, the Learning Studio, Learning design and Contact
+
+**The home page** leads with the platform's signature, **"Think like an economist."**:
+- **The idea:** "Economics is not just a subject to study. It is a way to understand the world."
+- **What the platform is:** "An interactive IB DP Economics learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking."
+- **Two actions:**
+  - **Explore Economics** moves down to Explore Economics Resources.
+  - **Explore Resources** opens the Resource hub (`#/resources`).
+
+**The author signature** sits level with the foot of the figures. It shows:
+- the original photograph, cropped to 4:5 (`assets/brand/arjun-agrawal-portrait-4x5.webp`, made from `assets/brand/arjun-agrawal-portrait.jpg`, which is unchanged);
+- the name, and "IB DP Economics Educator and Resource Designer";
+- links to About and to the Learning Studio.
+
+**The figures** beside the words are three, numbered:
+1. The live market model. It is drawn taller, so it fills its figure.
+2. The corrected elasticity diagram, with the same axes and the same scale.
+3. The revenue diagram from the same explainer.
+
+The two excerpts share the model's height. Between 900 and 1100px only the model is shown beside the words. On a phone the order is statement, idea, actions, model, then the signature. The page then reads as follows.
+
+- **Explore Economics Resources**, directly after the cover. It has eight doors, each a real page with a small figure and a count taken from the platform's data:
+  - topic lessons;
+  - mindmaps and visual explanations;
+  - Economics diagrams;
+  - real-world examples;
+  - calculations;
+  - exam practice and revision;
+  - Economics in 60 Seconds;
+  - Extended Essay support.
+
+  The Resource hub's library follows, listing its own eleven categories, then Random Economics, Find a topic and the economist's toolkit. A single line points to the Learning Studio, which stays separate: the hub is the free library, and the Studio shows selected previews of original work. This band takes the place of the earlier six pathways and gateway, which led to the same pages.
+- **Inside the Economics Learning Studio.** An exhibition of five pieces in five forms:
+  - a featured spread (exchange rates);
+  - a visual explainer (PED);
+  - an editorial guide shown as pages (the examiner's guide);
+  - an application shown by its title card and contents (the EE Navigator);
+  - a series shelf (Economics in 60 Seconds).
+- **One topic, six perspectives.** Price elasticity of demand as understand, visualise, apply, calculate, interact and evaluate. These are keyboard tabs on a vertical rail, each stage independent.
+- **Inside the learning lab.** A miniature of the platform's *Predict a diagram* lab, using its own questions and explanations for an indirect tax. There are five predictions with immediate feedback, then the model's own diagram.
+- **From concept to judgement** (in the About chapter). The nine-step progression the resources are designed around, shown with a second real topic, a depreciation of the rupee.
+- **Interested in exploring more?** An email prefilled with the resource the visitor chose.
+
+**Learning Studio** (`#/studio`; the address is unchanged from the earlier name, Resource Studio):
+- **Items:** nine pieces of original work, shown in part.
+- **Data model:** each item has an exhibit form (visual, editorial, interactive or series), a disclosure level, a verification date and a public line saying what was checked.
+- **Workflow:** in `docs/studio/ADDING-RESOURCES.md`.
+- **Visual system:** tokens, typefaces, figures and exhibit forms are in `docs/design-system.md`.
+
+**Learning design** (`#/design`) follows price elasticity of demand through the nine steps: concept, model, diagram, evidence, quantitative reasoning, stakeholder perspectives, analysis, evaluation and judgement.
+
+**Contact and collaboration** (`#/contact`) offers six kinds of enquiry, each prefilling an email or WhatsApp message to the published address and number. Nothing is sent from the page.
 
 ## The resource hub
 
@@ -1232,7 +1295,7 @@ by the IB syllabus, because the guide is the authoritative classification.
 ## The mobile layer
 
 A phone is not a narrow desktop, so the header is rebuilt rather than shrunk. Below 880px it
-becomes four objects in a fixed order (logo, timer, profile, menu), and the section navigation
+becomes objects in a fixed order (logo, Resources, timer, profile, menu; the profile gives way below 430px), and the section navigation
 moves wholesale into a drawer grouped under Start, Explore, Practise, Progress, IA, Teacher
 and About. Every section in the build must appear in one of those groups; if one is ever added
 without being placed, it is appended to a **More** group rather than quietly becoming
