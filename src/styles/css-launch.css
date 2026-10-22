@@ -69,7 +69,9 @@
 
 /* ── the edge between the cover and the paper ─────────────────────────────── */
 /* A clean edge with a fine brass rule, in place of the grey gradient. */
-.rn-hinge{background:var(--sf-page);padding:clamp(20px,2.4vw,32px) 0 0;border-top:1px solid var(--ac-brass);box-shadow:inset 0 1px 0 rgba(201,174,114,.35)}
+/* a short warm band eases the eye from charcoal to cream; the brass hairline marks the edge */
+.rn-hinge{background:linear-gradient(180deg,#EBE4D5 0%,#F2EDE4 55%,var(--sf-page) 100%);padding:clamp(24px,2.8vw,36px) 0 clamp(8px,1vw,14px);border-top:1px solid rgba(201,174,114,.75)}
+body[data-sec="home"] .rs-band{padding-top:clamp(18px,2.2vw,30px)}
 .rn-hinge .rn-chap{padding-top:0}
 
 /* ── Explore Economics Resources ───────────────────────────────────────── */
@@ -195,3 +197,97 @@ body.rn-anim .rs-i.rv-in{transition-delay:calc(var(--i,0) * 50ms)}
  .rs-a:hover,.rs-a:focus-visible{transform:none}.rs-a:hover .rs-fig svg{transform:none}
 }
 @media print{.rv-wait{opacity:1!important;transform:none!important}.resdoor{display:none!important}}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FINAL POLISH · the cover as a signature
+   "Think like an economist." leads; the idea, one line on the platform and two
+   actions follow; the author signature is its own cell, level with the foot of
+   the figures; the live model dominates a single, aligned group of figures.
+   ═══════════════════════════════════════════════════════════════════════════ */
+/* the background: the grid stays behind the figures and fades out behind the words;
+   the burgundy light is quieter */
+body[data-sec="home"] .hero.at-hero,.hero.at-hero{background-image:none}
+.hero.at-hero::after,body[data-sec="home"] .hero.at-hero::after{display:block;content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:1;
+ background:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px) -1px -1px/56px 56px,linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px) -1px -1px/56px 56px;
+ -webkit-mask-image:linear-gradient(90deg,transparent 0,transparent 30%,rgba(0,0,0,.85) 60%,#000 100%);mask-image:linear-gradient(90deg,transparent 0,transparent 30%,rgba(0,0,0,.85) 60%,#000 100%)}
+.hero.at-hero::before{background:radial-gradient(80% 70% at 88% 0%,rgba(122,36,54,.24),transparent 62%),linear-gradient(180deg,rgba(22,24,28,0) 60%,rgba(12,13,16,.4))}
+/* the grid of the cover itself */
+.at-hero .in.at-hgrid{grid-template-columns:minmax(0,5.1fr) minmax(0,6.9fr);grid-template-areas:"copy figs" "sig figs";grid-template-rows:auto 1fr;
+ column-gap:clamp(40px,4.6vw,76px);row-gap:var(--sp-5);align-items:start;padding-block:clamp(36px,3.8vw,60px) clamp(36px,3.6vw,56px)}
+.at-hero .at-copy{grid-area:copy;max-width:600px}
+.at-hero .at-sig{grid-area:sig!important;align-self:end}
+.at-hero .at-figs{grid-area:figs;align-self:stretch}
+/* the signature statement */
+.at-hero .eb{font-size:12.5px;letter-spacing:.16em}
+.cv.at-hero h1.cv-h.at-brand{font-family:var(--ff-display);font-weight:400;font-size:clamp(44px,4.9vw,80px);line-height:.98;letter-spacing:-.018em;
+ max-width:none;margin-top:var(--sp-4);color:#fff;text-wrap:balance}
+.at-brand .ab-1,.at-brand .ab-2{display:block;white-space:nowrap}
+.at-brand .ab-2{font-style:italic;color:var(--ac-brass)}
+.at-hero .at-head{margin-top:var(--sp-5);max-width:40ch;font-family:var(--ff-text);font-size:clamp(19px,1.45vw,22px);line-height:1.42;color:rgba(255,255,255,.9);text-wrap:balance}
+.at-hero .cv-lede{margin-top:var(--sp-3);max-width:56ch;font-family:var(--ff-ui);font-size:15.5px;line-height:1.62;color:var(--tx-on-ink-quiet);text-wrap:pretty}
+.at-hero .cv-cta{margin-top:var(--sp-6);gap:var(--sp-3)}
+/* the author signature: the original photograph, large enough to recognise */
+.at-hero .at-sig{display:grid!important;grid-template-columns:auto minmax(0,1fr);align-items:end;column-gap:var(--sp-5);margin:0!important;padding:0!important;border:0!important}
+.at-hero .at-sigf{width:clamp(118px,9.2vw,134px);height:auto;aspect-ratio:4/5;border-radius:var(--rd-md);border:1px solid rgba(255,255,255,.16);overflow:hidden;background:#24272d}
+.at-hero .at-sigf img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block}
+.at-hero .at-sig figcaption{display:flex;flex-direction:column;gap:5px;padding-bottom:2px;min-width:0}
+.at-hero .at-sigk{font-family:var(--ff-ui);font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ac-brass)}
+.at-hero .at-sig b{font-family:var(--ff-display)!important;font-weight:400!important;font-size:clamp(26px,2.15vw,32px)!important;line-height:1.05!important;letter-spacing:-.005em;color:#fff;margin-top:4px}
+.at-hero .at-sigt{font-family:var(--ff-ui);font-size:13.5px;line-height:1.45;color:var(--tx-on-ink-quiet)}
+.at-hero .at-sigl{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:6px}
+.at-hero .at-sigl .lnk{font-family:var(--ff-ui);font-size:13px;font-weight:600;color:var(--ac-brass);text-decoration:underline;text-decoration-color:rgba(201,174,114,.45);text-underline-offset:4px;
+ transition:text-decoration-color var(--mo-fast) var(--mo-ease),color var(--mo-fast) var(--mo-ease)}
+.at-hero .at-sigl .lnk:hover{color:#E2CB94;text-decoration-color:currentColor}
+.at-hero .at-sigl .lnk:focus-visible{outline:var(--fc-ring-ink);outline-offset:3px}
+/* the figures: the live model leads; the two excerpts share its height */
+.at-hero .at-figs{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:var(--sp-4);align-items:stretch}
+.at-hero .at-fig{padding:var(--sp-4);border-radius:var(--rd-md);box-shadow:var(--sh-2);border:1px solid rgba(255,255,255,.06)}
+.at-hero .at-f1{grid-row:1/span 2}
+.at-hero .at-f1 figcaption{margin-top:auto;padding-top:var(--sp-3)}
+.at-hero .at-f1 .cv-read{min-height:4.4em}
+.at-hero .at-f2,.at-hero .at-f3{min-height:0;padding:var(--sp-3)}
+.at-hero .at-f2 .at-fl,.at-hero .at-f3 .at-fl{flex:1 1 0;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:6px;background:var(--sf-plate)}
+.at-hero .at-f2 .at-fl img,.at-hero .at-f3 .at-fl img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;transition:transform var(--mo-slow) var(--mo-ease)}
+.at-hero .at-fl:hover img{transform:scale(1.02)}
+.at-hero .at-fig figcaption{font-size:12.5px;line-height:1.45}
+/* the live model's labels, legible at the size it is drawn */
+.at-hero .at-f1 .m-axl{font-size:18px}
+.at-hero .at-f1 .m-tick{font-size:19px}
+.at-hero .at-f1 .m-dem,.at-hero .at-f1 .m-sup{font-size:22px}
+.at-hero .at-f1 .m-c{transition:none}
+.at-hero .cv-ctl input[type=range]{cursor:pointer}
+/* a wide desktop lets the figures breathe a little more */
+@media (min-width:1600px){.at-hero .at-figs{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}}
+/* small desktop: two columns still, the live model alone beside the words */
+@media (min-width:901px) and (max-width:1100px){
+ .at-hero .in.at-hgrid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);column-gap:clamp(28px,3.4vw,44px)}
+ .at-hero .at-figs{grid-template-columns:minmax(0,1fr);grid-template-rows:auto}
+ .at-hero .at-f2,.at-hero .at-f3{display:none}
+ .cv.at-hero h1.cv-h.at-brand{font-size:clamp(42px,5.2vw,56px)}
+}
+/* tablet: words above, figures and signature below */
+@media (max-width:900px){
+ .at-hero .in.at-hgrid{grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "figs" "sig";grid-template-rows:auto;row-gap:var(--sp-6)}
+ .at-hero .at-copy{max-width:680px}
+ .at-hero .at-sig{align-self:start;max-width:560px}
+ .at-hero .at-figs{grid-template-rows:auto auto}
+}
+/* phone: a deliberate column. The statement, the idea, the actions, then the
+   live model, then the author; the excerpts are left for the Studio */
+@media (max-width:640px){
+ .at-hero .in.at-hgrid{padding-block:28px 32px;row-gap:var(--sp-5)}
+ .cv.at-hero h1.cv-h.at-brand{font-size:clamp(38px,11.4vw,52px);margin-top:var(--sp-3)}
+ .at-hero .at-head{font-size:18.5px;margin-top:var(--sp-4)}
+ .at-hero .cv-lede{font-size:14.5px}
+ .at-hero .cv-cta{margin-top:var(--sp-5);display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);align-items:stretch}
+ .at-hero .cv-cta .btn{width:100%;padding-inline:10px;justify-content:center;text-align:center;font-size:14.5px;white-space:nowrap}
+ .at-hero .at-figs{grid-template-columns:minmax(0,1fr);grid-template-rows:auto}
+ .at-hero .at-f1{grid-row:auto}
+ .at-hero .at-f1 .m-axl{font-size:22px}.at-hero .at-f1 .m-tick{font-size:23px}.at-hero .at-f1 .m-dem,.at-hero .at-f1 .m-sup{font-size:26px}
+ .at-hero .at-fig{padding:var(--sp-3)}
+ .at-hero .at-sigf{width:104px}
+ .at-hero .at-sig{column-gap:var(--sp-4)}
+ .at-hero .at-sig b{font-size:25px!important}
+}
+@media (max-width:440px){.at-hero .cv-cta{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.at-hero .at-fl img,.at-hero .at-sigl .lnk{transition:none!important}.at-hero .at-fl:hover img{transform:none}}

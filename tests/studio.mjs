@@ -92,8 +92,8 @@ check(requests.length === 0, 'nothing on these pages contacts another server', r
 
 /* the home page */
 await p.evaluate(() => nav('home')); await p.waitForTimeout(600);
-check((await p.locator('#cv-h').innerText()).replace(/\s+/g, ' ').trim() === 'Economics is not just a subject to study. It is a way to think.', 'the cover carries the headline');
-check(await p.locator('.cv-lede').innerText() === 'An interactive learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking.' && /IB DP Economics/.test(await p.locator('.at-copy .eb').innerText()), 'and the supporting line, with IB DP Economics named above it');
+check((await p.locator('#cv-h').innerText()).replace(/\s+/g, ' ').trim() === 'Think like an economist.' && (await p.locator('.at-head').innerText()).replace(/\s+/g, ' ').trim() === 'Economics is not just a subject to study. It is a way to understand the world.', 'the cover leads with Think like an economist., then the headline');
+check(await p.locator('.cv-lede').innerText() === 'An interactive IB DP Economics learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking.' && /IB DP Economics/.test(await p.locator('.at-copy .eb').innerText()), 'and the supporting line, with IB DP Economics named above it');
 check(await p.locator('#explore .rs-a').count() === 8 && await p.locator('#selected-work .ex').count() === 5, 'eight resource doors, and an exhibition of five pieces');
 check(await p.locator('#selected-work .ex-shelf .ex-issue').count() === 10, 'the series shelf holds all ten issues');
 check((await p.locator('.at-fig a.at-fl').evaluateAll(a => a.map(x => x.getAttribute('href')))).every(h => h.startsWith('#/studio/')), 'the cover\'s excerpts open their Learning Studio item');
@@ -148,7 +148,8 @@ for (const w of [1366, 390]) {
 }
 /* the home page's new sections, including every journey stage and the lab's finished state */
 for (const w of [1440, 390]) {
-  await p.setViewportSize({ width: w, height: 900 }); await p.evaluate(() => nav('home')); await p.waitForTimeout(600);
+  /* the cover's entrance (about 0.56 s on a return to home) has finished before the scan reads contrast */
+  await p.setViewportSize({ width: w, height: 900 }); await p.evaluate(() => nav('home')); await p.waitForTimeout(900);
   if (!(await p.evaluate(() => typeof axe !== 'undefined'))) await p.addScriptTag({ content: axe });
   const run = sel => p.evaluate(async s => (await axe.run(document.querySelector(s), { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } })).violations.map(x => s + ' ' + x.id + ':' + x.nodes.length), sel);
   let viol = [];

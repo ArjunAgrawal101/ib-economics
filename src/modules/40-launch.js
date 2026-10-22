@@ -101,7 +101,7 @@ function rnResources(){const D=rsDoors();let R=[];try{R=RCARDS}catch(e){}
  return `<section class="sec rs-band" id="explore" aria-labelledby="rs-h"><div class="wrap full">
   <header class="rs-head"><div class="rs-hc"><div class="rs-k">Resources</div>
     <h2 class="rs-t" id="rs-h">Explore Economics Resources</h2>
-    <p class="rs-l">Move from understanding economic concepts to applying them through visual explanations, interactive tools, real-world examples and exam practice.</p></div>
+    <p class="rs-l">Go straight to the platform's visual explanations, mindmaps, diagrams, real-world examples, calculations and exam practice: each a step from understanding a concept to applying it.</p></div>
    <a class="btn a rs-hub" href="#/resources">Open the Resource hub <span aria-hidden="true">→</span></a></header>
   <ul class="rs-grid">${D.map((x,i)=>`<li class="rs-i rv" style="--i:${i}"><a class="rs-a" href="${x.h}" data-k="${x.k}">
    <span class="rs-fig">${rsFig(x.k)}</span>
@@ -127,7 +127,19 @@ function lnReveal(){if(typeof document==="undefined"||!document.body)return;
  if(RN.lio)RN.lio.disconnect();
  RN.lio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("rv-in");e.target.classList.remove("rv-wait");RN.lio.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
  const H=innerHeight;v.querySelectorAll(LN_REVEAL).forEach(el=>{if(el.getBoundingClientRect().top>H*.92){el.classList.add("rv-wait");RN.lio.observe(el)}})}
-(function(){if(typeof rnDecorate!=="function")return;const prev=rnDecorate;rnDecorate=function(){prev.apply(this,arguments);try{lnReveal()}catch(e){}}})();
+/* the cover's entrance: on returning to the home page from elsewhere, the words,
+   the signature and the figures rise into place once, briefly (under 0.6 s).
+   The first visit already has its opening sequence, so nothing plays then; it
+   never runs with reduced motion or during the self-test, and it only animates
+   from a visible state, so nothing waits on it. */
+let LN_LASTVIEW=null;
+function lnEnter(){const prev=LN_LASTVIEW;LN_LASTVIEW=typeof VIEW!=="undefined"?VIEW:null;
+ if(VIEW!=="home"||!prev||prev==="home")return;
+ if(!document.body.classList.contains("rn-anim")||(typeof QARUNNING!=="undefined"&&QARUNNING))return;
+ const h=document.querySelector("#view section.at-hero");if(!h||!h.animate)return;
+ [...h.querySelectorAll(".at-copy > *"),h.querySelector(".at-sig"),h.querySelector(".at-figs")].filter(Boolean).forEach((el,i)=>{
+  try{el.animate([{opacity:0,transform:"translateY(10px)"},{opacity:1,transform:"none"}],{duration:340,delay:i*36,easing:"cubic-bezier(.2,.7,.2,1)",fill:"backwards"})}catch(e){}})}
+(function(){if(typeof rnDecorate!=="function")return;const prev=rnDecorate;rnDecorate=function(){prev.apply(this,arguments);try{lnReveal()}catch(e){}try{lnEnter()}catch(e){}}})();
 
 /* ── self-tests ─────────────────────────────────────────────────────────── */
 function LAUNCHSUITE(){const out=[];const T=(n,f)=>{let ok=false,d="";try{ok=!!f()}catch(e){d=e.message}out.push({name:n,ok,detail:d})};
@@ -145,6 +157,10 @@ function LAUNCHSUITE(){const out=[];const T=(n,f)=>{let ok=false,d="";try{ok=!!f
  T("Launch · the exam door matches Paper 1: part (a) is out of 10 and part (b) out of 15",()=>/\[10\][\s\S]*\[15\]/.test(RS_FIG.exam()));
  T("Launch · the unit door numbers the four units of the course in order",()=>{const h=RS_FIG.lessons();return ["Introduction","Microeconomics","Macroeconomics","Global economy"].every((u,i)=>h.indexOf(u)>h.indexOf(">"+(i+1)+"<"))});
  T("Launch · the timer folds while idle and keeps its controls",()=>!!document.getElementById("tmrToggle")&&!!document.getElementById("tmrOpen")&&typeof tmrPop==="function"&&typeof lnTimerIdle==="function");
+ T("Launch · the cover's entrance plays only on a return to home, never with reduced motion or during the self-test",()=>{const f=String(lnEnter);return /rn-anim/.test(f)&&/QARUNNING/.test(f)&&/prev==="home"/.test(f)&&/duration:340/.test(f)});
+ T("Launch · on the cover's model, every marked point lies on its drawn curve at every slider position",()=>[-2,-1.5,-1,-.5,0,.5,1,1.5,2].every(sv=>{const k=CV.s;try{CV.s=sv;const [dq,dp]=CV_SPOTS[0][1](sv),lo=Math.max(.6,sv+.2),hi=Math.min(10,10+sv),[sq,sp]=CV_SPOTS[1][1](sv),e=CVF.eq(sv);
+  return dq>=lo&&dq<=hi&&Math.abs(dp-CVF.D(dq,sv))<1e-9&&Math.abs(sp-CVF.S(sq))<1e-9&&Math.abs(CVF.D(e.q,sv)-CVF.S(e.q))<1e-9}finally{CV.s=k}}));
+ T("Launch · the cover's portrait is the original photograph's 4:5 crop, served from assets/brand",()=>/assets\/brand\/arjun-agrawal-portrait-4x5\.webp/.test(rnCover())&&CV_PORTRAIT.w/CV_PORTRAIT.h===0.8);
  T("Launch · reveals wait only while the motion layer is on, and never during the self-test",()=>/rn-anim/.test(String(lnReveal))&&/QARUNNING/.test(String(lnReveal)));
  return out}
 LAUNCHSUITE.suiteName="Launch";

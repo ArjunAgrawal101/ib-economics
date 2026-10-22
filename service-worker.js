@@ -20,7 +20,7 @@
    Cache-first for the static assets, which change only when the version below
    changes.
    ═══════════════════════════════════════════════════════════════════════════ */
-const VERSION = "aa-ibdp-econ-v19";
+const VERSION = "aa-ibdp-econ-v20";
 const CACHE = VERSION + "-static";
 
 /* Relative to the service worker's own location, so the platform works from a
@@ -46,7 +46,8 @@ const PRECACHE = [
   "./assets/fonts/fonts.css",
   "./assets/fonts/bodoni-moda-latin-7.woff2",
   "./assets/fonts/source-serif-4-latin-5.woff2",
-  "./assets/fonts/manrope-latin-2.woff2"
+  "./assets/fonts/manrope-latin-2.woff2",
+  "./assets/brand/arjun-agrawal-portrait-4x5.webp"
 ];
 
 self.addEventListener("install", event => {
