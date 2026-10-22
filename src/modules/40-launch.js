@@ -133,8 +133,9 @@ function lnReveal(){if(typeof document==="undefined"||!document.body)return;
 function LAUNCHSUITE(){const out=[];const T=(n,f)=>{let ok=false,d="";try{ok=!!f()}catch(e){d=e.message}out.push({name:n,ok,detail:d})};
  const txt=h=>String(h).replace(/<[^>]+>/g," ").replace(/\s+/g," ");
  T("Launch · Resources is on the primary bar and opens the Resource hub",()=>{const s=SECTIONS.find(x=>x.v==="resources");return s&&s.pri&&typeof VIEWS.resources==="function"&&routeParse("#/resources").v==="resources"});
- T("Launch · the home page carries Explore Economics Resources directly after the cover",()=>{const h=VIEWS.home();const a=h.indexOf('class="hero'),r=h.indexOf('id="explore"'),c=h.indexOf('class="rn-chap"',h.indexOf('class="rn-hinge"')+1);
-  return a>=0&&r>a&&/Explore Economics Resources/.test(h)&&(h.match(/id="explore"/g)||[]).length===1&&h.indexOf("Start your journey")>r});
+ T("Launch · the home page carries Explore Economics Resources directly after the cover",()=>{const i=RN_ORDER.indexOf("@resources"),h=rnResources();
+  /* read from the declared order rather than by drawing the whole home page, which would add to every start-up; tests/launch.mjs checks the drawn page */
+  return i===1&&RN_ORDER[0]==="#01|Think"&&RN_ORDER.indexOf("Start your journey")>i&&RN_BANDS["@resources"]===rnResources&&(h.match(/id="explore"/g)||[]).length===1&&/Explore Economics Resources/.test(h)});
  T("Launch · every resource door opens a real page",()=>{const D=rsDoors();return D.length===8&&D.every(x=>{const p=routeParse(x.h);return p&&SECTIONS.some(s=>s.v===p.v)})});
  T("Launch · the counts on the doors are the platform's own",()=>{const n=rnCount(),h=txt(rnResources());return h.includes(fmtN(n.cases)+" cases")&&h.includes(fmtN(n.calcs)+" calculations")&&h.includes(fmtN(n.diagrams)+" diagram plates")&&h.includes(fmtN(n.maps)+" maps")&&h.includes(fmtN(n.subtopics)+" subtopics")});
  T("Launch · the library strip names the Resource hub's own categories and links to it",()=>{const h=rnResources();return RCARDS.every(r=>h.includes(esc(r.n)))&&(h.match(/href="#\/resources"/g)||[]).length>=2&&new RegExp(RCARDS.length+" categories").test(txt(h))});
