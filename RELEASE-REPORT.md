@@ -1,6 +1,6 @@
 # Release report: UPSC CSE Economics, a second pathway
 
-Branch `claude/upbeat-hawking-69d7gz`, restarted from `main` after [ArjunAgrawal101/ib-economics#10](https://github.com/ArjunAgrawal101/ib-economics/pull/10) merged. Not merged and not deployed. The previous report is in `docs/releases/2026-10-22-think-like-an-economist-report.md`.
+Branch `claude/upsc-cse-economics`, from `main` at f15bb26 (the merge of [ArjunAgrawal101/ib-economics#10](https://github.com/ArjunAgrawal101/ib-economics/pull/10)), submitted as a new pull request. Not merged and not deployed. The previous report is in `docs/releases/2026-10-22-think-like-an-economist-report.md`.
 
 ## What was added
 
@@ -152,14 +152,84 @@ All eleven volumes were inspected in full, privately. A per-volume audit (titles
 
 ## Tests
 
-TESTS_PLACEHOLDER
+Every suite was run in sequence in headless Chromium (Playwright 1.63) against the final committed build, **7951e14**, with a clean working tree.
+
+| Suite | Result | Checks |
+|---|---|---|
+| api-youtube | passed | 21 |
+| selftest | passed | 37 (the 2,136 built-in self-tests all pass) |
+| e2e | passed | 22 |
+| ecosystem | passed | 30 |
+| renaissance | passed | 25 |
+| cover | passed | 35 |
+| pwa | passed | 4 |
+| widths | passed | 15 |
+| overlap | passed | 7 (every audited route at 15 widths, 320 to 2560 px) |
+| routes | passed | 2 |
+| intro | passed on rerun (see below) | 58 |
+| course | passed | 39 |
+| transform | passed | 33 |
+| events | passed | 49 |
+| tabs | passed | 9 |
+| notices | passed | 4 |
+| events-scroll | passed | 26 |
+| final | passed | 18 |
+| studio | passed | 89 |
+| launch | passed | 55 |
+| upsc (new) | passed | 82 |
+
+**21 of 21 suites pass: 660 checks.** None were skipped, and none could not be run.
+
+- **intro.**
+  - **The failure.** In the sequential run, 4 of its 58 checks failed at 768 px only. The opening waits for the platform to be ready, and that once arrived at 5,393 ms, so its exit was late.
+  - **Investigation.** With the machine otherwise idle:
+    - the opening ended on its own clock at 5,003 to 5,029 ms in 8 of 8 probes at 768 and 1440 px, against 5,010 to 5,021 ms on the previous release;
+    - the UPSC self-test suite adds 7 to 13 ms to start-up.
+  - **Reruns.** The suite was then run twice more on the same build, and both runs passed all 58 checks.
+  - **Conclusion.** The start-up margin is environment-sensitive, as the previous report also noted. It should be watched on a slow device.
+- **Fixed during this run.**
+  - **transform and events.** Each had one check failing: "no data file is fetched until a page needs it". The requests were the service worker precaching the files for offline use. Playwright 1.63 reports those at the context level, and the previous release fails the same checks here. The tests now count only the page's own requests. With service workers blocked, the page makes none of these requests at start-up.
+  - **overlap.** The first full audit of the final build found four problems; three were already present in the previous release:
+    - the India 1991 chart's event labels touching at 390 and 430 px;
+    - "Q elastic" and "Q inelastic" touching on course topic 2.5 at 1440 px;
+    - "Price ($)" cut off at the elasticity lab's top edge at 1440 px;
+    - the home page's fanned handbook covers (images laid over one another) at 768 and 834 px.
+
+    All four are fixed (label rows 16 and 14 units apart, the lab label at y = 14, and the cover fans drawn as backgrounds of a decorative element), and the full audit now passes.
+- **The UPSC suite (82 checks).**
+  - The home page has one heading and both pathways are on the first screen; the pathway strip works.
+  - All eight tabs route, each with one heading and its own title.
+  - The handbook cards show 11 covers, page counts of 41, 43, 49, 49, 49, 50, 49, 55, 43, 45 and 50, ₹99 / Volume, and prefilled enquiries that name the volume.
+  - Each volume page has its contents, syllabus map, sample pages, zoom and email enquiry.
+  - The course states ₹9,999 for the complete 3-month programme, never per month, and the enrolment message is exact; the phone link calls the published number. No lecture counts, guarantees or refunds appear.
+  - Contact keeps three separate enquiry types. The syllabus has its Prelims themes and 10 Mains lines, quoted. The resource search and filters work, and the questions mark answers.
+  - The connector's IB links reach live pages. The current-affairs filters work, and every entry has a date and a source.
+  - Search finds the UPSC pages.
+  - Nothing scrolls sideways at 1024, 768, 390, 360 or 320 px. Reduced motion is respected.
+  - axe finds no WCAG A or AA violation on the pathways, the strip or any UPSC page at 1440 and 390 px.
+- **Build.**
+  - `tools/build/splice.py` built the page from the sources.
+  - A separate check confirmed:
+    - the three UPSC modules, the latest stylesheet and the footer change are in `index.html`;
+    - all 2,136 built-in self-tests pass;
+    - the footer's UPSC links open their pages;
+    - there are no page errors.
+- **Protection.**
+  - The repository holds no PDF or Word file apart from the ten public carousel PDFs.
+  - The page names no handbook file, and handbook paths are not served.
+  - The 44 previews are WebP, each under 120 KB.
+- **Visual review.** Screenshots of the home page and every UPSC page were captured and inspected at 1440, 1024, 900, 768, 640 and 390 px.
 
 ## Remaining limitations
 
-- **The push.** GitHub refused this session's push with a 403 (read access works), so the commit is local to the session. See the session summary.
 - **Vercel.** The deployment and any preview cannot be reached from here; nothing about production is claimed.
 - **The opening sequence.** It still says "IB DP Economics". At phone width there is no room for both pathways in its line without changing its timed, tested layout, so it was left as it is.
 - **Browsers.** Only headless Chromium was used for the tests and screenshots, not Safari, Firefox or physical devices.
+- **For the owner to confirm.**
+  - **Page counts.** Those for Volumes I, II, III, IV, VII and IX come from the supplied Word files, rendered as their PDFs would be. Please check them against the PDFs that are sold.
+  - **The official syllabus.** The syllabus lines listed under Accuracy should be checked against the 2026 notice PDF, which could not be opened from here.
+  - **Your qualifications.** About the Educator now shows "Postgraduate training in Economics and Political Science; UGC-NET and MH-SET qualified", taken from the handbooks' title pages; please confirm you want it on the site.
+- **The opening's start-up margin.** It ends on time when the machine is not busy; under heavy load it can end a few hundred milliseconds late (see Tests).
 
 ## Files
 
@@ -179,5 +249,7 @@ TESTS_PLACEHOLDER
 | `tools/build/splice.py` | Splices the new stylesheet |
 | `tests/upsc.mjs` (new), `tests/launch.mjs`, `tests/run-all.mjs` | The new suite; the Resources band now follows the pathways and the cover |
 | `service-worker.js` | v21 |
+| `tests/transform.mjs`, `tests/events.mjs` | Count only the page's own requests, not the service worker's precache |
+| `src/modules/24-datalab.js`, `src/modules/11-rooms.js`, `tools/migrations/2026-11-16-figure-label-rows.py` | Figure labels that touched or were cut off |
 | `README.md`, `docs/design-system.md` | The UPSC section and its palette |
 | `.gitignore` | Refuses Word files and the handbook PDFs |
