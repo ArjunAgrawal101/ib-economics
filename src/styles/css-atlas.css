@@ -36,7 +36,7 @@
 /* ── the opening frame: statement and a three-figure plate ─────────────── */
 .at-hero .in.at-hgrid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:none;gap:var(--sp-7);align-items:center;padding-block:clamp(36px,4.5vw,72px)}
 .at-copy{grid-area:auto}
-.cv.at-hero h1.cv-h{font-size:clamp(36px,3.5vw,62px);line-height:1.03;max-width:15ch;margin-top:var(--sp-3)}
+.cv.at-hero .cv-h{font-size:clamp(36px,3.5vw,62px);line-height:1.03;max-width:15ch;margin-top:var(--sp-3)}
 .at-hero .cv-lede{margin-top:var(--sp-4);max-width:38ch;font-size:clamp(17px,1.35vw,20px);color:var(--tx-on-ink-quiet)}
 .at-hero .cv-cta{margin-top:var(--sp-5);gap:var(--sp-3)}
 .at-sig{display:flex!important;flex-direction:row!important;align-items:center;gap:var(--sp-4);margin-top:var(--sp-6)!important;padding-top:var(--sp-4);border-top:1px solid var(--ln-on-ink);grid-area:auto!important}
@@ -71,7 +71,7 @@
 .at-f1 .cv-ctl input[type=range]:focus-visible{outline-color:var(--ac-bur)}
 .at-f1 .cv-read{color:var(--tx-body);min-height:3em}
 @media (max-width:1100px){.at-hero .in.at-hgrid{grid-template-columns:1fr;gap:var(--sp-6)}.at-copy{max-width:760px}}
-@media (max-width:640px){.at-figs{grid-template-columns:1fr}.at-f1{grid-row:auto}.at-f2,.at-f3{display:none}.cv.at-hero h1.cv-h{font-size:clamp(32px,9vw,40px)}
+@media (max-width:640px){.at-figs{grid-template-columns:1fr}.at-f1{grid-row:auto}.at-f2,.at-f3{display:none}.cv.at-hero .cv-h{font-size:clamp(32px,9vw,40px)}
  .at-hero .cv-cta .btn{width:100%}}
 
 
@@ -221,7 +221,7 @@
 @media (prefers-reduced-motion:reduce){.aj-n,.al-o,.ex-issue img{transition:none}.ex-issue:hover img{transform:none}}
 
 /* ── refinements after the first rendered review ─────────────────────── */
-.cv.at-hero h1.cv-h em{display:block}
+.cv.at-hero .cv-h em{display:block}
 .at-figs{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)}
 .at-f1{align-self:stretch}
 .at-f1 figcaption{margin-top:auto;padding-top:var(--sp-2)}
