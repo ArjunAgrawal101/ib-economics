@@ -1,120 +1,182 @@
-# Release report: final polish, "Think like an economist."
+# Release report: UPSC CSE Economics, a second pathway
 
-Branch `claude/upbeat-hawking-69d7gz` ([ArjunAgrawal101/ib-economics#10](https://github.com/ArjunAgrawal101/ib-economics/pull/10)). It is not merged and not deployed. The previous report, for the pre-launch pass, is in `docs/releases/2026-10-22-launch-report.md`.
+Branch `claude/upbeat-hawking-69d7gz`, restarted from `main` after [ArjunAgrawal101/ib-economics#10](https://github.com/ArjunAgrawal101/ib-economics/pull/10) merged. Not merged and not deployed. The previous report is in `docs/releases/2026-10-22-think-like-an-economist-report.md`.
 
-## What changed
+## What was added
 
-- **The signature leads the cover.**
-  - "Think like an economist." is the home page's only `h1`, set as "Think like / an economist." with the second line in brass italic. It is 44–80px on desktop and 38–52px on a phone, and never leaves a line holding a single word.
-  - It is followed by:
-    - the idea, "Economics is not just a subject to study. It is a way to understand the world.";
-    - one line on the platform, "An interactive IB DP Economics learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking.";
-    - two actions, Explore Economics, which goes down the page, and Explore Resources, which opens the Resource hub at `#/resources`.
-  - The small eyebrow now reads only "IB DP Economics".
-- **The author signature.**
-  - **The photograph.** The repository holds two photographs from the same sitting:
-    - the full-length blazer photograph embedded in the page, which carries a small sparkle mark in its lower corner;
-    - `assets/brand/arjun-agrawal-portrait.jpg`, a head-and-shoulders original that was unused.
+- **Two pathways on the home page.**
+  - The page's one heading is "Economics. Understood. Connected. Applied.", followed by the supporting statement from the brief.
+  - Two cards follow, both on the first screen at 1440 × 900:
+    - **IB DP Economics**: "Think like an economist.", ivory and burgundy. It leads down to the existing IB cover.
+    - **UPSC CSE Economics**: "Understand the economy. Master the examination.", navy and gold, with handbook covers and links to the syllabus, resources, handbooks, current affairs and the course.
+- **A pathway strip above the header.** It reads "IB DP Economics | UPSC CSE Economics | About | Contact" at every width; on phones it is a two-way switch.
+  - Inside the UPSC section, About and Contact open the section's own pages.
+  - UPSC CSE Economics is also second in the phone drawer, first in the More menu, and in site search.
+- **The UPSC section (`#/upsc`)** has eight tabs, each with its own address and title.
+  1. **UPSC Overview.**
+     - The headline and statement from the brief.
+     - A map of how the eleven volumes build on one another, drawn from each volume's own series-boundary panel.
+     - Five pillars.
+     - "How we approach Economics": the repo rate followed through Concept → Explanation → Visualisation → Indian economy → Current affairs → Prelims → Mains, with arrow-key navigation.
+     - What students learn, static against current, and Prelims against Mains.
+     - Three next steps: free resources, ₹99 handbooks and the ₹9,999 programme.
+  2. **Syllabus.**
+     - The official wording is quoted from UPSC Examination Notice No. 05/2026-CSE (4 February 2026).
+     - Four labelled kinds of text are kept apart: Official, Explained, Covered and Current.
+     - **Prelims:** the Paper I lines, organised into fourteen explained themes.
+     - **Mains:** the ten GS III Economics lines, quoted, each with:
+       - what it expects;
+       - its dimensions and concepts;
+       - an example;
+       - an answer approach;
+       - its volumes.
+     - The two GS II lines that call on Economics.
+     - Coverage dots show which volumes treat each line. They are taken from the volumes' own contents and syllabus maps, and are not a percentage.
+  3. **Economics Resources.**
+     - Eleven free topic previews, one or more for each of the ten categories, with search and category filters.
+     - Each preview has:
+       - an introduction and the concept;
+       - an original diagram, computed where possible;
+       - distinctions;
+       - the Indian context;
+       - the policy and institutions;
+       - the Prelims and Mains perspectives;
+       - a question that marks your answer;
+       - a link into its volume.
+     - "Inflation: Beyond the Headline Number" includes the requested diagram linking inflation, purchasing power, interest rates and monetary policy.
+     - The page also holds **One Concept. Two Examination Perspectives.**: eleven shared concepts, each linking to existing IB pages (labs, diagram library, mindmaps, the elasticity explainer, Real World) and to the UPSC volumes and previews. Nothing IB is duplicated.
+  4. **Economics Handbooks.**
+     - "The Economics Handbook Collection": eleven cards, each with:
+       - the cover;
+       - the volume number;
+       - the title and page count;
+       - a description and topics;
+       - Prelims and Mains relevance;
+       - ₹99 / Volume;
+       - **Explore Handbook** and **Purchase PDF | ₹99**.
+     - Each volume has its own page with:
+       - the facts and the edition;
+       - a description and what students will learn;
+       - the full contents with page numbers;
+       - the volume's own syllabus map;
+       - key concepts and institutions;
+       - the recurring boxes and the revision compendium;
+       - three watermarked sample pages (contents and two pages) that enlarge;
+       - its free previews;
+       - the purchase actions.
+  5. **Current Affairs.**
+     - Nineteen dated entries across twelve themes, filterable.
+     - Each entry gives what changed, the concept, the examination angle, the source authority and the handbook part.
+     - It is marked as edited by hand, compiled on 16 November 2026 from the handbooks' dated trackers.
+  6. **UPSC Economics Course.**
+     - "Master Economics for UPSC. Build Understanding That Lasts."
+     - The facts: ₹9,999 for the complete 3-month programme, 3 months, 100% online, maximum 25 students, Prelims + Mains, static Economics + current affairs.
+     - Ten features.
+     - A three-month roadmap tagged with the volumes; it is labelled indicative and is not a weekly timetable.
+     - "Why a batch of 25?"
+     - A pricing card with **Enquire About Enrolment** and **Speak to Arjun**.
+  7. **About the Educator.** "Arjun Agrawal, Economics Educator | IB DP Economics | UPSC CSE Economics", using only facts already on the site and on the handbooks' title pages, and the existing portrait.
+  8. **Contact / Enrolment.** Separate handbook, enrolment and general enquiries. A volume can be chosen, the message is shown before it is sent, and there are WhatsApp, email and phone links.
 
-    The signature uses the second, cropped to 4:5 and resized, and nothing else is changed. The derivative is `assets/brand/arjun-agrawal-portrait-4x5.webp` (432 × 540, 24 KB); the original is unchanged.
-  - **The size.** The portrait is 118–134px wide on desktop, against 72px before. That is 1.6 to 1.9 times as wide, and up to three and a half times the area. On a phone it is 104px wide.
-  - **The block.** It shows "Created by", the name, "IB DP Economics Educator and Resource Designer", and links to About and to the Learning Studio.
-  - **Placement.** It sits level with the foot of the figures, as a cell of the cover's grid rather than under a rule. On a phone it follows the live model.
-- **The figure group.**
-  - **The live model.** It leads at 1.6 times the width of the two excerpts, which share its height, keep their own proportions and use the same padding, radius, shadow and caption type.
-  - **A taller plot.** The model is drawn taller (viewBox 600 × 630, was 600 × 440), so it fills its figure instead of leaving a large gap, and its axis and point labels are larger.
-  - **Fig. 3.** It is now the revenue diagram from the elasticity explainer, which is almost square and continues the story of Fig. 2. It replaces the wide mindmap branch, which could only be shown small in a tall cell.
-  - **Narrower screens.** Between 900 and 1100px the cover keeps two columns, with the live model alone beside the words. Below 900px the figures follow the words.
-- **The background.** The grid fades out behind the words and stays behind the figures, and the burgundy light is softer.
-- **From the cover to the paper.** A brass hairline marks the edge, and a short warm band fades into the cream, holding the chapter marker. It replaces a hard edge.
-- **Explore Economics Resources.** The section now says what it holds: "Go straight to the platform's visual explanations, mindmaps, diagrams, real-world examples, calculations and exam practice". Its eight doors and the Resource hub's library are unchanged.
-- **Motion.**
-  - On a return to the home page, the cover's words, signature and figures rise 10px and fade in over 340ms, 36ms apart (under 0.6s).
-  - It does not play on a first visit, where the opening sequence is the entrance, nor with reduced motion, nor during the self-test.
-  - Hover states on the excerpts and signature links are refined.
-- **Offline.** The service worker (v20) precaches the new portrait.
+## The handbooks
 
-## Economics accuracy
+All eleven volumes were inspected in full, privately. A per-volume audit (titles, page counts, contents, concepts, institutions, Prelims and Mains relevance, descriptions, syllabus maps) is supplied separately and is not in the repository.
 
-- **Fig. 2, the elasticity diagram (PED_07).** The image served (`assets/studio/price-elasticity-of-demand/01-elastic-inelastic.webp`) was inspected:
-  - "D relatively price inelastic" labels the steep navy curve, and "D relatively price elastic" the flat gold curve.
-  - The price falls from $40 to $30 (−25%).
-  - The steep curve goes from 50 to 55 (+10%, PED = −0.4) and the flat curve from 50 to 75 (+50%, PED = −2).
-  - The tick spacing is even (about 6.5px per unit on both curves), and the figure states "Same axes, same scale", so the comparison is not distorted by scale.
-  - This image was built from the generator corrected in the Atlas pass. The deck's own source on the `presentation-assets` branch still has the earlier label placement; the correction is supplied separately for the owner to apply.
-- **Fig. 3, the revenue diagram.**
-  - The price rises from $40 to $60 (+50%) and quantity falls from 70 to 63 (−10%), so PED = −0.2 and demand is inelastic.
-  - Total revenue goes from $2,800 to $3,780. The gain is $1,260 ((60 − 40) × 63) and the loss $280 (40 × 7); the net change, +$980, matches.
-  - The caption says "with inelastic demand, a price rise raises revenue".
-- **Fig. 1, the live model.**
-  - Demand is P = 9 − 0.8(Q − s) and supply is P = 1 + 0.8Q. Equilibrium is Q = 5 + s/2 and P = 5 + 0.4s, so a rise in demand raises both price and quantity.
-  - The reading explains the shortage or surplus that moves price.
-  - When demand moves, the original curve stays dashed and labelled D, and the new one is D₁ with P₁ and Q₁.
-  - **Fixed in this pass:** with demand moved fully left, the "Demand" marker sat beyond the drawn end of the curve. It now stays on the curve.
-  - A new self-test checks every marked point at every slider position.
+| Vol. | Title | Pages |
+|---|---|---|
+| I | Introduction to Economics | 41 |
+| II | Money & Monetary Policy | 43 |
+| III | Inflation and Price Stability | 49 |
+| IV | Taxation and Public Revenue | 49 |
+| V | Fiscal Policy and Budget Management | 49 |
+| VI | Banking and Financial Institutions | 50 |
+| VII | Financial Markets and Instruments | 49 |
+| VIII | Balance of Payments and International Trade | 55 |
+| IX | Global Economic Institutions and Trade Architecture | 43 |
+| X | Indian Agriculture and Allied Sectors | 45 |
+| XI | Indian Industry, Manufacturing, Trade and Labour Markets | 50 |
+
+- **Page counts.**
+  - **Volumes V, VI, VIII, X and XI** were supplied as PDFs; their counts are the PDFs' own.
+  - **Volumes I, II, III, IV, VII and IX** were supplied as Word files.
+    - They were rendered here with LibreOffice 24.2, the producer named in the supplied PDFs, using each file's embedded fonts.
+    - In all six, every part begins on exactly the page the volume's contents page gives, so the counts reproduce the author's pagination.
+    - They should still be confirmed against the PDFs that are sold.
+  - `tools/upsc/build_upsc.py` refuses to build if a page count or title in the catalogue differs from the PDF.
+- **Protection.**
+  - No PDF or Word file is in the repository, and `.gitignore` refuses both.
+  - The page names no handbook file.
+  - The site shows four low-resolution WebP images per volume: the cover, the contents page and two sample pages.
+    - Pages are 640 px wide, about 77 dpi; covers are 520 px.
+    - All 44 images total 2.6 MB, each under 120 KB.
+  - Each image carries a diagonal watermark and a strip reading "Arjun Agrawal | Economics Collection | Preview Only".
+  - No full chapter is reproduced; the topic previews are written fresh from the volumes.
+- **Purchase.**
+  - Purchase PDF | ₹99 opens WhatsApp on the published number (+91 7092844945) with: "Hello Arjun, I would like to purchase the digital copy (PDF) of Volume N: Title, from your UPSC CSE Economics Handbook series, priced at ₹99. Please let me know how to pay and receive the PDF."
+  - The email alternative goes to arjun1agr@gmail.com.
+  - No payment gateway, bundle price, UPI ID or confirmation was added, and the pages say nothing is charged on the site.
+
+## What was changed
+
+- **The IB cover's heading is now an `h2`**, because the page's single `h1` is the shared headline. Its text, type, layout and actions are unchanged; CSS selectors now target `.cv-h` rather than `h1.cv-h`.
+- **Title and description.** The page title and descriptions (including social-card tags) name both pathways: "Arjun Agrawal · Economics: IB DP and UPSC CSE".
+- **Navigation.**
+  - The phone drawer lists UPSC CSE Economics second, after Resources.
+  - The More menu opens with a Pathways group.
+  - The IB primary bar is unchanged.
+- **Service worker.** v21.
+
+## What was preserved
+
+- Every IB section, route, tool and its data are unchanged.
+- Nothing is written to `localStorage` by the new section: its filters and choices are held in memory.
+- The opening sequence is unchanged, and so are the Resource hub, the Learning Studio, Tutorials and the existing About and Contact pages.
+
+## Accuracy
+
+- **The official syllabus.**
+  - upsc.gov.in is refused by this session's network policy, so the notice PDF could not be opened directly.
+  - Search-engine excerpts restricted to upsc.gov.in confirm the 2026 notice (No. 05/2026-CSE, 4 February 2026) and these lines:
+    - the Prelims line "Economic and Social Development-Sustainable Development, Poverty, Inclusion, Demographics, Social Sector Initiatives, etc.";
+    - the GS III heading;
+    - the lines on the Indian economy, inclusive growth, Government Budgeting, crops, subsidies and the PDS, food processing, infrastructure (2025 notice) and investment models;
+    - the GS II line on government policies and interventions.
+  - These lines did not appear in the excerpts and should be checked against the PDF:
+    - "Land reforms in India.";
+    - "Effects of liberalization on the economy, changes in industrial policy and their effects on industrial growth.";
+    - the tails of the crops and subsidies lines;
+    - "Important International institutions, agencies and fora- their structure, mandate."
+- **Figures.** Every figure in the topic previews and Current Affairs comes from the handbooks, each with the authority the handbook cites. Developments the handbooks source only to news outlets were left out.
 
 ## Tests
 
-All twenty browser suites were run in sequence on this branch, in headless Chromium.
+TESTS_PLACEHOLDER
 
-- **19 of 20 suites pass: 520 checks, no failures.** They are:
-  - api-youtube, selftest, e2e, ecosystem, renaissance, cover, pwa and widths;
-  - overlap, routes, course, transform, events, tabs, notices, events-scroll and final;
-  - studio and launch.
-- **Built-in self-tests:** 2,118 run at start-up, all passing. New checks confirm:
-  - the cover leads with "Think like an economist.", then the new headline, the new description and both actions, with Explore Resources linking to `#/resources`;
-  - every marked point on the live model lies on its drawn curve at every slider position;
-  - the portrait is the original's 4:5 crop;
-  - the entrance never plays with reduced motion or during the self-test.
-- **Cover (`tests/cover.mjs`, 35 checks).**
-  - At 1440, 1024, 390 and 320px the portrait never meets the model or any text, and nothing scrolls sideways.
-  - Explore Resources opens the Resource hub.
-  - The signature's link opens the Learning Studio.
-- **Accessibility.** axe (WCAG A/AA) finds no violations on the cover or the home page's sections at 1440 and 390px. It runs after the cover's entrance has finished.
-- **Overlap audit: 141,671 elements over 540 route-widths, no overlaps.**
-  - The first run reported one collision at 320px: the hover label of the model's "Demand" point over the diagram.
-  - The audit's cursor was resting on that point after it dismissed the welcome dialog. With the taller plot, the point now lies where the cursor was.
-  - A hover label is meant to overlay its figure, so the audit now moves the cursor off the page before measuring. The re-run is clean.
-- **Intro (the five-second opening): fails in this environment, on this commit and on the previous one.**
-  - The opening waits for the app to be ready before it leaves. In this session the container has become slower, and start-up now takes 5.4–6.1s to the ready signal on both this commit and the previous one (`6600e4a`). Earlier today the previous commit was ready on a deep link in 3.7s and passed this suite.
-  - Run now against that previous commit, the suite fails in the same way: the opening leaves late, at about 5.7s.
-  - On this commit, the checks that do not depend on start-up time pass, including Skip, which leaves within 235ms.
-  - It should be re-run on a normal machine before release.
-- **Production build.**
-  - `tools/studio/build_studio.py` and `tools/build/splice.py` regenerate identical output.
-  - The only new asset is the 24 KB portrait. The service worker (v20) precaches it.
+## Remaining limitations
 
-**Visual review** was done on screenshots captured and inspected in this session at 1920, 1440, 1280, 1024, 768, 390 and 320px. Problems found and fixed:
-- a large empty area inside the live model's figure;
-- the mindmap excerpt sitting small in a tall cell;
-- the model squeezed to one grid column on phones;
-- unequal button heights on phones;
-- a 1,414px-tall hero at 1024px, now two columns at 712px;
-- a visible step at the end of the warm band below the cover;
-- the model's demand marker leaving its curve.
+- **The push.** GitHub refused this session's push with a 403 (read access works), so the commit is local to the session. See the session summary.
+- **Vercel.** The deployment and any preview cannot be reached from here; nothing about production is claimed.
+- **The opening sequence.** It still says "IB DP Economics". At phone width there is no room for both pathways in its line without changing its timed, tested layout, so it was left as it is.
+- **The footer.** It is the IB platform's, on every page; it does not yet list the UPSC pages.
+- **Browsers.** Only headless Chromium was used for the tests and screenshots, not Safari, Firefox or physical devices.
 
-## Remaining issues
-
-- **The deck's own source.** The PED_07 correction has not been applied to the deck's generator on the `presentation-assets` branch, which is outside this branch. The site shows the corrected image.
-- **Diagram labels.** The live model's axis labels render at about 11–12px on phones, which is legible but small. The excerpts' labels are smaller at hero size; each opens its Learning Studio item, where it is shown large.
-- **The opening on slow devices.** It ends after the app is ready, so on a slow device it can run past five seconds. This is the opening's existing behaviour, seen here because the test machine slowed.
-
-## Not verified here
-
-- **Vercel.** The deployment and this PR's preview cannot be reached from this environment, so the PR's Vercel preview should be checked.
-- **Browsers and devices.** Tests and screenshots used headless Chromium only. Safari, Firefox and physical devices were not tested.
-
-## Files changed
+## Files
 
 | File | Purpose |
 |---|---|
-| `src/modules/07-cover.js` | The cover's new hierarchy, the author signature as its own cell, Fig. 3, a taller live model, and the demand marker kept on its curve. |
-| `src/modules/40-launch.js` | The band's description, the cover's entrance, and new self-tests. |
-| `src/styles/css-launch.css` | The cover's layout, type, signature, figures, background and breakpoints, and the warm band below it. |
-| `src/modules/09-tests.js`, `src/modules/38-studio.js` | Self-tests updated for the new headline and actions. |
-| `assets/brand/arjun-agrawal-portrait-4x5.webp` (new) | The 4:5 crop of the original portrait (the original is unchanged). |
-| `service-worker.js` | v20; precaches the portrait. |
-| `index.html` | Rebuilt by the splice. |
-| `tests/cover.mjs`, `tests/studio.mjs`, `tests/overlap.mjs` | The new actions and headline; the scan waits for the entrance; the cursor leaves the page before the overlap audit measures. |
-| `README.md`, `docs/design-system.md` | The cover and its entrance documented. |
-| `RELEASE-REPORT.md`, `docs/releases/2026-10-22-launch-report.md` | This report; the previous one archived. |
+| `content/upsc/handbooks.json` (new) | The catalogue, from the volumes themselves |
+| `tools/upsc/build_upsc.py` (new) | Checks titles and page counts against the private PDFs, writes the watermarked previews and the data module |
+| `assets/upsc/handbooks/*/` (new) | 44 preview images |
+| `src/modules/41-upsc-data.js` (new, generated) | The catalogue as the page reads it |
+| `src/modules/42-upsc-content.js` (new) | Syllabus, topics, current affairs, the connector and the programme |
+| `src/modules/43-upsc.js` (new) | The section, figures, pathway strip, home pathways, search records and self-tests |
+| `src/styles/css-upsc.css` (new) | The UPSC palette and pages |
+| `tools/migrations/2026-11-16-upsc-navigation.py` (new) | The drawer entry, the title and descriptions |
+| `src/modules/07-cover.js`, `src/styles/css-launch.css`, `src/styles/css-atlas.css` | The cover's heading as `h2` |
+| `src/modules/27-wire-t6.js` | The More menu's Pathways group |
+| `src/modules/38-studio.js`, `src/modules/39-atlas.js` | Self-tests for the cover's `h2` |
+| `tools/build/splice.py` | Splices the new stylesheet |
+| `tests/upsc.mjs` (new), `tests/launch.mjs`, `tests/run-all.mjs` | The new suite; the Resources band now follows the pathways and the cover |
+| `service-worker.js` | v21 |
+| `README.md`, `docs/design-system.md` | The UPSC section and its palette |
+| `.gitignore` | Refuses Word files and the handbook PDFs |

@@ -434,7 +434,11 @@ function upPathState(){const n=document.getElementById("pathbar");if(!n)return;c
  n.querySelectorAll(".pb-a").forEach(a=>{const on=(a.dataset.p==="upsc")===up;a.classList.toggle("on",on);if(on)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current")});
  const ab=n.querySelector('[data-u="about"]'),ct=n.querySelector('[data-u="contact"]');
  if(ab)ab.href=up?upHref("educator"):"#/about";if(ct)ct.href=up?upHref("contact"):"#/contact"}
-(function(){if(typeof document==="undefined")return;const go=()=>{try{upPathbar()}catch(e){}};
+/* the footer names the UPSC pages too, in its Connect column, above "The method" */
+function upFooter(){if(document.getElementById("ft-upsc"))return;const k=[...document.querySelectorAll("footer.ft .ftcols .kicker")].find(x=>/The method/.test(x.textContent));if(!k)return;
+ const d=document.createElement("div");d.id="ft-upsc";d.innerHTML=`<div class="kicker mt4">UPSC CSE Economics</div>${[["UPSC Overview",0],["Syllabus",1],["Economics Handbooks",3],["The 3-month programme",5]].map(([t,i])=>`<button class="lnk" onclick="nav('upsc',${i})">${t}</button>`).join("")}`;
+ k.parentNode.insertBefore(d,k)}
+(function(){if(typeof document==="undefined")return;const go=()=>{try{upPathbar();upFooter()}catch(e){}};
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go()})();
 
 /* ── the home page: two pathways before the IB cover ────────────────────── */
