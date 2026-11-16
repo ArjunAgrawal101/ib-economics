@@ -4167,6 +4167,8 @@ body.up-on .subnav button:focus-visible{outline:2px solid var(--up-gold-l);outli
 .up-cfacts div:last-child{grid-column:1/-1}
 @media (max-width:640px){.up-hero-fig{display:none}}
 .up-ct>div{min-width:0}.up-ct-k{min-width:0}.up-ct-v select{width:100%;text-overflow:ellipsis}
+/* the cover fans are decoration (aria-hidden): each cover is a background, not an image layered on another */
+.hp-covers span,.up-fan span{aspect-ratio:520/735;background-color:var(--up-navy-2);background-position:center;background-size:cover;background-repeat:no-repeat;border-radius:2px}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -15059,7 +15061,7 @@ function renderModel(id,opt){
    const w=g.xLab.length*6.2, px=X(g.q);
    let row=0;while(usedX.some(u=>u.row===row&&Math.abs(u.x-px)<(u.w+w)/2+6))row++;
    usedX.push({x:px,w,row});
-   b+=P.t(px,Y(0)+15+row*13,g.xLab,{a:"middle",sz:10,c:g.lc||G.C.ink,mono:1});
+   b+=P.t(px,Y(0)+15+row*14,g.xLab,{a:"middle",sz:10,c:g.lc||G.C.ink,mono:1});
   }
   if(g.yLab){
    const py=Y(g.p);let row=0;
@@ -39911,7 +39913,7 @@ function elSVG(r){const W=560,H=360,X=q=>50+q/200*460,Y=p=>320-p/20*290;
  return `<svg class="motif on-paper el-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Demand through two points: price ${r.P0} to ${r.P1.toFixed(2)}, quantity ${r.Q0} to ${r.Q1.toFixed(1)}. Total revenue ${r.TR0} before and ${r.TR1.toFixed(0)} after.">
   ${rect(r.Q0,r.P0,"el-r0")}${rect(r.Q1,r.P1,"el-r1")}
   <g class="m-ax"><line x1="${X(0)}" y1="${Y(0)}" x2="${X(0)}" y2="18"/><line x1="${X(0)}" y1="${Y(0)}" x2="540" y2="${Y(0)}"/></g>
-  <text class="el-lb" x="42" y="12">Price ($)</text><text class="el-lb" x="540" y="350" text-anchor="end">Quantity</text>
+  <text class="el-lb" x="42" y="14">Price ($)</text><text class="el-lb" x="540" y="350" text-anchor="end">Quantity</text>
   ${r.Q1===r.Q0?`<line class="m-c dem" x1="${X(r.Q0)}" y1="${Y(0)}" x2="${X(r.Q0)}" y2="${Y(19)}"/><text class="el-lb el-d" x="${X(r.Q0)+6}" y="${Y(19)+4}">D</text>`:isFinite(slope)&&Math.abs(slope)<1e6?`<line class="m-c dem" x1="${X(qa)}" y1="${Y(ext(qa))}" x2="${X(qb)}" y2="${Y(ext(qb))}"/><text class="el-lb el-d" x="${X(qb)+4}" y="${Y(ext(qb))+4}">D</text>`:""}
   <circle class="el-pt" cx="${X(r.Q0)}" cy="${Y(r.P0)}" r="5"/><circle class="el-pt" cx="${X(r.Q1)}" cy="${Y(r.P1)}" r="5"/>
   <text class="el-lb el-pl" x="${X(r.Q0)+8}" y="${Y(r.P0)-8}">A</text><text class="el-lb el-pl" x="${X(r.Q1)+8}" y="${Y(r.P1)-8}">B</text></svg>`}
@@ -41483,7 +41485,7 @@ function dlChart(id,series,o){o=o||{};
   ${(()=>{/* event marks: each label takes the lowest of three rows where it fits beside the others */
    const rows=[[],[],[]];return (o.marks||[]).filter(m=>dlX(m.at)>=x0&&dlX(m.at)<=x1).map((m,i)=>{const x=sx(m.at),w=String(m.label).length*6.9+6,end=x+4+w>W-4,a=end?x-4-w:x+4,b=end?x-4:x+4+w;
     let r=rows.findIndex(rw=>rw.every(([p,q])=>b<p-4||a>q+4));if(r<0)r=i%3;rows[r].push([a,b]);const mx=x.toFixed(1);
-    return `<line x1="${mx}" x2="${mx}" y1="${T-4}" y2="${H-B}" class="dl-mark"/><text x="${mx}" y="${T-8-r*14}" class="dl-mlab" text-anchor="${end?"end":"start"}" dx="${end?-4:4}">${esc(m.label)}</text>`}).join("")})()}
+    return `<line x1="${mx}" x2="${mx}" y1="${T-4}" y2="${H-B}" class="dl-mark"/><text x="${mx}" y="${T-8-r*16}" class="dl-mlab" text-anchor="${end?"end":"start"}" dx="${end?-4:4}">${esc(m.label)}</text>`}).join("")})()}
   ${paths}${lab}<line class="dl-cross" id="${id}-x" x1="0" x2="0" y1="${T}" y2="${H-B}" style="display:none"/>
   <g id="${id}-dots"></g>
 </svg>
@@ -43908,7 +43910,7 @@ function upHandbooks(){if(ARG){const v=upVol(ARG);if(v)return upVolume(v)}
   <h1 class="up-h1">The Economics Handbook Collection</h1>
   <p class="up-lede">A structured collection of original Economics resources designed to help aspirants understand the foundations of the economy, analyse policy developments and prepare effectively for UPSC CSE.</p>
   <dl class="up-facts"><div><dt>Volumes</dt><dd>${H.length}</dd></div><div><dt>Pages in all</dt><dd>${pages}</dd></div><div><dt>Price</dt><dd>${UP_PRICE}</dd></div><div><dt>Format</dt><dd>Digital PDF</dd></div></dl></div>
-  <div class="up-fan" aria-hidden="true">${H.slice(0,5).map((v,i)=>`<span style="--i:${i}">${upCover(v,"up-cv",i<2)}</span>`).join("")}</div></div></section>
+  <div class="up-fan" aria-hidden="true">${H.slice(0,5).map((v,i)=>`<span style="--i:${i};background-image:url('${esA(v.img.cover.src)}')"></span>`).join("")}</div></div></section>
  <div class="wrap full up-body"><ol class="up-steps" aria-label="How to buy a handbook"><li><b>Choose a volume</b><span>Read its contents and sample pages first.</span></li><li><b>Send the prefilled message</b><span>On WhatsApp or by email: it names the volume and the price of ₹99.</span></li><li><b>Arrange payment and delivery directly</b><span>Nothing is charged, and no purchase is completed, on this website.</span></li></ol>
   <ul class="up-hbgrid">${H.map((v,i)=>upCard(v,i)).join("")}</ul>
   <p class="up-note">Each volume is sold individually at ₹99. The handbooks are proprietary: this site shows covers, contents and a few watermarked sample pages, never the complete PDF.</p></div>`}
@@ -44057,7 +44059,7 @@ function upHomeBand(){const H=UPSC_HB.volumes;
     <div class="hp-b"><button class="hp-btn" onclick="upToIB()">Enter IB DP Economics <span aria-hidden="true">↓</span></button><a class="hp-sl" href="#/course">The course</a></div></article>
    <article class="hp-p up"><div class="hp-pk">UPSC CSE Economics</div><h2 class="hp-pt">Understand the economy. Master the examination.</h2><p>Explore Economics resources, handbooks, syllabus coverage and the intensive UPSC Economics programme.</p>
     <ul class="hp-ls">${[["Syllabus","syllabus"],["Resources","resources"],["Handbooks","handbooks"],["Current Affairs","current"],["Course","course"]].map(([t,k])=>`<li><a href="${upHref(k)}">${t}</a></li>`).join("")}</ul>
-    <div class="hp-covers" aria-hidden="true">${H.slice(1,4).map((v,i)=>`<span style="--i:${i}">${upCover(v,"up-cv",true)}</span>`).join("")}</div>
+    <div class="hp-covers" aria-hidden="true">${H.slice(1,4).map((v,i)=>`<span style="--i:${i};background-image:url('${esA(v.img.cover.src)}')"></span>`).join("")}</div>
     <div class="hp-b"><a class="hp-btn" href="#/upsc">Enter UPSC CSE Economics <span aria-hidden="true">→</span></a><a class="hp-sl" href="${upHref("handbooks")}">Handbooks · ${UP_PRICE}</a></div></article></div></div></section>`}
 function upToIB(){const h=document.querySelector("#view section.at-hero")||document.querySelector("#view section.hero");if(h){const y=h.getBoundingClientRect().top+scrollY-((document.querySelector("header.top")||{}).offsetHeight||0);
  window.scrollTo({top:Math.max(0,y),behavior:document.body.classList.contains("rn-anim")?"smooth":"auto"});const f=h.querySelector("h2,h1");if(f){f.setAttribute("tabindex","-1");try{f.focus({preventScroll:true})}catch(e){}}}}

@@ -39,7 +39,7 @@ function elSVG(r){const W=560,H=360,X=q=>50+q/200*460,Y=p=>320-p/20*290;
  return `<svg class="motif on-paper el-svg" viewBox="0 0 ${W} ${H}" role="img" aria-label="Demand through two points: price ${r.P0} to ${r.P1.toFixed(2)}, quantity ${r.Q0} to ${r.Q1.toFixed(1)}. Total revenue ${r.TR0} before and ${r.TR1.toFixed(0)} after.">
   ${rect(r.Q0,r.P0,"el-r0")}${rect(r.Q1,r.P1,"el-r1")}
   <g class="m-ax"><line x1="${X(0)}" y1="${Y(0)}" x2="${X(0)}" y2="18"/><line x1="${X(0)}" y1="${Y(0)}" x2="540" y2="${Y(0)}"/></g>
-  <text class="el-lb" x="42" y="12">Price ($)</text><text class="el-lb" x="540" y="350" text-anchor="end">Quantity</text>
+  <text class="el-lb" x="42" y="14">Price ($)</text><text class="el-lb" x="540" y="350" text-anchor="end">Quantity</text>
   ${r.Q1===r.Q0?`<line class="m-c dem" x1="${X(r.Q0)}" y1="${Y(0)}" x2="${X(r.Q0)}" y2="${Y(19)}"/><text class="el-lb el-d" x="${X(r.Q0)+6}" y="${Y(19)+4}">D</text>`:isFinite(slope)&&Math.abs(slope)<1e6?`<line class="m-c dem" x1="${X(qa)}" y1="${Y(ext(qa))}" x2="${X(qb)}" y2="${Y(ext(qb))}"/><text class="el-lb el-d" x="${X(qb)+4}" y="${Y(ext(qb))+4}">D</text>`:""}
   <circle class="el-pt" cx="${X(r.Q0)}" cy="${Y(r.P0)}" r="5"/><circle class="el-pt" cx="${X(r.Q1)}" cy="${Y(r.P1)}" r="5"/>
   <text class="el-lb el-pl" x="${X(r.Q0)+8}" y="${Y(r.P0)-8}">A</text><text class="el-lb el-pl" x="${X(r.Q1)+8}" y="${Y(r.P1)-8}">B</text></svg>`}

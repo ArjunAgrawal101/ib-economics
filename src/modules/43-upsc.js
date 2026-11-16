@@ -304,7 +304,7 @@ function upHandbooks(){if(ARG){const v=upVol(ARG);if(v)return upVolume(v)}
   <h1 class="up-h1">The Economics Handbook Collection</h1>
   <p class="up-lede">A structured collection of original Economics resources designed to help aspirants understand the foundations of the economy, analyse policy developments and prepare effectively for UPSC CSE.</p>
   <dl class="up-facts"><div><dt>Volumes</dt><dd>${H.length}</dd></div><div><dt>Pages in all</dt><dd>${pages}</dd></div><div><dt>Price</dt><dd>${UP_PRICE}</dd></div><div><dt>Format</dt><dd>Digital PDF</dd></div></dl></div>
-  <div class="up-fan" aria-hidden="true">${H.slice(0,5).map((v,i)=>`<span style="--i:${i}">${upCover(v,"up-cv",i<2)}</span>`).join("")}</div></div></section>
+  <div class="up-fan" aria-hidden="true">${H.slice(0,5).map((v,i)=>`<span style="--i:${i};background-image:url('${esA(v.img.cover.src)}')"></span>`).join("")}</div></div></section>
  <div class="wrap full up-body"><ol class="up-steps" aria-label="How to buy a handbook"><li><b>Choose a volume</b><span>Read its contents and sample pages first.</span></li><li><b>Send the prefilled message</b><span>On WhatsApp or by email: it names the volume and the price of ₹99.</span></li><li><b>Arrange payment and delivery directly</b><span>Nothing is charged, and no purchase is completed, on this website.</span></li></ol>
   <ul class="up-hbgrid">${H.map((v,i)=>upCard(v,i)).join("")}</ul>
   <p class="up-note">Each volume is sold individually at ₹99. The handbooks are proprietary: this site shows covers, contents and a few watermarked sample pages, never the complete PDF.</p></div>`}
@@ -453,7 +453,7 @@ function upHomeBand(){const H=UPSC_HB.volumes;
     <div class="hp-b"><button class="hp-btn" onclick="upToIB()">Enter IB DP Economics <span aria-hidden="true">↓</span></button><a class="hp-sl" href="#/course">The course</a></div></article>
    <article class="hp-p up"><div class="hp-pk">UPSC CSE Economics</div><h2 class="hp-pt">Understand the economy. Master the examination.</h2><p>Explore Economics resources, handbooks, syllabus coverage and the intensive UPSC Economics programme.</p>
     <ul class="hp-ls">${[["Syllabus","syllabus"],["Resources","resources"],["Handbooks","handbooks"],["Current Affairs","current"],["Course","course"]].map(([t,k])=>`<li><a href="${upHref(k)}">${t}</a></li>`).join("")}</ul>
-    <div class="hp-covers" aria-hidden="true">${H.slice(1,4).map((v,i)=>`<span style="--i:${i}">${upCover(v,"up-cv",true)}</span>`).join("")}</div>
+    <div class="hp-covers" aria-hidden="true">${H.slice(1,4).map((v,i)=>`<span style="--i:${i};background-image:url('${esA(v.img.cover.src)}')"></span>`).join("")}</div>
     <div class="hp-b"><a class="hp-btn" href="#/upsc">Enter UPSC CSE Economics <span aria-hidden="true">→</span></a><a class="hp-sl" href="${upHref("handbooks")}">Handbooks · ${UP_PRICE}</a></div></article></div></div></section>`}
 function upToIB(){const h=document.querySelector("#view section.at-hero")||document.querySelector("#view section.hero");if(h){const y=h.getBoundingClientRect().top+scrollY-((document.querySelector("header.top")||{}).offsetHeight||0);
  window.scrollTo({top:Math.max(0,y),behavior:document.body.classList.contains("rn-anim")?"smooth":"auto"});const f=h.querySelector("h2,h1");if(f){f.setAttribute("tabindex","-1");try{f.focus({preventScroll:true})}catch(e){}}}}
