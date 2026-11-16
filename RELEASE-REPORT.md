@@ -123,7 +123,9 @@ All eleven volumes were inspected in full, privately. A per-volume audit (titles
 - **Navigation.**
   - The phone drawer lists UPSC CSE Economics second, after Resources.
   - The More menu opens with a Pathways group.
+  - The footer's Connect column lists UPSC Overview, Syllabus, Economics Handbooks and the 3-month programme.
   - The IB primary bar is unchanged.
+- **Two network-request tests.** `tests/transform.mjs` and `tests/events.mjs` now count only the page's own requests. The service worker precaches the four data files for offline use on install, and Playwright 1.63 reports those requests at the context level. The previous release fails the same two checks here for the same reason, and with service workers blocked the page makes none of these requests at start-up.
 - **Service worker.** v21.
 
 ## What was preserved
@@ -157,7 +159,6 @@ TESTS_PLACEHOLDER
 - **The push.** GitHub refused this session's push with a 403 (read access works), so the commit is local to the session. See the session summary.
 - **Vercel.** The deployment and any preview cannot be reached from here; nothing about production is claimed.
 - **The opening sequence.** It still says "IB DP Economics". At phone width there is no room for both pathways in its line without changing its timed, tested layout, so it was left as it is.
-- **The footer.** It is the IB platform's, on every page; it does not yet list the UPSC pages.
 - **Browsers.** Only headless Chromium was used for the tests and screenshots, not Safari, Firefox or physical devices.
 
 ## Files

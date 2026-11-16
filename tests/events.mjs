@@ -7,7 +7,9 @@ const { srv, base } = await serve();
 const b = await browser();
 const ctx = await b.newContext({ viewport: { width: 1366, height: 900 } });
 const req = [];
-ctx.on('request', r => { if (/assets\/data\/(events|history)\.js/.test(r.url())) req.push(r.url().split('/').pop()) });
+/* the page's own requests only: the service worker precaches these files for offline use on
+   install, and recent Playwright reports its requests at the context level too */
+ctx.on('request', r => { if (/assets\/data\/(events|history)\.js/.test(r.url()) && !r.serviceWorker()) req.push(r.url().split('/').pop()) });
 const { p, errors } = await open(ctx, base);
 check(req.length === 0, 'neither events file is fetched until a page needs it');
 

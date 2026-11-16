@@ -519,7 +519,9 @@ body.up-on .subnav button:focus-visible{outline:2px solid var(--up-gold-l);outli
  .up-hbgrid{grid-template-columns:minmax(0,1fr)}
  .up-feat{grid-template-columns:repeat(2,minmax(0,1fr))}.up-feat li:not(:nth-child(5n+1)){padding-left:0;border-left:0}.up-feat li:nth-child(2n){padding-left:18px;border-left:1px solid var(--up-line)}
  .up-tp{grid-template-columns:minmax(0,1fr)}.up-tp-side{position:static}
- .hp-paths{grid-template-columns:minmax(0,1fr)}}
+ .hp-p{grid-template-columns:minmax(0,1fr);grid-template-areas:"k" "t" "p" "ls" "b"}.hp-fig,.hp-covers{display:none}}
+@media (max-width:860px){.hp-paths{grid-template-columns:minmax(0,1fr)}
+ .hp-p{grid-template-columns:minmax(0,1fr) 150px;grid-template-areas:"k fig" "t fig" "p fig" "ls ls" "b b"}.hp-fig,.hp-covers{display:block}}
 @media (max-width:900px){
  .up-two,.up-b25,.up-pricing,.up-ct{grid-template-columns:minmax(0,1fr);gap:32px}
  .up-road{grid-template-columns:minmax(0,1fr)}
