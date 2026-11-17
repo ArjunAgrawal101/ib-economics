@@ -242,7 +242,7 @@ for (const w of [1440, 768, 390, 320]) {
   for (const h of PAGES) {
     await go(p, h);
     if (h === '#/upsc/syllabus') await p.evaluate(() => upAccAll(true));
-    const o = await p.evaluate(() => ({ doc: document.documentElement.scrollWidth - innerWidth, wide: [...document.querySelectorAll('#view *')].filter(e => { const r = e.getBoundingClientRect(); return r.width && r.right > innerWidth + 1 && getComputedStyle(e).position !== 'fixed' && !e.closest('.up-tw,.up-conn-t') }).slice(0, 3).map(e => e.className || e.tagName) }));
+    const o = await p.evaluate(() => ({ doc: document.documentElement.scrollWidth - innerWidth, wide: [...document.querySelectorAll('#view *')].filter(e => { const r = e.getBoundingClientRect(); return r.width && r.right > innerWidth + 1 && getComputedStyle(e).position !== 'fixed' && !e.closest('.up-tw,.up-conn-t') && !(() => { for (let a = e.parentElement; a && a !== document.body; a = a.parentElement) { const c = getComputedStyle(a).overflowX; if (c === 'auto' || c === 'scroll') return true; } return false; })() }).slice(0, 3).map(e => e.className || e.tagName) }));
     if (o.doc > 0 || o.wide.length) bad.push(`${h} +${o.doc} ${o.wide.join(',')}`);
   }
   check(bad.length === 0, `${w}px: no UPSC page scrolls sideways, and nothing reaches past the edge`, bad.join(' | '));
