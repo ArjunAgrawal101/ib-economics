@@ -1,10 +1,11 @@
-# Arjun Agrawal · IB DP Economics
+# Arjun Agrawal · Economics
 
 **Think like an economist.**
 
-A free, browser-based learning environment for IB Diploma Programme Economics, built by
-**Arjun Agrawal**: IB DP Facilitator in Economics, Business Management and Global Politics,
-Economics educator, UPSC CSE mentor and resource creator.
+One discipline. Two pathways. A shared understanding of Economics. A free, browser-based learning
+platform with two pathways of equal weight, **IB DP Economics** and **UPSC CSE Economics**, built by
+**Arjun Agrawal**: IB DP Economics Educator, Economics Resource Designer and UPSC Economics Mentor,
+and IB DP Facilitator in Economics, Business Management and Global Politics.
 
 Learn the concept. See the model. Build the chain. Stress-test the argument. Make the
 judgement. Apply it under pressure.
@@ -23,6 +24,73 @@ download `index.html`, double-click it, and work offline. The one piece that run
 optional: the video studio reads the channel's public uploads through a small Vercel function
 (`api/youtube.js`), which holds the YouTube key and receives nothing about the reader. Without it,
 the video studio says so and everything else works exactly as before.
+
+## Two pathways, one platform
+
+The platform is **Arjun Agrawal · Economics**, *Think like an economist.*, with two pathways of equal
+weight: **IB DP Economics** and **UPSC CSE Economics**. *One discipline. Two pathways. A shared
+understanding of Economics.*
+
+- **The header** carries the brand, then **Home · IB DP Economics · UPSC CSE Economics · About**, then
+  search. The two pathways sit together as a switcher; the chevron beside each opens a panel of its
+  environment (the IB DP panel shows all five groups at once). Panels open from the mouse or the
+  keyboard: from the keyboard, focus moves to the first destination; Escape closes a panel and returns
+  focus to its button; tabbing out of a panel, or a click outside it, closes it.
+- **A context bar** under the header gives each pathway its own navigation, in its own colour:
+  - *IB DP*: **IB Home · Learn · Explore · Practise · Research · Resources** (each a menu) and
+    **Tutorials**. The groups follow the brief: Learn (course and syllabus, concepts and theories,
+    topic-wise learning, mindmaps, visual explainers, the diagram atlas, thinking like an economist,
+    videos); Explore (Real World Economics, case studies, economic data, Economics in 60 Seconds,
+    events, Economics, Everywhere, economists and ideas, the Indian economy); Practise (interactive
+    diagrams, calculation tools, practice questions, examination preparation, Paper 1 and Paper 2
+    practice, Exam DNA, the timed session, all tools); Research (the IA, the EE, research skills,
+    TOK); Resources (the resource hub, revision, checklists, the Learning Studio, tutorials, educators
+    and teacher tools).
+  - *UPSC CSE*: the eight UPSC destinations.
+  On IB DP pages the header and the context bar stay in view; a section's own tabs scroll with the page.
+  The IB DP tools in the header (the calculator, the exam timer, SL/HL and the profile) appear on IB DP
+  pages only.
+- **Below 1180px** the context bar starts with the pathway switcher, and the menu button opens a
+  drawer: Home, then IB DP Economics with its five groups folded, your progress, then UPSC CSE
+  Economics with its eight destinations, then About and Contact, with search at the top.
+- **Search** labels every result with its pathway (IB DP, UPSC CSE or Both), read from where the result
+  leads.
+- **The older primary bar and More menu** remain in the page, hidden, because earlier layers and their
+  checks measure them. Every section they listed is reachable from the new header, the context bars,
+  the drawer, the footer and search; a check fails if a section a reader can open is not.
+
+### Addresses
+
+| Address | Page |
+| --- | --- |
+| `#/` | The shared home |
+| `#/ib` | The IB DP landing: a pathway header with five doors, then the IB DP home page that earlier releases built, intact |
+| `#/upsc` and `#/upsc/…` | The UPSC environment |
+| `#/concepts` | One Concept. Two Perspectives. |
+| `#/about`, `#/contact` | About, and Contact with separate IB DP and UPSC CSE enquiries |
+
+Every earlier address still opens the same page. Page titles name their pathway, for example
+"Learn · IB DP Economics · Arjun Agrawal" and "About · Arjun Agrawal · Economics".
+
+### The shared home
+
+Ten movements, short by design: the statement ("Economics is not just a subject to study. It is a way
+to think.") with the two pathway cards; Think like an economist, with the live demand-and-supply model;
+the IB DP environment; the UPSC environment; selected resources and the eleven handbook covers; the
+laboratory; one concept, two perspectives; About; enrolment and contact; and the footer. Every preview
+is a real resource. A teacher's assignment link (`#assign=…`) still opens here, with its banner first.
+
+### Enquiries
+
+Every enquiry, on the home page and on Contact, opens the reader's own WhatsApp or email with the
+message written, to the number and address the site already publishes. Nothing is booked, charged or
+stored. IB DP: tutoring, Internal Assessment support, Extended Essay guidance, resources and teacher
+collaboration. UPSC CSE: handbook purchase, the three-month course, mentorship and resources.
+
+### The welcome
+
+The first-visit welcome asks for a name and an IB DP level, so it now opens on the first visit to an
+IB DP page rather than over the shared home or the UPSC pages. What it stores is unchanged.
 
 ## Who it is for
 
@@ -721,8 +789,9 @@ once:
 
 ## Sticky navigation
 
-The top bar, the section tabs, the lesson rails and the events chapter rail stay in view while
-the page scrolls. They were always styled to do so, but `body` carried `overflow-x:hidden`, which
+The header, the context bar, the lesson rails and the events chapter rail stay in view while the
+page scrolls; on IB DP pages a section's own tabs scroll with the page, so two bars of navigation do
+not take a fifth of a laptop screen. They were always styled to do so, but `body` carried `overflow-x:hidden`, which
 (with `html` clipping sideways overflow) made `body` a scroll container that never scrolls, so
 nothing ever stuck. `body` now uses `overflow-x:clip`, which still prevents sideways scrolling
 without creating a scroll container. The widths audit also now fails on content cut off at the
@@ -730,31 +799,20 @@ right edge, which that clip would otherwise hide.
 
 ## Navigation
 
-The primary bar keeps the eight places most visits start from: **Course · Learn · Lab · Real World ·
-Practise · Exam · Mindmaps · Resources**, with **More** and **Tutorials** closing it. **Resources** opens
-the Resource hub (`#/resources`). Economics, Everywhere and the Learning Studio are in the More menu,
-the drawer, the footer and search, and the home page opens a door to each.
+The header, the two context bars, the drawer and search are described under *Two pathways, one
+platform*. Everything the older primary bar and its More menu reached is reachable from them; the
+older bar stays in the page, hidden, because earlier layers and their checks measure it.
 
-The bar is measured after every paint, and again once the typefaces arrive. An item is withdrawn only
-when it would otherwise meet the brand, in a declared order; Resources is the last to go, then Real World
-and Mindmaps. At 1440px and wider all eight fit. To give the bar that room, the tools beside it fold:
+The IB DP tools beside the navigation fold to keep it clear:
 - **The timer** is a single stopwatch control while it is idle. It opens the paper presets, and the
   readout and pause control return once it runs.
 - **The profile** shows its initial, and keeps its name for assistive technology.
-- **Below 1180px**, where the bar gives way to the drawer, a **Resources** button stands in the header
-  between the brand and the menu. Below 360px it gives the wordmark its room, and Resources leads the
-  drawer instead.
-
-Everything else is one step away:
-- **The More menu** groups every section by what a visitor came to do: *Learn and explore* (Resources
-  first, then the course, Think, *Why did this happen?*, economists and ideas, economic data, the labs
-  and the video studio), *Exam and research*, *Your work*, *Teach* and *About*. Any section not named
-  there is appended under *More*, so nothing can become unreachable.
-- **On a phone**, the drawer carries the same sections in its own groups.
-- **Search** (`/` or `Ctrl`/`Cmd` + `K`) finds lessons, terms, economists, causal questions, data pages,
-  cases and tools by name. A calculation's result, like its address (`#/calculate/0/ped`), opens that
-  calculation; simulator and worked-case results open their tabs.
 - **A built-in calculator** opens from the header's *Open calculator* button and takes keyboard input.
+
+**Search** (`/` or `Ctrl`/`Cmd` + `K`) finds lessons, terms, economists, causal questions, data pages,
+cases, tools, UPSC pages and handbook volumes by name, and labels each result IB DP, UPSC CSE or Both.
+A calculation's result, like its address (`#/calculate/0/ped`), opens that calculation; simulator
+and worked-case results open their tabs.
 
 ## Learning paths and saved items
 
