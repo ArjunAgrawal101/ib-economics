@@ -4437,7 +4437,7 @@ a.hl-book:hover,button.hl-book:hover{transform:translateY(-4px)}
 .hl-topics ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 28px}
 .hl-topics li{display:flex;gap:10px;align-items:baseline;font:500 14px/1.4 var(--hl-ui);color:var(--hl-ink)}
 .hl-pl{flex:none;width:18px;font:600 12px/1 var(--hl-mono);color:var(--hl-gold-t)}
-.hl-more-p{font:500 13px/1.5 var(--hl-ui);color:var(--hl-mute);margin:10px 0 0 28px}
+.hl-more-p{display:none;font:500 13px/1.5 var(--hl-ui);color:var(--hl-mute);margin:10px 0 0 28px}
 .hl-card-side{display:grid;gap:20px}
 .hl-meta{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;margin:0;border-top:1px solid var(--hl-line-2);border-bottom:1px solid var(--hl-line-2)}
 .hl-meta div{padding:10px 18px 10px 0}
@@ -4638,6 +4638,8 @@ dialog.hl-vw.is-fallback{display:block}
  .hl-facts dd{font-size:26px}
 }
 @media (max-width:1099px){
+ .hl-topics li.hl-tx{display:none}
+ .hl-more-p{display:block}
  .hl-mast-g{grid-template-columns:minmax(0,1fr)}
  .hl-facts{justify-self:start}
  .hl-how-g{grid-template-columns:minmax(0,1fr)}
@@ -44939,7 +44941,7 @@ function hlCatalogue(missing){const V=hlVols(),T=V.length,n=V.filter(v=>hlMatch(
  </div></section>
  ${hlTerms()}
  </div>`}
-function hlCard(v){const ok=hlMatch(v),parts=hlParts(v),show=parts.slice(0,6),more=parts.length-show.length,r=hlRel(v),hit=ok?hlHit(v,HL.q):"";
+function hlCard(v){const ok=hlMatch(v),parts=v.parts,more=parts.length-6,r=hlRel(v),hit=ok?hlHit(v,HL.q):"";
  return `<li class="hl-card" id="hl-c-${v.id}" data-cat="${esA(v.category)}"${ok?"":" hidden"}><article class="hl-card-in" aria-labelledby="hl-t-${v.id}">
  <a class="hl-book" href="${hlHref(v.id)}" tabindex="-1" aria-hidden="true">${hlCover(v,"hl-cv","(max-width: 640px) 34vw, (max-width: 1099px) 170px, 200px")}</a>
  <div class="hl-card-x">
@@ -44948,7 +44950,7 @@ function hlCard(v){const ok=hlMatch(v),parts=hlParts(v),show=parts.slice(0,6),mo
   <p class="hl-card-sub">${esc(v.sub)}</p>
   <p class="hl-hit"${hit?"":" hidden"}>${hit?"Found in "+esc(hit):""}</p>
   <p class="hl-card-d">${esc(v.desc)}</p>
-  <div class="hl-topics"><h4 class="hl-mini">Main topics</h4><ul>${show.map(p=>`<li><span class="hl-pl" aria-hidden="true">${esc(p.l)}</span>${esc(p.t)}</li>`).join("")}</ul>${more>0?`<p class="hl-more-p">and ${hlPl(more,"more part")}, with a revision compendium</p>`:""}</div>
+  <div class="hl-topics"><h4 class="hl-mini">Main topics</h4><ul>${parts.map((p,k)=>`<li${k>=6?' class="hl-tx"':""}><span class="hl-pl" aria-hidden="true">${esc(p.l)}</span>${esc(p.t)}</li>`).join("")}</ul>${more>0?`<p class="hl-more-p">and ${hlPl(more,"more part")}, ending with the revision compendium</p>`:""}</div>
  </div>
  <div class="hl-card-side">
   <dl class="hl-meta"><div><dt>Pages</dt><dd>${v.pages}</dd></div><div><dt>Parts</dt><dd>${v.parts.length}</dd></div><div><dt>Format</dt><dd>PDF, A4</dd></div></dl>

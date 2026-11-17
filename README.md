@@ -76,7 +76,9 @@ reporting any difference rather than changing it. It renders the cover and the p
 `tools/upsc/preview-pages.json` as clean WebP images (pages 1600 px wide with 400 px thumbnails, no watermark
 or overlay) to `assets/upsc/handbooks/`, deletes images no longer chosen and regenerates
 `src/modules/41-upsc-data.js`. `tools/upsc/propose_pages.py` drafts the selection, with a contact sheet of
-every page. Full steps are in `tools/upsc/README.md`:
+every page. Until the PDFs are run, the folder holds the images the previous version made (cover, contents
+and two samples per volume, 640 px, with its watermark); the first run replaces them. Full steps are in
+`tools/upsc/README.md`:
 
 ```
 python3 tools/upsc/build_upsc.py --src /path/to/private/handbooks --check   # verify only

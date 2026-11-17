@@ -163,7 +163,7 @@ function hlCatalogue(missing){const V=hlVols(),T=V.length,n=V.filter(v=>hlMatch(
  </div></section>
  ${hlTerms()}
  </div>`}
-function hlCard(v){const ok=hlMatch(v),parts=hlParts(v),show=parts.slice(0,6),more=parts.length-show.length,r=hlRel(v),hit=ok?hlHit(v,HL.q):"";
+function hlCard(v){const ok=hlMatch(v),parts=v.parts,more=parts.length-6,r=hlRel(v),hit=ok?hlHit(v,HL.q):"";
  return `<li class="hl-card" id="hl-c-${v.id}" data-cat="${esA(v.category)}"${ok?"":" hidden"}><article class="hl-card-in" aria-labelledby="hl-t-${v.id}">
  <a class="hl-book" href="${hlHref(v.id)}" tabindex="-1" aria-hidden="true">${hlCover(v,"hl-cv","(max-width: 640px) 34vw, (max-width: 1099px) 170px, 200px")}</a>
  <div class="hl-card-x">
@@ -172,7 +172,7 @@ function hlCard(v){const ok=hlMatch(v),parts=hlParts(v),show=parts.slice(0,6),mo
   <p class="hl-card-sub">${esc(v.sub)}</p>
   <p class="hl-hit"${hit?"":" hidden"}>${hit?"Found in "+esc(hit):""}</p>
   <p class="hl-card-d">${esc(v.desc)}</p>
-  <div class="hl-topics"><h4 class="hl-mini">Main topics</h4><ul>${show.map(p=>`<li><span class="hl-pl" aria-hidden="true">${esc(p.l)}</span>${esc(p.t)}</li>`).join("")}</ul>${more>0?`<p class="hl-more-p">and ${hlPl(more,"more part")}, with a revision compendium</p>`:""}</div>
+  <div class="hl-topics"><h4 class="hl-mini">Main topics</h4><ul>${parts.map((p,k)=>`<li${k>=6?' class="hl-tx"':""}><span class="hl-pl" aria-hidden="true">${esc(p.l)}</span>${esc(p.t)}</li>`).join("")}</ul>${more>0?`<p class="hl-more-p">and ${hlPl(more,"more part")}, ending with the revision compendium</p>`:""}</div>
  </div>
  <div class="hl-card-side">
   <dl class="hl-meta"><div><dt>Pages</dt><dd>${v.pages}</dd></div><div><dt>Parts</dt><dd>${v.parts.length}</dd></div><div><dt>Format</dt><dd>PDF, A4</dd></div></dl>
