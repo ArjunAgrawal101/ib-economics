@@ -4218,8 +4218,8 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
  --o-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
  --o-ui:Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;
  --o-serif:"Source Serif 4","Iowan Old Style",Georgia,serif;
- /* the map: 1680 x 725 units, a little wider than the screen, centred */
- --mw:min(104vw,196vh);--mh:calc(var(--mw)*.431548);
+ /* the map: 1680 x 725 units, a little wider than the screen (more on a 4:3 screen), centred */
+ --mw:min(max(104vw,150vh),196vh);--mh:calc(var(--mw)*.431548);
  --mx:calc(50vw - var(--mw)/2);--my:calc(46vh - var(--mh)/2);
  --w:min(540px,78vw,70vh);
  position:fixed;inset:0;z-index:999;overflow:hidden;overflow:clip;contain:layout paint;
@@ -4258,7 +4258,7 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
 /* ── the language of economics: three fine figures, each in its own box ── */
 #splash .o-lang{position:absolute;inset:0}
 #splash .o-ds,#splash .o-cy,#splash .o-px{position:absolute}
-#splash .o-ds{left:calc(var(--mx) + var(--mw)*.08);top:calc(var(--my) + var(--mh)*.63);width:calc(var(--mw)*.152);aspect-ratio:240/200}
+#splash .o-ds{left:max(3vw,calc(var(--mx) + var(--mw)*.08));top:calc(var(--my) + var(--mh)*.63);width:calc(var(--mw)*.152);aspect-ratio:240/200}
 #splash .o-cy{left:calc(var(--mx) + var(--mw)*.372);top:calc(var(--my) + var(--mh)*.875);width:calc(var(--mw)*.258);aspect-ratio:460/100}
 #splash .o-px{left:max(48px,4.5vw);top:max(40px,6vh);width:clamp(200px,17vw,300px);aspect-ratio:300/120}
 #splash .o-w,#splash .o-wv,#splash .o-ann{position:absolute;inset:0}
@@ -4292,10 +4292,10 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
 #splash .o-cap-up .o-cap-in{align-items:center}
 #splash .o-cap-up .o-k{color:var(--o-up-t)}
 /* India's five sectors fan out beneath it: the apex is India's southern tip */
-#splash .o-fan{position:absolute;left:calc(var(--mx) + var(--mw)*.5443);top:calc(var(--my) + var(--mh)*.5131);width:calc(var(--mw)*.34);height:calc(var(--mw)*.098)}
+#splash .o-fan{position:absolute;left:calc(var(--mx) + var(--mw)*.5793);top:calc(var(--my) + var(--mh)*.5131);width:calc(var(--mw)*.27);height:calc(var(--mw)*.098)}
 #splash .o-fan path{fill:none;stroke:var(--o-up);stroke-width:1;vector-effect:non-scaling-stroke}
 #splash .o-nodes{position:absolute;inset:0}
-#splash .o-node{position:absolute;top:100%;width:0;height:0;--nw:clamp(72px,6.4vw,112px)}
+#splash .o-node{position:absolute;top:100%;width:0;height:0;--nw:clamp(62px,calc(var(--mw)*.047),96px)}
 #splash .o-node b{position:absolute;left:calc(var(--nw)/-2);top:-15px;width:var(--nw);display:flex;flex-direction:column;align-items:center;gap:8px}
 #splash .o-node svg{display:block;width:30px;height:30px;padding:5px;border:1px solid rgba(94,156,124,.85);border-radius:50%;background:var(--o-ground);
  fill:none;stroke:var(--o-ivory);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
@@ -4345,7 +4345,9 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
 /* ── portrait: the map as a band with India at its centre, the figures above and below ── */
 @media (max-aspect-ratio:4/5){
  #splash{--mh:min(36vh,92vw);--mw:calc(var(--mh)*2.31724);
-  --mx:max(calc(50vw - var(--mw)*.7151),calc(100vw - var(--mw)));--my:21vh;--w:min(500px,80vw,62vh)}
+  --mx:max(calc(50vw - var(--mw)*.7151),calc(100vw - var(--mw)));--my:21vh;--w:min(500px,86vw,62vh)}
+ #splash .o-id{padding-bottom:0}
+ #splash .o-mk{width:calc(var(--w)*.21)}
  #splash .o-band path{stroke-width:3.6}
  #splash .o-in path{stroke-width:4}
  #splash .o-hub{width:4px;height:4px;margin:-2px 0 0 -2px}
@@ -4368,6 +4370,8 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
  #splash .o-node em{font-size:8px;letter-spacing:.04em}
  #splash .o-cap-up{left:50vw;top:69vh}
 }
+/* narrower landscape screens: India's five sectors keep their labels apart */
+@media (min-aspect-ratio:4/5) and (max-width:1279px){#splash .o-node em{font-size:8px;letter-spacing:0}}
 /* short landscape screens (a phone on its side): the figures give way to the identity */
 @media (max-height:520px) and (min-aspect-ratio:4/5){
  #splash{--w:min(440px,60vw,64vh)}
