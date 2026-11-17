@@ -164,8 +164,19 @@ for (const w of [320, 360, 390, 768, 1024, 1280, 1440, 1920]) {
   const over = [];
   for (const h of ['#/', '#/ib', '#/upsc', '#/about', '#/contact']) {
     await p.evaluate(h => { location.hash = h }, h); await p.waitForTimeout(350);
-    const o = await p.evaluate(() => document.documentElement.scrollWidth - innerWidth);
-    if (o > 1) over.push(`${h} (${o}px)`);
+    /* html and body clip sideways overflow, which would hide it from scrollWidth: lift the clip to
+       measure, and also find any element cut off at the right edge outside a scrolling strip */
+    const o = await p.evaluate(() => {
+      const de = document.documentElement, bd = document.body, k = [de.style.overflowX, bd.style.overflowX];
+      de.style.overflowX = 'visible'; bd.style.overflowX = 'visible';
+      const over = de.scrollWidth - innerWidth; de.style.overflowX = k[0]; bd.style.overflowX = k[1];
+      const W = innerWidth, cut = [...document.querySelectorAll('#view *, header.top *, #ctxbar *, footer.ft *')].filter(e => {
+        const r = e.getBoundingClientRect(); if (!(r.right > W + 2 && r.width > 0 && r.height > 0) || getComputedStyle(e).position === 'fixed') return false;
+        for (let a = e.parentElement; a && a !== document.body; a = a.parentElement) { const c = getComputedStyle(a); if (c.overflowX !== 'visible' || c.position === 'fixed') return false; }
+        return true; }).map(e => e.tagName.toLowerCase() + '.' + String(e.getAttribute('class') || '').split(' ')[0]);
+      return { over, cut: cut.slice(0, 3) };
+    });
+    if (o.over > 1 || o.cut.length) over.push(`${h} (${o.over}px${o.cut.length ? '; ' + o.cut.join(', ') : ''})`);
   }
   check(over.length === 0, `${w}px · no sideways scroll on the home, the two landings, About or Contact`, over.join(', '));
   allErrors.push(...errors); await ctx.close();

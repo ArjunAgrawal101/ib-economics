@@ -182,7 +182,7 @@ function fxLab(){
 /* ── 7 · one concept, two perspectives ──────────────────────────────────── */
 function fxAcross(){
  let inner="";
- try{if(typeof ccTeaser==="function")inner=ccTeaser({path:"shared"})}catch(e){inner=""}
+ try{if(typeof ccTeaser==="function")inner=ccTeaser({path:"shared",level:3})}catch(e){inner=""}
  if(!inner){
   let rows=[];try{rows=(UP_CONNECT||[]).filter(r=>/Inflation|Fiscal|Balance/.test(r.c)).slice(0,3)}catch(e){}
   inner=rows.length?`<div class="ac-rows">${rows.map(r=>`<article class="ac-row"><h3>${esc(r.c)}</h3>
@@ -190,7 +190,7 @@ function fxAcross(){
     <div class="ac-p p-up"><span class="fx-tag upsc">UPSC perspective</span><p>${esc(r.up)}</p></div></article>`).join("")}</div>`:"";
  }
  return `<section class="fx-section fx-across" aria-labelledby="ac-h"><div class="fx-wrap">
-  ${fxSecHead("07","One concept. Two perspectives.","Economics across two learning pathways","The same idea, inflation or a budget deficit, is the same idea in Geneva and in New Delhi. What changes is the question you will be asked about it. Learn the concept once, then see it through each examination's eyes.","ac-h")}
+  ${fxSecHead("07","One concept. Two perspectives.","Economics across two learning pathways","The same idea, inflation or a budget deficit, is the same idea in Geneva and in New Delhi. What changes is the question you will be asked about it.","ac-h")}
   ${inner}
  </div></section>`;
 }
