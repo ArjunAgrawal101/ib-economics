@@ -99,8 +99,10 @@ function fxBuildShell(){
  hdr.parentNode.insertBefore(ctx,hdr.nextSibling);
  document.documentElement.classList.add("fx-js");
  /* a single panel for the dropdowns */
- const p=document.createElement("div");p.className="fxpanel";p.id="fxpanel";p.hidden=true;
+ const p=document.createElement("div");p.className="fxpanel";p.id="fxpanel";p.hidden=true;p.setAttribute("role","region");
  document.body.appendChild(p);
+ /* focus that leaves the panel, other than back to its own button, closes it */
+ p.addEventListener("focusout",e=>{if(!FXDD.open)return;const t=e.relatedTarget;if(t&&!p.contains(t)&&t!==FXDD.btn)fxClosePanel()});
  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&FXDD.open){const b=FXDD.btn;fxClosePanel();if(b)b.focus()}});
  document.addEventListener("click",e=>{if(!FXDD.open)return;const p=document.getElementById("fxpanel");
   if(p.contains(e.target)||(FXDD.btn&&FXDD.btn.contains(e.target)))return;fxClosePanel()});
@@ -143,12 +145,16 @@ function fxTogglePanel(k,btn,e){
  if(FXDD.open===k){fxClosePanel();return}
  fxClosePanel();
  const p=document.getElementById("fxpanel");if(!p)return;
+ /* the panel follows its navigation in the document, so the keyboard reaches it next */
+ const host=btn.closest("nav");if(host&&host.nextElementSibling!==p)host.after(p);
  p.innerHTML=fxPanelHtml(k);p.dataset.k=k;p.hidden=false;
  FXDD.open=k;FXDD.btn=btn;btn.setAttribute("aria-expanded","true");
  p.setAttribute("aria-label",btn.getAttribute("data-label")||"Menu");
  fxPlacePanel();
  p.querySelectorAll("[data-fxclose]").forEach(a=>a.addEventListener("click",()=>fxClosePanel()));
  requestAnimationFrame(()=>p.classList.add("on"));
+ /* opened from the keyboard (a click with no pointer), the first destination takes focus */
+ if(e&&e.detail===0){const first=p.querySelector("a");if(first)first.focus()}
 }
 function fxClosePanel(){
  const p=document.getElementById("fxpanel");
@@ -223,9 +229,22 @@ function fxMobileDrawer(){
 mobileDrawer=fxMobileDrawer;
 (function(){const prev=closeMenu;closeMenu=function(){const r=prev.apply(this,arguments);const b=document.getElementById("burger");if(b)b.setAttribute("aria-expanded","false");return r}})();
 
+/* ── the page's title names its pathway ─────────────────────────────────
+   The older layers title a section "Learn · Arjun Agrawal · IB DP Economics".
+   A page in the IB DP environment now reads "Learn · IB DP Economics · Arjun
+   Agrawal"; a shared page reads "About · Arjun Agrawal · Economics". Titles
+   the layers set for one item (a Studio piece, a UPSC page) are left alone. */
+const FX_OLDSUFFIX=" · Arjun Agrawal · IB DP Economics";
+function fxTitle(){
+ if(VIEW==="ib"){document.title="IB DP Economics · Arjun Agrawal · Economics";return}
+ const t=document.title;if(!t.endsWith(FX_OLDSUFFIX))return;
+ const name=t.slice(0,-FX_OLDSUFFIX.length);
+ document.title=fxPathway(VIEW)==="ib"?name+" · IB DP Economics · Arjun Agrawal":name+" · Arjun Agrawal · Economics";
+}
+
 /* ── every render paints the shell ──────────────────────────────────────── */
 fxBuildShell();
 (function(){
  const prev=render;
- render=function(){const r=prev.apply(this,arguments);try{fxPaintShell()}catch(e){console.error(e)}return r};
+ render=function(){const r=prev.apply(this,arguments);try{fxPaintShell()}catch(e){console.error(e)}try{fxTitle()}catch(e){}return r};
 })();

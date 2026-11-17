@@ -14,9 +14,10 @@ const { p, errors } = await open(ctx, base);
 check(req.length === 0, 'neither events file is fetched until a page needs it');
 
 /* reaching it */
-await p.locator('#moreBtn').click();
-check(/Economic events/.test(await p.locator('#menu').innerText()) && /Pathways/.test(await p.locator('#menu').innerText()), 'the More menu reaches the events archive and the pathways');
-await p.locator('#menu button', { hasText: 'Economic events' }).click(); await p.waitForTimeout(300);
+/* the IB DP panel in the header now carries what the More menu carried */
+await p.locator('#gnav .gn-ib .gn-dd').click(); await p.waitForTimeout(200);
+check(/Economic events/.test(await p.locator('#fxpanel').innerText()) && /The Indian economy/.test(await p.locator('#fxpanel').innerText()), 'the IB DP menu reaches the events archive and the Indian economy hub');
+await p.locator('#fxpanel a', { hasText: 'Economic events' }).click(); await p.waitForTimeout(300);
 
 /* archive */
 check(await p.evaluate(() => location.hash) === '#/events', 'the archive has its own address');

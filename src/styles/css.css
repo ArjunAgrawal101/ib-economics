@@ -294,8 +294,8 @@ body.rn-anim .atx .motif *{animation:none}
 .rn-dv-s{font-size:14px;color:var(--tx-3)}
 .rn-divider::after{content:"";flex:1 0 100%;height:1px;background:var(--hair-3)}
 /* a tighter rhythm on the home page, so new bands do not simply add length */
-body[data-sec="home"] .sec{padding-block:clamp(40px,4.6vw,64px)}
-body[data-sec="home"] .sec.t{padding-block:clamp(32px,3.6vw,52px)}
+body[data-sec="home"] .sec,body[data-sec="ib"] .sec{padding-block:clamp(40px,4.6vw,64px)}
+body[data-sec="home"] .sec.t,body[data-sec="ib"] .sec.t{padding-block:clamp(32px,3.6vw,52px)}
 /* ── the footer as a colophon ───────────────────────────────────────────── */
 .ft-top{background:var(--obs);color:#fff;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:var(--s5);
   background-image:linear-gradient(var(--grid-d) 1px,transparent 1px),linear-gradient(90deg,var(--grid-d) 1px,transparent 1px);background-size:56px 56px}
@@ -583,7 +583,7 @@ body[data-sec="world"],body[data-sec="mind"]{--bgx:var(--bgx-global-i)}
 body[data-sec="examiner"],body[data-sec="papers"],body[data-sec="dna"],body[data-sec="practise"],body[data-sec="ees"],body[data-sec="ia"],body[data-sec="educator"],body[data-sec="teacher"]{--bgx:var(--bgx-research-i)}
 body[data-sec="syllabus"],body[data-sec="resources"]{--bgx:var(--bgx-macro-i)}
 .hero.paper{--bgx:var(--bgx-research)}
-body[data-sec="home"] .hero.cv::after,body[data-sec="about"] .hero::after{display:none}
+body[data-sec="home"] .hero.cv::after,body[data-sec="ib"] .hero.cv::after,body[data-sec="about"] .hero::after{display:none}
 /* home bands: the family that belongs to the chapter, on paper, drawn from the far edge */
 .rn-band{position:relative;isolation:isolate}
 .rn-band.sp-learn::before,.rn-band.sp-lab::before,.rn-band.sp-exam::before,.rn-band.sp-research::before,.rn-band.sp-edu::before,.rn-glance::before{
@@ -613,7 +613,7 @@ body.rn-anim .hz-eqm path,body.rn-anim .hz-curve path{stroke-dasharray:1400;stro
 /* the hinge: the brand's first idea, on the horizon where the cover's dark meets the paper */
 .rn-hinge{background:linear-gradient(180deg,var(--obs) 0,var(--obs) 6px,#3a3530 40px,var(--chalk) 150px)}
 /* on the home page the chapter marks carry the numbering; a band's own running number would be a second, competing sequence */
-body[data-sec="home"] #view .shead > .n{display:none}
+body[data-sec="home"] #view .shead > .n,body[data-sec="ib"] #view .shead > .n{display:none}
 .rn-band.sp-lab::before{opacity:.035}
 /* ═══ THE OPENING ═══════════════════════════════════════════════════════
    The opening is defined once, in the base stylesheet beside its markup and

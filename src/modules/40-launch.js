@@ -134,7 +134,8 @@ function lnReveal(){if(typeof document==="undefined"||!document.body)return;
    from a visible state, so nothing waits on it. */
 let LN_LASTVIEW=null;
 function lnEnter(){const prev=LN_LASTVIEW;LN_LASTVIEW=typeof VIEW!=="undefined"?VIEW:null;
- if(VIEW!=="home"||!prev||prev==="home")return;
+ /* the cover now opens the IB DP landing (#/ib); the shared home has no cover to animate */
+ if(VIEW!=="ib"||!prev||prev==="ib")return;
  if(!document.body.classList.contains("rn-anim")||(typeof QARUNNING!=="undefined"&&QARUNNING))return;
  const h=document.querySelector("#view section.at-hero");if(!h||!h.animate)return;
  [...h.querySelectorAll(".at-copy > *"),h.querySelector(".at-sig"),h.querySelector(".at-figs")].filter(Boolean).forEach((el,i)=>{
@@ -157,7 +158,7 @@ function LAUNCHSUITE(){const out=[];const T=(n,f)=>{let ok=false,d="";try{ok=!!f
  T("Launch · the exam door matches Paper 1: part (a) is out of 10 and part (b) out of 15",()=>/\[10\][\s\S]*\[15\]/.test(RS_FIG.exam()));
  T("Launch · the unit door numbers the four units of the course in order",()=>{const h=RS_FIG.lessons();return ["Introduction","Microeconomics","Macroeconomics","Global economy"].every((u,i)=>h.indexOf(u)>h.indexOf(">"+(i+1)+"<"))});
  T("Launch · the timer folds while idle and keeps its controls",()=>!!document.getElementById("tmrToggle")&&!!document.getElementById("tmrOpen")&&typeof tmrPop==="function"&&typeof lnTimerIdle==="function");
- T("Launch · the cover's entrance plays only on a return to home, never with reduced motion or during the self-test",()=>{const f=String(lnEnter);return /rn-anim/.test(f)&&/QARUNNING/.test(f)&&/prev==="home"/.test(f)&&/duration:340/.test(f)});
+ T("Launch · the cover's entrance plays only on a return to the IB DP landing, never with reduced motion or during the self-test",()=>{const f=String(lnEnter);return /rn-anim/.test(f)&&/QARUNNING/.test(f)&&/prev==="ib"/.test(f)&&/duration:340/.test(f)});
  T("Launch · on the cover's model, every marked point lies on its drawn curve at every slider position",()=>[-2,-1.5,-1,-.5,0,.5,1,1.5,2].every(sv=>{const k=CV.s;try{CV.s=sv;const [dq,dp]=CV_SPOTS[0][1](sv),lo=Math.max(.6,sv+.2),hi=Math.min(10,10+sv),[sq,sp]=CV_SPOTS[1][1](sv),e=CVF.eq(sv);
   return dq>=lo&&dq<=hi&&Math.abs(dp-CVF.D(dq,sv))<1e-9&&Math.abs(sp-CVF.S(sq))<1e-9&&Math.abs(CVF.D(e.q,sv)-CVF.S(e.q))<1e-9}finally{CV.s=k}}));
  T("Launch · the cover's portrait is the original photograph's 4:5 crop, served from assets/brand",()=>/assets\/brand\/arjun-agrawal-portrait-4x5\.webp/.test(rnCover())&&CV_PORTRAIT.w/CV_PORTRAIT.h===0.8);

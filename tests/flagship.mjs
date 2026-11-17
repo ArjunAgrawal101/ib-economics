@@ -67,6 +67,10 @@ const allErrors = [];
   await p.locator('#gnav .gn-upsc .gn-dd').focus(); await p.keyboard.press('Enter'); await p.waitForTimeout(250);
   const up = await p.locator('#fxpanel .fxp-list a').allInnerTexts();
   check(up.length >= 8, `the UPSC menu opens from the keyboard and lists the UPSC destinations (${up.length})`);
+  check(await p.evaluate(() => document.getElementById('fxpanel').contains(document.activeElement)), 'opened from the keyboard, focus moves into the menu');
+  await p.locator('#fxpanel a').last().focus(); await p.keyboard.press('Tab'); await p.waitForTimeout(150);
+  check(!(await p.locator('#fxpanel').isVisible()) && await p.locator('#gnav .gn-upsc .gn-dd').getAttribute('aria-expanded') === 'false', 'tabbing past the last destination closes the menu');
+  await p.locator('#gnav .gn-upsc .gn-dd').focus(); await p.keyboard.press('Enter'); await p.waitForTimeout(250);
   await p.locator('#fxpanel .fxp-list a').nth(1).click(); await p.waitForTimeout(300);
   const s = await st(p);
   check(s.v === 'upsc' && s.t === 1 && s.path === 'upsc' && !(await p.locator('#fxpanel').isVisible()), 'choosing a destination opens it and closes the menu');
@@ -131,12 +135,25 @@ const allErrors = [];
   allErrors.push(...errors); await ctx.close();
 }
 
+/* ── motion: the home's large blocks reveal as they arrive, and all are visible after scrolling ── */
+{
+  const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
+  const { p } = await open(ctx, base); await p.waitForTimeout(500);
+  const w0 = await p.evaluate(() => document.querySelectorAll('#view .rv-wait').length);
+  await p.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 500) { scrollTo(0, y); await new Promise(r => setTimeout(r, 40)) } });
+  await p.waitForTimeout(900);
+  const hidden = await p.evaluate(() => [...document.querySelectorAll('#view .rv')].filter(e => getComputedStyle(e).opacity !== '1').length);
+  check(w0 >= 8 && hidden === 0, `motion on: ${w0} blocks of the home page reveal as they arrive, and all are visible after scrolling`);
+  await ctx.close();
+}
+
 /* ── reduced motion ────────────────────────────────────────────────────── */
 {
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
   const { p } = await open(ctx, base);
   const anim = await p.evaluate(() => [...document.querySelectorAll('.hx-d, .hx-s, .hx-e, .hx-r')].map(e => getComputedStyle(e).animationName));
   check(anim.length === 4 && anim.every(a => a === 'none'), 'with reduced motion the hero\'s lines are simply there', anim.join(','));
+  check(await p.evaluate(() => document.querySelectorAll('#view .rv-wait').length === 0), 'and nothing waits to be revealed');
   await ctx.close();
 }
 

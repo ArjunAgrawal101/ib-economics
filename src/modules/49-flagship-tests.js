@@ -49,6 +49,12 @@ function FLAGSHIPSUITE(){
  T("Flagship · the home's About band states only what the platform already states",()=>{const t=txt(home());
   return CV_AUTHOR.every(([k,v])=>t.includes(v))&&t.includes(FXI.roles)&&!/(best|number one|no\. ?1|#1|leading|top-rated|award)/i.test(t)});
 
+ T("Flagship · a teacher's assignment link still opens on the home page with its banner",()=>{
+  /* the link is read through assignFromHash(); it is stood in for here, so the address is never touched */
+  const f=assignFromHash;let h="";
+  try{assignFromHash=()=>({t:"Week 3",i:[["q","x"]]});h=home()}finally{assignFromHash=f}
+  return /An assignment was shared with you/.test(h)&&/Week 3/.test(h)&&h.indexOf("An assignment was shared")<h.indexOf('class="fxhome"')});
+
  /* ── the IB DP landing ── */
  T("Flagship · the IB DP landing keeps the full IB home page beneath its pathway header",()=>{const h=ibl();
   return /id="ibl-h"/.test(h)&&/id="cv-h"/.test(h)&&h.length>RN.homePrev().length&&(h.match(/<h1\b/g)||[]).length===1});

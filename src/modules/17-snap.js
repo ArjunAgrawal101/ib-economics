@@ -121,7 +121,7 @@ let PRINTOPT={};
   c.querySelectorAll("button,input,select,textarea,nav,.ls-loop,.ls-tools,.subnav,.no-print,.motif,.hero svg,.sp-cover-fig,dialog,[aria-hidden='true']").forEach(e=>{
    if(e.tagName==="BUTTON"&&e.closest(".ls-mo,.gl-t,.ls-card,.ls-case,.ls-pt")){const s=document.createElement("span");s.textContent=e.textContent;e.replaceWith(s)}else e.remove()});
   c.querySelectorAll("details").forEach(d=>d.setAttribute("open",""));
-  PRINTOPT={kind:"page"};_prep(document.title.replace(/ · Arjun Agrawal · IB DP Economics$/,""),`<div class="pview">${c.innerHTML}</div>`,"Printed from the platform");
+  PRINTOPT={kind:"page"};_prep(document.title.replace(/ · (Arjun Agrawal · IB DP Economics|IB DP Economics · Arjun Agrawal|Arjun Agrawal · Economics)$/,""),`<div class="pview">${c.innerHTML}</div>`,"Printed from the platform");
   r.className="p-page";fallback=true;
   let st=document.getElementById("pgsz");if(!st){st=document.createElement("style");st.id="pgsz";document.head.appendChild(st)}st.textContent="@media print{@page{size:A4;margin:14mm}}";return true};
  window.printFallbackClear=function(){if(!fallback)return;fallback=false;const r=document.getElementById("printroot");if(r){r.innerHTML="";r.className=""}PRINTOPT={};const st=document.getElementById("pgsz");if(st)st.textContent=""};

@@ -107,7 +107,7 @@ function fxThink(){
  return `<section class="fx-section fx-think" aria-labelledby="th-h"><div class="fx-wrap th-grid">
   <div>${fxSecHead("02","The way of thinking","Think like an economist.","Every choice has a cost, every market finds a balance, every policy is a trade-off. The platform teaches that habit of mind first, so that the syllabus, whichever it is, becomes something you can reason with rather than recall.","th-h")}
    <ol class="th-steps">${FX_METHOD.map(([n,d],i)=>`<li><span class="th-n">${i+1}</span><div><b>${esc(n)}</b><span>${esc(d)}</span></div></li>`).join("")}</ol></div>
-  <figure class="th-plate">
+  <figure class="th-plate rv">
    <div class="th-fig" id="cv-plate-fig">${plate}</div>
    <div class="th-ctl"><label for="th-shift">Shift demand</label>
     <input id="th-shift" type="range" min="-3" max="3" step="0.5" value="0" oninput="cvSet(this.value)" aria-describedby="cv-read"></div>
@@ -121,7 +121,7 @@ function fxIbEnv(){
  const gs=fxIbGroups();
  return `<section class="fx-section fx-env env-ib" aria-labelledby="eib-h"><div class="fx-wrap">
   ${fxSecHead("03","Pathway 01 · IB DP Economics","Explore the IB Economics learning environment","Five ways in, one course: learn the concepts, explore the world's economies, practise until the models are yours, research for the IA and the EE, and use the resources that support all of it.","eib-h")}
-  <div class="env-grid five">${gs.map(g=>`<article class="env-card"><h3>${esc(g.n)}</h3><p>${esc(g.d)}</p>
+  <div class="env-grid five">${gs.map((g,gi)=>`<article class="env-card rv" style="--i:${gi}"><h3>${esc(g.n)}</h3><p>${esc(g.d)}</p>
    <ul>${g.items.slice(0,4).map(i=>`<li><a class="fx-a" href="${esA(i.href)}">${esc(i.n)}</a></li>`).join("")}</ul></article>`).join("")}</div>
   <p class="env-cta"><a class="fx-btn primary" href="#/ib">Enter IB DP Economics ${fxArr()}</a> <a class="fx-link" href="${esA(fxHref("course",0))}">Start with the course</a></p>
  </div></section>`;
@@ -136,7 +136,7 @@ const FX_UP_STEPS=[["syllabus","Syllabus","The Economics in the Prelims GS I and
 function fxUpEnv(){
  return `<section class="fx-section fx-env env-up" aria-labelledby="eup-h"><div class="fx-wrap">
   ${fxSecHead("04","Pathway 02 · UPSC CSE Economics","Explore the UPSC Economics learning environment","A structured preparation for the Economics in General Studies: understand the concept, connect it with the Indian economy and government policy, follow current developments, and apply it to Prelims questions and Mains answers.","eup-h")}
-  <ol class="up-journey">${FX_UP_STEPS.map(([k,n,d],i)=>`<li><a class="fx-a" href="${esA(fxUpHref(k))}"><span class="uj-n">0${i+1}</span><b>${esc(n)}</b><span>${esc(d)}</span></a></li>`).join("")}</ol>
+  <ol class="up-journey rv">${FX_UP_STEPS.map(([k,n,d],i)=>`<li><a class="fx-a" href="${esA(fxUpHref(k))}"><span class="uj-n">0${i+1}</span><b>${esc(n)}</b><span>${esc(d)}</span></a></li>`).join("")}</ol>
   <p class="env-cta"><a class="fx-btn primary" href="#/upsc">Enter UPSC CSE Economics ${fxArr()}</a> <a class="fx-link" href="${esA(fxUpHref("course"))}">The 3-month course</a></p>
  </div></section>`;
 }
@@ -153,10 +153,10 @@ function fxResources(){
  return `<section class="fx-section fx-res" aria-labelledby="res-h"><div class="fx-wrap">
   ${fxSecHead("05","Selected resources","Selected resources and handbooks","Original resources, written and designed for each pathway. Look inside before you choose.","res-h")}
   <div class="res-grid">
-   <div class="res-shelf"><div class="res-k fx-tag upsc">UPSC CSE · The Economics Handbook Collection</div>
+   <div class="res-shelf rv"><div class="res-k fx-tag upsc">UPSC CSE · The Economics Handbook Collection</div>
     <ul class="shelf">${vols.map(v=>`<li><a class="fx-a" href="${esA(fxLibHref(v.id))}">${fxCover(v)}<span class="shelf-n">Vol. ${esc(v.n)}</span></a></li>`).join("")}</ul>
     <p class="res-note">Eleven volumes for the Economics in Prelims and Mains General Studies. Digital soft copy, ₹99 per volume. <a class="fx-link" href="${esA(fxLibHref())}">Open the Handbook Library</a></p></div>
-   <div class="res-ib"><div class="res-k fx-tag ib">IB DP · Visual resources</div>
+   <div class="res-ib rv"><div class="res-k fx-tag ib">IB DP · Visual resources</div>
     <div class="res-issues">${c60}</div>${studio}
     <p class="res-note"><a class="fx-link" href="${esA(fxHref("resources",0))}">The IB resource hub</a> · <a class="fx-link" href="${esA(fxHref("studio",0))}">The Learning Studio</a></p></div>
   </div>
@@ -175,7 +175,7 @@ function fxLab(){
   return `<a class="lab-card" href="${esA(fxHref(v,t))}"><div class="lab-fig" aria-hidden="true">${motifSVG(m)}</div><b>${esc(n)}</b><span>${esc(d)}</span></a>`}).join("");
  return `<section class="fx-section fx-lab" aria-labelledby="lab-h"><div class="fx-wrap">
   ${fxSecHead("06","Interactive Economics Laboratory","Move a model. Watch the economy respond.","Every diagram on the platform is generated from its equations and checked point by point, so what you move is the model itself, not a picture of it.","lab-h","on-dark")}
-  <div class="lab-grid">${cards}</div>
+  <div class="lab-grid rv">${cards}</div>
  </div></section>`;
 }
 
@@ -200,7 +200,7 @@ function fxAboutBand(){
  let facts=[];try{facts=CV_AUTHOR}catch(e){}
  let por="";try{por=`<img src="${esA(CV_PORTRAIT.src)}" width="${CV_PORTRAIT.w}" height="${CV_PORTRAIT.h}" alt="${esA(CV_PORTRAIT.alt)}" loading="lazy" decoding="async">`}catch(e){}
  return `<section class="fx-section fx-aboutb" aria-labelledby="ab-h"><div class="fx-wrap abx-grid">
-  <figure class="ab-por">${por}</figure>
+  <figure class="ab-por rv">${por}</figure>
   <div>${fxSecHead("08","About","Arjun Agrawal","","ab-h")}
    <p class="ab-roles">${esc(FXI.roles)}</p>
    <p class="fx-lede">Arjun teaches IB Diploma Programme Economics, mentors Civil Services aspirants in the Economics of General Studies, and designs the resources on this platform, from the diagrams and mindmaps to the handbooks.</p>
@@ -213,7 +213,7 @@ function fxAboutBand(){
 function fxEnqRow(k){const e=FX_ENQ[k];if(!e)return "";const l=fxEnquiryLinks(k);
  return `<li><span class="eq-n">${esc(e.label)}</span><span class="eq-a"><a class="fx-a" href="${esA(l.wa)}" target="_blank" rel="noopener noreferrer" aria-label="${esA(e.label)}: message on WhatsApp">WhatsApp</a><a class="fx-a" href="${esA(l.mail)}" aria-label="${esA(e.label)}: send an email">Email</a></span></li>`}
 function fxContactCols(){
- return `<div class="cnx-grid">
+ return `<div class="cnx-grid rv">
    <div class="cnx-col p-ib"><h3><span class="fx-tag ib">IB DP Economics</span></h3><ul>${["ibTutoring","ibIA","ibEE","ibResources","ibTeachers"].map(fxEnqRow).join("")}</ul>
     <p><a class="fx-a fx-link" href="${esA(fxHref("tutorials",0))}">Tutorials: sessions and terms</a></p></div>
    <div class="cnx-col p-up"><h3><span class="fx-tag upsc">UPSC CSE Economics</span></h3><ul>${["upHandbooks","upCourse","upMentor","upResources"].map(fxEnqRow).join("")}</ul>
@@ -243,7 +243,9 @@ function fxContactPaths(){
 })();
 
 VIEWS.home=function(){
- return `<div class="fxhome">${fxHero()}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxAboutBand()}${fxContactBand()}</div>`;
+ /* a teacher's assignment link (#assign=…) opens on the home page, so its banner leads it, as before */
+ let asn="";try{if(typeof assignBanner==="function")asn=assignBanner()}catch(e){asn=""}
+ return `${asn}<div class="fxhome">${fxHero()}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxAboutBand()}${fxContactBand()}</div>`;
 };
 
 /* ── the IB DP landing's opening ────────────────────────────────────────── */

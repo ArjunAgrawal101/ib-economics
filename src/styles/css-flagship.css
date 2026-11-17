@@ -239,8 +239,11 @@ body[data-pathway="upsc"] #subnav{display:none}
 .hx-ax{fill:none;stroke:rgba(244,239,228,.36);stroke-width:1.2}
 .hx-d{stroke:#8FB6DE}.hx-s{stroke:#E3A778}
 .hx-e{fill:var(--fx-gold-l)}.hx-r{fill:none;stroke:rgba(217,194,143,.5)}
-.hx-d,.hx-s{stroke-dasharray:1;stroke-dashoffset:0;animation:hx-draw 1.6s var(--fx-ease) .15s both}
-.hx-e,.hx-r{animation:hx-fade .6s var(--fx-ease) 1.3s both}
+/* drawn on once, with the platform's motion layer (body.rn-anim is absent under reduced motion) */
+body.rn-anim .hx-d,body.rn-anim .hx-s{stroke-dasharray:1;stroke-dashoffset:0;animation:hx-draw 1.6s var(--fx-ease) .15s both}
+body.rn-anim .hx-e,body.rn-anim .hx-r{animation:hx-fade .6s var(--fx-ease) 1.3s both}
+/* the home's large blocks join the platform's reveal; cards in a row arrive a beat apart */
+body.rn-anim .env-card.rv-in{transition-delay:calc(var(--i,0) * 60ms)}
 @keyframes hx-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 @keyframes hx-fade{from{opacity:0}to{opacity:1}}
 .hx-lede{font:400 clamp(16px,1.3vw,18.5px)/1.6 var(--fx-serif);color:var(--fx-on-dark-2);margin:0;max-width:44ch}

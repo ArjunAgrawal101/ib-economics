@@ -1668,8 +1668,8 @@ body.rn-anim .atx .motif *{animation:none}
 .rn-dv-s{font-size:14px;color:var(--tx-3)}
 .rn-divider::after{content:"";flex:1 0 100%;height:1px;background:var(--hair-3)}
 /* a tighter rhythm on the home page, so new bands do not simply add length */
-body[data-sec="home"] .sec{padding-block:clamp(40px,4.6vw,64px)}
-body[data-sec="home"] .sec.t{padding-block:clamp(32px,3.6vw,52px)}
+body[data-sec="home"] .sec,body[data-sec="ib"] .sec{padding-block:clamp(40px,4.6vw,64px)}
+body[data-sec="home"] .sec.t,body[data-sec="ib"] .sec.t{padding-block:clamp(32px,3.6vw,52px)}
 /* ── the footer as a colophon ───────────────────────────────────────────── */
 .ft-top{background:var(--obs);color:#fff;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:var(--s5);
   background-image:linear-gradient(var(--grid-d) 1px,transparent 1px),linear-gradient(90deg,var(--grid-d) 1px,transparent 1px);background-size:56px 56px}
@@ -1957,7 +1957,7 @@ body[data-sec="world"],body[data-sec="mind"]{--bgx:var(--bgx-global-i)}
 body[data-sec="examiner"],body[data-sec="papers"],body[data-sec="dna"],body[data-sec="practise"],body[data-sec="ees"],body[data-sec="ia"],body[data-sec="educator"],body[data-sec="teacher"]{--bgx:var(--bgx-research-i)}
 body[data-sec="syllabus"],body[data-sec="resources"]{--bgx:var(--bgx-macro-i)}
 .hero.paper{--bgx:var(--bgx-research)}
-body[data-sec="home"] .hero.cv::after,body[data-sec="about"] .hero::after{display:none}
+body[data-sec="home"] .hero.cv::after,body[data-sec="ib"] .hero.cv::after,body[data-sec="about"] .hero::after{display:none}
 /* home bands: the family that belongs to the chapter, on paper, drawn from the far edge */
 .rn-band{position:relative;isolation:isolate}
 .rn-band.sp-learn::before,.rn-band.sp-lab::before,.rn-band.sp-exam::before,.rn-band.sp-research::before,.rn-band.sp-edu::before,.rn-glance::before{
@@ -1987,7 +1987,7 @@ body.rn-anim .hz-eqm path,body.rn-anim .hz-curve path{stroke-dasharray:1400;stro
 /* the hinge: the brand's first idea, on the horizon where the cover's dark meets the paper */
 .rn-hinge{background:linear-gradient(180deg,var(--obs) 0,var(--obs) 6px,#3a3530 40px,var(--chalk) 150px)}
 /* on the home page the chapter marks carry the numbering; a band's own running number would be a second, competing sequence */
-body[data-sec="home"] #view .shead > .n{display:none}
+body[data-sec="home"] #view .shead > .n,body[data-sec="ib"] #view .shead > .n{display:none}
 .rn-band.sp-lab::before{opacity:.035}
 /* ═══ THE OPENING ═══════════════════════════════════════════════════════
    The opening is defined once, in the base stylesheet beside its markup and
@@ -3376,7 +3376,7 @@ a.btn{display:inline-flex;align-items:center;justify-content:center;text-decorat
 /* A clean edge with a fine brass rule, in place of the grey gradient. */
 /* a short warm band eases the eye from charcoal to cream; the brass hairline marks the edge */
 .rn-hinge{background:linear-gradient(180deg,#EBE4D5 0%,#F2EDE4 55%,var(--sf-page) 100%);padding:clamp(24px,2.8vw,36px) 0 clamp(8px,1vw,14px);border-top:1px solid rgba(201,174,114,.75)}
-body[data-sec="home"] .rs-band{padding-top:clamp(18px,2.2vw,30px)}
+body[data-sec="home"] .rs-band,body[data-sec="ib"] .rs-band{padding-top:clamp(18px,2.2vw,30px)}
 .rn-hinge .rn-chap{padding-top:0}
 
 /* ── Explore Economics Resources ───────────────────────────────────────── */
@@ -4412,8 +4412,11 @@ body[data-pathway="upsc"] #subnav{display:none}
 .hx-ax{fill:none;stroke:rgba(244,239,228,.36);stroke-width:1.2}
 .hx-d{stroke:#8FB6DE}.hx-s{stroke:#E3A778}
 .hx-e{fill:var(--fx-gold-l)}.hx-r{fill:none;stroke:rgba(217,194,143,.5)}
-.hx-d,.hx-s{stroke-dasharray:1;stroke-dashoffset:0;animation:hx-draw 1.6s var(--fx-ease) .15s both}
-.hx-e,.hx-r{animation:hx-fade .6s var(--fx-ease) 1.3s both}
+/* drawn on once, with the platform's motion layer (body.rn-anim is absent under reduced motion) */
+body.rn-anim .hx-d,body.rn-anim .hx-s{stroke-dasharray:1;stroke-dashoffset:0;animation:hx-draw 1.6s var(--fx-ease) .15s both}
+body.rn-anim .hx-e,body.rn-anim .hx-r{animation:hx-fade .6s var(--fx-ease) 1.3s both}
+/* the home's large blocks join the platform's reveal; cards in a row arrive a beat apart */
+body.rn-anim .env-card.rv-in{transition-delay:calc(var(--i,0) * 60ms)}
 @keyframes hx-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 @keyframes hx-fade{from{opacity:0}to{opacity:1}}
 .hx-lede{font:400 clamp(16px,1.3vw,18.5px)/1.6 var(--fx-serif);color:var(--fx-on-dark-2);margin:0;max-width:44ch}
@@ -38817,7 +38820,7 @@ function ytLoad(force){
   .catch(e=>{YT.state="done";YT.err=/missing/.test(String(e&&e.message))?"missing":"unreachable";})
   .finally(()=>{clearTimeout(t);YT.at=Date.now();
    /* repaint the studio; repaint home only when a list arrives for the first time, so reading is not disturbed */
-   if(VIEW==="arjun"||(VIEW==="home"&&!had&&YT.data))try{render()}catch(e){}});
+   if(VIEW==="arjun"||(VIEW==="ib"&&!had&&YT.data))try{render()}catch(e){}});
 }
 
 const ytDate=s=>{try{return new Date(s).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})}catch(e){return ""}};
@@ -41266,7 +41269,7 @@ let PRINTOPT={};
   c.querySelectorAll("button,input,select,textarea,nav,.ls-loop,.ls-tools,.subnav,.no-print,.motif,.hero svg,.sp-cover-fig,dialog,[aria-hidden='true']").forEach(e=>{
    if(e.tagName==="BUTTON"&&e.closest(".ls-mo,.gl-t,.ls-card,.ls-case,.ls-pt")){const s=document.createElement("span");s.textContent=e.textContent;e.replaceWith(s)}else e.remove()});
   c.querySelectorAll("details").forEach(d=>d.setAttribute("open",""));
-  PRINTOPT={kind:"page"};_prep(document.title.replace(/ · Arjun Agrawal · IB DP Economics$/,""),`<div class="pview">${c.innerHTML}</div>`,"Printed from the platform");
+  PRINTOPT={kind:"page"};_prep(document.title.replace(/ · (Arjun Agrawal · IB DP Economics|IB DP Economics · Arjun Agrawal|Arjun Agrawal · Economics)$/,""),`<div class="pview">${c.innerHTML}</div>`,"Printed from the platform");
   r.className="p-page";fallback=true;
   let st=document.getElementById("pgsz");if(!st){st=document.createElement("style");st.id="pgsz";document.head.appendChild(st)}st.textContent="@media print{@page{size:A4;margin:14mm}}";return true};
  window.printFallbackClear=function(){if(!fallback)return;fallback=false;const r=document.getElementById("printroot");if(r){r.innerHTML="";r.className=""}PRINTOPT={};const st=document.getElementById("pgsz");if(st)st.textContent=""};
@@ -43568,7 +43571,8 @@ function lnReveal(){if(typeof document==="undefined"||!document.body)return;
    from a visible state, so nothing waits on it. */
 let LN_LASTVIEW=null;
 function lnEnter(){const prev=LN_LASTVIEW;LN_LASTVIEW=typeof VIEW!=="undefined"?VIEW:null;
- if(VIEW!=="home"||!prev||prev==="home")return;
+ /* the cover now opens the IB DP landing (#/ib); the shared home has no cover to animate */
+ if(VIEW!=="ib"||!prev||prev==="ib")return;
  if(!document.body.classList.contains("rn-anim")||(typeof QARUNNING!=="undefined"&&QARUNNING))return;
  const h=document.querySelector("#view section.at-hero");if(!h||!h.animate)return;
  [...h.querySelectorAll(".at-copy > *"),h.querySelector(".at-sig"),h.querySelector(".at-figs")].filter(Boolean).forEach((el,i)=>{
@@ -43591,7 +43595,7 @@ function LAUNCHSUITE(){const out=[];const T=(n,f)=>{let ok=false,d="";try{ok=!!f
  T("Launch · the exam door matches Paper 1: part (a) is out of 10 and part (b) out of 15",()=>/\[10\][\s\S]*\[15\]/.test(RS_FIG.exam()));
  T("Launch · the unit door numbers the four units of the course in order",()=>{const h=RS_FIG.lessons();return ["Introduction","Microeconomics","Macroeconomics","Global economy"].every((u,i)=>h.indexOf(u)>h.indexOf(">"+(i+1)+"<"))});
  T("Launch · the timer folds while idle and keeps its controls",()=>!!document.getElementById("tmrToggle")&&!!document.getElementById("tmrOpen")&&typeof tmrPop==="function"&&typeof lnTimerIdle==="function");
- T("Launch · the cover's entrance plays only on a return to home, never with reduced motion or during the self-test",()=>{const f=String(lnEnter);return /rn-anim/.test(f)&&/QARUNNING/.test(f)&&/prev==="home"/.test(f)&&/duration:340/.test(f)});
+ T("Launch · the cover's entrance plays only on a return to the IB DP landing, never with reduced motion or during the self-test",()=>{const f=String(lnEnter);return /rn-anim/.test(f)&&/QARUNNING/.test(f)&&/prev==="ib"/.test(f)&&/duration:340/.test(f)});
  T("Launch · on the cover's model, every marked point lies on its drawn curve at every slider position",()=>[-2,-1.5,-1,-.5,0,.5,1,1.5,2].every(sv=>{const k=CV.s;try{CV.s=sv;const [dq,dp]=CV_SPOTS[0][1](sv),lo=Math.max(.6,sv+.2),hi=Math.min(10,10+sv),[sq,sp]=CV_SPOTS[1][1](sv),e=CVF.eq(sv);
   return dq>=lo&&dq<=hi&&Math.abs(dp-CVF.D(dq,sv))<1e-9&&Math.abs(sp-CVF.S(sq))<1e-9&&Math.abs(CVF.D(e.q,sv)-CVF.S(e.q))<1e-9}finally{CV.s=k}}));
  T("Launch · the cover's portrait is the original photograph's 4:5 crop, served from assets/brand",()=>/assets\/brand\/arjun-agrawal-portrait-4x5\.webp/.test(rnCover())&&CV_PORTRAIT.w/CV_PORTRAIT.h===0.8);
@@ -44784,8 +44788,10 @@ function fxBuildShell(){
  hdr.parentNode.insertBefore(ctx,hdr.nextSibling);
  document.documentElement.classList.add("fx-js");
  /* a single panel for the dropdowns */
- const p=document.createElement("div");p.className="fxpanel";p.id="fxpanel";p.hidden=true;
+ const p=document.createElement("div");p.className="fxpanel";p.id="fxpanel";p.hidden=true;p.setAttribute("role","region");
  document.body.appendChild(p);
+ /* focus that leaves the panel, other than back to its own button, closes it */
+ p.addEventListener("focusout",e=>{if(!FXDD.open)return;const t=e.relatedTarget;if(t&&!p.contains(t)&&t!==FXDD.btn)fxClosePanel()});
  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&FXDD.open){const b=FXDD.btn;fxClosePanel();if(b)b.focus()}});
  document.addEventListener("click",e=>{if(!FXDD.open)return;const p=document.getElementById("fxpanel");
   if(p.contains(e.target)||(FXDD.btn&&FXDD.btn.contains(e.target)))return;fxClosePanel()});
@@ -44828,12 +44834,16 @@ function fxTogglePanel(k,btn,e){
  if(FXDD.open===k){fxClosePanel();return}
  fxClosePanel();
  const p=document.getElementById("fxpanel");if(!p)return;
+ /* the panel follows its navigation in the document, so the keyboard reaches it next */
+ const host=btn.closest("nav");if(host&&host.nextElementSibling!==p)host.after(p);
  p.innerHTML=fxPanelHtml(k);p.dataset.k=k;p.hidden=false;
  FXDD.open=k;FXDD.btn=btn;btn.setAttribute("aria-expanded","true");
  p.setAttribute("aria-label",btn.getAttribute("data-label")||"Menu");
  fxPlacePanel();
  p.querySelectorAll("[data-fxclose]").forEach(a=>a.addEventListener("click",()=>fxClosePanel()));
  requestAnimationFrame(()=>p.classList.add("on"));
+ /* opened from the keyboard (a click with no pointer), the first destination takes focus */
+ if(e&&e.detail===0){const first=p.querySelector("a");if(first)first.focus()}
 }
 function fxClosePanel(){
  const p=document.getElementById("fxpanel");
@@ -44908,11 +44918,24 @@ function fxMobileDrawer(){
 mobileDrawer=fxMobileDrawer;
 (function(){const prev=closeMenu;closeMenu=function(){const r=prev.apply(this,arguments);const b=document.getElementById("burger");if(b)b.setAttribute("aria-expanded","false");return r}})();
 
+/* ── the page's title names its pathway ─────────────────────────────────
+   The older layers title a section "Learn · Arjun Agrawal · IB DP Economics".
+   A page in the IB DP environment now reads "Learn · IB DP Economics · Arjun
+   Agrawal"; a shared page reads "About · Arjun Agrawal · Economics". Titles
+   the layers set for one item (a Studio piece, a UPSC page) are left alone. */
+const FX_OLDSUFFIX=" · Arjun Agrawal · IB DP Economics";
+function fxTitle(){
+ if(VIEW==="ib"){document.title="IB DP Economics · Arjun Agrawal · Economics";return}
+ const t=document.title;if(!t.endsWith(FX_OLDSUFFIX))return;
+ const name=t.slice(0,-FX_OLDSUFFIX.length);
+ document.title=fxPathway(VIEW)==="ib"?name+" · IB DP Economics · Arjun Agrawal":name+" · Arjun Agrawal · Economics";
+}
+
 /* ── every render paints the shell ──────────────────────────────────────── */
 fxBuildShell();
 (function(){
  const prev=render;
- render=function(){const r=prev.apply(this,arguments);try{fxPaintShell()}catch(e){console.error(e)}return r};
+ render=function(){const r=prev.apply(this,arguments);try{fxPaintShell()}catch(e){console.error(e)}try{fxTitle()}catch(e){}return r};
 })();
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -45024,7 +45047,7 @@ function fxThink(){
  return `<section class="fx-section fx-think" aria-labelledby="th-h"><div class="fx-wrap th-grid">
   <div>${fxSecHead("02","The way of thinking","Think like an economist.","Every choice has a cost, every market finds a balance, every policy is a trade-off. The platform teaches that habit of mind first, so that the syllabus, whichever it is, becomes something you can reason with rather than recall.","th-h")}
    <ol class="th-steps">${FX_METHOD.map(([n,d],i)=>`<li><span class="th-n">${i+1}</span><div><b>${esc(n)}</b><span>${esc(d)}</span></div></li>`).join("")}</ol></div>
-  <figure class="th-plate">
+  <figure class="th-plate rv">
    <div class="th-fig" id="cv-plate-fig">${plate}</div>
    <div class="th-ctl"><label for="th-shift">Shift demand</label>
     <input id="th-shift" type="range" min="-3" max="3" step="0.5" value="0" oninput="cvSet(this.value)" aria-describedby="cv-read"></div>
@@ -45038,7 +45061,7 @@ function fxIbEnv(){
  const gs=fxIbGroups();
  return `<section class="fx-section fx-env env-ib" aria-labelledby="eib-h"><div class="fx-wrap">
   ${fxSecHead("03","Pathway 01 · IB DP Economics","Explore the IB Economics learning environment","Five ways in, one course: learn the concepts, explore the world's economies, practise until the models are yours, research for the IA and the EE, and use the resources that support all of it.","eib-h")}
-  <div class="env-grid five">${gs.map(g=>`<article class="env-card"><h3>${esc(g.n)}</h3><p>${esc(g.d)}</p>
+  <div class="env-grid five">${gs.map((g,gi)=>`<article class="env-card rv" style="--i:${gi}"><h3>${esc(g.n)}</h3><p>${esc(g.d)}</p>
    <ul>${g.items.slice(0,4).map(i=>`<li><a class="fx-a" href="${esA(i.href)}">${esc(i.n)}</a></li>`).join("")}</ul></article>`).join("")}</div>
   <p class="env-cta"><a class="fx-btn primary" href="#/ib">Enter IB DP Economics ${fxArr()}</a> <a class="fx-link" href="${esA(fxHref("course",0))}">Start with the course</a></p>
  </div></section>`;
@@ -45053,7 +45076,7 @@ const FX_UP_STEPS=[["syllabus","Syllabus","The Economics in the Prelims GS I and
 function fxUpEnv(){
  return `<section class="fx-section fx-env env-up" aria-labelledby="eup-h"><div class="fx-wrap">
   ${fxSecHead("04","Pathway 02 · UPSC CSE Economics","Explore the UPSC Economics learning environment","A structured preparation for the Economics in General Studies: understand the concept, connect it with the Indian economy and government policy, follow current developments, and apply it to Prelims questions and Mains answers.","eup-h")}
-  <ol class="up-journey">${FX_UP_STEPS.map(([k,n,d],i)=>`<li><a class="fx-a" href="${esA(fxUpHref(k))}"><span class="uj-n">0${i+1}</span><b>${esc(n)}</b><span>${esc(d)}</span></a></li>`).join("")}</ol>
+  <ol class="up-journey rv">${FX_UP_STEPS.map(([k,n,d],i)=>`<li><a class="fx-a" href="${esA(fxUpHref(k))}"><span class="uj-n">0${i+1}</span><b>${esc(n)}</b><span>${esc(d)}</span></a></li>`).join("")}</ol>
   <p class="env-cta"><a class="fx-btn primary" href="#/upsc">Enter UPSC CSE Economics ${fxArr()}</a> <a class="fx-link" href="${esA(fxUpHref("course"))}">The 3-month course</a></p>
  </div></section>`;
 }
@@ -45070,10 +45093,10 @@ function fxResources(){
  return `<section class="fx-section fx-res" aria-labelledby="res-h"><div class="fx-wrap">
   ${fxSecHead("05","Selected resources","Selected resources and handbooks","Original resources, written and designed for each pathway. Look inside before you choose.","res-h")}
   <div class="res-grid">
-   <div class="res-shelf"><div class="res-k fx-tag upsc">UPSC CSE · The Economics Handbook Collection</div>
+   <div class="res-shelf rv"><div class="res-k fx-tag upsc">UPSC CSE · The Economics Handbook Collection</div>
     <ul class="shelf">${vols.map(v=>`<li><a class="fx-a" href="${esA(fxLibHref(v.id))}">${fxCover(v)}<span class="shelf-n">Vol. ${esc(v.n)}</span></a></li>`).join("")}</ul>
     <p class="res-note">Eleven volumes for the Economics in Prelims and Mains General Studies. Digital soft copy, ₹99 per volume. <a class="fx-link" href="${esA(fxLibHref())}">Open the Handbook Library</a></p></div>
-   <div class="res-ib"><div class="res-k fx-tag ib">IB DP · Visual resources</div>
+   <div class="res-ib rv"><div class="res-k fx-tag ib">IB DP · Visual resources</div>
     <div class="res-issues">${c60}</div>${studio}
     <p class="res-note"><a class="fx-link" href="${esA(fxHref("resources",0))}">The IB resource hub</a> · <a class="fx-link" href="${esA(fxHref("studio",0))}">The Learning Studio</a></p></div>
   </div>
@@ -45092,7 +45115,7 @@ function fxLab(){
   return `<a class="lab-card" href="${esA(fxHref(v,t))}"><div class="lab-fig" aria-hidden="true">${motifSVG(m)}</div><b>${esc(n)}</b><span>${esc(d)}</span></a>`}).join("");
  return `<section class="fx-section fx-lab" aria-labelledby="lab-h"><div class="fx-wrap">
   ${fxSecHead("06","Interactive Economics Laboratory","Move a model. Watch the economy respond.","Every diagram on the platform is generated from its equations and checked point by point, so what you move is the model itself, not a picture of it.","lab-h","on-dark")}
-  <div class="lab-grid">${cards}</div>
+  <div class="lab-grid rv">${cards}</div>
  </div></section>`;
 }
 
@@ -45117,7 +45140,7 @@ function fxAboutBand(){
  let facts=[];try{facts=CV_AUTHOR}catch(e){}
  let por="";try{por=`<img src="${esA(CV_PORTRAIT.src)}" width="${CV_PORTRAIT.w}" height="${CV_PORTRAIT.h}" alt="${esA(CV_PORTRAIT.alt)}" loading="lazy" decoding="async">`}catch(e){}
  return `<section class="fx-section fx-aboutb" aria-labelledby="ab-h"><div class="fx-wrap abx-grid">
-  <figure class="ab-por">${por}</figure>
+  <figure class="ab-por rv">${por}</figure>
   <div>${fxSecHead("08","About","Arjun Agrawal","","ab-h")}
    <p class="ab-roles">${esc(FXI.roles)}</p>
    <p class="fx-lede">Arjun teaches IB Diploma Programme Economics, mentors Civil Services aspirants in the Economics of General Studies, and designs the resources on this platform, from the diagrams and mindmaps to the handbooks.</p>
@@ -45130,7 +45153,7 @@ function fxAboutBand(){
 function fxEnqRow(k){const e=FX_ENQ[k];if(!e)return "";const l=fxEnquiryLinks(k);
  return `<li><span class="eq-n">${esc(e.label)}</span><span class="eq-a"><a class="fx-a" href="${esA(l.wa)}" target="_blank" rel="noopener noreferrer" aria-label="${esA(e.label)}: message on WhatsApp">WhatsApp</a><a class="fx-a" href="${esA(l.mail)}" aria-label="${esA(e.label)}: send an email">Email</a></span></li>`}
 function fxContactCols(){
- return `<div class="cnx-grid">
+ return `<div class="cnx-grid rv">
    <div class="cnx-col p-ib"><h3><span class="fx-tag ib">IB DP Economics</span></h3><ul>${["ibTutoring","ibIA","ibEE","ibResources","ibTeachers"].map(fxEnqRow).join("")}</ul>
     <p><a class="fx-a fx-link" href="${esA(fxHref("tutorials",0))}">Tutorials: sessions and terms</a></p></div>
    <div class="cnx-col p-up"><h3><span class="fx-tag upsc">UPSC CSE Economics</span></h3><ul>${["upHandbooks","upCourse","upMentor","upResources"].map(fxEnqRow).join("")}</ul>
@@ -45160,7 +45183,9 @@ function fxContactPaths(){
 })();
 
 VIEWS.home=function(){
- return `<div class="fxhome">${fxHero()}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxAboutBand()}${fxContactBand()}</div>`;
+ /* a teacher's assignment link (#assign=…) opens on the home page, so its banner leads it, as before */
+ let asn="";try{if(typeof assignBanner==="function")asn=assignBanner()}catch(e){asn=""}
+ return `${asn}<div class="fxhome">${fxHero()}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxAboutBand()}${fxContactBand()}</div>`;
 };
 
 /* ── the IB DP landing's opening ────────────────────────────────────────── */
@@ -45244,6 +45269,12 @@ function FLAGSHIPSUITE(){
  T("Flagship · the home makes no claim about the Economics Optional",()=>!/Optional/.test(txt(home())));
  T("Flagship · the home's About band states only what the platform already states",()=>{const t=txt(home());
   return CV_AUTHOR.every(([k,v])=>t.includes(v))&&t.includes(FXI.roles)&&!/(best|number one|no\. ?1|#1|leading|top-rated|award)/i.test(t)});
+
+ T("Flagship · a teacher's assignment link still opens on the home page with its banner",()=>{
+  /* the link is read through assignFromHash(); it is stood in for here, so the address is never touched */
+  const f=assignFromHash;let h="";
+  try{assignFromHash=()=>({t:"Week 3",i:[["q","x"]]});h=home()}finally{assignFromHash=f}
+  return /An assignment was shared with you/.test(h)&&/Week 3/.test(h)&&h.indexOf("An assignment was shared")<h.indexOf('class="fxhome"')});
 
  /* ── the IB DP landing ── */
  T("Flagship · the IB DP landing keeps the full IB home page beneath its pathway header",()=>{const h=ibl();
