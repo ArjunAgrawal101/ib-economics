@@ -1,6 +1,6 @@
 # Release report: one Economics ecosystem, two learning pathways
 
-Branch `claude/upsc-cse-economics` (pull request [ArjunAgrawal101/ib-economics#11](https://github.com/ArjunAgrawal101/ib-economics/pull/11), not merged). This release builds on the UPSC CSE Economics section described in `docs/releases/2026-11-16-upsc-second-pathway-report.md`, which is part of the same pull request. Brand: **ARJUN AGRAWAL | ECONOMICS**.
+Branch `claude/upsc-cse-economics`. Its pull request, [ArjunAgrawal101/ib-economics#11](https://github.com/ArjunAgrawal101/ib-economics/pull/11), was merged into `main` (2d238cd) at its earlier head 5f7b64f, before the commits below were pushed; see **Pull request** under Remaining limitations. This release builds on the UPSC CSE Economics section described in `docs/releases/2026-11-16-upsc-second-pathway-report.md`, which is part of the same pull request. Brand: **ARJUN AGRAWAL | ECONOMICS**.
 
 ## Architecture
 
@@ -133,4 +133,71 @@ It is also in the phone drawer. Its site and repository could not be reached fro
 
 ## Tests
 
-The full run of all 22 browser suites on this build is in progress; its results will be recorded here when it finishes. Suites run so far on commit 0ce5623: api-youtube 21/21, selftest 37/37, e2e 22/22.
+Every suite was run in sequence in headless Chromium (Playwright 1.63) against the final committed build, **a36759e**, with a clean working tree: **22 suites, 721 checks, 0 failures.**
+
+| Suite | Result | Checks | Time |
+|---|---|---|---|
+| api-youtube | passed | 21 | 2 s |
+| selftest | passed | 37 (the built-in start-up self-tests all pass) | 5 s |
+| e2e | passed | 22 | 30 s |
+| ecosystem | passed | 30 | 104 s |
+| renaissance | passed | 25 | 18 s |
+| cover | passed | 35 | 29 s |
+| pwa | passed | 4 | 7 s |
+| widths | passed | 15 | 1158 s |
+| overlap | passed | 7 (540 route-widths, 320 to 2560 px; no overlap, collision or clipped label) | 537 s |
+| routes | passed | 2 (220 routes opened cold at 375 and 1366 px) | 597 s |
+| intro | passed | 59 | 120 s |
+| course | passed | 39 | 10 s |
+| transform | passed | 33 | 34 s |
+| events | passed | 49 | 36 s |
+| tabs | passed | 9 | 16 s |
+| notices | passed | 4 | 9 s |
+| events-scroll | passed | 26 | 90 s |
+| final | passed | 18 | 8 s |
+| studio | passed | 89 | 45 s |
+| launch | passed | 54 | 76 s |
+| upsc | passed | 90 | 81 s |
+| pathways (new) | passed | 53 | 72 s |
+
+**What the earlier full run found, and what was fixed.** An earlier full run, on 0ce5623, passed 20 of 22 suites.
+- **routes** failed one check. On `#/lab/link-audit`, opened cold at 1366 px, the layout audit still counted only the IB bar's buttons as the navigation. It now counts the main navigation as well (d209673, through the navigation migration).
+- **overlap** was stopped at the runner's 40-minute limit without output. Run on its own on the same build, it finished in 538 s, the same as the previous release, and each of the fifteen widths runs in about 40 s. The stall did not recur, and its cause was not found in the suite or the page.
+- That run found one real defect, fixed in a36759e: the home hero figure's "ONE DISCIPLINE" label was clipped at the right edge of its figure.
+
+**How the tests changed.** No test was skipped, disabled or loosened to pass.
+- **Front-page checks** that read the IB front page now read it at `#/ib`, where it lives.
+- **Header checks** use the main navigation, since the IB bar is folded away.
+- **The upsc suite** now checks:
+  - the 198 preview files and the absence of a watermark step;
+  - the filters;
+  - the viewer's keys, thumbnails, zoom and full screen;
+  - the briefed collection title and subtitle.
+- **The intro suite** now expects the opening on every full-page load of any address, as the brief requires.
+
+## Commits
+
+| Commit | What |
+|---|---|
+| 7596320 | Part 1: the intro, the ecosystem home page, the IB landing page, the main navigation, shared concepts |
+| 97ecb9f | Part 2: the Indian Economy Collection with clean eight-page previews, the forest-green palette, the UPSC roadmap and the Optional |
+| 0ce5623 | Part 3: tests for the new architecture, the assignment banner, accessibility fixes, docs |
+| 9fee35d | This report (draft); the UPSC report archived |
+| d209673 | The layout audit counts the main navigation |
+| a36759e | The hero figure's label inside its figure |
+
+## Remaining limitations
+
+- **Pull request.**
+  - **What happened to #11.** PR #11 was merged into `main` (2d238cd, 17 November 2026, 07:44 +05:30) at its head 5f7b64f, the previous release. The commits above were pushed to the same branch afterwards, so they are not in PR #11 and not in `main`.
+  - **What `main` now holds.** `main` also contains PR #12 (186e8d4, from `claude/sleepy-pascal-rlzusx`), a separate implementation of much of this same brief: a shared home page with the IB landing page at `#/ib`, a clean preview pipeline and viewer for the handbooks, shared concepts and a two-pathway opening. Its opening plays once a session (it records that in `sessionStorage`), where this branch plays it on every full-page load, as the brief requires.
+  - **Conflicts.** A trial merge of `main` into this branch conflicts in 33 files, among them `index.html`, `src/modules/43-upsc.js`, the handbook catalogue, the build script, the preview images and most test files.
+  - **No new pull request was opened.** The choice between the two implementations, or how to combine them, is the owner's.
+- **The Business Brief.** Its site (the-business-brief-dun.vercel.app) and its repository could not be reached from this environment. The home page's panel is therefore typographic, with no screenshots of it, and nothing about its design was copied.
+- **Vercel.** No deployment or preview could be reached from here, so nothing about production is claimed.
+- **Browsers.** Only headless Chromium was used, not Safari, Firefox or physical devices.
+- **The opening's margin.** The platform is ready about 3.4 to 3.7 s after the first frame on this machine, and the reveal is due at 4.3 s. On a much slower device the reveal starts late and is quicker, but still ends at 5.0 s. If fewer than 120 ms remain, it ends late and the record says so.
+- **For the owner to confirm**, unchanged from the previous report:
+  - the qualifications shown on About the Educator, taken from the handbooks' title pages;
+  - the page counts of the volumes supplied as Word files;
+  - the syllabus lines, against the 2026 notice PDF.
