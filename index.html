@@ -44811,8 +44811,8 @@ function hlRel(v){const has=(i)=>v.map.some(r=>String(r[i]||"").trim());
  return {pre:!!(v.pre&&v.exams.some(e=>/^Prelims/i.test(e))&&has(1)),mains:!!(v.mains&&v.exams.some(e=>/^Mains/i.test(e))&&has(2))}}
 function hlPapers(v){const e=v.exams.find(x=>/^Mains/i.test(x));return e?e.replace(/^Mains\s*/i,"").replace(/\s*&\s*/g," and "):""}
 
-/* ── related volumes: shared themes, read from each volume's concepts,
-   institutions and parts. A theme counts when one of the two volumes treats
+/* ── related volumes: shared themes, read from each volume's description,
+   aims, concepts, institutions and parts. A theme counts when one of two volumes treats
    it at length (three mentions or more) and the other at least touches it;
    rarer themes weigh more; a shared category adds weight. ─────────────── */
 const HL_THEMES=[
@@ -44850,7 +44850,7 @@ function hlRelated(v){
  return (HL_RELC[v.id]||[]).slice(0,3)}
 
 /* ── search and filters ─────────────────────────────────────────────────── */
-function hlNorm(s){return String(s==null?"":s).toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g,"").replace(/&/g," and ").replace(/[^a-z0-9]+/g," ").trim()}
+function hlNorm(s){return String(s==null?"":s).toLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g,"").replace(/&/g," and ").replace(/[^a-z0-9]+/g," ").trim()}
 function hlToks(q){return hlNorm(q).split(" ").filter(Boolean)}
 function hlHas(text,toks){const w=" "+hlNorm(text);return toks.every(t=>w.includes(" "+t))}
 function hlHay(v){return [v.title,v.sub,v.desc,v.category,"volume "+v.n,"vol "+v.num,...v.parts.map(p=>"part "+p.l+" "+p.t+" "+p.d),...v.concepts,...v.inst].join(" | ")}
@@ -44920,7 +44920,7 @@ function hlCatalogue(missing){const V=hlVols(),T=V.length,n=V.filter(v=>hlMatch(
   <ol class="hl-steps">
    <li><span class="hl-step-n" aria-hidden="true">1</span><b>Look inside</b><span>Open a volume's preview pages and read its contents first.</span></li>
    <li><span class="hl-step-n" aria-hidden="true">2</span><b>Send the prefilled message</b><span>${esc(hlCta())} opens WhatsApp with a message naming the volume. Email works too.</span></li>
-   <li><span class="hl-step-n" aria-hidden="true">3</span><b>Arrange payment and delivery directly</b><span>Arjun Agrawal replies with the payment and delivery details of the soft copy.</span></li></ol>
+   <li><span class="hl-step-n" aria-hidden="true">3</span><b>Arrange payment and delivery directly</b><span>Payment and the delivery of the soft copy are arranged with Arjun Agrawal, not on this website.</span></li></ol>
   <p class="hl-contact">WhatsApp or call ${hlTel()} <span class="hl-sep" aria-hidden="true">·</span> Email <a class="hl-mail" href="${esA(fxMail("UPSC Economics handbook enquiry",FX_ENQ.upHandbooks.msg))}">${esc(FX_CONTACT.email())}</a></p>
  </div></section>
  <section class="hl-browse" aria-labelledby="hl-browse-h"><div class="hl-wrap">
@@ -44961,9 +44961,9 @@ function hlCard(v){const ok=hlMatch(v),parts=hlParts(v),show=parts.slice(0,6),mo
 function hlTerms(){return `<section class="hl-terms" aria-labelledby="hl-terms-h"><div class="hl-wrap hl-terms-g">
  <h2 class="hl-h3" id="hl-terms-h">About the previews and purchases</h2>
  <ul class="hl-terms-l">
-  <li><b>Real pages.</b> The previews are actual pages from each volume, chosen to show its contents, explanations, diagrams, tables and examination material. They are shown as they are printed in the volume.</li>
+  <li><b>Real pages.</b> The previews are actual pages from each volume, chosen to show its contents, explanations, diagrams, tables and examination material, so that you can judge the writing and the depth.</li>
   <li><b>Not the whole volume.</b> The complete handbooks are never published on this website. Each is sold as a digital soft copy (PDF) at ₹${hlPriceN()} per volume; there is no bundle price.</li>
-  <li><b>No protection is claimed.</b> A page shown in a browser can be saved or photographed, and this site does not pretend otherwise. The pages are shared so that you can judge the quality before you buy.</li>
+  <li><b>No protection is claimed.</b> A page shown in a browser can be saved or photographed, and this site does not pretend otherwise. The pages are shared so that you can see the quality before you buy.</li>
   <li><b>Enquiry first.</b> There is no payment gateway here and no purchase is completed on the site. Messages go to ${esc(FX_CONTACT.email())} or ${esc(FX_CONTACT.phone())}.</li></ul>
  </div></section>`}
 
@@ -45004,7 +45004,7 @@ function hlVolume(v){const V=hlVols(),i=V.indexOf(v),prev=V[i-1],next=V[i+1],r=h
     <h3 class="hl-h4">Recurring boxes</h3><ul class="hl-boxes">${v.boxes.map(b=>`<li>${esc(b)}</li>`).join("")}</ul>
     <h3 class="hl-h4">The revision compendium${comp?` <span>Part ${esc(comp.l)}, from page ${comp.p}</span>`:""}</h3><p>${esc(v.comp)}</p></section>
    ${topics.length?`<section class="hl-vs" aria-labelledby="hl-fr-h"><h2 class="hl-h3" id="hl-fr-h">Free topic previews from this volume</h2><ul class="hl-free">${topics.map(t=>`<li><a href="${esA(routeFormat("upsc",2,t.id))}">${esc(t.t)}</a></li>`).join("")}</ul></section>`:""}
-   ${rel.length?`<section class="hl-vs" aria-labelledby="hl-relv-h"><h2 class="hl-h2" id="hl-relv-h">Related volumes</h2><p class="hl-sec-d">Volumes that share the most ground with this one, read from their concepts, institutions and parts.</p>
+   ${rel.length?`<section class="hl-vs" aria-labelledby="hl-relv-h"><h2 class="hl-h2" id="hl-relv-h">Related volumes</h2><p class="hl-sec-d">Volumes that share the most ground with this one, read from their descriptions, concepts, institutions and parts.</p>
     <ul class="hl-relv">${rel.map(x=>`<li><a class="hl-relv-a" href="${hlHref(x.v.id)}"><span class="hl-relv-cv">${hlCover(x.v,"hl-cv","96px")}</span><span class="hl-relv-x"><span class="hl-kick"><span class="hl-vn">Volume ${esc(x.v.n)}</span></span><b>${esc(x.v.title)}</b><span class="hl-relv-c">${esc(x.v.category)}</span>${x.why.length?`<span class="hl-relv-w">Shared ground: ${esc(x.why.slice(0,3).join("; "))}</span>`:""}</span></a></li>`).join("")}</ul></section>`:""}
   </div>
   <aside class="hl-vside" aria-label="Get this handbook"><div class="hl-side-in">
@@ -45028,8 +45028,8 @@ function hlRender(arg){try{hlClose(true)}catch(e){}
    previous pages fetched in advance, thumbnails, zoom, full screen (the
    Fullscreen API, or an immersive layout where it is missing), swipe, and
    the keyboard. Focus stays inside while it is open and returns to the
-   control that opened it. The pages are shown exactly as rendered from the
-   volume: no watermark, stamp or overlay is drawn over them. */
+   control that opened it. The viewer draws nothing over a page: no
+   watermark, stamp or overlay. */
 const HLV={el:null,id:"",i:0,z:0,imm:false,ret:null,pre:{},ptr:null,fit:0};
 const HL_ZOOM=[1,1.25,1.5,2,2.5,3];
 const HL_IC={prev:'<path d="M12.5 4 6.5 10l6 6"/>',next:'<path d="M7.5 4l6 6-6 6"/>',out:'<path d="M5 10h10"/>',in:'<path d="M5 10h10M10 5v10"/>',

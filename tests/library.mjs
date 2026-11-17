@@ -115,7 +115,7 @@ for (const u of ['assets/upsc/handbooks/volume-iii/volume-iii.pdf', 'assets/upsc
   await p.locator('#hl-vol').selectOption('volume-vii');
   check((await visible(p)).join() === 'volume-vii' && /1 of 11 volumes \(Volume VII\)/.test(await count()), 'the volume filter shows one volume', await count());
   await p.locator('#hl-vol').selectOption('');
-  const norm = s => ' ' + String(s).toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, ' ').trim();
+  const norm = s => ' ' + String(s).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, ' ').trim();
   const hay = v => norm([v.title, v.sub, v.desc, v.category, 'volume ' + v.n, 'vol ' + v.num, ...v.parts.map(x => 'part ' + x.l + ' ' + x.t + ' ' + x.d), ...v.concepts, ...v.inst].join(' | '));
   for (const q of ['buffer stocks', 'GST Council', 'Phillips curve', 'repo', 'SEBI', 'labour codes', 'inflation']) {
     await p.locator('#hl-q').fill(q); await p.waitForTimeout(80);
