@@ -40,3 +40,9 @@ tools/build/.cache/
 private/
 masters/
 *.master.*
+
+# Proprietary handbooks: never stored in the repository. tools/upsc/build_upsc.py
+# reads them from a private folder outside it and writes only watermarked previews.
+*.docx
+*Platinum*.pdf
+/private/

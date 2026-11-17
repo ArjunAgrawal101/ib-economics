@@ -66,7 +66,7 @@ function rnCover(old){
  return `<section class="hero rn-home cv at-hero" aria-labelledby="cv-h"><div class="wrap full in at-hgrid">
   <div class="cv-copy at-copy">
    <div class="eb">IB DP Economics</div>
-   <h1 class="cv-h at-brand" id="cv-h"><span class="ab-1">Think like</span> <span class="ab-2">an economist.</span></h1>
+   <h2 class="cv-h at-brand" id="cv-h"><span class="ab-1">Think like</span> <span class="ab-2">an economist.</span></h2>
    <p class="at-head">Economics is not just a subject to study. It is a way to understand the world.</p>
    <p class="cv-lede">An interactive IB DP Economics learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking.</p>
    <div class="row cv-cta"><button class="btn lg a" onclick="cvExplore()">Explore Economics <span aria-hidden="true">→</span></button><a class="btn lg on-ink" href="#/resources">Explore Resources</a></div></div>

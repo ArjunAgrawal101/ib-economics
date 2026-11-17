@@ -54,7 +54,7 @@ function dlChart(id,series,o){o=o||{};
   ${(()=>{/* event marks: each label takes the lowest of three rows where it fits beside the others */
    const rows=[[],[],[]];return (o.marks||[]).filter(m=>dlX(m.at)>=x0&&dlX(m.at)<=x1).map((m,i)=>{const x=sx(m.at),w=String(m.label).length*6.9+6,end=x+4+w>W-4,a=end?x-4-w:x+4,b=end?x-4:x+4+w;
     let r=rows.findIndex(rw=>rw.every(([p,q])=>b<p-4||a>q+4));if(r<0)r=i%3;rows[r].push([a,b]);const mx=x.toFixed(1);
-    return `<line x1="${mx}" x2="${mx}" y1="${T-4}" y2="${H-B}" class="dl-mark"/><text x="${mx}" y="${T-8-r*14}" class="dl-mlab" text-anchor="${end?"end":"start"}" dx="${end?-4:4}">${esc(m.label)}</text>`}).join("")})()}
+    return `<line x1="${mx}" x2="${mx}" y1="${T-4}" y2="${H-B}" class="dl-mark"/><text x="${mx}" y="${T-8-r*16}" class="dl-mlab" text-anchor="${end?"end":"start"}" dx="${end?-4:4}">${esc(m.label)}</text>`}).join("")})()}
   ${paths}${lab}<line class="dl-cross" id="${id}-x" x1="0" x2="0" y1="${T}" y2="${H-B}" style="display:none"/>
   <g id="${id}-dots"></g>
 </svg>

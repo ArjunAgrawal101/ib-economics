@@ -161,3 +161,23 @@ Hover lifts the card by 2px, deepens its border and moves the arrow. Below 720px
   - When a reader returns to the home page from another page, the words, the signature and the figures rise 10px and fade in over 340ms, 36ms apart, all within 0.6s.
   - It does not play on a first visit, because the opening sequence is the entrance there.
 - **Reduced motion** removes every reveal, transition and entrance.
+
+## The UPSC section
+
+The UPSC pages share the platform's typefaces and spacing and take a second palette, defined as
+`--up-*` tokens in `src/styles/css-upsc.css`: midnight navy (`#0F1C36`), warm ivory (`#F7F2E7`),
+muted gold (`#B08A47`, with `#7A5D27` for gold text on ivory and `#D8BF8C` on navy), forest green
+(`#2E5E4E`) and a restrained burgundy (`#7A2436`). Inside the section the sub-navigation turns
+navy with a gold underline (`body.up-on`).
+
+- **Labels.** Four kinds of text are always marked: Official (navy), Explained (gold tint),
+  Covered (green tint) and Current (burgundy tint).
+- **Figures.** Original SVG, computed where there is anything to compute (the bond price curve, the
+  PPC, the deficit bars), in the `uf-*` inks. Each has a title and a caption saying what it shows.
+- **Coverage dots.** Eleven dots, one per volume, filled where the volume's own contents or syllabus
+  map treats the topic. They are a map, never a percentage.
+- **Covers.** Shown at their own proportions (520 × 735), with a soft shadow, as publications.
+- **Motion.** Cards lift by 2 px on hover and the batch-of-25 seats settle in once, only with the
+  motion layer on; nothing moves under reduced motion.
+- **The pathway strip.** Graphite on IB pages and navy on UPSC pages; on phones the two pathways
+  split the width as a two-way switch.

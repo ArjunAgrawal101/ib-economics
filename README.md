@@ -35,6 +35,54 @@ the video studio says so and everything else works exactly as before.
 
 > Economics is not only a subject you study. It is a way of understanding the world.
 
+## UPSC CSE Economics
+
+The platform has two pathways. The home page opens with "Economics. Understood. Connected.
+Applied." and two cards: **IB DP Economics** ("Think like an economist."), which leads into
+everything described below, and **UPSC CSE Economics** ("Understand the economy. Master the
+examination."). A slim strip above the header (`#pathbar`) carries
+"IB DP Economics | UPSC CSE Economics | About | Contact" at every width; inside the UPSC section,
+About and Contact lead to its own pages. The IB primary bar is unchanged.
+
+The section lives at `#/upsc` and has eight tabs, each a real address:
+
+| Tab | Address | What it holds |
+|---|---|---|
+| UPSC Overview | `#/upsc` | Five pillars, the seven-step approach (the repo rate from concept to Mains), a map of how the eleven volumes connect |
+| Syllabus | `#/upsc/syllabus` (`/mains`) | The official UPSC wording, quoted from Examination Notice No. 05/2026-CSE, kept apart from explanation; fourteen Prelims themes and the ten GS III lines, each mapped to volumes |
+| Economics Resources | `#/upsc/economics-resources/<topic>` | Eleven free topic previews with original diagrams, a question each, search and categories; "One Concept. Two Examination Perspectives." links shared concepts to existing IB pages |
+| Economics Handbooks | `#/upsc/economics-handbooks/<volume-id>` | The eleven-volume collection at ₹99 / Volume, each with its own page |
+| Current Affairs | `#/upsc/current-affairs` | A hand-edited list of dated developments, each with its source and handbook part |
+| UPSC Economics Course | `#/upsc/upsc-economics-course` | The 3-month intensive programme: ₹9,999 for the complete programme, online, at most 25 students |
+| About the Educator | `#/upsc/about-the-educator` | Facts already published on the site and on the handbooks' title pages |
+| Contact / Enrolment | `#/upsc/contact-enrolment` | Separate handbook, enrolment and general enquiries |
+
+**Where the text comes from.** `content/upsc/handbooks.json` is the catalogue: every title, page
+count, part, page number and syllabus-map row is taken from the volume itself. Syllabus lines,
+topic previews, current affairs, the connector and the programme are in
+`src/modules/42-upsc-content.js`; the pages are drawn by `src/modules/43-upsc.js` and styled by
+`src/styles/css-upsc.css`.
+
+**The handbooks are never in this repository.** `tools/upsc/build_upsc.py` reads the eleven PDFs
+from a private folder outside the repository, checks each title and page count against the
+catalogue, and writes only four low-resolution, watermarked WebP previews per volume (cover,
+contents, two sample pages) to `assets/upsc/handbooks/`, then regenerates
+`src/modules/41-upsc-data.js`:
+
+```
+python3 tools/upsc/build_upsc.py --src /path/to/private/handbooks   # previews + data
+python3 tools/upsc/build_upsc.py --data-only                        # data only, from the JSON
+python3 tools/build/splice.py
+```
+
+`.gitignore` refuses Word files and `*Platinum*.pdf`. To add a development to Current Affairs,
+add an entry to `UP_CA` with its date, theme, source and volume, and update `UP_CA_COMPILED`.
+
+**Purchases and enrolment are enquiries.** Buttons open WhatsApp (+91 7092844945), email
+(arjun1agr@gmail.com) or a call, with the message prefilled: a handbook message names the volume,
+its title and ₹99; the enrolment message is the exact text the brief sets. Nothing is charged,
+booked or confirmed on the site.
+
 ## What it contains
 
 | Section | What it does |

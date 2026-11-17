@@ -219,7 +219,7 @@ body[data-sec="home"] .hero.at-hero,.hero.at-hero{background-image:none}
 .at-hero .at-figs{grid-area:figs;align-self:stretch}
 /* the signature statement */
 .at-hero .eb{font-size:12.5px;letter-spacing:.16em}
-.cv.at-hero h1.cv-h.at-brand{font-family:var(--ff-display);font-weight:400;font-size:clamp(44px,4.9vw,80px);line-height:.98;letter-spacing:-.018em;
+.cv.at-hero .cv-h.at-brand{font-family:var(--ff-display);font-weight:400;font-size:clamp(44px,4.9vw,80px);line-height:.98;letter-spacing:-.018em;
  max-width:none;margin-top:var(--sp-4);color:#fff;text-wrap:balance}
 .at-brand .ab-1,.at-brand .ab-2{display:block;white-space:nowrap}
 .at-brand .ab-2{font-style:italic;color:var(--ac-brass)}
@@ -263,7 +263,7 @@ body[data-sec="home"] .hero.at-hero,.hero.at-hero{background-image:none}
  .at-hero .in.at-hgrid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);column-gap:clamp(28px,3.4vw,44px)}
  .at-hero .at-figs{grid-template-columns:minmax(0,1fr);grid-template-rows:auto}
  .at-hero .at-f2,.at-hero .at-f3{display:none}
- .cv.at-hero h1.cv-h.at-brand{font-size:clamp(42px,5.2vw,56px)}
+ .cv.at-hero .cv-h.at-brand{font-size:clamp(42px,5.2vw,56px)}
 }
 /* tablet: words above, figures and signature below */
 @media (max-width:900px){
@@ -276,7 +276,7 @@ body[data-sec="home"] .hero.at-hero,.hero.at-hero{background-image:none}
    live model, then the author; the excerpts are left for the Studio */
 @media (max-width:640px){
  .at-hero .in.at-hgrid{padding-block:28px 32px;row-gap:var(--sp-5)}
- .cv.at-hero h1.cv-h.at-brand{font-size:clamp(38px,11.4vw,52px);margin-top:var(--sp-3)}
+ .cv.at-hero .cv-h.at-brand{font-size:clamp(38px,11.4vw,52px);margin-top:var(--sp-3)}
  .at-hero .at-head{font-size:18.5px;margin-top:var(--sp-4)}
  .at-hero .cv-lede{font-size:14.5px}
  .at-hero .cv-cta{margin-top:var(--sp-5);display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-2);align-items:stretch}

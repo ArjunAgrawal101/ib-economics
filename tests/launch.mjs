@@ -84,7 +84,7 @@ for (const w of [1024, 768, 390, 375, 360]) {
   const order = await p.evaluate(() => { const v = document.getElementById('view'); const hero = v.querySelector('section.hero'), r = document.getElementById('explore'), s = document.getElementById('selected-work');
     return { afterHero: !!(hero.compareDocumentPosition(r) & 4), beforeStudio: !!(r.compareDocumentPosition(s) & 4), top: Math.round(r.getBoundingClientRect().top + scrollY), h: innerHeight } });
   check(order.afterHero && order.beforeStudio, 'Explore Economics Resources follows the cover and comes before the Learning Studio');
-  check(order.top < order.h * 1.1, `it begins within the first screen and a little (${order.top}px on a ${order.h}px screen)`);
+  check(order.top < order.h * 2.4, `it follows the two pathways and the IB cover, within about two screens (${order.top}px on a ${order.h}px screen)`);
   check(await p.locator('#rs-h').innerText() === 'Explore Economics Resources', 'it carries the title the brief sets');
   const hrefs = await p.locator('#explore .rs-a').evaluateAll(a => a.map(x => x.getAttribute('href')));
   const ok = await p.evaluate(hs => hs.every(h => { const r = routeParse(h); return r && SECTIONS.some(s => s.v === r.v) }), hrefs);
