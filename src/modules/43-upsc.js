@@ -1,48 +1,93 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   UPSC CSE ECONOMICS · the section
-   One section, eight tabs, its own palette (midnight navy, warm ivory, muted
-   gold, forest green and a restrained burgundy) inside the same brand. Each
-   address is a real route: #/upsc, #/upsc/syllabus, #/upsc/economics-handbooks,
-   #/upsc/economics-handbooks/volume-iii, #/upsc/economics-resources/inflation…
-   Purchases and enrolment are enquiries: a prefilled WhatsApp message, email
-   or call, using the contact details the site already publishes. Nothing is
-   charged, booked or confirmed here.
+   UPSC CSE ECONOMICS · the environment
+   One section, eight tabs, in the UPSC register of the platform: forest green,
+   warm ivory and antique gold (css-flagship.css), set as an Indian economic
+   policy and research publication rather than a coaching brochure. Every tab
+   and item has an address (#/upsc, #/upsc/syllabus/m-budget,
+   #/upsc/current-affairs/bop-sep-2026, #/upsc/handbook-library/volume-iii …),
+   and the addresses of the first UPSC section still open the same pages.
+   The shell draws the UPSC navigation bar from UP_TABS; the pages carry no tab
+   bar of their own. Enrolment and purchases are enquiries only: a prefilled
+   WhatsApp message, email or call (FX_ENQ, FX_CONTACT). Nothing is charged,
+   booked or confirmed here.
    ═══════════════════════════════════════════════════════════════════════════ */
-const UP_TABS=["UPSC Overview","Syllabus","Economics Resources","Economics Handbooks","Current Affairs","UPSC Economics Course","About the Educator","Contact / Enrolment"];
+const UP_TABS=["UPSC Home","Syllabus","Economics Resources","Handbook Library","Current Affairs","Preparation Strategy","Online Course","Contact / Enrol"];
 SECTIONS.push({v:"upsc",n:"UPSC CSE Economics",tabs:UP_TABS});
-const UP_T={overview:0,syllabus:1,resources:2,handbooks:3,current:4,course:5,educator:6,contact:7};
+const UP_T={overview:0,syllabus:1,resources:2,handbooks:3,current:4,strategy:5,course:6,contact:7};
 const UP_RN=["I","II","III","IV","V","VI","VII","VIII","IX","X","XI"];
-const UP_PRICE="₹99 / Volume";
-const UP_PHONE="+91 7092844945";
-const UPS={mode:"pre",cat:"",q:"",th:"",ct:"handbook",vol:"volume-i",flow:0};
+const UP_PRICE="₹99 / Volume";          /* the handbook catalogue's own price line (fallback catalogue only) */
+const UP_PHONE="+91 7092844945";        /* the published number; FX_CONTACT.phone() reads it */
+const UPS={cat:"",q:"",th:"",vol:""};
 function upHref(tab,arg){return routeFormat("upsc",UP_T[tab]||0,arg)}
 function upGo(tab,arg){nav("upsc",UP_T[tab]||0,arg)}
 function upVol(n){return UPSC_HB.volumes.find(v=>v.n===n||v.id===n)}
 function upTopic(id){return UP_TOPICS.find(t=>t.id===id)}
 function upCA(id){return UP_CA.find(c=>c.id===id)}
+const upPad=i=>String(i).padStart(2,"0");
+const upQA=()=>{try{return !!(QARUNNING||LINKAUDITING)}catch(e){return false}};
 
-/* ── enquiries: existing contact details only ───────────────────────────── */
-function upWaBase(){try{const w=CONTACT.find(x=>x.k==="whatsapp");if(w&&w.href)return w.href}catch(e){}return "https://wa.me/917092844945"}
-function upWa(msg){return upWaBase()+"?text="+encodeURIComponent(msg)}
-function upMail(subject,body){return "mailto:"+TUT.email+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body)}
-function upTel(){return "tel:"+UP_PHONE.replace(/\s+/g,"")}
-function upHbMsg(v){return `Hello Arjun, I would like to purchase the digital copy (PDF) of Volume ${v.n}: ${v.title}, from your UPSC CSE Economics Handbook series, priced at ₹99. Please let me know how to pay and receive the PDF.`}
-function upHbSubject(v){return `Handbook purchase: Volume ${v.n}, ${v.title} (₹99)`}
-const UP_GEN_MSG="Hello Arjun, I have a question about UPSC CSE Economics: ";
+/* ── addresses: the first section's addresses keep working ───────────────── */
+const UP_ALIAS=[
+ [/^#\/upsc\/economics-handbooks(?=\/|$)/,"#/upsc/handbook-library"],
+ [/^#\/upsc\/upsc-economics-course(?=\/|$)/,"#/upsc/online-course"],
+ [/^#\/upsc\/contact-enrolment(?=\/|$)/,"#/upsc/contact-enrol"],
+ [/^#\/upsc\/about-the-educator(?:\/.*)?$/,"#/about"]];
+function upAlias(h){h=String(h||"");for(const [re,to] of UP_ALIAS)if(re.test(h))return h.replace(re,to);return h}
+(function(){const prev=routeParse;routeParse=function(h){return prev(upAlias(h))}})();
+/* once an alias has been opened, the address bar shows the page's own address */
+function upCanon(){try{if(routeQuiet())return}catch(e){return}
+ const h=location.hash||"";if(!UP_ALIAS.some(([re])=>re.test(h)))return;
+ const to=routeFormat(VIEW,TAB,ARG);try{history.replaceState(null,"",location.pathname+location.search+to);ROUTER.last=to}catch(e){}}
+
+/* ── small shared pieces ─────────────────────────────────────────────────── */
 function upExt(href,label,cls,aria){return `<a class="${cls}" href="${esA(href)}" target="_blank" rel="noopener noreferrer"${aria?` aria-label="${esA(aria)}"`:""}>${label}</a>`}
-function upBuy(v,cls){return upExt(upWa(upHbMsg(v)),`Purchase PDF <span class="up-sep" aria-hidden="true">|</span> ₹99`,cls||"up-btn up-buy",`Purchase Volume ${v.n} PDF for ₹99 on WhatsApp`)}
-
-/* ── small shared pieces ────────────────────────────────────────────────── */
-function upMast(eb,h,lede,extra,cls){return `<section class="up-mast ${cls||""}"><div class="wrap full up-mast-in">
- <div class="up-eb"><span>UPSC CSE Economics</span>${eb?`<span class="up-eb-s">${esc(eb)}</span>`:""}</div>
- <h1 class="up-h1">${h}</h1>${lede?`<p class="up-lede">${lede}</p>`:""}${extra||""}</div></section>`}
-function upHead(k,t,d,id){return `<header class="up-head"><div class="up-k">${esc(k)}</div><h2 class="up-h2"${id?` id="${id}"`:""}>${t}</h2>${d?`<p class="up-hd">${d}</p>`:""}</header>`}
-function upVolLinks(vols){return vols.map(([n,p])=>{const v=upVol(n);return v?`<a class="up-vl" href="${upHref("handbooks",v.id)}"><b>Vol. ${n}</b> <span>Part${/,|to/.test(p)?"s":""} ${esc(p)}</span></a>`:""}).join("")}
+function upMast(o){return `<section class="up-mast${o.cls?" "+o.cls:""}" aria-labelledby="up-h1"><div class="wrap full up-mast-in${o.facts?" up-mast-g":""}"><div class="up-mast-x">
+ <p class="up-run"><span class="up-run-n" aria-hidden="true">${o.n}</span><span>UPSC CSE Economics</span>${o.s?`<span>${esc(o.s)}</span>`:""}</p>
+ <h1 class="up-h1" id="up-h1">${o.h}</h1>${o.lede?`<p class="up-lede">${o.lede}</p>`:""}${o.extra||""}</div>${o.facts?`<dl class="up-mast-f">${o.facts.map(([v,k])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>`:""}</div></section>`}
+function upSH(n,k,t,d,id,cls){return `<header class="up-sh${cls?" "+cls:""}"><span class="up-sh-n" aria-hidden="true">${n}</span><div class="up-sh-x"><p class="up-k">${esc(k)}</p><h2 class="up-h2"${id?` id="${id}"`:""}>${t}</h2>${d?`<p class="up-dek">${d}</p>`:""}</div></header>`}
+function upParts(p){p=String(p);return (/,| to /.test(p)?"Parts ":"Part ")+p}
+function upPartTitle(v,l){const p=v&&v.parts.find(x=>x.l===l);return p?p.t:""}
+/* volume links from [volume, "part letters"] pairs */
+function upVolLinks(vols){return vols.map(([n,p])=>{const v=upVol(n);return v?`<a class="up-vl" href="${upHref("handbooks",v.id)}"><b>Vol. ${n}</b><span class="sr-only">, ${esc(v.title)},</span> <span>${esc(upParts(p))}</span></a>`:""}).join("")}
+/* one handbook reference: [volume, n] is row n of the volume's own syllabus map; [volume, "letters"] names parts */
+function upHbRow(ref){const [n,r]=ref,v=upVol(n);if(!v)return null;
+ if(typeof r==="number"){const m=v.map[r];return m?{v,parts:m[1],area:m[0],mains:m[2],map:1}:null}
+ const ls=String(r).split(/,\s*/);return {v,parts:r,area:ls.map(l=>upPartTitle(v,l)).filter(Boolean).join("; "),mains:"",map:0}}
+function upHbList(refs){const rows=(refs||[]).map(upHbRow).filter(Boolean);
+ return `<ul class="up-hbl">${rows.map(x=>`<li><a class="up-hbl-v" href="${upHref("handbooks",x.v.id)}"><span class="up-hbl-n">Vol. ${x.v.n}</span><span class="sr-only">, ${esc(x.v.title)},</span> <span class="up-hbl-p">${esc(upParts(x.parts))}</span></a>
+  <span class="up-hbl-a">${esc(x.area)}</span>${x.mains?`<span class="up-hbl-m">Mains sections in the volume's map: ${esc(x.mains)}</span>`:""}</li>`).join("")}</ul>`}
 function upDots(vols){const on=new Set(vols.map(x=>x[0]));const names=[...on].map(n=>"Volume "+n).join(", ");
- return `<span class="up-dots" role="img" aria-label="Treated in ${esA(names)}">${UP_RN.map(n=>`<i class="${on.has(n)?"on":""}" title="Volume ${n}"></i>`).join("")}</span>`}
+ return `<span class="up-dots" role="img" aria-label="Treated in ${esA(names)}">${UP_RN.map(n=>`<i class="${on.has(n)?"on":""}"></i>`).join("")}</span>`}
 function upDate(c){try{const d=new Date(c.d+"T12:00:00Z");return d.toLocaleDateString("en-GB",c.month?{month:"long",year:"numeric"}:{day:"numeric",month:"long",year:"numeric"})}catch(e){return c.d}}
 function upCover(v,cls,eager){const i=v.img&&v.img.cover;if(!i)return `<span class="up-cv-ph">Vol. ${v.n}</span>`;
  return `<img class="${cls||"up-cv"}" src="${esA(i.src)}" alt="Cover of Volume ${esA(v.n)}: ${esA(v.title)}" width="${i.w}" height="${i.h}"${eager?"":' loading="lazy"'} decoding="async">`}
+/* enquiry actions for one standing enquiry (FX_ENQ): WhatsApp, email and a call */
+function upEnqActs(key,o){o=o||{};const e=FX_ENQ[key],L=fxEnquiryLinks(key,o.extra);
+ return `<div class="up-acts${o.cls?" "+o.cls:""}" data-enq="${esA(key)}">${upExt(L.wa,`${o.waLabel||"WhatsApp"}<span class="sr-only">: ${esc(e.label)} (opens in a new tab)</span>`,`up-btn ${o.pri||"pri"}`)}
+  <a class="up-btn ${o.sec||"line"}" href="${esA(L.mail)}">Email<span class="sr-only">: ${esc(e.label)}</span></a>
+  <a class="up-btn ${o.sec||"line"}" href="${esA(L.tel)}">Call ${esc(FX_CONTACT.phone())}</a></div>`}
+function upCaFor(themes,n){return [...UP_CA].filter(c=>(themes||[]).includes(c.th)).sort((a,b)=>b.d.localeCompare(a.d)).slice(0,n||2)}
+function upCaMini(c){return `<li><a class="up-cm-a" href="${upHref("current",c.id)}"><time datetime="${c.d}">${esc(upDate(c))}</time><span>${esc(c.h)}</span></a></li>`}
+function upResLinks(ids){const L=(ids||[]).map(upTopic).filter(Boolean);return L.length?`<p class="up-res">Free previews: ${L.map(x=>`<a href="${upHref("resources",x.id)}">${esc(x.t)}</a>`).join('<span aria-hidden="true"> · </span>')}</p>`:""}
+
+/* ── original line icons (32 × 32, drawn for this environment) ──────────── */
+const UP_IC={
+ concept:'<circle cx="13" cy="13" r="8.5"/><path d="M19.2 19.2 27 27"/><path d="M8.6 10.2l8.8 5.6M8.6 15.8l8.8-5.6" class="g"/>',
+ found:'<rect x="11" y="6.5" width="10" height="5" rx="1"/><rect x="7.5" y="14" width="17" height="5" rx="1"/><rect x="4" y="21.5" width="24" height="5" rx="1"/>',
+ india:'<circle cx="16" cy="16" r="12"/><path d="M11 10h10M11 14h10M14 10c3.2 0 4.6 1.7 4.6 4s-1.6 4-4.6 4h-3l7.6 7" class="g"/>',
+ policy:'<path d="M5 12.5 16 5.5l11 7z"/><path d="M8 14.5v8M13 14.5v8M19 14.5v8M24 14.5v8"/><path d="M6 24.5h20M4.5 27.5h23"/>',
+ current:'<path d="M6 7.5h16v17.5a2 2 0 0 0 2 2H8a2 2 0 0 1-2-2z"/><path d="M22 11.5h4V25a2 2 0 0 1-4 0"/><rect x="9.5" y="11" width="9" height="5" rx=".5" class="g"/><path d="M9.5 19.5h9M9.5 23h6"/>',
+ prelims:'<rect x="5" y="6" width="5" height="5" rx="1"/><rect x="5" y="13.5" width="5" height="5" rx="1"/><rect x="5" y="21" width="5" height="5" rx="1"/><path d="M13.5 8.5h13M13.5 16h13M13.5 23.5h9"/><path d="M5.8 16l1.6 1.6 3.4-3.8" class="g"/>',
+ mains:'<path d="M21.5 5.5l5 5L13 24l-6.5 1.5L8 19z"/><path d="M19 8l5 5" class="g"/><path d="M5 28.5h22"/>',
+ revise:'<path d="M26 16a10 10 0 1 1-3-7.1"/><path d="M23.8 4.6v4.8H19"/><path d="M11.5 16.3l3 3 6-6.6" class="g"/>',
+ visual:'<path d="M6 5.5v21h21"/><path d="M9.5 22c5-1 8-10 15.5-12.5" class="g"/><path d="M9.5 11.5c5 2 9 7 15.5 10.5"/>',
+ notes:'<rect x="7.5" y="4.5" width="17" height="23" rx="1.5"/><path d="M11.5 10h9M11.5 14h9M11.5 18h9M11.5 22h5" class="g"/>',
+ answer:'<rect x="5" y="5" width="22" height="22" rx="2"/><path d="M9 10.5h8"/><path d="M9 15h14M9 19h14" class="g"/><path d="M9 23.5h10"/>',
+ book:'<path d="M5 8c3.5-1.6 7.5-1.6 11 0v18c-3.5-1.6-7.5-1.6-11 0z"/><path d="M16 8c3.5-1.6 7.5-1.6 11 0v18c-3.5-1.6-7.5-1.6-11 0z" class="g"/>',
+ screen:'<rect x="4.5" y="6" width="23" height="15" rx="1.5"/><path d="M12 26.5h8M16 21v5.5"/><path d="M9 16.5l4-4 3 2.5 6-5.5" class="g"/>',
+ talk:'<path d="M5 7.5h14v9.5H11l-4 3.5V17H5z"/><path d="M19 12h8v9h-2v3l-3.5-3H14v-4" class="g"/>',
+ data:'<path d="M6 26.5h21"/><path d="M9 26V17M14.5 26V11M20 26V14.5M25.5 26V8" class="g"/>'};
+function upIc(k,cls){return `<svg class="up-ic${cls?" "+cls:""}" viewBox="0 0 32 32" aria-hidden="true" focusable="false">${UP_IC[k]||""}</svg>`}
 
 /* ── figures: original and computed, each says what it shows ───────────── */
 const UF={
@@ -56,7 +101,12 @@ const UF={
    B(300,250,"Real interest rates fall","if the repo rate stays put")+B(10,250,"The MPC raises the repo rate","to 5.50% on 7 October 2026","n")+
    UF.arr(222,46,296,46)+UF.arr(405,80,405,246)+UF.arr(298,282,224,282)+UF.arr(115,246,115,82,"g")+
    `<text class="uf-tc" x="260" y="150" text-anchor="middle">Borrowing costs rise,</text><text class="uf-tc" x="260" y="170" text-anchor="middle">demand cools,</text><text class="uf-tc" x="260" y="190" text-anchor="middle">inflation eases with a lag</text>`)},
- deficit(){const W=430,M=1695768,X=120,sc=v=>v/M*W,bar=(y,parts,lab)=>{let x=X;return `<text class="uf-tb" x="${X-10}" y="${y+19}" text-anchor="end">${lab}</text>`+parts.map(([v,c,t])=>{const w=sc(v),r=`<rect class="uf-fill ${c}" x="${x.toFixed(1)}" y="${y}" width="${w.toFixed(1)}" height="28"/>`+(w>70?`<text class="uf-ti" x="${(x+w/2).toFixed(1)}" y="${y+19}" text-anchor="middle">${t}</text>`:`<text class="uf-ts" x="${(x+w+6).toFixed(1)}" y="${y+19}">${t}</text>`);x+=w;return r}).join("")};
+ deficit(){const W=430,M=1695768,X=120,sc=v=>v/M*W,bar=(y,parts,lab)=>{let x=X;return `<text class="uf-tb" x="${X-10}" y="${y+19}" text-anchor="end">${lab}</text>`+parts.map(([v,c,t],i,all)=>{const w=sc(v),last=i===all.length-1;
+   /* a label sits inside its segment only if it fits; otherwise beside the last segment, or above the bar */
+   const lab=t.length*6.6+12<w?`<text class="uf-ti" x="${(x+w/2).toFixed(1)}" y="${y+19}" text-anchor="middle">${t}</text>`
+    :last&&x+w+6+t.length*6.2<575?`<text class="uf-ts" x="${(x+w+6).toFixed(1)}" y="${y+19}">${t}</text>`
+    :`<text class="uf-ts" x="${(i===0?x:x+w).toFixed(1)}" y="${y-7}" text-anchor="${i===0?"start":"end"}">${t}</text>`;
+   const r=`<rect class="uf-fill ${c}" x="${x.toFixed(1)}" y="${y}" width="${w.toFixed(1)}" height="28"/>`+lab;x+=w;return r}).join("")};
   return UF.svg("0 0 580 250","Union Budget 2026-27 deficits, in rupees crore",
    bar(20,[[1403972,"n","Interest ₹14,03,972 cr"],[291796,"a","Primary ₹2,91,796 cr"]],"Fiscal deficit")+
    `<text class="uf-ts" x="${X}" y="66">= ₹16,95,768 crore (4.3% of GDP): interest on past debt plus the primary deficit</text>`+
@@ -134,169 +184,244 @@ const UF={
  wrap(s,n){const out=[];let cur="";s.split(" ").forEach(w=>{if((cur+" "+w).trim().length>n){out.push(cur.trim());cur=w}else cur+=" "+w});if(cur.trim())out.push(cur.trim());return out}};
 function upFig(k){const f=UF[k];return typeof f==="function"?f():""}
 
-/* the collection map: how the eleven volumes refer to one another (from each volume's own series-boundary panel) */
-const UP_EDGES=[["I","III"],["I","IV"],["II","III"],["II","VI"],["II","VII"],["III","IV"],["IV","V"],["VI","VII"],["VII","VIII"],["VIII","IX"],
- ["III","X"],["IV","X"],["V","X"],["VI","X"],["VII","X"],["VIII","X"],["IX","X"],["IV","XI"],["V","XI"],["VI","XI"],["VII","XI"],["VIII","XI"]];
-const UP_POS={I:[70,190],II:[205,120],III:[205,265],IV:[350,62],V:[350,148],VI:[350,234],VII:[350,320],VIII:[500,140],IX:[500,270],X:[640,120],XI:[640,265]};
-const UP_COLS=[["Foundations",70],["Money and prices",205],["Finance and the Budget",350],["External",500],["Sectors",640]];
-/* short labels for the map only; each node's accessible name is the volume's full title */
-const UP_SHORT={I:["Introduction","to Economics"],II:["Money and","Monetary Policy"],III:["Inflation and","Price Stability"],IV:["Taxation and","Public Revenue"],V:["Fiscal Policy","and the Budget"],VI:["Banking and","Institutions"],VII:["Financial","Markets"],VIII:["Balance of","Payments, Trade"],IX:["Global","Institutions"],X:["Agriculture","and Allied"],XI:["Industry","and Labour"]};
-function upMap(){const vol=n=>upVol(n);
- const e=UP_EDGES.map(([a,b])=>{const [x1,y1]=UP_POS[a],[x2,y2]=UP_POS[b],mx=(x1+x2)/2;return `<path class="um-e" data-a="${a}" data-b="${b}" d="M${x1} ${y1}C${mx} ${y1} ${mx} ${y2} ${x2} ${y2}"/>`}).join("");
- const n=UP_RN.map(r=>{const [x,y]=UP_POS[r],v=vol(r);const lines=UP_SHORT[r]||[];
-  return `<a class="um-n" href="${v?upHref("handbooks",v.id):"#/upsc"}" data-n="${r}" onmouseenter="upMapHi('${r}')" onmouseleave="upMapHi('')" onfocus="upMapHi('${r}')" onblur="upMapHi('')" aria-label="Volume ${r}: ${esA(v?v.title:"")}">
-   <circle cx="${x}" cy="${y}" r="20"/><text class="um-r" x="${x}" y="${y+5}" text-anchor="middle">${r}</text>${lines.map((l,i)=>`<text class="um-t" x="${x}" y="${y+35+i*12}" text-anchor="middle">${esc(l)}</text>`).join("")}</a>`}).join("");
- const c=UP_COLS.map(([t,x])=>`<text class="um-c" x="${x}" y="16" text-anchor="middle">${t}</text>`).join("");
- return `<svg class="um" viewBox="0 0 710 372" role="group" aria-label="The eleven volumes of the Economics Collection and how they connect">${c}${e}${n}</svg>`}
-function upMapHi(r){document.querySelectorAll(".um").forEach(s=>{s.classList.toggle("hi",!!r);
- s.querySelectorAll(".um-e").forEach(p=>p.classList.toggle("on",!!r&&(p.dataset.a===r||p.dataset.b===r)));
- s.querySelectorAll(".um-n").forEach(a=>{const on=!!r&&(a.dataset.n===r||UP_EDGES.some(([x,y])=>(x===r&&y===a.dataset.n)||(y===r&&x===a.dataset.n)));a.classList.toggle("on",on)})})}
-const UP_GLYPH={
- clarity:'<circle cx="20" cy="20" r="12"/><circle cx="20" cy="20" r="3.5" class="f"/><path d="M29 29l8 8"/>',
- visual:'<path d="M6 6v28h30"/><path d="M10 30C18 28 22 14 34 10"/><path d="M10 12c8 4 14 12 24 18" class="g"/>',
- india:'<rect x="6" y="6" width="28" height="28" rx="3"/><path d="M14 13h12M14 18h12M14 13c8 0 8 10 0 10l10 9"/>',
- current:'<path d="M6 30h28"/><path d="M10 30V18M18 30V12M26 30V20"/><circle cx="34" cy="10" r="3.5" class="f"/>',
- exam:'<rect x="9" y="5" width="22" height="30" rx="2"/><path d="M14 13h12M14 19h12M14 25h7"/><path d="M27 27l3 3 6-7" class="g"/>'};
-function upGlyph(k){return `<svg class="up-gl" viewBox="0 0 40 40" aria-hidden="true" focusable="false">${UP_GLYPH[k]||""}</svg>`}
+/* ── 0 · UPSC Home ───────────────────────────────────────────────────────── */
+function upHome(){const H=UPSC_HB.volumes,pages=H.reduce((a,v)=>a+v.pages,0),C=UP_COURSE;
+ const latest=[...UP_CA].sort((a,b)=>b.d.localeCompare(a.d)).slice(0,3);
+ return `<section class="up-hero" aria-labelledby="up-h1"><div class="wrap full up-hero-in">
+  <div class="up-hero-copy">
+   <p class="up-run"><span>Arjun Agrawal</span><span>UPSC CSE Economics</span></p>
+   <h1 class="up-h1 up-caps" id="up-h1">Understand the Indian economy. <span class="up-h1-2">Master the economic dimension of UPSC.</span></h1>
+   <p class="up-lede">A structured Economics learning ecosystem for Civil Services aspirants, built around conceptual foundations, Indian economic developments, examination-oriented application and current affairs.</p>
+   <div class="up-cta"><a class="up-btn gold" href="${upHref("resources")}">Explore UPSC resources <span class="arr" aria-hidden="true">→</span></a><a class="up-btn ghost" href="${upHref("course")}">Explore the 3-month course</a></div>
+   <dl class="up-hero-facts"><div><dt>Prelims</dt><dd>GS Paper I</dd></div><div><dt>Mains</dt><dd>GS Paper III</dd></div><div><dt>Handbooks</dt><dd>${H.length} volumes, ${pages} pages</dd></div><div><dt>Free previews</dt><dd>${UP_TOPICS.length} topics</dd></div></dl>
+  </div>
+  <figure class="up-exhibit"><div class="up-ex-k" aria-hidden="true"><span>Exhibit</span><span>From Volumes II and III</span></div>
+   <div class="up-ex-plate">${upFig("inflation")}</div>
+   <figcaption>How inflation, purchasing power, interest rates and monetary policy connect. CPI inflation of 5.54% in September 2026; the repo rate raised to 5.50% on 7 October 2026. <a href="${upHref("resources","inflation")}">Read the topic</a></figcaption></figure>
+ </div></section>
 
-/* ── 0 · Overview ───────────────────────────────────────────────────────── */
-function upOverview(){const H=UPSC_HB.volumes,pages=H.reduce((a,v)=>a+v.pages,0);
- return `<section class="up-hero"><div class="wrap full up-hero-in">
-  <div class="up-hero-copy"><div class="up-eb"><span>UPSC CSE Economics</span><span class="up-eb-s">Prelims and Mains</span></div>
-   <h1 class="up-h1">UPSC Economics: From Understanding to Application</h1>
-   <p class="up-lede">Build a strong foundation in economic concepts, understand the Indian economy, connect theory with current developments and develop the analytical skills required for Prelims and Mains.</p>
-   <div class="up-cta"><a class="up-btn up-pri" href="${upHref("syllabus")}">Explore the syllabus</a><a class="up-btn up-gh" href="${upHref("handbooks")}">The Handbook Collection</a><a class="up-btn up-gh" href="${upHref("course")}">The 3-month programme</a></div>
-   <dl class="up-stats"><div><dt>Handbook volumes</dt><dd>${H.length}</dd></div><div><dt>Pages in the collection</dt><dd>${pages}</dd></div><div><dt>Free topic previews</dt><dd>${UP_TOPICS.length}</dd></div></dl></div>
-  <figure class="up-hero-fig">${upMap()}<figcaption>How the eleven volumes build on one another, from each volume's own series map. Select a volume to open it.</figcaption></figure></div></section>
- <section class="up-sec"><div class="wrap full">${upHead("Our approach","Five pillars","")}
-  <ol class="up-pillars">${UP_PILLARS.map(([k,t,d],i)=>`<li class="up-pl rv" style="--i:${i}">${upGlyph(k)}<span class="up-pl-n">${String(i+1).padStart(2,"0")}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("")}</ol></div></section>
- <section class="up-sec up-alt"><div class="wrap full">${upHead("How we approach Economics","One idea, seven steps","Follow the repo rate from a definition to a Mains judgement. Choose a step.","up-flow-h")}
-  ${upFlowHtml()}</div></section>
- <section class="up-sec"><div class="wrap full up-two">
-  <div>${upHead("What you will learn","The whole subject, in four strands","")}
-   <ul class="up-strands">${[["Foundations","How economists think: choice, markets, elasticity, market failure.",["I"]],["Money, prices and finance","Money and the RBI, inflation, banks and financial markets.",["II","III","VI","VII"]],["Public finance","Taxation, the Budget, deficits, debt and fiscal federalism.",["IV","V"]],["India and the world","The balance of payments, trade, global institutions; agriculture, industry and labour.",["VIII","IX","X","XI"]]].map(([t,d,v])=>`<li><b>${t}</b><span>${d}</span><span class="up-sv">${v.map(n=>`<a href="${upHref("handbooks",upVol(n).id)}">Vol. ${n}</a>`).join("")}</span></li>`).join("")}</ul></div>
-  <div>${upHead("How the handbooks help","Built for revision as much as for reading","")}
-   <ul class="up-ticks"><li>Each volume opens with a syllabus map that ties its parts to Prelims and to Mains papers.</li><li>Boxes mark core ideas, Prelims boosters, UPSC traps, Indian applications and Mains answer frameworks.</li><li>Every volume closes with a revision compendium: mind map, rapid revision, high-yield facts, traps, glossary, PYQ linkage, MCQs and Mains frameworks.</li></ul>
-   <a class="up-more" href="${upHref("handbooks")}">See all eleven volumes →</a></div></div></section>
- <section class="up-sec up-alt"><div class="wrap full">${upHead("Static meets current","Each development read through the concept it tests","")}
-  <div class="up-pairs">${[["Flexible inflation targeting","target-2026"],["Fiscal deficit and debt anchor","budget-2026"],["Carbon pricing and trade","cbam-2026"]].map(([s,id])=>{const c=upCA(id);return `<div class="up-pair"><div class="up-pr-s"><span class="up-tag">Static concept</span><b>${esc(s)}</b></div><span class="up-pa" aria-hidden="true">→</span><div class="up-pr-c"><span class="up-tag g">${esc(upDate(c))}</span><b>${esc(c.h)}</b></div></div>`}).join("")}</div>
-  <a class="up-more" href="${upHref("current")}">Current Affairs and Economics →</a></div></section>
- <section class="up-sec"><div class="wrap full">${upHead("Prelims and Mains","Two examinations, one understanding","")}
-  <div class="up-vs"><div class="up-vs-c"><h3>Prelims</h3><ul><li>Precise definitions and distinctions</li><li>Institutions, instruments and their features</li><li>Statements that hide a single wrong word</li><li>Elimination, which rewards real understanding</li></ul></div>
-   <div class="up-vs-m" aria-hidden="true"><span>Concept</span></div>
-   <div class="up-vs-c"><h3>Mains</h3><ul><li>Causes, mechanisms and consequences</li><li>Indian data and examples, dated</li><li>Structure: define, analyse, evidence, judge</li><li>A conditional conclusion, not a list</li></ul></div></div>
-  <p class="up-why"><b>Why understanding comes first.</b> An isolated fact answers one question. A mechanism answers every question built on it: the student who knows why bond prices fall when yields rise can answer a Prelims statement on G-secs and a Mains question on crowding out with the same idea.</p></div></section>
- ${upNext()}`}
-function upFlowHtml(){const i=UPS.flow;
- return `<div class="up-flow"><ol class="up-fl-track" role="tablist" aria-label="The seven steps">${UP_FLOW.map(([t],k)=>`<li role="presentation"><button role="tab" id="upf-t${k}" aria-selected="${k===i}" aria-controls="upf-p" tabindex="${k===i?0:-1}" class="${k===i?"on":""}" onclick="upFlow(${k})" onkeydown="upFlowKey(event,${k})"><span>${k+1}</span>${esc(t)}</button></li>`).join("")}</ol>
-  <div class="up-fl-p" id="upf-p" role="tabpanel" aria-labelledby="upf-t${i}" aria-live="polite">${upFlowPanel(i)}</div></div>`}
-function upFlowPanel(i){const [t,d]=UP_FLOW[i];
- return `<div class="up-fl-x"><div class="up-k">Step ${i+1} of 7 · ${esc(t)}</div><p>${esc(d)}</p>${i===2?`<div class="up-fl-fig">${upFig("laf")}</div>`:""}
-  <p class="up-src">From Volume II, Money & Monetary Policy, Parts F and H.</p></div>`}
-function upFlow(i){UPS.flow=i;const p=document.getElementById("upf-p");if(!p)return;
- document.querySelectorAll(".up-fl-track button").forEach((b,k)=>{b.classList.toggle("on",k===i);b.setAttribute("aria-selected",k===i);b.tabIndex=k===i?0:-1});
- p.setAttribute("aria-labelledby","upf-t"+i);p.innerHTML=upFlowPanel(i)}
-function upFlowKey(e,k){const n=UP_FLOW.length;let j=null;if(e.key==="ArrowRight")j=(k+1)%n;else if(e.key==="ArrowLeft")j=(k+n-1)%n;else if(e.key==="Home")j=0;else if(e.key==="End")j=n-1;
- if(j!==null){e.preventDefault();upFlow(j);const b=document.getElementById("upf-t"+j);if(b)b.focus()}}
-function upNext(){return `<section class="up-sec up-next"><div class="wrap full">${upHead("Next steps","Three ways to go further","")}
- <div class="up-goals"><a class="up-goal" href="${upHref("resources")}"><span class="up-k">Free</span><b>Explore the UPSC Economics resources</b><span>Topic previews with diagrams, Prelims and Mains perspectives and a question to try.</span><span class="up-go">Start learning →</span></a>
-  <a class="up-goal" href="${upHref("handbooks")}"><span class="up-k">${UP_PRICE}</span><b>Buy an individual handbook</b><span>Eleven volumes as digital PDFs. See the contents and sample pages first.</span><span class="up-go">Browse the collection →</span></a>
-  <a class="up-goal" href="${upHref("course")}"><span class="up-k">${esc(UP_COURSE.fee)}</span><b>Enquire about the 3-month programme</b><span>${esc(UP_COURSE.feeLine)}. Online, Prelims and Mains, at most 25 students.</span><span class="up-go">See the programme →</span></a></div></div></section>`}
+ <section class="up-sec" aria-labelledby="up-why-h"><div class="wrap full">
+  ${upSH("01","Why Economics matters","Why Economics matters for UPSC","Economics runs through both stages of the Civil Services Examination. It is named in the Prelims syllabus, it fills ten lines of Mains General Studies Paper III, and it is the language in which the Government explains its policies.","up-why-h")}
+  <div class="up-why">
+   <div class="up-papers">
+    <article class="up-paper"><p class="up-paper-k">Preliminary Examination</p><h3 class="up-h3">General Studies Paper I</h3>
+     <p>One line of the official syllabus names economic and social development, and the line on current events brings the economy in again.</p>
+     <blockquote class="up-oq"><span class="up-lab o">Official</span> <q>${esc(UP_PRE_OFFICIAL[1])}</q></blockquote>
+     <a class="up-more" href="${upHref("syllabus","prelims")}">The Prelims lines, explained <span aria-hidden="true">→</span></a></article>
+    <article class="up-paper"><p class="up-paper-k">Main Examination</p><h3 class="up-h3">General Studies Paper III</h3>
+     <p>Ten lines on the Indian economy: planning and the mobilisation of resources, growth, development and employment, inclusive growth, Government budgeting, agriculture, food processing, land reforms, liberalisation and industrial policy, infrastructure and investment models.</p>
+     <a class="up-more" href="${upHref("syllabus","mains")}">The ten Mains lines, explained <span aria-hidden="true">→</span></a></article>
+   </div>
+   <div class="up-areas-w"><h3 class="up-h3s">Where Economics runs through the examination</h3>
+    <ol class="up-areas">${UP_WHY.map(([k,t,d],i)=>`<li><span class="up-areas-n" aria-hidden="true">${upPad(i+1)}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("")}</ol></div>
+  </div>
+  <div class="up-lenses"><h3 class="up-h3s">How economic understanding helps an aspirant</h3>
+   <ul>${UP_LENSES.map(([t,d],i)=>`<li>${upIc(["policy","data","notes","current"][i])}<b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("")}</ul></div>
+ </div></section>
 
-/* ── 1 · Syllabus ───────────────────────────────────────────────────────── */
-function upSyllabus(){const m=ARG==="mains"?"mains":UPS.mode;UPS.mode=m;
- return upMast("Syllabus","UPSC CSE Economics Syllabus","What the examination asks for in Economics, line by line: the official wording, what it means, where the Economics Collection treats it, and how it connects with current developments.")+
- `<div class="wrap full up-body">
-  <aside class="up-srcbox"><div class="up-k">Official source</div><p><a href="${esA(UP_SYL_SRC.url)}" target="_blank" rel="noopener noreferrer">${esc(UP_SYL_SRC.doc)}</a>, dated ${esc(UP_SYL_SRC.date)}. ${esc(UP_SYL_SRC.where)}.</p>
-   <p class="up-note">Only text marked <span class="up-lab o">Official</span> is UPSC wording. Everything else is explanation and organisation for study.</p></aside>
-  <ul class="up-legend" aria-label="What the labels mean"><li><span class="up-lab o">Official</span>UPSC syllabus wording, quoted exactly</li><li><span class="up-lab e">Explained</span>Arjun's explanation of the topic</li><li><span class="up-lab c">Covered</span>where the Economics Collection treats it</li><li><span class="up-lab a">Current</span>a dated development that tests it</li></ul>
-  <div class="up-seg" role="tablist" aria-label="Examination stage"><button role="tab" id="ups-pre" aria-selected="${m==="pre"}" aria-controls="ups-panel" class="${m==="pre"?"on":""}" onclick="upMode('pre')">Prelims <span>General Studies Paper I</span></button><button role="tab" id="ups-mains" aria-selected="${m==="mains"}" aria-controls="ups-panel" class="${m==="mains"?"on":""}" onclick="upMode('mains')">Mains <span>General Studies Paper III</span></button></div>
-  <div class="up-acc-tools"><button class="up-btn up-gh sm" onclick="upAccAll(true)">Expand all</button><button class="up-btn up-gh sm" onclick="upAccAll(false)">Collapse all</button>
-   <span class="up-dots-key">${upDots([["III",""]]).replace(/class="up-dots"/,'class="up-dots k"')} <span>Each row of dots shows Volumes I to XI; a filled dot means that volume treats the topic. These are mapped from the volumes' own contents and syllabus maps, not a measure of completion.</span></span></div>
-  <div id="ups-panel" role="tabpanel" aria-labelledby="ups-${m}">${m==="pre"?upPreHtml():upMainsHtml()}</div></div>`}
-function upMode(m){UPS.mode=m;const p=document.getElementById("ups-panel");if(!p)return;
- ["pre","mains"].forEach(k=>{const b=document.getElementById("ups-"+k);if(b){b.classList.toggle("on",k===m);b.setAttribute("aria-selected",k===m)}});
- p.setAttribute("aria-labelledby","ups-"+m);p.innerHTML=m==="pre"?upPreHtml():upMainsHtml()}
-function upAccAll(open){document.querySelectorAll("#ups-panel details.up-acc").forEach(d=>d.open=open)}
-function upCaLink(id){const c=id&&upCA(id);return c?`<div class="up-row"><span class="up-lab a">Current</span><a class="up-ca-l" href="${upHref("current")}" onclick="UPS.th='${esA(c.th)}'">${esc(upDate(c))}: ${esc(c.h)}</a></div>`:""}
-function upPreHtml(){
- return `<section class="up-off"><div class="up-off-k"><span class="up-lab o">Official</span> Preliminary Examination, Paper I (General Studies): the lines that call on Economics</div>
-  ${UP_PRE_OFFICIAL.map(l=>`<blockquote class="up-q">${esc(l)}</blockquote>`).join("")}
-  <p class="up-note">The other lines of Paper I cover history, geography, polity and governance, environment and general science. Economics questions in Prelims draw on the two lines above, which is why the themes below go beyond their few words.</p></section>
- <h3 class="up-h3">Fourteen themes for Prelims <span class="up-lab e">Explained</span></h3>
- ${UP_PRE.map(t=>`<details class="up-acc" id="pre-${t.id}"><summary><span class="up-acc-t">${esc(t.t)}</span>${upDots(t.vols)}</summary><div class="up-acc-b">
-  <div class="up-grid2"><div><h4>What it means</h4><p>${esc(t.m)}</p></div><div><h4>What you need to understand</h4><p>${esc(t.u)}</p></div></div>
-  <h4>Important subtopics</h4><ul class="up-chips">${t.sub.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>
-  <div class="up-grid2"><div><h4>For Prelims</h4><p>${esc(t.pre)}</p></div><div><h4>How the resources and classes cover it <span class="up-lab c">Covered</span></h4><div class="up-vls">${upVolLinks(t.vols)}</div>
-   ${t.res.length?`<p class="up-sm">Free previews: ${t.res.map(id=>{const x=upTopic(id);return x?`<a href="${upHref("resources",x.id)}">${esc(x.t)}</a>`:""}).filter(Boolean).join(" · ")}</p>`:""}</div></div>
-  ${upCaLink(t.ca)}</div></details>`).join("")}`}
-function upMainsHtml(){
- return `<section class="up-off"><div class="up-off-k"><span class="up-lab o">Official</span> Main Examination, ${esc(UP_MAINS_HEAD)}: the Economics lines</div>
-  <p class="up-note">Each line below is quoted exactly. Open a line for its explanation, the concepts it calls on, an example, an approach for a Mains answer and where the collection treats it.</p></section>
- ${UP_MAINS.map(t=>`<details class="up-acc" id="${t.id}"><summary><span class="up-acc-t"><span class="up-lab o">Official</span> <q>${esc(t.o)}</q></span>${upDots(t.vols)}</summary><div class="up-acc-b">
-  <div class="up-row"><span class="up-lab e">Explained</span><p>${esc(t.ex)}</p></div>
-  <div class="up-grid2"><div><h4>Important dimensions</h4><ul class="up-list">${t.dim.map(s=>`<li>${esc(s)}</li>`).join("")}</ul></div><div><h4>Economic concepts</h4><ul class="up-chips">${t.con.map(s=>`<li>${esc(s)}</li>`).join("")}</ul></div></div>
-  <div class="up-grid2"><div><h4>Example and policy application</h4><p>${esc(t.eg)}</p></div><div><h4>Approaching it in a Mains answer</h4><p>${esc(t.ans)}</p></div></div>
-  <h4>Support from the handbooks and classes <span class="up-lab c">Covered</span></h4><div class="up-vls">${upVolLinks(t.vols)}</div>${t.note?`<p class="up-sm">${esc(t.note)}</p>`:""}</div></details>`).join("")}
- <section class="up-off up-gs2"><div class="up-off-k"><span class="up-lab o">Official</span> General Studies Paper II: lines that also call on Economics</div>
-  ${UP_GS2.map(g=>`<div class="up-gs2-r"><blockquote class="up-q">${esc(g.o)}</blockquote><div class="up-vls">${upVolLinks(g.vols)}</div></div>`).join("")}</section>`}
+ <section class="up-sec up-band" aria-labelledby="up-flow-h"><div class="wrap full">
+  ${upSH("02","The preparation system","How the preparation system works","Eight steps take a topic from its concept to an answer you can write and revise. Each step names the part of this platform that serves it.","up-flow-h")}
+  <ol class="up-flow8 rv">${UP_STEPS.map(([ic,t,d,[tab,lab]],i)=>`<li style="--i:${i}"><span class="up-f8-node">${upIc(ic)}</span><span class="up-f8-n" aria-hidden="true">${upPad(i+1)}</span>
+   <b class="up-f8-t">${esc(t)}</b><span class="up-f8-d">${esc(d)}</span><a class="up-f8-a" href="${upHref(tab)}">${esc(lab)}<span class="sr-only">, for step ${i+1}</span></a></li>`).join("")}</ol>
+ </div></section>
 
-/* ── 2 · Economics Resources ────────────────────────────────────────────── */
+ <section class="up-sec" aria-labelledby="up-exp-h"><div class="wrap full">
+  ${upSH("03","Explore","The environment, at a glance","The syllabus, the handbooks, the current-affairs register and the programme, each one step away.","up-exp-h")}
+  <div class="up-prev-g">
+   <article class="up-prev"><p class="up-k">Syllabus</p><h3 class="up-h3">The official syllabus, line by line</h3>
+    <p>Each Economics line of Prelims Paper I and Mains Paper III, quoted exactly and kept apart from four layers of help: the explanation, the handbook coverage, and the classes and current affairs that support it.</p>
+    <ol class="up-prev-lines">${UP_PRE_LINES.map((m,i)=>`<li><a class="up-pl-a" href="${upHref("syllabus",m.id)}"><span class="up-prev-n">GS I · ${upPad(i+1)}</span><span>${esc(m.short)}</span></a></li>`).join("")}${UP_MAINS.slice(0,5).map((m,i)=>`<li><a class="up-pl-a" href="${upHref("syllabus",m.id)}"><span class="up-prev-n">GS III · ${upPad(i+1)}</span><span>${esc(m.short)}</span></a></li>`).join("")}</ol>
+    <p class="up-sm">And five more Mains lines, with two lines of Paper II.</p>
+    <a class="up-more" href="${upHref("syllabus")}">Read the syllabus <span aria-hidden="true">→</span></a></article>
+   <article class="up-prev"><p class="up-k">Current Affairs</p><h3 class="up-h3">The latest entries</h3>
+    <ol class="up-prev-ca">${latest.map(c=>`<li><a class="up-pc-a" href="${upHref("current",c.id)}"><span class="up-prev-m"><time datetime="${c.d}">${esc(upDate(c))}</time><span>${esc(c.th)}</span></span><b>${esc(c.h)}</b></a><span class="up-prev-c">${esc(c.c)}</span></li>`).join("")}</ol>
+    <p class="up-sm">Edited by hand. Last compiled on ${esc(UP_CA_COMPILED)}.</p>
+    <a class="up-more" href="${upHref("current")}">All current affairs <span aria-hidden="true">→</span></a></article>
+  </div>
+  <article class="up-prev up-shelf-w" aria-labelledby="up-shelf-h"><div class="up-shelf-head"><div><p class="up-k">Handbook Library</p><h3 class="up-h3" id="up-shelf-h">Eleven volumes, one subject</h3>
+    <p>From Introduction to Economics to Indian Industry, Manufacturing, Trade and Labour Markets: ${pages} pages written for Prelims and Mains, each volume with its own syllabus map and revision compendium.</p></div>
+    <a class="up-more" href="${upHref("handbooks")}">Browse the Handbook Library <span aria-hidden="true">→</span></a></div>
+   <ul class="up-shelf">${H.map(v=>`<li><a class="up-sh-a" href="${upHref("handbooks",v.id)}">${upCover(v,"up-shelf-cv")}<span class="up-shelf-n">${esc(v.n)}</span></a></li>`).join("")}</ul></article>
+ </div></section>
+
+ <section class="up-sec up-cband" aria-labelledby="up-cb-h"><div class="wrap full up-cband-in">
+  <div class="up-cband-x"><p class="up-k">Online Course</p><h2 class="up-h2" id="up-cb-h">The 3-month intensive online programme</h2>
+   <p class="up-cband-l">${esc(C.description)}</p>
+   <div class="up-cta"><a class="up-btn gold" href="${upHref("course")}">Explore the 3-month course <span class="arr" aria-hidden="true">→</span></a></div></div>
+  <ul class="up-hl">${C.highlights.map(([v,k])=>`<li><span class="up-hl-k">${esc(k)}</span><b>${esc(v)}</b></li>`).join("")}</ul>
+ </div></section>
+ <p class="wrap full up-aboutline">Taught by Arjun Agrawal. <a href="#/about">About the educator <span aria-hidden="true">→</span></a></p>`}
+
+/* ── 1 · Syllabus ────────────────────────────────────────────────────────── */
+function upLayer(k,title,lab,body){return `<div class="up-layer up-layer-${k}"><h4 class="up-layer-h"><span class="up-layer-l" aria-hidden="true">${k.toUpperCase()}</span><span>${title}</span>${lab}</h4>${body}</div>`}
+const UP_LAB_IN={e:'<span class="up-lab e">The platform\'s explanation</span>',c:"",d:""};   /* inside a line, only B carries a badge: C and D are named by their titles */
+const UP_LAB={o:'<span class="up-lab o">Official · UPSC</span>',e:'<span class="up-lab e">The platform\'s explanation</span>',c:'<span class="up-lab c">Handbooks</span>',d:'<span class="up-lab d">Classes and current affairs</span>'};
+function upLineHead(n,L,vols){return `<summary><span class="up-line-n" aria-hidden="true">${n}</span><h3 class="up-line-h"><span class="up-line-a">A</span><span class="up-lab o">Official</span> <q>${esc(L.o)}</q>${L.tbc?` <span class="up-tbc">Wording to be confirmed</span>`:""}</h3>${vols&&vols.length?upDots(vols):""}</summary>`}
+function upClassLayer(L,extra){const ca=upCaFor(L.cath,2);
+ return upLayer("d","Classes and current affairs",UP_LAB_IN.d,`${extra||""}${ca.length?`<p class="up-mini-k">Current affairs to follow</p><ul class="up-camini">${ca.map(upCaMini).join("")}</ul>`:""}${upResLinks(L.res)}`)}
+function upTbcNote(L){return L.tbc?`<p class="up-tbc-n">${esc(UP_SYL_TBC)}</p>`:""}
+function upPreLine(L,i){const vols=(L.hb||UP_PRE_SUB.flatMap(s=>s.hb)).map(([n])=>[n,""]);
+ const B=L.id==="p-esd"?`<p>${esc(L.ex)}</p><ul class="up-subs">${UP_PRE_SUB.map(s=>`<li><b>${esc(s.t)}</b><span>${esc(s.d)}</span></li>`).join("")}</ul>`:`<p>${esc(L.ex)}</p>`;
+ const C=L.id==="p-esd"?UP_PRE_SUB.map(s=>`<div class="up-subcov"><p class="up-mini-k">${esc(s.t)}</p>${upHbList(s.hb)}${s.gap?`<p class="up-gap">${esc(s.gap)}</p>`:""}</div>`).join("")
+  :`${upHbList(L.hb)}${L.hbNote?`<p class="up-gap">${esc(L.hbNote)}</p>`:""}`;
+ return `<details class="up-line" id="syl-${L.id}">${upLineHead(upPad(i+1),L,vols)}<div class="up-line-b">${upTbcNote(L)}
+  ${upLayer("b","Expanded explanation",UP_LAB_IN.e,B)}${upLayer("c","How the handbooks address it",UP_LAB_IN.c,C)}
+  ${upClassLayer(L,`<p>${esc(L.cls)}</p>${L.id==="p-esd"?`<p class="up-sm">The fourteen study themes below organise this line for revision.</p>`:""}`)}</div></details>`}
+function upMainsLine(L,i){return `<details class="up-line" id="syl-${L.id}">${upLineHead(upPad(i+1),L,L.vols)}<div class="up-line-b">${upTbcNote(L)}
+  ${upLayer("b","Expanded explanation",UP_LAB.e,`<p>${esc(L.ex)}</p><div class="up-g2"><div><p class="up-mini-k">Important dimensions</p><ul class="up-list">${L.dim.map(s=>`<li>${esc(s)}</li>`).join("")}</ul></div><div><p class="up-mini-k">Economic concepts</p><ul class="up-chips">${L.con.map(s=>`<li>${esc(s)}</li>`).join("")}</ul></div></div>`)}
+  ${upLayer("c","How the handbooks address it",UP_LAB_IN.c,`${upHbList(L.hb)}${L.note?`<p class="up-gap">${esc(L.note)}</p>`:""}`)}
+  ${upClassLayer(L,`<p>Classes take this line through its concepts and diagrams, Indian examples and current developments, with practice for Prelims and Mains.</p><div class="up-g2"><div><p class="up-mini-k">An example for discussion</p><p>${esc(L.eg)}</p></div><div><p class="up-mini-k">Approaching it in a Mains answer</p><p>${esc(L.ans)}</p></div></div>`)}
+ </div></details>`}
+function upGs2Line(L,i){const vols=L.hb.map(([n])=>[n,""]);
+ return `<details class="up-line" id="syl-${L.id}">${upLineHead(upPad(i+1),L,vols)}<div class="up-line-b">${upTbcNote(L)}
+  ${upLayer("b","Expanded explanation",UP_LAB_IN.e,`<p>${esc(L.ex)}</p>`)}${upLayer("c","How the handbooks address it",UP_LAB_IN.c,upHbList(L.hb))}
+  ${upClassLayer(L,`<p>${esc(L.cls)}</p>`)}</div></details>`}
+function upTheme14(t){return `<details class="up-line up-th14" id="syl-${t.id}"><summary><span class="up-th14-t">${esc(t.t)}</span>${upDots(t.vols)}</summary><div class="up-line-b">
+  ${upLayer("b","What the theme means",UP_LAB.e,`<div class="up-g2"><div><p>${esc(t.m)}</p></div><div><p>${esc(t.u)}</p></div></div><p class="up-mini-k">Important subtopics</p><ul class="up-chips">${t.sub.map(s=>`<li>${esc(s)}</li>`).join("")}</ul><p class="up-mini-k">For Prelims</p><p>${esc(t.pre)}</p>`)}
+  ${upLayer("c","Where the handbooks treat it",UP_LAB_IN.c,`<div class="up-vls">${upVolLinks(t.vols)}</div>`)}
+  ${upLayer("d","Classes and current affairs",UP_LAB_IN.d,`${t.ca&&upCA(t.ca)?`<ul class="up-camini">${upCaMini(upCA(t.ca))}</ul>`:""}${upResLinks(t.res)}`)}</div></details>`}
+function upSylIndex(){const li=(id,n,t,lab)=>`<li><a class="up-idx-a" href="${upHref("syllabus",id)}" onclick="return upSylJump(event,'${id}')"><span class="sr-only">${esc(lab)} </span><span class="n">${n}</span><span class="t"> ${esc(t)}</span></a></li>`;
+ return `<nav class="up-idx" aria-label="Syllabus lines"><p class="up-idx-k">On this page</p>
+  <p class="up-idx-p"><a href="${upHref("syllabus","prelims")}" onclick="return upSylJump(event,'prelims')">Prelims · GS Paper I</a></p><ol>${UP_PRE_LINES.map((L,i)=>li(L.id,upPad(i+1),L.short,"Prelims line "+(i+1))).join("")}${li("themes","14","Study themes","Prelims")}</ol>
+  <p class="up-idx-p"><a href="${upHref("syllabus","mains")}" onclick="return upSylJump(event,'mains')">Mains · GS Paper III</a></p><ol>${UP_MAINS.map((L,i)=>li(L.id,upPad(i+1),L.short,"Mains line "+(i+1))).join("")}</ol>
+  <p class="up-idx-p"><a href="${upHref("syllabus","gs2")}" onclick="return upSylJump(event,'gs2')">Also in GS Paper II</a></p><ol>${UP_GS2.map((L,i)=>li(L.id,upPad(i+1),L.short,"GS Paper II line "+(i+1))).join("")}</ol></nav>`}
+function upSyllabus(){const S=UP_SYL_SRC;
+ return upMast({n:"02",s:"Syllabus",h:"The Economics syllabus, line by line",facts:[[UP_PRE_LINES.length+" lines","Prelims · GS Paper I"],[UP_MAINS.length+" lines","Mains · GS Paper III"],[UP_GS2.length+" lines","Also in GS Paper II"],["4 layers","For every line"]],lede:"The official UPSC syllabus is the authority. Each Economics line of Prelims General Studies Paper I and Mains General Studies Paper III is quoted exactly, then explained, mapped to the handbooks and connected with classes and current affairs."})+
+ `<div class="wrap full up-body up-syl">
+  <div class="up-syl-top">
+   <aside class="up-src" aria-label="Official source"><p class="up-k">Official source</p>
+    <p><a href="${esA(S.url)}" target="_blank" rel="noopener noreferrer">${esc(S.doc)}<span class="sr-only"> (PDF on upsc.gov.in, opens in a new tab)</span></a>, dated ${esc(S.date)}. ${esc(S.where)}.</p>
+    <p class="up-src-n">Only text marked Official is UPSC wording. Lines flagged <span class="up-tbc">Wording to be confirmed</span> match the long-standing official text but could not be checked against the notice PDF from here.</p></aside>
+   <p class="up-scope"><b>Scope.</b> The course and the handbooks address Economics within the General Studies syllabus: Prelims Paper I and Mains Paper III, with two lines of Paper II. They are not presented as preparation for the Economics Optional paper.</p>
+  </div>
+  <ul class="up-legend" aria-label="The four layers of every line"><li><span class="up-layer-l" aria-hidden="true">A</span>${UP_LAB.o}<span>The syllabus line, quoted exactly</span></li><li><span class="up-layer-l" aria-hidden="true">B</span>${UP_LAB.e}<span>What the line means, topic by topic</span></li><li><span class="up-layer-l" aria-hidden="true">C</span>${UP_LAB.c}<span>Volume and part, from each volume's own syllabus map</span></li><li><span class="up-layer-l" aria-hidden="true">D</span>${UP_LAB.d}<span>How teaching and dated developments support it</span></li></ul>
+  <div class="up-syl-tools"><button type="button" class="up-btn line sm" onclick="upAccAll(true)">Expand all</button><button type="button" class="up-btn line sm" onclick="upAccAll(false)">Collapse all</button><button type="button" class="up-btn pri sm" onclick="upPrintSyllabus()">Print the syllabus</button>
+   <span class="up-dots-key"><span class="up-dots k" aria-hidden="true">${UP_RN.map(n=>`<i class="${n==="III"?"on":""}"></i>`).join("")}</span> Each row of dots shows Volumes I to XI; a filled dot marks a volume that treats the line.</span></div>
+  <div class="up-syl-g">${upSylIndex()}<div class="up-syl-main">
+   <section class="up-paper-s" id="syl-prelims" aria-labelledby="syl-prelims-h"><header class="up-paper-hd"><p class="up-k">Preliminary Examination</p><h2 class="up-h2" id="syl-prelims-h" tabindex="-1">Prelims: General Studies Paper I</h2>
+    <p class="up-dek">Two lines of Paper I call on Economics. The second is the Economics line itself; its five named themes are explained below, followed by fourteen study themes.</p></header>
+    ${UP_PRE_LINES.map(upPreLine).join("")}
+    <div class="up-themes" id="syl-themes"><h3 class="up-h3s" tabindex="-1">Fourteen study themes for Prelims <span class="up-lab e">The platform's explanation</span></h3>
+     <p class="up-sm">How the Economics behind the two Prelims lines is organised for study. These themes are the platform's, not UPSC's.</p>${UP_PRE.map(upTheme14).join("")}</div></section>
+   <section class="up-paper-s" id="syl-mains" aria-labelledby="syl-mains-h"><header class="up-paper-hd"><p class="up-k">Main Examination</p><h2 class="up-h2" id="syl-mains-h" tabindex="-1">Mains: General Studies Paper III</h2>
+    <p class="up-dek">The paper's official title: <q>${esc(UP_MAINS_HEAD)}</q>. Its ten Economy lines follow, each quoted exactly.</p></header>
+    ${UP_MAINS.map(upMainsLine).join("")}</section>
+   <section class="up-paper-s up-gs2" id="syl-gs2" aria-labelledby="syl-gs2-h"><header class="up-paper-hd"><p class="up-k">Main Examination</p><h2 class="up-h2" id="syl-gs2-h" tabindex="-1">Also in General Studies Paper II</h2>
+    <p class="up-dek">Two lines of Paper II that call on Economics.</p></header>${UP_GS2.map(upGs2Line).join("")}</section>
+  </div></div></div>`}
+function upAccAll(open){document.querySelectorAll(".up-syl details.up-line").forEach(d=>d.open=open)}
+/* in-page navigation: open the line, scroll it into view and move focus to it */
+function upSylShow(id,focus){const el=document.getElementById("syl-"+id);if(!el)return false;
+ if(el.tagName==="DETAILS")el.open=true;
+ const reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+ try{el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"})}catch(e){el.scrollIntoView()}
+ if(focus){const f=el.tagName==="DETAILS"?el.querySelector("summary"):el.querySelector("h2,h3");if(f)try{f.focus({preventScroll:true})}catch(e){}}
+ return true}
+function upSylJump(e,id){if(e&&(e.ctrlKey||e.metaKey||e.shiftKey||e.altKey||e.button>0))return true;
+ if(e)e.preventDefault();upSylShow(id,true);return false}
+/* the printable syllabus: prepared on a user action and printed through the platform's one print path */
+function upSylPrintHtml(){const S=UP_SYL_SRC;
+ const hb=refs=>(refs||[]).map(upHbRow).filter(Boolean).map(x=>`Vol. ${x.v.n}, ${upParts(x.parts)}: ${esc(x.area)}`).join("; ");
+ const line=(n,L,b,c,d)=>`<div class="up-pl"><p class="up-pl-o"><span class="up-pl-n">${n}</span> <span class="up-pl-lab">Official</span> “${esc(L.o)}”${L.tbc?" <em>(wording to be confirmed against the notice)</em>":""}</p>
+  <p><span class="up-pl-lab">Explained</span> ${b}</p><p><span class="up-pl-lab">Handbooks</span> ${c||"None of the eleven volumes."}</p>${d?`<p><span class="up-pl-lab">Classes and current affairs</span> ${d}</p>`:""}</div>`;
+ const ca=L=>upCaFor(L.cath,2).map(c=>`${esc(upDate(c))}: ${esc(c.h)}`).join("; ");
+ return `<div class="pdoc up-pdoc"><div class="ph"><div><div class="brand">Arjun Agrawal · UPSC CSE Economics</div><div class="sub">The Economics syllabus, line by line</div></div><div class="sub">Compiled for printing from the platform</div></div>
+  <h1>UPSC CSE Economics: the syllabus, line by line</h1>
+  <p class="up-p-src">Official wording quoted from ${esc(S.doc)}, dated ${esc(S.date)} (${esc(S.where)}): ${esc(S.url)}. Only text marked Official is UPSC wording.</p>
+  <p class="up-p-src"><b>Scope.</b> The course and the handbooks address Economics within the General Studies syllabus. They are not presented as preparation for the Economics Optional paper.</p>
+  <h2>Prelims: General Studies Paper I</h2>
+  ${UP_PRE_LINES.map((L,i)=>line(upPad(i+1),L,esc(L.ex)+(L.id==="p-esd"?" "+UP_PRE_SUB.map(s=>`${esc(s.t)}: ${esc(s.d)}`).join(" "):""),L.id==="p-esd"?UP_PRE_SUB.map(s=>`${esc(s.t)}: ${hb(s.hb)}${s.gap?" ("+esc(s.gap)+")":""}`).join(" "):hb(L.hb),esc(L.cls)+(ca(L)?" Current affairs: "+ca(L)+".":""))).join("")}
+  <h3>Fourteen study themes (the platform's organisation, not UPSC's)</h3>
+  <table class="ptbl"><thead><tr><th>Theme</th><th>What it means</th><th>Handbooks</th></tr></thead><tbody>${UP_PRE.map(t=>`<tr><td>${esc(t.t)}</td><td>${esc(t.m)}</td><td>${t.vols.map(([n,p])=>`Vol. ${n}, ${esc(upParts(p))}`).join("; ")}</td></tr>`).join("")}</tbody></table>
+  <h2>Mains: General Studies Paper III</h2><p class="up-p-src">Official title of the paper: “${esc(UP_MAINS_HEAD)}”.</p>
+  ${UP_MAINS.map((L,i)=>line(upPad(i+1),L,`${esc(L.ex)} Dimensions: ${L.dim.map(esc).join("; ")}. Concepts: ${L.con.map(esc).join("; ")}.`,hb(L.hb)+(L.note?" ("+esc(L.note)+")":""),`Example: ${esc(L.eg)} Mains approach: ${esc(L.ans)}${ca(L)?" Current affairs: "+ca(L)+".":""}`)).join("")}
+  <h2>Also in General Studies Paper II</h2>
+  ${UP_GS2.map((L,i)=>line(upPad(i+1),L,esc(L.ex),hb(L.hb),esc(L.cls))).join("")}
+  <div class="foot">Arjun Agrawal · UPSC CSE Economics. An independent educational resource, not affiliated with or endorsed by the Union Public Service Commission. Explanations, handbook coverage and notes on classes are the platform's own; check the official notice for the authoritative syllabus.</div></div>`}
+function upPrintSyllabus(){const r=document.getElementById("printroot");if(!r)return false;
+ r.innerHTML=upSylPrintHtml();r.className="p-sheet up-print";
+ let st=document.getElementById("pgsz");if(!st){st=document.createElement("style");st.id="pgsz";document.head.appendChild(st)}
+ st.textContent="@media print{@page{size:A4;margin:14mm}}";
+ return printPreparedDocument()}
+
+/* ── 2 · Economics Resources ─────────────────────────────────────────────── */
 function upResources(){if(ARG&&upTopic(ARG))return upTopicPage(upTopic(ARG));
  const counts=Object.fromEntries(UP_CATS.map(c=>[c,UP_TOPICS.filter(t=>t.cat===c).length]));
- return upMast("Economics Resources","UPSC Economics Resource Library","Free topic previews drawn from the Economics Collection: each explains a concept, draws it, sets it in the Indian economy and shows how Prelims and Mains ask about it.")+
- `<div class="wrap full up-body"><div class="up-filter"><label class="up-search"><span class="sr-only">Search the resources</span><input id="up-q" type="search" placeholder="Search topics, e.g. MSP, deficit, CPI" value="${esA(UPS.q)}" oninput="UPS.q=this.value;upFilter()" autocomplete="off"></label>
-  <div class="up-cats" role="group" aria-label="Filter by category"><button class="up-cat${UPS.cat?"":" on"}" aria-pressed="${!UPS.cat}" onclick="upCat('')">All <span>${UP_TOPICS.length}</span></button>${UP_CATS.map(c=>`<button class="up-cat${UPS.cat===c?" on":""}" aria-pressed="${UPS.cat===c}" data-c="${esA(c)}" onclick="upCat(this.dataset.c)"${counts[c]?"":" disabled"}>${esc(c)} <span>${counts[c]}</span></button>`).join("")}</div></div>
+ return upMast({n:"03",s:"Economics Resources",h:"The UPSC Economics resource library",facts:[[UP_TOPICS.length+" previews","Free to read"],[UP_TOPICS.length+" diagrams","Original, each sourced"],[UP_TOPICS.length+" questions","Marked as you answer"],[UPSC_HB.volumes.length+" volumes","Behind the previews"]],lede:"Free topic previews drawn from the eleven handbooks. Each explains a concept, draws it, sets it in the Indian economy and shows how Prelims and Mains ask about it, with a question to try."})+
+ `<div class="wrap full up-body up-res-page">
+  <div class="up-filter"><label class="up-search"><span class="up-search-l">Search the previews</span><input id="up-q" type="search" placeholder="For example: MSP, deficit, CPI" value="${esA(UPS.q)}" oninput="UPS.q=this.value;upFilter()" autocomplete="off"></label>
+   <div class="up-chipset" role="group" aria-label="Filter by category"><button type="button" class="up-chip${UPS.cat?"":" on"}" aria-pressed="${!UPS.cat}" onclick="upCat('')">All <span>${UP_TOPICS.length}</span></button>${UP_CATS.filter(c=>counts[c]).map(c=>`<button type="button" class="up-chip${UPS.cat===c?" on":""}" aria-pressed="${UPS.cat===c}" data-c="${esA(c)}" onclick="upCat(this.dataset.c)">${esc(c)} <span>${counts[c]}</span></button>`).join("")}</div></div>
   <p class="up-count" id="up-count" aria-live="polite"></p>
-  <ul class="up-tgrid" id="up-tgrid">${UP_TOPICS.map((t,i)=>`<li class="up-tc rv" style="--i:${i%6}" data-c="${esA(t.cat)}" data-s="${esA([t.t,t.cat,t.intro,t.ex.join(" "),t.dist.map(d=>d.join(" ")).join(" "),"volume "+t.vol].join(" ").toLowerCase())}">
-   <a class="up-tc-a" href="${upHref("resources",t.id)}"><span class="up-tc-fig">${upFig(t.fig)}</span><span class="up-tc-k">${esc(t.cat)}</span><b>${esc(t.t)}</b><span class="up-tc-d">${esc(t.intro)}</span><span class="up-tc-v">From Volume ${esc(t.vol)}${t.also?` and ${esc(t.also)}`:""}</span></a></li>`).join("")}</ul>
-  <p class="up-empty" id="up-empty" hidden>No topic matches. Try another word, or <button class="lnk" onclick="UPS.q='';UPS.cat='';render()">show every topic</button>.</p>
-  ${upConnector()}
-  <section class="up-sec up-more-res"><div class="up-goals"><a class="up-goal" href="${upHref("syllabus")}"><span class="up-k">Free</span><b>The syllabus explorer</b><span>Every Economics line of the official syllabus, explained and mapped.</span><span class="up-go">Open →</span></a>
-   <a class="up-goal" href="${upHref("current")}"><span class="up-k">Free</span><b>Current Affairs and Economics</b><span>Dated developments, each with its source and its concept.</span><span class="up-go">Open →</span></a>
-   <a class="up-goal" href="${upHref("handbooks")}"><span class="up-k">${UP_PRICE}</span><b>The Handbook Collection</b><span>The complete treatment of each topic, as a digital PDF.</span><span class="up-go">Browse →</span></a></div></section></div>`}
-function upCat(c){UPS.cat=c;document.querySelectorAll(".up-cat").forEach(b=>{const on=(b.dataset.c||"")===c;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on)});upFilter()}
+  <ul class="up-tgrid" id="up-tgrid">${UP_TOPICS.map((t,i)=>{const v=upVol(t.vol);return `<li class="up-tc rv" style="--i:${i%6}" data-c="${esA(t.cat)}" data-s="${esA([t.t,t.cat,t.intro,t.ex.join(" "),t.dist.map(d=>d.join(" ")).join(" "),"volume "+t.vol].join(" ").toLowerCase())}">
+   <a class="up-tc-a" href="${upHref("resources",t.id)}"><span class="up-tc-plate"><span class="up-tc-pn" aria-hidden="true">Plate ${upPad(i+1)}</span>${upFig(t.fig)}</span>
+    <span class="up-tc-k">${esc(t.cat)}</span><b>${esc(t.t)}</b><span class="up-tc-d">${esc(t.intro)}</span>
+    <span class="up-tc-v"><span>Volume ${esc(t.vol)}${t.also?` and ${esc(t.also)}`:""}</span><span>Prelims · Mains · a question</span></span></a></li>`}).join("")}</ul>
+  <p class="up-empty" id="up-empty" hidden>No topic matches. Try another word, or <button type="button" class="lnk" onclick="UPS.q='';UPS.cat='';render()">show every topic</button>.</p>
+  ${upConcepts()}
+  <section class="up-sec up-more-res" aria-labelledby="up-more-h"><h2 class="up-h3s" id="up-more-h">More for your preparation</h2><div class="up-goals">
+   <a class="up-goal" href="${upHref("syllabus")}"><span class="up-k">Free</span><b>The syllabus, line by line</b><span>Every Economics line of the official syllabus, explained and mapped to the handbooks.</span><span class="up-go">Open <span aria-hidden="true">→</span></span></a>
+   <a class="up-goal" href="${upHref("current")}"><span class="up-k">Free</span><b>Current Affairs and Economics</b><span>Dated developments, each with its source, its concept and its examination angle.</span><span class="up-go">Open <span aria-hidden="true">→</span></span></a>
+   <a class="up-goal" href="${upHref("strategy")}"><span class="up-k">Free</span><b>Preparation Strategy</b><span>Phases, a weekly rhythm, previous-year questions, answer structure and revision.</span><span class="up-go">Open <span aria-hidden="true">→</span></span></a>
+   <a class="up-goal" href="${upHref("handbooks")}"><span class="up-k">Handbooks</span><b>The Handbook Library</b><span>The complete treatment of each topic, in eleven volumes.</span><span class="up-go">Browse <span aria-hidden="true">→</span></span></a></div></section></div>`}
+function upCat(c){UPS.cat=c;document.querySelectorAll(".up-res-page .up-chip").forEach(b=>{const on=(b.dataset.c||"")===c;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on)});upFilter()}
 function upFilter(){const q=(UPS.q||"").trim().toLowerCase(),c=UPS.cat;let n=0;
  document.querySelectorAll("#up-tgrid .up-tc").forEach(li=>{const ok=(!c||li.dataset.c===c)&&(!q||q.split(/\s+/).every(w=>li.dataset.s.includes(w)));li.hidden=!ok;if(ok)n++});
  const e=document.getElementById("up-empty"),k=document.getElementById("up-count");if(e)e.hidden=n>0;
- if(k)k.textContent=(c||q)?`${n} of ${UP_TOPICS.length} topics`+(c?` in ${c}`:"")+(q?` matching "${UPS.q.trim()}"`:""):`${UP_TOPICS.length} topics`}
+ if(k)k.textContent=(c||q)?`${n} of ${UP_TOPICS.length} topics`+(c?` in ${c}`:"")+(q?` matching "${UPS.q.trim()}"`:""):`${UP_TOPICS.length} topic previews`}
 function upTopicPage(t){const v=upVol(t.vol),i=UP_TOPICS.indexOf(t),prev=UP_TOPICS[(i+UP_TOPICS.length-1)%UP_TOPICS.length],next=UP_TOPICS[(i+1)%UP_TOPICS.length];
- return `<section class="up-mast up-tmast"><div class="wrap full up-mast-in"><nav class="up-crumb" aria-label="Breadcrumb"><a href="${upHref("resources")}">Economics Resources</a><span aria-hidden="true">/</span><span>${esc(t.cat)}</span></nav>
-  <h1 class="up-h1">${esc(t.t)}</h1><p class="up-lede">${esc(t.intro)}</p><p class="up-tv">From <a href="${upHref("handbooks",v.id)}">Volume ${esc(v.n)}: ${esc(v.title)}</a>, Parts ${esc(t.parts)}</p></div></section>
+ const L=fxEnquiryLinks({label:"Handbook purchase",subject:`Handbook enquiry: Volume ${v.n}, ${v.title}`,msg:fxHandbookMsg(v)});
+ return `<section class="up-mast up-tmast" aria-labelledby="up-h1"><div class="wrap full up-mast-in"><nav class="up-crumb" aria-label="Breadcrumb"><a href="${upHref("resources")}">Economics Resources</a><span aria-hidden="true">/</span><span>${esc(t.cat)}</span></nav>
+  <h1 class="up-h1" id="up-h1">${esc(t.t)}</h1><p class="up-lede">${esc(t.intro)}</p><p class="up-tv">From <a href="${upHref("handbooks",v.id)}">Volume ${esc(v.n)}: ${esc(v.title)}</a>, ${esc(upParts(t.parts))}</p></div></section>
  <div class="wrap full up-body up-tp">
   <div class="up-tp-main"><section><h2 class="up-h3">The concept</h2>${t.ex.map(p=>`<p>${esc(p)}</p>`).join("")}</section>
    <figure class="up-tp-fig">${upFig(t.fig)}<figcaption>${esc(t.figCap)}</figcaption></figure>
-   <section><h2 class="up-h3">Important distinctions</h2><table class="up-tbl"><tbody>${t.dist.map(([a,b])=>`<tr><th scope="row">${esc(a)}</th><td>${esc(b)}</td></tr>`).join("")}</tbody></table></section>
-   <div class="up-grid2"><section class="up-card"><h2 class="up-h4">In the Indian economy</h2><p>${esc(t.india)}</p></section><section class="up-card"><h2 class="up-h4">Policy and institutions</h2><p>${esc(t.policy)}</p></section></div>
-   <div class="up-grid2"><section class="up-card up-pre"><h2 class="up-h4">The Prelims perspective</h2><p>${esc(t.pre)}</p></section><section class="up-card up-mains"><h2 class="up-h4">The Mains perspective</h2><p>${esc(t.mains)}</p></section></div>
+   <section><h2 class="up-h3">Important distinctions</h2><div class="up-tw" role="region" aria-label="Important distinctions" tabindex="0"><table class="up-tbl"><tbody>${t.dist.map(([a,b])=>`<tr><th scope="row">${esc(a)}</th><td>${esc(b)}</td></tr>`).join("")}</tbody></table></div></section>
+   <div class="up-g2"><section class="up-card"><h2 class="up-h4">In the Indian economy</h2><p>${esc(t.india)}</p></section><section class="up-card"><h2 class="up-h4">Policy and institutions</h2><p>${esc(t.policy)}</p></section></div>
+   <div class="up-g2"><section class="up-card up-pre"><h2 class="up-h4">The Prelims perspective</h2><p>${esc(t.pre)}</p></section><section class="up-card up-mains"><h2 class="up-h4">The Mains perspective</h2><p>${esc(t.mains)}</p></section></div>
    ${upMcq(t)}</div>
-  <aside class="up-tp-side"><div class="up-glimpse"><div class="up-k">From the handbook</div>${upCover(v,"up-cv sm")}<b>Volume ${esc(v.n)}: ${esc(v.title)}</b><span>${v.pages} pages · Parts ${esc(t.parts)} treat this topic in full</span>
-   <a class="up-btn up-pri w" href="${upHref("handbooks",v.id)}">Explore Handbook</a>${upBuy(v,"up-btn up-buy w")}</div></aside>
+  <aside class="up-tp-side" aria-label="From the handbook"><div class="up-glimpse"><p class="up-k">From the handbook</p>${upCover(v,"up-cv sm")}<b>Volume ${esc(v.n)}: ${esc(v.title)}</b><span>${v.pages} pages · ${esc(upParts(t.parts))} treat this topic in full</span>
+   <a class="up-btn pri w" href="${upHref("handbooks",v.id)}">Explore in the Handbook Library</a>${upExt(L.wa,`Enquire about this volume<span class="sr-only"> on WhatsApp (opens in a new tab)</span>`,"up-btn line w")}</div></aside>
   <nav class="up-pn" aria-label="More topics"><a class="up-pn-a" href="${upHref("resources",prev.id)}"><span>Previous</span>${esc(prev.t)}</a><a class="up-pn-a" href="${upHref("resources",next.id)}"><span>Next</span>${esc(next.t)}</a></nav></div>`}
 function upMcq(t){const q=t.mcq,L="abcd";
- return `<section class="up-mcq" aria-labelledby="mcq-${t.id}"><div class="up-k">Try a question</div><h2 class="up-h4" id="mcq-${t.id}">${esc(q.q)}</h2>
+ return `<section class="up-mcq" aria-labelledby="mcq-${t.id}"><p class="up-k">Try a question</p><h2 class="up-h4" id="mcq-${t.id}">${esc(q.q)}</h2>
   <fieldset><legend class="sr-only">Choose one answer</legend>${q.o.map((o,i)=>`<label class="up-opt"><input type="radio" name="mcq-${t.id}" value="${i}"><span class="up-ol">(${L[i]})</span> ${esc(o)}</label>`).join("")}</fieldset>
-  <button class="up-btn up-pri sm" onclick="upCheck('${t.id}')">Check my answer</button><div class="up-fb" id="fb-${t.id}" aria-live="polite"></div></section>`}
+  <button type="button" class="up-btn pri sm" onclick="upCheck('${t.id}')">Check my answer</button><div class="up-fb" id="fb-${t.id}" aria-live="polite"></div></section>`}
 function upCheck(id){const t=upTopic(id),f=document.getElementById("fb-"+id);if(!t||!f)return;const s=document.querySelector(`input[name="mcq-${id}"]:checked`);
  if(!s){f.className="up-fb";f.textContent="Choose an answer first.";return}
  const ok=+s.value===t.mcq.a;f.className="up-fb "+(ok?"ok":"no");
  f.innerHTML=`<b>${ok?"Correct.":"Not quite: the answer is ("+"abcd"[t.mcq.a]+")."}</b> ${esc(t.mcq.why)}`}
-/* One Concept. Two Examination Perspectives. IB links are kept only where the route exists. */
+/* One Concept. Two Examination Perspectives: the concept layer's teaser when it
+   exists, otherwise this section's own connector. IB links are kept only where
+   the route exists; a tab may name alternatives ("Diagram atlas|Diagram library"). */
+function upConcepts(){if(typeof ccTeaser==="function"){const h=ccTeaser({path:"upsc"});if(h)return h}return upConnector()}
+function upIbTab(s,tab){if(!tab)return 0;if(!s.tabs)return -1;for(const n of String(tab).split("|")){const i=s.tabs.indexOf(n);if(i>=0)return i}return -1}
 function upIbLinks(r){return r.ibg.map(([lab,v,tab,arg])=>{const s=SECTIONS.find(x=>x.v===v);if(!s||typeof VIEWS[v]!=="function")return "";
- const t=tab&&s.tabs?Math.max(0,s.tabs.indexOf(tab)):0;if(tab&&s.tabs&&s.tabs.indexOf(tab)<0)return "";
+ const t=upIbTab(s,tab);if(t<0)return "";
  if(arg&&v==="studio"){try{if(!stItem(arg))return ""}catch(e){return ""}}
  const h=routeFormat(v,t,arg);return routeParse(h)?`<a class="up-ibl" href="${esA(h)}">${esc(lab)}</a>`:""}).filter(Boolean).join("")}
 function upConnector(){
- return `<section class="up-sec up-conn" id="connector" aria-labelledby="conn-h"><div class="up-conn-head"><div class="up-k">IB DP + UPSC CSE</div><h2 class="up-h2" id="conn-h">One Concept. Two Examination Perspectives.</h2>
-  <p class="up-hd">Many ideas are shared by the two examinations. The concept is the same; the learning objective, the examples and the way it is examined differ.</p>
-  <div class="up-conn-dia" aria-hidden="true"><span class="cf">Shared Economics foundation</span><span class="cl"></span><span class="cr"><b>IB DP perspective</b><b>UPSC CSE perspective</b></span></div></div>
+ return `<section class="up-sec up-conn" id="connector" aria-labelledby="conn-h"><div class="up-conn-head"><p class="up-k">IB DP + UPSC CSE</p><h2 class="up-h2" id="conn-h">One Concept. Two Examination Perspectives.</h2>
+  <p class="up-dek">Many ideas are shared by the two examinations. The concept is the same; the learning objective, the examples and the way it is examined differ.</p></div>
   <div class="up-conn-t" role="table" aria-label="Shared concepts across IB DP and UPSC CSE"><div class="up-conn-r h" role="row"><span role="columnheader">Shared concept</span><span role="columnheader">IB DP Economics application</span><span role="columnheader">UPSC CSE application</span></div>
   ${UP_CONNECT.map(r=>`<div class="up-conn-r" role="row"><span role="rowheader"><b>${esc(r.c)}</b></span>
    <span role="cell" class="ib"><span class="up-ck">${esc(r.ibk)}</span>${esc(r.ib)}<span class="up-cl">${upIbLinks(r)}</span></span>
    <span role="cell" class="ups"><span class="up-ck">Economics Collection</span>${esc(r.up)}<span class="up-cl">${upVolLinks(r.vols)}${r.t&&upTopic(r.t)?`<a class="up-ibl u" href="${upHref("resources",r.t)}">Preview: ${esc(upTopic(r.t).t)}</a>`:""}</span></span></div>`).join("")}</div>
   <p class="up-note">IB links open the existing IB DP resources on this platform; nothing is duplicated. UPSC links open the handbook volumes and the free previews.</p></section>`}
 
-/* ── 3 · Economics Handbooks ────────────────────────────────────────────── */
+/* ── 3 · Handbook Library ────────────────────────────────────────────────── */
+/* The library workstream draws this tab (hlRender). Until it is present, the
+   first section's catalogue and volume pages stand, unchanged. */
+function upLibrary(){return typeof hlRender==="function"?hlRender(ARG):upHandbooks()}
+/* ── the first section's handbook catalogue and volume pages: the Handbook Library tab
+   until hlRender is present, unchanged in content (its purchase message names the volume
+   and its ₹99 price, as first published) ─────────────────────────────────────── */
+function upWaBase(){try{const w=CONTACT.find(x=>x.k==="whatsapp");if(w&&w.href)return w.href}catch(e){}return "https://wa.me/917092844945"}
+function upWa(msg){return upWaBase()+"?text="+encodeURIComponent(msg)}
+function upMail(subject,body){return "mailto:"+TUT.email+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body)}
+function upTel(){return "tel:"+UP_PHONE.replace(/\s+/g,"")}
+function upHbMsg(v){return `Hello Arjun, I would like to purchase the digital copy (PDF) of Volume ${v.n}: ${v.title}, from your UPSC CSE Economics Handbook series, priced at ₹99. Please let me know how to pay and receive the PDF.`}
+function upHbSubject(v){return `Handbook purchase: Volume ${v.n}, ${v.title} (₹99)`}
+function upBuy(v,cls){return upExt(upWa(upHbMsg(v)),`Purchase PDF <span class="up-sep" aria-hidden="true">|</span> ₹99<span class="sr-only">: Volume ${v.n}, on WhatsApp (opens in a new tab)</span>`,cls||"up-btn up-buy")}
 function upHandbooks(){if(ARG){const v=upVol(ARG);if(v)return upVolume(v)}
  const H=UPSC_HB.volumes,pages=H.reduce((a,v)=>a+v.pages,0);
  return `<section class="up-mast up-hbm"><div class="wrap full up-mast-in up-hbm-in"><div>
@@ -333,7 +458,7 @@ function upVolume(v){const H=UPSC_HB.volumes,i=H.indexOf(v),prev=H[i-1],next=H[i
    <h3 class="up-h4">What you will learn</h3><ul class="up-ticks">${v.learn.map(l=>`<li>${esc(l)}</li>`).join("")}</ul></section>
   <section class="up-vd-s"><h2 class="up-h3">Contents</h2><ol class="up-toc">${v.parts.map(p=>`<li><span class="up-toc-l">Part ${esc(p.l)}</span><span class="up-toc-x"><b>${esc(p.t)}</b><span>${esc(p.d)}</span></span><span class="up-toc-p">p. ${p.p}</span></li>`).join("")}</ol></section>
   <section class="up-vd-s"><h2 class="up-h3">Prelims and Mains relevance</h2><div class="up-grid2"><div class="up-card up-pre"><h3 class="up-h4">Prelims</h3><p>${esc(v.pre)}</p></div><div class="up-card up-mains"><h3 class="up-h4">Mains</h3><p>${esc(v.mains)}</p></div></div>
-   <h3 class="up-h4">The volume's own syllabus map</h3><div class="up-tw"><table class="up-tbl map"><thead><tr><th scope="col">Syllabus area</th><th scope="col">Prelims (parts)</th><th scope="col">Mains (sections)</th><th scope="col">Also useful for</th></tr></thead><tbody>${v.map.map(r=>`<tr><th scope="row">${esc(r[0])}</th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join("")}</tbody></table></div></section>
+   <h3 class="up-h4">The volume's own syllabus map</h3><div class="up-tw" role="region" aria-label="The volume's own syllabus map" tabindex="0"><table class="up-tbl map"><thead><tr><th scope="col">Syllabus area</th><th scope="col">Prelims (parts)</th><th scope="col">Mains (sections)</th><th scope="col">Also useful for</th></tr></thead><tbody>${v.map.map(r=>`<tr><th scope="row">${esc(r[0])}</th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join("")}</tbody></table></div></section>
   <section class="up-vd-s up-grid2"><div><h2 class="up-h4">Key concepts</h2><ul class="up-chips">${v.concepts.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div><div><h2 class="up-h4">Institutions, policies and schemes</h2><ul class="up-chips g">${v.inst.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div></section>
   <section class="up-vd-s"><h2 class="up-h3">Inside the volume</h2><p>Recurring boxes: ${v.boxes.map(b=>`<span class="up-box-n">${esc(b)}</span>`).join(" ")}</p><p><b>Revision compendium.</b> ${esc(v.comp)}</p></section>
   ${pages.length?`<section class="up-vd-s"><h2 class="up-h3">Sample pages</h2><p class="up-sm">A few pages, at preview resolution and watermarked. The complete volume is the paid PDF.</p>
@@ -346,153 +471,254 @@ function upZoom(id,k){const v=upVol(id);if(!v||!v.img||!v.img[k])return;const i=
  d.innerHTML=`<form method="dialog"><button class="up-zx" aria-label="Close preview">×</button></form><img src="${esA(i.src)}" alt="Preview page of Volume ${esA(v.n)}" width="${i.w}" height="${i.h}"><p>Preview only. Arjun Agrawal | Economics Collection</p>`;
  try{d.showModal()}catch(e){d.setAttribute("open","")}}
 
-/* ── 4 · Current Affairs ────────────────────────────────────────────────── */
-function upCurrent(){const th=UPS.th,L=[...UP_CA].sort((a,b)=>b.d.localeCompare(a.d)),used=UP_CA_THEMES.filter(t=>UP_CA.some(c=>c.th===t));
- return upMast("Current Affairs","Current Affairs and Economics","How Economics connects with India's economic developments. Every entry is dated, names its original source, and links to the concept and the handbook part that explains it.")+
- `<div class="wrap full up-body"><p class="up-srcbox up-cmp"><b>Edited by hand, not a live feed.</b> Compiled on ${esc(UP_CA_COMPILED)} from the dated trackers in the Economics Collection. Each entry names the authority whose document it reports.</p>
-  <div class="up-cats" role="group" aria-label="Filter by theme"><button class="up-th${th?"":" on"}" aria-pressed="${!th}" onclick="upTheme('')">All <span>${UP_CA.length}</span></button>${used.map(t=>`<button class="up-th${th===t?" on":""}" aria-pressed="${th===t}" data-t="${esA(t)}" onclick="upTheme(this.dataset.t)">${esc(t)} <span>${UP_CA.filter(c=>c.th===t).length}</span></button>`).join("")}</div>
-  <ol class="up-ca" id="up-ca">${L.map(c=>{const v=upVol(c.vol);return `<li class="up-ca-i" data-t="${esA(c.th)}"${th&&th!==c.th?" hidden":""} id="ca-${c.id}"><div class="up-ca-d"><time datetime="${c.d}">${esc(upDate(c))}</time><span class="up-tag">${esc(c.th)}</span></div>
-   <div class="up-ca-x"><h2 class="up-ca-h">${esc(c.h)}</h2><p>${esc(c.w)}</p><dl><div><dt>The concept</dt><dd>${esc(c.c)}</dd></div><div><dt>For the examination</dt><dd>${esc(c.x)}</dd></div><div><dt>Source</dt><dd>${esc(c.src)}</dd></div></dl>
-   ${v?`<a class="up-more" href="${upHref("handbooks",v.id)}">Read it in Volume ${esc(v.n)}, Part ${esc(c.part)} →</a>`:""}</div></li>`}).join("")}</ol></div>`}
-function upTheme(t){UPS.th=t;document.querySelectorAll(".up-th").forEach(b=>{const on=(b.dataset.t||"")===t;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on)});
- document.querySelectorAll("#up-ca .up-ca-i").forEach(li=>li.hidden=!!t&&li.dataset.t!==t)}
+/* ── 4 · Current Affairs ─────────────────────────────────────────────────── */
+function upCaThemes(){return UP_CA_THEMES.filter(t=>UP_CA.some(c=>c.th===t))}
+function upCaSorted(){return [...UP_CA].sort((a,b)=>b.d.localeCompare(a.d)||a.id.localeCompare(b.id))}
+function upCaItem(c){const v=upVol(c.vol),t=c.t&&upTopic(c.t);
+ return `<article class="up-ca-e" id="ca-${c.id}" data-t="${esA(c.th)}" aria-labelledby="cah-${c.id}">
+  <div class="up-ca-meta"><time datetime="${c.d}">${esc(upDate(c))}</time><span class="up-tag">${esc(c.th)}</span>${c.v?`<span class="up-tag v">Checked at source</span>`:""}</div>
+  <div class="up-ca-body"><h3 class="up-ca-h" id="cah-${c.id}" tabindex="-1">${esc(c.h)}</h3><p class="up-ca-w">${esc(c.w)}</p>
+   <dl class="up-ca-dl"><div><dt>Economic concept</dt><dd>${esc(c.c)}</dd></div><div><dt>Why it matters</dt><dd>${esc(c.why)}</dd></div>
+    <div><dt>Prelims relevance</dt><dd>${esc(c.pre)}</dd></div><div><dt>Mains relevance</dt><dd>${esc(c.mains)}</dd></div></dl>
+   <div class="up-ca-f"><p class="up-ca-links">${v?`<a href="${upHref("handbooks",v.id)}">Volume ${esc(v.n)}, Part ${esc(c.part)}: ${esc(upPartTitle(v,c.part)||v.title)}</a>`:""}${t?`<a href="${upHref("resources",t.id)}">Topic preview: ${esc(t.t)}</a>`:""}</p>
+    <dl class="up-ca-src"><div><dt>Source</dt><dd>${esc(c.src)}${c.url?` <a href="${esA(c.url)}" target="_blank" rel="noopener noreferrer">Open the original<span class="sr-only">: ${esc(c.h)} (opens in a new tab)</span></a>`:""}</dd></div><div><dt>Published</dt><dd><time datetime="${c.d}">${esc(upDate(c))}</time></dd></div></dl></div></div></article>`}
+function upCurrent(){const th=UPS.th&&UP_CA.some(c=>c.th===UPS.th)?UPS.th:"";UPS.th=th;const used=upCaThemes(),groups=[];
+ upCaSorted().forEach(c=>{const k=c.d.slice(0,7);let g=groups.find(x=>x.k===k);if(!g)groups.push(g={k,items:[]});g.items.push(c)});
+ const mName=k=>new Date(k+"-15T12:00:00Z").toLocaleDateString("en-GB",{month:"long",year:"numeric"});
+ const checked=UP_CA.filter(c=>c.v).length;
+ return upMast({n:"05",s:"Current Affairs",h:"Current Affairs and Economics",facts:[[UP_CA.length+" entries","Newest first"],[used.length+" of "+UP_CA_THEMES.length,"Themes with entries"],[UP_CA_COMPILED,"Last compiled"]],lede:"Economic developments read through the concepts they test. Every entry gives the economic concept, why it matters, its Prelims and Mains relevance, the handbook part or topic that explains it, and its source and date."})+
+ `<div class="wrap full up-body up-ca-page">
+  <div class="up-ca-note"><p><b>A manually updated editorial register, not a live feed.</b> Last compiled on <time datetime="${UP_CA_COMPILED_D}">${esc(UP_CA_COMPILED)}</time>; newest first.</p>
+   <p>The ${checked} entries marked <span class="up-tag v">Checked at source</span> were opened and checked in the original official document on that date. The others come from the dated trackers in the handbooks, each naming the authority whose document it reports. Figures are as published on the date shown and may since have been revised.</p></div>
+  <div class="up-chipset" role="group" aria-label="Filter by theme"><button type="button" class="up-chip${th?"":" on"}" aria-pressed="${!th}" onclick="upTheme('')">All themes <span>${UP_CA.length}</span></button>${used.map(t=>`<button type="button" class="up-chip${th===t?" on":""}" aria-pressed="${th===t}" data-t="${esA(t)}" onclick="upTheme(this.dataset.t)">${esc(t)} <span>${UP_CA.filter(c=>c.th===t).length}</span></button>`).join("")}</div>
+  <p class="up-count" id="up-ca-count" aria-live="polite"></p>
+  <div class="up-reg" id="up-ca">${groups.map(g=>`<section class="up-reg-m" data-m="${g.k}" aria-labelledby="m-${g.k}"><h2 class="up-reg-h" id="m-${g.k}">${esc(mName(g.k))}</h2>${g.items.map(upCaItem).join("")}</section>`).join("")}</div></div>`}
+function upTheme(t){UPS.th=t;document.querySelectorAll(".up-ca-page .up-chip").forEach(b=>{const on=(b.dataset.t||"")===t;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on)});upThemeApply()}
+function upThemeApply(){const t=UPS.th;let n=0;
+ document.querySelectorAll("#up-ca .up-ca-e").forEach(e=>{const ok=!t||e.dataset.t===t;e.hidden=!ok;if(ok)n++});
+ document.querySelectorAll("#up-ca .up-reg-m").forEach(s=>{s.hidden=![...s.querySelectorAll(".up-ca-e")].some(e=>!e.hidden)});
+ const k=document.getElementById("up-ca-count");if(k)k.textContent=t?`${n} ${n===1?"entry":"entries"} in ${t}`:`${n} entries, newest first`}
 
-/* ── 5 · The programme ──────────────────────────────────────────────────── */
-function upCourse(){const C=UP_COURSE,enq=upWa(C.enquiry);
- return `<section class="up-hero up-ch"><div class="wrap full up-hero-in"><div class="up-hero-copy">
-  <div class="up-eb"><span>UPSC CSE Economics</span><span class="up-eb-s">3-Month Intensive Programme</span></div>
-  <h1 class="up-h1">Master Economics for UPSC. Build Understanding That Lasts.</h1>
-  <p class="up-lede">A focused three-month programme designed to help UPSC aspirants develop conceptual clarity, understand the Indian economy, connect static concepts with current affairs and approach Economics questions with confidence.</p>
-  <div class="up-cta">${upExt(enq,"Enquire About Enrolment","up-btn up-pri")}<a class="up-btn up-gh" href="${upTel()}">Speak to Arjun</a></div></div>
-  <dl class="up-cfacts">${C.facts.map(([k,v,s])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}${s?`<span>${esc(s)}</span>`:""}</dd></div>`).join("")}</dl></div></section>
- <section class="up-sec"><div class="wrap full">${upHead("What the programme offers","Ten features","")}
-  <ol class="up-feat">${C.features.map(([t,d],i)=>`<li class="rv" style="--i:${i%5}"><span class="up-fn">${String(i+1).padStart(2,"0")}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("")}</ol></div></section>
- <section class="up-sec up-alt"><div class="wrap full">${upHead("The roadmap","Three months, in three movements","An indicative outline by month, following the eleven volumes and the official syllabus. It is not a week-by-week timetable.")}
-  <ol class="up-road">${C.months.map((m,i)=>`<li class="up-rm rv" style="--i:${i}"><div class="up-rm-h"><span>${esc(m.n)}</span><b>${esc(m.t)}</b></div><ul>${m.items.map(([t,v])=>`<li><span>${esc(t)}</span>${v?`<span class="up-rv">${v.split(", ").map(n=>{const x=upVol(n);return x?`<a href="${upHref("handbooks",x.id)}" title="${esA(x.title)}">Vol. ${n}</a>`:""}).join("")}</span>`:""}</li>`).join("")}</ul></li>`).join("")}</ol>
-  <p class="up-note">Volume tags show where each topic is treated in the Economics Collection; topics without a tag are taught from the syllabus and current sources.</p></div></section>
- <section class="up-sec"><div class="wrap full up-b25">
-  <div>${upHead("Why a batch of 25?","Limited to 25 students per batch","The smaller batch is meant to make the class a conversation.")}
-   <ul class="up-ticks">${C.batch.map(([t,d])=>`<li><b>${esc(t)}.</b> ${esc(d)}</li>`).join("")}</ul></div>
-  <figure class="up-seats" aria-label="Twenty-five seats"><div class="up-seat-g">${Array.from({length:25},(_,i)=>`<i style="--i:${i}"></i>`).join("")}</div><figcaption>25 seats. No more.</figcaption></figure></div></section>
- <section class="up-sec up-alt" id="enrol"><div class="wrap full up-pricing">
-  <div class="up-pc"><div class="up-k">${esc(C.name)} · ${esc(C.kind)}</div><div class="up-pc-p">${esc(C.fee)}</div><p class="up-pc-s">Complete 3-month intensive programme.</p>
-   <ul class="up-ticks">${["Online delivery","Prelims + Mains","Static + Current Affairs","Maximum 25 students"].map(x=>`<li>${x}</li>`).join("")}</ul>
-   <div class="up-pc-b">${upExt(enq,"Enquire About Enrolment","up-btn up-pri w")}<a class="up-btn up-gh w" href="${upTel()}">Speak to Arjun</a></div>
-   <p class="up-xs">The enquiry opens WhatsApp with this message: "${esc(C.enquiry)}" You can also <a href="${esA(upMail("UPSC CSE Economics: 3-Month Intensive Programme enquiry",C.enquiry))}">send it by email</a> or call ${esc(UP_PHONE)}. Nothing is booked or paid on this website.</p></div>
-  <div class="up-pc-w">${upHead("Before you enquire","What the programme draws on","")}<ul class="up-ticks"><li>The structure of the eleven-volume <a href="${upHref("handbooks")}">Economics Handbook Collection</a>.</li><li>The official syllabus, line by line, in the <a href="${upHref("syllabus")}">syllabus explorer</a>.</li><li>Dated developments, as in <a href="${upHref("current")}">Current Affairs and Economics</a>.</li><li>Teaching by <a href="${upHref("educator")}">Arjun Agrawal</a>.</li></ul></div></div></section>`}
+/* ── 5 · Preparation Strategy ────────────────────────────────────────────── */
+function upStrategy(){const S=UP_STRAT,ex=upCA("mpc-oct-2026"),ev=ex&&upVol(ex.vol),comp=UPSC_HB.volumes[0].comp;
+ const go=([tab,lab,arg])=>`<a class="up-ph-a" href="${upHref(tab,arg||undefined)}">${esc(lab)}</a>`;
+ return upMast({n:"06",s:"Preparation Strategy",h:"A strategy for the Economics of the Civil Services Examination",facts:[["4 phases","From foundations to revision"],["7 days","A weekly rhythm"],["5 steps","From a development to its concept"],["4 returns","A revision cycle"]],lede:"A structured way to prepare the Economics of Prelims General Studies Paper I and Mains General Studies Paper III with this platform: in phases, week by week, joining static concepts to current affairs and practising for both stages. It is a method, not a promise of results."})+
+ `<div class="wrap full up-body up-strat">
+  <section class="up-sec0" aria-labelledby="st-0"><div class="up-principle"><h2 class="up-h3s" id="st-0">Start from the syllabus</h2>
+   <p>The official syllabus marks the boundary. Map each topic to its line before you study it, and you will know why you are reading it and how it can be examined. This page covers the Economics of the General Studies papers only, not the Economics Optional paper, and Economics is one part of a much wider examination.</p>
+   <a class="up-more" href="${upHref("syllabus")}">The syllabus, line by line <span aria-hidden="true">→</span></a></div></section>
+  <section class="up-sec" aria-labelledby="st-1">${upSH("01","Four phases","Prepare in four phases","The phases overlap, and their length depends on how far away the examination is and where you start. Current affairs run through all four.","st-1")}
+   <ol class="up-phases">${S.phases.map((p,i)=>`<li class="up-ph rv" style="--i:${i}"><p class="up-ph-n">${esc(p.n)}</p><h3 class="up-h3">${esc(p.t)}</h3><p class="up-ph-aim">${esc(p.aim)}</p>
+    <p class="up-mini-k">What to do</p><ul class="up-list">${p.do.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+    <p class="up-mini-k">On this platform</p><ul class="up-ph-use">${p.use.map(u=>`<li>${go(u)}</li>`).join("")}</ul>
+    <p class="up-ph-out"><span>By the end</span>${esc(p.out)}</p></li>`).join("")}</ol></section>
+  <section class="up-sec" aria-labelledby="st-2">${upSH("02","A weekly rhythm","A week of preparation","A suggested week for one topic. Adapt the days to your timetable; keep the sequence from concept to revision.","st-2")}
+   <div class="up-tw" role="region" aria-label="A suggested week" tabindex="0"><table class="up-week"><caption class="sr-only">A suggested week: the day, its focus and what to do</caption><thead><tr><th scope="col">Day</th><th scope="col">Focus</th><th scope="col">What to do</th></tr></thead>
+    <tbody>${S.week.map(([d,f,w])=>`<tr><th scope="row">${esc(d)}</th><td><b>${esc(f)}</b></td><td>${esc(w)}</td></tr>`).join("")}</tbody></table></div></section>
+  <section class="up-sec" aria-labelledby="st-3">${upSH("03","Static and current","Join static concepts to current affairs","Read every development through a concept, in five steps. The Current Affairs page sets out each entry the same way.","st-3")}
+   <div class="up-link5"><ol class="up-steps5">${S.link.map(([t,d],i)=>`<li><span class="up-steps5-n" aria-hidden="true">${i+1}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("")}</ol>
+   ${ex?`<article class="up-worked" aria-labelledby="st-ex"><p class="up-k">A worked example</p><h3 class="up-h3" id="st-ex">${esc(ex.h)}</h3>
+    <dl class="up-ca-dl"><div><dt>1 · Concept</dt><dd>${esc(ex.c)}</dd></div><div><dt>2 · Syllabus line</dt><dd>Prelims: Economic and Social Development (Paper I), studied here under the themes Money and banking, and Fiscal and monetary policy. Mains: <a href="${upHref("syllabus","m-economy")}">Indian economy and issues relating to planning, mobilization of resources, growth, development and employment</a> (Paper III).</dd></div>
+     <div><dt>3 · Static part</dt><dd>${ev?`<a href="${upHref("handbooks",ev.id)}">Volume ${esc(ev.n)}, Part ${esc(ex.part)}: ${esc(upPartTitle(ev,ex.part))}</a>, with Parts E and F on the framework and its instruments.`:""}</dd></div>
+     <div><dt>4 · Data, with source and date</dt><dd>${esc(ex.w)} <span class="up-sm">(${esc(ex.src)}.)</span></dd></div>
+     <div><dt>5 · Both angles</dt><dd>Prelims: ${esc(UP_FLOW[5][1])} Mains: ${esc(UP_FLOW[6][1])}</dd></div></dl></article>`:""}</div></section>
+  <section class="up-sec" aria-labelledby="st-4">${upSH("04","Previous-year questions","Use previous-year questions well","Previous-year questions show how the syllabus is examined. Use them to understand the demand, not to memorise answers.","st-4")}
+   <div class="up-pyq"><ol class="up-pyq-l">${S.pyq.map(([t,d],i)=>`<li><b>${esc(t)}</b><span>${esc(d)}${i===0?` The UPSC publishes them on its website: <a href="https://www.upsc.gov.in/examinations/previous-question-papers" target="_blank" rel="noopener noreferrer">Previous Question Papers, upsc.gov.in<span class="sr-only"> (opens in a new tab)</span></a>.`:""}</span></li>`).join("")}</ol>
+    <p class="up-note">This page does not reproduce UPSC questions. Each handbook's revision compendium links its topics with previous-year questions.</p></div></section>
+  <section class="up-sec" aria-labelledby="st-5">${upSH("05","Mains answers","Structure a GS III Economy answer","A frame for analytical answers. Shape it to the question's directive word and its word limit.","st-5")}
+   <div class="up-ans"><ol class="up-ans-f">${S.answer.map(([t,d],i)=>`<li class="up-ans-${i}"><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("")}</ol>
+    <div class="up-ans-c"><h3 class="up-h3s">Before you finish, check</h3><ul class="up-ticks">${S.check.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div></div></section>
+  <section class="up-sec" aria-labelledby="st-6">${upSH("06","Revision","A revision cycle","Return to each topic four times, each time with less help.","st-6")}
+   <div class="up-cyc">${upCycleSvg(S.cycle)}<ol class="up-cyc-l">${S.cycle.map(([t,d],i)=>`<li><span class="up-cyc-n" aria-hidden="true">${i+1}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("")}</ol></div>
+   <p class="up-note">Each handbook closes with a revision compendium. Volume I's, for example, holds: ${esc(comp.charAt(0).toLowerCase()+comp.slice(1))}</p></section>
+  <section class="up-sec up-strat-end" aria-labelledby="st-7"><h2 class="up-h3s" id="st-7">If you would like this structure taught</h2>
+   <p>The <a href="${upHref("course")}">3-month intensive online programme</a> follows the same sequence, from concepts to current affairs and practice for both stages. No preparation method can promise a result; this page offers a method you can use on your own.</p></section></div>`}
+/* the revision cycle as a drawing: four stages on a ring (decorative; the list beside it carries the text) */
+function upCycleSvg(c){const R=78,cx=110,cy=110,pt=a=>[cx+R*Math.cos(a),cy+R*Math.sin(a)];
+ const nodes=c.map((_,i)=>{const a=-Math.PI/2+i*Math.PI/2,[x,y]=pt(a);return `<circle class="up-cyc-c" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="17"/><text class="up-cyc-t" x="${x.toFixed(1)}" y="${(y+5).toFixed(1)}" text-anchor="middle">${i+1}</text>`}).join("");
+ const arcs=c.map((_,i)=>{const a0=-Math.PI/2+i*Math.PI/2+0.3,a1=a0+Math.PI/2-0.6,[x0,y0]=pt(a0),[x1,y1]=pt(a1);
+  const ah=a1+0.02,[hx,hy]=pt(ah),tx=-Math.sin(ah),ty=Math.cos(ah),nx=Math.cos(ah),ny=Math.sin(ah),L=7;
+  return `<path class="up-cyc-a" d="M${x0.toFixed(1)} ${y0.toFixed(1)}A${R} ${R} 0 0 1 ${x1.toFixed(1)} ${y1.toFixed(1)}"/><path class="up-cyc-h" d="M${(hx-tx*L+nx*4).toFixed(1)} ${(hy-ty*L+ny*4).toFixed(1)}L${hx.toFixed(1)} ${hy.toFixed(1)}L${(hx-tx*L-nx*4).toFixed(1)} ${(hy-ty*L-ny*4).toFixed(1)}"/>`}).join("");
+ return `<svg class="up-cyc-svg" viewBox="0 0 220 220" aria-hidden="true" focusable="false">${arcs}${nodes}<text class="up-cyc-m" x="110" y="106" text-anchor="middle">Revise</text><text class="up-cyc-m s" x="110" y="124" text-anchor="middle">with less help</text></svg>`}
 
-/* ── 6 · About the Educator ─────────────────────────────────────────────── */
-function upEducator(){const pages=UPSC_HB.volumes.reduce((a,v)=>a+v.pages,0);let A=[];try{A=CV_AUTHOR}catch(e){}
- return `<section class="up-mast up-ed"><div class="wrap full up-mast-in up-ed-g"><figure class="up-ed-ph"><img src="assets/brand/arjun-agrawal-portrait-4x5.webp" alt="Arjun Agrawal, in a navy blazer and tie, smiling, in front of a stone wall." width="432" height="540" loading="lazy" decoding="async"></figure>
-  <div><div class="up-eb"><span>UPSC CSE Economics</span><span class="up-eb-s">About the Educator</span></div><h1 class="up-h1">Arjun Agrawal</h1>
-   <p class="up-role">Economics Educator | IB DP Economics | UPSC CSE Economics</p>
-   <p class="up-lede">Arjun teaches Economics to two very different audiences: IB Diploma Programme students and UPSC Civil Services aspirants. The aim is the same for both: to make economic ideas clear, connected and usable.</p></div></div></section>
- <div class="wrap full up-body up-ed-b">
-  <section><h2 class="up-h3">Academic grounding and teaching</h2><dl class="up-cvl">${A.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}<div><dt>Training</dt><dd>Postgraduate training in Economics and Political Science; UGC-NET and MH-SET qualified</dd></div></dl></section>
-  <section><h2 class="up-h3">Original resources</h2><ul class="up-ticks"><li>The <a href="${upHref("handbooks")}">Economics Handbook Collection</a> for UPSC CSE: eleven volumes, ${pages} pages, from the foundations of Economics to India's agriculture, industry and labour markets.</li><li>This learning platform for IB DP Economics: course lessons, labs, mindmaps, real-world cases and exam practice.</li><li>Original decks and visual explainers, shown in part in the <a href="#/studio">Learning Studio</a>.</li></ul></section>
-  <section><h2 class="up-h3">How he teaches</h2><p class="up-big">Mechanisms before facts. Before a definition is polished, a student should be able to say what happens, what happens next, and what that means for someone specific. Then the idea is drawn, applied to the Indian economy, connected with a current development, and tested the way Prelims and Mains test it.</p>
-   <div class="up-ed-cta"><a class="up-btn up-pri" href="${upHref("course")}">The 3-month programme</a><a class="up-btn up-gh" href="${upHref("contact")}">Contact Arjun</a><a class="up-btn up-gh" href="#/about">The IB DP About page</a></div></section></div>`}
+/* ── 6 · Online Course ───────────────────────────────────────────────────── */
+function upCourse(){const C=UP_COURSE,L=fxEnquiryLinks("upCourse"),ph=FX_CONTACT.phone();
+ const mainsName=id=>{const m=UP_MAINS.find(x=>x.id===id);return m?m.short:""},preName=id=>{const t=UP_PRE.find(x=>x.id===id);return t?t.t:""};
+ const cta=(cls)=>`<div class="up-cta ${cls||""}">${upExt(L.wa,`Enquire about the next batch <span class="arr" aria-hidden="true">→</span><span class="sr-only"> on WhatsApp (opens in a new tab)</span>`,"up-btn gold lg")}<a class="up-btn ghost" href="${esA(L.mail)}">Email the enquiry</a><a class="up-btn ghost" href="${esA(L.tel)}">Call ${esc(ph)}</a></div>`;
+ return `<section class="up-hero up-chero" aria-labelledby="up-h1"><div class="wrap full up-hero-in">
+  <div class="up-hero-copy"><p class="up-run"><span>Arjun Agrawal</span><span>UPSC CSE Economics</span><span>3-Month Intensive Online Programme</span></p>
+   <h1 class="up-h1 up-caps" id="up-h1">Master Economics for UPSC. <span class="up-h1-2">Build the understanding to answer with confidence.</span></h1>
+   <p class="up-lede">${esc(C.description)}</p>${cta()}
+   <p class="up-hero-n">Delivered online only. Ask for the next batch's schedule and the enrolment details; nothing is booked or paid on this website.</p></div>
+  <aside class="up-fee" aria-label="The programme at a glance"><p class="up-k">The complete programme</p><p class="up-fee-p">${esc(C.fee)}</p><p class="up-fee-s">for the complete three-month programme</p>
+   <ul class="up-fee-l"><li><b>Three months</b>, online only</li><li><b>Maximum 25 students</b> per batch</li><li><b>Prelims and Mains</b> Economics within the relevant General Studies syllabus</li><li><b>Static Economics</b> and current affairs</li></ul></aside>
+ </div></section>
+ <section class="up-sec up-hl-sec" aria-labelledby="up-hl-h"><div class="wrap full"><h2 class="sr-only" id="up-hl-h">The programme in six facts</h2>
+  <ul class="up-hl up-hl-6">${C.highlights.map(([v,k,s])=>`<li class="rv"><span class="up-hl-k">${esc(k)}</span><b>${esc(v)}</b><span class="up-hl-s">${esc(s)}</span></li>`).join("")}</ul></div></section>
+ <section class="up-sec" aria-labelledby="up-cov-h"><div class="wrap full">
+  ${upSH("01","What the course covers","Twelve modules, built on the eleven handbooks","Each module follows the parts of the volumes that treat it and is mapped to the official General Studies syllabus. Where no volume treats a topic in full, the module says so.","up-cov-h")}
+  <ol class="up-mods">${C.modules.map((m,i)=>`<li class="up-mod"><div class="up-mod-h"><span class="up-mod-n" aria-hidden="true">${upPad(i+1)}</span><h3 class="up-h3">${esc(m.t)}</h3><span class="up-mod-m">Month ${m.m}</span></div>
+   <p>${esc(m.d)}</p><p class="up-mod-v"><span class="up-mini-k">Handbooks</span>${upVolLinks(m.vols)}</p>
+   <div class="up-mod-s"><p class="up-mini-k">Syllabus</p><ul>${[...m.pre.map(id=>`<li><span class="up-mod-p">Prelims</span> ${esc(preName(id))}</li>`),...m.mains.map(id=>`<li><span class="up-mod-p">GS III</span> <a class="up-mod-a" href="${upHref("syllabus",id)}">${esc(mainsName(id))}</a></li>`),...(m.gs2||[]).map(id=>`<li><span class="up-mod-p">GS II</span> <a class="up-mod-a" href="${upHref("syllabus",id)}">${esc((UP_GS2.find(g=>g.id===id)||{}).short||"")}</a></li>`)].join("")}</ul></div>
+   ${m.gap?`<p class="up-gap"><b>Not covered by a volume of its own.</b> ${esc(m.gap)}</p>`:""}</li>`).join("")}</ol></div></section>
+ <section class="up-sec up-band" aria-labelledby="up-jr-h"><div class="wrap full">
+  ${upSH("02","The three months","A three-month journey","Indicative: an outline of the order of study, not a timetable. Batch dates and timings are not published here; ask for them when you enquire.","up-jr-h")}
+  <ol class="up-journey rv">${C.months.map((m,i)=>`<li class="up-jm" style="--i:${i}"><div class="up-jm-h"><span class="up-jm-n">${esc(m.n)}</span><h3 class="up-h3">${esc(m.t)}</h3></div><p>${esc(m.d)}</p>
+   <ul class="up-jm-v" aria-label="Volumes for ${esA(m.n)}">${m.vols.map(n=>{const v=upVol(n);return v?`<li><a class="up-jv-a" href="${upHref("handbooks",v.id)}">${upCover(v,"up-jm-cv")}<span>${esc(v.n)}</span></a></li>`:""}).join("")}</ul></li>`).join("")}</ol></div></section>
+ <section class="up-sec" aria-labelledby="up-me-h"><div class="wrap full">
+  ${upSH("03","Teaching methodology","How the programme teaches","Nine elements, used together in each module.","up-me-h")}
+  <ul class="up-meth">${C.methods.map(([ic,t,d],i)=>`<li class="rv" style="--i:${i%3}">${upIc(ic)}<b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("")}</ul></div></section>
+ <section class="up-sec up-b25-sec" aria-labelledby="up-b25-h"><div class="wrap full up-b25">
+  <div>${upSH("04","The batch","A batch of at most 25 students","","up-b25-h")}<p class="up-big">${esc(C.batch)}</p>
+   <p>A smaller group leaves room for questions in class, for discussion in which every student can take part, and for teaching that responds to how the batch is learning.</p></div>
+  <figure class="up-25"><div class="up-25-g" aria-hidden="true">${Array.from({length:25},(_,i)=>`<i style="--i:${i}"></i>`).join("")}</div><figcaption>Maximum 25 students per batch</figcaption></figure></div></section>
+ <section class="up-sec" aria-labelledby="up-who-h"><div class="wrap full">
+  ${upSH("05","Who should join","Who the programme is for","","up-who-h")}
+  <ul class="up-who">${C.audience.map(([t,d])=>`<li><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("")}</ul></div></section>
+ <section class="up-sec up-cend" aria-labelledby="up-end-h"><div class="wrap full up-cend-in"><div><p class="up-k">Enrolment is by enquiry</p><h2 class="up-h2" id="up-end-h">Enquire about the next batch</h2>
+  <p class="up-cend-l">WhatsApp opens with this message, ready to send: <q>${esc(C.enquiry)}</q></p>
+  <p class="up-sm">Or email ${esc(FX_CONTACT.email())}, or call ${esc(ph)}. The programme is delivered online only. No batch is booked and no payment is taken on this website.</p></div>${cta("col")}</div></section>`}
 
-/* ── 7 · Contact / Enrolment ────────────────────────────────────────────── */
-function upContactMsgs(){const v=upVol(UPS.vol)||UPSC_HB.volumes[0];
- return {handbook:{t:"Buy a handbook",d:"Names the volume and its price of ₹99.",msg:upHbMsg(v),sub:upHbSubject(v)},
-  course:{t:"Enrol in the 3-month programme",d:"Asks for the course details and the upcoming batch.",msg:UP_COURSE.enquiry,sub:"UPSC CSE Economics: 3-Month Intensive Programme enquiry"},
-  general:{t:"A general question",d:"About UPSC Economics or the resources.",msg:UP_GEN_MSG,sub:"UPSC CSE Economics: a question"}}}
-function upContact(){const M=upContactMsgs(),k=UPS.ct,m=M[k];
- return upMast("Contact / Enrolment","Contact and enrolment","Choose what your message is about. WhatsApp or your email app opens with the message already written; nothing is sent from this page, and nothing you choose here is stored.")+
- `<div class="wrap full up-body up-ct"><div><fieldset class="up-ct-k"><legend>What is your message about?</legend>${Object.entries(M).map(([key,x])=>`<label class="up-ct-o"><input type="radio" name="up-ct" value="${key}"${key===k?" checked":""} onchange="UPS.ct=this.value;upCtPaint()"><span><b>${esc(x.t)}</b><span>${esc(x.d)}</span></span></label>`).join("")}</fieldset>
-  <div class="up-ct-v" id="up-ct-v"${k==="handbook"?"":" hidden"}><label for="up-ct-vol">Which volume?</label><select id="up-ct-vol" onchange="UPS.vol=this.value;upCtPaint()">${UPSC_HB.volumes.map(v=>`<option value="${v.id}"${v.id===UPS.vol?" selected":""}>Volume ${v.n}: ${esc(v.title)} (${UP_PRICE})</option>`).join("")}</select></div></div>
-  <div class="up-ct-send"><div class="up-k">Your message</div><blockquote class="up-ct-m" id="up-ct-m">${esc(m.msg)}</blockquote>
-   <a class="up-btn up-pri w" id="up-ct-wa" href="${esA(upWa(m.msg))}" target="_blank" rel="noopener noreferrer">Send on WhatsApp</a>
-   <a class="up-btn up-gh w" id="up-ct-mail" href="${esA(upMail(m.sub,m.msg))}">Write the email</a>
-   <a class="up-btn up-gh w" href="${upTel()}">Call ${esc(UP_PHONE)}</a>
-   <p class="up-xs">Email: <a href="mailto:${esA(TUT.email)}">${esc(TUT.email)}</a> · WhatsApp and phone: ${esc(UP_PHONE)}</p>
-   <p class="up-xs">A message is an enquiry: no purchase or enrolment is completed on this website. For IB DP tutorials and other collaboration, use the <a href="#/contact">general contact page</a>.</p></div></div>`}
-function upCtPaint(){const M=upContactMsgs(),m=M[UPS.ct];const s=(id,f)=>{const e=document.getElementById(id);if(e)f(e)};
- s("up-ct-m",e=>e.textContent=m.msg);s("up-ct-wa",e=>e.href=upWa(m.msg));s("up-ct-mail",e=>e.href=upMail(m.sub,m.msg));s("up-ct-v",e=>e.hidden=UPS.ct!=="handbook")}
+/* ── 7 · Contact / Enrol ─────────────────────────────────────────────────── */
+const UP_ENQ=[["upHandbooks","book","Handbook purchases","Buying volumes of the Economics Handbook Series: payment and delivery details."],
+ ["upCourse","screen","The three-month course","The UPSC CSE Economics Intensive Online Programme: ₹9,999 for the complete three months, online only, at most 25 students per batch."],
+ ["upMentor","talk","Economics mentorship","An enquiry about Economics mentorship for the Civil Services Examination."],
+ ["upResources","notes","Resource enquiries","A question about the UPSC Economics resources on this platform."]];
+function upContact(){const vols=UPSC_HB.volumes;
+ return upMast({n:"08",s:"Contact / Enrol",h:"Contact and enrolment",facts:[["4 enquiries","Handbooks, course, mentorship, resources"],["3 ways","WhatsApp, email or a call"]],lede:"Four UPSC enquiries, each with its message already written. Choose WhatsApp, email or a call: your own app opens with the message, and nothing is sent from this page or stored by it."})+
+ `<div class="wrap full up-body up-ct">
+  <ul class="up-enq">${UP_ENQ.map(([k,ic,t,d])=>`<li class="up-enq-c" id="enq-${k}"><div class="up-enq-h">${upIc(ic)}<h2 class="up-h3">${esc(t)}</h2></div><p>${esc(d)}</p>
+   ${k==="upHandbooks"?`<label class="up-ct-v" for="up-ct-vol">About a particular volume <span>(optional)</span></label><select id="up-ct-vol" onchange="upCtVol(this.value)"><option value="">The series in general</option>${vols.map(v=>`<option value="${v.id}"${UPS.vol===v.id?" selected":""}>Volume ${v.n}: ${esc(v.title)}</option>`).join("")}</select>`:""}
+   <p class="up-mini-k">The message</p><blockquote class="up-enq-m" id="msg-${k}">${esc(k==="upHandbooks"&&upVol(UPS.vol)?fxHandbookMsg(upVol(UPS.vol)):FX_ENQ[k].msg)}</blockquote>
+   ${k==="upHandbooks"&&upVol(UPS.vol)?upCtActs(upVol(UPS.vol)):upEnqActs(k)}</li>`).join("")}</ul>
+  <aside class="up-ct-d" aria-label="Contact details"><p class="up-k">Contact details</p><dl><div><dt>Email</dt><dd><a href="mailto:${esA(FX_CONTACT.email())}">${esc(FX_CONTACT.email())}</a></dd></div><div><dt>WhatsApp and phone</dt><dd><a href="${esA(fxTel())}">${esc(FX_CONTACT.phone())}</a></dd></div></dl>
+   <p class="up-sm">A message is an enquiry: no purchase or enrolment is completed on this website. For IB DP enquiries, use the <a href="#/contact">general contact page</a>. About the educator: <a href="#/about">Arjun Agrawal</a>.</p></aside></div>`}
+/* the handbook card, asking about one volume */
+function upCtActs(v){const L=fxEnquiryLinks({label:"Handbook purchase",subject:`Handbook enquiry: Volume ${v.n}, ${v.title}`,msg:fxHandbookMsg(v)});
+ return `<div class="up-acts" data-enq="upHandbooks">${upExt(L.wa,`WhatsApp<span class="sr-only">: Handbook purchase, Volume ${esc(v.n)} (opens in a new tab)</span>`,"up-btn pri")}<a class="up-btn line" href="${esA(L.mail)}">Email<span class="sr-only">: Handbook purchase, Volume ${esc(v.n)}</span></a><a class="up-btn line" href="${esA(L.tel)}">Call ${esc(FX_CONTACT.phone())}</a></div>`}
+function upCtVol(id){UPS.vol=id;const c=document.getElementById("enq-upHandbooks");if(!c)return;const v=upVol(id);
+ const m=document.getElementById("msg-upHandbooks");if(m)m.textContent=v?fxHandbookMsg(v):FX_ENQ.upHandbooks.msg;
+ const a=c.querySelector(".up-acts");if(a)a.outerHTML=v?upCtActs(v):upEnqActs("upHandbooks")}
 
-/* ── the section ────────────────────────────────────────────────────────── */
-VIEWS.upsc=function(){const f=[upOverview,upSyllabus,upResources,upHandbooks,upCurrent,upCourse,upEducator,upContact][TAB]||upOverview;
- const h=`<div class="up" data-tab="${TAB}">${f()}</div>`;
- window._after=()=>{try{if(TAB===2&&!ARG)upFilter()}catch(e){}};return h};
+/* ── the section ─────────────────────────────────────────────────────────── */
+VIEWS.upsc=function(){const f=[upHome,upSyllabus,upResources,upLibrary,upCurrent,upStrategy,upCourse,upContact][TAB]||upHome;
+ const h=`<div class="up" data-tab="${TAB}">${f()}</div>`,t=TAB,a=ARG;
+ if(!upQA())window._after=()=>{try{if(t===UP_T.resources&&!a)upFilter();if(t===UP_T.current)upThemeApply();
+  if(a&&(t===UP_T.syllabus||t===UP_T.current))setTimeout(()=>upDeep(t,a),60)}catch(e){}};
+ return h};
+/* a deep link to a syllabus line or a current-affairs entry opens it and brings it into view */
+function upDeep(t,a){if(typeof VIEW==="undefined"||VIEW!=="upsc"||TAB!==t||ARG!==a)return;
+ if(t===UP_T.syllabus){upSylShow(a,true);return}
+ const e=document.getElementById("ca-"+a);if(!e)return;if(e.hidden){UPS.th="";upTheme("")}
+ try{e.scrollIntoView({block:"start"})}catch(x){}e.classList.add("hl");const h=e.querySelector(".up-ca-h");if(h)try{h.focus({preventScroll:true})}catch(x){}}
 
-/* the section's title, its palette on the sub-navigation, and the pathway strip */
+/* the page title, the section's class on the body, and the address of an alias */
 (function(){if(typeof document==="undefined")return;
  const prev=render;render=function(){const r=prev.apply(this,arguments);try{upAfterRender()}catch(e){}return r}})();
 function upAfterRender(){const on=VIEW==="upsc";document.body.classList.toggle("up-on",on);
- if(on){let t=UP_TABS[TAB]||UP_TABS[0];if(TAB===3&&ARG&&upVol(ARG))t="Volume "+upVol(ARG).n+": "+upVol(ARG).title;if(TAB===2&&ARG&&upTopic(ARG))t=upTopic(ARG).t;
+ if(on){let t=UP_TABS[TAB]||UP_TABS[0];
+  if(TAB===UP_T.handbooks&&ARG&&upVol(ARG))t="Volume "+upVol(ARG).n+": "+upVol(ARG).title;
+  if(TAB===UP_T.resources&&ARG&&upTopic(ARG))t=upTopic(ARG).t;
   document.title=t+" · UPSC CSE Economics · Arjun Agrawal"}
- else if(VIEW==="home")document.title="Arjun Agrawal · Economics: IB DP and UPSC CSE";
- upPathState()}
-function upPathbar(){if(document.getElementById("pathbar"))return;const top=document.querySelector("header.top");if(!top)return;
- const n=document.createElement("nav");n.id="pathbar";n.className="pathbar";n.setAttribute("aria-label","Pathways");
- n.innerHTML=`<div class="wrap full pb-in"><div class="pb-paths"><a class="pb-a" data-p="ib" href="#" onclick="nav('home');return false"><span class="pb-dot" aria-hidden="true"></span>IB DP Economics</a><a class="pb-a" data-p="upsc" href="#/upsc"><span class="pb-dot" aria-hidden="true"></span>UPSC CSE Economics</a></div>
-  <div class="pb-util"><a class="pb-u" data-u="about" href="#/about">About</a><a class="pb-u" data-u="contact" href="#/contact">Contact</a></div></div>`;
- top.parentNode.insertBefore(n,top);upPathState()}
-function upPathState(){const n=document.getElementById("pathbar");if(!n)return;const up=typeof VIEW!=="undefined"&&VIEW==="upsc";
- n.classList.toggle("is-up",up);
- n.querySelectorAll(".pb-a").forEach(a=>{const on=(a.dataset.p==="upsc")===up;a.classList.toggle("on",on);if(on)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current")});
- const ab=n.querySelector('[data-u="about"]'),ct=n.querySelector('[data-u="contact"]');
- if(ab)ab.href=up?upHref("educator"):"#/about";if(ct)ct.href=up?upHref("contact"):"#/contact"}
+ if(!upQA())setTimeout(upCanon,0)}
 /* the footer names the UPSC pages too, in its Connect column, above "The method" */
 function upFooter(){if(document.getElementById("ft-upsc"))return;const k=[...document.querySelectorAll("footer.ft .ftcols .kicker")].find(x=>/The method/.test(x.textContent));if(!k)return;
- const d=document.createElement("div");d.id="ft-upsc";d.innerHTML=`<div class="kicker mt4">UPSC CSE Economics</div>${[["UPSC Overview",0],["Syllabus",1],["Economics Handbooks",3],["The 3-month programme",5]].map(([t,i])=>`<button class="lnk" onclick="nav('upsc',${i})">${t}</button>`).join("")}`;
+ const d=document.createElement("div");d.id="ft-upsc";d.innerHTML=`<div class="kicker mt4">UPSC CSE Economics</div>${[["UPSC Home","overview"],["Syllabus","syllabus"],["Handbook Library","handbooks"],["Current Affairs","current"],["Online Course","course"]].map(([t,k])=>`<button class="lnk" onclick="nav('upsc',${UP_T[k]})">${t}</button>`).join("")}`;
  k.parentNode.insertBefore(d,k)}
-(function(){if(typeof document==="undefined")return;const go=()=>{try{upPathbar();upFooter()}catch(e){}};
+(function(){if(typeof document==="undefined")return;const go=()=>{try{upFooter()}catch(e){}};
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go()})();
 
-/* ── the home page: two pathways before the IB cover ────────────────────── */
-function upHomeBand(){const H=UPSC_HB.volumes;
- return `<section class="hp" aria-labelledby="hp-h"><div class="wrap full hp-in">
-  <div class="hp-head"><div class="hp-eb">Arjun Agrawal · Economics</div><h1 class="hp-h" id="hp-h">Economics. Understood. Connected. Applied.</h1>
-   <p class="hp-l">A comprehensive Economics learning ecosystem connecting IB DP students and UPSC CSE aspirants through conceptual understanding, visual learning, real-world applications and examination-focused preparation.</p></div>
-  <div class="hp-paths">
-   <article class="hp-p ib"><div class="hp-pk">IB DP Economics</div><h2 class="hp-pt">Think like an economist.</h2><p>Explore the IB Diploma Programme Economics learning ecosystem.</p>
-    <ul class="hp-ls">${["Course","Learn","Lab","Real World","Practise","Exam","Mindmaps","Resources"].map(x=>`<li>${x}</li>`).join("")}</ul>
-    <div class="hp-fig rs-fig" aria-hidden="true"><svg viewBox="0 0 160 96">${rsSD().svg}</svg></div>
-    <div class="hp-b"><button class="hp-btn" onclick="upToIB()">Enter IB DP Economics <span aria-hidden="true">↓</span></button><a class="hp-sl" href="#/course">The course</a></div></article>
-   <article class="hp-p up"><div class="hp-pk">UPSC CSE Economics</div><h2 class="hp-pt">Understand the economy. Master the examination.</h2><p>Explore Economics resources, handbooks, syllabus coverage and the intensive UPSC Economics programme.</p>
-    <ul class="hp-ls">${[["Syllabus","syllabus"],["Resources","resources"],["Handbooks","handbooks"],["Current Affairs","current"],["Course","course"]].map(([t,k])=>`<li><a href="${upHref(k)}">${t}</a></li>`).join("")}</ul>
-    <div class="hp-covers" aria-hidden="true">${H.slice(1,4).map((v,i)=>`<span style="--i:${i};background-image:url('${esA(v.img.cover.src)}')"></span>`).join("")}</div>
-    <div class="hp-b"><a class="hp-btn" href="#/upsc">Enter UPSC CSE Economics <span aria-hidden="true">→</span></a><a class="hp-sl" href="${upHref("handbooks")}">Handbooks · ${UP_PRICE}</a></div></article></div></div></section>`}
-function upToIB(){const h=document.querySelector("#view section.at-hero")||document.querySelector("#view section.hero");if(h){const y=h.getBoundingClientRect().top+scrollY-((document.querySelector("header.top")||{}).offsetHeight||0);
- window.scrollTo({top:Math.max(0,y),behavior:document.body.classList.contains("rn-anim")?"smooth":"auto"});const f=h.querySelector("h2,h1");if(f){f.setAttribute("tabindex","-1");try{f.focus({preventScroll:true})}catch(e){}}}}
-(function(){const prev=VIEWS.home;VIEWS.home=function(){return upHomeBand()+prev.apply(this,arguments)}})();
-
-/* ── search: the UPSC pages, volumes, topics and syllabus lines ─────────── */
+/* ── search: the UPSC pages, syllabus lines, volumes, topics and current affairs ── */
 (function(){if(typeof buildIndex!=="function")return;const prev=buildIndex;
  buildIndex=function(){if(SIDX)return SIDX;const I=prev().slice(),K="UPSC CSE Economics";
   UP_TABS.forEach((t,i)=>I.push({k:K,t:t,d:"UPSC CSE Economics",go:`nav('upsc',${i})`,s:"upsc cse civil services ias economics "+t.toLowerCase()}));
-  UPSC_HB.volumes.forEach(v=>I.push({k:K,t:`Volume ${v.n}: ${v.title}`,d:`Economics Handbook · ${v.pages} pages · ${UP_PRICE}`,go:`nav('upsc',3,'${v.id}')`,s:["upsc handbook volume",v.n,v.title,v.sub,v.concepts.join(" "),v.inst.join(" "),v.parts.map(p=>p.t).join(" ")].join(" ").toLowerCase()}));
+  UP_MAINS.forEach((m,i)=>I.push({k:K,t:"GS III: "+m.short,d:"Syllabus · Mains General Studies Paper III, line "+(i+1),go:`nav('upsc',1,'${m.id}')`,s:["upsc syllabus mains gs iii",m.short,m.o,m.con.join(" ")].join(" ").toLowerCase()}));
+  UP_PRE_LINES.forEach(m=>I.push({k:K,t:"GS I: "+m.short,d:"Syllabus · Prelims General Studies Paper I",go:`nav('upsc',1,'${m.id}')`,s:["upsc syllabus prelims gs i",m.short,m.o].join(" ").toLowerCase()}));
+  UPSC_HB.volumes.forEach(v=>I.push({k:K,t:`Volume ${v.n}: ${v.title}`,d:`Handbook Library · ${v.pages} pages`,go:`nav('upsc',3,'${v.id}')`,s:["upsc handbook library volume",v.n,v.title,v.sub,v.concepts.join(" "),v.inst.join(" "),v.parts.map(p=>p.t).join(" ")].join(" ").toLowerCase()}));
   UP_TOPICS.forEach(t=>I.push({k:K,t:t.t,d:"UPSC topic preview · "+t.cat,go:`nav('upsc',2,'${t.id}')`,s:["upsc preview",t.cat,t.t,t.intro,t.dist.map(d=>d[0]).join(" ")].join(" ").toLowerCase()}));
+  UP_CA.forEach(c=>I.push({k:K,t:c.h,d:"UPSC current affairs · "+upDate(c),go:`nav('upsc',4,'${c.id}')`,s:["upsc current affairs",c.th,c.h,c.c].join(" ").toLowerCase()}));
   I.push({k:K,t:"One Concept. Two Examination Perspectives.",d:"IB DP and UPSC CSE, concept by concept",go:"nav('upsc',2)",s:"ib upsc connector shared concept two examinations perspectives"});
   return SIDX=I};
  if(typeof RN_KIND_W!=="undefined")RN_KIND_W["UPSC CSE Economics"]=2.3;try{SIDX=null}catch(e){}})();
 
-/* ── self-tests ─────────────────────────────────────────────────────────── */
+/* ── self-tests ──────────────────────────────────────────────────────────── */
 function UPSCSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){det=e.message}out.push({n,ok:!!ok,detail:det})};
- const H=UPSC_HB.volumes;
- T("UPSC · eleven volumes, numbered I to XI, each with a title and a page count",()=>H.length===11&&H.every((v,i)=>v.n===UP_RN[i]&&v.num===i+1&&v.title&&v.pages>0));
- T("UPSC · page counts as extracted from the PDFs (523 in all)",()=>H.map(v=>v.pages).join(",")==="41,43,49,49,49,50,49,55,43,45,50"&&H.reduce((a,v)=>a+v.pages,0)===523);
- T("UPSC · the price is ₹99 per volume everywhere, and no other handbook price appears",()=>{const h=upHandbooks()+H.map(v=>upVolume(v)).join("");
-  return UPSC_HB.price===99&&UP_PRICE==="₹99 / Volume"&&!/₹9\.99|₹999(?!,)|₹\s?99\.\d|bundle price/i.test(h)&&(h.match(/₹99 \/ Volume/g)||[]).length>=22});
- T("UPSC · the programme fee is ₹9,999 for the complete three months, never per month or ₹4,999",()=>{const h=upCourse()+upOverview()+upContact();
-  return /₹9,999/.test(h)&&!/₹4,999|per month|\/ ?month/i.test(h)&&UP_COURSE.enquiry==="Hello Arjun, I am interested in enrolling in your 3-month UPSC CSE Economics Intensive Programme priced at ₹9,999. Please share the course details and upcoming batch information."});
- T("UPSC · the course states three months, 100% online and a maximum of 25 students",()=>{const h=upCourse();return /3 months/.test(h)&&/100% online/.test(h)&&/Maximum 25 students/.test(h)&&!/\b(2[6-9]|[3-9]\d) students/.test(h)});
- T("UPSC · every handbook enquiry names the volume, its title and ₹99, and asks for the digital copy",()=>H.every(v=>{const m=upHbMsg(v);return m.includes("Volume "+v.n)&&m.includes(v.title)&&m.includes("₹99")&&/digital copy \(PDF\)/.test(m)}));
- T("UPSC · enquiries use only the published contact details",()=>{const h=upContact()+upCourse()+H.map(v=>upVolume(v)).join("");
-  const wa=(h.match(/https:\/\/wa\.me\/(\d+)/g)||[]),ml=(h.match(/mailto:([^?"]+)/g)||[]),tl=(h.match(/tel:([+\d]+)/g)||[]);
-  return wa.length>0&&wa.every(x=>x==="https://wa.me/917092844945")&&ml.every(x=>x==="mailto:"+TUT.email)&&tl.every(x=>x==="tel:+917092844945")});
- T("UPSC · no handbook PDF is referenced anywhere in the section",()=>{const h=[upOverview(),upHandbooks(),...H.map(v=>upVolume(v)),upResources(),upCourse()].join("");return !/\.pdf\b/i.test(h.replace(/Notif-CSP-2026-Engl-060226Rev\.pdf/g,""))&&!JSON.stringify(UPSC_HB).includes(".pdf")});
- T("UPSC · each volume has its cover and two watermarked samples on record",()=>H.every(v=>v.img&&v.img.cover&&v.img.contents&&v.samples.every(s=>v.img["p"+s.p])&&/^assets\/upsc\/handbooks\//.test(v.img.cover.src)));
- T("UPSC · the eight tabs route and parse back",()=>UP_TABS.every((t,i)=>{const h=routeFormat("upsc",i);const r=routeParse(h);return r&&r.v==="upsc"&&r.t===i}));
- T("UPSC · every volume and topic has its own address",()=>H.every(v=>{const r=routeParse(upHref("handbooks",v.id));return r&&r.t===3&&r.a===v.id})&&UP_TOPICS.every(t=>{const r=routeParse(upHref("resources",t.id));return r&&r.t===2&&r.a===t.id}));
- T("UPSC · official syllabus lines are kept apart from explanation",()=>{const h=upMainsHtml()+upPreHtml();return UP_MAINS.length===10&&(h.match(/up-lab o/g)||[]).length>=UP_MAINS.length+3&&UP_MAINS.every(m=>m.o&&m.ex&&m.o!==m.ex)});
- T("UPSC · every syllabus theme and line points to real volumes",()=>[...UP_PRE,...UP_MAINS,...UP_GS2].every(t=>t.vols.length&&t.vols.every(([n])=>upVol(n))));
- T("UPSC · every topic preview has a figure, a question with a valid answer and a source volume",()=>UP_TOPICS.every(t=>upFig(t.fig).startsWith("<svg")&&t.mcq.o.length===4&&t.mcq.a>=0&&t.mcq.a<4&&upVol(t.vol)&&UP_CATS.includes(t.cat)));
- T("UPSC · current-affairs entries carry a date, a theme, a source and a volume",()=>UP_CA.every(c=>/^\d{4}-\d{2}-\d{2}$/.test(c.d)&&UP_CA_THEMES.includes(c.th)&&c.src&&upVol(c.vol)));
- T("UPSC · the connector's IB links resolve to existing routes",()=>UP_CONNECT.every(r=>{const h=upIbLinks(r);const hs=[...h.matchAll(/href="([^"]+)"/g)].map(m=>m[1].replace(/&amp;/g,"&"));return hs.every(x=>routeParse(x))})&&UP_CONNECT.filter(r=>upIbLinks(r)).length>=8);
- T("UPSC · the home page opens with both pathways and one page heading",()=>{const h=upHomeBand();return /Economics\. Understood\. Connected\. Applied\./.test(h)&&/Think like an economist\./.test(h)&&/Understand the economy\. Master the examination\./.test(h)&&(h.match(/<h1/g)||[]).length===1});
- T("UPSC · the section is reachable from the drawer",()=>MOBGROUPS.flatMap(([,i])=>i.map(x=>x[0])).includes("upsc"));
+ const H=UPSC_HB.volumes,k0={VIEW,TAB,ARG};
+ const page=(t,a)=>{const k={VIEW,TAB,ARG};try{VIEW="upsc";TAB=t;ARG=a===undefined?null:a;return VIEWS.upsc()}finally{VIEW=k.VIEW;TAB=k.TAB;ARG=k.ARG}};
+ const txt=h=>String(h).replace(/<[^>]+>/g," ").replace(/\s+/g," ");
+ T("UPSC · the eight tabs, in order, with their keys",()=>UP_TABS.join("|")==="UPSC Home|Syllabus|Economics Resources|Handbook Library|Current Affairs|Preparation Strategy|Online Course|Contact / Enrol"
+  &&JSON.stringify(UP_T)===JSON.stringify({overview:0,syllabus:1,resources:2,handbooks:3,current:4,strategy:5,course:6,contact:7}));
+ T("UPSC · each tab has its own address and parses back",()=>{const want=["#/upsc","#/upsc/syllabus","#/upsc/economics-resources","#/upsc/handbook-library","#/upsc/current-affairs","#/upsc/preparation-strategy","#/upsc/online-course","#/upsc/contact-enrol"];
+  return UP_TABS.every((t,i)=>{const h=routeFormat("upsc",i);const r=routeParse(h);return h===want[i]&&r&&r.v==="upsc"&&r.t===i})});
+ T("UPSC · the first section's addresses still open the same pages",()=>{const P=h=>routeParse(h)||{};const a=P("#/upsc/economics-handbooks"),b=P("#/upsc/economics-handbooks/volume-iii"),c=P("#/upsc/upsc-economics-course"),d=P("#/upsc/contact-enrolment"),e=P("#/upsc/about-the-educator");
+  return a.v==="upsc"&&a.t===3&&!a.a&&b.t===3&&b.a==="volume-iii"&&c.t===6&&d.t===7&&e.v==="about"});
+ T("UPSC · every volume, topic, syllabus line and current-affairs entry has its own address",()=>H.every(v=>{const r=routeParse(upHref("handbooks",v.id));return r&&r.t===3&&r.a===v.id})
+  &&UP_TOPICS.every(t=>{const r=routeParse(upHref("resources",t.id));return r&&r.t===2&&r.a===t.id})
+  &&[...UP_PRE_LINES,...UP_MAINS,...UP_GS2].every(m=>{const r=routeParse(upHref("syllabus",m.id));return r&&r.t===1&&r.a===m.id})
+  &&UP_CA.every(c=>{const r=routeParse(upHref("current",c.id));return r&&r.t===4&&r.a===c.id}));
+ T("UPSC · every page has exactly one h1, and nothing renders a tab bar of its own",()=>{const bad=[];for(let i=0;i<8;i++){const h=page(i);if((h.match(/<h1[\s>]/g)||[]).length!==1||/id="subnav"|role="tablist"/.test(h))bad.push(i)}
+  [[2,"inflation"],[3,"volume-v"],[1,"m-budget"]].forEach(([t,a])=>{if((page(t,a).match(/<h1[\s>]/g)||[]).length!==1)bad.push(t+"/"+a)});return {ok:!bad.length,d:bad.join(",")}});
+ T("UPSC · the home page carries the headline, both calls to action and the eight steps in order",()=>{const h=page(0),s=txt(h);
+  return /Understand the Indian economy\. <span class="up-h1-2">Master the economic dimension of UPSC\.<\/span>/.test(h)&&/Explore UPSC resources/.test(s)&&/Explore the 3-month course/.test(s)
+   &&UP_STEPS.map(x=>x[1].toUpperCase()).join(" → ")==="UNDERSTAND THE CONCEPT → BUILD ECONOMIC FOUNDATIONS → CONNECT WITH INDIAN ECONOMY → STUDY GOVERNMENT POLICY → INTEGRATE CURRENT AFFAIRS → APPLY THROUGH PRELIMS QUESTIONS → DEVELOP MAINS ANSWERS → REVISE AND EVALUATE"
+   &&(h.match(/class="up-f8-node"/g)||[]).length===8&&/<ol class="up-flow8/.test(h)});
+ T("UPSC · the home page shelves the eleven real covers, the latest three entries and the course highlights",()=>{const h=page(0);
+  const covers=[...h.matchAll(/class="up-shelf-cv" src="([^"]+)"/g)].map(m=>m[1]);const latest=upCaSorted().slice(0,3);
+  return covers.length===11&&covers.every((c,i)=>c===H[i].img.cover.src)&&latest.every(c=>h.includes(`href="${upHref("current",c.id)}"`))&&UP_COURSE.highlights.every(([v])=>h.includes(esc(v)))});
+ T("UPSC · the syllabus quotes the official lines, marks them, and keeps four layers apart for every line",()=>{const h=page(1);
+  const lines=[...UP_PRE_LINES,...UP_MAINS,...UP_GS2];const quoted=lines.every(L=>h.includes(`<q>${esc(L.o)}</q>`));
+  const blocks=h.split('<details class="up-line"').slice(1).filter(b=>!/up-th14/.test(b.slice(0,40)));
+  const four=blocks.length===lines.length&&blocks.every(b=>/up-lab o/.test(b)&&/up-layer-b/.test(b)&&/up-layer-c/.test(b)&&/up-layer-d/.test(b));
+  return {ok:quoted&&four&&UP_MAINS.length===10&&UP_PRE_LINES.length===2,d:"quoted "+quoted+", blocks "+blocks.length}});
+ T("UPSC · the official wording is the first section's wording, unchanged",()=>UP_PRE_OFFICIAL[1]==="Economic and Social Development-Sustainable Development, Poverty, Inclusion, Demographics, Social Sector Initiatives, etc."
+  &&UP_MAINS[2].o==="Government Budgeting."&&UP_MAINS[9].o==="Investment models."&&UP_MAINS[0].o==="Indian Economy and issues relating to planning, mobilization of resources, growth, development and employment.");
+ T("UPSC · the syllabus names its notice, flags the lines still to confirm and states the scope",()=>{const s=txt(page(1));
+  return s.includes(UP_SYL_SRC.doc)&&s.includes(UP_SYL_SRC.date)&&page(1).includes(esA(UP_SYL_SRC.url))&&UP_MAINS.filter(m=>m.tbc).map(m=>m.id).join()==="m-crops,m-subsidies,m-land,m-liberalisation"
+   &&/not presented as preparation for the Economics Optional paper/.test(s)});
+ T("UPSC · every handbook reference resolves to a row of a volume's own syllabus map or to its parts",()=>{const refs=[...UP_PRE_LINES,...UP_MAINS,...UP_GS2,...UP_PRE_SUB].flatMap(x=>x.hb||[]);
+  return refs.length>40&&refs.every(r=>{const x=upHbRow(r);return x&&x.area&&(typeof r[1]!=="number"||x.map===1)})});
+ T("UPSC · printing the syllabus prepares a document with every official line, and prints nothing",()=>{const before=PRINTGUARD.totalCalls,h=upSylPrintHtml();
+  return [...UP_PRE_LINES,...UP_MAINS,...UP_GS2].every(L=>h.includes("“"+esc(L.o)+"”"))&&/Optional/.test(h)&&PRINTGUARD.totalCalls===before&&!/window\.print/.test(String(upPrintSyllabus))});
+ T("UPSC · the course states its facts exactly: ₹9,999, three months, online only, at most 25",()=>{const s=txt(page(6));
+  return UP_COURSE.price===9999&&UP_COURSE.fee==="₹9,999"&&UP_COURSE.maxStudents===25&&UP_COURSE.durationISO==="P3M"&&/₹9,999/.test(s)&&/for the complete three-month programme/.test(s)
+   &&/Online only/.test(s)&&/Maximum 25 students/.test(s)&&/3 months/.test(s)&&/Prelims \+ Mains/.test(s)&&/Static \+ Current Affairs/.test(s)
+   &&!/₹4,999|per month|\/ ?month|seats? (left|remaining)|hurry|last chance|only \d+ (seats|places)/i.test(s)});
+ T("UPSC · the course promises nothing the brief excludes and invents no dates or payment links",()=>{const s=txt(page(6));
+  return !/recording|mock test|unlimited doubt|one-to-one|1:1|personal evaluation|guarantee|refund|instalment|discount|\b\d+\s+(lectures|classes|sessions|hours)\b/i.test(s)&&!/razorpay|paypal|upi:|checkout|pay now/i.test(page(6))
+   &&UP_COURSE.methods.length===9&&UP_COURSE.modules.length===12&&!!UP_COURSE.modules.find(m=>m.k==="national-income").gap});
+ T("UPSC · the course modules point only to parts that exist in the volumes",()=>UP_COURSE.modules.every(m=>m.vols.every(([n,p])=>{const v=upVol(n);return v&&String(p).split(/ to |,\s*/).every(l=>v.parts.some(x=>x.l===l))}))
+  &&UP_COURSE.months.map(m=>m.vols.join(",")).join(" | ")==="I,II,III,VI | IV,V,VII,VIII,IX | X,XI");
+ T("UPSC · the course enquiry is the shared message, on WhatsApp, email and phone",()=>{const h=page(6),msg=FX_ENQ.upCourse.msg;
+  return UP_COURSE.enquiry===msg&&msg==="Hello, I am interested in joining the three-month UPSC CSE Economics Intensive Online Programme priced at ₹9,999. Please share the upcoming batch schedule and enrolment details."
+   &&h.includes(esA(fxWa(msg)))&&h.includes(esA(fxMail(FX_ENQ.upCourse.subject,msg)))&&h.includes('href="tel:+917092844945"')&&/Enquire about the next batch/.test(h)});
+ T("UPSC · every enquiry uses only the published contact details",()=>{const h=[0,1,2,4,5,6,7].map(i=>page(i)).join("")+page(2,"msp");
+  const wa=h.match(/https:\/\/wa\.me\/[^"?]+/g)||[],ml=h.match(/mailto:[^"?]+/g)||[],tl=h.match(/tel:[^"]+/g)||[];
+  return wa.length>=5&&wa.every(x=>x==="https://wa.me/917092844945")&&ml.every(x=>x==="mailto:arjun1agr@gmail.com")&&tl.every(x=>x==="tel:+917092844945")});
+ T("UPSC · Contact / Enrol carries the four UPSC enquiries, each with WhatsApp, email and phone",()=>{const h=page(7);
+  return ["upHandbooks","upCourse","upMentor","upResources"].every(k=>{const L=fxEnquiryLinks(k),i=h.indexOf(`id="enq-${k}"`),j=h.indexOf("</li>",h.indexOf('class="up-acts"',i));const c=h.slice(i,j);
+   return i>0&&c.includes(esA(L.wa))&&c.includes(esA(L.mail))&&c.includes('href="tel:+917092844945"')})});
+ T("UPSC · current-affairs entries carry a theme, a date, a source and every part of the structure",()=>UP_CA.every(c=>/^\d{4}-\d{2}-\d{2}$/.test(c.d)&&UP_CA_THEMES.includes(c.th)&&c.src&&c.h&&c.w&&c.c&&c.why&&c.pre&&c.mains&&upVol(c.vol)&&upPartTitle(upVol(c.vol),c.part)&&(!c.t||upTopic(c.t))&&(!c.url||/^https:\/\/(rbi\.org\.in|www\.indiabudget\.gov\.in)\//.test(c.url))));
+ T("UPSC · the register lists only themes with entries, newest first, and says when it was compiled",()=>{const h=page(4),s=txt(h);const ids=[...h.matchAll(/id="ca-([^"]+)"/g)].map(m=>m[1]);
+  const used=upCaThemes();return ids.join()===upCaSorted().map(c=>c.id).join()&&used.every(t=>h.includes(`data-t="${esA(t)}" onclick`))&&!h.includes('data-t="Poverty and inclusive growth" onclick')
+   &&s.includes("Last compiled on "+UP_CA_COMPILED)&&/not a live feed/.test(s)});
+ T("UPSC · the preparation strategy has phases, a week, the five-step link, PYQ use, an answer frame and a revision cycle",()=>{const s=txt(page(5));
+  return UP_STRAT.phases.length===4&&UP_STRAT.week.length===7&&UP_STRAT.link.length===5&&UP_STRAT.answer.length===4&&UP_STRAT.cycle.length===4
+   &&/not a promise of results/.test(s)&&/does not reproduce UPSC questions/.test(s)&&/Previous Question Papers/.test(s)});
+ T("UPSC · the Handbook Library tab is the library's own when it is present, and the catalogue otherwise",()=>{const h=page(3);
+  return typeof hlRender==="function"?h.includes(hlRender(null).slice(0,200)):(h.match(/class="up-hb rv"/g)||[]).length===11});
+ T("UPSC · Economics Resources keeps its eleven previews and their figures, and the connector or the concept teaser",()=>{const h=page(2);
+  return UP_TOPICS.length===11&&(h.match(/class="up-tc rv"/g)||[]).length===11&&UP_TOPICS.every(t=>upFig(t.fig).startsWith("<svg"))&&(typeof ccTeaser==="function"||/One Concept\. Two Examination Perspectives\./.test(h))});
+ T("UPSC · every topic preview has a question with a valid answer and a source volume",()=>UP_TOPICS.every(t=>t.mcq.o.length===4&&t.mcq.a>=0&&t.mcq.a<4&&upVol(t.vol)&&UP_CATS.includes(t.cat)));
+ T("UPSC · the connector's IB links resolve, the Diagram atlas among them",()=>{const all=UP_CONNECT.map(upIbLinks).join("");const hs=[...all.matchAll(/href="([^"]+)"/g)].map(m=>m[1].replace(/&amp;/g,"&"));
+  const lab=SECTIONS.find(s=>s.v==="lab");const atlas=lab&&lab.tabs?upIbTab(lab,"Diagram atlas|Diagram library"):-1;
+  return hs.length>=8&&hs.every(x=>routeParse(x))&&(atlas<0||/>Diagram atlas</.test(all))});
+ T("UPSC · no handbook PDF is referenced anywhere in the section",()=>{const h=[0,1,2,3,4,5,6,7].map(i=>page(i)).join("")+H.map(v=>page(3,v.id)).join("");
+  return !/\.pdf\b/i.test(h.replace(/Notif-CSP-2026-Engl-060226Rev\.pdf/g,"").replace(/https:\/\/www\.indiabudget\.gov\.in\/economicsurvey\/doc\/eschapter\/echap\d+\.pdf/g,""))&&!JSON.stringify(UPSC_HB).includes(".pdf")});
+ T("UPSC · the About the Educator tab is gone; About is one link to the shared page",()=>!UP_TABS.includes("About the Educator")&&typeof upEducator==="undefined"&&/href="#\/about"/.test(page(0)));
+ T("UPSC · the pathway strip and the home-page band are no longer drawn here",()=>typeof upPathbar==="undefined"&&typeof upHomeBand==="undefined");
+ T("UPSC · the search index names the eight tabs and every syllabus line",()=>{let I=[];try{const k=SIDX;SIDX=null;I=buildIndex();SIDX=k}catch(e){return false}
+  const U=I.filter(r=>r.k==="UPSC CSE Economics");return UP_TABS.every(t=>U.some(r=>r.t===t))&&UP_MAINS.every(m=>U.some(r=>r.go===`nav('upsc',1,'${m.id}')`))});
+ VIEW=k0.VIEW;TAB=k0.TAB;ARG=k0.ARG;
  return out}
+UPSCSUITE.suiteName="UPSC CSE Economics";
 EXTRA_SUITES.push(UPSCSUITE);
