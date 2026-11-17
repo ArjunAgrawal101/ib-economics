@@ -4231,6 +4231,8 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
  font:600 13px/1 var(--fx-sans);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid transparent;
  transition:background var(--fx-t1) var(--fx-ease),color var(--fx-t1) var(--fx-ease),border-color var(--fx-t1) var(--fx-ease),transform var(--fx-t1) var(--fx-ease)}
 .fx-btn:focus-visible{outline:2px solid var(--fx-gold);outline-offset:3px}
+/* the base sets a[href]{min-height:24px} at higher specificity; a button keeps its own height */
+.fx-btn[href],button.fx-btn{min-height:44px}
 .fx-btn.primary{background:var(--path-accent);color:#fff}
 .fx-btn.primary:hover{background:var(--path-accent-d)}
 .fx-btn.secondary{background:transparent;color:var(--fx-text);border-color:var(--fx-line-2)}
@@ -4260,6 +4262,390 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
 @media (prefers-reduced-motion:reduce){
  .fx-js .fx-reveal.fx-pending{opacity:1;transform:none}
  .fx-btn,.fx-card,.fx-btn .arr{transition:none}
+}
+
+/* ═══ the shell ══════════════════════════════════════════════════════════════ */
+.top .in>.mainnav,#resdoor,#pathbar{display:none!important}
+.top .in>.gnav{grid-column:2;justify-self:center;display:flex;align-items:center;gap:clamp(10px,1.6vw,26px);min-width:0}
+.gnav a,.gnav button{font:600 12px/1 var(--fx-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--fx-text);text-decoration:none;background:none;border:0;cursor:pointer}
+.gnav .gn-item{padding:10px 2px;border-bottom:1.5px solid transparent}
+.gnav .gn-item:hover{border-bottom-color:var(--fx-line-2)}
+.gnav .gn-item.on{border-bottom-color:var(--fx-gold)}
+.gnav .gn-pair{display:inline-flex;align-items:stretch;border:1px solid var(--fx-line-2);border-radius:var(--fx-r1);background:rgba(251,249,244,.7)}
+.gnav .gn-path{display:inline-flex;align-items:stretch}
+.gnav .gn-path+.gn-path{border-left:1px solid var(--fx-line-2)}
+.gnav .gn-path a{display:inline-flex;align-items:center;padding:0 10px 0 14px;min-height:38px;white-space:nowrap}
+.gnav .gn-path .gn-dd{display:inline-grid;place-items:center;width:28px;min-height:38px;color:var(--fx-text-3);border-left:1px solid transparent}
+.gnav .gn-path .gn-dd:hover,.gnav .gn-path .gn-dd[aria-expanded="true"]{color:var(--fx-text)}
+.gnav .gn-path.gn-ib.on{background:var(--ib-bur)}
+.gnav .gn-path.gn-upsc.on{background:var(--up-forest)}
+.gnav .gn-path.on a,.gnav .gn-path.on .gn-dd{color:#fff}
+.gnav .gn-path:not(.on) a:hover{color:var(--path-accent)}
+.gnav .gn-path.gn-ib:not(.on) a:hover{color:var(--ib-bur)}
+.gnav .gn-path.gn-upsc:not(.on) a:hover{color:var(--up-forest)}
+.gnav a:focus-visible,.gnav button:focus-visible{outline:2px solid var(--fx-gold);outline-offset:2px}
+body:not([data-pathway="ib"]) #calcbtn,body:not([data-pathway="ib"]) #tmr,body:not([data-pathway="ib"]) #lvlseg,body:not([data-pathway="ib"]) #whobtn{display:none!important}
+
+/* the context bar: the pathway's own navigation, under the header */
+.ctxbar{position:sticky;top:var(--top);z-index:58;background:var(--path-ivory);border-bottom:1px solid var(--fx-line);display:none}
+body[data-pathway="ib"] .ctxbar,body[data-pathway="upsc"] .ctxbar{display:block}
+body[data-pathway="ib"] .ctxbar{box-shadow:inset 0 2px 0 var(--ib-bur)}
+body[data-pathway="upsc"] .ctxbar{box-shadow:inset 0 2px 0 var(--up-forest)}
+.ctxbar .cx-in{display:flex;align-items:center;gap:18px;min-height:50px}
+.ctxbar .cx-sw{display:none}
+.ctxbar .cx-items{display:flex;align-items:center;gap:clamp(4px,1vw,10px);overflow-x:auto;scrollbar-width:none;flex:1 1 auto;min-width:0}
+.ctxbar .cx-items::-webkit-scrollbar{display:none}
+.ctxbar .cx-items>*{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 10px;font:600 13px/1 var(--fx-sans);color:var(--fx-text-2);text-decoration:none;
+ background:none;border:0;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap}
+.ctxbar .cx-items>*:hover{color:var(--path-accent)}
+.ctxbar .cx-items>.on{color:var(--path-accent);border-bottom-color:var(--path-accent)}
+.ctxbar .cx-items>[aria-expanded="true"]{color:var(--path-accent)}
+.ctxbar .cx-items .cx-cta{margin-left:auto;background:var(--ib-bur);color:#fff;border-radius:var(--fx-r1);padding:0 16px;letter-spacing:.06em}
+.ctxbar .cx-items .cx-cta:hover{background:var(--ib-bur-d);color:#fff}
+.ctxbar a:focus-visible,.ctxbar button:focus-visible{outline:2px solid var(--fx-gold);outline-offset:-2px}
+body[data-pathway="ib"] .subnav{position:relative;top:auto}
+body[data-pathway="upsc"] #subnav{display:none}
+
+/* the switcher, used in the context bar on small screens and in the drawer */
+.fxsw{display:inline-flex;border:1px solid var(--fx-line-2);border-radius:var(--fx-r1);background:var(--fx-paper);flex:0 0 auto}
+.fxsw a{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;font:700 11px/1 var(--fx-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--fx-text-2);text-decoration:none;white-space:nowrap}
+.fxsw a+a{border-left:1px solid var(--fx-line-2)}
+.fxsw a.fxsw-ib.on{background:var(--ib-bur);color:#fff}
+.fxsw a.fxsw-upsc.on{background:var(--up-forest);color:#fff}
+
+/* the dropdown panel */
+.fxpanel{position:fixed;z-index:80;background:var(--fx-paper);border:1px solid var(--fx-line);border-top:2px solid var(--path-accent);border-radius:var(--fx-r2);
+ box-shadow:var(--fx-shadow-3);padding:22px 24px;max-height:min(78vh,720px);overflow:auto;opacity:0;transform:translateY(-6px);
+ transition:opacity var(--fx-t2) var(--fx-ease),transform var(--fx-t2) var(--fx-ease)}
+.fxpanel.on{opacity:1;transform:none}
+.fxpanel[data-k="ib"]{border-top-color:var(--ib-bur)}
+.fxpanel[data-k="upsc"]{border-top-color:var(--up-forest)}
+.fxpanel .fxp-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid var(--fx-line)}
+.fxpanel .fxp-title{font:400 28px/1.05 var(--fx-display);color:var(--fx-text);margin-top:6px}
+.fxpanel[data-k="ib"] .fx-kicker{color:var(--ib-bur)}
+.fxpanel[data-k="upsc"] .fx-kicker{color:var(--up-forest)}
+.fxpanel[data-k="ib"] .fx-btn.primary{background:var(--ib-bur)}
+.fxpanel[data-k="upsc"] .fx-btn.primary{background:var(--up-forest)}
+.fxpanel .fxp-grid.ib{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px}
+.fxpanel .fxp-h{font:700 11px/1.2 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ib-bur);margin:0 0 10px}
+.fxpanel ul{list-style:none;margin:0;padding:0}
+.fxpanel .fxp-col li a{display:block;padding:6px 0;font:500 14px/1.35 var(--fx-sans);color:var(--fx-text);text-decoration:none}
+.fxpanel .fxp-col li a:hover{color:var(--ib-bur)}
+.fxpanel .fxp-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 24px}
+.fxpanel .fxp-list.one{grid-template-columns:minmax(0,1fr)}
+.fxpanel .fxp-list a{display:grid;gap:3px;padding:10px 10px;border-radius:var(--fx-r2);text-decoration:none}
+.fxpanel .fxp-list a:hover,.fxpanel .fxp-list a[aria-current]{background:var(--path-wash)}
+.fxpanel[data-k="upsc"] .fxp-list a:hover{background:var(--up-wash)}
+.fxpanel .fxp-list b{font:600 14px/1.3 var(--fx-sans);color:var(--fx-text)}
+.fxpanel .fxp-list span{font:400 13px/1.4 var(--fx-serif);color:var(--fx-text-3)}
+.fxpanel .fxp-d{margin:0 0 10px;padding:0 10px;font:400 13px/1.5 var(--fx-serif);color:var(--fx-text-3)}
+.fxpanel a:focus-visible{outline:2px solid var(--fx-gold);outline-offset:2px}
+
+/* the drawer */
+.fxdrawer{padding:18px 20px 40px!important}
+.fxdrawer .dw-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.fxdrawer .dw-brand{font:400 22px/1 var(--fx-display);color:var(--fx-text);text-decoration:none}
+.fxdrawer .dw-brand span{display:block;font:700 9.5px/1 var(--fx-sans);letter-spacing:.19em;text-transform:uppercase;color:var(--fx-gold-text);margin-top:5px}
+.fxdrawer .dw-x{min-height:40px;padding:0 14px;border:1px solid var(--fx-line-2);border-radius:var(--fx-r1);background:var(--fx-paper);font:600 12px/1 var(--fx-sans);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.fxdrawer .dw-search{width:100%;min-height:44px;margin:4px 0 12px;text-align:left;padding:0 14px;border:1px solid var(--fx-line-2);border-radius:var(--fx-r1);background:var(--fx-paper);font:500 14px/1 var(--fx-sans);color:var(--fx-text-3);cursor:pointer}
+.fxdrawer .fxsw{display:flex;margin-bottom:8px}.fxdrawer .fxsw a{flex:1 1 0;justify-content:center}
+.fxdrawer .dw-sec{border-top:1px solid var(--fx-line);padding:12px 0}
+.fxdrawer .dw-k{font:700 10px/1 var(--fx-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--fx-text-3);margin:4px 0 2px}
+.fxdrawer .dw-sec.p-ib .dw-k{color:var(--ib-bur)}.fxdrawer .dw-sec.p-up .dw-k{color:var(--up-forest)}
+.fxdrawer .dw-main{display:block;padding:9px 0;font:400 21px/1.15 var(--fx-display);color:var(--fx-text);text-decoration:none}
+.fxdrawer .dw-main[aria-current]{color:var(--path-accent)}
+.fxdrawer details.dw-g{border-top:1px solid var(--fx-line)}
+.fxdrawer details.dw-g summary{min-height:44px;display:flex;align-items:center;font:600 13px/1 var(--fx-sans);letter-spacing:.08em;text-transform:uppercase;color:var(--fx-text-2);cursor:pointer}
+.fxdrawer .dw-l{display:grid;gap:2px;padding:0 0 10px 12px}
+.fxdrawer .dw-l.flat{padding-left:0}
+.fxdrawer .dw-l a{display:flex;align-items:center;min-height:40px;font:500 15px/1.2 var(--fx-sans);color:var(--fx-text);text-decoration:none}
+.fxdrawer .dw-l a[aria-current]{color:var(--path-accent);font-weight:700}
+.fxdrawer a:focus-visible,.fxdrawer button:focus-visible,.fxdrawer summary:focus-visible{outline:2px solid var(--fx-gold);outline-offset:2px}
+
+@media (max-width:1180px){.top .in>.gnav{display:none}}
+@media (max-width:1180px){
+ .ctxbar{display:block}
+ .ctxbar .cx-sw{display:inline-flex}
+ .ctxbar .cx-in{gap:10px;min-height:52px}
+ body[data-pathway="shared"] .ctxbar .cx-items{display:none}
+}
+@media (max-width:640px){
+ .ctxbar .cx-in{flex-wrap:wrap;padding-top:8px;padding-bottom:6px;row-gap:6px}
+ .ctxbar .cx-sw{width:100%}.ctxbar .cx-sw a{flex:1 1 0;justify-content:center;padding:0 8px;font-size:10.5px;letter-spacing:.1em}
+ .ctxbar .cx-items{width:100%}
+ body[data-pathway="shared"] .ctxbar .cx-in{padding-bottom:8px}
+}
+@media (prefers-reduced-motion:reduce){.fxpanel{transition:none}}
+.fxpanel .fxp-also{margin:14px 0 0;padding:12px 10px 0;border-top:1px solid var(--fx-line);font:400 13px/1.5 var(--fx-serif);color:var(--fx-text-3)}
+.fxpanel .fxp-also a{color:var(--up-forest);font-weight:600}
+
+/* ═══ the shared home ═══════════════════════════════════════════════════════
+   Ten movements, alternating ground: dark for the statement and the lab,
+   ivory for the method and the concepts, each pathway on its own ivory with
+   its own accent. One h1 (the statement); every movement opens with an h2. */
+.fxhome{background:var(--fx-paper);overflow-x:clip}
+.fxhome h2,.fxhome h3,.fxhome figure{margin:0}
+.fxhome .fx-section-head .fxh-k{display:flex;align-items:center;gap:12px}
+.fxhome .fx-section-head .fxh-k .fx-num{padding-right:12px;border-right:1px solid var(--fx-line-2)}
+.fxhome .fx-kicker{color:var(--fx-gold-text)}
+.fxhome .fx-section-head .fx-lede{margin:4px 0 0}
+.fxhome .fx-section{padding:clamp(52px,6.4vw,92px) 0}
+
+/* 1 · the statement and the two pathways */
+.hx{position:relative;isolation:isolate;overflow:hidden;background-color:var(--fx-charcoal);color:var(--fx-on-dark);padding:clamp(48px,6vw,88px) 0 clamp(44px,6vw,84px);
+ background-image:linear-gradient(rgba(244,239,228,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(244,239,228,.04) 1px,transparent 1px);background-size:80px 80px;background-position:center top}
+.hx-bg{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.hx-wave{position:absolute;left:0;bottom:clamp(150px,16vw,240px);display:block;width:100%;height:120px}
+.hx-c{fill:none;stroke-width:1.6;stroke-linecap:round}
+.hx-cy{stroke:rgba(217,194,143,.24);stroke-width:1.2;stroke-dasharray:2 7}
+.hx-in{position:relative}
+.hx-k{display:flex;align-items:center;gap:12px;font:600 11.5px/1 var(--fx-sans);letter-spacing:.22em;text-transform:uppercase;color:var(--fx-gold-l)}
+.hx-mark{width:28px;height:1px;background:var(--fx-gold)}
+.hx-head{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:end;margin-top:clamp(18px,2.4vw,28px)}
+.hx-h{font:400 clamp(38px,5vw,72px)/1.03 var(--fx-display);letter-spacing:-.02em;color:#fff;margin:0}
+.hx-h em{display:block;font-style:italic;color:var(--fx-gold-l)}
+.hx-side{padding-bottom:6px}
+.hx-sd{display:block;width:150px;height:auto;margin:0 0 22px}
+.hx-ax{fill:none;stroke:rgba(244,239,228,.36);stroke-width:1.2}
+.hx-d{stroke:#8FB6DE}.hx-s{stroke:#E3A778}
+.hx-e{fill:var(--fx-gold-l)}.hx-r{fill:none;stroke:rgba(217,194,143,.5)}
+.hx-d,.hx-s{stroke-dasharray:1;stroke-dashoffset:0;animation:hx-draw 1.6s var(--fx-ease) .15s both}
+.hx-e,.hx-r{animation:hx-fade .6s var(--fx-ease) 1.3s both}
+@keyframes hx-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes hx-fade{from{opacity:0}to{opacity:1}}
+.hx-lede{font:400 clamp(16px,1.3vw,18.5px)/1.6 var(--fx-serif);color:var(--fx-on-dark-2);margin:0;max-width:44ch}
+.hx-idea{display:flex;align-items:center;gap:18px;margin:clamp(36px,4.4vw,60px) 0 0;font:600 11.5px/1.5 var(--fx-sans);letter-spacing:.2em;text-transform:uppercase;color:var(--fx-gold-l);text-align:center}
+.hx-idea::before,.hx-idea::after{content:"";flex:1;height:1px;background:rgba(217,194,143,.3)}
+.hx-idea span{flex:0 1 auto}
+.hx-paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2vw,28px);margin-top:clamp(22px,2.6vw,32px)}
+.pc{display:flex;flex-direction:column;gap:22px;min-width:0;padding:clamp(22px,2.6vw,36px);border:1px solid rgba(255,255,255,.08);border-radius:var(--fx-r2);color:var(--fx-on-dark);box-shadow:0 30px 60px -36px rgba(0,0,0,.65)}
+.pc-ib{background:var(--ib-bur-d)}
+.pc-up{background:var(--up-forest-d)}
+.pc-top{display:flex;align-items:center;gap:14px}
+.pc-num{font:500 11.5px/1 var(--fx-mono);letter-spacing:.14em;text-transform:uppercase;color:#D9C28F}
+.pc-rule{flex:1;height:1px;background:rgba(255,255,255,.16)}
+.pc-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:clamp(16px,2vw,28px);align-items:center}
+.pc-h{font:400 clamp(30px,3vw,44px)/1.04 var(--fx-display);letter-spacing:-.01em;color:#fff}
+.pc-d{font:400 15.5px/1.6 var(--fx-serif);color:rgba(255,255,255,.8);margin:12px 0 0}
+.pc-model{background:var(--fx-ink);border:1px solid rgba(255,255,255,.1);border-radius:var(--fx-r2);padding:10px 10px 8px}
+.pc-model .motif{display:block;width:100%;height:auto}
+.pc-model figcaption{font:500 11px/1.4 var(--fx-sans);color:rgba(255,255,255,.62);margin-top:6px}
+.pc-shelf{position:relative;display:block;aspect-ratio:5/4}
+.pc-book{position:absolute;bottom:0;width:42%;aspect-ratio:520/735;overflow:hidden;border-radius:1px 3px 3px 1px;box-shadow:0 18px 30px -14px rgba(0,0,0,.65);transition:transform var(--fx-t2) var(--fx-ease)}
+.pc-book img{display:block;width:100%;height:100%;object-fit:cover}
+.pc-book.b0{left:0;transform:rotate(-7deg);z-index:1}.pc-book.b1{left:19%;transform:rotate(-2.5deg);z-index:2}
+.pc-book.b2{left:38%;transform:rotate(2.5deg);z-index:3}.pc-book.b3{left:57%;transform:rotate(7deg);z-index:4}
+.pc-shelf:hover .pc-book.b0{transform:rotate(-9deg) translateY(-4px)}.pc-shelf:hover .pc-book.b3{transform:rotate(9deg) translateY(-4px)}
+.pc-shelf:focus-visible{outline:2px solid var(--fx-gold-l);outline-offset:4px}
+.pc-f{list-style:none;margin:0;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px}
+.pc-f li{position:relative;padding-left:16px}
+.pc-f li::before{content:"";position:absolute;left:0;top:1.05em;width:7px;height:1px;background:#D9C28F}
+.pc-f a{display:block;padding:7px 0;font:500 14px/1.35 var(--fx-sans);color:rgba(255,255,255,.9);text-decoration:none}
+.pc-f a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.pc-f a:focus-visible{outline:2px solid var(--fx-gold-l);outline-offset:2px}
+.pc-cta{align-self:flex-start;margin-top:auto}
+.pc .fx-btn.primary{background:var(--fx-ivory);color:var(--ib-bur-d)}
+.pc-up .fx-btn.primary{color:var(--up-forest-d)}
+.pc .fx-btn.primary:hover{background:#fff}
+.pc .fx-btn:focus-visible{outline-color:var(--fx-gold-l)}
+
+/* 2 · think like an economist */
+.fx-think{background:var(--fx-ivory)}
+.th-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,80px);align-items:center}
+.th-steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--fx-line-2)}
+.th-steps li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--fx-line)}
+.th-n{font:400 28px/1 var(--fx-display);color:var(--fx-gold-text)}
+.th-steps b{display:block;font:700 12px/1.2 var(--fx-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--fx-text)}
+.th-steps span{display:block;font:400 15.5px/1.55 var(--fx-serif);color:var(--fx-text-2);margin-top:5px}
+.th-plate{background:var(--fx-charcoal);border-radius:var(--fx-r2);padding:clamp(16px,2vw,26px);box-shadow:var(--fx-shadow-3);color:var(--fx-on-dark)}
+.th-fig svg{display:block;width:100%;height:auto;max-height:380px}
+.th-ctl{display:flex;align-items:center;gap:14px;margin-top:14px;padding-top:14px;border-top:1px solid var(--fx-line-dark)}
+.th-ctl label{font:600 11px/1 var(--fx-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--fx-gold-l);white-space:nowrap}
+.th-ctl input[type=range]{flex:1;min-width:0;min-height:28px;margin:0;background:transparent;-webkit-appearance:none;appearance:none;cursor:pointer}
+.th-ctl input[type=range]::-webkit-slider-runnable-track{height:2px;background:rgba(217,194,143,.45);border:0;border-radius:2px}
+.th-ctl input[type=range]::-moz-range-track{height:2px;background:rgba(217,194,143,.45);border:0;border-radius:2px}
+.th-ctl input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;margin-top:-8px;border-radius:50%;background:var(--fx-gold-l);border:3px solid var(--fx-charcoal);box-shadow:0 0 0 1px var(--fx-gold-l)}
+.th-ctl input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--fx-gold-l);border:3px solid var(--fx-charcoal);box-shadow:0 0 0 1px var(--fx-gold-l)}
+.th-ctl input[type=range]:focus-visible{outline:2px solid var(--fx-gold-l);outline-offset:4px}
+.th-plate figcaption{font:400 15px/1.55 var(--fx-serif);color:var(--fx-on-dark-2);margin-top:12px;min-height:3.1em}
+
+/* 3 · the IB DP environment */
+.env-ib{background:var(--ib-ivory);border-top:1px solid var(--fx-line)}
+.fxhome .env-ib .fx-kicker{color:var(--ib-bur)}
+.env-grid.five{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.env-card{display:flex;flex-direction:column;gap:8px;min-width:0;padding:20px 18px 14px;background:#fff;border:1px solid var(--fx-line);border-top:2px solid var(--ib-bur);border-radius:var(--fx-r2)}
+.env-card h3{font:400 25px/1.1 var(--fx-display);color:var(--fx-text)}
+.env-card p{font:400 14px/1.5 var(--fx-serif);color:var(--fx-text-3);margin:0}
+.env-card ul{list-style:none;margin:auto 0 0;padding:10px 0 0;border-top:1px solid var(--fx-line)}
+.env-card li a{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:36px;font:500 13.5px/1.3 var(--fx-sans);color:var(--fx-text);text-decoration:none}
+.env-card li a::after{content:"→";color:var(--ib-bur);opacity:.45;transition:opacity var(--fx-t1),transform var(--fx-t1) var(--fx-ease)}
+.env-card li a:hover{color:var(--ib-bur)}.env-card li a:hover::after{opacity:1;transform:translateX(2px)}
+.env-card a:focus-visible{outline:2px solid var(--fx-gold);outline-offset:2px}
+.env-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin:clamp(24px,3vw,36px) 0 0}
+.env-ib .fx-btn.primary{background:var(--ib-bur)}.env-ib .fx-btn.primary:hover{background:var(--ib-bur-d)}
+.env-ib .fx-link{color:var(--ib-bur)}
+
+/* 4 · the UPSC environment */
+.env-up{background:var(--up-ivory);border-top:1px solid var(--fx-line)}
+.fxhome .env-up .fx-kicker{color:var(--up-forest)}
+.up-journey{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:var(--fx-line);border-top:2px solid var(--up-forest);border-bottom:1px solid var(--fx-line)}
+.up-journey li{background:var(--up-ivory);min-width:0}
+.up-journey a{display:flex;flex-direction:column;gap:8px;height:100%;padding:20px 18px 22px;text-decoration:none;color:var(--fx-text);transition:background var(--fx-t1)}
+.up-journey a:hover{background:#fff}
+.up-journey a:focus-visible{outline:2px solid var(--fx-gold);outline-offset:-2px}
+.uj-n{font:500 12px/1 var(--fx-mono);letter-spacing:.08em;color:var(--up-gold-text)}
+.up-journey b{font:400 25px/1.1 var(--fx-display);color:var(--up-forest)}
+.up-journey a>span:last-child{font:400 14px/1.5 var(--fx-serif);color:var(--fx-text-2)}
+.env-up .fx-btn.primary{background:var(--up-forest)}.env-up .fx-btn.primary:hover{background:var(--up-forest-d)}
+.env-up .fx-link{color:var(--up-forest)}
+
+/* 5 · selected resources and handbooks */
+.fx-res{background:var(--fx-paper);border-top:1px solid var(--fx-line)}
+.res-grid{display:grid;gap:clamp(36px,4.4vw,60px)}
+.res-grid>*,.res-shelf,.res-ib>*{min-width:0}
+.res-k{margin-bottom:18px}
+.shelf{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:clamp(8px,1vw,14px);align-items:end}
+.shelf li{min-width:0}
+.shelf a{display:block;text-decoration:none;color:var(--fx-text-3)}
+.shelf img{display:block;width:100%;height:auto;border-radius:1px 2px 2px 1px;box-shadow:0 12px 20px -12px rgba(20,22,26,.55);transition:transform var(--fx-t2) var(--fx-ease)}
+.shelf a:hover img{transform:translateY(-4px)}
+.shelf a:focus-visible{outline:2px solid var(--fx-gold);outline-offset:3px}
+.shelf-n{display:block;margin-top:9px;font:500 11px/1 var(--fx-mono);letter-spacing:.06em;text-align:center}
+.res-note{font:400 15px/1.6 var(--fx-serif);color:var(--fx-text-2);margin:18px 0 0}
+.res-shelf .fx-link{color:var(--up-forest)}
+.res-ib{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px 24px;align-items:start}
+.res-ib>.res-k,.res-ib>.res-note{grid-column:1/-1}
+.res-ib>.res-k{justify-self:start}
+.res-ib .fx-link{color:var(--ib-bur)}
+.res-issues{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.rs-issue{display:grid;align-content:start;gap:10px;text-decoration:none;color:var(--fx-text)}
+.rs-issue img{display:block;width:100%;height:auto;aspect-ratio:300/375;object-fit:cover;border:1px solid var(--fx-line)}
+.rs-issue b{display:block;font:600 15px/1.3 var(--fx-serif)}
+.rs-issue em{display:block;margin-top:3px;font:500 12px/1.4 var(--fx-sans);font-style:normal;color:var(--fx-text-3)}
+.rs-issue:hover b{color:var(--ib-bur)}
+.res-studio{display:grid;gap:12px;padding:12px;background:#fff;border:1px solid var(--fx-line);border-radius:var(--fx-r2);text-decoration:none;color:var(--fx-text)}
+.res-studio img{display:block;width:100%;height:auto;max-height:300px;object-fit:contain;object-position:center top}
+.res-studio b{display:block;font:600 15px/1.3 var(--fx-serif)}
+.res-studio em{display:block;margin-top:3px;font:500 12px/1.4 var(--fx-sans);font-style:normal;color:var(--fx-text-3)}
+.rs-issue:focus-visible,.res-studio:focus-visible{outline:2px solid var(--fx-gold);outline-offset:3px}
+
+/* 6 · the laboratory */
+.fx-lab{background:var(--fx-charcoal);color:var(--fx-on-dark)}
+.fxhome .fx-lab .fx-h2{color:#fff}.fxhome .fx-lab .fx-lede{color:var(--fx-on-dark-2)}.fxhome .fx-lab .fx-kicker{color:var(--fx-gold-l)}
+.fxhome .fx-lab .fx-num{color:var(--fx-on-dark-3)}.fxhome .fx-lab .fxh-k .fx-num{border-right-color:var(--fx-line-dark)}
+.lab-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.lab-card{display:flex;flex-direction:column;gap:8px;min-width:0;padding:14px 14px 18px;background:var(--fx-charcoal-2);border:1px solid var(--fx-line-dark);border-radius:var(--fx-r2);text-decoration:none;color:var(--fx-on-dark);transition:border-color var(--fx-t2),transform var(--fx-t2) var(--fx-ease)}
+.lab-card:hover{border-color:rgba(217,194,143,.5);transform:translateY(-2px)}
+.lab-card:focus-visible{outline:2px solid var(--fx-gold-l);outline-offset:3px}
+.lab-fig{display:grid;place-items:center;height:clamp(150px,13vw,190px);background:var(--fx-ink);border-radius:var(--fx-r1);padding:6px;overflow:hidden}
+.lab-fig .motif{display:block;height:100%;width:auto;max-width:100%}
+.lab-card b{font:400 23px/1.15 var(--fx-display);color:#fff;margin-top:6px}
+.lab-card>span{font:400 14px/1.5 var(--fx-serif);color:var(--fx-on-dark-2)}
+
+/* 7 · one concept, two perspectives */
+.fx-across{background:var(--fx-ivory)}
+.ac-rows{border-top:1px solid var(--fx-line-2)}
+.ac-row{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,40px);padding:24px 0;border-bottom:1px solid var(--fx-line)}
+.ac-row h3{font:400 28px/1.1 var(--fx-display);color:var(--fx-text)}
+.ac-p p{font:400 15px/1.6 var(--fx-serif);color:var(--fx-text-2);margin:10px 0 0}
+
+/* 8 · about */
+.fx-aboutb{background:var(--fx-paper);border-top:1px solid var(--fx-line)}
+.abx-grid{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:clamp(32px,5vw,84px);align-items:center}
+.ab-por{position:relative;isolation:isolate;max-width:440px}
+.ab-por img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:var(--fx-r2)}
+.ab-por::after{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--fx-gold);border-radius:var(--fx-r2);z-index:-1}
+.ab-roles{font:600 12px/1.7 var(--fx-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--fx-gold-text);margin:-10px 0 16px}
+.ab-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 28px;margin:24px 0;padding:20px 0;border-top:1px solid var(--fx-line);border-bottom:1px solid var(--fx-line)}
+.ab-facts dt{font:600 11px/1.3 var(--fx-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--fx-text-3)}
+.ab-facts dd{margin:4px 0 0;font:400 15px/1.5 var(--fx-serif);color:var(--fx-text)}
+
+/* 9 · enrolment and contact */
+.fx-contact{background:var(--fx-ivory-2)}
+.cnx-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,2.4vw,28px)}
+.cnx-col{min-width:0;padding:clamp(20px,2.4vw,30px);background:var(--fx-paper);border:1px solid var(--fx-line);border-radius:var(--fx-r2)}
+.cnx-col.p-ib{border-top:3px solid var(--ib-bur)}.cnx-col.p-up{border-top:3px solid var(--up-forest)}
+.cnx-col h3{margin-bottom:8px}
+.cnx-col ul{list-style:none;margin:0;padding:0}
+.cnx-col li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--fx-line)}
+.eq-n{font:500 15.5px/1.35 var(--fx-serif);color:var(--fx-text)}
+.eq-a{display:flex;flex:0 0 auto;gap:6px}
+.eq-a a{display:inline-flex;align-items:center;min-height:40px;padding:0 13px;border:1px solid var(--fx-line-2);border-radius:var(--fx-r1);font:600 11px/1 var(--fx-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--fx-text);text-decoration:none;background:#fff}
+.cnx-col.p-ib .eq-a a:hover{border-color:var(--ib-bur);color:var(--ib-bur)}
+.cnx-col.p-up .eq-a a:hover{border-color:var(--up-forest);color:var(--up-forest)}
+.eq-a a:focus-visible,.cnx-direct a:focus-visible{outline:2px solid var(--fx-gold);outline-offset:2px}
+.cnx-col>p{margin:16px 0 0}
+.cnx-col.p-ib .fx-link{color:var(--ib-bur)}.cnx-col.p-up .fx-link{color:var(--up-forest)}
+.cnx-direct{margin:28px 0 0;font:500 14px/1.7 var(--fx-sans);color:var(--fx-text-2);text-align:center}
+.cnx-direct a{color:var(--fx-text);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+
+/* the home ends on its contact band, which meets the footer directly */
+body[data-sec="home"] footer.ft{margin-top:0}
+
+/* ═══ the IB DP landing's opening ═══════════════════════════════════════════ */
+.ibl{background:var(--ib-bur-d);color:#fff;padding:clamp(40px,5vw,72px) 0 clamp(28px,3.4vw,48px)}
+.ibl-in{display:grid;gap:clamp(24px,3vw,36px)}
+.ibl .fx-kicker{color:#D9C28F}
+.ibl-h{font:400 clamp(40px,5.4vw,76px)/1.02 var(--fx-display);letter-spacing:-.02em;color:#fff;margin:10px 0 0}
+.ibl .fx-lede{color:rgba(255,255,255,.82);margin:14px 0 0}
+.ibl-doors{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16);border-radius:var(--fx-r2);overflow:hidden}
+.ibl-door{display:grid;align-content:start;gap:6px;padding:16px 16px 18px;background:var(--ib-bur-d);text-decoration:none;color:#fff;transition:background var(--fx-t1)}
+.ibl-door:hover{background:var(--ib-bur)}
+.ibl-door:focus-visible{outline:2px solid var(--fx-gold-l);outline-offset:-3px}
+.ibl-door b{font:400 23px/1.1 var(--fx-display)}
+.ibl-door span{font:400 13.5px/1.45 var(--fx-serif);color:rgba(255,255,255,.74)}
+
+/* ═══ the footer's pathways band ════════════════════════════════════════════ */
+.ft-idea{font:600 11.5px/1.5 var(--fx-sans);letter-spacing:.18em;text-transform:uppercase;color:#D9C28F;margin-top:18px;max-width:46ch}
+.ft-paths{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding-bottom:clamp(28px,3vw,44px)}
+.ft-path{display:grid;gap:6px;padding:20px 22px;border:1px solid rgba(255,255,255,.12);border-radius:var(--fx-r2);text-decoration:none;color:#fff;transition:background var(--fx-t1)}
+.ft-path.p-ib{box-shadow:inset 3px 0 0 #B4566A}.ft-path.p-up{box-shadow:inset 3px 0 0 #5E8F74}
+.ft-path:hover{background:rgba(255,255,255,.05)}
+.ft-path:focus-visible{outline:2px solid var(--fx-gold-l);outline-offset:3px}
+.ft-pn{font:500 11px/1 var(--fx-mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.58)}
+.ft-path b{font:400 26px/1.1 var(--fx-display)}
+.ft-path span:last-child{font:400 14px/1.5 var(--fx-serif);color:rgba(255,255,255,.7)}
+
+/* ═══ the home, the landing and the footer at every width ═══════════════════ */
+@media (max-width:1100px){
+ .env-grid.five,.ibl-doors{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .up-journey{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:980px){
+ .hx-paths,.hx-head,.th-grid,.abx-grid,.res-ib,.cnx-grid{grid-template-columns:minmax(0,1fr)}
+ .hx-sd{display:none}
+ .lab-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .ac-row{grid-template-columns:minmax(0,1fr);gap:8px}
+ .ab-por{max-width:340px}
+}
+@media (max-width:900px){
+ .shelf{display:flex;overflow-x:auto;scroll-snap-type:x proximity;padding:4px 2px 14px;gap:12px}
+ .shelf li{flex:0 0 92px;scroll-snap-align:start}
+}
+@media (max-width:640px){
+ .pc-body{grid-template-columns:minmax(0,1fr)}
+ .pc-shelf{width:100%;max-width:300px}
+ .pc-model{max-width:420px}
+ .pc-f{grid-template-columns:minmax(0,1fr)}
+ .pc-cta{align-self:stretch}
+ .ibl-doors,.up-journey,.ab-facts,.ft-paths{grid-template-columns:minmax(0,1fr)}
+ .env-grid.five{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 calc(-1 * var(--fx-gutter));padding:2px var(--fx-gutter) 14px;scroll-padding:0 var(--fx-gutter)}
+ .env-grid.five>.env-card{flex:0 0 82%;scroll-snap-align:start}
+ .lab-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .lab-card{padding:8px 8px 12px}
+ .lab-fig{height:110px}
+ .lab-card b{font-size:18px}
+ .lab-card>span{font-size:13px;line-height:1.45}
+ .res-issues{gap:10px}
+ .rs-issue b{font-size:13.5px}
+ .cnx-col li{flex-direction:column;align-items:flex-start;gap:8px}
+ .env-cta .fx-btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+ .hx-d,.hx-s,.hx-e,.hx-r{animation:none;stroke-dasharray:none}
+ .pc-book,.shelf img,.lab-card,.up-journey a,.ibl-door,.ft-path,.env-card li a::after{transition:none}
+ .pc-shelf:hover .pc-book.b0{transform:rotate(-7deg)}.pc-shelf:hover .pc-book.b3{transform:rotate(7deg)}
+ .shelf a:hover img,.lab-card:hover{transform:none}
 }
 
 /* css-opening.css · owned by its workstream; see docs/flagship/PLAN.md */
@@ -4395,9 +4781,9 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
 <a class="sr" href="#main">Skip to content</a>
 <header class="top"><div class="wrap full in">
   <button class="burger" id="burger" aria-label="Open menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16181C" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
-  <a class="brand" href="#" onclick="nav('home');return false" aria-label="Arjun Agrawal: IB DP Economics, home">
+  <a class="brand" href="#/" onclick="nav('home');return false" aria-label="Arjun Agrawal · Economics, home">
     <span class="mark" role="img" aria-label="Arjun Agrawal monogram"></span>
-    <span class="wm"><b>Arjun Agrawal</b><span>IB DP ECONOMICS</span></span></a>
+    <span class="wm"><b>Arjun Agrawal</b><span>ECONOMICS</span></span></a>
   <nav class="mainnav" id="mainnav" aria-label="Sections"></nav>
   <div class="topR">
     <button class="iconbtn" id="searchbtn" aria-label="Search the platform" title="Search (press /)">
@@ -4418,7 +4804,8 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
 <main id="main"><div id="view" class="view"></div></main>
 <footer class="ft"><div class="ft-top"><div class="wrap full ft-topin">
   <div class="ft-prop"><div class="ft-word">Think like an economist.</div>
-   <p class="ft-ideas">Economics is about ideas, evidence, models, people, choices, trade-offs and the world.</p></div>
+   <p class="ft-ideas">Economics is about ideas, evidence, models, people, choices, trade-offs and the world.</p>
+   <p class="ft-idea">One discipline. Two pathways. A shared understanding of Economics.</p></div>
   <svg class="ft-mark" viewBox="0 0 160 90" aria-hidden="true" focusable="false"><path d="M14 8V82H152" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".5"/><path d="M24 14L146 76" stroke="#8FB6DE" stroke-width="2" fill="none"/><path d="M24 76L146 14" stroke="#E3A778" stroke-width="2" fill="none"/><circle cx="85" cy="45" r="3.6" fill="#D9BE7C"/><circle cx="85" cy="45" r="9" fill="none" stroke="#D9BE7C" stroke-opacity=".5"/></svg>
   <nav class="ft-explore" aria-label="Explore the platform"><div class="kicker">Explore</div>
    <button class="lnk" onclick="nav('learn')">Learn</button><button class="lnk" onclick="nav('world')">Real World</button>
@@ -4426,11 +4813,15 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
    <button class="lnk" onclick="nav('everywhere')">Economics, Everywhere</button><button class="lnk" onclick="nav('ees')">EE Studio</button>
    <button class="lnk" onclick="nav('arjun')">Videos</button><button class="lnk" onclick="nav('educator')">Teacher Studio</button>
    <button class="lnk" onclick="randomOpen('')">Random Economics</button><button class="lnk" onclick="nav('about')">About</button></nav>
- </div></div><div class="wrap full in">
+ </div><nav class="wrap full ft-paths" aria-label="The two pathways">
+  <a class="ft-path p-ib" href="#/ib"><span class="ft-pn">Pathway 01</span><b>IB DP Economics</b><span>The course, the models, the real world, the examinations, the IA and the EE.</span></a>
+  <a class="ft-path p-up" href="#/upsc"><span class="ft-pn">Pathway 02</span><b>UPSC CSE Economics</b><span>The syllabus, the handbooks, current affairs, a preparation strategy and the three-month course.</span></a>
+ </nav></div><div class="wrap full in">
   <div class="ftbrand">
    <div style="width:230px;height:70px;max-width:100%;background:var(--lg) left center/contain no-repeat" role="img" aria-label="Arjun Agrawal: Knowledge. Insight. Impact."></div>
-   <p class="ed mt3" style="max-width:48ch;font-size:16px">Arjun Agrawal · IB DP Economics. An independent learning environment for IB Diploma Programme Economics, built by an IB DP Economics teacher and resource creator.</p>
+   <p class="ed mt3" style="max-width:48ch;font-size:16px">Arjun Agrawal · Economics. An independent Economics learning platform with two pathways, IB DP Economics and UPSC CSE Economics, built by an IB DP Economics educator, Economics resource designer and UPSC Economics mentor.</p>
    <p class="xs mt3" style="max-width:52ch"><b class="ind">This is an independent educational platform created by Arjun Agrawal. It is not an official IB platform and is not endorsed by the International Baccalaureate Organization.</b> Not affiliated with, endorsed by, or produced by the International Baccalaureate Organization. “International Baccalaureate”, “IB” and “Diploma Programme” are registered trademarks of the International Baccalaureate Organization.</p>
+   <p class="xs mt2 ft-upsc-ind" style="max-width:52ch"><b>The UPSC CSE Economics pathway is independent too.</b> It is not affiliated with or endorsed by the Union Public Service Commission. Its handbooks and its course cover the Economics within the General Studies papers; they are not a preparation for the Economics Optional.</p>
    <p class="xs mt3">Everything you record stays on this device. Nothing is transmitted.</p>
   </div>
   <nav class="ftcols" aria-label="Footer">
@@ -17670,7 +18061,7 @@ function linkAuditRun(){
   {n:"Header logo resolves as a rendered asset",ok:(()=>{const e=document.querySelector(".brand .mark");
     if(!e)return false;const bg=getComputedStyle(e).backgroundImage;return /url\(\s*["']?data:image/.test(bg)})()},
   {n:"Header wordmark carries the brand",ok:(()=>{const e=document.querySelector(".brand .wm");
-    return !!e&&/Arjun Agrawal/.test(e.textContent)&&/IB DP ECONOMICS/i.test(e.textContent)})()},
+    return !!e&&/Arjun Agrawal/.test(e.textContent)&&/ECONOMICS/i.test(e.textContent)})()},
   {n:"Footer carries the attribution",ok:/Arjun Agrawal/.test((document.querySelector("footer")||{textContent:""}).textContent)},
   {n:"Favicon declared",ok:!!document.querySelector('link[rel*="icon"]')},
   {n:"Print root present",ok:!!document.getElementById("printroot")},
@@ -27667,7 +28058,7 @@ function RESPONSIVESUITE(){
    bleed.length===0,bleed.slice(0,3).map(e=>e.tagName+"."+String(e.className).slice(0,30)).join(", "));
  /* header geometry */
  const brand=document.querySelector(".brand"), topR=document.querySelector(".topR");
- const navBtns=[...document.querySelectorAll("#mainnav button")].filter(b=>b.offsetParent);
+ const navBtns=[...document.querySelectorAll("#gnav a,#gnav button,#mainnav button")].filter(b=>b.offsetParent);
  const br=brand.getBoundingClientRect(), tr=topR.getBoundingClientRect();
  T("Desktop · the brand and the navigation do not collide",
    !navBtns.length||Math.min(...navBtns.map(b=>b.getBoundingClientRect().left))>=br.right+8);
@@ -34666,7 +35057,7 @@ function RWSUITE(){
      const h=VIEWS.course();VIEW=k[0];TAB=k[1];ARG=k[2];
      return h.includes("No Real World case is filed under this subtopic yet")})());
  T("Chain · the home page features one case rather than a wall of them",
-   (()=>{const k=[VIEW,TAB];VIEW="home";TAB=0;const h=VIEWS.home();VIEW=k[0];TAB=k[1];
+   (()=>{const k=[VIEW,TAB];VIEW="ib";TAB=0;const h=VIEWS.ib();VIEW=k[0];TAB=k[1];
      return h.includes("Real world now")&&(h.match(/rwOpen\(/g)||[]).length<=2})());
  T("Chain · Resources points at Real World rather than repeating it",
    (()=>{const k=[VIEW,TAB];VIEW="resources";TAB=0;const h=VIEWS.resources();VIEW=k[0];TAB=k[1];
@@ -36875,7 +37266,7 @@ function EESUITE(){
     return EE_ALL().every(x=>I.some(r=>r.t===x.t&&r.go===eeGo(x.id)))&&Object.keys(EELABS).every(k=>I.some(r=>r.t===EELABS[k].n))})());
  T("Everywhere · the section sits in the More menu and the drawer, and the home page opens a door to it",
    (()=>{const s=SECTIONS.find(x=>x.v==="everywhere");const flat=MOBGROUPS.flatMap(([,i])=>i.map(x=>x[0]));
-    return s&&/\["everywhere",/.test(String(moreMenu))&&flat.includes("everywhere")&&/Economics, Everywhere/.test(VIEWS.home())})());
+    return s&&/\["everywhere",/.test(String(moreMenu))&&flat.includes("everywhere")&&/Economics, Everywhere/.test(VIEWS.ib())})());
  T("Everywhere · the search filters return only their own kind, and every filter finds something",
    CPGROUPS.filter(g=>g[2]).every(g=>{const r=cpGroupItems(g,"");return r.length>0&&r.every(x=>g[2].test(x.k))})
    &&cpGroupItems(CPGROUPS.find(g=>g[0]==="ee"),"flight").some(x=>/flight/i.test(x.t)));
@@ -38751,7 +39142,7 @@ function ECOSUITE(){
  T("Educator · every link points to a section and tab that exist",()=>EDU_ROLES.flatMap(r=>r.pathway.map(s=>s.go)).concat(EDU_MODULES.flatMap(m=>(m.links||[]).map(l=>l.go))).filter(g=>!goOk(g.v,g.t)).map(g=>g.v+"/"+g.t));
  T("Educator · each of the three pages renders",()=>{const k=TAB;try{return [0,1,2].every(t=>{TAB=t;return txt(eduView()).length>600})}finally{TAB=k}});
  T("Ecosystem · every pathway points to sections and tabs that exist, and covers the four audiences",()=>PWAYS.flatMap(p=>p.go).filter(([v,t])=>!goOk(v,t)).map(x=>x.join("/")).concat(PW_WHO.filter(([w])=>!PWAYS.some(p=>p.who===w||(w==="teacher"&&p.k==="sup"))).map(x=>x[0])));
- T("Ecosystem · the home page opens with the journey band",()=>{const h=VIEWS.home();return h.indexOf("Start your journey")>0&&h.indexOf("Start your journey")<h.indexOf("Economics, Everywhere")});
+ T("Ecosystem · the home page opens with the journey band",()=>{const h=VIEWS.ib();return h.indexOf("Start your journey")>0&&h.indexOf("Start your journey")<h.indexOf("Economics, Everywhere")});
  T("Ecosystem · a price-controls subtopic links concepts, cases, diagrams, practice and EE research",()=>{const h=kgPanel(["2.7"]);return ["Related concepts","Related cases","Related diagrams","Related practice"].every(x=>h.includes(x))});
  T("Ecosystem · every related-content link opens something that exists",()=>{const G=kgBuild(),bad=[];Object.keys(G).forEach(s=>KG_GROUPS.forEach(([h,f])=>(f(Object.assign({sub:s},G[s]))||[]).forEach(r=>{if(!r||!r[0]||!r[1])bad.push(s+" "+h)})));return bad});
  T("Ecosystem · search finds the studios, the models and the handbook",()=>{SIDX=null;const I=buildIndex();return ["EE Studio","EE topic","EE model","Teaching"].every(k=>I.some(x=>x.k===k))&&I.some(x=>/Video studio/.test(x.t))});
@@ -39823,7 +40214,7 @@ function abClose(){const A=ABOUT;return `<section class="sec rn-final bg-ink ab-
 function RENSUITE(){
  const out=[];const T=(n,f,d)=>{let ok=false,det=d||"";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){ok=false;det=e.message}out.push({n,ok:!!ok,detail:det})};
 
- let HOMEH=null;const HOME=()=>HOMEH||(HOMEH=VIEWS.home());
+ let HOMEH=null;const HOME=()=>HOMEH||(HOMEH=VIEWS.ib());
  const F=MOTIFFN,near=(a,b,t)=>Math.abs(a-b)<=(t===undefined?1e-6:t);
  /* ── motifs: geometry recomputed from the stated functions ── */
  T("Motif · every motif renders an SVG hidden from assistive technology, with a caption",()=>Object.keys(MOTIFS).every(k=>{const s=motifSVG(k);return /^<svg[^>]*aria-hidden="true"/.test(s)&&/viewBox="0 0 600 400"/.test(s)&&motifCap(k).length>20&&!/NaN|undefined/.test(s)}));
@@ -40067,8 +40458,8 @@ function COVSUITE(){
  T("Cover model · the reading names the shortage or surplus that moves price, never price moving demand",()=>{const k=CV.s;try{CV.s=1;const up=cvRead();CV.s=-1;const dn=cvRead();
    return /shortage/.test(up)&&/surplus/.test(dn)&&!/price rises[^.]*demand (rises|increases)/i.test(up+dn)}finally{CV.s=k}});
  T("Cover model · the counts beside the resource doors are the platform's own, not on the cover",()=>{const n=rnCount(),h=rnResources();
-   return ["cases","diagrams","calcs","dna"].every(k=>typeof n[k]!=="number"||h.includes(fmtN(n[k])))&&!/cv-sig/.test(VIEWS.home())});
- T("Cover frame · the portrait sits in its own frame, which holds no figure",()=>{const h=VIEWS.home();const i=h.indexOf('<figure class="cv-portrait');if(i<0)return false;
+   return ["cases","diagrams","calcs","dna"].every(k=>typeof n[k]!=="number"||h.includes(fmtN(n[k])))&&!/cv-sig/.test(VIEWS.ib())});
+ T("Cover frame · the portrait sits in its own frame, which holds no figure",()=>{const h=VIEWS.ib();const i=h.indexOf('<figure class="cv-portrait');if(i<0)return false;
    const f=h.slice(i,h.indexOf("</figure>",i));return !/<svg|data-motif/.test(f)&&/<img/.test(f)});
  T("Profile frame · the About portrait is its own cell, and the cover draws no figure that could sit over it",()=>{const h=abCover();
    const i=h.indexOf('class="abfig ab-portrait');return i>0&&!/<svg|data-motif|rn-plot/.test(h)&&h.split('class="abfig').length===2});
@@ -41846,7 +42237,7 @@ VIEWS.ideas=()=>TAB===1?econTimeline():ARG?econPage(ARG):econList();
    it lists every section, including those on the bar (a narrow screen withdraws some of them), and anything not named
    below is appended under "More", so no section can become unreachable. */
 moreMenu=function(e){e.stopPropagation();if(document.getElementById("menu")){closeMenuPop();return}
- const G=[["Pathways",[["upsc","UPSC CSE Economics"]]],["Learn and explore",[["resources","Resources"],["paths","Pathways"],["course","Course"],["learn","Learn"],["think","Think"],["events","Economic events"],["@why","Why did this happen?"],["ideas","Economists and ideas"],["data","Economic data"],["lab","Lab"],["world","Real World"],["mind","Mindmaps"],["everywhere","Economics, Everywhere"],["tok","TOK × Economics"],["arjun","Video studio"],["video","Video library"]]],
+ const G=[["Pathways",[["home","Home"],["ib","IB DP Economics"],["upsc","UPSC CSE Economics"],["concepts","One Concept. Two Perspectives."]]],["Learn and explore",[["resources","Resources"],["paths","Pathways"],["course","Course"],["learn","Learn"],["think","Think"],["events","Economic events"],["@why","Why did this happen?"],["ideas","Economists and ideas"],["data","Economic data"],["lab","Lab"],["world","Real World"],["mind","Mindmaps"],["everywhere","Economics, Everywhere"],["tok","TOK × Economics"],["arjun","Video studio"],["video","Video library"]]],
   ["Exam and research",[["practise","Practise"],["examiner","Exam"],["papers","Paper labs"],["dna","Exam DNA"],["calculate","Calculate"],["session","Timed session"],["ees","EE Studio"],["ia","IA studio"]]],
   ["Your work",[["master","Dashboard"],["syllabus","My syllabus"],["saved","My economics"],["workspace","My workspace"]]],
   ["Teach",[["educator","Educator studio"],["teacher","Teacher tools"]]],
@@ -42137,9 +42528,9 @@ const PATHWAYS=[
  {id:"university",name:"University and college",who:"Undergraduates, and anyone who wants the models, the evidence and the debates.",depth:"Advanced",status:"Built from Go deeper panels, events, economists and data",
   lead:"Each lesson's Go deeper panels add formal reasoning and research; the events archive adds economic history and competing interpretations; the economists section adds the history of thought; the data lab adds evidence.",
   steps:[["Economists and ideas","nav('ideas',0)"],["Economic events","nav('events',0)"],["Economics through time","nav('events',2)"],["Economic data","nav('data',0)"],["Concept network","nav('think')"]]},
- {id:"civil",name:"Civil services and the Indian economy",who:"Candidates preparing Economics for civil-services examinations, and anyone studying the Indian economy.",depth:"Applied",status:"Syllabus map not yet published: awaiting the official documents; facts are dated and sourced",
+ {id:"civil",name:"Civil services and the Indian economy",who:"Candidates preparing Economics for civil-services examinations, and anyone studying the Indian economy.",depth:"Applied",status:"Now a pathway of its own: UPSC CSE Economics, with the syllabus, the handbooks and the course. This overlay keeps the India data, cases and history.",
   lead:"The Indian economy through its data, its policy cases and its history, from the 1991 balance-of-payments crisis to taxation, inflation targeting, the external sector, agriculture, employment and development.",
-  steps:[["The Indian economy hub","nav('paths',1)"],["India 1991","nav('events',0,'india-1991')"],["India's data","dlS().atlas='IND';save();nav('data',1)"],["Why did this happen?","nav('think',WHYTAB())"]]},
+  steps:[["UPSC CSE Economics","nav('upsc')"],["The Indian economy hub","nav('paths',1)"],["India 1991","nav('events',0,'india-1991')"],["India's data","dlS().atlas='IND';save();nav('data',1)"],["Why did this happen?","nav('think',WHYTAB())"]]},
  {id:"everyone",name:"Economics for everyone",who:"Anyone curious about how economies work.",depth:"From intuition up",status:"No exam language",
   lead:"Why flights cost more tomorrow, why queues exist, why a currency can fall fast, why markets sometimes fail: start from a question and follow it as far as you like.",
   steps:[["Big questions","nav('everywhere',1)"],["Economics in real life","nav('everywhere',2)"],["Economic events","nav('events',0)"],["Economists and ideas","nav('ideas',0)"]]}];
@@ -42204,7 +42595,7 @@ function EVSUITE(){const out=[];const T=(n,f,d)=>{let ok=false,det=d||"";try{con
  T("Events · every fact-status badge has a label and an explanation",()=>["fact","interpretation","inference","controversy"].every(k=>EVSTATUS[k]&&EVSTATUS[k][0]&&EVSTATUS[k][1])&&/Controversy/.test(evBadge("controversy")));
  T("Events · charts can mark an event on the time axis",()=>{const h=dlChart("t-ev",[{name:"A",color:DLPAL[0],pts:[[1990,1],[1991,2],[1992,3]]}],{w:600,marks:[{at:1991,label:"Crisis"}]});delete DLCH["t-ev"];return /class="dl-mark"/.test(h)&&/>Crisis</.test(h)});
  T("Pathways · six pathways, and IB is the deepest",()=>PATHWAYS.length===6&&PATHWAYS[0].id==="ib"&&PATHWAYS[0].depth==="Deepest");
- T("Pathways · Cambridge and civil services make no syllabus claim until the official documents are checked",()=>["cambridge","civil"].every(id=>{const p=PATHWAYS.find(x=>x.id===id);return /awaiting the official/.test(p.status)&&!/\b9708\b|paper \d|component \d|prelims|mains/i.test(p.lead+p.status)}));
+ T("Pathways · Cambridge makes no syllabus claim until the official documents are checked, and civil services leads to its own pathway",()=>{const c=PATHWAYS.find(x=>x.id==="cambridge"),v=PATHWAYS.find(x=>x.id==="civil");return /awaiting the official/.test(c.status)&&!/\b9708\b|paper \d|component \d|prelims|mains/i.test(c.lead+c.status)&&v.steps[0][1]==="nav('upsc')"&&/UPSC CSE Economics/.test(v.status)&&!/\b9708\b|paper \d|component \d|prelims|mains/i.test(v.lead+v.status)});
  T("Pathways · the Indian economy hub links only to cases that exist and to the 1991 event",()=>{const ids=INTHEMES.flatMap(t=>t[1]);const h=indiaHub();return ids.every(id=>RW_CASES.some(c=>c.id===id))&&h.includes("nav('events',0,'india-1991')")&&ids.length>=25});
  T("Pathways · choosing a path is kept and changes the home band's lead",()=>{const k=S.path;S.path="civil";const a=txt(rnPathsBand());S.path=k;return /Your path: Civil services/.test(a)});
  T("Navigation · the More menu and the drawer reach the events archive and the pathways",()=>{const src=String(moreMenu);return src.includes('"events"')&&src.includes('"paths"')&&MOBGROUPS.some(([,it])=>it.some(i=>i[0]==="events"))&&MOBGROUPS.some(([,it])=>it.some(i=>i[0]==="paths"))});
@@ -42860,8 +43251,8 @@ function STUDIOSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{cons
  T("Learning design · the nine steps appear in order",()=>{const h=txt(designPage());let i=-1;return LD_STEPS.every(([s])=>{const j=h.indexOf(s,i+1);if(j<0)return false;i=j;return true})});
  T("Learning design · the practice question is labelled as original, not an IB question",()=>/not an IB examination question/.test(txt(designPage())));
  T("Contact · six categories, real addresses, and no form that pretends to send",()=>{const h=contactPage();return STUDIO.enquiries.length===6&&STUDIO.enquiries.every(e=>h.includes(esc(e.n)))&&!/<form/i.test(h)&&h.includes("mailto:"+TUT.email)&&/Nothing is sent from this page/.test(h)});
- T("Home · the IB pathway's cover leads with Think like an economist., then the headline, the copy and both actions",()=>{const h=txt(VIEWS.home());const c=VIEWS.home();return /<h2[^>]*id="cv-h"[^>]*>[\s\S]*?Think like[\s\S]*?an economist\.[\s\S]*?<\/h2>/.test(c)&&h.includes("Economics is not just a subject to study. It is a way to understand the world.")&&h.includes("An interactive IB DP Economics learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking.")&&/Explore Economics/.test(h)&&/<a class="btn lg on-ink" href="#\/resources">Explore Resources<\/a>/.test(c)});
- T("Home · the exhibition, the six perspectives, the lab, the progression and the enquiry band are present",()=>{const h=txt(VIEWS.home());return ["Inside the Economics Learning Studio","One topic, six perspectives","Inside the learning lab","From concept to judgement","Interested in exploring more?"].every(x=>h.includes(x))});
+ T("Home · the IB pathway's cover leads with Think like an economist., then the headline, the copy and both actions",()=>{const h=txt(VIEWS.ib());const c=VIEWS.ib();return /<h2[^>]*id="cv-h"[^>]*>[\s\S]*?Think like[\s\S]*?an economist\.[\s\S]*?<\/h2>/.test(c)&&h.includes("Economics is not just a subject to study. It is a way to understand the world.")&&h.includes("An interactive IB DP Economics learning ecosystem connecting economic concepts, visual understanding, real-world evidence and exam thinking.")&&/Explore Economics/.test(h)&&/<a class="btn lg on-ink" href="#\/resources">Explore Resources<\/a>/.test(c)});
+ T("Home · the exhibition, the six perspectives, the lab, the progression and the enquiry band are present",()=>{const h=txt(VIEWS.ib());return ["Inside the Economics Learning Studio","One topic, six perspectives","Inside the learning lab","From concept to judgement","Interested in exploring more?"].every(x=>h.includes(x))});
  return out}
 STUDIOSUITE.suiteName="Learning Studio";
 EXTRA_SUITES.push(STUDIOSUITE);
@@ -43020,7 +43411,7 @@ function ATLASSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const
  T("Atlas · the tax predictions agree with the model: price paid up, quantity down, revenue up from zero, welfare down",()=>{const Q=DMPREDICT.tax,a=Q.map(q=>q[2][q[3]]);return a[0]==="Rises"&&a[1]==="Falls"&&a[2]==="Falls"&&a[3]==="Rises from zero"&&a[4]==="Falls"});
  T("Atlas · the progression runs from concept to judgement in nine steps, each linked to a real page",()=>AT_P.length===9&&AT_P[0][0]==="Concept"&&AT_P[8][0]==="Judgement"&&AT_P.every(p=>!!routeParse(p[2])));
  T("Atlas · the rupee example's numbers hold: ₹80 to ₹88 is a depreciation; 0.8 + 0.6 > 1",()=>(1/88<1/80)&&(0.8+0.6>1)&&Math.abs((100*1.08)-(100*1.10*0.94)-4.6)<1e-9);
- T("Atlas · the cover is uncluttered: one headline, one line of copy, two actions, no statistics strip",()=>{const h=VIEWS.home();const c=h.slice(h.indexOf('class="hero rn-home'),h.indexOf("</section>",h.indexOf('class="hero rn-home')));return (c.match(/<h[12][^>]*id="cv-h"/g)||[]).length===1&&!/<h1/.test(c)&&(c.match(/class="btn lg/g)||[]).length===2&&!/cv-scale|cv-verbs/.test(c)});
+ T("Atlas · the cover is uncluttered: one headline, one line of copy, two actions, no statistics strip",()=>{const h=VIEWS.ib();const c=h.slice(h.indexOf('class="hero rn-home'),h.indexOf("</section>",h.indexOf('class="hero rn-home')));return (c.match(/<h[12][^>]*id="cv-h"/g)||[]).length===1&&!/<h1/.test(c)&&(c.match(/class="btn lg/g)||[]).length===2&&!/cv-scale|cv-verbs/.test(c)});
  return out}
 ATLASSUITE.suiteName="Project Atlas";
 EXTRA_SUITES.push(ATLASSUITE);
@@ -44277,6 +44668,500 @@ function fxEnquiryLinks(key,extra){
  return {wa:fxWa(msg),mail:fxMail(e.subject,msg),tel:fxTel(),msg};
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   FLAGSHIP · the shell: one header, two environments
+   The global header carries HOME · IB DP ECONOMICS · UPSC CSE ECONOMICS ·
+   ABOUT; the two pathways sit together as a switcher, and each opens a panel of
+   its environment. Inside a pathway a context bar gives that environment its
+   own navigation: IB Home, Learn, Explore, Practise, Research and Resources
+   for IB DP; the eight UPSC destinations for UPSC CSE. The older primary bar,
+   the More menu and their measuring code stay in the page, hidden, because
+   other layers and the quality checks still read them; every section they
+   listed is reachable here, in the drawer and in search.
+   ═══════════════════════════════════════════════════════════════════════════ */
+/* The IB DP environment, grouped as the owner's brief sets it. An item names a
+   section and a tab (by label, so a reordered tab list cannot misroute it);
+   an item whose section or tab does not exist is left out rather than linked. */
+const FX_IBNAV=[
+ {k:"learn",n:"Learn",d:"The course, its concepts and every topic, seen whole",items:[
+  ["Course and syllabus","course","At a glance","The IB Economics course, unit by unit"],
+  ["Concepts and theories","learn","Concept spine","Every concept, from definition to evaluation"],
+  ["Topic-wise learning","course","Topics","Thirty-one lessons across the four units"],
+  ["Mindmaps","mind",null,"See the whole idea, not just the chapter"],
+  ["Visual explainers","studio","Visual explainers","Original explainers and diagrams"],
+  ["Diagram atlas","lab","Diagram atlas","Every diagram, drawn from its model"],
+  ["Thinking like an economist","think",null,"The economic chain and evaluation"],
+  ["Video library","video",null,"Curated lessons by topic"],
+  ["Video studio","arjun",null,"Arjun Agrawal's own video lessons"]]},
+ {k:"explore",n:"Explore",d:"Economics in the world, with its evidence",items:[
+  ["Real World Economics","world",null,"Cases, data and the concepts behind them"],
+  ["Case studies","world","Browse cases","Real economies, read through the course"],
+  ["Economic data","data",null,"Indicators, country profiles and markets"],
+  ["Economics in 60 Seconds","learn","Economics in 60 Seconds","Ten-page visual issues"],
+  ["Economic events","events",null,"The events that shaped economic thinking"],
+  ["Economics, Everywhere","everywhere",null,"Big questions and everyday life"],
+  ["Economists and ideas","ideas",null,"The thinkers and how their ideas connect"],
+  ["The Indian economy","paths","The Indian economy","India's data, policy cases and history"]]},
+ {k:"practise",n:"Practise",d:"Models to move, questions to answer, papers to sit",items:[
+  ["Interactive diagrams","lab","Market lab","Move the model and predict before you look"],
+  ["Calculation tools","calculate",null,"Every calculation, with marking tolerance"],
+  ["Practice questions","practise","Question bank","By unit, command term and paper"],
+  ["Examination preparation","examiner",null,"The exam cockpit and answer diagnostics"],
+  ["Paper 1 and Paper 2 practice","papers",null,"Workshops, data labs and the simulator"],
+  ["Exam DNA","dna",null,"How past papers are built"],
+  ["Timed session","session",null,"A focused, timed practice block"],
+  ["All tools","tools",null,"Every lab, builder and simulation in one place"]]},
+ {k:"research",n:"Research",d:"The Internal Assessment, the Extended Essay and TOK",items:[
+  ["Internal Assessment support","ia",null,"The IA studio, from article to commentary"],
+  ["Extended Essay support","ees",null,"The Economics EE Studio"],
+  ["Research skills","think","Inquiry tools","Questions, evidence and method"],
+  ["TOK connections","tok",null,"Knowledge questions in Economics"]]},
+ {k:"resources",n:"Resources",d:"Handbooks, revision, the Learning Studio and tutorials",items:[
+  ["Resource hub","resources",null,"Handbooks, question banks, revision and IA resources"],
+  ["Revision resources","practise","Ten-minute revision","Short, targeted revision"],
+  ["Checklists","course","Checklists","What to know, subtopic by subtopic"],
+  ["Learning Studio","studio",null,"Selected resource previews"],
+  ["Tutorials","tutorials",null,"One-to-one online tutoring"],
+  ["For educators","educator",null,"The Educator Studio and its handbook"],
+  ["Teacher tools","teacher",null,"The teacher desk, planners, exam builders and marking"]]}
+];
+const FX_IBPROGRESS=[["Dashboard","master",null],["My syllabus","syllabus",null],["My economics","saved",null],["My workspace","workspace",null],["Settings","settings",null]];
+/* one line for each UPSC destination, by its label, so a reordered tab list cannot mislabel it */
+const FX_UPDESC={"UPSC Home":"The UPSC environment","Syllabus":"Prelims GS I and Mains GS III, and what each asks","Economics Resources":"Free topic previews and diagrams",
+ "Handbook Library":"Eleven volumes at ₹99 each","Current Affairs":"Developments read through the concepts","Preparation Strategy":"How to prepare the Economics component",
+ "Online Course":"The three-month intensive programme","Contact / Enrol":"Handbooks, the course and mentorship"};
+
+function fxTabIndex(v,label){
+ const s=SECTIONS.find(x=>x.v===v);if(!s||typeof VIEWS[v]!=="function")return -1;
+ if(label===null||label===undefined)return 0;
+ if(!s.tabs)return -1;
+ return s.tabs.indexOf(label);
+}
+function fxHref(v,t,a){
+ try{const h=routeFormat(v,t||0,a);return h||"#/"}catch(e){return "#/"}
+}
+/* the resolved IB groups: only items that exist */
+function fxIbGroups(){
+ return FX_IBNAV.map(g=>({...g,items:g.items.map(([n,v,lab,d])=>{const t=fxTabIndex(v,lab);return t<0?null:{n,v,t,d,href:fxHref(v,t)}}).filter(Boolean)}));
+}
+function fxIbGroupOf(v){
+ for(const g of FX_IBNAV)if(g.items.some(i=>i[1]===v))return g.k;
+ return null;
+}
+function fxUpTabs(){
+ const s=SECTIONS.find(x=>x.v==="upsc");return s&&s.tabs?s.tabs:[];
+}
+
+/* ── the header, rebuilt once ───────────────────────────────────────────── */
+function fxBuildShell(){
+ const top=document.querySelector("header.top .in");if(!top||document.getElementById("gnav"))return;
+ const brand=top.querySelector(".brand");
+ if(brand){
+  brand.setAttribute("aria-label","Arjun Agrawal · Economics, home");
+  brand.setAttribute("href","#/");
+  const sub=brand.querySelector(".wm span");if(sub)sub.textContent="ECONOMICS";
+ }
+ const g=document.createElement("nav");g.className="gnav";g.id="gnav";g.setAttribute("aria-label","Main");
+ const main=document.getElementById("mainnav");
+ top.insertBefore(g,main?main.nextSibling:null);
+ const hdr=document.querySelector("header.top");
+ const ctx=document.createElement("nav");ctx.className="ctxbar";ctx.id="ctxbar";ctx.setAttribute("aria-label","Pathway");
+ hdr.parentNode.insertBefore(ctx,hdr.nextSibling);
+ document.documentElement.classList.add("fx-js");
+ /* a single panel for the dropdowns */
+ const p=document.createElement("div");p.className="fxpanel";p.id="fxpanel";p.hidden=true;
+ document.body.appendChild(p);
+ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&FXDD.open){const b=FXDD.btn;fxClosePanel();if(b)b.focus()}});
+ document.addEventListener("click",e=>{if(!FXDD.open)return;const p=document.getElementById("fxpanel");
+  if(p.contains(e.target)||(FXDD.btn&&FXDD.btn.contains(e.target)))return;fxClosePanel()});
+ window.addEventListener("resize",()=>{if(FXDD.open)fxPlacePanel()});
+ window.addEventListener("scroll",()=>{if(FXDD.open&&window.innerWidth>=900)fxPlacePanel()},{passive:true});
+}
+
+const FXDD={open:null,btn:null};
+function fxPanelHtml(k){
+ if(k==="ib"){
+  const gs=fxIbGroups();
+  return `<div class="fxp-head"><div><div class="fx-kicker">Pathway 01</div><div class="fxp-title">IB DP Economics</div></div>
+   <a class="fx-btn primary" href="#/ib" data-fxclose>Enter IB DP Economics <span class="arr" aria-hidden="true">→</span></a></div>
+   <div class="fxp-grid ib">${gs.map(g=>`<section class="fxp-col" aria-labelledby="fxp-${g.k}"><h3 class="fxp-h" id="fxp-${g.k}">${esc(g.n)}</h3><ul>${g.items.map(i=>
+     `<li><a class="fx-a" href="${esA(i.href)}" data-fxclose>${esc(i.n)}</a></li>`).join("")}</ul></section>`).join("")}</div>`;
+ }
+ if(k==="upsc"){
+  const tabs=fxUpTabs();
+  return `<div class="fxp-head"><div><div class="fx-kicker">Pathway 02</div><div class="fxp-title">UPSC CSE Economics</div></div>
+   <a class="fx-btn primary" href="#/upsc" data-fxclose>Enter UPSC CSE Economics <span class="arr" aria-hidden="true">→</span></a></div>
+   <ul class="fxp-list">${tabs.map((t,i)=>`<li><a class="fx-a" href="${esA(fxHref("upsc",i))}" data-fxclose><b>${esc(t)}</b><span>${esc(FX_UPDESC[t]||"")}</span></a></li>`).join("")}</ul>
+   ${fxTabIndex("paths","The Indian economy")<0?"":`<p class="fxp-also">Also on the platform: <a class="fx-a" href="${esA(fxHref("paths",fxTabIndex("paths","The Indian economy")))}" data-fxclose>The Indian economy</a>, India's data, policy cases and history.</p>`}`;
+ }
+ const g=fxIbGroups().find(x=>x.k===k);
+ if(g)return `<p class="fxp-d">${esc(g.d)}</p><ul class="fxp-list one">${g.items.map(i=>
+   `<li><a class="fx-a" href="${esA(i.href)}" data-fxclose${VIEW===i.v&&TAB===i.t?' aria-current="page"':""}><b>${esc(i.n)}</b><span>${esc(i.d)}</span></a></li>`).join("")}</ul>`;
+ return "";
+}
+function fxPlacePanel(){
+ const p=document.getElementById("fxpanel"),b=FXDD.btn;if(!p||!b)return;
+ const r=b.getBoundingClientRect(),vw=document.documentElement.clientWidth;
+ const wide=FXDD.open==="ib"||FXDD.open==="upsc";
+ const w=Math.min(wide?(FXDD.open==="ib"?1080:720):420,vw-24);
+ p.style.width=w+"px";
+ const left=Math.max(12,Math.min(vw-w-12,wide?r.left+r.width/2-w/2:r.left));
+ p.style.left=left+"px";p.style.top=(r.bottom+8)+"px";
+}
+function fxTogglePanel(k,btn,e){
+ if(e)e.stopPropagation();
+ if(FXDD.open===k){fxClosePanel();return}
+ fxClosePanel();
+ const p=document.getElementById("fxpanel");if(!p)return;
+ p.innerHTML=fxPanelHtml(k);p.dataset.k=k;p.hidden=false;
+ FXDD.open=k;FXDD.btn=btn;btn.setAttribute("aria-expanded","true");
+ p.setAttribute("aria-label",btn.getAttribute("data-label")||"Menu");
+ fxPlacePanel();
+ p.querySelectorAll("[data-fxclose]").forEach(a=>a.addEventListener("click",()=>fxClosePanel()));
+ requestAnimationFrame(()=>p.classList.add("on"));
+}
+function fxClosePanel(){
+ const p=document.getElementById("fxpanel");
+ if(p){p.classList.remove("on");p.hidden=true;p.innerHTML=""}
+ if(FXDD.btn)FXDD.btn.setAttribute("aria-expanded","false");
+ FXDD.open=null;FXDD.btn=null;
+}
+
+/* ── painted on every render ────────────────────────────────────────────── */
+function fxSwitcher(path,cls){
+ const one=(k,lab)=>`<a class="fxsw-${k}${path===k?" on":""}" href="${FXI.paths[k].home}"${path===k?' aria-current="true"':""}>${lab}</a>`;
+ return `<div class="fxsw ${cls||""}" role="group" aria-label="Choose a pathway">${one("ib","IB DP Economics")}${one("upsc","UPSC CSE Economics")}</div>`;
+}
+function fxPaintShell(){
+ const path=fxPathway(VIEW);
+ document.body.setAttribute("data-pathway",path);
+ const g=document.getElementById("gnav");
+ if(g){
+  const cur=(k)=>path===k?' aria-current="true"':"";
+  const pathBtn=(k,lab)=>`<span class="gn-path gn-${k}${path===k?" on":""}"><a class="fx-a" href="${FXI.paths[k].home}"${cur(k)}>${lab}</a><button type="button" class="gn-dd" aria-expanded="false" aria-controls="fxpanel" data-label="${esA(lab)} menu" aria-label="${esA(lab)}: show the sections" onclick="fxTogglePanel('${k}',this,event)"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button></span>`;
+  g.innerHTML=`<a class="gn-item${VIEW==="home"?" on":""}" href="#/"${VIEW==="home"?' aria-current="page"':""}>Home</a>
+   <span class="gn-pair" role="group" aria-label="Pathways">${pathBtn("ib","IB DP Economics")}${pathBtn("upsc","UPSC CSE Economics")}</span>
+   <a class="gn-item${VIEW==="about"?" on":""}" href="#/about"${VIEW==="about"?' aria-current="page"':""}>About</a>`;
+ }
+ const c=document.getElementById("ctxbar");
+ if(c){
+  let inner="";
+  if(path==="ib"){
+   const gk=fxIbGroupOf(VIEW);
+   inner=`<a class="cx-home${VIEW==="ib"?" on":""}" href="#/ib"${VIEW==="ib"?' aria-current="page"':""}>IB Home</a>`
+    +FX_IBNAV.map(g=>`<button type="button" class="cx-dd${gk===g.k?" on":""}" aria-expanded="false" aria-controls="fxpanel" data-label="${esA(g.n)}" onclick="fxTogglePanel('${g.k}',this,event)">${esc(g.n)}<svg width="9" height="9" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>`).join("")
+    +`<a class="cx-cta${VIEW==="tutorials"?" on":""}" href="${fxHref("tutorials",0)}"${VIEW==="tutorials"?' aria-current="page"':""}>Tutorials</a>`;
+  }else if(path==="upsc"){
+   inner=fxUpTabs().map((t,i)=>`<a class="cx-tab${TAB===i?" on":""}" href="${esA(fxHref("upsc",i))}"${TAB===i?' aria-current="page"':""}>${esc(i===0?"UPSC Home":t)}</a>`).join("");
+  }
+  c.innerHTML=`<div class="wrap full cx-in">${fxSwitcher(path,"cx-sw")}<div class="cx-items cx-${path}">${inner}</div></div>`;
+  c.classList.toggle("has-items",!!inner);
+ }
+ fxClosePanel();
+}
+
+/* ── the drawer on phones and tablets ───────────────────────────────────── */
+function fxDrawerHtml(){
+ const path=fxPathway(VIEW);
+ const link=(h,n,on)=>`<a class="fx-a" href="${esA(h)}"${on?' aria-current="page"':""}>${esc(n)}</a>`;
+ const ib=fxIbGroups().map(g=>`<details class="dw-g"${fxIbGroupOf(VIEW)===g.k?" open":""}><summary>${esc(g.n)}</summary><div class="dw-l">${g.items.map(i=>link(i.href,i.n,VIEW===i.v&&TAB===i.t)).join("")}</div></details>`).join("");
+ const prog=FX_IBPROGRESS.map(([n,v,lab])=>{const t=fxTabIndex(v,lab);return t<0?"":link(fxHref(v,t),n,VIEW===v)}).join("");
+ const up=fxUpTabs().map((t,i)=>link(fxHref("upsc",i),i===0?"UPSC Home":t,VIEW==="upsc"&&TAB===i)).join("");
+ return `<div class="dw-top"><a class="dw-brand" href="#/">Arjun Agrawal <span>Economics</span></a>
+  <button type="button" class="dw-x" onclick="closeMenu()" aria-label="Close the menu">Close</button></div>
+  <button type="button" class="dw-search" onclick="closeMenu();cpOpen()">Search the platform</button>
+  ${fxSwitcher(path,"dw-sw")}
+  <div class="dw-sec"><a class="dw-main" href="#/"${VIEW==="home"?' aria-current="page"':""}>Home</a></div>
+  <div class="dw-sec p-ib"><div class="dw-k">Pathway 01</div><a class="dw-main" href="#/ib"${VIEW==="ib"?' aria-current="page"':""}>IB DP Economics</a>${ib}
+   <details class="dw-g"><summary>Your progress</summary><div class="dw-l">${prog}</div></details></div>
+  <div class="dw-sec p-up"><div class="dw-k">Pathway 02</div><a class="dw-main" href="#/upsc"${VIEW==="upsc"&&TAB===0?' aria-current="page"':""}>UPSC CSE Economics</a><div class="dw-l flat">${up}</div></div>
+  <div class="dw-sec"><a class="dw-main" href="#/about"${VIEW==="about"?' aria-current="page"':""}>About</a><a class="dw-main" href="#/contact"${VIEW==="contact"?' aria-current="page"':""}>Contact</a></div>`;
+}
+function fxMobileDrawer(){
+ if(document.getElementById("mob"))return closeMenu();
+ const d=document.createElement("nav");d.id="mob";d.className="drawer mobnav fxdrawer on";d.setAttribute("aria-label","Menu");
+ d.innerHTML=fxDrawerHtml();
+ document.body.appendChild(d);
+ document.getElementById("scrim").classList.add("on");
+ d.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>closeMenu()));
+ const b=document.getElementById("burger");if(b)b.setAttribute("aria-expanded","true");
+ const first=d.querySelector(".dw-x");if(first)first.focus();
+ d.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMenu();const bb=document.getElementById("burger");if(bb)bb.focus()}});
+}
+/* The older layers bind the burger to mobileDrawer() by name at the end of the
+   build; reassigning the function here routes them to the new drawer. */
+mobileDrawer=fxMobileDrawer;
+(function(){const prev=closeMenu;closeMenu=function(){const r=prev.apply(this,arguments);const b=document.getElementById("burger");if(b)b.setAttribute("aria-expanded","false");return r}})();
+
+/* ── every render paints the shell ──────────────────────────────────────── */
+fxBuildShell();
+(function(){
+ const prev=render;
+ render=function(){const r=prev.apply(this,arguments);try{fxPaintShell()}catch(e){console.error(e)}return r};
+})();
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FLAGSHIP · the shared home page and the IB DP landing
+   The home page belongs to both pathways: one statement, two pathway cards of
+   equal weight, then a short, curated sequence that previews each environment
+   and leads into it. It is deliberately short; the full IB DP home page that
+   earlier releases built (the cover, its chapters and every band) is kept,
+   intact, as the IB DP landing at #/ib.
+   Every preview is a real resource: a model drawn from its equations, the
+   handbook covers, the Economics in 60 Seconds issues, the Learning Studio's
+   pages. Every link resolves through the router or is left out.
+   ═══════════════════════════════════════════════════════════════════════════ */
+SECTIONS.push({v:"ib",n:"IB DP Economics",hide:1});
+/* The IB home as every earlier layer composed it. Pull request #11 put its
+   pathway band in front of it; that band is superseded by this home page and
+   is left out of the IB landing whenever it is still composed in. */
+const FX_IBHOME=VIEWS.home;
+VIEWS.ib=function(){
+ let h=FX_IBHOME();
+ try{if(typeof upHomeBand==="function"){const b=upHomeBand();if(h.startsWith(b))h=h.slice(b.length)}}catch(e){}
+ return fxIbIntro()+h;
+};
+
+/* ── shared helpers ─────────────────────────────────────────────────────── */
+const FX_BLOB={};
+function fxBlobURL(k,data){if(FX_BLOB[k])return FX_BLOB[k];
+ try{const i=data.indexOf(","),bin=atob(data.slice(i+1)),u=new Uint8Array(bin.length);for(let j=0;j<bin.length;j++)u[j]=bin.charCodeAt(j);
+  const type=(/^data:([^;]+)/.exec(data)||[])[1]||"image/jpeg";FX_BLOB[k]=URL.createObjectURL(new Blob([u],{type}))}catch(e){FX_BLOB[k]=data}
+ return FX_BLOB[k]}
+function fxArr(){return '<span class="arr" aria-hidden="true">→</span>'}
+function fxSecHead(num,kicker,title,lede,id,cls){
+ return `<header class="fx-section-head ${cls||""}"><div class="fxh-k"><span class="fx-num">${esc(num)}</span><span class="fx-kicker">${esc(kicker)}</span></div>
+  <h2 class="fx-h2" id="${id}">${title}</h2>${lede?`<p class="fx-lede">${lede}</p>`:""}</header>`;
+}
+function fxVols(){try{return (UPSC_HB&&UPSC_HB.volumes)||[]}catch(e){return []}}
+function fxCover(v,eager){const c=v.img&&v.img.cover;if(!c)return "";
+ return `<img src="${esA(c.src)}" width="${c.w}" height="${c.h}" alt="Volume ${esA(v.n)}: ${esA(v.title)}, cover" ${eager?"":'loading="lazy" '}decoding="async">`}
+function fxLibHref(id){return fxHref("upsc",(typeof UP_T!=="undefined"&&UP_T.handbooks)||3,id)}
+function fxUpHref(k){const t=(typeof UP_T!=="undefined"&&UP_T[k]!==undefined)?UP_T[k]:0;return fxHref("upsc",t)}
+
+/* ── 1 · the hero and the two pathways ──────────────────────────────────── */
+const FX_IB_FEATURES=[["Interactive Economics concepts","learn",null],["Visual diagrams and explainers","lab","Diagram atlas"],["Real-world economic cases","world",null],
+ ["Interactive mindmaps","mind",null],["Calculations and application tools","calculate",null],["Examination preparation","examiner",null],
+ ["Internal Assessment and Extended Essay guidance","ia",null],["Tutorials and revision resources","tutorials",null]];
+const FX_UP_FEATURES=[["UPSC Economics syllabus","syllabus"],["Topic-wise handbooks","handbooks"],["Indian Economy explainers","resources"],["Prelims preparation","strategy"],
+ ["Mains answer development","strategy"],["Current affairs integration","current"],["Interactive learning resources","resources"],["Three-month intensive online course","course"]];
+function fxHeroBg(){
+ /* the economic cycle, drawn once across the ground; the grid is a CSS background, so nothing extends past the page */
+ return `<svg class="hx-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <path class="hx-c hx-cy" vector-effect="non-scaling-stroke" d="M0 60 C 120 4, 240 4, 360 60 S 600 116, 720 60 S 960 4, 1080 60 S 1320 116, 1440 60"/></svg>`;
+}
+function fxHeroMark(){
+ /* demand meets supply: the platform's mark, drawn as a model */
+ return `<svg class="hx-sd" viewBox="0 0 160 96" aria-hidden="true" focusable="false">
+  <path class="hx-ax" d="M12 6V88H156"/>
+  <path class="hx-c hx-d" d="M24 12L148 80" pathLength="1"/><path class="hx-c hx-s" d="M24 80L148 12" pathLength="1"/>
+  <circle class="hx-r" cx="86" cy="46" r="9"/><circle class="hx-e" cx="86" cy="46" r="3.6"/></svg>`;
+}
+function fxPathCards(){
+ const ibF=FX_IB_FEATURES.map(([n,v,lab])=>{const t=fxTabIndex(v,lab);return `<li>${t<0?esc(n):`<a class="fx-a" href="${esA(fxHref(v,t))}">${esc(n)}</a>`}</li>`}).join("");
+ const upF=FX_UP_FEATURES.map(([n,k])=>`<li><a class="fx-a" href="${esA(fxUpHref(k))}">${esc(n)}</a></li>`).join("");
+ const vols=fxVols();const shelf=[2,1,4,9].map(i=>vols[i]).filter(Boolean);
+ return `<div class="hx-paths">
+  <article class="pc pc-ib" aria-labelledby="pc-ib-h">
+   <div class="pc-top"><span class="pc-num">Pathway 01</span><span class="pc-rule" aria-hidden="true"></span></div>
+   <div class="pc-body">
+    <div class="pc-text"><h2 class="pc-h" id="pc-ib-h">IB DP Economics</h2>
+     <p class="pc-d">A complete interactive learning environment for IB Diploma Programme Economics students and educators.</p></div>
+    <figure class="pc-prev pc-model" aria-hidden="true">${motifSVG("shift")}<figcaption>${esc(motifCap("shift"))}</figcaption></figure>
+   </div>
+   <ul class="pc-f">${ibF}</ul>
+   <a class="fx-btn primary pc-cta" href="#/ib">Explore IB Economics ${fxArr()}</a>
+  </article>
+  <article class="pc pc-up" aria-labelledby="pc-up-h">
+   <div class="pc-top"><span class="pc-num">Pathway 02</span><span class="pc-rule" aria-hidden="true"></span></div>
+   <div class="pc-body">
+    <div class="pc-text"><h2 class="pc-h" id="pc-up-h">UPSC CSE Economics</h2>
+     <p class="pc-d">A structured learning environment for UPSC Civil Services aspirants, combining conceptual clarity, Indian economic developments, carefully developed handbooks and examination-oriented preparation.</p></div>
+    <a class="pc-prev pc-shelf" href="${esA(fxLibHref())}" aria-label="The Economics Handbook Collection: eleven volumes">${shelf.map((v,i)=>`<span class="pc-book b${i}">${fxCover(v,true)}</span>`).join("")}</a>
+   </div>
+   <ul class="pc-f">${upF}</ul>
+   <a class="fx-btn primary pc-cta" href="#/upsc">Explore UPSC Economics ${fxArr()}</a>
+  </article>
+ </div>`;
+}
+function fxHero(){
+ return `<section class="hx" aria-labelledby="hx-h"><div class="hx-bg" aria-hidden="true">${fxHeroBg()}</div>
+  <div class="fx-wrap hx-in">
+   <div class="hx-k"><span class="hx-mark" aria-hidden="true"></span>Arjun Agrawal · Economics</div>
+   <div class="hx-head">
+    <h1 class="hx-h" id="hx-h">Economics is not just a subject to study. <em>It is a way to think.</em></h1>
+    <div class="hx-side">${fxHeroMark()}
+     <p class="hx-lede">An interactive Economics learning ecosystem connecting economic concepts, visual understanding, real-world evidence and examination preparation across international and Indian perspectives.</p></div>
+   </div>
+   <p class="hx-idea"><span>One discipline. Two pathways. A shared understanding of Economics.</span></p>
+  </div>
+  <div class="fx-wrap">${fxPathCards()}</div>
+ </section>`;
+}
+
+/* ── 2 · think like an economist: the method, with a model to move ─────── */
+const FX_METHOD=[["Concept","Name the idea precisely: scarcity, opportunity cost, the margin."],
+ ["Model","Draw it, and let the equations decide where the curves meet."],
+ ["Evidence","Test it against data and real economies, India's and the world's."],
+ ["Judgement","Weigh who gains, who loses, and what would change the answer."]];
+function fxThink(){
+ let plate="",read="";try{CV.s=0;plate=cvSVG();read=cvRead()}catch(e){plate=motifSVG("sd")}
+ return `<section class="fx-section fx-think" aria-labelledby="th-h"><div class="fx-wrap th-grid">
+  <div>${fxSecHead("02","The way of thinking","Think like an economist.","Every choice has a cost, every market finds a balance, every policy is a trade-off. The platform teaches that habit of mind first, so that the syllabus, whichever it is, becomes something you can reason with rather than recall.","th-h")}
+   <ol class="th-steps">${FX_METHOD.map(([n,d],i)=>`<li><span class="th-n">${i+1}</span><div><b>${esc(n)}</b><span>${esc(d)}</span></div></li>`).join("")}</ol></div>
+  <figure class="th-plate">
+   <div class="th-fig" id="cv-plate-fig">${plate}</div>
+   <div class="th-ctl"><label for="th-shift">Shift demand</label>
+    <input id="th-shift" type="range" min="-3" max="3" step="0.5" value="0" oninput="cvSet(this.value)" aria-describedby="cv-read"></div>
+   <figcaption id="cv-read" aria-live="polite">${esc(read)}</figcaption>
+  </figure>
+ </div></section>`;
+}
+
+/* ── 3 · the IB DP environment ──────────────────────────────────────────── */
+function fxIbEnv(){
+ const gs=fxIbGroups();
+ return `<section class="fx-section fx-env env-ib" aria-labelledby="eib-h"><div class="fx-wrap">
+  ${fxSecHead("03","Pathway 01 · IB DP Economics","Explore the IB Economics learning environment","Five ways in, one course: learn the concepts, explore the world's economies, practise until the models are yours, research for the IA and the EE, and use the resources that support all of it.","eib-h")}
+  <div class="env-grid five">${gs.map(g=>`<article class="env-card"><h3>${esc(g.n)}</h3><p>${esc(g.d)}</p>
+   <ul>${g.items.slice(0,4).map(i=>`<li><a class="fx-a" href="${esA(i.href)}">${esc(i.n)}</a></li>`).join("")}</ul></article>`).join("")}</div>
+  <p class="env-cta"><a class="fx-btn primary" href="#/ib">Enter IB DP Economics ${fxArr()}</a> <a class="fx-link" href="${esA(fxHref("course",0))}">Start with the course</a></p>
+ </div></section>`;
+}
+
+/* ── 4 · the UPSC environment ───────────────────────────────────────────── */
+const FX_UP_STEPS=[["syllabus","Syllabus","The Economics in the Prelims GS I and Mains GS III syllabus, and what each part asks of you."],
+ ["handbooks","Handbook Library","Eleven volumes, from the foundations, money and inflation to trade, agriculture and industry."],
+ ["current","Current Affairs","Developments read through the concept and the volume behind them."],
+ ["strategy","Preparation Strategy","How to prepare the Economics component, from first reading to revision."],
+ ["course","Online Course","The three-month intensive programme: ₹9,999, online only, at most 25 students."]];
+function fxUpEnv(){
+ return `<section class="fx-section fx-env env-up" aria-labelledby="eup-h"><div class="fx-wrap">
+  ${fxSecHead("04","Pathway 02 · UPSC CSE Economics","Explore the UPSC Economics learning environment","A structured preparation for the Economics in General Studies: understand the concept, connect it with the Indian economy and government policy, follow current developments, and apply it to Prelims questions and Mains answers.","eup-h")}
+  <ol class="up-journey">${FX_UP_STEPS.map(([k,n,d],i)=>`<li><a class="fx-a" href="${esA(fxUpHref(k))}"><span class="uj-n">0${i+1}</span><b>${esc(n)}</b><span>${esc(d)}</span></a></li>`).join("")}</ol>
+  <p class="env-cta"><a class="fx-btn primary" href="#/upsc">Enter UPSC CSE Economics ${fxArr()}</a> <a class="fx-link" href="${esA(fxUpHref("course"))}">The 3-month course</a></p>
+ </div></section>`;
+}
+
+/* ── 5 · selected resources and handbooks ───────────────────────────────── */
+function fxResources(){
+ const vols=fxVols();
+ let c60="";
+ try{c60=(C60||[]).slice(0,3).map(x=>{const src=C60COVER[x.id]?fxBlobURL("c60"+x.id,C60COVER[x.id]):"";
+  const t60=fxTabIndex("learn","Economics in 60 Seconds");
+  return src?`<a class="rs-issue" href="${esA(t60<0?"#/learn":fxHref("learn",t60,x.id))}"><img src="${esA(src)}" alt="Economics in 60 Seconds, issue ${esA(x.id)}: ${esA(x.t)}" loading="lazy" decoding="async" width="300" height="375"><span><b>${esc(x.t)}</b><em>Issue ${esc(x.id)} · ${esc(x.topic||"")}</em></span></a>`:""}).join("")}catch(e){c60=""}
+ let studio="";
+ try{const p=ldPrev("exchange-rates",1)||ldPrev("balance-of-payments",0);if(p)studio=`<a class="res-studio" href="${esA(fxHref("studio",0))}">${stImg(p,"",false)}<span><b>The Learning Studio</b><em>Visual explainers, guides and revision maps</em></span></a>`}catch(e){}
+ return `<section class="fx-section fx-res" aria-labelledby="res-h"><div class="fx-wrap">
+  ${fxSecHead("05","Selected resources","Selected resources and handbooks","Original resources, written and designed for each pathway. Look inside before you choose.","res-h")}
+  <div class="res-grid">
+   <div class="res-shelf"><div class="res-k fx-tag upsc">UPSC CSE · The Economics Handbook Collection</div>
+    <ul class="shelf">${vols.map(v=>`<li><a class="fx-a" href="${esA(fxLibHref(v.id))}">${fxCover(v)}<span class="shelf-n">Vol. ${esc(v.n)}</span></a></li>`).join("")}</ul>
+    <p class="res-note">Eleven volumes for the Economics in Prelims and Mains General Studies. Digital soft copy, ₹99 per volume. <a class="fx-link" href="${esA(fxLibHref())}">Open the Handbook Library</a></p></div>
+   <div class="res-ib"><div class="res-k fx-tag ib">IB DP · Visual resources</div>
+    <div class="res-issues">${c60}</div>${studio}
+    <p class="res-note"><a class="fx-link" href="${esA(fxHref("resources",0))}">The IB resource hub</a> · <a class="fx-link" href="${esA(fxHref("studio",0))}">The Learning Studio</a></p></div>
+  </div>
+ </div></section>`;
+}
+
+/* ── 6 · the interactive laboratory ─────────────────────────────────────── */
+const FX_LABS=[["sd","Market lab","lab","Market lab","Shift demand and supply and watch the market clear."],
+ ["adas","AD-AS lab","lab","AD-AS lab","Move aggregate demand and supply, and read output and the price level."],
+ ["tax","Policy simulator","lab","Policy simulator","Taxes, subsidies and price controls, with their welfare effects."],
+ ["elastic","Elasticity lab","lab","Elasticity lab","How responsiveness changes revenue and incidence."],
+ ["fx","Exchange rates","studio",null,"Appreciation, depreciation and the managed band, explained visually."],
+ ["cycle","Economic data","data",null,"Indicators and country profiles, from the sources themselves."]];
+function fxLab(){
+ const cards=FX_LABS.map(([m,n,v,lab,d])=>{const t=fxTabIndex(v,lab);if(t<0)return "";
+  return `<a class="lab-card" href="${esA(fxHref(v,t))}"><div class="lab-fig" aria-hidden="true">${motifSVG(m)}</div><b>${esc(n)}</b><span>${esc(d)}</span></a>`}).join("");
+ return `<section class="fx-section fx-lab" aria-labelledby="lab-h"><div class="fx-wrap">
+  ${fxSecHead("06","Interactive Economics Laboratory","Move a model. Watch the economy respond.","Every diagram on the platform is generated from its equations and checked point by point, so what you move is the model itself, not a picture of it.","lab-h","on-dark")}
+  <div class="lab-grid">${cards}</div>
+ </div></section>`;
+}
+
+/* ── 7 · one concept, two perspectives ──────────────────────────────────── */
+function fxAcross(){
+ let inner="";
+ try{if(typeof ccTeaser==="function")inner=ccTeaser({path:"shared"})}catch(e){inner=""}
+ if(!inner){
+  let rows=[];try{rows=(UP_CONNECT||[]).filter(r=>/Inflation|Fiscal|Balance/.test(r.c)).slice(0,3)}catch(e){}
+  inner=rows.length?`<div class="ac-rows">${rows.map(r=>`<article class="ac-row"><h3>${esc(r.c)}</h3>
+    <div class="ac-p p-ib"><span class="fx-tag ib">IB DP perspective</span><p>${esc(r.ib)}</p></div>
+    <div class="ac-p p-up"><span class="fx-tag upsc">UPSC perspective</span><p>${esc(r.up)}</p></div></article>`).join("")}</div>`:"";
+ }
+ return `<section class="fx-section fx-across" aria-labelledby="ac-h"><div class="fx-wrap">
+  ${fxSecHead("07","One concept. Two perspectives.","Economics across two learning pathways","The same idea, inflation or a budget deficit, is the same idea in Geneva and in New Delhi. What changes is the question you will be asked about it. Learn the concept once, then see it through each examination's eyes.","ac-h")}
+  ${inner}
+ </div></section>`;
+}
+
+/* ── 8 · about ──────────────────────────────────────────────────────────── */
+function fxAboutBand(){
+ let facts=[];try{facts=CV_AUTHOR}catch(e){}
+ let por="";try{por=`<img src="${esA(CV_PORTRAIT.src)}" width="${CV_PORTRAIT.w}" height="${CV_PORTRAIT.h}" alt="${esA(CV_PORTRAIT.alt)}" loading="lazy" decoding="async">`}catch(e){}
+ return `<section class="fx-section fx-aboutb" aria-labelledby="ab-h"><div class="fx-wrap abx-grid">
+  <figure class="ab-por">${por}</figure>
+  <div>${fxSecHead("08","About","Arjun Agrawal","","ab-h")}
+   <p class="ab-roles">${esc(FXI.roles)}</p>
+   <p class="fx-lede">Arjun teaches IB Diploma Programme Economics, mentors Civil Services aspirants in the Economics of General Studies, and designs the resources on this platform, from the diagrams and mindmaps to the handbooks.</p>
+   <dl class="ab-facts">${facts.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+   <p><a class="fx-btn secondary" href="#/about">About Arjun Agrawal ${fxArr()}</a></p></div>
+ </div></section>`;
+}
+
+/* ── 9 · enrolment and contact ──────────────────────────────────────────── */
+function fxEnqRow(k){const e=FX_ENQ[k];if(!e)return "";const l=fxEnquiryLinks(k);
+ return `<li><span class="eq-n">${esc(e.label)}</span><span class="eq-a"><a class="fx-a" href="${esA(l.wa)}" target="_blank" rel="noopener noreferrer" aria-label="${esA(e.label)}: message on WhatsApp">WhatsApp</a><a class="fx-a" href="${esA(l.mail)}" aria-label="${esA(e.label)}: send an email">Email</a></span></li>`}
+function fxContactBand(){
+ return `<section class="fx-section fx-contact" aria-labelledby="ct-h"><div class="fx-wrap">
+  ${fxSecHead("09","Enrolment and contact","Learn with Arjun Agrawal","Every enquiry opens your own WhatsApp or email with the message written for you. Nothing is booked or charged on this site.","ct-h")}
+  <div class="cnx-grid">
+   <div class="cnx-col p-ib"><h3><span class="fx-tag ib">IB DP Economics</span></h3><ul>${["ibTutoring","ibIA","ibEE","ibResources","ibTeachers"].map(fxEnqRow).join("")}</ul>
+    <p><a class="fx-link" href="${esA(fxHref("tutorials",0))}">Tutorials: sessions and terms</a></p></div>
+   <div class="cnx-col p-up"><h3><span class="fx-tag upsc">UPSC CSE Economics</span></h3><ul>${["upHandbooks","upCourse","upMentor","upResources"].map(fxEnqRow).join("")}</ul>
+    <p><a class="fx-link" href="${esA(fxUpHref("course"))}">The 3-month programme</a></p></div>
+  </div>
+  <p class="cnx-direct"><a class="fx-a" href="${esA("mailto:"+FX_CONTACT.email())}">${esc(FX_CONTACT.email())}</a> · <a class="fx-a" href="${esA(fxWa())}" target="_blank" rel="noopener noreferrer">WhatsApp ${esc(FX_CONTACT.phone())} ↗</a>${FX_CONTACT.linkedin()?` · <a class="fx-a" href="${esA(FX_CONTACT.linkedin())}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>`:""}${FX_CONTACT.instagram()?` · <a class="fx-a" href="${esA(FX_CONTACT.instagram())}" target="_blank" rel="noopener noreferrer">Instagram ↗</a>`:""}</p>
+ </div></section>`;
+}
+
+VIEWS.home=function(){
+ return `<div class="fxhome">${fxHero()}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxAboutBand()}${fxContactBand()}</div>`;
+};
+
+/* ── the IB DP landing's opening ────────────────────────────────────────── */
+function fxIbIntro(){
+ const gs=fxIbGroups();
+ return `<section class="ibl" aria-labelledby="ibl-h"><div class="fx-wrap ibl-in">
+  <div class="ibl-head"><div class="fx-kicker">Pathway 01</div><h1 class="ibl-h" id="ibl-h">IB DP Economics</h1>
+   <p class="fx-lede">A complete interactive learning environment for IB Diploma Programme Economics students and educators: the course, the models, the real world, the examinations and the research.</p></div>
+  <nav class="ibl-doors" aria-label="The IB DP environment">${gs.map(g=>`<a class="ibl-door" href="${esA((g.items[0]||{}).href||"#/ib")}"><b>${esc(g.n)}</b><span>${esc(g.d)}</span></a>`).join("")}</nav>
+ </div></section>`;
+}
+
+/* ── the welcome dialogue belongs to the IB DP workspace ────────────────
+   It asks for a name and an IB level, so it now opens the first time a
+   visitor enters the IB DP environment rather than over the shared home
+   page or the UPSC pages. What it stores is unchanged. */
+const FX_OB={pending:false};
+(function(){
+ if(typeof bootOnboarding!=="function")return;
+ const prev=bootOnboarding;
+ bootOnboarding=function(){
+  if(fxPathway(VIEW)!=="ib"){FX_OB.pending=true;return}
+  FX_OB.pending=false;return prev.apply(this,arguments);
+ };
+ FX_OB.run=prev;
+})();
+(function(){
+ const prev=render;
+ render=function(){const r=prev.apply(this,arguments);
+  try{if(FX_OB.pending&&fxPathway(VIEW)==="ib"){FX_OB.pending=false;setTimeout(()=>{try{bootOnboarding()}catch(e){}},300)}}catch(e){}
+  return r};
+})();
+
 /* ▓▓ RENAISSANCE:END ▓▓ */
 /* ═══════════════════════════════════════════════════════════════════════════
    PARTS 4, 39, 77, 110 · the navigation, settled after every section exists
@@ -44733,7 +45618,7 @@ function runQA(){
  A("Diagnostic · is labelled as rules-based and not an IB mark",(()=>{
    const h=[exRef(),cockpit()].join(" ");return /not an official IB mark|rules-based/i.test(h)})());
  A("Empty states · key modules explain themselves before any data exists",(()=>{
-   const bk=JSON.stringify(S);S=blank("Student");const h=[VIEWS.master(),VIEWS.home()].join(" ");
+   const bk=JSON.stringify(S);S=blank("Student");const h=[VIEWS.master(),VIEWS.ib()].join(" ");
    S=JSON.parse(bk);return /No evidence yet|none of the figures above are assumed|Nothing recorded yet/i.test(h)})());
 
  A("Profile · create, switch, rename and delete keep data separate",(()=>{
@@ -44815,7 +45700,7 @@ function runQA(){
    return n.width===0||n.left>=b.right-1})());
  A("Branding · personalisation sits beneath the Arjun Agrawal identity",(()=>{
    const h=document.querySelector(".brand").innerText;
-   return /Arjun Agrawal/.test(h)&&/IB DP ECONOMICS/i.test(document.querySelector(".brand").innerHTML)})());
+   return /Arjun Agrawal/.test(h)&&/ECONOMICS/i.test(document.querySelector(".brand").innerHTML)})());
  EXTRA_SUITES.forEach(f=>{let rs=[];
    try{rs=f()||[]}
    catch(e){rs=[{n:"Suite \u00b7 "+(f.suiteName||"unnamed")+" ran without throwing: "+String(e&&e.message||e),ok:false}]}

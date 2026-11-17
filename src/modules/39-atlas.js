@@ -151,7 +151,7 @@ function ATLASSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const
  T("Atlas · the tax predictions agree with the model: price paid up, quantity down, revenue up from zero, welfare down",()=>{const Q=DMPREDICT.tax,a=Q.map(q=>q[2][q[3]]);return a[0]==="Rises"&&a[1]==="Falls"&&a[2]==="Falls"&&a[3]==="Rises from zero"&&a[4]==="Falls"});
  T("Atlas · the progression runs from concept to judgement in nine steps, each linked to a real page",()=>AT_P.length===9&&AT_P[0][0]==="Concept"&&AT_P[8][0]==="Judgement"&&AT_P.every(p=>!!routeParse(p[2])));
  T("Atlas · the rupee example's numbers hold: ₹80 to ₹88 is a depreciation; 0.8 + 0.6 > 1",()=>(1/88<1/80)&&(0.8+0.6>1)&&Math.abs((100*1.08)-(100*1.10*0.94)-4.6)<1e-9);
- T("Atlas · the cover is uncluttered: one headline, one line of copy, two actions, no statistics strip",()=>{const h=VIEWS.home();const c=h.slice(h.indexOf('class="hero rn-home'),h.indexOf("</section>",h.indexOf('class="hero rn-home')));return (c.match(/<h[12][^>]*id="cv-h"/g)||[]).length===1&&!/<h1/.test(c)&&(c.match(/class="btn lg/g)||[]).length===2&&!/cv-scale|cv-verbs/.test(c)});
+ T("Atlas · the cover is uncluttered: one headline, one line of copy, two actions, no statistics strip",()=>{const h=VIEWS.ib();const c=h.slice(h.indexOf('class="hero rn-home'),h.indexOf("</section>",h.indexOf('class="hero rn-home')));return (c.match(/<h[12][^>]*id="cv-h"/g)||[]).length===1&&!/<h1/.test(c)&&(c.match(/class="btn lg/g)||[]).length===2&&!/cv-scale|cv-verbs/.test(c)});
  return out}
 ATLASSUITE.suiteName="Project Atlas";
 EXTRA_SUITES.push(ATLASSUITE);
