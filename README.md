@@ -105,25 +105,25 @@ IB DP page rather than over the shared home or the UPSC pages. What it stores is
 
 ## UPSC CSE Economics
 
-The platform has two pathways. The home page opens with "Economics. Understood. Connected.
-Applied." and two cards: **IB DP Economics** ("Think like an economist."), which leads into
-everything described below, and **UPSC CSE Economics** ("Understand the economy. Master the
-examination."). A slim strip above the header (`#pathbar`) carries
-"IB DP Economics | UPSC CSE Economics | About | Contact" at every width; inside the UPSC section,
-About and Contact lead to its own pages. The IB primary bar is unchanged.
-
-The section lives at `#/upsc` and has eight tabs, each a real address:
+The UPSC CSE Economics pathway (`#/upsc`) is one of the platform's two pathways (see *Two pathways,
+one platform*). It is drawn in forest green, warm ivory and antique gold, and its eight destinations form
+its context bar. It covers the Economics within the General Studies papers, for Prelims and Mains; it is
+not a preparation for the Economics Optional, and the pages say so.
 
 | Tab | Address | What it holds |
 |---|---|---|
-| UPSC Overview | `#/upsc` | Five pillars, the seven-step approach (the repo rate from concept to Mains), a map of how the eleven volumes connect |
-| Syllabus | `#/upsc/syllabus` (`/mains`) | The official UPSC wording, quoted from Examination Notice No. 05/2026-CSE, kept apart from explanation; fourteen Prelims themes and the ten GS III lines, each mapped to volumes |
-| Economics Resources | `#/upsc/economics-resources/<topic>` | Eleven free topic previews with original diagrams, a question each, search and categories; "One Concept. Two Examination Perspectives." links shared concepts to existing IB pages |
-| Economics Handbooks | `#/upsc/economics-handbooks/<volume-id>` | The eleven-volume collection at ₹99 / Volume, each with its own page |
-| Current Affairs | `#/upsc/current-affairs` | A hand-edited list of dated developments, each with its source and handbook part |
-| UPSC Economics Course | `#/upsc/upsc-economics-course` | The 3-month intensive programme: ₹9,999 for the complete programme, online, at most 25 students |
-| About the Educator | `#/upsc/about-the-educator` | Facts already published on the site and on the handbooks' title pages |
-| Contact / Enrolment | `#/upsc/contact-enrolment` | Separate handbook, enrolment and general enquiries |
+| UPSC Home | `#/upsc` | "Understand the Indian economy. Master the economic dimension of UPSC.", why Economics matters for UPSC, the eight preparation steps, and previews of the syllabus, the handbook shelf, the latest current affairs and the course |
+| Syllabus | `#/upsc/syllabus` | Prelims GS I and Mains GS III (with two GS II lines) kept apart. Each line in four layers: the official wording, the platform's explanation, the handbook coverage (from each volume's own syllabus map) and how classes and current affairs support it. Five lines are marked "Wording to be confirmed" against the notice. A print view |
+| Economics Resources | `#/upsc/economics-resources/<topic>` | Eleven free topic previews as numbered figure plates, and the shared concepts read in UPSC terms |
+| Handbook Library | `#/upsc/handbook-library/<volume-id>` | The Handbook Library (below) |
+| Current Affairs | `#/upsc/current-affairs` | 27 dated entries under 12 themes, newest first, each with the concept, why it matters, Prelims and Mains relevance, a handbook link, and its source and date. Edited by hand, not a feed; the page says when it was last compiled |
+| Preparation Strategy | `#/upsc/preparation-strategy` | Four phases, a weekly rhythm, a method for joining static concepts to current affairs, previous-year questions (linked to upsc.gov.in, none reproduced), a GS III answer frame and a revision cycle. No result is promised |
+| Online Course | `#/upsc/online-course` | The three-month intensive programme: ₹9,999, online only, at most 25 students, Prelims and Mains, static concepts and current affairs. Twelve modules mapped to the volumes (national income has no volume of its own, and the page says so) and an indicative three-month journey |
+| Contact / Enrol | `#/upsc/contact-enrol` | Handbook, course, mentorship and resource enquiries |
+
+The first section's addresses still open the same pages: `#/upsc/economics-handbooks[/…]` opens the
+Handbook Library, `#/upsc/upsc-economics-course` the Online Course, `#/upsc/contact-enrolment` Contact /
+Enrol and `#/upsc/about-the-educator` the shared About page; the address bar is then set to the page's own.
 
 **Where the text comes from.** `content/upsc/handbooks.json` is the catalogue: every title, page
 count, part, page number and syllabus-map row is taken from the volume itself. Syllabus lines,
@@ -161,11 +161,12 @@ to Current Affairs, add an entry to `UP_CA` with its date, theme, source and vol
 `UP_CA_COMPILED`.
 
 **Purchases and enrolment are enquiries.** Buttons open WhatsApp (+91 7092844945), email
-(arjun1agr@gmail.com) or a call, with the message prefilled: a handbook message names the volume,
-its title and ₹99 (in the Handbook Library, GET THIS HANDBOOK · ₹99 sends the owner's own wording: "Hello,
-I am interested in purchasing Volume [X], [Title], of the Arjun Agrawal Economics Handbook Series. Please share
-the payment and delivery details."); the enrolment message is the exact text the brief sets. Nothing is charged,
-booked or confirmed on the site.
+(arjun1agr@gmail.com) or a call, with the message prefilled in the owner's own wording. GET THIS HANDBOOK · ₹99
+sends "Hello, I am interested in purchasing Volume [X], [Title], of the Arjun Agrawal Economics Handbook Series.
+Please share the payment and delivery details."; ENQUIRE ABOUT THE NEXT BATCH sends "Hello, I am interested in
+joining the three-month UPSC CSE Economics Intensive Online Programme priced at ₹9,999. Please share the upcoming
+batch schedule and enrolment details." Nothing is charged, booked or confirmed on the site, and there is no
+payment gateway, countdown or claim about remaining places.
 
 ## What it contains
 
