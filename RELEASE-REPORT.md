@@ -7,9 +7,9 @@ owner's approval. The previous report is kept at `docs/releases/2026-11-16-upsc-
 **Status in one line.** The redesign is built, integrated and tested on this branch. Three things stand
 between it and a merge, and each needs the owner:
 
-1. **The branch could not be pushed.** This session's GitHub account cannot write to the repository
-   (403). Until it is pushed there is no pull request and no Vercel preview. The commits are intact
-   locally and in a git bundle (see *Deployment*).
+1. **The pull request still has to be opened.** The branch is pushed. This session's GitHub API
+   connection failed ("invalid session") after GitHub was reconnected, so the pull request could not
+   be opened from here; it opens from GitHub's page for the branch.
 2. **The eleven handbook PDFs were not available in this session.** The Handbook Library and its
    viewer are complete, and the pipeline renders clean pages with no watermark, but until it is run on the
    PDFs the previews are the images the previous release made: the cover, the contents page and two
@@ -31,7 +31,7 @@ between it and a merge, and each needs the owner:
 | One Concept. Two Perspectives. | Done. Nineteen shared concept records |
 | About and Contact | Done. The owner's positioning; separate IB DP and UPSC CSE enquiries |
 | SEO, performance, accessibility | Done for what can be verified here (see below) |
-| Push, pull request, preview URL | **Blocked** by GitHub access |
+| Push, pull request, preview URL | The branch is pushed; the pull request is opened from GitHub (see above) |
 
 ## What was built
 
@@ -252,7 +252,52 @@ and the site says so.
 
 ## Tests
 
-<!-- TESTS -->
+**In-page self-tests:** 2,220 checks, all passing on the final build (2,136 before the redesign). New
+suites cover the shell and the home (28), the opening (33, replacing 21), the UPSC environment, the
+library (12) and the concepts (19). Checks that described the IB DP home page now read the IB DP landing;
+none was removed or weakened.
+
+**Browser suites:** the full run (`tests/run-all.mjs`, 24 suites, 50 minutes) on the integrated build:
+
+| Suite | Checks | Result |
+|---|---|---|
+| api-youtube | 21 | pass |
+| selftest | 37 | pass |
+| e2e | 22 | pass |
+| ecosystem | 30 | pass |
+| renaissance | 25 | pass |
+| cover | 35 | pass |
+| pwa | 4 | pass |
+| widths (every listed route at fifteen widths, 320 to 2560 px) | 15 | pass |
+| overlap (37 routes at fifteen widths) | 7 | 2 failed, fixed, re-run: pass |
+| routes (all 219 routes, cold, at 375 and 1366 px) | 2 | pass |
+| intro (the opening) | 93 | pass |
+| course | 39 | pass |
+| transform | 33 | 1 failed, fixed, re-run: pass |
+| events | 49 | pass |
+| tabs | 9 | pass |
+| notices | 4 | pass |
+| events-scroll | 26 | pass |
+| final | 18 | pass |
+| studio | 89 | pass |
+| launch | 58 | pass |
+| upsc | 98 | pass |
+| library (with the pipeline on synthetic PDFs) | 112 | pass |
+| concepts | 54 | pass |
+| flagship (the shell and the home) | 52 | pass |
+
+The full run found three faults, all fixed in `495032e` and re-run on the final build:
+- The UPSC card's fanned handbook covers overlapped one another. The card now shows three covers side by side.
+- The hero's cycle line ran behind the card's links. It now runs in the band's padding, below the cards.
+- The transform suite hovered the middle of a chart that the new context bar had pushed just below a
+  900-pixel window. The test now scrolls the chart into view first.
+
+The overlap audit was re-run on the home and the IB DP landing at all fifteen widths and found nothing;
+transform, flagship and upsc passed again on the final build.
+
+axe (WCAG A and AA) finds no violation on the home, Contact, the thirteen UPSC pages, the library
+catalogue, a volume page, the open viewer, or the concept pages, at 1440 and 390 px. Only headless
+Chromium was used; Safari, Firefox and physical devices were not tested.
 
 ## Deployment
 
@@ -265,8 +310,7 @@ publishes it.
 from a project subfolder and from a disk. See *Publish it on GitHub Pages* in `README.md`.
 
 **Before merging:**
-1. Push the branch and open the pull request (this needs write access for the session's GitHub account,
-   or a push from the owner's machine using the bundle below).
+1. Open the pull request for `claude/sleepy-pascal-rlzusx` and check its Vercel preview.
 2. Run the handbook pipeline on the eleven PDFs (`tools/upsc/README.md`), choose about eight pages per
    volume, run `python3 tools/build/splice.py`, and commit only the generated images and data.
 3. Confirm the five syllabus lines against the notice, and the decisions listed below.
@@ -276,9 +320,6 @@ from a project subfolder and from a disk. See *Publish it on GitHub Pages* in `R
 re-runnable scripts in `tools/migrations/`. After any change: `python3 tools/build/splice.py`. Tests:
 `cd tests && PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install --no-save playwright@1.63.0 axe-core && node run-all.mjs`.
 
-**If the push stays blocked**, the branch is also saved as a git bundle. From a clone of the repository:
-`git fetch <path>/flagship-redesign.bundle claude/sleepy-pascal-rlzusx:claude/sleepy-pascal-rlzusx`,
-then `git push -u origin claude/sleepy-pascal-rlzusx`.
 
 ## Decisions for the owner
 
