@@ -35,6 +35,8 @@ const after = await p.evaluate(() => [...document.querySelectorAll('.dl-chip i')
 check(after.join() === colours.slice(1).join(), 'removing an economy leaves the others their colours');
 await p.selectOption('#dl-ind', 'gdppc'); await p.waitForTimeout(200);
 check(/GDP per capita/.test(await p.locator('.dl-t').innerText()) && /Computed by this platform/.test(await p.locator('.dl-src').innerText()), 'a computed series says it was computed');
+/* the pathway's context bar sits under the header, so the chart starts lower: bring it into view, as a reader would */
+await p.locator('#dl-main-hit').scrollIntoViewIfNeeded(); await p.waitForTimeout(100);
 const box = await p.locator('#dl-main-hit').boundingBox();
 await p.mouse.move(box.x + box.width * 0.5, box.y + box.height * 0.5); await p.waitForTimeout(100);
 check(await p.locator('#dl-main-tip').isVisible() && /\d{4}/.test(await p.locator('#dl-main-tip').innerText()), 'hovering shows the year and every value');

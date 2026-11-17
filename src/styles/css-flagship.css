@@ -225,7 +225,8 @@ body[data-pathway="upsc"] #subnav{display:none}
 .hx{position:relative;isolation:isolate;overflow:hidden;background-color:var(--fx-charcoal);color:var(--fx-on-dark);padding:clamp(48px,6vw,88px) 0 clamp(44px,6vw,84px);
  background-image:linear-gradient(rgba(244,239,228,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(244,239,228,.04) 1px,transparent 1px);background-size:80px 80px;background-position:center top}
 .hx-bg{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
-.hx-wave{position:absolute;left:0;bottom:clamp(150px,16vw,240px);display:block;width:100%;height:120px}
+/* the cycle runs along the band's lower edge, in its padding, so it never sits under the cards */
+.hx-wave{position:absolute;left:0;bottom:0;display:block;width:100%;height:clamp(32px,5vw,72px)}
 .hx-c{fill:none;stroke-width:1.6;stroke-linecap:round}
 .hx-cy{stroke:rgba(217,194,143,.24);stroke-width:1.2;stroke-dasharray:2 7}
 .hx-in{position:relative}
@@ -263,12 +264,11 @@ body.rn-anim .env-card.rv-in{transition-delay:calc(var(--i,0) * 60ms)}
 .pc-model{background:var(--fx-ink);border:1px solid rgba(255,255,255,.1);border-radius:var(--fx-r2);padding:10px 10px 8px}
 .pc-model .motif{display:block;width:100%;height:auto}
 .pc-model figcaption{font:500 11px/1.4 var(--fx-sans);color:rgba(255,255,255,.62);margin-top:6px}
-.pc-shelf{position:relative;display:block;aspect-ratio:5/4}
-.pc-book{position:absolute;bottom:0;width:42%;aspect-ratio:520/735;overflow:hidden;border-radius:1px 3px 3px 1px;box-shadow:0 18px 30px -14px rgba(0,0,0,.65);transition:transform var(--fx-t2) var(--fx-ease)}
+/* three covers side by side, never over one another */
+.pc-shelf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1vw,12px);align-items:end}
+.pc-book{display:block;aspect-ratio:520/735;overflow:hidden;border-radius:1px 3px 3px 1px;box-shadow:0 18px 30px -14px rgba(0,0,0,.65);transition:transform var(--fx-t2) var(--fx-ease)}
 .pc-book img{display:block;width:100%;height:100%;object-fit:cover}
-.pc-book.b0{left:0;transform:rotate(-7deg);z-index:1}.pc-book.b1{left:19%;transform:rotate(-2.5deg);z-index:2}
-.pc-book.b2{left:38%;transform:rotate(2.5deg);z-index:3}.pc-book.b3{left:57%;transform:rotate(7deg);z-index:4}
-.pc-shelf:hover .pc-book.b0{transform:rotate(-9deg) translateY(-4px)}.pc-shelf:hover .pc-book.b3{transform:rotate(9deg) translateY(-4px)}
+.pc-shelf:hover .pc-book{transform:translateY(-3px)}
 .pc-shelf:focus-visible{outline:2px solid var(--fx-gold-l);outline-offset:4px}
 .pc-f{list-style:none;margin:0;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.14);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px}
 .pc-f li{position:relative;padding-left:16px}
@@ -457,7 +457,7 @@ body[data-sec="home"] footer.ft{margin-top:0}
 }
 @media (max-width:640px){
  .pc-body{grid-template-columns:minmax(0,1fr)}
- .pc-shelf{width:100%;max-width:300px}
+ .pc-shelf{width:100%;max-width:320px}
  .pc-model{max-width:420px}
  .pc-f{grid-template-columns:minmax(0,1fr)}
  .pc-cta{align-self:stretch}
@@ -477,7 +477,7 @@ body[data-sec="home"] footer.ft{margin-top:0}
 @media (prefers-reduced-motion:reduce){
  .hx-d,.hx-s,.hx-e,.hx-r{animation:none;stroke-dasharray:none}
  .pc-book,.shelf img,.lab-card,.up-journey a,.ibl-door,.ft-path,.env-card li a::after{transition:none}
- .pc-shelf:hover .pc-book.b0{transform:rotate(-7deg)}.pc-shelf:hover .pc-book.b3{transform:rotate(7deg)}
+ .pc-shelf:hover .pc-book{transform:none}
  .shelf a:hover img,.lab-card:hover{transform:none}
 }
 

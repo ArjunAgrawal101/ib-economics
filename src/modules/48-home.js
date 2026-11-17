@@ -58,7 +58,7 @@ function fxHeroMark(){
 function fxPathCards(){
  const ibF=FX_IB_FEATURES.map(([n,v,lab])=>{const t=fxTabIndex(v,lab);return `<li>${t<0?esc(n):`<a class="fx-a" href="${esA(fxHref(v,t))}">${esc(n)}</a>`}</li>`}).join("");
  const upF=FX_UP_FEATURES.map(([n,k])=>`<li><a class="fx-a" href="${esA(fxUpHref(k))}">${esc(n)}</a></li>`).join("");
- const vols=fxVols();const shelf=[2,1,4,9].map(i=>vols[i]).filter(Boolean);
+ const vols=fxVols();const shelf=[1,2,7].map(i=>vols[i]).filter(Boolean);
  return `<div class="hx-paths">
   <article class="pc pc-ib" aria-labelledby="pc-ib-h">
    <div class="pc-top"><span class="pc-num">Pathway 01</span><span class="pc-rule" aria-hidden="true"></span></div>
@@ -75,7 +75,7 @@ function fxPathCards(){
    <div class="pc-body">
     <div class="pc-text"><h2 class="pc-h" id="pc-up-h">UPSC CSE Economics</h2>
      <p class="pc-d">A structured learning environment for UPSC Civil Services aspirants, combining conceptual clarity, Indian economic developments, carefully developed handbooks and examination-oriented preparation.</p></div>
-    <a class="pc-prev pc-shelf" href="${esA(fxLibHref())}" aria-label="The Economics Handbook Collection: eleven volumes">${shelf.map((v,i)=>`<span class="pc-book b${i}">${fxCover(v,true)}</span>`).join("")}</a>
+    <a class="pc-prev pc-shelf" href="${esA(fxLibHref())}" aria-label="The Economics Handbook Collection: eleven volumes">${shelf.map(v=>`<span class="pc-book">${fxCover(v,true)}</span>`).join("")}</a>
    </div>
    <ul class="pc-f">${upF}</ul>
    <a class="fx-btn primary pc-cta" href="#/upsc">Explore UPSC Economics ${fxArr()}</a>

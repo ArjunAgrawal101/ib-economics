@@ -98,6 +98,11 @@ const allErrors = [];
   await p.locator('#burger').click(); await p.waitForTimeout(250);
   await p.locator('#mob .dw-main', { hasText: 'UPSC CSE Economics' }).click(); await p.waitForTimeout(300);
   check((await st(p)).v === 'upsc' && !(await p.locator('#mob').count()), 'a destination opens and the menu closes behind it');
+  for (const h of ['#/upsc/handbook-library', '#/upsc/contact-enrol']) {
+    await p.evaluate(h => { location.hash = h }, h); await p.waitForTimeout(400);
+    const r = await p.evaluate(() => { const e = document.querySelector('#ctxbar .cx-items .on'); if (!e) return null; const b = e.getBoundingClientRect(); return { l: Math.round(b.left), r: Math.round(b.right), w: innerWidth }; });
+    check(!!r && r.l >= 0 && r.r <= r.w, `on a phone the context bar shows its current destination (${h})`, JSON.stringify(r));
+  }
   allErrors.push(...errors); await ctx.close();
 }
 
