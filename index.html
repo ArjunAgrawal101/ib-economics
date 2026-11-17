@@ -4295,7 +4295,9 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
 .hl-eb span+span{position:relative}
 .hl-eb span+span::before{content:"";position:absolute;left:-10px;top:50%;width:3px;height:3px;border-radius:50%;background:var(--hl-gold);transform:translateY(-50%)}
 @media (max-width:640px){.hl-eb{flex-direction:column;gap:4px}.hl-eb span+span::before{display:none}}
-.hl-h1{font:400 clamp(38px,5.4vw,72px)/1.02 var(--hl-dsp);letter-spacing:-.015em;color:var(--hl-ink);margin:0}
+.hl-h1{font:400 clamp(38px,4.8vw,66px)/1.02 var(--hl-dsp);letter-spacing:-.015em;color:var(--hl-ink);margin:0;text-wrap:balance}
+.hl-h2,.hl-card-t,.hl-vt,.hl-vsub,.hl-card-sub,.hl-relv-x b,.hl-side-t{text-wrap:balance}
+.hl-catv .hl-h1{max-width:17ch}
 .hl-h2{font:400 clamp(27px,3vw,40px)/1.1 var(--hl-dsp);letter-spacing:-.01em;color:var(--hl-ink);margin:0}
 .hl-h3{font:600 20px/1.3 var(--hl-ser);color:var(--hl-ink);margin:0 0 14px}
 .hl-h4{font:700 12px/1.3 var(--hl-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--hl-forest);margin:26px 0 12px}
@@ -4345,7 +4347,7 @@ a.hl-book:hover,button.hl-book:hover{transform:translateY(-4px)}
 .hl-cv-ph{display:grid;place-items:center;aspect-ratio:1/1.414;background:#16233F;color:var(--hl-gold-l);font:400 18px var(--hl-dsp)}
 
 /* ── the masthead and the shelf ─────────────────────────────────────────── */
-.hl-mast{--shelf:46px;padding-top:clamp(36px,5vw,72px);
+.hl-mast{--shelf:46px;padding-top:clamp(32px,4vw,56px);
  background:linear-gradient(var(--hl-ivory) 0 calc(100% - var(--shelf)),var(--hl-forest-d) 0 calc(100% - var(--shelf) + 7px),var(--hl-forest) 0)}
 .hl-mast-g{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px 64px;align-items:end}
 .hl-facts{display:grid;grid-template-columns:repeat(4,auto);margin:0;border-left:1px solid var(--hl-line-2)}
@@ -4353,7 +4355,7 @@ a.hl-book:hover,button.hl-book:hover{transform:translateY(-4px)}
 .hl-facts dt{font:700 10.5px/1.3 var(--hl-ui);letter-spacing:.14em;text-transform:uppercase;color:var(--hl-mute)}
 .hl-facts dd{margin:8px 0 0;font:400 30px/1 var(--hl-dsp);color:var(--hl-ink);white-space:nowrap}
 .hl-facts div:last-child dd{font:600 15px/1.25 var(--hl-ser);white-space:normal;max-width:12ch}
-.hl-shelf{margin-top:clamp(36px,4.5vw,64px)}
+.hl-shelf{margin-top:clamp(32px,3.6vw,52px)}
 .hl-shelf ol{list-style:none;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(11,minmax(0,1fr));gap:clamp(4px,1.25vw,20px);max-width:1260px;align-items:end}
 .hl-shelf a{display:block;position:relative;text-decoration:none;line-height:0;transition:transform .26s var(--hl-ease)}
 .hl-shelf a:hover,.hl-shelf a:focus-visible{transform:translateY(-6px)}
@@ -4458,7 +4460,9 @@ a.hl-book:hover,button.hl-book:hover{transform:translateY(-4px)}
 .hl-terms-l b{display:block;font:700 13px/1.4 var(--hl-ui);letter-spacing:.04em;color:var(--hl-ink);margin-bottom:4px}
 
 /* ── one volume ─────────────────────────────────────────────────────────── */
-.hl-crumb ol{list-style:none;margin:0;padding:22px 0 0;display:flex;flex-wrap:wrap;gap:6px;font:600 13px/1.4 var(--hl-ui);color:var(--hl-mute)}
+.hl-crumb ol{list-style:none;margin:0;padding:22px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:6px;font:600 13px/1.4 var(--hl-ui);color:var(--hl-mute)}
+.hl-crumb li{display:inline-flex;align-items:center}
+.hl-crumb a{display:inline-flex;align-items:center}
 .hl-crumb li+li::before{content:"/";margin-right:6px;color:var(--hl-gold)}
 .hl-vhead{padding:clamp(24px,3.5vw,48px) 0 clamp(40px,5vw,72px)}
 .hl-vhead-g{display:grid;grid-template-columns:minmax(220px,340px) minmax(0,1fr);gap:40px clamp(40px,5.5vw,88px);align-items:start}
@@ -4588,7 +4592,8 @@ dialog.hl-vw[open]{animation:hlVwIn .22s var(--hl-ease)}
 .hl-vw-nav .hl-ic{width:22px;height:22px}
 .hl-vw-nav:hover:not(:disabled){background:rgba(244,239,228,.12)}
 .hl-vw-nav:disabled{opacity:.25;cursor:default}
-.hl-vw-stage{display:flex;overflow:hidden;padding:18px 8px;min-width:0;min-height:0;touch-action:pan-y pinch-zoom;outline-offset:-3px}
+.hl-vw-stage{display:flex;overflow:hidden;padding:18px 8px;min-width:0;min-height:0;touch-action:pan-y pinch-zoom}
+.hl-vw .hl-vw-stage:focus-visible{outline:1px solid rgba(217,194,143,.5);outline-offset:-6px}
 .hl-vw-stage.is-zoomed{overflow:auto;touch-action:auto;cursor:grab;overscroll-behavior:contain}
 .hl-vw-stage.is-drag{cursor:grabbing;user-select:none}
 .hl-vw-sheet{position:relative;flex:none;margin:auto;background:#fff center/100% 100% no-repeat;box-shadow:0 2px 6px rgba(0,0,0,.4),0 30px 60px -20px rgba(0,0,0,.7)}
@@ -44827,14 +44832,15 @@ const HL_THEMES=[
  ["employment and labour",/labour|employment|unemployment|\bplfs\b|wages/g],
  ["financial markets",/\bsebi\b|securities|capital markets?|money markets?|stock exchanges?|bond markets?|mutual funds|derivatives|\btreps\b|t-bills|\bomos?\b|open market/g],
  ["financial inclusion and rural credit",/financial inclusion|\bpmjdy\b|\bshg|priority sector|\bnabard\b|kisan credit|\bkcc\b|\bpacs\b|rural credit|cooperative/g],
- ["digital payments and public platforms",/\bupi\b|digital rupee|\bcbdc\b|\bondc\b|agristack|e-nam|digital currency|\bgem\b|digital lending|payments?\b/g],
+ ["digital money and payments",/\bupi\b|digital rupee|\bcbdc\b|digital currency|digital lending|payments banks?|payment (?:security|instructions|systems?)|digital payments?|fintech/g],
+ ["digital public platforms",/\bondc\b|agristack|e-nam|\bgem\b|digital agriculture|bharat-vistaar/g],
  ["food processing and value chains",/food processing|value chains?|value addition|supply chains?|\bpmfme\b|\bplisfpi\b/g],
  ["agriculture and the rural economy",/agricultur|\bfarm|\brural\b|\bcrops?\b/g]
 ];
 let HL_RELC=null;
 function hlRelated(v){
  if(!HL_RELC){const V=hlVols(),W={},df={};
-  V.forEach(x=>{const t=[...x.concepts,...x.inst,...hlParts(x).map(p=>p.t+" "+p.d)].join(" | ").toLowerCase();
+  V.forEach(x=>{const t=[x.desc,...x.learn,...x.concepts,...x.inst,...hlParts(x).map(p=>p.t+" "+p.d)].join(" | ").toLowerCase();
    W[x.id]=HL_THEMES.map(([,rx])=>(t.match(rx)||[]).length)});
   HL_THEMES.forEach((_,k)=>{df[k]=V.filter(x=>W[x.id][k]>0).length});
   HL_RELC={};
@@ -45184,7 +45190,8 @@ function LIBSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r
  T("Library · every card shows ₹99, the page count and GET THIS HANDBOOK · ₹99",()=>V.every(v=>{const c=hlCard(v);return c.includes("₹99")&&c.includes(`<dd>${v.pages}</dd>`)&&c.includes("GET THIS HANDBOOK · ₹99")&&c.includes("Digital soft copy. Individual volume pricing.")}));
  T("Library · every enquiry carries the owner's message for its volume",()=>V.every(v=>{const m=fxHandbookMsg(v);return hlWa(v)===FX_CONTACT.wa()+"?text="+encodeURIComponent(m)&&hlMail(v).startsWith("mailto:"+FX_CONTACT.email()+"?")&&decodeURIComponent(hlMail(v)).includes(m)&&m.includes("Volume "+v.n+", "+v.title+",")}));
  T("Library · each volume page has one heading, its contents and its syllabus map",()=>V.every(v=>{const h=hlRender(v.id);return (h.match(/<h1/g)||[]).length===1&&(h.match(/class="hl-toc-l"/g)||[]).length===v.parts.length&&(h.match(/<tr>/g)||[]).length===v.map.length+1}));
- T("Library · every preview page is an image of this volume in A4 proportion, never a PDF",()=>V.every(v=>(v.pv||[]).length>=1&&v.pv.every(p=>p.src.startsWith(`assets/upsc/handbooks/${v.id}/`)&&/\.webp$/.test(p.src)&&Math.abs(p.h/p.w-Math.SQRT2)<0.02&&HL_KIND[p.kind]&&p.cap&&p.p>1&&p.p<=v.pages))&&!/\.pdf\b/i.test(cat+V.map(v=>hlRender(v.id)).join("")));
+ T("Library · every preview page is an image of this volume in A4 proportion, never a PDF",()=>{const doc=/\.pdf\b/i,dir=v=>"assets/upsc/"+"handbooks/"+v.id+"/";
+  return !doc.test(cat+V.map(v=>hlRender(v.id)).join(""))&&V.every(v=>(v.pv||[]).length>=1&&v.pv.every(p=>p.src.startsWith(dir(v))&&/\.webp$/.test(p.src)&&Math.abs(p.h/p.w-Math.SQRT2)<0.02&&HL_KIND[p.kind]&&p.cap&&p.p>1&&p.p<=v.pages))});
  T("Library · relevance is read from each volume's own record",()=>V.every(v=>{const r=hlRel(v);return r.pre===!!(v.pre&&v.map.some(m=>m[1]))&&r.mains===!!(v.mains&&v.map.some(m=>m[2]))}));
  T("Library · search finds a volume by a part, a concept and an institution",()=>{const f=q=>V.filter(v=>hlMatch(v,{q,cat:"",exam:"",vol:""})).map(v=>v.n).join(",");
   return f("buffer stocks").includes("X")&&f("Phillips curve")==="III"&&f("GST Council")==="IV"&&f("nothing like this zz")===""});

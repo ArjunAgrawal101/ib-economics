@@ -56,14 +56,15 @@ const HL_THEMES=[
  ["employment and labour",/labour|employment|unemployment|\bplfs\b|wages/g],
  ["financial markets",/\bsebi\b|securities|capital markets?|money markets?|stock exchanges?|bond markets?|mutual funds|derivatives|\btreps\b|t-bills|\bomos?\b|open market/g],
  ["financial inclusion and rural credit",/financial inclusion|\bpmjdy\b|\bshg|priority sector|\bnabard\b|kisan credit|\bkcc\b|\bpacs\b|rural credit|cooperative/g],
- ["digital payments and public platforms",/\bupi\b|digital rupee|\bcbdc\b|\bondc\b|agristack|e-nam|digital currency|\bgem\b|digital lending|payments?\b/g],
+ ["digital money and payments",/\bupi\b|digital rupee|\bcbdc\b|digital currency|digital lending|payments banks?|payment (?:security|instructions|systems?)|digital payments?|fintech/g],
+ ["digital public platforms",/\bondc\b|agristack|e-nam|\bgem\b|digital agriculture|bharat-vistaar/g],
  ["food processing and value chains",/food processing|value chains?|value addition|supply chains?|\bpmfme\b|\bplisfpi\b/g],
  ["agriculture and the rural economy",/agricultur|\bfarm|\brural\b|\bcrops?\b/g]
 ];
 let HL_RELC=null;
 function hlRelated(v){
  if(!HL_RELC){const V=hlVols(),W={},df={};
-  V.forEach(x=>{const t=[...x.concepts,...x.inst,...hlParts(x).map(p=>p.t+" "+p.d)].join(" | ").toLowerCase();
+  V.forEach(x=>{const t=[x.desc,...x.learn,...x.concepts,...x.inst,...hlParts(x).map(p=>p.t+" "+p.d)].join(" | ").toLowerCase();
    W[x.id]=HL_THEMES.map(([,rx])=>(t.match(rx)||[]).length)});
   HL_THEMES.forEach((_,k)=>{df[k]=V.filter(x=>W[x.id][k]>0).length});
   HL_RELC={};
@@ -413,7 +414,8 @@ function LIBSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r
  T("Library · every card shows ₹99, the page count and GET THIS HANDBOOK · ₹99",()=>V.every(v=>{const c=hlCard(v);return c.includes("₹99")&&c.includes(`<dd>${v.pages}</dd>`)&&c.includes("GET THIS HANDBOOK · ₹99")&&c.includes("Digital soft copy. Individual volume pricing.")}));
  T("Library · every enquiry carries the owner's message for its volume",()=>V.every(v=>{const m=fxHandbookMsg(v);return hlWa(v)===FX_CONTACT.wa()+"?text="+encodeURIComponent(m)&&hlMail(v).startsWith("mailto:"+FX_CONTACT.email()+"?")&&decodeURIComponent(hlMail(v)).includes(m)&&m.includes("Volume "+v.n+", "+v.title+",")}));
  T("Library · each volume page has one heading, its contents and its syllabus map",()=>V.every(v=>{const h=hlRender(v.id);return (h.match(/<h1/g)||[]).length===1&&(h.match(/class="hl-toc-l"/g)||[]).length===v.parts.length&&(h.match(/<tr>/g)||[]).length===v.map.length+1}));
- T("Library · every preview page is an image of this volume in A4 proportion, never a PDF",()=>V.every(v=>(v.pv||[]).length>=1&&v.pv.every(p=>p.src.startsWith(`assets/upsc/handbooks/${v.id}/`)&&/\.webp$/.test(p.src)&&Math.abs(p.h/p.w-Math.SQRT2)<0.02&&HL_KIND[p.kind]&&p.cap&&p.p>1&&p.p<=v.pages))&&!/\.pdf\b/i.test(cat+V.map(v=>hlRender(v.id)).join("")));
+ T("Library · every preview page is an image of this volume in A4 proportion, never a PDF",()=>{const doc=/\.pdf\b/i,dir=v=>"assets/upsc/"+"handbooks/"+v.id+"/";
+  return !doc.test(cat+V.map(v=>hlRender(v.id)).join(""))&&V.every(v=>(v.pv||[]).length>=1&&v.pv.every(p=>p.src.startsWith(dir(v))&&/\.webp$/.test(p.src)&&Math.abs(p.h/p.w-Math.SQRT2)<0.02&&HL_KIND[p.kind]&&p.cap&&p.p>1&&p.p<=v.pages))});
  T("Library · relevance is read from each volume's own record",()=>V.every(v=>{const r=hlRel(v);return r.pre===!!(v.pre&&v.map.some(m=>m[1]))&&r.mains===!!(v.mains&&v.map.some(m=>m[2]))}));
  T("Library · search finds a volume by a part, a concept and an institution",()=>{const f=q=>V.filter(v=>hlMatch(v,{q,cat:"",exam:"",vol:""})).map(v=>v.n).join(",");
   return f("buffer stocks").includes("X")&&f("Phillips curve")==="III"&&f("GST Council")==="IV"&&f("nothing like this zz")===""});

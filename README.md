@@ -63,24 +63,38 @@ topic previews, current affairs, the connector and the programme are in
 `src/modules/42-upsc-content.js`; the pages are drawn by `src/modules/43-upsc.js` and styled by
 `src/styles/css-upsc.css`.
 
-**The handbooks are never in this repository.** `tools/upsc/build_upsc.py` reads the eleven PDFs
-from a private folder outside the repository, checks each title and page count against the
-catalogue, and writes only four low-resolution, watermarked WebP previews per volume (cover,
-contents, two sample pages) to `assets/upsc/handbooks/`, then regenerates
-`src/modules/41-upsc-data.js`:
+**The Handbook Library** (`src/modules/45-library.js`, `src/styles/css-library.css`, tested by
+`tests/library.mjs`) is the handbooks tab: a catalogue of the eleven volumes with search and filters by
+topic, by Prelims, Mains or Both and by volume number; a page for each volume (contents with page numbers,
+syllabus map, concepts, institutions, related volumes); and a preview viewer for the pages chosen from each
+volume, with zoom, full screen, swipe and the keyboard. The tab calls `hlRender(arg)`; `hlOpenViewer(id, page)`
+opens the viewer.
+
+**The handbooks are never in this repository.** `tools/upsc/build_upsc.py` reads the eleven PDFs from a
+private folder outside the repository and checks each title, page count and part against the catalogue,
+reporting any difference rather than changing it. It renders the cover and the pages listed in
+`tools/upsc/preview-pages.json` as clean WebP images (pages 1600 px wide with 400 px thumbnails, no watermark
+or overlay) to `assets/upsc/handbooks/`, deletes images no longer chosen and regenerates
+`src/modules/41-upsc-data.js`. `tools/upsc/propose_pages.py` drafts the selection, with a contact sheet of
+every page. Full steps are in `tools/upsc/README.md`:
 
 ```
-python3 tools/upsc/build_upsc.py --src /path/to/private/handbooks   # previews + data
-python3 tools/upsc/build_upsc.py --data-only                        # data only, from the JSON
+python3 tools/upsc/build_upsc.py --src /path/to/private/handbooks --check   # verify only
+python3 tools/upsc/propose_pages.py --src /path/to/private/handbooks        # draft about 8 pages a volume
+python3 tools/upsc/build_upsc.py --src /path/to/private/handbooks           # previews + data
+python3 tools/upsc/build_upsc.py --data-only                                # data only, from the JSON
 python3 tools/build/splice.py
 ```
 
-`.gitignore` refuses Word files and `*Platinum*.pdf`. To add a development to Current Affairs,
-add an entry to `UP_CA` with its date, theme, source and volume, and update `UP_CA_COMPILED`.
+`.gitignore` refuses any PDF, Word or e-book file anywhere except the ten carousel PDFs. To add a development
+to Current Affairs, add an entry to `UP_CA` with its date, theme, source and volume, and update
+`UP_CA_COMPILED`.
 
 **Purchases and enrolment are enquiries.** Buttons open WhatsApp (+91 7092844945), email
 (arjun1agr@gmail.com) or a call, with the message prefilled: a handbook message names the volume,
-its title and ₹99; the enrolment message is the exact text the brief sets. Nothing is charged,
+its title and ₹99 (in the Handbook Library, GET THIS HANDBOOK · ₹99 sends the owner's own wording: "Hello,
+I am interested in purchasing Volume [X], [Title], of the Arjun Agrawal Economics Handbook Series. Please share
+the payment and delivery details."); the enrolment message is the exact text the brief sets. Nothing is charged,
 booked or confirmed on the site.
 
 ## What it contains

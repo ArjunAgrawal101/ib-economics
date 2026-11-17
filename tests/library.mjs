@@ -261,6 +261,61 @@ for (const u of ['assets/upsc/handbooks/volume-iii/volume-iii.pdf', 'assets/upsc
   await ctx.close();
 }
 
+/* ── the pipeline's output needs no change of code: thumbnails become srcsets,
+   and a volume with one preview page, or none, still works ─────────────── */
+{
+  const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
+  const { p, errors } = await open(ctx, base);
+  const reqs = [];
+  p.on('request', r => { if (/assets\/upsc\/handbooks\//.test(r.url())) reqs.push(r.url().replace(/^.*assets\/upsc\/handbooks\//, '')) });
+  /* the shape build_upsc.py writes after a run: each image with a 400 px "sm" version (the
+     existing files stand in for it here, so nothing extra is fetched from the network) */
+  await p.evaluate(() => { const v = hlVol('volume-iv'); v.img.cover.sm = { src: v.img.cover.src, w: 400, h: 566 }; v.pv.forEach(x => { x.sm = { src: x.src, w: 400, h: 566 } }) });
+  await go(p, await addr(p));
+  const card = await p.evaluate(() => { const i = document.querySelector('#hl-c-volume-iv img.hl-cv'); return { ss: i.getAttribute('srcset') || '', sz: i.getAttribute('sizes') || '' } });
+  check(/ 400w, .* \d+w$/.test(card.ss) && /\(max-width: 640px\)/.test(card.sz), 'with thumbnails on record, the cover has a srcset and sizes for phone and desktop', JSON.stringify(card));
+  await go(p, await addr(p, 'volume-iv'));
+  check(await p.evaluate(() => [...document.querySelectorAll('.hl-pvs img')].every(i => /-?\d*\.webp$/.test(i.getAttribute('src')))), 'the look-inside strip shows the thumbnails');
+  reqs.length = 0;
+  await p.evaluate(() => hlOpenViewer('volume-iv', 0)); await p.waitForTimeout(600);
+  const img = await p.evaluate(() => { const i = document.querySelector('#hl-vw-sheet img.on'), sh = document.getElementById('hl-vw-sheet');
+    return { ss: i.getAttribute('srcset') || '', sz: i.getAttribute('sizes') || '', w: Math.round(sh.getBoundingClientRect().width), bg: sh.style.backgroundImage } });
+  check(/ 400w, .* \d+w$/.test(img.ss) && img.sz === img.w + 'px' && /url\(/.test(img.bg), `in the viewer the page has a srcset sized to the page (${img.sz}) and its thumbnail shows while it loads`, JSON.stringify(img));
+  await p.keyboard.press('+'); await p.waitForTimeout(200);
+  check(await p.evaluate(() => { const i = document.querySelector('#hl-vw-sheet img.on'); return i.getAttribute('sizes') === Math.round(document.getElementById('hl-vw-sheet').getBoundingClientRect().width) + 'px' }), 'zooming in asks for the larger image');
+  await p.keyboard.press('Escape'); await p.waitForTimeout(200);
+  /* lazy loading: with thumbnails that are separate files, opening the viewer fetches the page
+     shown and the next one, and none of the others until they are needed */
+  await p.evaluate(() => { const v = hlVol('volume-viii'); v.pv.forEach(x => { x.sm = { src: v.img.cover.src, w: 400, h: 566 } }) });
+  await go(p, await addr(p));
+  await p.waitForTimeout(300);
+  reqs.length = 0;
+  await p.evaluate(() => hlOpenViewer('volume-viii', 0)); await p.waitForTimeout(900);
+  const pv8 = SEL['volume-viii'].map(s => `volume-viii/page-${String(s.p).padStart(2, '0')}.webp`);
+  const got = [...new Set(reqs)];
+  check(got.includes(pv8[0]) && got.includes(pv8[1]) && !got.includes(pv8[2]), `opening the viewer fetches the page shown and the next one only (${got.join(', ')})`);
+  await p.keyboard.press('ArrowRight'); await p.waitForTimeout(900);
+  check([...new Set(reqs)].includes(pv8[2]), 'turning the page fetches the one after it');
+  await p.keyboard.press('Escape'); await p.waitForTimeout(200);
+  /* one preview page */
+  await p.evaluate(() => { const v = hlVol('volume-vi'); v.pv = v.pv.slice(0, 1) });
+  await go(p, await addr(p, 'volume-vi'));
+  await p.evaluate(() => hlOpenViewer('volume-vi', 0)); await p.waitForTimeout(400);
+  const one = await p.evaluate(() => { const d = document.getElementById('hl-viewer'); return { open: d.open, cls: d.classList.contains('is-one'), prev: d.querySelector('[data-a="prev"]').disabled, next: d.querySelector('[data-a="next"]').disabled, pos: d.querySelector('#hl-vw-pos').textContent } });
+  await p.keyboard.press('ArrowRight'); await p.waitForTimeout(200);
+  check(one.open && one.cls && one.prev && one.next && /preview 1 of 1/.test(one.pos) && (await vw(p)).i === 0, 'a volume with one preview page opens it, with nowhere to turn', JSON.stringify(one));
+  await p.keyboard.press('Escape'); await p.waitForTimeout(200);
+  /* none */
+  await p.evaluate(() => { const v = hlVol('volume-vii'); v.pv = [] });
+  await go(p, await addr(p));
+  const none = await p.evaluate(() => ({ btn: !!document.querySelector('#hl-c-volume-vii button.hl-btn'), buy: !!document.querySelector('#hl-c-volume-vii a.hl-buy'), open: hlOpenViewer('volume-vii', 0) }));
+  await go(p, await addr(p, 'volume-vii'));
+  const nonev = await p.evaluate(() => ({ look: !!document.querySelector('.hl-look-s'), cover: document.querySelector('.hl-vcover .hl-book').tagName, h1: document.querySelector('#view h1').textContent }));
+  check(!none.btn && none.buy && none.open === false && !nonev.look && nonev.cover === 'SPAN' && nonev.h1 === V[6].title, 'a volume with no preview pages drops Preview and Look inside, and keeps its page and purchase link', JSON.stringify([none, nonev]));
+  errorsAll.push(...errors);
+  await ctx.close();
+}
+
 /* ── widths: no sideways scroll on the catalogue, a volume or the open viewer ── */
 for (const width of [320, 390, 768, 1440]) {
   const ctx = await b.newContext({ viewport: { width, height: width < 700 ? 800 : 900 } });
