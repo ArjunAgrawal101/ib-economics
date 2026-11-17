@@ -14,9 +14,10 @@ const { p, errors } = await open(ctx, base);
 check(req.length === 0, 'neither events file is fetched until a page needs it');
 
 /* reaching it */
-await p.locator('#moreBtn').click();
-check(/Economic events/.test(await p.locator('#menu').innerText()) && /Pathways/.test(await p.locator('#menu').innerText()), 'the More menu reaches the events archive and the pathways');
-await p.locator('#menu button', { hasText: 'Economic events' }).click(); await p.waitForTimeout(300);
+/* the IB DP panel in the header now carries what the More menu carried */
+await p.locator('#gnav .gn-ib .gn-dd').click(); await p.waitForTimeout(200);
+check(/Economic events/.test(await p.locator('#fxpanel').innerText()) && /The Indian economy/.test(await p.locator('#fxpanel').innerText()), 'the IB DP menu reaches the events archive and the Indian economy hub');
+await p.locator('#fxpanel a', { hasText: 'Economic events' }).click(); await p.waitForTimeout(300);
 
 /* archive */
 check(await p.evaluate(() => location.hash) === '#/events', 'the archive has its own address');
@@ -87,8 +88,8 @@ await p.evaluate(() => nav('paths', 0)); await p.waitForTimeout(250);
 check(await p.locator('.pa-card').count() === 6, 'six pathways');
 await p.locator('.pa-card', { hasText: 'Civil services' }).getByRole('button', { name: 'Make this my path' }).click(); await p.waitForTimeout(200);
 check(await p.evaluate(() => S.path) === 'civil', 'choosing a path is kept');
-await p.evaluate(() => nav('home')); await p.waitForTimeout(300);
-check(/Your path: Civil services/.test(await p.locator('.pa-band').innerText()), 'the home page leads with the chosen path');
+await p.evaluate(() => nav('ib')); await p.waitForTimeout(300);
+check(/Your path: Civil services/.test(await p.locator('.pa-band').innerText()), 'the IB DP home page leads with the chosen path');
 await p.evaluate(() => { S.path = ''; save(); nav('paths', 1) }); await p.waitForTimeout(400);
 await p.waitForSelector('.dl-stack svg', { timeout: 10000 });
 check(await p.locator('.dl-stack .dl-card').count() >= 2, 'the Indian economy hub charts India against the world');

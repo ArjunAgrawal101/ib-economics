@@ -1,5 +1,5 @@
 {
-  "_about": "The Economics Handbook Collection: the public catalogue. Every title, page count, part and syllabus-map row is taken from the volume itself (its title page, contents page and syllabus map). The handbooks are never stored in this repository; tools/upsc/build_upsc.py renders the few watermarked preview pages from a private folder. Price: ₹99 per volume; no bundle price.",
+  "_about": "The Economics Handbook Library: the public catalogue. Every title, page count, part and syllabus-map row is taken from the volume itself (its title page, contents page and syllabus map). category is the topic under which the library files each volume. The handbooks are never stored in this repository; tools/upsc/build_upsc.py renders the cover and the preview pages chosen in tools/upsc/preview-pages.json from a private folder, as clean images. Price: ₹99 per volume; no bundle price.",
   "price": 99,
   "series": "Arjun Agrawal Knowledge Series | Economics Collection",
   "seriesName": "The Indian Economy Series",
@@ -8,6 +8,7 @@
     {
       "n": "I", "num": 1, "id": "volume-i",
       "title": "Introduction to Economics",
+      "category": "Macroeconomic Foundations",
       "edition": "Platinum Edition",
       "sub": "The Foundations of Economic Thinking, Choice, Markets and Resource Allocation.",
       "exams": ["Prelims", "Mains GS III", "State PCS", "Interview"],
@@ -45,12 +46,12 @@
         ["Market equilibrium, price controls and MSP, market structures", "I", "I.4, I.5, I.7", "GS III agriculture"],
         ["Elasticity and tax incidence", "J", "J.4, J.9", "State PCS, RBI Grade B"],
         ["Efficiency, equity, market failure, government intervention", "K", "K.3, K.4", "GS II (governance), Essay"]
-      ],
-      "samples": [{"p": 12, "cap": "Part D: the production possibility curve, its shape and its shifts"}, {"p": 34, "cap": "The opening of the revision compendium"}]
+      ]
     },
     {
       "n": "II", "num": 2, "id": "volume-ii",
       "title": "Money & Monetary Policy",
+      "category": "Money and Banking",
       "edition": "Platinum Edition 2026",
       "sub": "Money, Monetary Aggregates, the RBI and the Architecture of Monetary Policy in India.",
       "exams": ["Prelims", "Mains GS III", "Interview", "State PCS", "RBI Grade B"],
@@ -88,12 +89,12 @@
         ["Developments 2023 to 2026; external sector", "H", "H.2 to H.4", "Interview, Essay"],
         ["Digital rupee and digital money", "I", "I", "GS II (e-governance)"],
         ["Debates: inflation, fiscal-monetary, trilemma, stability, growth", "J", "J", "Essay, Interview"]
-      ],
-      "samples": [{"p": 23, "cap": "Part F: the LAF corridor, with the SDF floor, the repo rate and the MSF ceiling"}, {"p": 36, "cap": "The opening of the revision compendium"}]
+      ]
     },
     {
       "n": "III", "num": 3, "id": "volume-iii",
       "title": "Inflation and Price Stability",
+      "category": "Inflation",
       "edition": "Platinum Edition",
       "sub": "Measurement, Drivers, Distributional Effects and India's Inflation Management Framework.",
       "exams": ["Prelims", "Mains GS III", "State PCS", "RBI Grade B", "Interview"],
@@ -130,12 +131,12 @@
         ["Inflation targeting, MPC accountability, headline versus core", "H", "H.2 to H.4", "GS II (statutory bodies), RBI Grade B"],
         ["Inflation management and policy coordination", "I", "I.5 to I.8", "Essay"],
         ["Global shocks, climate and energy transition", "J", "J.1 to J.3", "GS III environment, Essay"]
-      ],
-      "samples": [{"p": 18, "cap": "Part D: the causes of inflation brought together in the triangle model"}, {"p": 40, "cap": "The opening of the revision compendium"}]
+      ]
     },
     {
       "n": "IV", "num": 4, "id": "volume-iv",
       "title": "Taxation and Public Revenue",
+      "category": "Public Finance",
       "edition": "Platinum Edition",
       "sub": "Constitutional Foundations, Tax Design, GST and Fiscal Federalism.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -169,12 +170,12 @@
         ["GST, customs and trade remedies", "F, G", "GS III: F.5 to F.10; G.3 to G.5", "GS II (federalism)"],
         ["International and digital taxation, tax administration, black money", "H, I", "GS III: H.4 to H.9; I.3 to I.5", "Interview, Essay"],
         ["Resource mobilisation, buoyancy, tax expenditure, fiscal federalism", "J", "GS III: J.1 to J.5; GS II: J.6, J.7", "Essay"]
-      ],
-      "samples": [{"p": 23, "cap": "Part F: the input tax credit chain at an 18% rate"}, {"p": 40, "cap": "The opening of the revision compendium"}]
+      ]
     },
     {
       "n": "V", "num": 5, "id": "volume-v",
       "title": "Fiscal Policy and Budget Management",
+      "category": "Fiscal Policy",
       "edition": "Platinum Edition",
       "sub": "Public Expenditure, Budgetary Architecture, Fiscal Deficits, Public Debt and Fiscal Responsibility.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -209,12 +210,12 @@
         ["Mobilisation of resources: FRBM and fiscal consolidation", "I", "GS III: I.2 to I.8", "RBI Grade B, Essay"],
         ["Fiscal federalism: grants, schemes, State and local finances", "J", "GS II: J.2, J.3, J.7; GS III: J.4 to J.6", "State PCS"],
         ["Current fiscal developments and global spillovers", "K", "GS III: K.1 to K.6", "Interview, Essay"]
-      ],
-      "samples": [{"p": 25, "cap": "Part G: how the Union fiscal deficit is financed"}, {"p": 41, "cap": "The opening of the revision compendium"}]
+      ]
     },
     {
       "n": "VI", "num": 6, "id": "volume-vi",
       "title": "Banking and Financial Institutions",
+      "category": "Money and Banking",
       "edition": "Platinum Edition",
       "sub": "Structure, Regulation, Credit, Financial Stability and Inclusion.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -248,12 +249,12 @@
         ["Cooperative banks, rural credit, NBFCs and development finance", "G, H", "GS III: G.5, G.6, H.7, H.8; GS II: G.5", "State PCS, RBI Grade B"],
         ["Inclusive growth: financial inclusion, priority sector and farm credit", "I", "GS III: I.2, I.5 to I.7; GS II: I.2", "State PCS, Essay"],
         ["Digital banking, cyber risk, reforms and financial stability", "J, K", "GS III: J.3, J.5, K.2, K.5, K.6", "Interview, Essay"]
-      ],
-      "samples": [{"p": 15, "cap": "Part D: from standard asset to loss, the NPA classification"}, {"p": 42, "cap": "The opening of the revision compendium"}]
+      ]
     },
     {
       "n": "VII", "num": 7, "id": "volume-vii",
       "title": "Financial Markets and Instruments",
+      "category": "Financial Markets",
       "edition": "Platinum Edition",
       "sub": "Money Markets, Capital Markets, Securities, Investment and Market Regulation.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -288,12 +289,12 @@
         ["Market infrastructure, mutual funds, savings", "G, H", "GS III: G.3, G.6, H.5", "RBI Grade B, Interview"],
         ["Derivatives, commodities, external markets, IFSC", "J, K", "GS III: J.8, K.1, K.3", "RBI Grade B, State PCS"],
         ["Regulators, investor protection, SMC 2025", "L", "GS II: L.2, L.4; GS III: L.6", "RBI Grade B, Essay"]
-      ],
-      "samples": [{"p": 12, "cap": "Part D: the price-yield relation of a ten-year G-sec"}, {"p": 35, "cap": "The opening of the revision compendium"}]
+      ]
     },
     {
       "n": "VIII", "num": 8, "id": "volume-viii",
       "title": "Balance of Payments and International Trade",
+      "category": "External Sector",
       "edition": "Platinum Edition",
       "sub": "India's External Sector: Trade, Capital Flows, Exchange Rates and External Stability.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -329,12 +330,12 @@
         ["Trade theory, India's trade and trade policy", "J, K", "GS III: J.17, K.2, K.6", "State PCS, Essay"],
         ["WTO, FTAs and international institutions", "K", "GS II: K.7, K.17-K.18; GS III: K.12", "Interview, Essay"],
         ["External resilience; revision compendium", "L, M", "GS III: L.16, L.17; M.10 frameworks", "All examinations"]
-      ],
-      "samples": [{"p": 5, "cap": "Part B: the structure of the balance of payments under BPM6"}, {"p": 41, "cap": "The opening of the revision compendium"}]
+      ]
     },
     {
       "n": "IX", "num": 9, "id": "volume-ix",
       "title": "Global Economic Institutions and Trade Architecture",
+      "category": "International Institutions",
       "edition": "Platinum Edition",
       "sub": "Multilateral Finance, Global Trade Rules, Development Banks and India's Economic Interests.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -368,12 +369,12 @@
         ["World Bank Group and development banks", "E, F", "GS II: E.6, F.6; GS III: E.5", "RBI Grade B, State PCS"],
         ["Regional agreements, India's FTAs, CBAM", "H, I", "GS II: H.4, H.7; GS III: H.8, I.1", "Essay, Interview"],
         ["Revision compendium", "K", "K.8 frameworks and model answer", "All examinations"]
-      ],
-      "samples": [{"p": 14, "cap": "Part D: the IMF's lending facilities, classified"}, {"p": 33, "cap": "The opening of the revision compendium"}]
+      ]
     },
     {
       "n": "X", "num": 10, "id": "volume-x",
       "title": "Indian Agriculture and Allied Sectors",
+      "category": "Agriculture",
       "edition": "Platinum Edition",
       "sub": "Transforming Indian Agriculture: Production, Productivity, Farmer Incomes, Food Security and Sustainable Growth.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -409,12 +410,12 @@
         ["Marketing, storage, transport, supply chains", "H", "GS III: H.2 to H.5", "NABARD, State PCS"],
         ["PDS, food security, nutrition", "I", "GS II and III: I.2 to I.6", "Essay"],
         ["Food processing, allied sectors, schemes", "J, K, L", "GS III: J.3, K.1, L.2", "All examinations"]
-      ],
-      "samples": [{"p": 21, "cap": "Part G: from cost data to the farmer, how MSP is set and where it reaches"}, {"p": 36, "cap": "The opening of the revision compendium"}]
+      ]
     },
     {
       "n": "XI", "num": 11, "id": "volume-xi",
       "title": "Indian Industry, Manufacturing, Trade and Labour Markets",
+      "category": "Industry and Employment",
       "edition": "Platinum Edition",
       "sub": "Industrial Transformation, Enterprise Competitiveness, Employment and the Future of Work.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -450,8 +451,7 @@
         ["Employment, unemployment, labour data (PLFS)", "H", "GS III: H.4 to H.6", "All examinations"],
         ["Jobless growth, informality, gender, skills, gig work", "H, I", "GS I and III: H.6, I.1 to I.8", "Essay"],
         ["Labour Codes, social security, schemes", "J, K", "GS II and III: J.5, K.1 to K.4", "Interview"]
-      ],
-      "samples": [{"p": 25, "cap": "Part H: from population to the labour force"}, {"p": 42, "cap": "The opening of the revision compendium"}]
+      ]
     }
   ]
 }

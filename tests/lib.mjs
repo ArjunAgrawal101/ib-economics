@@ -40,6 +40,9 @@ export async function open(ctx, url) {
   await p.goto(url, { waitUntil: 'load' });
   await p.evaluate(() => { try { splashEnd(true); } catch (e) {} });
   await p.waitForTimeout(250);
+  /* The welcome asks for an IB DP level, so it waits for the first IB DP page.
+     A suite that starts elsewhere meets it now instead, and skips it the same way. */
+  await p.evaluate(() => { try { if (typeof FX_OB !== 'undefined' && FX_OB.pending) { FX_OB.pending = false; FX_OB.run(); } } catch (e) {} });
   const skip = p.getByRole('button', { name: 'Skip for now' });
   if (await skip.count()) await skip.first().click().catch(() => {});
   return { p, errors };

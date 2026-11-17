@@ -12,7 +12,7 @@ import fs from 'node:fs';
 const { srv, base } = await serve();
 const b = await browser();
 const WIDTHS = (process.env.WIDTHS || '320,360,375,390,414,430,768,834,1024,1280,1366,1440,1600,1920,2560').split(',').map(Number);
-const ROUTES = (process.env.ROUTES ? process.env.ROUTES.split(',') : ['', '#/about', '#/world', '#/world/real-world-economics/MIC-001', '#/mind/market',
+const ROUTES = (process.env.ROUTES ? process.env.ROUTES.split(',') : ['', '#/ib', '#/about', '#/contact', '#/world', '#/world/real-world-economics/MIC-001', '#/mind/market',
   '#/lab', '#/lab/elasticity-lab', '#/lab/diagram-atlas/tax', '#/examiner', '#/papers', '#/dna', '#/learn/concept-spine/c-ped', '#/everywhere',
   '#/ees', '#/videos', '#/educator', '#/think/economist-s-toolkit', '#/calculate', '#/course', '#/tutorials',
   '#/course/topics/2.5', '#/course/topics/unit-3', '#/course/dictionary', '#/course/command-terms', '#/learn/misconception-lab',

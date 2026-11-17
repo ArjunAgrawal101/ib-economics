@@ -1,10 +1,11 @@
-# Arjun Agrawal · IB DP Economics
+# Arjun Agrawal · Economics
 
 **Think like an economist.**
 
-A free, browser-based learning environment for IB Diploma Programme Economics, built by
-**Arjun Agrawal**: IB DP Facilitator in Economics, Business Management and Global Politics,
-Economics educator, UPSC CSE mentor and resource creator.
+One discipline. Two pathways. A shared understanding of Economics. A free, browser-based learning
+platform with two pathways of equal weight, **IB DP Economics** and **UPSC CSE Economics**, built by
+**Arjun Agrawal**: IB DP Economics Educator, Economics Resource Designer and UPSC Economics Mentor,
+and IB DP Facilitator in Economics, Business Management and Global Politics.
 
 Learn the concept. See the model. Build the chain. Stress-test the argument. Make the
 judgement. Apply it under pressure.
@@ -24,6 +25,73 @@ optional: the video studio reads the channel's public uploads through a small Ve
 (`api/youtube.js`), which holds the YouTube key and receives nothing about the reader. Without it,
 the video studio says so and everything else works exactly as before.
 
+## Two pathways, one platform
+
+The platform is **Arjun Agrawal · Economics**, *Think like an economist.*, with two pathways of equal
+weight: **IB DP Economics** and **UPSC CSE Economics**. *One discipline. Two pathways. A shared
+understanding of Economics.*
+
+- **The header** carries the brand, then **Home · IB DP Economics · UPSC CSE Economics · About**, then
+  search. The two pathways sit together as a switcher; the chevron beside each opens a panel of its
+  environment (the IB DP panel shows all five groups at once). Panels open from the mouse or the
+  keyboard: from the keyboard, focus moves to the first destination; Escape closes a panel and returns
+  focus to its button; tabbing out of a panel, or a click outside it, closes it.
+- **A context bar** under the header gives each pathway its own navigation, in its own colour:
+  - *IB DP*: **IB Home · Learn · Explore · Practise · Research · Resources** (each a menu) and
+    **Tutorials**. The groups follow the brief: Learn (course and syllabus, concepts and theories,
+    topic-wise learning, mindmaps, visual explainers, the diagram atlas, thinking like an economist,
+    videos); Explore (Real World Economics, case studies, economic data, Economics in 60 Seconds,
+    events, Economics, Everywhere, economists and ideas, the Indian economy); Practise (interactive
+    diagrams, calculation tools, practice questions, examination preparation, Paper 1 and Paper 2
+    practice, Exam DNA, the timed session, all tools); Research (the IA, the EE, research skills,
+    TOK); Resources (the resource hub, revision, checklists, the Learning Studio, tutorials, educators
+    and teacher tools).
+  - *UPSC CSE*: the eight UPSC destinations.
+  On IB DP pages the header and the context bar stay in view; a section's own tabs scroll with the page.
+  The IB DP tools in the header (the calculator, the exam timer, SL/HL and the profile) appear on IB DP
+  pages only.
+- **Below 1180px** the context bar starts with the pathway switcher, and the menu button opens a
+  drawer: Home, then IB DP Economics with its five groups folded, your progress, then UPSC CSE
+  Economics with its eight destinations, then About and Contact, with search at the top.
+- **Search** labels every result with its pathway (IB DP, UPSC CSE or Both), read from where the result
+  leads.
+- **The older primary bar and More menu** remain in the page, hidden, because earlier layers and their
+  checks measure them. Every section they listed is reachable from the new header, the context bars,
+  the drawer, the footer and search; a check fails if a section a reader can open is not.
+
+### Addresses
+
+| Address | Page |
+| --- | --- |
+| `#/` | The shared home |
+| `#/ib` | The IB DP landing: a pathway header with five doors, then the IB DP home page that earlier releases built, intact |
+| `#/upsc` and `#/upsc/…` | The UPSC environment |
+| `#/concepts` | One Concept. Two Perspectives. |
+| `#/about`, `#/contact` | About, and Contact with separate IB DP and UPSC CSE enquiries |
+
+Every earlier address still opens the same page. Page titles name their pathway, for example
+"Learn · IB DP Economics · Arjun Agrawal" and "About · Arjun Agrawal · Economics".
+
+### The shared home
+
+Ten movements, short by design: the statement ("Economics is not just a subject to study. It is a way
+to think.") with the two pathway cards; Think like an economist, with the live demand-and-supply model;
+the IB DP environment; the UPSC environment; selected resources and the eleven handbook covers; the
+laboratory; one concept, two perspectives; About; enrolment and contact; and the footer. Every preview
+is a real resource. A teacher's assignment link (`#assign=…`) still opens here, with its banner first.
+
+### Enquiries
+
+Every enquiry, on the home page and on Contact, opens the reader's own WhatsApp or email with the
+message written, to the number and address the site already publishes. Nothing is booked, charged or
+stored. IB DP: tutoring, Internal Assessment support, Extended Essay guidance, resources and teacher
+collaboration. UPSC CSE: handbook purchase, the three-month course, mentorship and resources.
+
+### The welcome
+
+The first-visit welcome asks for a name and an IB DP level, so it now opens on the first visit to an
+IB DP page rather than over the shared home or the UPSC pages. What it stores is unchanged.
+
 ## Who it is for
 
 - **Students** taking IB DP Economics at SL or HL, at any point from first lesson to final exam.
@@ -37,25 +105,25 @@ the video studio says so and everything else works exactly as before.
 
 ## UPSC CSE Economics
 
-The platform has two pathways. The home page opens with "Economics. Understood. Connected.
-Applied." and two cards: **IB DP Economics** ("Think like an economist."), which leads into
-everything described below, and **UPSC CSE Economics** ("Understand the economy. Master the
-examination."). A slim strip above the header (`#pathbar`) carries
-"IB DP Economics | UPSC CSE Economics | About | Contact" at every width; inside the UPSC section,
-About and Contact lead to its own pages. The IB primary bar is unchanged.
-
-The section lives at `#/upsc` and has eight tabs, each a real address:
+The UPSC CSE Economics pathway (`#/upsc`) is one of the platform's two pathways (see *Two pathways,
+one platform*). It is drawn in forest green, warm ivory and antique gold, and its eight destinations form
+its context bar. It covers the Economics within the General Studies papers, for Prelims and Mains; it is
+not a preparation for the Economics Optional, and the pages say so.
 
 | Tab | Address | What it holds |
 |---|---|---|
-| UPSC Overview | `#/upsc` | Five pillars, the seven-step approach (the repo rate from concept to Mains), a map of how the eleven volumes connect |
-| Syllabus | `#/upsc/syllabus` (`/mains`) | The official UPSC wording, quoted from Examination Notice No. 05/2026-CSE, kept apart from explanation; fourteen Prelims themes and the ten GS III lines, each mapped to volumes |
-| Economics Resources | `#/upsc/economics-resources/<topic>` | Eleven free topic previews with original diagrams, a question each, search and categories; "One Concept. Two Examination Perspectives." links shared concepts to existing IB pages |
-| Economics Handbooks | `#/upsc/economics-handbooks/<volume-id>` | The eleven-volume collection at ₹99 / Volume, each with its own page |
-| Current Affairs | `#/upsc/current-affairs` | A hand-edited list of dated developments, each with its source and handbook part |
-| UPSC Economics Course | `#/upsc/upsc-economics-course` | The 3-month intensive programme: ₹9,999 for the complete programme, online, at most 25 students |
-| About the Educator | `#/upsc/about-the-educator` | Facts already published on the site and on the handbooks' title pages |
-| Contact / Enrolment | `#/upsc/contact-enrolment` | Separate handbook, enrolment and general enquiries |
+| UPSC Home | `#/upsc` | "Understand the Indian economy. Master the economic dimension of UPSC.", why Economics matters for UPSC, the eight preparation steps, and previews of the syllabus, the handbook shelf, the latest current affairs and the course |
+| Syllabus | `#/upsc/syllabus` | Prelims GS I and Mains GS III (with two GS II lines) kept apart. Each line in four layers: the official wording, the platform's explanation, the handbook coverage (from each volume's own syllabus map) and how classes and current affairs support it. Five lines are marked "Wording to be confirmed" against the notice. A print view |
+| Economics Resources | `#/upsc/economics-resources/<topic>` | Eleven free topic previews as numbered figure plates, and the shared concepts read in UPSC terms |
+| Handbook Library | `#/upsc/handbook-library/<volume-id>` | The Handbook Library (below) |
+| Current Affairs | `#/upsc/current-affairs` | 27 dated entries under 12 themes, newest first, each with the concept, why it matters, Prelims and Mains relevance, a handbook link, and its source and date. Edited by hand, not a feed; the page says when it was last compiled |
+| Preparation Strategy | `#/upsc/preparation-strategy` | Four phases, a weekly rhythm, a method for joining static concepts to current affairs, previous-year questions (linked to upsc.gov.in, none reproduced), a GS III answer frame and a revision cycle. No result is promised |
+| Online Course | `#/upsc/online-course` | The three-month intensive programme: ₹9,999, online only, at most 25 students, Prelims and Mains, static concepts and current affairs. Twelve modules mapped to the volumes (national income has no volume of its own, and the page says so) and an indicative three-month journey |
+| Contact / Enrol | `#/upsc/contact-enrol` | Handbook, course, mentorship and resource enquiries |
+
+The first section's addresses still open the same pages: `#/upsc/economics-handbooks[/…]` opens the
+Handbook Library, `#/upsc/upsc-economics-course` the Online Course, `#/upsc/contact-enrolment` Contact /
+Enrol and `#/upsc/about-the-educator` the shared About page; the address bar is then set to the page's own.
 
 **Where the text comes from.** `content/upsc/handbooks.json` is the catalogue: every title, page
 count, part, page number and syllabus-map row is taken from the volume itself. Syllabus lines,
@@ -63,25 +131,42 @@ topic previews, current affairs, the connector and the programme are in
 `src/modules/42-upsc-content.js`; the pages are drawn by `src/modules/43-upsc.js` and styled by
 `src/styles/css-upsc.css`.
 
-**The handbooks are never in this repository.** `tools/upsc/build_upsc.py` reads the eleven PDFs
-from a private folder outside the repository, checks each title and page count against the
-catalogue, and writes only four low-resolution, watermarked WebP previews per volume (cover,
-contents, two sample pages) to `assets/upsc/handbooks/`, then regenerates
-`src/modules/41-upsc-data.js`:
+**The Handbook Library** (`src/modules/45-library.js`, `src/styles/css-library.css`, tested by
+`tests/library.mjs`) is the handbooks tab: a catalogue of the eleven volumes with search and filters by
+topic, by Prelims, Mains or Both and by volume number; a page for each volume (contents with page numbers,
+syllabus map, concepts, institutions, related volumes); and a preview viewer for the pages chosen from each
+volume, with zoom, full screen, swipe and the keyboard. The tab calls `hlRender(arg)`; `hlOpenViewer(id, page)`
+opens the viewer.
+
+**The handbooks are never in this repository.** `tools/upsc/build_upsc.py` reads the eleven PDFs from a
+private folder outside the repository and checks each title, page count and part against the catalogue,
+reporting any difference rather than changing it. It renders the cover and the pages listed in
+`tools/upsc/preview-pages.json` as clean WebP images (pages 1600 px wide with 400 px thumbnails, no watermark
+or overlay) to `assets/upsc/handbooks/`, deletes images no longer chosen and regenerates
+`src/modules/41-upsc-data.js`. `tools/upsc/propose_pages.py` drafts the selection, with a contact sheet of
+every page. Until the PDFs are run, the folder holds the images the previous version made (cover, contents
+and two samples per volume, 640 px, with its watermark); the first run replaces them. Full steps are in
+`tools/upsc/README.md`:
 
 ```
-python3 tools/upsc/build_upsc.py --src /path/to/private/handbooks   # previews + data
-python3 tools/upsc/build_upsc.py --data-only                        # data only, from the JSON
+python3 tools/upsc/build_upsc.py --src /path/to/private/handbooks --check   # verify only
+python3 tools/upsc/propose_pages.py --src /path/to/private/handbooks        # draft about 8 pages a volume
+python3 tools/upsc/build_upsc.py --src /path/to/private/handbooks           # previews + data
+python3 tools/upsc/build_upsc.py --data-only                                # data only, from the JSON
 python3 tools/build/splice.py
 ```
 
-`.gitignore` refuses Word files and `*Platinum*.pdf`. To add a development to Current Affairs,
-add an entry to `UP_CA` with its date, theme, source and volume, and update `UP_CA_COMPILED`.
+`.gitignore` refuses any PDF, Word or e-book file anywhere except the ten carousel PDFs. To add a development
+to Current Affairs, add an entry to `UP_CA` with its date, theme, source and volume, and update
+`UP_CA_COMPILED`.
 
 **Purchases and enrolment are enquiries.** Buttons open WhatsApp (+91 7092844945), email
-(arjun1agr@gmail.com) or a call, with the message prefilled: a handbook message names the volume,
-its title and ₹99; the enrolment message is the exact text the brief sets. Nothing is charged,
-booked or confirmed on the site.
+(arjun1agr@gmail.com) or a call, with the message prefilled in the owner's own wording. GET THIS HANDBOOK · ₹99
+sends "Hello, I am interested in purchasing Volume [X], [Title], of the Arjun Agrawal Economics Handbook Series.
+Please share the payment and delivery details."; ENQUIRE ABOUT THE NEXT BATCH sends "Hello, I am interested in
+joining the three-month UPSC CSE Economics Intensive Online Programme priced at ₹9,999. Please share the upcoming
+batch schedule and enrolment details." Nothing is charged, booked or confirmed on the site, and there is no
+payment gateway, countdown or claim about remaining places.
 
 ## What it contains
 
@@ -394,8 +479,9 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   address is a hash, so it works from a `file://` path and from a subdirectory with no server
   rewrite rules; the short form the install shortcuts use (`#mind`, `#session`, `#video`) works
   too. The router writes nothing while the self-tests run, leaves assignment links (`#assign=…`)
-  untouched and stores nothing. The home page plays the five-second opening sequence on every kind
-  of load; a deep link to any other page skips it (see *The opening sequence*).
+  untouched and stores nothing. The home page plays the five-second opening sequence on the first
+  load of a browser session and a brief identity card after that; a deep link to any other page
+  shows only the cover (see *The opening sequence*).
 - A command palette opens on `/` or `Ctrl`/`Cmd` + `K` and reaches every section, every printable and
   every indexed item of content.
 - The build includes a self-test of **2,076 checks** reported across every area of the build: startup, printing,
@@ -721,8 +807,9 @@ once:
 
 ## Sticky navigation
 
-The top bar, the section tabs, the lesson rails and the events chapter rail stay in view while
-the page scrolls. They were always styled to do so, but `body` carried `overflow-x:hidden`, which
+The header, the context bar, the lesson rails and the events chapter rail stay in view while the
+page scrolls; on IB DP pages a section's own tabs scroll with the page, so two bars of navigation do
+not take a fifth of a laptop screen. They were always styled to do so, but `body` carried `overflow-x:hidden`, which
 (with `html` clipping sideways overflow) made `body` a scroll container that never scrolls, so
 nothing ever stuck. `body` now uses `overflow-x:clip`, which still prevents sideways scrolling
 without creating a scroll container. The widths audit also now fails on content cut off at the
@@ -730,31 +817,20 @@ right edge, which that clip would otherwise hide.
 
 ## Navigation
 
-The primary bar keeps the eight places most visits start from: **Course · Learn · Lab · Real World ·
-Practise · Exam · Mindmaps · Resources**, with **More** and **Tutorials** closing it. **Resources** opens
-the Resource hub (`#/resources`). Economics, Everywhere and the Learning Studio are in the More menu,
-the drawer, the footer and search, and the home page opens a door to each.
+The header, the two context bars, the drawer and search are described under *Two pathways, one
+platform*. Everything the older primary bar and its More menu reached is reachable from them; the
+older bar stays in the page, hidden, because earlier layers and their checks measure it.
 
-The bar is measured after every paint, and again once the typefaces arrive. An item is withdrawn only
-when it would otherwise meet the brand, in a declared order; Resources is the last to go, then Real World
-and Mindmaps. At 1440px and wider all eight fit. To give the bar that room, the tools beside it fold:
+The IB DP tools beside the navigation fold to keep it clear:
 - **The timer** is a single stopwatch control while it is idle. It opens the paper presets, and the
   readout and pause control return once it runs.
 - **The profile** shows its initial, and keeps its name for assistive technology.
-- **Below 1180px**, where the bar gives way to the drawer, a **Resources** button stands in the header
-  between the brand and the menu. Below 360px it gives the wordmark its room, and Resources leads the
-  drawer instead.
-
-Everything else is one step away:
-- **The More menu** groups every section by what a visitor came to do: *Learn and explore* (Resources
-  first, then the course, Think, *Why did this happen?*, economists and ideas, economic data, the labs
-  and the video studio), *Exam and research*, *Your work*, *Teach* and *About*. Any section not named
-  there is appended under *More*, so nothing can become unreachable.
-- **On a phone**, the drawer carries the same sections in its own groups.
-- **Search** (`/` or `Ctrl`/`Cmd` + `K`) finds lessons, terms, economists, causal questions, data pages,
-  cases and tools by name. A calculation's result, like its address (`#/calculate/0/ped`), opens that
-  calculation; simulator and worked-case results open their tabs.
 - **A built-in calculator** opens from the header's *Open calculator* button and takes keyboard input.
+
+**Search** (`/` or `Ctrl`/`Cmd` + `K`) finds lessons, terms, economists, causal questions, data pages,
+cases, tools, UPSC pages and handbook volumes by name, and labels each result IB DP, UPSC CSE or Both.
+A calculation's result, like its address (`#/calculate/0/ped`), opens that calculation; simulator
+and worked-case results open their tabs.
 
 ## Learning paths and saved items
 
@@ -780,54 +856,92 @@ offering to open the assignment, and nothing about what they then do is reported
 
 ## The opening sequence
 
-Exactly five seconds, on one clock. The sequence runs:
+ARJUN AGRAWAL · ECONOMICS, *Think like an economist.*: five seconds on one clock, for a platform with
+two pathways. It adds about 26 KB to the page (inline SVG, CSS and a short script) and uses no
+images, video or fonts of its own.
 
 | Time | Stage |
 |---|---|
-| 0–0.9 s | an obsidian field with a faint grid; the axes rule themselves in from their origins |
-| 0.7 s | the monogram, with a data series appearing beneath it (0.9–1.9 s) |
-| 1.4 s | the name and "Knowledge. Insight. Impact.", assembled from the brand vectors rather than set again in type |
-| 2.2 s | "IB DP Economics", with supply and demand and a frontier (micro) brought into focus behind it |
-| 3.1 s | "Think like an economist.", the peak, as a growth path with its cycle (macro) and a faint network of trade (global) take over the background |
-| 4.0 s | "Learn. Think. Calculate." |
-| 4.7–5.0 s | the exit fade into the page |
+| 0–1 s | **The world.** On a midnight ground a dotted world map appears west to east; the financial and trading hubs light up and fine arcs of trade join them. |
+| 1–2 s | **The language of economics.** Demand and supply cross at a gold equilibrium, a business cycle runs round its trend, a price series moves, and indicator labels (GDP, CPI, USD/INR, REPO RATE, EXPORTS) appear beside the hubs in JetBrains Mono. |
+| 2–3 s | **Two economic worlds.** International perspectives in the IB pathway's burgundy (trade, markets, exchange rates, models); then India's dots warm to gold and five sectors of its development (agriculture, industry, infrastructure, public finance, economic policy) fan out beneath it in the UPSC pathway's forest green. |
+| 3–4 s | **The identity.** The AA monogram rises (the logo's own vectors), then the name and its gold rule. |
+| 4–5 s | **The philosophy.** ECONOMICS, in Bodoni Moda, and THINK LIKE AN ECONOMIST.; the monogram travels to the brand mark in the header and the overlay dissolves into the page. |
+
+The map is generated at build time from Natural Earth 1:110m by `tools/build/build_worldmap.mjs`
+(Natural Earth I projection; about 3,700 dots drawn as runs of zero-length dashes with round caps, in
+eight longitudinal bands so they can be revealed one after another, and India on its own layer drawn
+to its official boundary). ECONOMICS and the motto are outlines generated from the self-hosted Bodoni
+Moda and Manrope by `tools/build/build_opening_type.py`, and the name is the logo's own vectors, so
+the identity looks the same before the web fonts arrive as after. The migration
+`tools/migrations/2026-11-17-opening-sequence.py` embeds both outputs; the styles are in
+`src/styles/css-opening.css`.
 
 **One start timestamp.** The start is the first frame the reader sees. It is taken from
 `requestAnimationFrame` and re-anchored to the browser's reported first paint during a still passage
-of the sequence. Every stage is a Web Animation scheduled from that timestamp, not a chain of timers.
+of the sequence (3.42–3.80 s). Every stage is a Web Animation scheduled from that timestamp, not a
+chain of timers.
 
-**Nothing can lengthen it.** The stages animate opacity and transform only, so they run on the
-compositor while the start-up self-test occupies the main thread. The exit fade reaches full
-transparency at exactly start + 5000 ms, and the overlay is removed on the next frame.
+**Nothing can lengthen it.** Every moving part is an HTML element or a whole `<svg>`, animated with
+opacity and transform only, so the compositor keeps time while the start-up self-test occupies the
+main thread. Every layer that fades is a leaf, so no stage needs an offscreen pass, and the scene dims
+under a veil of the ground colour rather than fading as a whole: about fifty small layers in all.
+Lines are drawn by sliding windows (an overflow-hidden frame moving one way and its content the other)
+and by scaling from an origin, never by dash offsets. The exit fade is scheduled ahead, reaches full
+transparency at exactly start + 5000 ms, and the overlay is removed on the next frame. With the
+processor slowed four times the stages still land on schedule, to the frame; only the exit waits,
+because the page is not ready.
 
 **Fallbacks rather than delays.**
-- The font stylesheet no longer blocks the first frame; a late font is swapped in, not waited for.
-- On a device slow enough that the platform is not ready at 4.7 s, the final frame holds rather than
-  uncovering an unfinished page, and the timing record says so.
+- The font stylesheet does not block the first frame, and nothing in the overlay needs a web font
+  to look right.
+- On a device slow enough that the platform is not ready at 4.7 s, the final frame holds rather
+  than uncovering an unfinished page, and the timing record says so.
+- Every decision after the first frame reads the real time, so a frame that a busy main thread
+  delivers late cannot start the exit fade in the past.
+- If the overlay's own script never ran, a CSS failsafe hides it after 30 seconds.
 
-**When it plays: the opening state model.** The rule depends on the address, not on the cache or
-the kind of load:
+**When it plays: the state model.**
 
 | How the reader arrives | What they see |
 |---|---|
-| The home page (`/`, `#/home`), first visit or any later one | the full five seconds |
-| The home page by reload, hard reload, cache disabled, a bookmark or a typed address | the full five seconds |
-| The home page by the browser's Back or Forward from another site | the full five seconds |
-| The home page from a page restored by the back/forward cache | the page as it was left (it never unloaded, so there is nothing to open) |
-| A deep link to any other page (`#/events/archive/india-1991`) | the identity still, gone as soon as the page is ready |
+| The home page (`/`, `#/home`), the first time in this browser session (a tab) | the full five seconds |
+| The home page again in that session: a reload, a typed address, Back from another site | a brief identity card, 1.2 s |
+| The home page within 30 days of pressing Skip introduction | the brief card |
+| Any address with `?intro=1` (Settings has a **Replay the opening** link) | the full five seconds |
+| A reduced-motion preference | a still identity card, 1.5 s |
+| A deep link to any other page (`#/events/archive/india-1991`) | the cover, gone as soon as the page is ready |
+| A page restored by the back/forward cache | the page as it was left |
 | Moving inside the platform, including Home and Back between its own pages | no opening at all |
 
-The page records the navigation type, the route and the result in `window.__INTRO`. There is no
-timer that waits for the opening: the page is built behind it, so it is ready when the overlay leaves.
+Every card waits for the page behind it to be ready before it leaves. `?intro=1` is taken out of the
+address once read. The page records the navigation type, the route, the mode and the result in
+`window.__INTRO`.
+
+**What it stores.** Two small notes, both listed in **Settings → What is stored on this device**:
+`aae.intro.seen` in session storage (the full sequence has played in this tab) and `aae.intro.skip`
+in local storage (the time Skip introduction was last pressed). Every read and write is wrapped in
+`try`/`catch`, so a private window that refuses storage simply sees the full sequence.
 
 **Skip and reduced motion.**
-- **Skip intro** fades out over about 170 ms and leaves through the same exit.
-- Reduced motion shows the same hierarchy at once and leaves after 1.5 s.
+- **Skip introduction**, in the bottom right corner, is a real button and the first stop for the
+  keyboard. Enter or a click on it, or Escape anywhere, starts the exit within one frame (a 180 ms
+  fade) and remembers the choice. Stray clicks, scrolls and other keys do not skip.
+- The overlay is a status with the accessible name "Arjun Agrawal · Economics. Think like an
+  economist."; its decorative layers are hidden from assistive technology, and nothing behind it is
+  ever made inert.
+- Reduced motion shows the whole identity at once and leaves after 1.5 s.
 
-`tests/intro.mjs` measures the timing at 360, 390, 768, 1024, 1440 and 1920 px, from the record the
-page keeps in `window.__INTRO`, and every row of the table above: a fresh profile, reload, hard
-reload with the cache disabled, a direct address, Back and Forward from another site, a revisit
-controlled by the service worker, and a deep link.
+`tests/intro.mjs` measures the timing at 360, 390, 768, 1024, 1440 and 1920 px from the record the
+page keeps in `window.__INTRO`; checks where every stage sits at its moment (on screen, clear of
+Skip, fully visible); walks the state model (a deep link, the first load of a session, a reload, a
+hard reload, a direct address, navigation inside the app, Back from another site, a new tab, a
+remembered and an expired skip, `?intro=1`, refused storage, reduced motion); presses Skip by
+keyboard and Escape; checks for horizontal scroll at 320 px in every state; and, with the processor
+slowed four times, reads the compositor's own frames (a screencast) to confirm that the stages land on
+time: the progress hairline is itself a linear animation, so its length in each frame says which
+moment of the sequence the frame shows. When the machine is too busy for the page to be ready by
+4.58 s, the timing rows check the hold instead and say so.
 
 ## Installable, and honest about offline
 
@@ -1469,6 +1583,10 @@ loaded from YouTube's privacy-enhanced domain; watching contacts YouTube, and no
 platform is sent with it. An assignment link carries the chosen items and nothing else, so a
 teacher can set work without a server and without anything about a student leaving their device.
 The service worker caches this platform's own files and leaves every other origin alone.
+
+The opening sequence keeps two notes of its own and nothing else: `aae.intro.seen` in session
+storage, so the full five seconds play once a visit, and `aae.intro.skip` in local storage, the time
+Skip introduction was last pressed, so for thirty days the home page shows a brief card instead.
 
 ## Run it locally
 

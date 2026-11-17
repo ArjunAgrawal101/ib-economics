@@ -71,7 +71,7 @@
 /* A clean edge with a fine brass rule, in place of the grey gradient. */
 /* a short warm band eases the eye from charcoal to cream; the brass hairline marks the edge */
 .rn-hinge{background:linear-gradient(180deg,#EBE4D5 0%,#F2EDE4 55%,var(--sf-page) 100%);padding:clamp(24px,2.8vw,36px) 0 clamp(8px,1vw,14px);border-top:1px solid rgba(201,174,114,.75)}
-body[data-sec="home"] .rs-band{padding-top:clamp(18px,2.2vw,30px)}
+body[data-sec="home"] .rs-band,body[data-sec="ib"] .rs-band{padding-top:clamp(18px,2.2vw,30px)}
 .rn-hinge .rn-chap{padding-top:0}
 
 /* ── Explore Economics Resources ───────────────────────────────────────── */

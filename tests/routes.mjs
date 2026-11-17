@@ -13,7 +13,8 @@ for (const [label, vp] of [['375px', { width: 375, height: 740 }], ['1366px', { 
     while (queue.length) {
       const [v, t, h] = queue.shift();
       const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
-      await p.goto(base + h, { waitUntil: 'load' }); await p.waitForTimeout(200);
+      /* the link audit renders every route before it paints, so its cold load is given room */
+      await p.goto(base + h, { waitUntil: 'load', timeout: 120000 }); await p.waitForTimeout(200);
       const r = await p.evaluate(() => ({ v: VIEW, t: TAB, f: window.__failed || ['no qa'],
         ov: document.documentElement.scrollWidth - innerWidth, len: document.getElementById('view').innerHTML.length }));
       if (!(r.v === v && r.t === t && r.f.length === 0 && !errs.length && r.ov <= 1 && r.len > 300)) bad.push(`${h} ${JSON.stringify(r)} ${errs.join(' ')}`);

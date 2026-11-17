@@ -1,0 +1,59 @@
+{
+  "_about": "The pages of each volume shown in the Handbook Library's preview viewer, chosen by what they show. tools/upsc/build_upsc.py renders exactly these pages (and the cover, page 1) from the private PDFs as clean images, with no watermark or overlay, and deletes any image no longer listed. The owner's brief: about 8 pages per volume (at least 5, at most 10), ideally 1 contents, 2 a strong conceptual explanation, 3 an infographic or diagram, 4 a detailed topic or policy explanation, 5 a table or data presentation, 6 a case study, scheme or institution, 7 an examination-oriented application, 8 another high-value page. tools/upsc/propose_pages.py ranks the candidates. Until the PDFs are run, each volume lists the three pages that already exist as images (contents and two samples).",
+  "_kinds": {"contents": "Contents", "concept": "A concept explained", "figure": "Infographic or diagram", "policy": "Policy in detail", "table": "Table and data", "case": "Case study, scheme or institution", "exam": "For the examination", "extra": "From the volume"},
+  "volume-i": [
+    {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 12, "kind": "figure", "cap": "Part D: the production possibility curve, its shape and its shifts"},
+    {"p": 34, "kind": "exam", "cap": "Part L: the opening of the revision compendium"}
+  ],
+  "volume-ii": [
+    {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 23, "kind": "figure", "cap": "Part F: the LAF corridor, with the SDF floor, the repo rate and the MSF ceiling"},
+    {"p": 36, "kind": "exam", "cap": "Part K: the opening of the revision compendium"}
+  ],
+  "volume-iii": [
+    {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 18, "kind": "figure", "cap": "Part D: the causes of inflation brought together in the triangle model"},
+    {"p": 40, "kind": "exam", "cap": "Part K: the opening of the revision compendium"}
+  ],
+  "volume-iv": [
+    {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 23, "kind": "figure", "cap": "Part F: the input tax credit chain at an 18% rate"},
+    {"p": 40, "kind": "exam", "cap": "Part K: the opening of the revision compendium"}
+  ],
+  "volume-v": [
+    {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 25, "kind": "table", "cap": "Part G: how the Union fiscal deficit is financed"},
+    {"p": 41, "kind": "exam", "cap": "Part L: the opening of the revision compendium"}
+  ],
+  "volume-vi": [
+    {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 15, "kind": "figure", "cap": "Part D: from standard asset to loss, the NPA classification"},
+    {"p": 42, "kind": "exam", "cap": "Part L: the opening of the revision compendium"}
+  ],
+  "volume-vii": [
+    {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 12, "kind": "figure", "cap": "Part D: the price-yield relation of a ten-year G-sec"},
+    {"p": 35, "kind": "exam", "cap": "Part M: the opening of the revision compendium"}
+  ],
+  "volume-viii": [
+    {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 5, "kind": "concept", "cap": "Part B: the structure of the balance of payments under BPM6"},
+    {"p": 41, "kind": "exam", "cap": "Part M: the opening of the revision compendium"}
+  ],
+  "volume-ix": [
+    {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 14, "kind": "table", "cap": "Part D: the IMF's lending facilities, classified"},
+    {"p": 33, "kind": "exam", "cap": "Part K: the opening of the revision compendium"}
+  ],
+  "volume-x": [
+    {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 21, "kind": "policy", "cap": "Part G: from cost data to the farmer, how MSP is set and where it reaches"},
+    {"p": 36, "kind": "exam", "cap": "Part M: the opening of the revision compendium"}
+  ],
+  "volume-xi": [
+    {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 25, "kind": "concept", "cap": "Part H: from population to the labour force"},
+    {"p": 42, "kind": "exam", "cap": "Part M: the opening of the revision compendium"}
+  ]
+}

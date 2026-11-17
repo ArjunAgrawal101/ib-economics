@@ -29,6 +29,10 @@ tmp/
 .env.*
 .vercel
 
+# Python bytecode from the build tools
+__pycache__/
+*.pyc
+
 # Test output
 tests/overlap-report.json
 # the build scripts are source; only their download cache is ignored
@@ -41,8 +45,14 @@ private/
 masters/
 *.master.*
 
-# Proprietary handbooks: never stored in the repository. tools/upsc/build_upsc.py
-# reads them from a private folder outside it and writes only watermarked previews.
-*.docx
-*Platinum*.pdf
+# Proprietary handbooks: never stored in the repository, in any folder and under any
+# name, whether PDF, Word or e-book. tools/upsc/build_upsc.py reads them from a private
+# folder outside the repository and writes only the chosen preview pages, as images.
+# The ten public carousel PDFs are the one exception (tests/library.mjs checks both).
+*.[pP][dD][fF]
+*.[dD][oO][cC]
+*.[dD][oO][cC][xX]
+*.[oO][dD][tT]
+*.[eE][pP][uU][bB]
+!/assets/carousels/economics-in-60-seconds-[0-9][0-9][0-9].pdf
 /private/
