@@ -8,7 +8,9 @@ const { p, errors } = await open(ctx, base);
 const st = () => p.evaluate(() => ({ v: VIEW, t: TAB, a: ARG, h: location.hash }));
 
 /* routing */
-await p.locator('#mainnav button', { hasText: 'Real World' }).first().click();
+/* the IB DP panel in the header is the primary navigation into the pathway */
+await p.locator('#gnav .gn-ib .gn-dd').click(); await p.waitForTimeout(150);
+await p.locator('#fxpanel a', { hasText: 'Real World Economics' }).first().click(); await p.waitForTimeout(200);
 check((await st()).h === '#/world', 'a primary navigation click writes an address');
 await p.locator('#subnavin button').nth(2).click();
 const tabHash = (await st()).h;

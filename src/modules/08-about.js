@@ -9,7 +9,8 @@
    title or result is added, and no institution is described as a current
    workplace. The portrait sits in its own grid cell; nothing is drawn over it.
    ═══════════════════════════════════════════════════════════════════════════ */
-const AB_POS=["Economics educator","IB DP educator","Teacher and mentor","Academic resource creator","Research-oriented educator"];
+/* the positioning the owner set for the two-pathway platform */
+const AB_POS=["IB DP Economics Educator","Economics Resource Designer","UPSC Economics Mentor"];
 /* the credentials, as data blocks */
 const AB_FACTS=()=>[
  ["Education","Economics","St. Stephen's College, University of Delhi"],
@@ -37,8 +38,8 @@ function abCover(){const A=ABOUT;
    <ul class="ab-pos mt3">${AB_POS.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>
    <p class="ab-lede mt4">${esc(A.lede)}</p>
    <p class="ab-meta mt3"><span>${esc(A.role)}</span>${A.subjects.map(s=>`<span>${esc(s)}</span>`).join("")}</p>
-   <div class="row mt4"><button class="btn a" onclick="nav('tutorials')">Learn with Arjun →</button><a class="btn gh" href="mailto:${A.email}">Email</a>
-    <button class="btn gh" onclick="nav('home')">Explore the platform</button><a class="btn gh" href="#/studio">Learning Studio</a></div></div>
+   <div class="row mt4"><button class="btn a" onclick="nav('tutorials')">Learn with Arjun →</button><a class="btn gh" href="#/ib">IB DP Economics</a>
+    <a class="btn gh" href="#/upsc">UPSC CSE Economics</a><a class="btn gh" href="mailto:${A.email}">Email</a></div></div>
   ${abFigure("hero","ab-portrait")}
  </div></section>`}
 

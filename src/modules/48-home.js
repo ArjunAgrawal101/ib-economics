@@ -212,18 +212,35 @@ function fxAboutBand(){
 /* ── 9 · enrolment and contact ──────────────────────────────────────────── */
 function fxEnqRow(k){const e=FX_ENQ[k];if(!e)return "";const l=fxEnquiryLinks(k);
  return `<li><span class="eq-n">${esc(e.label)}</span><span class="eq-a"><a class="fx-a" href="${esA(l.wa)}" target="_blank" rel="noopener noreferrer" aria-label="${esA(e.label)}: message on WhatsApp">WhatsApp</a><a class="fx-a" href="${esA(l.mail)}" aria-label="${esA(e.label)}: send an email">Email</a></span></li>`}
+function fxContactCols(){
+ return `<div class="cnx-grid">
+   <div class="cnx-col p-ib"><h3><span class="fx-tag ib">IB DP Economics</span></h3><ul>${["ibTutoring","ibIA","ibEE","ibResources","ibTeachers"].map(fxEnqRow).join("")}</ul>
+    <p><a class="fx-a fx-link" href="${esA(fxHref("tutorials",0))}">Tutorials: sessions and terms</a></p></div>
+   <div class="cnx-col p-up"><h3><span class="fx-tag upsc">UPSC CSE Economics</span></h3><ul>${["upHandbooks","upCourse","upMentor","upResources"].map(fxEnqRow).join("")}</ul>
+    <p><a class="fx-a fx-link" href="${esA(fxUpHref("course"))}">The 3-month programme</a></p></div>
+  </div>`;
+}
 function fxContactBand(){
  return `<section class="fx-section fx-contact" aria-labelledby="ct-h"><div class="fx-wrap">
   ${fxSecHead("09","Enrolment and contact","Learn with Arjun Agrawal","Every enquiry opens your own WhatsApp or email with the message written for you. Nothing is booked or charged on this site.","ct-h")}
-  <div class="cnx-grid">
-   <div class="cnx-col p-ib"><h3><span class="fx-tag ib">IB DP Economics</span></h3><ul>${["ibTutoring","ibIA","ibEE","ibResources","ibTeachers"].map(fxEnqRow).join("")}</ul>
-    <p><a class="fx-link" href="${esA(fxHref("tutorials",0))}">Tutorials: sessions and terms</a></p></div>
-   <div class="cnx-col p-up"><h3><span class="fx-tag upsc">UPSC CSE Economics</span></h3><ul>${["upHandbooks","upCourse","upMentor","upResources"].map(fxEnqRow).join("")}</ul>
-    <p><a class="fx-link" href="${esA(fxUpHref("course"))}">The 3-month programme</a></p></div>
-  </div>
+  ${fxContactCols()}
   <p class="cnx-direct"><a class="fx-a" href="${esA("mailto:"+FX_CONTACT.email())}">${esc(FX_CONTACT.email())}</a> · <a class="fx-a" href="${esA(fxWa())}" target="_blank" rel="noopener noreferrer">WhatsApp ${esc(FX_CONTACT.phone())} ↗</a>${FX_CONTACT.linkedin()?` · <a class="fx-a" href="${esA(FX_CONTACT.linkedin())}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>`:""}${FX_CONTACT.instagram()?` · <a class="fx-a" href="${esA(FX_CONTACT.instagram())}" target="_blank" rel="noopener noreferrer">Instagram ↗</a>`:""}</p>
  </div></section>`;
 }
+
+/* ── the Contact page: the two pathways' enquiries come first ───────────── */
+function fxContactPaths(){
+ return `<section class="fx-section fx-contact cnx-page" aria-labelledby="cnx-h"><div class="fx-wrap">
+  <header class="fx-section-head"><span class="fx-kicker">Two pathways</span><h2 class="fx-h2" id="cnx-h">What would you like to ask about?</h2>
+   <p class="fx-lede">Choose an enquiry and your own WhatsApp or email opens with the message written for you. Nothing is booked or charged on this site, and nothing you choose here is stored.</p></header>
+  ${fxContactCols()}
+ </div></section>`;
+}
+(function(){
+ const prev=VIEWS.contact;if(typeof prev!=="function")return;
+ VIEWS.contact=function(){const h=prev.apply(this,arguments);const i=h.indexOf("</section>");
+  return i<0?h+fxContactPaths():h.slice(0,i+10)+fxContactPaths()+h.slice(i+10)};
+})();
 
 VIEWS.home=function(){
  return `<div class="fxhome">${fxHero()}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxAboutBand()}${fxContactBand()}</div>`;
