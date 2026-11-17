@@ -9,7 +9,7 @@
 function RENSUITE(){
  const out=[];const T=(n,f,d)=>{let ok=false,det=d||"";try{const r=f();ok=r===true||(r&&r.ok);if(r&&r.d)det=r.d}catch(e){ok=false;det=e.message}out.push({n,ok:!!ok,detail:det})};
 
- let HOMEH=null;const HOME=()=>HOMEH||(HOMEH=VIEWS.home());
+ let HOMEH=null;const HOME=()=>HOMEH||(HOMEH=VIEWS.ib());   /* the IB front page, at #/ib */
  const F=MOTIFFN,near=(a,b,t)=>Math.abs(a-b)<=(t===undefined?1e-6:t);
  /* ── motifs: geometry recomputed from the stated functions ── */
  T("Motif · every motif renders an SVG hidden from assistive technology, with a caption",()=>Object.keys(MOTIFS).every(k=>{const s=motifSVG(k);return /^<svg[^>]*aria-hidden="true"/.test(s)&&/viewBox="0 0 600 400"/.test(s)&&motifCap(k).length>20&&!/NaN|undefined/.test(s)}));

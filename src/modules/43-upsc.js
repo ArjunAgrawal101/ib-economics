@@ -457,7 +457,7 @@ function upHomeBand(){const H=UPSC_HB.volumes;
     <div class="hp-b"><a class="hp-btn" href="#/upsc">Enter UPSC CSE Economics <span aria-hidden="true">→</span></a><a class="hp-sl" href="${upHref("handbooks")}">Handbooks · ${UP_PRICE}</a></div></article></div></div></section>`}
 function upToIB(){const h=document.querySelector("#view section.at-hero")||document.querySelector("#view section.hero");if(h){const y=h.getBoundingClientRect().top+scrollY-((document.querySelector("header.top")||{}).offsetHeight||0);
  window.scrollTo({top:Math.max(0,y),behavior:document.body.classList.contains("rn-anim")?"smooth":"auto"});const f=h.querySelector("h2,h1");if(f){f.setAttribute("tabindex","-1");try{f.focus({preventScroll:true})}catch(e){}}}}
-(function(){const prev=VIEWS.home;VIEWS.home=function(){return upHomeBand()+prev.apply(this,arguments)}})();
+/* the home page is the ecosystem (44-ecosystem.js); upHomeBand stays as the compact pathway pair */
 
 /* ── search: the UPSC pages, volumes, topics and syllabus lines ─────────── */
 (function(){if(typeof buildIndex!=="function")return;const prev=buildIndex;

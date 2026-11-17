@@ -1,6 +1,7 @@
 /* The opening sequence: exactly five seconds from the first frame the reader
    sees, at the six widths the brief names, plus Skip, reduced motion, and the
-   state model: every kind of home-page load plays in full; a deep link does not. Timing is read from the overlay's own record
+   state model: every full-page load of any address plays in full; navigation inside
+   the app never does. Timing is read from the overlay's own record
    (window.__INTRO), which the browser fills from requestAnimationFrame and
    Paint Timing, both on the performance.now() timeline. */
 import { serve, browser, check, done } from './lib.mjs';
@@ -34,7 +35,7 @@ for (const [w, h] of SIZES) {
   await q.waitForFunction(() => window.__APP_READY === true && window.__INTRO && window.__INTRO.anims.length > 5, null, { timeout: 40000 });
   await q.evaluate(() => { window.__APP_READY = false; window.__INTRO.anchored = true; });   /* hold, and keep the clock from re-anchoring what the test pauses */
   const bad = [];
-  for (const [t, sel] of [[1250, '.ia-logo'], [2000, '.ia-logo'], [2800, '.ia-ib'], [3800, '.ia-tg'], [4600, '.ia-vb']]) {
+  for (const [t, sel] of [[1150, '.ia-logo'], [2000, '.ia-logo'], [2800, '.ia-ib'], [2800, '.ia-up'], [3800, '.ia-tg'], [4280, '.ia-vb']]) {
     await q.evaluate(t => __INTRO.anims.forEach(a => { a.pause(); a.currentTime = t; }), t);
     await q.waitForTimeout(60);
     const g = await q.evaluate(sel => {
@@ -70,35 +71,32 @@ for (const [w, h] of SIZES) {
   await p.goto(base, { waitUntil: 'commit' });
   /* measured inside the page on the first frame the clock runs, before the overlay can leave */
   await p.waitForFunction(() => { const I = window.__INTRO; if (!I || I.state === 'waiting') return false;
-    window.__RM = ['.ia-logo', '.ia-ib', '.ia-tg', '.ia-vb'].every(s => { const e = document.querySelector('#splash ' + s); return !!e && +getComputedStyle(e).opacity === 1 && e.getBoundingClientRect().height > 0; });
+    window.__RM = ['.ia-logo', '.ia-ib', '.ia-up', '.ia-tg'].every(s => { const e = document.querySelector('#splash ' + s); return !!e && +getComputedStyle(e).opacity === 1 && e.getBoundingClientRect().height > 0; });
     return true; }, null, { timeout: 20000, polling: 'raf' });
   const still = await p.evaluate(() => window.__RM);
   await finished(p);
   const r = await p.evaluate(rec);
-  check(r.mode === 'still' && still, 'reduced motion shows the monogram, name, course, tagline and verbs at once');
+  check(r.mode === 'still' && still, 'reduced motion shows the identity, the line and both pathways at once');
   check(r.how === 'still' && r.end - r.start >= 1500 - 0.5 && r.end - r.start < 5000, `reduced motion leaves after ${Math.round(r.end - r.start)} ms, without the five-second hold`);
   await ctx.close();
 }
-/* the state model: the home page plays in full on every kind of load; a deep link does not */
+/* the state model: every full-page load plays in full, whatever the address; the app's own navigation never does */
 {
   const ctx = await b.newContext({ viewport: { width: 1024, height: 768 } });
   const p = await ctx.newPage();
   const full = async (label) => { await finished(p); const r = await p.evaluate(rec);
     check(r.mode === 'play' && Math.abs(r.exitAt - r.start - 5000) < 0.5 && r.end - r.start >= 4999.5 && r.end - r.start <= 5000 + FRAME,
       `${label}: the full sequence plays (${Math.round(r.end - r.start)} ms, navigation type ${await p.evaluate(() => window.__INTRO.nav)})`, JSON.stringify({ mode: r.mode, how: r.how })); };
-  await p.goto(base + '#/course', { waitUntil: 'commit' });
-  await finished(p);
-  let r = await p.evaluate(rec);
-  check(r.mode === 'cover' && r.how === 'cover' && r.end - r.start < 5000, `a deep link to another page skips the sequence and leaves when ready (${Math.round(r.end - r.start)} ms)`);
-  await p.goto(base, { waitUntil: 'commit' }); await full('the home page after a deep link');
+  await p.goto(base + '#/course', { waitUntil: 'commit' }); await full('a shared link to another page');
+  await p.goto(base, { waitUntil: 'commit' }); await full('the home page after a shared link');
   await p.reload({ waitUntil: 'commit' }); await full('a reload of the home page');
   const cdp = await ctx.newCDPSession(p); await cdp.send('Network.setCacheDisabled', { cacheDisabled: true });
   await p.reload({ waitUntil: 'commit' }); await full('a hard reload with the cache disabled');
   await cdp.send('Network.setCacheDisabled', { cacheDisabled: false });
   /* a hash change alone is a same-document navigation: leave the document first so each address is a real load */
   await p.goto('about:blank'); await p.goto(base + '#/home', { waitUntil: 'commit' }); await full('a direct #/home address');
-  await p.goto('about:blank'); await p.goto(base + '#/learn', { waitUntil: 'commit' }); await finished(p);
-  check((await p.evaluate(rec)).mode === 'cover', 'a second deep link still skips it');
+  await p.goto('about:blank'); await p.goto(base + '#/upsc/economics-handbooks', { waitUntil: 'commit' }); await full('a shared link into the UPSC handbooks');
+  check(await p.evaluate(() => { try { return Object.keys(localStorage).every(k => !/intro|splash/i.test(k)) && Object.keys(sessionStorage).every(k => !/intro|splash/i.test(k)); } catch (e) { return true; } }), 'nothing about the opening is kept in local or session storage');
   await p.evaluate(() => nav('home')); await p.waitForTimeout(150);
   check(await p.locator('#splash').count() === 0, 'navigating to home inside the app does not show the opening');
   await p.evaluate(() => nav('course')); await p.waitForTimeout(150); await p.goBack(); await p.waitForTimeout(250);
