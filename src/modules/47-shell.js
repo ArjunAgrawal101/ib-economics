@@ -192,6 +192,9 @@ function fxPaintShell(){
   }
   c.innerHTML=`<div class="wrap full cx-in">${fxSwitcher(path,"cx-sw")}<div class="cx-items cx-${path}">${inner}</div></div>`;
   c.classList.toggle("has-items",!!inner);
+  /* on a narrow screen the bar scrolls sideways: bring the current destination into view, centred where it can be */
+  const it=c.querySelector(".cx-items"),on=it&&it.querySelector(".on");
+  if(on&&it.scrollWidth>it.clientWidth+1){const d=on.getBoundingClientRect().left-it.getBoundingClientRect().left+it.scrollLeft;it.scrollLeft=Math.max(0,d-(it.clientWidth-on.offsetWidth)/2)}
  }
  fxClosePanel();
 }

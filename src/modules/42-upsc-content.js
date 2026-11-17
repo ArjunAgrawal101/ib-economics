@@ -474,7 +474,7 @@ const UP_CA=[
   why:"GST is decided jointly by the Union and the States in the GST Council, so every change to its law and administration is also a test of cooperative federalism.",
   pre:"Council composition and GST 2.0 rates.",mains:"Tax administration reform.",
   src:"GST Council, 57th meeting, 8 October 2026",vol:"IV",part:"F",t:"gst"},
- {id:"mpc-oct-2026",d:"2026-10-07",th:"RBI and monetary policy",h:"The MPC raises the repo rate to 5.50% and changes its stance",
+ {id:"mpc-oct-2026",d:"2026-10-07",th:"RBI and monetary policy",v:1,h:"The MPC raises the repo rate to 5.50% and changes its stance",
   w:"The Monetary Policy Committee voted unanimously to raise the repo rate by 25 basis points to 5.50% (SDF 5.25%, MSF and Bank Rate 5.75%), and, with two members dissenting, changed the stance to calibrated tightening. It was the first increase since February 2023.",
   c:"Flexible inflation targeting; pre-emptive tightening against second-round effects of a supply shock.",
   why:"A change in the policy rate passes, with lags, to lending and deposit rates and to bond yields. As the first increase since February 2023, it marks a turn in the policy cycle.",

@@ -184,7 +184,7 @@ const text = u => decodeURIComponent(new URL(u).searchParams.get('text') || '');
   check(f.vis.length >= 2 && f.vis.every(t => t === 'External sector') && f.pressed === 'true', 'a theme filter shows only its entries, and empty months are hidden', JSON.stringify(f));
   await p.locator('.up-ca-page .up-chip', { hasText: 'All themes' }).click();
   const checked = await p.evaluate(() => UP_CA.filter(c => c.v).map(c => [c.id, c.url, c.d]));
-  check(checked.length === 8 && checked.every(([, u]) => /^https:\/\/(rbi\.org\.in|www\.indiabudget\.gov\.in)\//.test(u)), 'the eight entries added in this release name the official document they were checked in', JSON.stringify(checked.map(x => x[0])));
+  check(checked.length >= 8 && checked.every(([, u]) => /^https:\/\/(rbi\.org\.in|www\.indiabudget\.gov\.in)\//.test(u)), 'every entry checked at source names the official document it was checked in', JSON.stringify(checked.map(x => x[0])));
   await go(p, '#/upsc/current-affairs/bop-sep-2026', 900);
   check(await p.evaluate(() => { const e = document.getElementById('ca-bop-sep-2026'); const r = e.getBoundingClientRect(); return r.top >= 0 && r.top < 320 && e.classList.contains('hl') }), 'an entry\'s address brings it into view');
 
