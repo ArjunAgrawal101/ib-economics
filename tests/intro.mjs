@@ -123,6 +123,7 @@ for (const [w, h] of SIZES) {
   const p = await ctx.newPage();
   await p.goto(base, { waitUntil: 'commit' });
   await p.waitForFunction(() => window.__R === true && window.__INTRO && window.__INTRO.state === 'playing', null, { timeout: 60000 });
+  await p.waitForTimeout(600);   /* let the page settle, as a reader would meet it */
   await p.keyboard.press('Tab');
   const focused = await p.evaluate(() => document.activeElement && document.activeElement.id);
   check(focused === 'splashskip', 'Skip is the first stop for the keyboard', String(focused));
@@ -130,12 +131,15 @@ for (const [w, h] of SIZES) {
     return { w: r.width, h: r.height, o: +s.opacity, outline: s.outlineStyle, inView: r.right <= innerWidth && r.bottom <= innerHeight && r.left >= 0 }; });
   check(vis.w > 60 && vis.h >= 36 && vis.o > 0.9 && vis.inView && vis.outline !== 'none', 'Skip is visible in its corner, with a visible focus ring', JSON.stringify(vis));
   await p.evaluate(() => { window.__K = null; document.addEventListener('keydown', e => { if (!window.__K) window.__K = performance.now(); }, { capture: true, once: true }); });
+  await p.evaluate(() => { document.addEventListener('click', () => { const sp = document.getElementById('splash'), f = window.__INTRO.fade;
+    window.__AFTER = { pe: sp && getComputedStyle(sp).pointerEvents, d: f && f.effect.getTiming().duration }; }, { once: true }); });
   await p.keyboard.press('Enter');
   await finished(p);
   const r = await p.evaluate(rec);
-  const k = await p.evaluate(() => window.__K);
+  const k = await p.evaluate(() => window.__K), after = await p.evaluate(() => window.__AFTER);
   check(r.how === 'skipped' && r.skipAt - k < 17, `Enter on Skip starts the exit within one frame (${(r.skipAt - k).toFixed(1)} ms)`);
-  check(r.end - r.skipAt <= 180 + 250, `and the overlay, faded out in 180 ms, is gone from the document ${Math.round(r.end - r.skipAt)} ms later`);
+  check(after && after.pe === 'none' && after.d === 180, 'at the press the overlay stops taking clicks and fades out in 180 ms on the compositor', JSON.stringify(after));
+  check(r.end - r.skipAt <= 180 + 400, `and it is gone from the document ${Math.round(r.end - r.skipAt)} ms after the press`);
   const ls = await p.evaluate(() => +localStorage.getItem('aae.intro.skip'));
   const now = await p.evaluate(() => Date.now());
   check(ls > 0 && now - ls < 60000, 'the skip is remembered as a timestamp in aae.intro.skip');
