@@ -30257,7 +30257,9 @@ function SPLASHSUITE(){
  const html=document.documentElement.outerHTML;
  const I=window.__INTRO||{},PL=I.PLAN||[],BR=I.BRIEF||[],ALL=PL.concat(BR);
  const clock=(document.getElementById("intro-clock")||{}).textContent||"";
- const sp=document.getElementById("splash");
+ /* the overlay is read from the live element: a later run of the suite (the quality report, or the
+    command palette) comes after it has been removed, and then these checks have nothing to inspect */
+ const sp=document.getElementById("splash"),mk=sp?sp.outerHTML:"";
  const at=k=>(PL.find(p=>p[0]===k)||[])[1];
  const n=sel=>sp?sp.querySelectorAll(sel).length:1;
  const last=p=>p[2]+(p[5]||0)*Math.max(0,n(p[0])-1);
@@ -30288,17 +30290,13 @@ function SPLASHSUITE(){
      return PL.filter(p=>!p[6]).every(p=>{const s0=p[1]+0,s1=last(p);return s1<=q[0]||s0>=q[1]||
        p[3].every(([,f],k,a)=>k===0||JSON.stringify(f)===JSON.stringify(a[k-1][1]))})})());
  T("Opening · the identity reads ARJUN AGRAWAL, ECONOMICS, THINK LIKE AN ECONOMIST.",
-   (()=>{const m=/<div id="splash"[\s\S]*?<\/button><\/div>/.exec(html);if(!m)return true;
-     const t=[...m[0].matchAll(/data-text="([^"]+)"/g)].map(x=>x[1]);
-     return t.join(" / ")==="ARJUN AGRAWAL / ECONOMICS / THINK LIKE AN ECONOMIST."
-       &&/aria-label="Arjun Agrawal · Economics\. Think like an economist\."/.test(m[0])})());
+   !sp||([...sp.querySelectorAll("[data-text]")].map(e=>e.getAttribute("data-text")).join(" / ")==="ARJUN AGRAWAL / ECONOMICS / THINK LIKE AN ECONOMIST."
+     &&sp.getAttribute("aria-label")==="Arjun Agrawal · Economics. Think like an economist."));
  T("Opening · the name is carried by the brand vectors, never set again in type",
-   (()=>{const m=/<div id="splash"[\s\S]*?<\/button><\/div>/.exec(html);if(!m)return true;
-     return (m[0].replace(/aria-label="[^"]*"/g,"").replace(/data-text="[^"]*"/g,"").replace(/<!--[\s\S]*?-->/g,"").match(/Arjun\s+Agrawal/gi)||[]).length===0})());
+   !sp||(mk.replace(/aria-label="[^"]*"/g,"").replace(/data-text="[^"]*"/g,"").replace(/<!--[\s\S]*?-->/g,"").match(/Arjun\s+Agrawal/gi)||[]).length===0);
  T("Opening · both pathways: IB DP in burgundy, UPSC CSE in forest green, India's dots warming to gold",
-   (()=>{const m=/<div id="splash"[\s\S]*?<\/button><\/div>/.exec(html);if(!m)return true;
-     return /o-cap-ib[\s\S]*?IB DP/.test(m[0])&&/o-cap-up[\s\S]*?UPSC CSE/.test(m[0])&&/class="o-in"/.test(m[0])
-       &&/--o-ib:/.test(css)&&/--o-up:/.test(css)&&!/IB DP Economics|Learn\. Think\. Calculate\./.test(m[0])})());
+   (!sp||(/IB DP/.test((sp.querySelector(".o-cap-ib")||{}).textContent||"")&&/UPSC CSE/.test((sp.querySelector(".o-cap-up")||{}).textContent||"")
+     &&!!sp.querySelector(".o-in")&&!/IB DP Economics|Learn\. Think\. Calculate\./.test(mk)))&&/--o-ib:/.test(css)&&/--o-up:/.test(css));
  T("Opening · the world map is inline vector data with India on its own layer, no image or video",
    !sp||(sp.querySelectorAll(".o-band").length===8&&!!sp.querySelector(".o-in path")&&!sp.querySelector("img,video,canvas,iframe")));
  T("Opening · a Skip introduction control is a real button, reachable by keyboard",
@@ -30324,8 +30322,7 @@ function SPLASHSUITE(){
  T("Opening · a slow start holds the final frame instead of uncovering an unfinished page",
    /__APP_READY/.test(clock)&&/window\.__APP_READY=true/.test(html));
  T("Opening · the overlay names itself for assistive technology and hides its decoration",
-   (()=>{const m=/<div id="splash"[^>]*>/.exec(html);if(!m)return true;
-     return /role="status"/.test(m[0])&&!!sp&&[...sp.children].filter(x=>x.id!=="splashskip").every(x=>x.getAttribute("aria-hidden")==="true")})());
+   !sp||(sp.getAttribute("role")==="status"&&[...sp.children].filter(x=>x.id!=="splashskip").every(x=>x.getAttribute("aria-hidden")==="true")));
  T("Opening · the monogram's journey to the header is measured, and optional",
    /\.brand \.mark/.test(clock)&&/if\(!m\|\|!tg\)return/.test(clock));
  T("Opening · the stored keys are listed where the site says what it stores",
@@ -30333,7 +30330,7 @@ function SPLASHSUITE(){
  T("Splash · the faded overlay stops intercepting clicks before it is removed",
    /#splash\.out\{[^}]*pointer-events:none/.test(css));
  T("Splash · nothing invisible is left behind: the overlay is removed, not merely faded",
-   /sp\.parentNode\.removeChild\(sp\)/.test(html));
+   /sp\.parentNode\.removeChild\(sp\)/.test(clock));
  T("Splash · the page behind is never made inert",!/inert/.test(clock)&&!document.body.hasAttribute("inert"));
  T("Splash · nothing on the page locks scrolling",
    getComputedStyle(document.documentElement).overflow!=="hidden"
