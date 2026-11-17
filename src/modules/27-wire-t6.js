@@ -8,7 +8,7 @@
    it lists every section, including those on the bar (a narrow screen withdraws some of them), and anything not named
    below is appended under "More", so no section can become unreachable. */
 moreMenu=function(e){e.stopPropagation();if(document.getElementById("menu")){closeMenuPop();return}
- const G=[["Pathways",[["upsc","UPSC CSE Economics"]]],["Learn and explore",[["resources","Resources"],["paths","Pathways"],["course","Course"],["learn","Learn"],["think","Think"],["events","Economic events"],["@why","Why did this happen?"],["ideas","Economists and ideas"],["data","Economic data"],["lab","Lab"],["world","Real World"],["mind","Mindmaps"],["everywhere","Economics, Everywhere"],["tok","TOK × Economics"],["arjun","Video studio"],["video","Video library"]]],
+ const G=[["Pathways",[["upsc","UPSC CSE Economics"],["concepts","One Concept. Two Perspectives."]]],["Learn and explore",[["resources","Resources"],["paths","Pathways"],["course","Course"],["learn","Learn"],["think","Think"],["events","Economic events"],["@why","Why did this happen?"],["ideas","Economists and ideas"],["data","Economic data"],["lab","Lab"],["world","Real World"],["mind","Mindmaps"],["everywhere","Economics, Everywhere"],["tok","TOK × Economics"],["arjun","Video studio"],["video","Video library"]]],
   ["Exam and research",[["practise","Practise"],["examiner","Exam"],["papers","Paper labs"],["dna","Exam DNA"],["calculate","Calculate"],["session","Timed session"],["ees","EE Studio"],["ia","IA studio"]]],
   ["Your work",[["master","Dashboard"],["syllabus","My syllabus"],["saved","My economics"],["workspace","My workspace"]]],
   ["Teach",[["educator","Educator studio"],["teacher","Teacher tools"]]],
