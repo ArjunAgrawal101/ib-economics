@@ -12,9 +12,9 @@ const UP_TABS=["UPSC Overview","Syllabus","Economics Resources","Economics Handb
 SECTIONS.push({v:"upsc",n:"UPSC CSE Economics",tabs:UP_TABS});
 const UP_T={overview:0,syllabus:1,resources:2,handbooks:3,current:4,course:5,educator:6,contact:7};
 const UP_RN=["I","II","III","IV","V","VI","VII","VIII","IX","X","XI"];
-const UP_PRICE="₹99 / Volume";
+const UP_PRICE="₹99 per soft copy";
 const UP_PHONE="+91 7092844945";
-const UPS={mode:"pre",cat:"",q:"",th:"",ct:"handbook",vol:"volume-i",flow:0};
+const UPS={mode:"pre",cat:"",q:"",th:"",ct:"handbook",vol:"volume-i",flow:0,road:0};
 function upHref(tab,arg){return routeFormat("upsc",UP_T[tab]||0,arg)}
 function upGo(tab,arg){nav("upsc",UP_T[tab]||0,arg)}
 function upVol(n){return UPSC_HB.volumes.find(v=>v.n===n||v.id===n)}
@@ -30,7 +30,7 @@ function upHbMsg(v){return `Hello Arjun, I would like to purchase the digital co
 function upHbSubject(v){return `Handbook purchase: Volume ${v.n}, ${v.title} (₹99)`}
 const UP_GEN_MSG="Hello Arjun, I have a question about UPSC CSE Economics: ";
 function upExt(href,label,cls,aria){return `<a class="${cls}" href="${esA(href)}" target="_blank" rel="noopener noreferrer"${aria?` aria-label="${esA(aria)}"`:""}>${label}</a>`}
-function upBuy(v,cls){return upExt(upWa(upHbMsg(v)),`Purchase PDF <span class="up-sep" aria-hidden="true">|</span> ₹99`,cls||"up-btn up-buy",`Purchase Volume ${v.n} PDF for ₹99 on WhatsApp`)}
+function upBuy(v,cls){return upReq(v,cls)}   /* an enquiry: the purchase itself is completed by direct contact */
 
 /* ── small shared pieces ────────────────────────────────────────────────── */
 function upMast(eb,h,lede,extra,cls){return `<section class="up-mast ${cls||""}"><div class="wrap full up-mast-in">
@@ -41,7 +41,7 @@ function upVolLinks(vols){return vols.map(([n,p])=>{const v=upVol(n);return v?`<
 function upDots(vols){const on=new Set(vols.map(x=>x[0]));const names=[...on].map(n=>"Volume "+n).join(", ");
  return `<span class="up-dots" role="img" aria-label="Treated in ${esA(names)}">${UP_RN.map(n=>`<i class="${on.has(n)?"on":""}" title="Volume ${n}"></i>`).join("")}</span>`}
 function upDate(c){try{const d=new Date(c.d+"T12:00:00Z");return d.toLocaleDateString("en-GB",c.month?{month:"long",year:"numeric"}:{day:"numeric",month:"long",year:"numeric"})}catch(e){return c.d}}
-function upCover(v,cls,eager){const i=v.img&&v.img.cover;if(!i)return `<span class="up-cv-ph">Vol. ${v.n}</span>`;
+function upCover(v,cls,eager){const i=v.img&&(eager||/\blg\b/.test(cls||"")?v.img.cover:(v.img.coverSm||v.img.cover));if(!i)return `<span class="up-cv-ph">Vol. ${v.n}</span>`;
  return `<img class="${cls||"up-cv"}" src="${esA(i.src)}" alt="Cover of Volume ${esA(v.n)}: ${esA(v.title)}" width="${i.w}" height="${i.h}"${eager?"":' loading="lazy"'} decoding="async">`}
 
 /* ── figures: original and computed, each says what it shows ───────────── */
@@ -163,11 +163,12 @@ function upGlyph(k){return `<svg class="up-gl" viewBox="0 0 40 40" aria-hidden="
 function upOverview(){const H=UPSC_HB.volumes,pages=H.reduce((a,v)=>a+v.pages,0);
  return `<section class="up-hero"><div class="wrap full up-hero-in">
   <div class="up-hero-copy"><div class="up-eb"><span>UPSC CSE Economics</span><span class="up-eb-s">Prelims and Mains</span></div>
-   <h1 class="up-h1">UPSC Economics: From Understanding to Application</h1>
-   <p class="up-lede">Build a strong foundation in economic concepts, understand the Indian economy, connect theory with current developments and develop the analytical skills required for Prelims and Mains.</p>
-   <div class="up-cta"><a class="up-btn up-pri" href="${upHref("syllabus")}">Explore the syllabus</a><a class="up-btn up-gh" href="${upHref("handbooks")}">The Handbook Collection</a><a class="up-btn up-gh" href="${upHref("course")}">The 3-month programme</a></div>
+   <h1 class="up-h1">Understand the Indian Economy. <em>Prepare with clarity.</em></h1>
+   <p class="up-lede">Structured learning for UPSC Civil Services aspirants, connecting economic foundations, Indian economic policy, contemporary developments and examination preparation.</p>
+   <div class="up-cta"><a class="up-btn up-pri" href="${upHref("handbooks")}">Explore the Handbook Library</a><a class="up-btn up-gh" href="${upHref("syllabus")}">Explore the UPSC Syllabus</a><a class="up-btn up-gh" href="${upHref("course")}">Discover the Intensive Course</a></div>
    <dl class="up-stats"><div><dt>Handbook volumes</dt><dd>${H.length}</dd></div><div><dt>Pages in the collection</dt><dd>${pages}</dd></div><div><dt>Free topic previews</dt><dd>${UP_TOPICS.length}</dd></div></dl></div>
   <figure class="up-hero-fig">${upMap()}<figcaption>How the eleven volumes build on one another, from each volume's own series map. Select a volume to open it.</figcaption></figure></div></section>
+ ${upRoad()}
  <section class="up-sec"><div class="wrap full">${upHead("Our approach","Five pillars","")}
   <ol class="up-pillars">${UP_PILLARS.map(([k,t,d],i)=>`<li class="up-pl rv" style="--i:${i}">${upGlyph(k)}<span class="up-pl-n">${String(i+1).padStart(2,"0")}</span><b>${esc(t)}</b><span>${esc(d)}</span></li>`).join("")}</ol></div></section>
  <section class="up-sec up-alt"><div class="wrap full">${upHead("How we approach Economics","One idea, seven steps","Follow the repo rate from a definition to a Mains judgement. Choose a step.","up-flow-h")}
@@ -187,6 +188,33 @@ function upOverview(){const H=UPSC_HB.volumes,pages=H.reduce((a,v)=>a+v.pages,0)
    <div class="up-vs-c"><h3>Mains</h3><ul><li>Causes, mechanisms and consequences</li><li>Indian data and examples, dated</li><li>Structure: define, analyse, evidence, judge</li><li>A conditional conclusion, not a list</li></ul></div></div>
   <p class="up-why"><b>Why understanding comes first.</b> An isolated fact answers one question. A mechanism answers every question built on it: the student who knows why bond prices fall when yields rise can answer a Prelims statement on G-secs and a Mains question on crowding out with the same idea.</p></div></section>
  ${upNext()}`}
+/* ── the seven-stage roadmap: from the syllabus to revision ───────────────
+   Each stage names what to do and opens the pages of this section that serve it. */
+const UP_ROAD=[
+ ["Understand the syllabus","Know exactly what is examined.","Read the official Prelims GS I and Mains GS III lines that concern Economics, what each asks of you, and where the Optional differs.",
+  [["Syllabus explorer: Prelims GS I","syllabus",null],["Mains GS III, line by line","syllabus","mains"],["The Optional, and what is not covered","syllabus","optional"]]],
+ ["Build the foundations","Learn the concepts every question rests on.","Scarcity, markets, elasticity, money and the national accounts: the vocabulary that Prelims options and Mains arguments turn on.",
+  [["Volume I · Introduction to Economics","handbooks","volume-i"],["Shared concepts, read for UPSC","@concepts",null],["Topic preview: the PPC","resources","ppc"]]],
+ ["Study the Indian economy","Apply each concept to India's institutions and data.","Money and the RBI, inflation, the Budget, banks and markets, the external sector, agriculture, industry and labour.",
+  [["The Indian Economy Collection","handbooks",null],["Topic preview: inflation","resources","inflation"],["Topic preview: the fiscal deficit","resources","deficit"]]],
+ ["Follow current affairs","Read each development through the concept it tests.","Dated developments, each tagged to its syllabus theme and the volume that explains the concept behind it.",
+  [["Current Affairs","current",null],["Economics Resources by theme","resources",null]]],
+ ["Practise for Prelims","Sharpen definitions and distinctions.","Statement-based questions reward precise understanding: practise elimination on the questions attached to each topic preview.",
+  [["Topic previews with MCQs","resources",null],["Prelims GS I themes","syllabus",null]]],
+ ["Write for Mains","Structure: define, analyse, evidence, judge.","Each GS III line carries an answer framework; each shared concept carries a practice question in the style of GS III.",
+  [["Mains GS III answer frameworks","syllabus","mains"],["Practice questions in shared concepts","@concepts",null],["The intensive course","course",null]]],
+ ["Revise","Return to the compendium, not the whole book.","Every volume closes with a mind map, rapid revision, high-yield facts, traps and a glossary for the last weeks.",
+  [["Revision compendiums in every volume","handbooks",null],["Contact for a soft copy","contact",null]]]];
+function upRoadHref([t,k,a]){return k==="@concepts"?routeFormat("concepts",1,null):upHref(k,a||undefined)}
+function upRoadPanel(i){const [t,line,copy,links]=UP_ROAD[i];
+ return `<div class="up-rd-h"><span class="up-rd-n">${String(i+1).padStart(2,"0")}</span><div><h3>${esc(t)}</h3><p class="up-rd-l">${esc(line)}</p><p>${esc(copy)}</p></div></div>
+  <ul class="up-rd-g">${links.map(x=>`<li><a href="${esA(upRoadHref(x))}">${esc(x[0])} <span aria-hidden="true">→</span></a></li>`).join("")}</ul>`}
+function upRoadGo(i){UPS.road=i;const p=document.getElementById("up-rd-p");if(p)p.innerHTML=upRoadPanel(i);
+ document.querySelectorAll(".up-rd-s button").forEach((b,k)=>{b.classList.toggle("on",k===i);b.setAttribute("aria-pressed",String(k===i))})}
+function upRoad(){const i=UPS.road||0;
+ return `<section class="up-sec up-roadmap" aria-labelledby="up-rd-h"><div class="wrap full">${upHead("The roadmap","Seven stages, from the syllabus to revision","Where to begin, and what comes next. Select a stage.","up-rd-h")}
+  <ol class="up-rd-s">${UP_ROAD.map(([t,line],k)=>`<li><button type="button" class="${k===i?"on":""}" aria-pressed="${k===i}" aria-controls="up-rd-p" onclick="upRoadGo(${k})"><span class="up-rd-n">${k+1}</span><b>${esc(t)}</b></button></li>`).join("")}</ol>
+  <div class="up-rd-p" id="up-rd-p" aria-live="polite">${upRoadPanel(i)}</div></div></section>`}
 function upFlowHtml(){const i=UPS.flow;
  return `<div class="up-flow"><ol class="up-fl-track" role="tablist" aria-label="The seven steps">${UP_FLOW.map(([t],k)=>`<li role="presentation"><button role="tab" id="upf-t${k}" aria-selected="${k===i}" aria-controls="upf-p" tabindex="${k===i?0:-1}" class="${k===i?"on":""}" onclick="upFlow(${k})" onkeydown="upFlowKey(event,${k})"><span>${k+1}</span>${esc(t)}</button></li>`).join("")}</ol>
   <div class="up-fl-p" id="upf-p" role="tabpanel" aria-labelledby="upf-t${i}" aria-live="polite">${upFlowPanel(i)}</div></div>`}
@@ -204,19 +232,25 @@ function upNext(){return `<section class="up-sec up-next"><div class="wrap full"
   <a class="up-goal" href="${upHref("course")}"><span class="up-k">${esc(UP_COURSE.fee)}</span><b>Enquire about the 3-month programme</b><span>${esc(UP_COURSE.feeLine)}. Online, Prelims and Mains, at most 25 students.</span><span class="up-go">See the programme →</span></a></div></div></section>`}
 
 /* ── 1 · Syllabus ───────────────────────────────────────────────────────── */
-function upSyllabus(){const m=ARG==="mains"?"mains":UPS.mode;UPS.mode=m;
+function upSyllabus(){const m=ARG==="mains"?"mains":ARG==="optional"?"opt":UPS.mode;UPS.mode=m;
  return upMast("Syllabus","UPSC CSE Economics Syllabus","What the examination asks for in Economics, line by line: the official wording, what it means, where the Economics Collection treats it, and how it connects with current developments.")+
  `<div class="wrap full up-body">
   <aside class="up-srcbox"><div class="up-k">Official source</div><p><a href="${esA(UP_SYL_SRC.url)}" target="_blank" rel="noopener noreferrer">${esc(UP_SYL_SRC.doc)}</a>, dated ${esc(UP_SYL_SRC.date)}. ${esc(UP_SYL_SRC.where)}.</p>
    <p class="up-note">Only text marked <span class="up-lab o">Official</span> is UPSC wording. Everything else is explanation and organisation for study.</p></aside>
   <ul class="up-legend" aria-label="What the labels mean"><li><span class="up-lab o">Official</span>UPSC syllabus wording, quoted exactly</li><li><span class="up-lab e">Explained</span>Arjun's explanation of the topic</li><li><span class="up-lab c">Covered</span>where the Economics Collection treats it</li><li><span class="up-lab a">Current</span>a dated development that tests it</li></ul>
-  <div class="up-seg" role="tablist" aria-label="Examination stage"><button role="tab" id="ups-pre" aria-selected="${m==="pre"}" aria-controls="ups-panel" class="${m==="pre"?"on":""}" onclick="upMode('pre')">Prelims <span>General Studies Paper I</span></button><button role="tab" id="ups-mains" aria-selected="${m==="mains"}" aria-controls="ups-panel" class="${m==="mains"?"on":""}" onclick="upMode('mains')">Mains <span>General Studies Paper III</span></button></div>
+  <div class="up-seg" role="tablist" aria-label="Examination stage"><button role="tab" id="ups-pre" aria-selected="${m==="pre"}" aria-controls="ups-panel" class="${m==="pre"?"on":""}" onclick="upMode('pre')">Prelims <span>General Studies Paper I</span></button><button role="tab" id="ups-mains" aria-selected="${m==="mains"}" aria-controls="ups-panel" class="${m==="mains"?"on":""}" onclick="upMode('mains')">Mains <span>General Studies Paper III</span></button><button role="tab" id="ups-opt" aria-selected="${m==="opt"}" aria-controls="ups-panel" class="${m==="opt"?"on":""}" onclick="upMode('opt')">The Optional <span>Papers VI and VII</span></button></div>
   <div class="up-acc-tools"><button class="up-btn up-gh sm" onclick="upAccAll(true)">Expand all</button><button class="up-btn up-gh sm" onclick="upAccAll(false)">Collapse all</button>
    <span class="up-dots-key">${upDots([["III",""]]).replace(/class="up-dots"/,'class="up-dots k"')} <span>Each row of dots shows Volumes I to XI; a filled dot means that volume treats the topic. These are mapped from the volumes' own contents and syllabus maps, not a measure of completion.</span></span></div>
-  <div id="ups-panel" role="tabpanel" aria-labelledby="ups-${m}">${m==="pre"?upPreHtml():upMainsHtml()}</div></div>`}
+  <div id="ups-panel" role="tabpanel" aria-labelledby="ups-${m}">${upModeHtml(m)}</div></div>`}
+function upModeHtml(m){return m==="pre"?upPreHtml():m==="opt"?upOptHtml():upMainsHtml()}
+/* the Optional: named and placed, never claimed */
+function upOptHtml(){return `<div class="up-opt"><div class="up-row"><span class="up-lab o">Official</span><span>The Civil Services (Main) Examination includes two papers in an optional subject chosen by the candidate (Papers VI and VII), and Economics is among the optional subjects. The syllabus for each optional subject is set out in the official notice.</span></div>
+  <div class="up-row"><span class="up-lab e">Explained</span><span>The Economics Optional is a separate and much wider syllabus than the Economics in General Studies: it is examined in two papers of its own, in greater theoretical depth.</span></div>
+  <div class="up-opt-c"><h3 class="up-h4">What this section covers, and what it does not</h3><p>The Indian Economy Collection, the topic previews and the UPSC Economics Course on this platform are written for Economics as it appears in General Studies: Prelims GS Paper I and Mains GS Paper III, with the related lines of GS Paper II. They are not a course for the Economics Optional. The foundations overlap, but a candidate taking the Optional should study its own syllabus from the official notice.</p>
+   <p><a href="${esA(UP_SYL_SRC.url)}" target="_blank" rel="noopener noreferrer">Read the official notice (UPSC)</a></p></div></div>`}
 function upMode(m){UPS.mode=m;const p=document.getElementById("ups-panel");if(!p)return;
- ["pre","mains"].forEach(k=>{const b=document.getElementById("ups-"+k);if(b){b.classList.toggle("on",k===m);b.setAttribute("aria-selected",k===m)}});
- p.setAttribute("aria-labelledby","ups-"+m);p.innerHTML=m==="pre"?upPreHtml():upMainsHtml()}
+ ["pre","mains","opt"].forEach(k=>{const b=document.getElementById("ups-"+k);if(b){b.classList.toggle("on",k===m);b.setAttribute("aria-selected",k===m)}});
+ p.setAttribute("aria-labelledby","ups-"+m);p.innerHTML=upModeHtml(m)}
 function upAccAll(open){document.querySelectorAll("#ups-panel details.up-acc").forEach(d=>d.open=open)}
 function upCaLink(id){const c=id&&upCA(id);return c?`<div class="up-row"><span class="up-lab a">Current</span><a class="up-ca-l" href="${upHref("current")}" onclick="UPS.th='${esA(c.th)}'">${esc(upDate(c))}: ${esc(c.h)}</a></div>`:""}
 function upPreHtml(){
@@ -296,55 +330,136 @@ function upConnector(){
    <span role="cell" class="ups"><span class="up-ck">Economics Collection</span>${esc(r.up)}<span class="up-cl">${upVolLinks(r.vols)}${r.t&&upTopic(r.t)?`<a class="up-ibl u" href="${upHref("resources",r.t)}">Preview: ${esc(upTopic(r.t).t)}</a>`:""}</span></span></div>`).join("")}</div>
   <p class="up-note">IB links open the existing IB DP resources on this platform; nothing is duplicated. UPSC links open the handbook volumes and the free previews.</p></section>`}
 
-/* ── 3 · Economics Handbooks ────────────────────────────────────────────── */
-function upHandbooks(){if(ARG){const v=upVol(ARG);if(v)return upVolume(v)}
- const H=UPSC_HB.volumes,pages=H.reduce((a,v)=>a+v.pages,0);
+/* ── 3 · Economics Handbooks: THE INDIAN ECONOMY COLLECTION ──────────────────
+   The library: category and volume filters over eleven cards, each with its cover,
+   an inside page, the exact title, the verified page count, the topics, the syllabus
+   links, the price and the enquiry. A volume's page: the cover, the facts and the
+   enquiry on the left; the overview, what is learnt, the parts, the concepts, the
+   syllabus relevance and the eight-page preview on the right.
+   THE PREVIEW: eight selected pages per volume, rendered exactly as the PDF prints
+   them (nothing drawn over a page; its own header, footer and copyright line kept).
+   Previous and next, page numbers, zoom, full screen and thumbnails; the thumbnail
+   shows first and the full page replaces it, and the next page is fetched ahead. It
+   says plainly that it is a selected preview; it does not claim to prevent copying.
+   Purchase is completed by direct contact: nothing is charged on this website. */
+const UPF={cat:"all",vol:"all"};
+function upCat(k){return (UPSC_HB.categories||[]).find(c=>c.k===k)||{k,n:k}}
+function upCatCount(k){return UPSC_HB.volumes.filter(v=>k==="all"||v.cat===k).length}
+function upReq(v,cls,label){return upExt(upWa(upHbMsg(v)),label||`Request on WhatsApp <span class="up-sep" aria-hidden="true">|</span> ₹99`,cls||"up-btn up-buy",`Request the soft copy of Volume ${v.n} (₹99) on WhatsApp`)}
+function upHandbooks(){if(ARG){const v=upVol(ARG);if(v)return upVolume(v);const m=/^category-([a-z]+)$/.exec(ARG);if(m&&upCat(m[1]).n!==m[1]){UPF.cat=m[1];UPF.vol="all"}}
+ const H=UPSC_HB.volumes,pages=H.reduce((a,v)=>a+v.pages,0),C=UPSC_HB.categories||[];
  return `<section class="up-mast up-hbm"><div class="wrap full up-mast-in up-hbm-in"><div>
-  <div class="up-eb"><span>UPSC CSE Economics</span><span class="up-eb-s">Economics Handbooks</span></div>
-  <h1 class="up-h1">The Economics Handbook Collection</h1>
-  <p class="up-lede">A structured collection of original Economics resources designed to help aspirants understand the foundations of the economy, analyse policy developments and prepare effectively for UPSC CSE.</p>
-  <dl class="up-facts"><div><dt>Volumes</dt><dd>${H.length}</dd></div><div><dt>Pages in all</dt><dd>${pages}</dd></div><div><dt>Price</dt><dd>${UP_PRICE}</dd></div><div><dt>Format</dt><dd>Digital PDF</dd></div></dl></div>
-  <div class="up-fan" aria-hidden="true">${H.slice(0,5).map((v,i)=>`<span style="--i:${i};background-image:url('${esA(v.img.cover.src)}')"></span>`).join("")}</div></div></section>
- <div class="wrap full up-body"><ol class="up-steps" aria-label="How to buy a handbook"><li><b>Choose a volume</b><span>Read its contents and sample pages first.</span></li><li><b>Send the prefilled message</b><span>On WhatsApp or by email: it names the volume and the price of ₹99.</span></li><li><b>Arrange payment and delivery directly</b><span>Nothing is charged, and no purchase is completed, on this website.</span></li></ol>
-  <ul class="up-hbgrid">${H.map((v,i)=>upCard(v,i)).join("")}</ul>
-  <p class="up-note">Each volume is sold individually at ₹99. The handbooks are proprietary: this site shows covers, contents and a few watermarked sample pages, never the complete PDF.</p></div>`}
-function upCard(v,i){
- return `<li class="up-hb rv" style="--i:${i%4}" id="card-${v.id}"><div class="up-hb-cv">${upCover(v)}</div><div class="up-hb-x">
-  <div class="up-hb-k">Volume ${esc(v.n)} <span aria-hidden="true">·</span> ${v.pages} pages</div>
-  <h2 class="up-hb-t"><a href="${upHref("handbooks",v.id)}">${esc(v.title)}</a></h2><p class="up-hb-d">${esc(v.sub)}</p>
-  <ul class="up-chips sm" aria-label="Major topics">${v.concepts.slice(0,4).map(c=>`<li>${esc(c)}</li>`).join("")}</ul>
-  <dl class="up-rel"><div><dt>Prelims</dt><dd>${esc(upShort(v.pre))}</dd></div><div><dt>Mains</dt><dd>${esc(upShort(v.mains))}</dd></div></dl>
-  <div class="up-hb-f"><span class="up-price">${UP_PRICE}</span><span class="up-hb-b"><a class="up-btn up-gh sm" href="${upHref("handbooks",v.id)}">Explore Handbook</a>${upBuy(v,"up-btn up-buy sm")}</span></div></div></li>`}
+  <div class="up-eb"><span>UPSC CSE Economics</span><span class="up-eb-s">Handbook library</span></div>
+  <h1 class="up-h1 hl-h1">The Indian Economy Collection</h1>
+  <p class="up-lede">Eleven carefully structured volumes covering essential dimensions of Indian and international Economics for UPSC CSE preparation.</p>
+  <dl class="up-facts"><div><dt>Volumes</dt><dd>${H.length}</dd></div><div><dt>Pages in all</dt><dd>${pages}</dd></div><div><dt>Price</dt><dd>₹99 per soft copy</dd></div><div><dt>Preview</dt><dd>8 pages of each</dd></div></dl></div>
+  <div class="up-fan" aria-hidden="true">${H.slice(0,5).map((v,i)=>`<span style="--i:${i};background-image:url('${esA((v.img.coverSm||v.img.cover).src)}')"></span>`).join("")}</div></div></section>
+ <div class="wrap full up-body">
+  <ol class="up-steps" aria-label="How to obtain a handbook"><li><b>Choose a volume</b><span>Read its contents and eight selected pages first.</span></li><li><b>Send the prefilled message</b><span>On WhatsApp or by email: it names the volume and the price of ₹99.</span></li><li><b>Complete the purchase directly</b><span>Payment and delivery of the soft copy are arranged with Arjun Agrawal; nothing is charged on this website.</span></li></ol>
+  <div class="hl-filters" role="search" aria-label="Filter the collection">
+   <div class="hl-fg" role="group" aria-label="Category"><span class="hl-fl">Category</span>${[{k:"all",n:"All volumes"}].concat(C).map(c=>`<button type="button" class="hl-chip${UPF.cat===c.k?" on":""}" data-cat="${c.k}" aria-pressed="${UPF.cat===c.k}" onclick="upFilt('cat','${c.k}')">${esc(c.n)} <span class="hl-n">${upCatCount(c.k)}</span></button>`).join("")}</div>
+   <label class="hl-vs"><span class="hl-fl">Volume</span><select onchange="upFilt('vol',this.value)" aria-label="Show one volume"><option value="all">All eleven</option>${H.map(v=>`<option value="${v.id}"${UPF.vol===v.id?" selected":""}>Volume ${esc(v.n)}: ${esc(v.title)}</option>`).join("")}</select></label>
+   <p class="hl-count" id="hl-count" aria-live="polite"></p></div>
+  <ul class="hl-grid" id="hl-grid">${H.map((v,i)=>upCard(v,i)).join("")}</ul>
+  <p class="up-note">Each volume is sold individually as a soft copy (PDF) at ₹99, and the purchase is completed by direct contact with Arjun Agrawal. The library shows each volume's cover and eight selected pages; the complete handbook is never published on this website.</p></div>`}
+function upCard(v,i){const pg=(v.img.pages||[]),inside=pg.find(p=>p.p>5)||pg[1]||pg[0],c=upCat(v.cat),hide=!upShown(v);
+ return `<li class="hl-card rv" style="--i:${i%3}" id="card-${v.id}" data-cat="${v.cat}"${hide?" hidden":""}>
+  <div class="hl-art">${upCover(v,"up-cv hl-cv")}${inside?`<img class="hl-in" src="${esA(inside.t.src)}" alt="" width="${inside.t.w}" height="${inside.t.h}" loading="lazy" decoding="async">`:""}
+   <button type="button" class="hl-pv" onclick="hvOpen('${v.id}',0)" aria-label="Preview eight pages of Volume ${esA(v.n)}: ${esA(v.title)}">Preview 8 pages</button></div>
+  <div class="hl-x"><div class="hl-k"><span class="hl-vn">Volume ${esc(v.n)}</span><span class="hl-cat">${esc(c.n)}</span></div>
+   <h2 class="hl-t"><a href="${upHref("handbooks",v.id)}">${esc(v.title)}</a></h2>
+   <p class="hl-d">${esc(v.sub)}</p>
+   <p class="hl-pp">${v.pages} pages <span aria-hidden="true">·</span> ${v.parts.length} parts <span aria-hidden="true">·</span> Digital PDF (A4)</p>
+   <ul class="up-chips sm" aria-label="Topics">${v.concepts.slice(0,4).map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
+   <dl class="hl-rel"><div><dt>Prelims</dt><dd>${esc(upShort(v.pre))}</dd></div><div><dt>Mains</dt><dd>${esc(upShort(v.mains))}</dd></div></dl>
+   <div class="hl-f"><span class="hl-price"><b>₹99</b> per soft copy</span><span class="hl-b"><a class="up-btn up-gh sm" href="${upHref("handbooks",v.id)}">View volume</a>${upReq(v,"up-btn up-buy sm","Enquire <span class=\"up-sep\" aria-hidden=\"true\">|</span> ₹99")}</span></div></div></li>`}
+function upShown(v){return (UPF.cat==="all"||v.cat===UPF.cat)&&(UPF.vol==="all"||v.id===UPF.vol)}
+function upFilt(k,val){UPF[k]=val;if(k==="cat")UPF.vol="all";
+ const H=UPSC_HB.volumes;let n=0;H.forEach(v=>{const el=document.getElementById("card-"+v.id);const on=upShown(v);if(on)n++;if(el)el.hidden=!on});
+ document.querySelectorAll(".hl-chip").forEach(b=>{const on=b.dataset.cat===UPF.cat;b.classList.toggle("on",on);b.setAttribute("aria-pressed",String(on))});
+ const s=document.querySelector(".hl-vs select");if(s&&k==="cat")s.value="all";
+ const c=document.getElementById("hl-count");if(c)c.textContent=n===H.length?"":`Showing ${n} of ${H.length} volumes`}
 function upShort(s){const i=s.indexOf(":");let t=i>0&&i<70?s.slice(i+1).trim():s;t=t.charAt(0).toUpperCase()+t.slice(1);return t.length>140?t.slice(0,t.lastIndexOf(",",138))+"…":t}
-function upVolume(v){const H=UPSC_HB.volumes,i=H.indexOf(v),prev=H[i-1],next=H[i+1];const img=v.img||{};
- const pages=[["contents","The contents page, with the syllabus map"]].concat(v.samples.map(s=>["p"+s.p,`Page ${s.p}: ${s.cap}`])).filter(([k])=>img[k]);
+function upVolume(v){const H=UPSC_HB.volumes,i=H.indexOf(v),prev=H[i-1],next=H[i+1],c=upCat(v.cat);
  const topics=UP_TOPICS.filter(t=>t.vol===v.n||t.also===v.n);
- return `<section class="up-mast up-vm"><div class="wrap full up-mast-in"><nav class="up-crumb" aria-label="Breadcrumb"><a href="${upHref("handbooks")}">Economics Handbooks</a><span aria-hidden="true">/</span><span>Volume ${esc(v.n)}</span></nav>
-  <div class="up-vm-g"><div class="up-vm-cv">${upCover(v,"up-cv lg",true)}</div><div class="up-vm-x">
-   <div class="up-hb-k">Volume ${esc(v.n)} · The Indian Economy Series · ${esc(v.edition)}</div>
-   <h1 class="up-h1">${esc(v.title)}</h1><p class="up-vsub">${esc(v.sub)}</p>
-   <dl class="up-facts"><div><dt>Pages</dt><dd>${v.pages}</dd></div><div><dt>Format</dt><dd>Digital PDF (A4)</dd></div><div><dt>Parts</dt><dd>${v.parts.length}</dd></div><div><dt>Useful for</dt><dd>${esc(v.exams.join(" · "))}</dd></div></dl>
-   ${v.asof?`<p class="up-asof">${esc(v.asof)}</p>`:""}
-   <div class="up-buybox"><div><span class="up-price lg">${UP_PRICE}</span><span class="up-sm">To purchase this handbook for ₹99, contact Arjun Agrawal.</span></div>
-    <div class="up-buy-b">${upBuy(v,"up-btn up-buy")}<a class="up-btn up-gh" href="${esA(upMail(upHbSubject(v),upHbMsg(v)))}">Enquire by email</a></div>
-    <p class="up-xs">The message names this volume and its price. Payment and delivery are arranged directly; nothing is charged on this website.</p></div></div></div></div></section>
- <div class="wrap full up-body up-vd">
-  <section class="up-vd-s"><h2 class="up-h3">About this volume</h2><p class="up-big">${esc(v.desc)}</p>
-   <h3 class="up-h4">What you will learn</h3><ul class="up-ticks">${v.learn.map(l=>`<li>${esc(l)}</li>`).join("")}</ul></section>
-  <section class="up-vd-s"><h2 class="up-h3">Contents</h2><ol class="up-toc">${v.parts.map(p=>`<li><span class="up-toc-l">Part ${esc(p.l)}</span><span class="up-toc-x"><b>${esc(p.t)}</b><span>${esc(p.d)}</span></span><span class="up-toc-p">p. ${p.p}</span></li>`).join("")}</ol></section>
-  <section class="up-vd-s"><h2 class="up-h3">Prelims and Mains relevance</h2><div class="up-grid2"><div class="up-card up-pre"><h3 class="up-h4">Prelims</h3><p>${esc(v.pre)}</p></div><div class="up-card up-mains"><h3 class="up-h4">Mains</h3><p>${esc(v.mains)}</p></div></div>
-   <h3 class="up-h4">The volume's own syllabus map</h3><div class="up-tw"><table class="up-tbl map"><thead><tr><th scope="col">Syllabus area</th><th scope="col">Prelims (parts)</th><th scope="col">Mains (sections)</th><th scope="col">Also useful for</th></tr></thead><tbody>${v.map.map(r=>`<tr><th scope="row">${esc(r[0])}</th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join("")}</tbody></table></div></section>
-  <section class="up-vd-s up-grid2"><div><h2 class="up-h4">Key concepts</h2><ul class="up-chips">${v.concepts.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div><div><h2 class="up-h4">Institutions, policies and schemes</h2><ul class="up-chips g">${v.inst.map(c=>`<li>${esc(c)}</li>`).join("")}</ul></div></section>
-  <section class="up-vd-s"><h2 class="up-h3">Inside the volume</h2><p>Recurring boxes: ${v.boxes.map(b=>`<span class="up-box-n">${esc(b)}</span>`).join(" ")}</p><p><b>Revision compendium.</b> ${esc(v.comp)}</p></section>
-  ${pages.length?`<section class="up-vd-s"><h2 class="up-h3">Sample pages</h2><p class="up-sm">A few pages, at preview resolution and watermarked. The complete volume is the paid PDF.</p>
-   <ul class="up-samples">${pages.map(([k,cap])=>`<li><button class="up-sp" onclick="upZoom('${v.id}','${k}')" aria-label="Enlarge: ${esA(cap)}"><img src="${esA(img[k].src)}" alt="${esA("Preview of Volume "+v.n+": "+cap)}" width="${img[k].w}" height="${img[k].h}" loading="lazy" decoding="async"></button><span>${esc(cap)}</span></li>`).join("")}</ul></section>`:""}
-  ${topics.length?`<section class="up-vd-s"><h2 class="up-h3">Free previews from this volume</h2><div class="up-vls">${topics.map(t=>`<a class="up-vl" href="${upHref("resources",t.id)}"><b>${esc(t.t)}</b></a>`).join("")}</div></section>`:""}
-  <section class="up-vd-s up-buyend"><div><b>Volume ${esc(v.n)}: ${esc(v.title)}</b><span>${v.pages} pages · Digital PDF · ${UP_PRICE}</span></div><div class="up-buy-b">${upBuy(v,"up-btn up-buy")}</div></section>
-  <nav class="up-pn" aria-label="Other volumes">${prev?`<a class="up-pn-a" href="${upHref("handbooks",prev.id)}"><span>Volume ${prev.n}</span>${esc(prev.title)}</a>`:"<span></span>"}${next?`<a class="up-pn-a" href="${upHref("handbooks",next.id)}"><span>Volume ${next.n}</span>${esc(next.title)}</a>`:"<span></span>"}</nav></div>`}
-function upZoom(id,k){const v=upVol(id);if(!v||!v.img||!v.img[k])return;const i=v.img[k];let d=document.getElementById("up-zoom");
- if(!d){d=document.createElement("dialog");d.id="up-zoom";d.className="up-zoom";document.body.appendChild(d);d.addEventListener("click",e=>{if(e.target===d)d.close()})}
- d.innerHTML=`<form method="dialog"><button class="up-zx" aria-label="Close preview">×</button></form><img src="${esA(i.src)}" alt="Preview page of Volume ${esA(v.n)}" width="${i.w}" height="${i.h}"><p>Preview only. Arjun Agrawal | Economics Collection</p>`;
- try{d.showModal()}catch(e){d.setAttribute("open","")}}
+ return `<section class="up-mast up-vm hl-vm"><div class="wrap full up-mast-in"><nav class="up-crumb" aria-label="Breadcrumb"><a href="${upHref("handbooks")}">The Indian Economy Collection</a><span aria-hidden="true">/</span><a href="${upHref("handbooks","category-"+v.cat)}">${esc(c.n)}</a><span aria-hidden="true">/</span><span aria-current="page">Volume ${esc(v.n)}</span></nav>
+  <div class="hl-vk">Volume ${esc(v.n)} · The Indian Economy Collection · ${esc(v.edition)}</div><h1 class="up-h1 hl-vt">${esc(v.title)}</h1><p class="up-vsub">${esc(v.sub)}</p></div></section>
+ <div class="wrap full up-body hl-vd">
+  <aside class="hl-side" aria-label="Volume ${esA(v.n)} at a glance"><div class="hl-sc">${upCover(v,"up-cv lg",true)}</div>
+   <dl class="hl-sf"><div><dt>Volume</dt><dd>${esc(v.n)} of ${H.length}</dd></div><div><dt>Pages</dt><dd>${v.pages}</dd></div><div><dt>Parts</dt><dd>${v.parts.length}</dd></div><div><dt>Category</dt><dd>${esc(c.n)}</dd></div><div><dt>Format</dt><dd>Digital PDF (A4)</dd></div><div><dt>Useful for</dt><dd>${esc(v.exams.join(" · "))}</dd></div></dl>
+   <div class="hl-buy"><div class="hl-bp"><b>₹99</b> <span>per soft copy</span></div>
+    ${upReq(v,"up-btn up-buy w")}<a class="up-btn up-gh w" href="${esA(upMail(upHbSubject(v),upHbMsg(v)))}">Enquire by email</a><a class="up-btn up-gh w" href="${esA(upTel())}">Call ${esc(UP_PHONE)}</a>
+    <p class="up-xs">The message names this volume and its price. The purchase is completed directly with Arjun Agrawal: payment and delivery of the PDF are arranged by message, and nothing is charged on this website.</p></div>
+   <button type="button" class="up-btn up-pri w hl-open" onclick="hvOpen('${v.id}',0)">Open the preview in full screen</button></aside>
+  <div class="hl-main">
+   <section class="up-vd-s"><h2 class="up-h3">Overview</h2><p class="up-big">${esc(v.desc)}</p></section>
+   <section class="up-vd-s"><h2 class="up-h3">Inside the volume: eight selected pages</h2>${hvMarkup(v,"inline")}</section>
+   <section class="up-vd-s"><h2 class="up-h3">What students learn</h2><ul class="up-ticks">${v.learn.map(l=>`<li>${esc(l)}</li>`).join("")}</ul></section>
+   <section class="up-vd-s"><h2 class="up-h3">Topics: the ${v.parts.length} parts</h2><ol class="up-toc">${v.parts.map(p=>`<li><span class="up-toc-l">Part ${esc(p.l)}</span><span class="up-toc-x"><b>${esc(p.t)}</b><span>${esc(p.d)}</span></span><span class="up-toc-p">p. ${p.p}</span></li>`).join("")}</ol></section>
+   <section class="up-vd-s up-grid2"><div><h2 class="up-h4">Key concepts</h2><ul class="up-chips">${v.concepts.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div><h2 class="up-h4">Institutions, policies and schemes</h2><ul class="up-chips g">${v.inst.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></section>
+   <section class="up-vd-s"><h2 class="up-h3">Syllabus relevance</h2><div class="up-grid2"><div class="up-card up-pre"><h3 class="up-h4">Prelims</h3><p>${esc(v.pre)}</p></div><div class="up-card up-mains"><h3 class="up-h4">Mains</h3><p>${esc(v.mains)}</p></div></div>
+    <h3 class="up-h4">The volume's own syllabus map</h3><div class="up-tw"><table class="up-tbl map"><thead><tr><th scope="col">Syllabus area</th><th scope="col">Prelims (parts)</th><th scope="col">Mains (sections)</th><th scope="col">Also useful for</th></tr></thead><tbody>${v.map.map(r=>`<tr><th scope="row">${esc(r[0])}</th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join("")}</tbody></table></div></section>
+   <section class="up-vd-s"><h2 class="up-h3">How the volume is built</h2><p>Recurring boxes: ${v.boxes.map(b=>`<span class="up-box-n">${esc(b)}</span>`).join(" ")}</p><p><b>Revision compendium.</b> ${esc(v.comp)}</p></section>
+   ${topics.length?`<section class="up-vd-s"><h2 class="up-h3">Free topic previews from this volume</h2><div class="up-vls">${topics.map(t=>`<a class="up-vl" href="${upHref("resources",t.id)}"><b>${esc(t.t)}</b></a>`).join("")}</div></section>`:""}
+   <nav class="up-pn" aria-label="Other volumes">${prev?`<a class="up-pn-a" href="${upHref("handbooks",prev.id)}"><span>Volume ${prev.n}</span>${esc(prev.title)}</a>`:"<span></span>"}${next?`<a class="up-pn-a" href="${upHref("handbooks",next.id)}"><span>Volume ${next.n}</span>${esc(next.title)}</a>`:"<span></span>"}</nav></div></div>`}
+
+/* ── the preview viewer ─────────────────────────────────────────────────── */
+const HV={};   /* per viewer: the page shown and the zoom */
+const HV_Z=[1,1.5,2];
+function hvMarkup(v,mode){const P=v.img.pages||[];if(!P.length)return "";const id=`hv-${mode}-${v.id}`,st=HV[id]||(HV[id]={i:0,z:0});const p=P[st.i]||P[0];
+ return `<div class="hv hv-${mode}" id="${id}" data-vol="${v.id}" role="region" aria-roledescription="page viewer" aria-label="Selected preview of Volume ${esA(v.n)}: ${esA(v.title)}" tabindex="-1" onkeydown="hvKey(event,'${id}')">
+  <p class="hv-note"><b>Selected preview.</b> ${P.length} of the ${v.pages} pages, shown as the PDF prints them. The complete volume is a ₹99 soft copy, obtained by direct contact.</p>
+  <div class="hv-bar"><div class="hv-nav"><button type="button" class="hv-b" data-a="prev" onclick="hvGo('${id}',-1)" aria-label="Previous page"${st.i===0?" disabled":""}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5"/></svg></button>
+    <span class="hv-pos" aria-live="polite"><b class="hv-n">${st.i+1}</b> / ${P.length} <span class="hv-pg">· page <span class="hv-pp">${p.p}</span> of ${v.pages}</span></span>
+    <button type="button" class="hv-b" data-a="next" onclick="hvGo('${id}',1)" aria-label="Next page"${st.i===P.length-1?" disabled":""}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+   <div class="hv-tools"><button type="button" class="hv-b" onclick="hvZoom('${id}',-1)" aria-label="Zoom out"${st.z===0?" disabled":""}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10"/></svg></button>
+    <span class="hv-zl" aria-live="polite">${Math.round(HV_Z[st.z]*100)}%</span>
+    <button type="button" class="hv-b" onclick="hvZoom('${id}',1)" aria-label="Zoom in"${st.z===HV_Z.length-1?" disabled":""}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M8 3v10"/></svg></button>
+    <button type="button" class="hv-b hv-fsb" onclick="hvFull('${id}')" aria-label="Full screen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg></button></div></div>
+  <div class="hv-stage" data-z="${st.z}"><figure class="hv-fig"><img class="hv-img" src="${esA(p.src)}" width="${p.w}" height="${p.h}" alt="${esA(hvAlt(v,p,st.i))}" decoding="async" style="background-image:url('${esA(p.t.src)}')" onload="this.classList.add('ok')"><figcaption class="hv-cap">${esc(p.cap)}</figcaption></figure></div>
+  <ol class="hv-th" aria-label="Preview pages">${P.map((q,k)=>`<li><button type="button" class="hv-t${k===st.i?" on":""}" onclick="hvTo('${id}',${k})" aria-label="Preview ${k+1} of ${P.length}: page ${q.p}, ${esA(q.cap)}"${k===st.i?' aria-current="true"':""}><img src="${esA(q.t.src)}" width="${q.t.w}" height="${q.t.h}" alt="" loading="lazy" decoding="async"><span>p. ${q.p}</span></button></li>`).join("")}</ol>
+ </div>`}
+function hvAlt(v,p,i){return `Volume ${v.n}, page ${p.p} (preview ${i+1} of ${(v.img.pages||[]).length}): ${p.cap}`}
+function hvEl(id){return document.getElementById(id)}
+function hvVol(id){const el=hvEl(id);return el?upVol(el.dataset.vol):null}
+function hvPaint(id){const el=hvEl(id),v=hvVol(id);if(!el||!v)return;const P=v.img.pages,st=HV[id],p=P[st.i];
+ const img=el.querySelector(".hv-img");if(img.getAttribute("src")!==p.src){img.classList.remove("ok");img.style.backgroundImage=`url('${p.t.src}')`;img.src=p.src;img.width=p.w;img.height=p.h}
+ img.alt=hvAlt(v,p,st.i);el.querySelector(".hv-cap").textContent=p.cap;el.querySelector(".hv-n").textContent=st.i+1;el.querySelector(".hv-pp").textContent=p.p;
+ el.querySelector('[data-a="prev"]').disabled=st.i===0;el.querySelector('[data-a="next"]').disabled=st.i===P.length-1;
+ el.querySelectorAll(".hv-t").forEach((b,k)=>{b.classList.toggle("on",k===st.i);if(k===st.i)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current")});
+ const on=el.querySelector(".hv-t.on");if(on&&on.scrollIntoView){const l=el.querySelector(".hv-th");if(l)l.scrollLeft=Math.max(0,on.offsetLeft-l.clientWidth/2+on.clientWidth/2)}
+ const stg=el.querySelector(".hv-stage");stg.dataset.z=st.z;el.querySelector(".hv-zl").textContent=Math.round(HV_Z[st.z]*100)+"%";
+ const zb=el.querySelectorAll('.hv-tools .hv-b');zb[0].disabled=st.z===0;zb[1].disabled=st.z===HV_Z.length-1;
+ /* the next page is fetched ahead, so turning the page is instant */
+ [P[st.i+1],P[st.i-1]].forEach(q=>{if(q){const im=new Image();im.decoding="async";im.src=q.src}})}
+function hvGo(id,d){const v=hvVol(id),st=HV[id];if(!v||!st)return;const n=Math.max(0,Math.min(v.img.pages.length-1,st.i+d));if(n===st.i)return;st.i=n;hvPaint(id);const s=hvEl(id).querySelector(".hv-stage");if(s)s.scrollTop=0}
+function hvTo(id,k){const st=HV[id];if(!st)return;st.i=k;hvPaint(id);const s=hvEl(id).querySelector(".hv-stage");if(s)s.scrollTop=0}
+function hvZoom(id,d){const st=HV[id];if(!st)return;st.z=Math.max(0,Math.min(HV_Z.length-1,st.z+d));hvPaint(id)}
+function hvKey(e,id){if(e.target.closest("select,input,textarea"))return;
+ if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();hvGo(id,1)}else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();hvGo(id,-1)}
+ else if(e.key==="+"||e.key==="="){hvZoom(id,1)}else if(e.key==="-"){hvZoom(id,-1)}else if(e.key==="f"||e.key==="F"){hvFull(id)}}
+/* full screen: the element itself where the browser allows it, a fixed layer where it does not */
+function hvFull(id){const el=hvEl(id);if(!el)return;const fs=document.fullscreenElement||document.webkitFullscreenElement;
+ if(fs===el||el.classList.contains("hv-fs")){if(fs&&document.exitFullscreen)document.exitFullscreen().catch(()=>{});el.classList.remove("hv-fs");document.body.classList.remove("hv-lock");return}
+ const req=el.requestFullscreen||el.webkitRequestFullscreen;
+ const fallback=()=>{el.classList.add("hv-fs");document.body.classList.add("hv-lock");el.focus()};
+ if(req){try{const r=req.call(el);if(r&&r.catch)r.catch(fallback)}catch(e){fallback()}}else fallback();
+ el.focus()}
+document.addEventListener&&document.addEventListener("keydown",e=>{if(e.key==="Escape"){const f=document.querySelector(".hv.hv-fs");if(f){f.classList.remove("hv-fs");document.body.classList.remove("hv-lock")}}});
+/* from a card: the viewer opens in a dialog, then in full screen */
+function hvOpen(vid,k){const v=upVol(vid);if(!v)return;let d=document.getElementById("hv-dlg");
+ if(!d){d=document.createElement("dialog");d.id="hv-dlg";d.className="hv-dlg";d.setAttribute("aria-label","Handbook preview");document.body.appendChild(d);
+  d.addEventListener("click",e=>{if(e.target===d)d.close()});d.addEventListener("close",()=>{d.innerHTML="";document.body.classList.remove("hv-lock")})}
+ const id=`hv-dialog-${v.id}`;HV[id]={i:k||0,z:0};
+ d.innerHTML=`<div class="hv-dh"><div><span class="hv-dk">Volume ${esc(v.n)} · ${v.pages} pages</span><b>${esc(v.title)}</b></div>
+  <div class="hv-da">${upReq(v,"up-btn up-buy sm","Enquire <span class=\"up-sep\" aria-hidden=\"true\">|</span> ₹99")}<a class="up-btn up-gh sm" href="${upHref("handbooks",v.id)}" onclick="document.getElementById('hv-dlg').close()">View volume</a>
+   <form method="dialog"><button class="hv-x" aria-label="Close the preview">×</button></form></div></div>${hvMarkup(v,"dialog")}`;
+ try{d.showModal()}catch(e){d.setAttribute("open","")}document.body.classList.add("hv-lock");const el=hvEl(id);if(el)el.focus();hvPaint(id)}
+/* swipe between pages on a touch screen when the page is not zoomed */
+document.addEventListener&&document.addEventListener("pointerdown",e=>{const stg=e.target.closest&&e.target.closest(".hv-stage");if(!stg||e.pointerType==="mouse")return;
+ const el=stg.closest(".hv"),id=el&&el.id;if(!id||!HV[id]||HV[id].z>0)return;const x0=e.clientX,y0=e.clientY;
+ const up=f=>{document.removeEventListener("pointerup",up);const dx=f.clientX-x0,dy=f.clientY-y0;if(Math.abs(dx)>60&&Math.abs(dx)>2*Math.abs(dy))hvGo(id,dx<0?1:-1)};
+ document.addEventListener("pointerup",up)});
 
 /* ── 4 · Current Affairs ────────────────────────────────────────────────── */
 function upCurrent(){const th=UPS.th,L=[...UP_CA].sort((a,b)=>b.d.localeCompare(a.d)),used=UP_CA_THEMES.filter(t=>UP_CA.some(c=>c.th===t));
@@ -436,7 +551,7 @@ function upPathState(){const n=document.getElementById("pathbar");if(!n)return;c
  if(ab)ab.href=up?upHref("educator"):"#/about";if(ct)ct.href=up?upHref("contact"):"#/contact"}
 /* the footer names the UPSC pages too, in its Connect column, above "The method" */
 function upFooter(){if(document.getElementById("ft-upsc"))return;const k=[...document.querySelectorAll("footer.ft .ftcols .kicker")].find(x=>/The method/.test(x.textContent));if(!k)return;
- const d=document.createElement("div");d.id="ft-upsc";d.innerHTML=`<div class="kicker mt4">UPSC CSE Economics</div>${[["UPSC Overview",0],["Syllabus",1],["Economics Handbooks",3],["The 3-month programme",5]].map(([t,i])=>`<button class="lnk" onclick="nav('upsc',${i})">${t}</button>`).join("")}`;
+ const d=document.createElement("div");d.id="ft-upsc";d.innerHTML=`<div class="kicker mt4">UPSC CSE Economics</div>${[["UPSC Overview",0],["Syllabus",1],["Economics Resources",2],["The Indian Economy Collection",3],["Current Affairs",4],["The 3-month programme",5],["Contact / Enrolment",7]].map(([t,i])=>`<button class="lnk" onclick="nav('upsc',${i})">${t}</button>`).join("")}`;
  k.parentNode.insertBefore(d,k)}
 (function(){if(typeof document==="undefined")return;const go=()=>{try{upPathbar();upFooter()}catch(e){}};
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go()})();
@@ -453,7 +568,7 @@ function upHomeBand(){const H=UPSC_HB.volumes;
     <div class="hp-b"><button class="hp-btn" onclick="upToIB()">Enter IB DP Economics <span aria-hidden="true">↓</span></button><a class="hp-sl" href="#/course">The course</a></div></article>
    <article class="hp-p up"><div class="hp-pk">UPSC CSE Economics</div><h2 class="hp-pt">Understand the economy. Master the examination.</h2><p>Explore Economics resources, handbooks, syllabus coverage and the intensive UPSC Economics programme.</p>
     <ul class="hp-ls">${[["Syllabus","syllabus"],["Resources","resources"],["Handbooks","handbooks"],["Current Affairs","current"],["Course","course"]].map(([t,k])=>`<li><a href="${upHref(k)}">${t}</a></li>`).join("")}</ul>
-    <div class="hp-covers" aria-hidden="true">${H.slice(1,4).map((v,i)=>`<span style="--i:${i};background-image:url('${esA(v.img.cover.src)}')"></span>`).join("")}</div>
+    <div class="hp-covers" aria-hidden="true">${H.slice(1,4).map((v,i)=>`<span style="--i:${i};background-image:url('${esA((v.img.coverSm||v.img.cover).src)}')"></span>`).join("")}</div>
     <div class="hp-b"><a class="hp-btn" href="#/upsc">Enter UPSC CSE Economics <span aria-hidden="true">→</span></a><a class="hp-sl" href="${upHref("handbooks")}">Handbooks · ${UP_PRICE}</a></div></article></div></div></section>`}
 function upToIB(){const h=document.querySelector("#view section.at-hero")||document.querySelector("#view section.hero");if(h){const y=h.getBoundingClientRect().top+scrollY-((document.querySelector("header.top")||{}).offsetHeight||0);
  window.scrollTo({top:Math.max(0,y),behavior:document.body.classList.contains("rn-anim")?"smooth":"auto"});const f=h.querySelector("h2,h1");if(f){f.setAttribute("tabindex","-1");try{f.focus({preventScroll:true})}catch(e){}}}}
@@ -475,7 +590,7 @@ function UPSCSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const 
  T("UPSC · eleven volumes, numbered I to XI, each with a title and a page count",()=>H.length===11&&H.every((v,i)=>v.n===UP_RN[i]&&v.num===i+1&&v.title&&v.pages>0));
  T("UPSC · page counts as extracted from the PDFs (523 in all)",()=>H.map(v=>v.pages).join(",")==="41,43,49,49,49,50,49,55,43,45,50"&&H.reduce((a,v)=>a+v.pages,0)===523);
  T("UPSC · the price is ₹99 per volume everywhere, and no other handbook price appears",()=>{const h=upHandbooks()+H.map(v=>upVolume(v)).join("");
-  return UPSC_HB.price===99&&UP_PRICE==="₹99 / Volume"&&!/₹9\.99|₹999(?!,)|₹\s?99\.\d|bundle price/i.test(h)&&(h.match(/₹99 \/ Volume/g)||[]).length>=22});
+  const t=h.replace(/<[^>]+>/g,"").replace(/\s+/g," ");return UPSC_HB.price===99&&UP_PRICE==="₹99 per soft copy"&&!/₹9\.99|₹999(?!,)|₹\s?99\.\d|bundle price/i.test(h)&&(t.match(/₹99 per soft copy/g)||[]).length>=22});
  T("UPSC · the programme fee is ₹9,999 for the complete three months, never per month or ₹4,999",()=>{const h=upCourse()+upOverview()+upContact();
   return /₹9,999/.test(h)&&!/₹4,999|per month|\/ ?month/i.test(h)&&UP_COURSE.enquiry==="Hello Arjun, I am interested in enrolling in your 3-month UPSC CSE Economics Intensive Programme priced at ₹9,999. Please share the course details and upcoming batch information."});
  T("UPSC · the course states three months, 100% online and a maximum of 25 students",()=>{const h=upCourse();return /3 months/.test(h)&&/100% online/.test(h)&&/Maximum 25 students/.test(h)&&!/\b(2[6-9]|[3-9]\d) students/.test(h)});
@@ -484,7 +599,18 @@ function UPSCSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const 
   const wa=(h.match(/https:\/\/wa\.me\/(\d+)/g)||[]),ml=(h.match(/mailto:([^?"]+)/g)||[]),tl=(h.match(/tel:([+\d]+)/g)||[]);
   return wa.length>0&&wa.every(x=>x==="https://wa.me/917092844945")&&ml.every(x=>x==="mailto:"+TUT.email)&&tl.every(x=>x==="tel:+917092844945")});
  T("UPSC · no handbook PDF is referenced anywhere in the section",()=>{const h=[upOverview(),upHandbooks(),...H.map(v=>upVolume(v)),upResources(),upCourse()].join("");return !/\.pdf\b/i.test(h.replace(/Notif-CSP-2026-Engl-060226Rev\.pdf/g,""))&&!JSON.stringify(UPSC_HB).includes(".pdf")});
- T("UPSC · each volume has its cover and two watermarked samples on record",()=>H.every(v=>v.img&&v.img.cover&&v.img.contents&&v.samples.every(s=>v.img["p"+s.p])&&/^assets\/upsc\/handbooks\//.test(v.img.cover.src)));
+ T("UPSC · each volume has its cover and an eight-page preview with thumbnails, all local, none watermarked by the site",()=>H.every(v=>v.img&&v.img.cover&&v.img.coverSm&&(v.img.pages||[]).length===8
+   &&v.img.pages.every(p=>/^assets\/upsc\/handbooks\/volume-[ivx]+\/page-\d\d\.webp$/.test(p.src)&&/thumb-\d\d\.webp$/.test(p.t.src)&&p.w>=1000&&p.p>=2&&p.p<=v.pages&&p.cap)
+   &&new Set(v.img.pages.map(p=>p.p)).size===8&&/^assets\/upsc\/handbooks\//.test(v.img.cover.src))&&!/Preview Only/.test(JSON.stringify(UPSC_HB))&&typeof watermark==="undefined");
+ T("UPSC · the collection is titled and subtitled as briefed, with ₹99 per soft copy and the purchase completed by direct contact",()=>{const h=upHandbooks();
+  return /The Indian Economy Collection/.test(h)&&/Eleven carefully structured volumes covering essential dimensions of Indian and international Economics for UPSC CSE preparation\./.test(h)
+   &&(h.match(/₹99<\/b> per soft copy/g)||[]).length===H.length&&/completed by direct contact/.test(h)&&!/Purchase PDF/.test(h)});
+ T("UPSC · every volume has a category, every category a volume, and the filters narrow the grid",()=>{const C=UPSC_HB.categories||[];const k=new Set(C.map(c=>c.k));
+  const o={...UPF};UPF.cat="money";UPF.vol="all";const a=H.filter(upShown).length;UPF.cat="all";UPF.vol="volume-ix";const b=H.filter(upShown).length;Object.assign(UPF,o);
+  return H.every(v=>k.has(v.cat))&&C.every(c=>H.some(v=>v.cat===c.k))&&a===2&&b===1});
+ T("UPSC · the viewer has previous, next, page numbers, zoom, full screen, thumbnails and the selected-preview notice",()=>{const v=H[4],h=hvMarkup(v,"test");
+  return /aria-label="Previous page"/.test(h)&&/aria-label="Next page"/.test(h)&&/class="hv-pos"/.test(h)&&/aria-label="Zoom in"/.test(h)&&/aria-label="Zoom out"/.test(h)&&/aria-label="Full screen"/.test(h)
+   &&(h.match(/class="hv-t( on)?"/g)||[]).length===8&&/Selected preview\./.test(h)&&/8 of the 49 pages/.test(h)&&!/cannot be (copied|downloaded|screenshot)|DRM|copy-protected/i.test(h)});
  T("UPSC · the eight tabs route and parse back",()=>UP_TABS.every((t,i)=>{const h=routeFormat("upsc",i);const r=routeParse(h);return r&&r.v==="upsc"&&r.t===i}));
  T("UPSC · every volume and topic has its own address",()=>H.every(v=>{const r=routeParse(upHref("handbooks",v.id));return r&&r.t===3&&r.a===v.id})&&UP_TOPICS.every(t=>{const r=routeParse(upHref("resources",t.id));return r&&r.t===2&&r.a===t.id}));
  T("UPSC · official syllabus lines are kept apart from explanation",()=>{const h=upMainsHtml()+upPreHtml();return UP_MAINS.length===10&&(h.match(/up-lab o/g)||[]).length>=UP_MAINS.length+3&&UP_MAINS.every(m=>m.o&&m.ex&&m.o!==m.ex)});
@@ -492,7 +618,14 @@ function UPSCSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const 
  T("UPSC · every topic preview has a figure, a question with a valid answer and a source volume",()=>UP_TOPICS.every(t=>upFig(t.fig).startsWith("<svg")&&t.mcq.o.length===4&&t.mcq.a>=0&&t.mcq.a<4&&upVol(t.vol)&&UP_CATS.includes(t.cat)));
  T("UPSC · current-affairs entries carry a date, a theme, a source and a volume",()=>UP_CA.every(c=>/^\d{4}-\d{2}-\d{2}$/.test(c.d)&&UP_CA_THEMES.includes(c.th)&&c.src&&upVol(c.vol)));
  T("UPSC · the connector's IB links resolve to existing routes",()=>UP_CONNECT.every(r=>{const h=upIbLinks(r);const hs=[...h.matchAll(/href="([^"]+)"/g)].map(m=>m[1].replace(/&amp;/g,"&"));return hs.every(x=>routeParse(x))})&&UP_CONNECT.filter(r=>upIbLinks(r)).length>=8);
- T("UPSC · the home page opens with both pathways and one page heading",()=>{const h=upHomeBand();return /Economics\. Understood\. Connected\. Applied\./.test(h)&&/Think like an economist\./.test(h)&&/Understand the economy\. Master the examination\./.test(h)&&(h.match(/<h1/g)||[]).length===1});
+ T("UPSC · the compact pathway pair keeps both pathways and one page heading",()=>{const h=upHomeBand();return /Economics\. Understood\. Connected\. Applied\./.test(h)&&/Think like an economist\./.test(h)&&/Understand the economy\. Master the examination\./.test(h)&&(h.match(/<h1/g)||[]).length===1});
+ T("UPSC · the landing hero, its line and its three calls are as briefed",()=>{const h=upOverview(),t=h.replace(/<[^>]+>/g,"");
+  return /Understand the Indian Economy\. Prepare with clarity\./.test(t)&&/Structured learning for UPSC Civil Services aspirants, connecting economic foundations, Indian economic policy, contemporary developments and examination preparation\./.test(t)
+   &&/Explore the Handbook Library/.test(t)&&/Explore the UPSC Syllabus/.test(t)&&/Discover the Intensive Course/.test(t)&&(h.match(/<h1/g)||[]).length===1});
+ T("UPSC · the roadmap has seven stages in order, and every stage opens real pages",()=>UP_ROAD.map(r=>r[0]).join("|")==="Understand the syllabus|Build the foundations|Study the Indian economy|Follow current affairs|Practise for Prelims|Write for Mains|Revise"
+  &&UP_ROAD.every(r=>r[3].length&&r[3].every(x=>{const q=routeParse(upRoadHref(x));return q&&(q.v==="upsc"||q.v==="concepts")})));
+ T("UPSC · the syllabus explorer keeps Prelims GS I, Mains GS III and the Optional apart, and claims no Optional coverage",()=>{const o=upOptHtml();
+  return /Papers VI and VII/.test(o)&&/not a course for the Economics Optional/.test(o)&&/id="ups-opt"/.test(upSyllabus.toString()+upSyllabus())&&routeParse(upHref("syllabus","optional")).a==="optional"});
  T("UPSC · the section is reachable from the drawer",()=>MOBGROUPS.flatMap(([,i])=>i.map(x=>x[0])).includes("upsc"));
  return out}
 EXTRA_SUITES.push(UPSCSUITE);

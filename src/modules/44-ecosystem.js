@@ -241,7 +241,7 @@ function esyField(k){ESYK.k=k;const p=document.getElementById("sy-fp");if(p)p.in
  document.querySelectorAll(".sy-edge").forEach(l=>l.classList.toggle("on",l.dataset.a===k||l.dataset.b===k))}
 function esyMap(){const N=ESY_FIELDS.length,P={};ESY_FIELDS.forEach((f,i)=>{const a=-Math.PI/2+i*2*Math.PI/N;P[f.k]=[50+38*Math.cos(a),50+38*Math.sin(a)]});
  return `<section class="sy-sec sy-map" aria-labelledby="sy-mh"><div class="wrap full">
-  <div class="sy-sh"><div class="sy-eb">The knowledge ecosystem</div><h2 class="sy-h2" id="sy-mh">One discipline, mapped.</h2>
+  <div class="sy-sh rv"><div class="sy-eb">The knowledge ecosystem</div><h2 class="sy-h2" id="sy-mh">One discipline, mapped.</h2>
    <p class="sy-sl">Eight fields of Economics and how each pathway meets them. Select a field to see where it is taught for the IB Diploma Programme and where it appears in UPSC preparation.</p></div>
   <div class="sy-mgrid"><div class="sy-ring" role="group" aria-label="Fields of Economics">
     <svg class="sy-edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">${ESY_EDGES.map(([a,b])=>`<line class="sy-edge${a===ESYK.k||b===ESYK.k?" on":""}" data-a="${a}" data-b="${b}" x1="${P[a][0].toFixed(1)}" y1="${P[a][1].toFixed(1)}" x2="${P[b][0].toFixed(1)}" y2="${P[b][1].toFixed(1)}"/>`).join("")}
@@ -258,25 +258,25 @@ const ESY_SHOTS=[["lab","Market lab","Move demand or supply and the model answer
  ["handbook","Inside a handbook","Eight pages of every volume, readable before you ask for a copy.","upsc","Economics Handbooks","up"],
  ["world","Real World","Policies, shocks and markets, each read through the model that explains it.","world",0,"ib"]];
 function esyShots(){return `<section class="sy-sec sy-exp" aria-labelledby="sy-eh"><div class="wrap full">
-  <div class="sy-sh"><div class="sy-eb">Explore the learning experience</div><h2 class="sy-h2" id="sy-eh">Built to be used, not only read.</h2>
+  <div class="sy-sh rv"><div class="sy-eb">Explore the learning experience</div><h2 class="sy-h2" id="sy-eh">Built to be used, not only read.</h2>
    <p class="sy-sl">Screens from the platform as it is today. Each opens the page it shows.</p></div>
-  <div class="sy-shots">${ESY_SHOTS.map(([f,t,d,v,l,p],i)=>`<a class="sy-shot sy-shot-${p}${i===0?" big":""}" href="${esA(esyHref(v,l))}">
+  <div class="sy-shots">${ESY_SHOTS.map(([f,t,d,v,l,p],i)=>`<a class="sy-shot sy-shot-${p}${i===0?" big":""} rv" style="--i:${i%3}" href="${esA(esyHref(v,l))}">
     <span class="sy-sf"><img src="assets/home/${f}.webp" width="1200" height="750" alt="${esA(t)}: a screen from the platform" loading="lazy" decoding="async"></span>
     <span class="sy-sc"><span class="sy-sk">${p==="up"?"UPSC CSE Economics":"IB DP Economics"}</span><b>${esc(t)}</b><span>${esc(d)}</span></span></a>`).join("")}</div></div></section>`}
 /* 4 · selected original work, each shown in part */
 function esyWork(){const n=typeof rnCount==="function"?rnCount():{},H=UPSC_HB.volumes,pages=H.reduce((a,v)=>a+v.pages,0),v3=H[2];
- const smp=v3&&v3.img&&Object.keys(v3.img).find(k=>/^p\d+/.test(k));
- const W=[["The Indian Economy Collection",`${H.length} volumes · ${fmtN(pages)} pages`,"A handbook series for UPSC CSE Economics, written from the official syllabus outwards.",esyUp("handbooks"),smp?v3.img[smp].src:"","up"],
+ const smp=v3&&v3.img&&(v3.img.pages||[]).find(p=>p.p>5);
+ const W=[["The Indian Economy Collection",`${H.length} volumes · ${fmtN(pages)} pages`,"A handbook series for UPSC CSE Economics, written from the official syllabus outwards.",esyUp("handbooks"),smp?smp.src:"","up"],
   ["The diagram atlas",typeof n.diagrams==="number"?`${fmtN(n.diagrams)} diagrams`:"Every diagram of the course","Drawn for this platform: each diagram labelled, explained and live.",esyHref("lab","Diagram atlas"),"assets/home/atlas.webp","ib"],
   ["Mindmaps",typeof n.maps==="number"?`${fmtN(n.maps)} maps · ${fmtN(n.nodes)} nodes`:"Maps of the course","Each topic as an economist moves through it.",esyHref("mind"),"assets/home/mind.webp","ib"],
   ["Real-world cases",typeof n.cases==="number"?`${fmtN(n.cases)} cases · ${fmtN(n.economies)} economies`:"Cases","Every case names its primary source and the model it tests.",esyHref("world"),"assets/home/world.webp","ib"]];
  return `<section class="sy-sec sy-work" aria-labelledby="sy-wh"><div class="wrap full">
-  <div class="sy-sh"><div class="sy-eb">Selected original work</div><h2 class="sy-h2" id="sy-wh">Written, drawn and built by Arjun Agrawal.</h2></div>
-  <div class="sy-wgrid">${W.map(([t,m,d,h,img,p])=>`<a class="sy-wk sy-wk-${p}" href="${esA(h)}">
+  <div class="sy-sh rv"><div class="sy-eb">Selected original work</div><h2 class="sy-h2" id="sy-wh">Written, drawn and built by Arjun Agrawal.</h2></div>
+  <div class="sy-wgrid">${W.map(([t,m,d,h,img,p],i)=>`<a class="sy-wk sy-wk-${p} rv" style="--i:${i}" href="${esA(h)}">
     <span class="sy-wf">${img?`<img src="${esA(img)}" alt="" loading="lazy" decoding="async" width="640" height="905">`:""}</span>
     <span class="sy-wc"><span class="sy-wm">${esc(m)}</span><b>${esc(t)}</b><span>${esc(d)}</span></span></a>`).join("")}</div></div></section>`}
 /* 5 · The Business Brief: a sister platform, not a third pathway */
-function esyBB(){return `<section class="sy-bb" aria-labelledby="sy-bbh"><div class="wrap full sy-bbin">
+function esyBB(){return `<section class="sy-bb" aria-labelledby="sy-bbh"><div class="wrap full sy-bbin rv">
   <div class="sy-bbm" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><rect x="18" y="64" width="16" height="36"/><rect x="42" y="48" width="16" height="52"/><rect x="66" y="34" width="16" height="66"/><rect x="90" y="20" width="16" height="80"/><path d="M14 100H110"/><path class="t" d="M20 58L50 42L74 30L102 14"/></svg></div>
   <div class="sy-bbc"><div class="sy-eb">From the same educator</div><h2 class="sy-bbh" id="sy-bbh">Beyond Economics. Explore Business Management.</h2>
    <p>Discover The Business Brief, an interactive learning platform for IB DP Business Management.</p></div>
@@ -284,7 +284,7 @@ function esyBB(){return `<section class="sy-bb" aria-labelledby="sy-bbh"><div cl
 /* 6 · the educator: the supplied portrait and the supplied profile, nothing added */
 function esyEducator(){return `<section class="sy-sec sy-ed" aria-labelledby="sy-edh"><div class="wrap full sy-edin">
   <figure class="sy-pt"><img src="assets/brand/arjun-agrawal-portrait-4x5.webp" width="432" height="540" alt="Arjun Agrawal" loading="lazy" decoding="async"></figure>
-  <div class="sy-edc"><div class="sy-eb">About the educator</div><h2 class="sy-h2" id="sy-edh">Arjun Agrawal</h2>
+  <div class="sy-edc rv"><div class="sy-eb">About the educator</div><h2 class="sy-h2" id="sy-edh">Arjun Agrawal</h2>
    <ul class="sy-pos">${["Economics educator","IB DP educator","Academic resource creator"].map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
    <p class="sy-edl">Arjun Agrawal studied Economics at St. Stephen's College, University of Delhi, and has taught undergraduate Economics as an Assistant Professor at Fergusson College, Pune. He teaches IB Diploma Programme Economics, mentors UPSC Civil Services aspirants in Economics, and writes the handbooks, presentations and Economics in 60 Seconds explainers that this platform grew from.</p>
    <a class="sy-btn" href="#/about">Meet Arjun Agrawal <span aria-hidden="true">→</span></a></div></div></section>`}
@@ -295,7 +295,7 @@ function esyBegin(){const L=[["IB DP Economics","Start with the journey: underst
   ["Ask a question","Email, WhatsApp or telephone, answered by Arjun Agrawal.","#/contact","all"]];
  return `<section class="sy-sec sy-begin" aria-labelledby="sy-bgh"><div class="wrap full">
   <h2 class="sy-h2" id="sy-bgh">Where would you like to begin?</h2>
-  <ul class="sy-bgl">${L.map(([t,d,h,p])=>`<li><a class="sy-bg sy-bg-${p}" href="${esA(h)}"><b>${esc(t)}</b><span>${esc(d)}</span><i aria-hidden="true">→</i></a></li>`).join("")}</ul></div></section>`}
+  <ul class="sy-bgl">${L.map(([t,d,h,p],i)=>`<li><a class="sy-bg sy-bg-${p} rv" style="--i:${i}" href="${esA(h)}"><b>${esc(t)}</b><span>${esc(d)}</span><i aria-hidden="true">→</i></a></li>`).join("")}</ul></div></section>`}
 /* 1 · the hero and the two pathways */
 function esyHero(){const H=UPSC_HB.volumes,fig=typeof rsSD==="function"?`<svg viewBox="0 0 160 96" aria-hidden="true" focusable="false">${rsSD().svg}</svg>`:"";
  return `<section class="sy-hero" aria-labelledby="sy-h"><div class="wrap full sy-hin">
@@ -314,7 +314,7 @@ function esyHero(){const H=UPSC_HB.volumes,fig=typeof rsSD==="function"?`<svg vi
     <a class="sy-cta" href="#/ib">Explore IB DP Economics <span aria-hidden="true">→</span></a></article>
    <article class="sy-pp sy-pp-up" aria-labelledby="sy-up"><div class="sy-ppk">Pathway · India</div><h2 class="sy-pph" id="sy-up">UPSC CSE Economics</h2>
     <p class="sy-ppt">Understand the Indian economy. Prepare with clarity.</p><p class="sy-ppd">Economics for the Civil Services Examination: the official syllabus, Indian economic policy, current developments and the eleven-volume Indian Economy Collection.</p>
-    <div class="sy-ppc" aria-hidden="true">${H.slice(1,4).map((v,i)=>`<span style="--i:${i};background-image:url('${esA(v.img.cover.src)}')"></span>`).join("")}</div>
+    <div class="sy-ppc" aria-hidden="true">${H.slice(1,4).map((v,i)=>`<span style="--i:${i};background-image:url('${esA((v.img.coverSm||v.img.cover).src)}')"></span>`).join("")}</div>
     <ul class="sy-ppl">${[["Syllabus","syllabus"],["Handbooks","handbooks"],["Resources","resources"],["Current Affairs","current"],["Course","course"]].map(([t,k])=>`<li><a href="${esA(esyUp(k))}">${esc(t)}</a></li>`).join("")}</ul>
     <a class="sy-cta" href="#/upsc">Explore UPSC Economics <span aria-hidden="true">→</span></a></article></div></div></section>`}
 VIEWS.home=function(){return `<div class="sy-home">${esyHero()}${esyMap()}${esyShots()}${esyWork()}${esyBB()}${esyEducator()}${esyBegin()}</div>`};

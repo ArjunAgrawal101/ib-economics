@@ -1,13 +1,22 @@
 {
-  "_about": "The Economics Handbook Collection: the public catalogue. Every title, page count, part and syllabus-map row is taken from the volume itself (its title page, contents page and syllabus map). The handbooks are never stored in this repository; tools/upsc/build_upsc.py renders the few watermarked preview pages from a private folder. Price: ₹99 per volume; no bundle price.",
+  "_about": "The Indian Economy Collection: the public catalogue. Every title, page count, part and syllabus-map row is taken from the volume itself (its title page, contents page and syllabus map); each volume's category groups it with its neighbours in the series. The handbooks are never stored in this repository; tools/upsc/build_upsc.py renders the cover and an eight-page selected preview of each volume, exactly as the PDF prints it, from a private folder. Price: ₹99 per volume (soft copy); no bundle price.",
   "price": 99,
   "series": "Arjun Agrawal Knowledge Series | Economics Collection",
   "seriesName": "The Indian Economy Series",
   "format": "Digital soft copy (PDF), A4",
+  "categories": [
+    {"k": "foundations", "n": "Foundations of Economics"},
+    {"k": "money", "n": "Money, Prices and Monetary Policy"},
+    {"k": "public", "n": "Public Finance"},
+    {"k": "finance", "n": "Banking and Financial Markets"},
+    {"k": "external", "n": "External Sector and Global Institutions"},
+    {"k": "sectors", "n": "Agriculture, Industry and Labour"}
+  ],
   "volumes": [
     {
       "n": "I", "num": 1, "id": "volume-i",
       "title": "Introduction to Economics",
+      "cat": "foundations",
       "edition": "Platinum Edition",
       "sub": "The Foundations of Economic Thinking, Choice, Markets and Resource Allocation.",
       "exams": ["Prelims", "Mains GS III", "State PCS", "Interview"],
@@ -51,6 +60,7 @@
     {
       "n": "II", "num": 2, "id": "volume-ii",
       "title": "Money & Monetary Policy",
+      "cat": "money",
       "edition": "Platinum Edition 2026",
       "sub": "Money, Monetary Aggregates, the RBI and the Architecture of Monetary Policy in India.",
       "exams": ["Prelims", "Mains GS III", "Interview", "State PCS", "RBI Grade B"],
@@ -94,6 +104,7 @@
     {
       "n": "III", "num": 3, "id": "volume-iii",
       "title": "Inflation and Price Stability",
+      "cat": "money",
       "edition": "Platinum Edition",
       "sub": "Measurement, Drivers, Distributional Effects and India's Inflation Management Framework.",
       "exams": ["Prelims", "Mains GS III", "State PCS", "RBI Grade B", "Interview"],
@@ -136,6 +147,7 @@
     {
       "n": "IV", "num": 4, "id": "volume-iv",
       "title": "Taxation and Public Revenue",
+      "cat": "public",
       "edition": "Platinum Edition",
       "sub": "Constitutional Foundations, Tax Design, GST and Fiscal Federalism.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -175,6 +187,7 @@
     {
       "n": "V", "num": 5, "id": "volume-v",
       "title": "Fiscal Policy and Budget Management",
+      "cat": "public",
       "edition": "Platinum Edition",
       "sub": "Public Expenditure, Budgetary Architecture, Fiscal Deficits, Public Debt and Fiscal Responsibility.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -215,6 +228,7 @@
     {
       "n": "VI", "num": 6, "id": "volume-vi",
       "title": "Banking and Financial Institutions",
+      "cat": "finance",
       "edition": "Platinum Edition",
       "sub": "Structure, Regulation, Credit, Financial Stability and Inclusion.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -254,6 +268,7 @@
     {
       "n": "VII", "num": 7, "id": "volume-vii",
       "title": "Financial Markets and Instruments",
+      "cat": "finance",
       "edition": "Platinum Edition",
       "sub": "Money Markets, Capital Markets, Securities, Investment and Market Regulation.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -294,6 +309,7 @@
     {
       "n": "VIII", "num": 8, "id": "volume-viii",
       "title": "Balance of Payments and International Trade",
+      "cat": "external",
       "edition": "Platinum Edition",
       "sub": "India's External Sector: Trade, Capital Flows, Exchange Rates and External Stability.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -335,6 +351,7 @@
     {
       "n": "IX", "num": 9, "id": "volume-ix",
       "title": "Global Economic Institutions and Trade Architecture",
+      "cat": "external",
       "edition": "Platinum Edition",
       "sub": "Multilateral Finance, Global Trade Rules, Development Banks and India's Economic Interests.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -374,6 +391,7 @@
     {
       "n": "X", "num": 10, "id": "volume-x",
       "title": "Indian Agriculture and Allied Sectors",
+      "cat": "sectors",
       "edition": "Platinum Edition",
       "sub": "Transforming Indian Agriculture: Production, Productivity, Farmer Incomes, Food Security and Sustainable Growth.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
@@ -415,6 +433,7 @@
     {
       "n": "XI", "num": 11, "id": "volume-xi",
       "title": "Indian Industry, Manufacturing, Trade and Labour Markets",
+      "cat": "sectors",
       "edition": "Platinum Edition",
       "sub": "Industrial Transformation, Enterprise Competitiveness, Employment and the Future of Work.",
       "exams": ["Prelims", "Mains GS II & III", "State PCS", "RBI Grade B", "Interview"],
