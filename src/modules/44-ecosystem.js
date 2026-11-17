@@ -311,7 +311,7 @@ function esyHero(){const H=UPSC_HB.volumes,fig=typeof rsSD==="function"?`<svg vi
   <figure class="sy-hfig" aria-hidden="true"><svg viewBox="0 0 320 300" focusable="false"><path class="g" d="M40 260H300M40 260V20"/>
    <path class="a a1" d="M40 60 C 120 70, 170 150, 200 170"/><path class="a a2" d="M40 250 C 120 240, 170 190, 200 170"/><path class="a" style="stroke:var(--gold-d)" d="M200 170 C 240 150, 270 110, 300 60"/>
    <circle class="r" cx="200" cy="170" r="16"/><circle class="n" cx="200" cy="170" r="6"/>
-   <text x="44" y="50">INTERNATIONAL</text><text x="44" y="286">INDIA</text><text x="214" y="200">ONE DISCIPLINE</text></svg></figure>
+   <text x="44" y="50">INTERNATIONAL</text><text x="44" y="286">INDIA</text><text x="314" y="208" text-anchor="end">ONE DISCIPLINE</text></svg></figure>
   <div class="sy-paths">
    <article class="sy-pp sy-pp-ib" aria-labelledby="sy-ib"><div class="sy-ppk">Pathway · International</div><h2 class="sy-pph" id="sy-ib">IB DP Economics</h2>
     <p class="sy-ppt">Think like an economist.</p><p class="sy-ppd">The International Baccalaureate Diploma Programme Economics course: concepts, interactive models, real-world cases and examination practice, at SL and HL.</p>
