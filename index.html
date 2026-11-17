@@ -28230,7 +28230,7 @@ function RESPONSIVESUITE(){
    bleed.length===0,bleed.slice(0,3).map(e=>e.tagName+"."+String(e.className).slice(0,30)).join(", "));
  /* header geometry */
  const brand=document.querySelector(".brand"), topR=document.querySelector(".topR");
- const navBtns=[...document.querySelectorAll("#mainnav button")].filter(b=>b.offsetParent);
+ const navBtns=[...document.querySelectorAll("#mainnav button, #synav .sy-a")].filter(b=>b.offsetParent);
  const br=brand.getBoundingClientRect(), tr=topR.getBoundingClientRect();
  T("Desktop · the brand and the navigation do not collide",
    !navBtns.length||Math.min(...navBtns.map(b=>b.getBoundingClientRect().left))>=br.right+8);

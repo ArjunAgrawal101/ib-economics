@@ -47,6 +47,9 @@ steps = [
    <a class="mobitem mobext" href="https://the-business-brief-dun.vercel.app/" target="_blank" rel="noopener noreferrer">The Business Brief · IB DP Business Management <span aria-hidden="true">↗</span><span class="sy-vh"> (opens in a new tab)</span></a></div>
   <p class="xs mt4" style="color:var(--tx-4)">Everything you record stays on this device.</p>`;
  document.body.appendChild(d);'''),
+    # the layout audit counts the navigation a reader can see: the main navigation, or the IB bar if it is ever shown again
+    (' const navBtns=[...document.querySelectorAll("#mainnav button")].filter(b=>b.offsetParent);',
+     ' const navBtns=[...document.querySelectorAll("#mainnav button, #synav .sy-a")].filter(b=>b.offsetParent);'),
 ]
 done = 0
 for old, new in steps:
