@@ -1,255 +1,136 @@
-# Release report: UPSC CSE Economics, a second pathway
+# Release report: one Economics ecosystem, two learning pathways
 
-Branch `claude/upsc-cse-economics`, from `main` at f15bb26 (the merge of [ArjunAgrawal101/ib-economics#10](https://github.com/ArjunAgrawal101/ib-economics/pull/10)), submitted as a new pull request. Not merged and not deployed. The previous report is in `docs/releases/2026-10-22-think-like-an-economist-report.md`.
+Branch `claude/upsc-cse-economics` (pull request [ArjunAgrawal101/ib-economics#11](https://github.com/ArjunAgrawal101/ib-economics/pull/11), not merged). This release builds on the UPSC CSE Economics section described in `docs/releases/2026-11-16-upsc-second-pathway-report.md`, which is part of the same pull request. Brand: **ARJUN AGRAWAL | ECONOMICS**.
 
-## What was added
+## Architecture
 
-- **Two pathways on the home page.**
-  - The page's one heading is "Economics. Understood. Connected. Applied.", followed by the supporting statement from the brief.
-  - Two cards follow, both on the first screen at 1440 × 900:
-    - **IB DP Economics**: "Think like an economist.", ivory and burgundy. It leads down to the existing IB cover.
-    - **UPSC CSE Economics**: "Understand the economy. Master the examination.", navy and gold, with handbook covers and links to the syllabus, resources, handbooks, current affairs and the course.
-- **A pathway strip above the header.** It reads "IB DP Economics | UPSC CSE Economics | About | Contact" at every width; on phones it is a two-way switch.
-  - Inside the UPSC section, About and Contact open the section's own pages.
-  - UPSC CSE Economics is also second in the phone drawer, first in the More menu, and in site search.
-- **The UPSC section (`#/upsc`)** has eight tabs, each with its own address and title.
-  1. **UPSC Overview.**
-     - The headline and statement from the brief.
-     - A map of how the eleven volumes build on one another, drawn from each volume's own series-boundary panel.
-     - Five pillars.
-     - "How we approach Economics": the repo rate followed through Concept → Explanation → Visualisation → Indian economy → Current affairs → Prelims → Mains, with arrow-key navigation.
-     - What students learn, static against current, and Prelims against Mains.
-     - Three next steps: free resources, ₹99 handbooks and the ₹9,999 programme.
-  2. **Syllabus.**
-     - The official wording is quoted from UPSC Examination Notice No. 05/2026-CSE (4 February 2026).
-     - Four labelled kinds of text are kept apart: Official, Explained, Covered and Current.
-     - **Prelims:** the Paper I lines, organised into fourteen explained themes.
-     - **Mains:** the ten GS III Economics lines, quoted, each with:
-       - what it expects;
-       - its dimensions and concepts;
-       - an example;
-       - an answer approach;
-       - its volumes.
-     - The two GS II lines that call on Economics.
-     - Coverage dots show which volumes treat each line. They are taken from the volumes' own contents and syllabus maps, and are not a percentage.
-  3. **Economics Resources.**
-     - Eleven free topic previews, one or more for each of the ten categories, with search and category filters.
-     - Each preview has:
-       - an introduction and the concept;
-       - an original diagram, computed where possible;
-       - distinctions;
-       - the Indian context;
-       - the policy and institutions;
-       - the Prelims and Mains perspectives;
-       - a question that marks your answer;
-       - a link into its volume.
-     - "Inflation: Beyond the Headline Number" includes the requested diagram linking inflation, purchasing power, interest rates and monetary policy.
-     - The page also holds **One Concept. Two Examination Perspectives.**: eleven shared concepts, each linking to existing IB pages (labs, diagram library, mindmaps, the elasticity explainer, Real World) and to the UPSC volumes and previews. Nothing IB is duplicated.
-  4. **Economics Handbooks.**
-     - "The Economics Handbook Collection": eleven cards, each with:
-       - the cover;
-       - the volume number;
-       - the title and page count;
-       - a description and topics;
-       - Prelims and Mains relevance;
-       - ₹99 / Volume;
-       - **Explore Handbook** and **Purchase PDF | ₹99**.
-     - Each volume has its own page with:
-       - the facts and the edition;
-       - a description and what students will learn;
-       - the full contents with page numbers;
-       - the volume's own syllabus map;
-       - key concepts and institutions;
-       - the recurring boxes and the revision compendium;
-       - three watermarked sample pages (contents and two pages) that enlarge;
-       - its free previews;
-       - the purchase actions.
-  5. **Current Affairs.**
-     - Nineteen dated entries across twelve themes, filterable.
-     - Each entry gives what changed, the concept, the examination angle, the source authority and the handbook part.
-     - It is marked as edited by hand, compiled on 16 November 2026 from the handbooks' dated trackers.
-  6. **UPSC Economics Course.**
-     - "Master Economics for UPSC. Build Understanding That Lasts."
-     - The facts: ₹9,999 for the complete 3-month programme, 3 months, 100% online, maximum 25 students, Prelims + Mains, static Economics + current affairs.
-     - Ten features.
-     - A three-month roadmap tagged with the volumes; it is labelled indicative and is not a weekly timetable.
-     - "Why a batch of 25?"
-     - A pricing card with **Enquire About Enrolment** and **Speak to Arjun**.
-  7. **About the Educator.** "Arjun Agrawal, Economics Educator | IB DP Economics | UPSC CSE Economics", using only facts already on the site and on the handbooks' title pages, and the existing portrait.
-  8. **Contact / Enrolment.** Separate handbook, enrolment and general enquiries. A volume can be chosen, the message is shown before it is sent, and there are WhatsApp, email and phone links.
+- **Home (`#/`)** is now the ecosystem of both pathways (`src/modules/44-ecosystem.js`, `src/styles/css-eco.css`).
+- **IB DP Economics (`#/ib`)** is a new landing page. It carries the IB front page that used to be the home page, every band unchanged, under its own masthead, journey and finder. Self-tests and browser tests that read the IB front page now read it at `#/ib`.
+- **Shared concepts (`#/concepts`)** is a new section with two readings per concept (`src/modules/45-concepts.js`).
+- **The main navigation** is built at start-up into `header.top`. The IB section bar (`#mainnav`) is still painted, so its order, its More menu and its self-tests are unchanged, but it is not shown. Every IB section is reached through the IB menu, "Every IB section and tool" (the full list), the IB landing page, the drawer and search.
+- **The base page** is changed only by idempotent migrations:
+  - `tools/migrations/2026-11-17-ecosystem-intro.py`: the opening, its timeline and its self-tests;
+  - `…-ecosystem-navigation.py`: the brand, the drawer and the brand self-tests;
+  - `…-ecosystem-selftests.py`: the front-page self-tests now read `#/ib`;
+  - `…-ecosystem-footer.py`: the footer's motto, paragraph and first column.
+  - Each was run twice, and the second run applied nothing. The intro migration reproduces the built page byte for byte from the previous base.
 
-## The handbooks
+## Redesigned sections
 
-All eleven volumes were inspected in full, privately. A per-volume audit (titles, page counts, contents, concepts, institutions, Prelims and Mains relevance, descriptions, syllabus maps) is supplied separately and is not in the repository.
+1. **The five-second opening.** The same clock and engine (Web Animations scheduled from the first presented frame, re-anchored to Paint Timing in a still passage; opacity and transform only).
 
-| Vol. | Title | Pages |
-|---|---|---|
-| I | Introduction to Economics | 41 |
-| II | Money & Monetary Policy | 43 |
-| III | Inflation and Price Stability | 49 |
-| IV | Taxation and Public Revenue | 49 |
-| V | Fiscal Policy and Budget Management | 49 |
-| VI | Banking and Financial Institutions | 50 |
-| VII | Financial Markets and Instruments | 49 |
-| VIII | Balance of Payments and International Trade | 55 |
-| IX | Global Economic Institutions and Trade Architecture | 43 |
-| X | Indian Agriculture and Allied Sectors | 45 |
-| XI | Indian Industry, Manufacturing, Trade and Labour Markets | 50 |
+   | Time | Stage |
+   |---|---|
+   | 0–1.0 s | a dark field of coordinates, data points and lines; the Arjun Agrawal identity emerges from the brand vectors |
+   | 1.0–2.0 s | the identity settles to the top; axes, supply and demand appear, demand shifts and the equilibrium moves along supply; a trade network behind |
+   | 2.0–3.25 s | the field divides: IB DP Economics (global perspectives, international evidence) in burgundy with a globe, and UPSC CSE Economics (the Indian economy, policy, institutions) in forest green with a kolam dot grid |
+   | 3.15–4.25 s | "One discipline. Two pathways.", then both names (3.70–3.95 s is still) |
+   | 4.3–5.0 s | the two halves open onto the page underneath |
 
-- **Page counts.**
-  - **Volumes V, VI, VIII, X and XI** were supplied as PDFs; their counts are the PDFs' own.
-  - **Volumes I, II, III, IV, VII and IX** were supplied as Word files.
-    - They were rendered here with LibreOffice 24.2, the producer named in the supplied PDFs, using each file's embedded fonts.
-    - In all six, every part begins on exactly the page the volume's contents page gives, so the counts reproduce the author's pagination.
-    - They should still be confirmed against the PDFs that are sold.
-  - `tools/upsc/build_upsc.py` refuses to build if a page count or title in the catalogue differs from the PDF.
-- **Protection.**
-  - No PDF or Word file is in the repository, and `.gitignore` refuses both.
-  - The page names no handbook file.
-  - The site shows four low-resolution WebP images per volume: the cover, the contents page and two sample pages.
-    - Pages are 640 px wide, about 77 dpi; covers are 520 px.
-    - All 44 images total 2.6 MB, each under 120 KB.
-  - Each image carries a diagonal watermark and a strip reading "Arjun Agrawal | Economics Collection | Preview Only".
-  - No full chapter is reproduced; the topic previews are written fresh from the volumes.
-- **Purchase.**
-  - Purchase PDF | ₹99 opens WhatsApp on the published number (+91 7092844945) with: "Hello Arjun, I would like to purchase the digital copy (PDF) of Volume N: Title, from your UPSC CSE Economics Handbook series, priced at ₹99. Please let me know how to pay and receive the PDF."
-  - The email alternative goes to arjun1agr@gmail.com.
-  - No payment gateway, bundle price, UPI ID or confirmation was added, and the pages say nothing is charged on the site.
+   - **When it plays.** On every full-page load of any address, and never on navigation inside the app. No storage is read or written.
+   - **Skip** is a real button. Reduced motion shows one still frame for 1.5 s.
+   - **On phones**, the pathways stack and the halves open top and bottom.
+2. **The main navigation.** Home | IB DP Economics | UPSC CSE Economics | Learning Tools | About Arjun | The Business Brief ↗.
+   - **The menus.** The three menus are mega menus that open by pointer, click or keyboard: ArrowDown moves into the panel, and Escape returns to its button.
+     - **IB:** LEARN, VISUALISE, APPLY, PRACTISE, ADVANCE.
+     - **UPSC:** START HERE, LEARN, HANDBOOK LIBRARY, PREPARE, COACHING.
+     - **Learning Tools:** the calculator, timer and search, plus the model and study tools.
+   - **Fitting the bar.** The bar is measured: the timer and calculator fold into Learning Tools first, then SL/HL, and only then does the bar become the drawer. The full bar fits from 1181 px to 1920 px.
+   - **The pathway strip** above the header is the pathway switcher.
+   - **The phone drawer** opens with the two pathways and shared concepts, keeps every group it had, and ends with The Business Brief.
+3. **The home page**, seven sections:
+   1. The hero ("Economics is not just a subject to study. It is a way to understand the world.", the briefed supporting line) and two large pathway panels:
+      - IB DP Economics, burgundy, with EXPLORE IB DP ECONOMICS;
+      - UPSC CSE Economics, forest green, with EXPLORE UPSC ECONOMICS.
+   2. The knowledge ecosystem: an interactive map of eight fields (Microeconomics, Macroeconomics, International, Development, Public finance, Indian economy, Economic policy, Global issues). Each field says where it is taught for the IB and where it appears for UPSC, and only where it really does.
+   3. The learning experience: six screenshots of the platform itself (`assets/home/*.webp`), each opening the page it shows.
+   4. Selected original work, each shown in part: the Indian Economy Collection, the diagram atlas, mindmaps and real-world cases, with counts computed from the platform's data.
+   5. The Business Brief: "Beyond Economics. Explore Business Management." It is an editorial aside, not a third pathway, and opens in a new tab.
+   6. The educator: the supplied portrait, with text from the supplied profile only, and MEET ARJUN AGRAWAL.
+   7. "Where would you like to begin?"
+4. **The IB landing page (`#/ib`).**
+   - The heading IB DP Economics.
+   - The SL/HL switch (the platform's own level) and a link to the SL vs HL differences.
+   - Counts of subtopics, diagrams, cases and mindmaps.
+   - The journey UNDERSTAND → VISUALISE → APPLY → PRACTISE → EVALUATE, each stage opening real pages.
+   - A finder that filters 35 IB destinations by stage, kind and name.
+   - Then the whole IB front page. No IB endorsement is claimed.
+5. **The UPSC landing page.**
+   - "Understand the Indian Economy. Prepare with clarity.", the briefed supporting text, and the three calls: Explore the Handbook Library, Explore the UPSC Syllabus, Discover the Intensive Course.
+   - An interactive seven-stage roadmap: the syllabus, foundations, the Indian economy, current affairs, Prelims practice, Mains answer writing, revision.
+   - The syllabus explorer gains a third tab, "The Optional (Papers VI and VII)". It names and places the Economics Optional and says plainly that this section does not cover it.
+6. **THE INDIAN ECONOMY COLLECTION** ("Eleven carefully structured volumes covering essential dimensions of Indian and international Economics for UPSC CSE preparation.").
+   - Filters by six categories and by volume.
+   - **Cards:** the cover with an inside page, volume number, exact title, category, verified page count, parts, topics, Prelims and Mains links, "₹99 per soft copy", Preview 8 pages, View volume and Enquire.
+   - **A volume's page:** on the left, the cover, the facts, ₹99 and the enquiry by WhatsApp, email or telephone; on the right, the overview, the eight-page preview, what students learn, the parts, the concepts and institutions, the syllabus relevance and map, and how the volume is built.
+   - **Purchase** is stated everywhere as completed by direct contact; nothing is charged on the site.
+7. **Shared concepts.**
+   - **What they are:** eleven concepts, each with an IB DP reading and a UPSC CSE reading at its own address.
+   - **Both readings** share the idea and the platform's glossary definitions.
+   - **The IB reading** keeps to the unit, the diagram, the platform's tools and two Paper 1-style prompts.
+   - **The UPSC reading** keeps to:
+     - the Indian application;
+     - data and policy;
+     - the Prelims and Mains perspectives;
+     - an MCQ;
+     - a GS III-style question;
+     - the volumes and parts.
+   - **Practice prompts** are original and labelled; none is presented as a past paper.
+8. **The footer.**
+   - It opens with **Explore the academic ecosystem** (IB DP Economics, UPSC CSE Economics, and IB DP Business Management at The Business Brief), with the verified contacts.
+   - The motto reads "One discipline. Two pathways.", and the brand paragraph and first column name both pathways.
+   - The UPSC block lists the collection, current affairs and enrolment.
+9. **Palette and motion.**
+   - The UPSC tokens are re-themed from navy to forest green and antique gold.
+   - Sections and cards rise in with the platform's existing reveal, with a short stagger.
+   - The hero figure drifts with the scroll where supported.
+   - None of this moves under reduced motion.
 
-## What was changed
+## The handbook previews
 
-- **The IB cover's heading is now an `h2`**, because the page's single `h1` is the shared headline. Its text, type, layout and actions are unchanged; CSS selectors now target `.cv-h` rather than `h1.cv-h`.
-- **Title and description.** The page title and descriptions (including social-card tags) name both pathways: "Arjun Agrawal · Economics: IB DP and UPSC CSE".
-- **Navigation.**
-  - The phone drawer lists UPSC CSE Economics second, after Resources.
-  - The More menu opens with a Pathways group.
-  - The footer's Connect column lists UPSC Overview, Syllabus, Economics Handbooks and the 3-month programme.
-  - The IB primary bar is unchanged.
-- **Two network-request tests.** `tests/transform.mjs` and `tests/events.mjs` now count only the page's own requests. The service worker precaches the four data files for offline use on install, and Playwright 1.63 reports those requests at the context level. The previous release fails the same two checks here for the same reason, and with service workers blocked the page makes none of these requests at start-up.
-- **Service worker.** v21.
+`tools/upsc/build_upsc.py --src <private folder>` rebuilt every image from the eleven PDFs. Each title and page count was checked against its PDF, and none of the PDFs entered the repository.
 
-## What was preserved
+- **Nothing drawn over the pages.** The previous release's watermark step was removed. Pages are rendered exactly as the PDF prints them, so each keeps its own running header ("Arjun Agrawal Knowledge Series | Economics Collection"), its faint centre logo and its footer copyright line ("© Arjun Agrawal. All rights reserved…").
+- **Size.** Each page is 1100 × 1555 px (an A4 page at about 133 dpi) as WebP, with a 220 px thumbnail.
+- **Count.** That makes 88 pages and 88 thumbnails, plus 22 covers (13 MB in all).
+- **Choice of pages.** For each volume: the contents and syllabus map (page 2), the opening of Part A (3–5), and two spreads named in the catalogue.
 
-- Every IB section, route, tool and its data are unchanged.
-- Nothing is written to `localStorage` by the new section: its filters and choices are held in memory.
-- The opening sequence is unchanged, and so are the Resource hub, the Learning Studio, Tutorials and the existing About and Contact pages.
+| Vol. | Title | Category | Pages | Preview pages | Size | Preview total |
+|---|---|---|---|---|---|---|
+| I | Introduction to Economics | Foundations of Economics | 41 | 2, 3, 4, 5, 12, 13, 34, 35 | 1100×1555 | 921 KB |
+| II | Money & Monetary Policy | Money, Prices and Monetary Policy | 43 | 2, 3, 4, 5, 23, 24, 36, 37 | 1100×1555 | 1057 KB |
+| III | Inflation and Price Stability | Money, Prices and Monetary Policy | 49 | 2, 3, 4, 5, 18, 19, 40, 41 | 1100×1555 | 844 KB |
+| IV | Taxation and Public Revenue | Public Finance | 49 | 2, 3, 4, 5, 23, 24, 40, 41 | 1100×1555 | 987 KB |
+| V | Fiscal Policy and Budget Management | Public Finance | 49 | 2, 3, 4, 5, 25, 26, 41, 42 | 1100×1555 | 1010 KB |
+| VI | Banking and Financial Institutions | Banking and Financial Markets | 50 | 2, 3, 4, 5, 15, 16, 42, 43 | 1100×1555 | 1044 KB |
+| VII | Financial Markets and Instruments | Banking and Financial Markets | 49 | 2, 3, 4, 5, 12, 13, 35, 36 | 1100×1555 | 1007 KB |
+| VIII | Balance of Payments and International Trade | External Sector and Global Institutions | 55 | 2, 3, 4, 5, 6, 41, 42, 43 | 1100×1555 | 1035 KB |
+| IX | Global Economic Institutions and Trade Architecture | External Sector and Global Institutions | 43 | 2, 3, 4, 5, 14, 15, 33, 34 | 1100×1555 | 1023 KB |
+| X | Indian Agriculture and Allied Sectors | Agriculture, Industry and Labour | 45 | 2, 3, 4, 5, 21, 22, 36, 37 | 1100×1555 | 991 KB |
+| XI | Indian Industry, Manufacturing, Trade and Labour Markets | Agriculture, Industry and Labour | 50 | 2, 3, 4, 5, 25, 26, 42, 43 | 1100×1555 | 1059 KB |
 
-## Accuracy
+All eleven volumes have eight readable pages, so there is no exception to report. Volume VIII's sample page 5 is already in the front matter, so its eighth page is page 43.
 
-- **The official syllabus.**
-  - upsc.gov.in is refused by this session's network policy, so the notice PDF could not be opened directly.
-  - Search-engine excerpts restricted to upsc.gov.in confirm the 2026 notice (No. 05/2026-CSE, 4 February 2026) and these lines:
-    - the Prelims line "Economic and Social Development-Sustainable Development, Poverty, Inclusion, Demographics, Social Sector Initiatives, etc.";
-    - the GS III heading;
-    - the lines on the Indian economy, inclusive growth, Government Budgeting, crops, subsidies and the PDS, food processing, infrastructure (2025 notice) and investment models;
-    - the GS II line on government policies and interventions.
-  - These lines did not appear in the excerpts and should be checked against the PDF:
-    - "Land reforms in India.";
-    - "Effects of liberalization on the economy, changes in industrial policy and their effects on industrial growth.";
-    - the tails of the crops and subsidies lines;
-    - "Important International institutions, agencies and fora- their structure, mandate."
-- **Figures.** Every figure in the topic previews and Current Affairs comes from the handbooks, each with the authority the handbook cites. Developments the handbooks source only to news outlets were left out.
+**The viewer** offers:
+- previous and next;
+- the preview number and the volume's page number;
+- zoom at 100, 150 and 200 %;
+- full screen (the element's own full screen, or a fixed layer where the browser has none);
+- eight thumbnails;
+- arrow keys, +/− and F, and swipe on touch screens;
+- thumbnail-first progressive loading, with the next and previous pages fetched ahead.
+
+It states "Selected preview. 8 of the N pages, shown as the PDF prints them." It makes no claim that the images cannot be copied or screenshotted. There is no DRM.
+
+## The Business Brief
+
+The Business Brief is linked in three places, each with `target="_blank"` and `rel="noopener noreferrer"`:
+- the main navigation ("The Business Brief ↗");
+- the home page's editorial panel ("Beyond Economics. Explore Business Management." / "Discover The Business Brief, an interactive learning platform for IB DP Business Management." / EXPLORE THE BUSINESS BRIEF);
+- the footer's "Explore the academic ecosystem" (IB DP Business Management).
+
+It is also in the phone drawer. Its site and repository could not be reached from here (see Limitations), so the panel is typographic, with no screenshots of it.
 
 ## Tests
 
-Every suite was run in sequence in headless Chromium (Playwright 1.63) against the final committed build, **7951e14**, with a clean working tree.
-
-| Suite | Result | Checks |
-|---|---|---|
-| api-youtube | passed | 21 |
-| selftest | passed | 37 (the 2,136 built-in self-tests all pass) |
-| e2e | passed | 22 |
-| ecosystem | passed | 30 |
-| renaissance | passed | 25 |
-| cover | passed | 35 |
-| pwa | passed | 4 |
-| widths | passed | 15 |
-| overlap | passed | 7 (every audited route at 15 widths, 320 to 2560 px) |
-| routes | passed | 2 |
-| intro | passed on rerun (see below) | 58 |
-| course | passed | 39 |
-| transform | passed | 33 |
-| events | passed | 49 |
-| tabs | passed | 9 |
-| notices | passed | 4 |
-| events-scroll | passed | 26 |
-| final | passed | 18 |
-| studio | passed | 89 |
-| launch | passed | 55 |
-| upsc (new) | passed | 82 |
-
-**21 of 21 suites pass: 660 checks.** None were skipped, and none could not be run.
-
-- **intro.**
-  - **The failure.** In the sequential run, 4 of its 58 checks failed at 768 px only. The opening waits for the platform to be ready, and that once arrived at 5,393 ms, so its exit was late.
-  - **Investigation.** With the machine otherwise idle:
-    - the opening ended on its own clock at 5,003 to 5,029 ms in 8 of 8 probes at 768 and 1440 px, against 5,010 to 5,021 ms on the previous release;
-    - the UPSC self-test suite adds 7 to 13 ms to start-up.
-  - **Reruns.** The suite was then run twice more on the same build, and both runs passed all 58 checks.
-  - **Conclusion.** The start-up margin is environment-sensitive, as the previous report also noted. It should be watched on a slow device.
-- **Fixed during this run.**
-  - **transform and events.** Each had one check failing: "no data file is fetched until a page needs it". The requests were the service worker precaching the files for offline use. Playwright 1.63 reports those at the context level, and the previous release fails the same checks here. The tests now count only the page's own requests. With service workers blocked, the page makes none of these requests at start-up.
-  - **overlap.** The first full audit of the final build found four problems; three were already present in the previous release:
-    - the India 1991 chart's event labels touching at 390 and 430 px;
-    - "Q elastic" and "Q inelastic" touching on course topic 2.5 at 1440 px;
-    - "Price ($)" cut off at the elasticity lab's top edge at 1440 px;
-    - the home page's fanned handbook covers (images laid over one another) at 768 and 834 px.
-
-    All four are fixed (label rows 16 and 14 units apart, the lab label at y = 14, and the cover fans drawn as backgrounds of a decorative element), and the full audit now passes.
-- **The UPSC suite (82 checks).**
-  - The home page has one heading and both pathways are on the first screen; the pathway strip works.
-  - All eight tabs route, each with one heading and its own title.
-  - The handbook cards show 11 covers, page counts of 41, 43, 49, 49, 49, 50, 49, 55, 43, 45 and 50, ₹99 / Volume, and prefilled enquiries that name the volume.
-  - Each volume page has its contents, syllabus map, sample pages, zoom and email enquiry.
-  - The course states ₹9,999 for the complete 3-month programme, never per month, and the enrolment message is exact; the phone link calls the published number. No lecture counts, guarantees or refunds appear.
-  - Contact keeps three separate enquiry types. The syllabus has its Prelims themes and 10 Mains lines, quoted. The resource search and filters work, and the questions mark answers.
-  - The connector's IB links reach live pages. The current-affairs filters work, and every entry has a date and a source.
-  - Search finds the UPSC pages.
-  - Nothing scrolls sideways at 1024, 768, 390, 360 or 320 px. Reduced motion is respected.
-  - axe finds no WCAG A or AA violation on the pathways, the strip or any UPSC page at 1440 and 390 px.
-- **Build.**
-  - `tools/build/splice.py` built the page from the sources.
-  - A separate check confirmed:
-    - the three UPSC modules, the latest stylesheet and the footer change are in `index.html`;
-    - all 2,136 built-in self-tests pass;
-    - the footer's UPSC links open their pages;
-    - there are no page errors.
-- **Protection.**
-  - The repository holds no PDF or Word file apart from the ten public carousel PDFs.
-  - The page names no handbook file, and handbook paths are not served.
-  - The 44 previews are WebP, each under 120 KB.
-- **Visual review.** Screenshots of the home page and every UPSC page were captured and inspected at 1440, 1024, 900, 768, 640 and 390 px.
-
-## Remaining limitations
-
-- **Vercel.** The deployment and any preview cannot be reached from here; nothing about production is claimed.
-- **The opening sequence.** It still says "IB DP Economics". At phone width there is no room for both pathways in its line without changing its timed, tested layout, so it was left as it is.
-- **Browsers.** Only headless Chromium was used for the tests and screenshots, not Safari, Firefox or physical devices.
-- **For the owner to confirm.**
-  - **Page counts.** Those for Volumes I, II, III, IV, VII and IX come from the supplied Word files, rendered as their PDFs would be. Please check them against the PDFs that are sold.
-  - **The official syllabus.** The syllabus lines listed under Accuracy should be checked against the 2026 notice PDF, which could not be opened from here.
-  - **Your qualifications.** About the Educator now shows "Postgraduate training in Economics and Political Science; UGC-NET and MH-SET qualified", taken from the handbooks' title pages; please confirm you want it on the site.
-- **The opening's start-up margin.** It ends on time when the machine is not busy; under heavy load it can end a few hundred milliseconds late (see Tests).
-
-## Files
-
-| File | Purpose |
-|---|---|
-| `content/upsc/handbooks.json` (new) | The catalogue, from the volumes themselves |
-| `tools/upsc/build_upsc.py` (new) | Checks titles and page counts against the private PDFs, writes the watermarked previews and the data module |
-| `assets/upsc/handbooks/*/` (new) | 44 preview images |
-| `src/modules/41-upsc-data.js` (new, generated) | The catalogue as the page reads it |
-| `src/modules/42-upsc-content.js` (new) | Syllabus, topics, current affairs, the connector and the programme |
-| `src/modules/43-upsc.js` (new) | The section, figures, pathway strip, home pathways, search records and self-tests |
-| `src/styles/css-upsc.css` (new) | The UPSC palette and pages |
-| `tools/migrations/2026-11-16-upsc-navigation.py` (new) | The drawer entry, the title and descriptions |
-| `src/modules/07-cover.js`, `src/styles/css-launch.css`, `src/styles/css-atlas.css` | The cover's heading as `h2` |
-| `src/modules/27-wire-t6.js` | The More menu's Pathways group |
-| `src/modules/38-studio.js`, `src/modules/39-atlas.js` | Self-tests for the cover's `h2` |
-| `tools/build/splice.py` | Splices the new stylesheet |
-| `tests/upsc.mjs` (new), `tests/launch.mjs`, `tests/run-all.mjs` | The new suite; the Resources band now follows the pathways and the cover |
-| `service-worker.js` | v21 |
-| `tests/transform.mjs`, `tests/events.mjs` | Count only the page's own requests, not the service worker's precache |
-| `src/modules/24-datalab.js`, `src/modules/11-rooms.js`, `tools/migrations/2026-11-16-figure-label-rows.py` | Figure labels that touched or were cut off |
-| `README.md`, `docs/design-system.md` | The UPSC section and its palette |
-| `.gitignore` | Refuses Word files and the handbook PDFs |
+The full run of all 22 browser suites on this build is in progress; its results will be recorded here when it finishes. Suites run so far on commit 0ce5623: api-youtube 21/21, selftest 37/37, e2e 22/22.
