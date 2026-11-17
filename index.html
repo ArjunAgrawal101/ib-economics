@@ -4170,6 +4170,104 @@ body.up-on .subnav button:focus-visible{outline:2px solid var(--up-gold-l);outli
 /* the cover fans are decoration (aria-hidden): each cover is a background, not an image layered on another */
 .hp-covers span,.up-fan span{aspect-ratio:520/735;background-color:var(--up-navy-2);background-position:center;background-size:cover;background-repeat:no-repeat;border-radius:2px}
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   FLAGSHIP · the design system of the two-pathway platform
+   One identity (ARJUN AGRAWAL · ECONOMICS · Think like an economist.), three
+   registers that never mix:
+     shared  deep charcoal, warm ivory, restrained gold   (home, About, search)
+     ib      burgundy, ivory, muted gold                   (IB DP Economics)
+     upsc    forest green, warm ivory, antique gold        (UPSC CSE Economics)
+   The shell sets body[data-pathway] on every render, so a component reads
+   --path-accent and --path-wash rather than naming a pathway's colour.
+   Bodoni Moda for display, Source Serif 4 for reading, Manrope for the
+   interface, JetBrains Mono for figures: the platform's existing typefaces.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root{
+ /* shared */
+ --fx-ink:#14161A;--fx-charcoal:#1A1D22;--fx-charcoal-2:#23272D;--fx-charcoal-3:#2E333A;
+ --fx-ivory:#F7F3EA;--fx-ivory-2:#EFE9DC;--fx-paper:#FBF9F4;
+ --fx-gold:#B08A47;--fx-gold-l:#D9C28F;--fx-gold-text:#7A5E26;
+ --fx-text:#1C1F24;--fx-text-2:#4A4F57;--fx-text-3:#6B7079;
+ --fx-on-dark:#F4EFE4;--fx-on-dark-2:rgba(244,239,228,.72);--fx-on-dark-3:rgba(244,239,228,.5);
+ --fx-line:#E2DBCB;--fx-line-2:#D3CAB6;--fx-line-dark:rgba(244,239,228,.14);
+ /* IB DP Economics */
+ --ib-bur:#7A2436;--ib-bur-d:#5B1826;--ib-bur-l:#9C3B4D;--ib-wash:#F6EAEC;--ib-ivory:#FBF8F1;--ib-gold:#A88B4A;--ib-gold-text:#7C622A;
+ /* UPSC CSE Economics */
+ --up-forest:#1F4434;--up-forest-d:#14301F;--up-forest-l:#2F5E48;--up-wash:#EAF0EA;--up-ivory:#F7F2E7;--up-gold:#A8843F;--up-gold-text:#765B22;
+ /* the current pathway, set per page */
+ --path-accent:var(--fx-gold-text);--path-accent-d:var(--fx-charcoal);--path-wash:var(--fx-ivory-2);--path-ivory:var(--fx-paper);--path-gold:var(--fx-gold);
+ /* type */
+ --fx-display:"Bodoni Moda",var(--dsp,Georgia),serif;--fx-serif:"Source Serif 4",var(--ser,Georgia),serif;
+ --fx-sans:Manrope,var(--ui,system-ui),system-ui,sans-serif;--fx-mono:"JetBrains Mono",var(--mono,ui-monospace),monospace;
+ /* rhythm */
+ --fx-wrap:1240px;--fx-gutter:clamp(16px,4vw,40px);
+ --fx-s1:4px;--fx-s2:8px;--fx-s3:12px;--fx-s4:16px;--fx-s5:24px;--fx-s6:32px;--fx-s7:48px;--fx-s8:64px;--fx-s9:96px;
+ --fx-r1:2px;--fx-r2:4px;--fx-r3:8px;
+ --fx-shadow-1:0 1px 2px rgba(20,22,26,.06);
+ --fx-shadow-2:0 1px 2px rgba(20,22,26,.05),0 14px 34px -18px rgba(20,22,26,.28);
+ --fx-shadow-3:0 2px 4px rgba(20,22,26,.06),0 28px 60px -28px rgba(20,22,26,.42);
+ /* motion */
+ --fx-ease:cubic-bezier(.2,.7,.2,1);--fx-ease-in:cubic-bezier(.4,0,.2,1);--fx-t1:160ms;--fx-t2:260ms;--fx-t3:520ms;
+}
+body[data-pathway="ib"]{--path-accent:var(--ib-bur);--path-accent-d:var(--ib-bur-d);--path-wash:var(--ib-wash);--path-ivory:var(--ib-ivory);--path-gold:var(--ib-gold)}
+body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--up-forest-d);--path-wash:var(--up-wash);--path-ivory:var(--up-ivory);--path-gold:var(--up-gold)}
+
+/* ── primitives (prefix fx-) ─────────────────────────────────────────────── */
+.fx-wrap{max-width:var(--fx-wrap);margin:0 auto;padding:0 var(--fx-gutter)}
+.fx-kicker{font:600 11px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--path-accent)}
+.fx-kicker.on-dark{color:var(--fx-gold-l)}
+.fx-display{font-family:var(--fx-display);font-weight:400;letter-spacing:-.01em;line-height:1.04;color:var(--fx-text)}
+.fx-h2{font:400 clamp(28px,3.4vw,44px)/1.08 var(--fx-display);letter-spacing:-.01em;color:var(--fx-text);margin:0}
+.fx-h3{font:600 clamp(18px,1.6vw,21px)/1.25 var(--fx-serif);color:var(--fx-text);margin:0}
+.fx-lede{font:400 clamp(16px,1.35vw,19px)/1.6 var(--fx-serif);color:var(--fx-text-2);max-width:62ch}
+.fx-body{font:400 16px/1.65 var(--fx-serif);color:var(--fx-text-2)}
+.fx-small{font:500 13px/1.5 var(--fx-sans);color:var(--fx-text-3)}
+.fx-rule{height:1px;background:var(--fx-line);border:0;margin:0}
+.fx-section{padding:clamp(56px,8vw,112px) 0}
+.fx-section-head{display:grid;gap:var(--fx-s3);margin-bottom:clamp(28px,4vw,48px)}
+.fx-section-head .fx-num{font:500 12px/1 var(--fx-mono);color:var(--fx-text-3);letter-spacing:.08em}
+
+.fx-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:0 22px;border-radius:var(--fx-r1);
+ font:600 13px/1 var(--fx-sans);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1px solid transparent;
+ transition:background var(--fx-t1) var(--fx-ease),color var(--fx-t1) var(--fx-ease),border-color var(--fx-t1) var(--fx-ease),transform var(--fx-t1) var(--fx-ease)}
+.fx-btn:focus-visible{outline:2px solid var(--fx-gold);outline-offset:3px}
+.fx-btn.primary{background:var(--path-accent);color:#fff}
+.fx-btn.primary:hover{background:var(--path-accent-d)}
+.fx-btn.secondary{background:transparent;color:var(--fx-text);border-color:var(--fx-line-2)}
+.fx-btn.secondary:hover{border-color:var(--fx-text)}
+.fx-btn.gold{background:var(--fx-gold);color:var(--fx-ink)}
+.fx-btn.gold:hover{background:var(--fx-gold-l)}
+.fx-btn.on-dark{background:transparent;color:var(--fx-on-dark);border-color:var(--fx-line-dark)}
+.fx-btn.on-dark:hover{border-color:var(--fx-gold-l);color:#fff}
+.fx-btn .arr{transition:transform var(--fx-t1) var(--fx-ease)}
+.fx-btn:hover .arr{transform:translateX(3px)}
+.fx-link{color:var(--path-accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.fx-link:hover{text-decoration-thickness:2px}
+
+.fx-card{background:var(--fx-paper);border:1px solid var(--fx-line);border-radius:var(--fx-r2);box-shadow:var(--fx-shadow-1);
+ transition:box-shadow var(--fx-t2) var(--fx-ease),transform var(--fx-t2) var(--fx-ease),border-color var(--fx-t2) var(--fx-ease)}
+.fx-card.lift:hover{box-shadow:var(--fx-shadow-2);transform:translateY(-2px);border-color:var(--fx-line-2)}
+.fx-tag{display:inline-flex;align-items:center;min-height:24px;padding:0 10px;border:1px solid var(--fx-line-2);border-radius:999px;
+ font:600 11px/1 var(--fx-sans);letter-spacing:.06em;color:var(--fx-text-2);background:transparent}
+.fx-tag.ib{border-color:rgba(122,36,54,.35);color:var(--ib-bur)}
+.fx-tag.upsc{border-color:rgba(31,68,52,.35);color:var(--up-forest)}
+
+/* progressive reveal: content is visible by default; the class only animates
+   what the shell marks as entering, and never under reduced motion */
+.fx-reveal{opacity:1;transform:none}
+.fx-js .fx-reveal.fx-pending{opacity:0;transform:translateY(14px)}
+.fx-js .fx-reveal.fx-in{opacity:1;transform:none;transition:opacity var(--fx-t3) var(--fx-ease),transform var(--fx-t3) var(--fx-ease)}
+@media (prefers-reduced-motion:reduce){
+ .fx-js .fx-reveal.fx-pending{opacity:1;transform:none}
+ .fx-btn,.fx-card,.fx-btn .arr{transition:none}
+}
+
+/* css-opening.css · owned by its workstream; see docs/flagship/PLAN.md */
+
+/* css-library.css · owned by its workstream; see docs/flagship/PLAN.md */
+
+/* css-concepts.css · owned by its workstream; see docs/flagship/PLAN.md */
+
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
 </head>
@@ -44102,6 +44200,82 @@ function UPSCSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const 
  T("UPSC · the section is reachable from the drawer",()=>MOBGROUPS.flatMap(([,i])=>i.map(x=>x[0])).includes("upsc"));
  return out}
 EXTRA_SUITES.push(UPSCSUITE);
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   FLAGSHIP · the core every part of the two-pathway platform shares
+   One discipline, two pathways. This module holds what must be said once:
+   the identity, which pathway a page belongs to, and the enquiry links built
+   from the contact details the platform already publishes (CONTACT, TUT and
+   UP_PHONE). Nothing here renders a page; the shell, the home page, the UPSC
+   environment, the handbook library and the concept layer all read from it.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const FXI={
+ name:"Arjun Agrawal",
+ discipline:"Economics",
+ motto:"Think like an economist.",
+ idea:"One discipline. Two pathways. A shared understanding of Economics.",
+ roles:"IB DP Economics Educator | Economics Resource Designer | UPSC Economics Mentor",
+ paths:{
+  ib:{key:"ib",name:"IB DP Economics",short:"IB DP",home:"#/ib",view:"ib"},
+  upsc:{key:"upsc",name:"UPSC CSE Economics",short:"UPSC CSE",home:"#/upsc",view:"upsc"}
+ }
+};
+/* Sections that belong to neither pathway: the shared home, About, Contact,
+   settings, the concept layer and the site's own quality pages. Everything
+   else that is not the UPSC section is part of the IB DP environment. */
+const FX_SHARED=new Set(["home","about","contact","settings","design","concepts","arjun"]);
+function fxPathway(v){
+ v=v||(typeof VIEW!=="undefined"?VIEW:"home");
+ if(v==="upsc")return "upsc";
+ if(FX_SHARED.has(v))return "shared";
+ return "ib";
+}
+
+/* ── enquiries: the published contact details, never new ones ──────────── */
+const FX_CONTACT={
+ email(){try{if(typeof TUT!=="undefined"&&TUT.email)return TUT.email}catch(e){}return "arjun1agr@gmail.com"},
+ phone(){try{if(typeof UP_PHONE!=="undefined"&&UP_PHONE)return UP_PHONE}catch(e){}return "+91 7092844945"},
+ wa(){try{const w=CONTACT.find(x=>x.k==="whatsapp");if(w&&w.href)return w.href}catch(e){}return "https://wa.me/917092844945"},
+ linkedin(){try{const w=CONTACT.find(x=>x.k==="linkedin");if(w&&w.href)return w.href}catch(e){}return ""},
+ instagram(){try{const w=CONTACT.find(x=>x.k==="instagram");if(w&&w.href)return w.href}catch(e){}return ""}
+};
+function fxWa(msg){return FX_CONTACT.wa()+(msg?"?text="+encodeURIComponent(msg):"")}
+function fxMail(subject,body){
+ const q=[];if(subject)q.push("subject="+encodeURIComponent(subject));if(body)q.push("body="+encodeURIComponent(body));
+ return "mailto:"+FX_CONTACT.email()+(q.length?"?"+q.join("&"):"");
+}
+function fxTel(){return "tel:"+FX_CONTACT.phone().replace(/\s+/g,"")}
+/* The standing enquiries the brief names. Each is a prefilled message that the
+   visitor sends from their own WhatsApp or email; nothing is sent from here. */
+const FX_ENQ={
+ ibTutoring:{path:"ib",label:"IB Economics tutoring",subject:"IB DP Economics tutoring enquiry",
+  msg:"Hello Arjun, I am interested in IB DP Economics tutoring. Please share the details of the available sessions."},
+ ibIA:{path:"ib",label:"Internal Assessment support",subject:"IB DP Economics IA support enquiry",
+  msg:"Hello Arjun, I would like guidance on my IB DP Economics Internal Assessment. Please share how the IA support works."},
+ ibEE:{path:"ib",label:"Extended Essay guidance",subject:"IB DP Economics Extended Essay enquiry",
+  msg:"Hello Arjun, I would like guidance on an Economics Extended Essay. Please share how the EE supervision support works."},
+ ibResources:{path:"ib",label:"IB resource enquiry",subject:"IB DP Economics resource enquiry",
+  msg:"Hello Arjun, I have a question about your IB DP Economics resources: "},
+ ibTeachers:{path:"ib",label:"Teacher collaboration",subject:"Teacher collaboration enquiry",
+  msg:"Hello Arjun, I am an Economics teacher and would like to discuss a collaboration: "},
+ upHandbooks:{path:"upsc",label:"Handbook purchase",subject:"UPSC Economics handbook enquiry",
+  msg:"Hello, I am interested in purchasing volumes of the Arjun Agrawal Economics Handbook Series. Please share the payment and delivery details."},
+ upCourse:{path:"upsc",label:"Three-month intensive course",subject:"UPSC CSE Economics 3-month programme enquiry",
+  msg:"Hello, I am interested in joining the three-month UPSC CSE Economics Intensive Online Programme priced at ₹9,999. Please share the upcoming batch schedule and enrolment details."},
+ upMentor:{path:"upsc",label:"Economics mentorship",subject:"UPSC Economics mentorship enquiry",
+  msg:"Hello Arjun, I am preparing for the UPSC Civil Services Examination and would like to ask about Economics mentorship: "},
+ upResources:{path:"upsc",label:"UPSC resource enquiry",subject:"UPSC Economics resource enquiry",
+  msg:"Hello Arjun, I have a question about your UPSC CSE Economics resources: "}
+};
+/* The purchase message for one handbook, in the wording the brief sets. */
+function fxHandbookMsg(v){
+ return `Hello, I am interested in purchasing Volume ${v.n}, ${v.title}, of the Arjun Agrawal Economics Handbook Series. Please share the payment and delivery details.`;
+}
+function fxEnquiryLinks(key,extra){
+ const e=typeof key==="string"?FX_ENQ[key]:key;if(!e)return {wa:FX_CONTACT.wa(),mail:fxMail(),tel:fxTel()};
+ const msg=e.msg+(extra||"");
+ return {wa:fxWa(msg),mail:fxMail(e.subject,msg),tel:fxTel(),msg};
+}
 
 /* ▓▓ RENAISSANCE:END ▓▓ */
 /* ═══════════════════════════════════════════════════════════════════════════
