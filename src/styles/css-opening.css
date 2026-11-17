@@ -1,1 +1,182 @@
-/* css-opening.css · owned by its workstream; see docs/flagship/PLAN.md */
+/* css-opening.css · owned by its workstream; see docs/flagship/PLAN.md
+   ═══════════════════════════════════════════════════════════════════════════
+   THE OPENING · ARJUN AGRAWAL · ECONOMICS, five seconds on one clock.
+   The overlay (#splash), its clock (#intro-clock) and its state model sit in
+   the body of index.html (tools/migrations/2026-11-17-opening-sequence.py).
+   These rules lay it out: a midnight ground, a dotted world map, the
+   language of economics in fine ivory lines, the two pathways (burgundy for
+   IB DP, forest green for UPSC CSE, gold for India), and the identity.
+   Everything that moves is moved by the clock with opacity and transform;
+   these rules give only the resting states. Without a class (the script did
+   not run) the overlay is a still identity card; .play hides the stages
+   until the first frame starts them (.go); .brief, .still and .cover are the
+   card. Landscape geometry follows the map; a portrait screen gets its own.
+   ═══════════════════════════════════════════════════════════════════════════ */
+#splash{
+ --o-ground:#0F1216;--o-ivory:#F4EFE4;--o-gold:#C9A866;
+ --o-ib:#B45467;--o-ib-t:#DE9AA7;--o-up:#5E9C7C;--o-up-t:#9FCDB3;
+ --o-mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+ --o-ui:Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;
+ --o-serif:"Source Serif 4","Iowan Old Style",Georgia,serif;
+ /* the map: 1680 x 725 units, a little wider than the screen (more on a 4:3 screen), centred */
+ --mw:min(max(104vw,150vh),196vh);--mh:calc(var(--mw)*.431548);
+ --mx:calc(50vw - var(--mw)/2);--my:calc(46vh - var(--mh)/2);
+ --w:min(540px,78vw,70vh);
+ position:fixed;inset:0;z-index:999;overflow:hidden;overflow:clip;contain:layout paint;
+ background:var(--o-ground);color:var(--o-ivory);
+ /* a failsafe for a script that never ran: the card cannot outstay its welcome */
+ animation:o-failsafe 1ms linear 30s forwards}
+@keyframes o-failsafe{to{visibility:hidden;pointer-events:none}}
+#splash.out{opacity:0;pointer-events:none;transition:opacity .18s linear}
+#splash *{box-sizing:border-box}
+#splash b,#splash em{font-weight:inherit;font-style:normal}
+
+/* ── the scene: a camera over the map and its annotations ── */
+#splash .o-scene,#splash .o-cam{position:absolute;inset:0}
+#splash .o-cam{transform-origin:calc(var(--mx) + var(--mw)*.715) calc(var(--my) + var(--mh)*.428)}
+#splash .o-map{position:absolute;left:var(--mx);top:var(--my);width:var(--mw);height:var(--mh)}
+#splash .o-band,#splash .o-in{position:absolute;top:0;height:100%;overflow:visible}
+#splash .o-band path,#splash .o-in path{fill:none;stroke-linecap:round;stroke-dasharray:0 10;stroke-width:2.9}
+#splash .o-band path{stroke:rgba(244,239,228,.3)}
+#splash .o-in path{stroke:var(--o-gold);stroke-width:3.3}
+#splash .o-hub{position:absolute;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:var(--o-ivory)}
+#splash .o-hub::after{content:"";position:absolute;inset:-4px;border:1px solid rgba(244,239,228,.22);border-radius:50%}
+#splash .o-hubs{position:absolute;inset:0}
+#splash .o-arcs,#splash .o-arcsb{position:absolute;inset:0;overflow:hidden}
+#splash .o-arcs>svg,#splash .o-arcsb>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#splash .o-arcs path,#splash .o-arcsb path{fill:none;vector-effect:non-scaling-stroke}
+#splash .o-arcs path{stroke:rgba(201,168,102,.55);stroke-width:1}
+#splash .o-arcsb path{stroke:var(--o-ib);stroke-width:1.5}
+/* indicator labels beside the hubs */
+#splash .o-tags{position:absolute;inset:0}
+#splash .o-tag{position:absolute;width:0;height:0}
+#splash .o-tag b{position:absolute;top:-5px;display:block;white-space:nowrap;font:500 10px/10px var(--o-mono);letter-spacing:.14em;color:rgba(244,239,228,.74)}
+#splash .o-tag b::before{content:"";position:absolute;top:5px;width:12px;height:1px;background:rgba(244,239,228,.4)}
+#splash .o-tag.r b{left:7px;padding-left:18px}#splash .o-tag.r b::before{left:0}
+#splash .o-tag.l b{right:7px;padding-right:18px}#splash .o-tag.l b::before{right:0}
+
+/* ── the language of economics: three fine figures, each in its own box ── */
+#splash .o-lang{position:absolute;inset:0}
+#splash .o-ds,#splash .o-cy,#splash .o-px{position:absolute}
+#splash .o-ds{left:max(3vw,calc(var(--mx) + var(--mw)*.08));top:calc(var(--my) + var(--mh)*.63);width:calc(var(--mw)*.152);aspect-ratio:240/200}
+#splash .o-cy{left:calc(var(--mx) + var(--mw)*.372);top:calc(var(--my) + var(--mh)*.875);width:calc(var(--mw)*.258);aspect-ratio:460/100}
+#splash .o-px{left:max(48px,4.5vw);top:max(40px,6vh);width:clamp(200px,17vw,300px);aspect-ratio:300/120}
+#splash .o-w,#splash .o-wv,#splash .o-ann{position:absolute;inset:0}
+#splash .o-w,#splash .o-wv{overflow:hidden}
+#splash .o-w>svg,#splash .o-wv>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#splash .o-lang path{fill:none;stroke:rgba(244,239,228,.8);stroke-width:1.25;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+#splash .o-cy path.tr{stroke:rgba(201,168,102,.55);stroke-width:1;stroke-dasharray:3 5}
+#splash .o-px path.gr{stroke:rgba(244,239,228,.1);stroke-width:1}
+#splash .o-ay,#splash .o-ax{position:absolute;background:rgba(244,239,228,.42)}
+#splash .o-ay{width:1px;transform-origin:50% 100%}
+#splash .o-ax{height:1px;transform-origin:0 50%}
+#splash .o-g{position:absolute;border:0 dashed rgba(201,168,102,.6)}
+#splash .o-gh{height:0;border-top-width:1px}
+#splash .o-gv{width:0;border-left-width:1px}
+#splash .o-e{position:absolute;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:var(--o-gold)}
+#splash .o-px .o-e{width:5px;height:5px;margin:-2.5px 0 0 -2.5px;background:var(--o-ivory)}
+#splash .o-lb{position:absolute;transform:translate(-50%,-50%);font:500 9.5px/1 var(--o-mono);letter-spacing:.12em;color:rgba(244,239,228,.6);white-space:nowrap}
+#splash .o-lbe{color:var(--o-gold)}
+#splash .o-lbt{color:rgba(201,168,102,.75)}
+
+/* ── two economic worlds ── */
+#splash .o-cap{position:absolute}
+#splash .o-cap-in{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+#splash .o-cap b{display:block}
+#splash .o-k{padding-top:9px;border-top:1px solid currentColor;font:700 10px/1 var(--o-ui);letter-spacing:.26em;white-space:nowrap}
+#splash .o-h{font:italic 400 clamp(17px,1.45vw,21px)/1.15 var(--o-serif);color:var(--o-ivory);white-space:nowrap}
+#splash .o-s{max-width:27ch;font:500 9.5px/1.55 var(--o-mono);letter-spacing:.06em;color:rgba(244,239,228,.62);text-transform:uppercase}
+#splash .o-cap-ib{left:calc(var(--mx) + var(--mw)*.355);top:calc(var(--my) + var(--mh)*.33)}
+#splash .o-cap-ib .o-k{color:var(--o-ib-t)}
+#splash .o-cap-up{left:calc(var(--mx) + var(--mw)*.7143);top:calc(var(--my) + var(--mh)*.86);transform:translateX(-50%)}
+#splash .o-cap-up .o-cap-in{align-items:center}
+#splash .o-cap-up .o-k{color:var(--o-up-t)}
+/* India's five sectors fan out beneath it: the apex is India's southern tip */
+#splash .o-fan{position:absolute;left:calc(var(--mx) + var(--mw)*.5793);top:calc(var(--my) + var(--mh)*.5131);width:calc(var(--mw)*.27);height:calc(var(--mw)*.098)}
+#splash .o-fan path{fill:none;stroke:var(--o-up);stroke-width:1;vector-effect:non-scaling-stroke}
+#splash .o-nodes{position:absolute;inset:0}
+#splash .o-node{position:absolute;top:100%;width:0;height:0;--nw:clamp(62px,calc(var(--mw)*.047),96px)}
+#splash .o-node b{position:absolute;left:calc(var(--nw)/-2);top:-15px;width:var(--nw);display:flex;flex-direction:column;align-items:center;gap:8px}
+#splash .o-node svg{display:block;width:30px;height:30px;padding:5px;border:1px solid rgba(94,156,124,.85);border-radius:50%;background:var(--o-ground);
+ fill:none;stroke:var(--o-ivory);stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+#splash .o-node em{font:500 9px/1.3 var(--o-mono);letter-spacing:.04em;color:rgba(244,239,228,.8);text-align:center}
+
+/* ── the identity ── */
+#splash .o-id{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 16px 3vh;pointer-events:none}
+#splash .o-mk{position:relative;width:calc(var(--w)*.19);flex:none}
+#splash .o-mk1,#splash .o-mk2{position:absolute;inset:0;overflow:hidden}
+#splash .o-mk svg{display:block;width:100%;height:100%}
+#splash .o-nm{display:block;width:calc(var(--w)*.6);margin-top:calc(var(--w)*.055);fill:var(--o-ivory);overflow:visible}
+#splash .o-rl{position:relative;width:calc(var(--w)*.44);height:9px;margin-top:calc(var(--w)*.032);flex:none}
+#splash .o-rl i{position:absolute;left:0;right:0;top:4px;display:flex;justify-content:space-between;gap:20px;height:1px}
+#splash .o-rl s{flex:1;background:var(--o-gold)}
+#splash .o-rl b{position:absolute;left:50%;top:1px;width:7px;height:7px;margin-left:-3.5px;background:var(--o-gold);transform:rotate(45deg)}
+#splash .o-ec{width:var(--w);margin-top:calc(var(--w)*.062);overflow:hidden;flex:none}
+#splash .o-ec svg{display:block;width:100%;height:100%;fill:var(--o-ivory)}
+#splash .o-mt{position:relative;width:clamp(250px,calc(var(--w)*.62),390px);margin-top:calc(var(--w)*.05);flex:none}
+#splash .o-mt svg{position:absolute;top:0;height:100%;fill:var(--o-gold)}
+
+/* the veil of the ground colour that dims the scene behind the identity */
+#splash .o-veil{position:absolute;inset:0;background:var(--o-ground);opacity:0;pointer-events:none}
+
+/* ── Skip, and the five seconds as a hairline ── */
+#splash .o-bar{position:absolute;left:0;right:0;bottom:0;height:1px;background:rgba(244,239,228,.07)}
+#splash .o-bar i{display:block;height:100%;background:rgba(201,168,102,.6);transform:scaleX(0);transform-origin:0 50%}
+#splash .o-skip{position:absolute;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:2;
+ display:inline-flex;align-items:center;gap:11px;min-height:40px;margin:0;padding:0 15px 0 16px;
+ border:1px solid rgba(244,239,228,.24);border-radius:2px;background:rgba(15,18,22,.6);color:rgba(244,239,228,.8);
+ font:600 10.5px/1 var(--o-ui);letter-spacing:.2em;text-transform:uppercase;cursor:pointer;
+ opacity:0;animation:o-skip-in .5s cubic-bezier(.2,.7,.2,1) .25s forwards;transition:border-color .2s,color .2s}
+#splash .o-skip::after{content:"";width:5px;height:5px;margin-left:1px;border-top:1.2px solid currentColor;border-right:1.2px solid currentColor;transform:rotate(45deg)}
+#splash .o-skip:hover{border-color:rgba(201,168,102,.75);color:#fff}
+#splash .o-skip:focus-visible{outline:2px solid var(--o-gold);outline-offset:3px;color:#fff;border-color:rgba(201,168,102,.75)}
+@keyframes o-skip-in{to{opacity:1}}
+
+/* ── states ── */
+/* the full sequence: nothing shows until the first frame has scheduled every stage */
+#splash.play:not(.go) .o-scene,#splash.play:not(.go) .o-id,#splash.play:not(.go) .o-bar{visibility:hidden}
+#splash.play .o-veil{opacity:0}
+/* the card (brief, still, cover, or no script): the identity over a quiet map */
+#splash:not(.play) .o-lang,#splash:not(.play) .o-tags,#splash:not(.play) .o-fan,#splash:not(.play) .o-cap,
+#splash:not(.play) .o-arcs,#splash:not(.play) .o-arcsb,#splash:not(.play) .o-hubs,#splash:not(.play) .o-bar{display:none}
+#splash:not(.play) .o-veil{opacity:.8}
+#splash.still .o-skip,#splash.cover .o-skip{animation:none;opacity:1}
+
+/* ── portrait: the map as a band with India at its centre, the figures above and below ── */
+@media (max-aspect-ratio:4/5){
+ #splash{--mh:min(36vh,92vw);--mw:calc(var(--mh)*2.31724);
+  --mx:max(calc(50vw - var(--mw)*.7151),calc(100vw - var(--mw)));--my:21vh;--w:min(500px,86vw,62vh)}
+ #splash .o-id{padding-bottom:0}
+ #splash .o-mk{width:calc(var(--w)*.21)}
+ #splash .o-band path{stroke-width:3.6}
+ #splash .o-in path{stroke-width:4}
+ #splash .o-hub{width:4px;height:4px;margin:-2px 0 0 -2px}
+ #splash .o-tag b{font-size:9px;letter-spacing:.1em}
+ #splash .o-tag b::before{width:9px}
+ #splash .o-tag.r b{padding-left:14px}#splash .o-tag.l b{padding-right:14px}
+ #splash .o-tag.pr b{left:7px;right:auto;padding:0 0 0 14px}#splash .o-tag.pr b::before{left:0;right:auto}
+ #splash .o-ds{left:7vw;top:60vh;width:min(42vw,22vh)}
+ #splash .o-px{left:55vw;top:63vh;width:min(38vw,20vh)}
+ /* the bottom band stays clear for Skip */
+ #splash .o-cy{left:7vw;top:auto;bottom:calc(max(16px,env(safe-area-inset-bottom)) + 68px);width:min(86vw,52vh)}
+ #splash .o-lb{font-size:8.5px;letter-spacing:.08em}
+ #splash .o-cap-ib{left:50vw;top:7.5vh;transform:translateX(-50%);text-align:center}
+ #splash .o-cap-ib .o-cap-in{align-items:center}
+ #splash .o-s{max-width:none}
+ #splash .o-fan{left:4vw;width:92vw;top:calc(var(--my) + var(--mh)*.5145);height:calc(60vh - var(--my) - var(--mh)*.5145)}
+ #splash .o-node{--nw:17.6vw}
+ #splash .o-node b{gap:7px}
+ #splash .o-node svg{width:28px;height:28px;padding:4.5px}
+ #splash .o-node em{font-size:8px;letter-spacing:.04em}
+ #splash .o-cap-up{left:50vw;top:69vh}
+}
+/* narrower landscape screens: India's five sectors keep their labels apart */
+@media (min-aspect-ratio:4/5) and (max-width:1279px){#splash .o-node em{font-size:8px;letter-spacing:0}}
+/* short landscape screens (a phone on its side): the figures give way to the identity */
+@media (max-height:520px) and (min-aspect-ratio:4/5){
+ #splash{--w:min(440px,60vw,64vh)}
+ #splash .o-lang,#splash .o-fan,#splash .o-cap{display:none}
+ #splash .o-skip{min-height:34px}
+}
+@media (prefers-reduced-motion:reduce){#splash .o-skip{animation:none;opacity:1}}
+@media print{#splash{display:none!important}}
