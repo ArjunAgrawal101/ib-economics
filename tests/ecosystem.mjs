@@ -97,8 +97,8 @@ check(/Subscribe on YouTube/.test(r.t) && r.e.length === 0, 'with a malformed re
   mode = 'down'; await o.p.reload({ waitUntil: 'load' }); await o.p.waitForTimeout(800);
   const t = await o.p.locator('#view').innerText();
   check(/Why inflation hurts savers/.test(t) && /last list saved on this device/i.test(t), 'when the feed fails later, the last list saved on this device is shown and labelled');
-  await o.p.evaluate(() => nav('home')); await o.p.waitForTimeout(300);
-  check(/Latest from Arjun/.test(await o.p.locator('#view').innerText()), 'the home page shows the latest video once a list is stored');
+  await o.p.evaluate(() => nav('ib')); await o.p.waitForTimeout(300);
+  check(/Latest from Arjun/.test(await o.p.locator('#view').innerText()), 'the IB front page (#/ib) shows the latest video once a list is stored');
   await c.close(); }
 
 /* ── Educator Studio and pathways ─────────────────────────────────────── */
@@ -109,9 +109,9 @@ await p.waitForTimeout(200);
 check(await p.locator('.ee-steps li').count() >= 5, 'choosing a role shows its pathway');
 await p.locator('.ee-steps li').first().locator('button').first().click(); await p.waitForTimeout(250);
 check(await p.evaluate(() => VIEW !== 'educator' || TAB !== 0), 'a pathway step opens existing content');
-await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
+await p.evaluate(() => nav('ib')); await p.waitForTimeout(200);
 await p.getByRole('button', { name: 'I’m a student' }).click(); await p.waitForTimeout(200);
-check(await p.locator('.pw-card').count() >= 5, 'the home page’s journey band offers the student pathways');
+check(await p.locator('.pw-card').count() >= 5, 'the IB front page’s journey band offers the student pathways');
 await p.locator('.pw-card', { hasText: 'start my EE' }).locator('button').first().click(); await p.waitForTimeout(250);
 check(await p.evaluate(() => VIEW === 'ees'), 'a pathway leads into the EE Studio');
 check(errors.length === 0, 'no page errors in the Educator Studio or the pathways', errors.join(' | '));

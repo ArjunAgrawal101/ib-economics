@@ -343,10 +343,10 @@ function upConnector(){
    says plainly that it is a selected preview; it does not claim to prevent copying.
    Purchase is completed by direct contact: nothing is charged on this website. */
 const UPF={cat:"all",vol:"all"};
-function upCat(k){return (UPSC_HB.categories||[]).find(c=>c.k===k)||{k,n:k}}
+function upHbCat(k){return (UPSC_HB.categories||[]).find(c=>c.k===k)||{k,n:k}}
 function upCatCount(k){return UPSC_HB.volumes.filter(v=>k==="all"||v.cat===k).length}
 function upReq(v,cls,label){return upExt(upWa(upHbMsg(v)),label||`Request on WhatsApp <span class="up-sep" aria-hidden="true">|</span> ₹99`,cls||"up-btn up-buy",`Request the soft copy of Volume ${v.n} (₹99) on WhatsApp`)}
-function upHandbooks(){if(ARG){const v=upVol(ARG);if(v)return upVolume(v);const m=/^category-([a-z]+)$/.exec(ARG);if(m&&upCat(m[1]).n!==m[1]){UPF.cat=m[1];UPF.vol="all"}}
+function upHandbooks(){if(ARG){const v=upVol(ARG);if(v)return upVolume(v);const m=/^category-([a-z]+)$/.exec(ARG);if(m&&upHbCat(m[1]).n!==m[1]){UPF.cat=m[1];UPF.vol="all"}}
  const H=UPSC_HB.volumes,pages=H.reduce((a,v)=>a+v.pages,0),C=UPSC_HB.categories||[];
  return `<section class="up-mast up-hbm"><div class="wrap full up-mast-in up-hbm-in"><div>
   <div class="up-eb"><span>UPSC CSE Economics</span><span class="up-eb-s">Handbook library</span></div>
@@ -362,7 +362,7 @@ function upHandbooks(){if(ARG){const v=upVol(ARG);if(v)return upVolume(v);const 
    <p class="hl-count" id="hl-count" aria-live="polite"></p></div>
   <ul class="hl-grid" id="hl-grid">${H.map((v,i)=>upCard(v,i)).join("")}</ul>
   <p class="up-note">Each volume is sold individually as a soft copy (PDF) at ₹99, and the purchase is completed by direct contact with Arjun Agrawal. The library shows each volume's cover and eight selected pages; the complete handbook is never published on this website.</p></div>`}
-function upCard(v,i){const pg=(v.img.pages||[]),inside=pg.find(p=>p.p>5)||pg[1]||pg[0],c=upCat(v.cat),hide=!upShown(v);
+function upCard(v,i){const pg=(v.img.pages||[]),inside=pg.find(p=>p.p>5)||pg[1]||pg[0],c=upHbCat(v.cat),hide=!upShown(v);
  return `<li class="hl-card rv" style="--i:${i%3}" id="card-${v.id}" data-cat="${v.cat}"${hide?" hidden":""}>
   <div class="hl-art">${upCover(v,"up-cv hl-cv")}${inside?`<img class="hl-in" src="${esA(inside.t.src)}" alt="" width="${inside.t.w}" height="${inside.t.h}" loading="lazy" decoding="async">`:""}
    <button type="button" class="hl-pv" onclick="hvOpen('${v.id}',0)" aria-label="Preview eight pages of Volume ${esA(v.n)}: ${esA(v.title)}">Preview 8 pages</button></div>
@@ -380,7 +380,7 @@ function upFilt(k,val){UPF[k]=val;if(k==="cat")UPF.vol="all";
  const s=document.querySelector(".hl-vs select");if(s&&k==="cat")s.value="all";
  const c=document.getElementById("hl-count");if(c)c.textContent=n===H.length?"":`Showing ${n} of ${H.length} volumes`}
 function upShort(s){const i=s.indexOf(":");let t=i>0&&i<70?s.slice(i+1).trim():s;t=t.charAt(0).toUpperCase()+t.slice(1);return t.length>140?t.slice(0,t.lastIndexOf(",",138))+"…":t}
-function upVolume(v){const H=UPSC_HB.volumes,i=H.indexOf(v),prev=H[i-1],next=H[i+1],c=upCat(v.cat);
+function upVolume(v){const H=UPSC_HB.volumes,i=H.indexOf(v),prev=H[i-1],next=H[i+1],c=upHbCat(v.cat);
  const topics=UP_TOPICS.filter(t=>t.vol===v.n||t.also===v.n);
  return `<section class="up-mast up-vm hl-vm"><div class="wrap full up-mast-in"><nav class="up-crumb" aria-label="Breadcrumb"><a href="${upHref("handbooks")}">The Indian Economy Collection</a><span aria-hidden="true">/</span><a href="${upHref("handbooks","category-"+v.cat)}">${esc(c.n)}</a><span aria-hidden="true">/</span><span aria-current="page">Volume ${esc(v.n)}</span></nav>
   <div class="hl-vk">Volume ${esc(v.n)} · The Indian Economy Collection · ${esc(v.edition)}</div><h1 class="up-h1 hl-vt">${esc(v.title)}</h1><p class="up-vsub">${esc(v.sub)}</p></div></section>
@@ -398,7 +398,7 @@ function upVolume(v){const H=UPSC_HB.volumes,i=H.indexOf(v),prev=H[i-1],next=H[i
    <section class="up-vd-s"><h2 class="up-h3">Topics: the ${v.parts.length} parts</h2><ol class="up-toc">${v.parts.map(p=>`<li><span class="up-toc-l">Part ${esc(p.l)}</span><span class="up-toc-x"><b>${esc(p.t)}</b><span>${esc(p.d)}</span></span><span class="up-toc-p">p. ${p.p}</span></li>`).join("")}</ol></section>
    <section class="up-vd-s up-grid2"><div><h2 class="up-h4">Key concepts</h2><ul class="up-chips">${v.concepts.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div><h2 class="up-h4">Institutions, policies and schemes</h2><ul class="up-chips g">${v.inst.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></section>
    <section class="up-vd-s"><h2 class="up-h3">Syllabus relevance</h2><div class="up-grid2"><div class="up-card up-pre"><h3 class="up-h4">Prelims</h3><p>${esc(v.pre)}</p></div><div class="up-card up-mains"><h3 class="up-h4">Mains</h3><p>${esc(v.mains)}</p></div></div>
-    <h3 class="up-h4">The volume's own syllabus map</h3><div class="up-tw"><table class="up-tbl map"><thead><tr><th scope="col">Syllabus area</th><th scope="col">Prelims (parts)</th><th scope="col">Mains (sections)</th><th scope="col">Also useful for</th></tr></thead><tbody>${v.map.map(r=>`<tr><th scope="row">${esc(r[0])}</th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join("")}</tbody></table></div></section>
+    <h3 class="up-h4">The volume's own syllabus map</h3><div class="up-tw" tabindex="0" role="region" aria-label="Syllabus map table"><table class="up-tbl map"><thead><tr><th scope="col">Syllabus area</th><th scope="col">Prelims (parts)</th><th scope="col">Mains (sections)</th><th scope="col">Also useful for</th></tr></thead><tbody>${v.map.map(r=>`<tr><th scope="row">${esc(r[0])}</th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join("")}</tbody></table></div></section>
    <section class="up-vd-s"><h2 class="up-h3">How the volume is built</h2><p>Recurring boxes: ${v.boxes.map(b=>`<span class="up-box-n">${esc(b)}</span>`).join(" ")}</p><p><b>Revision compendium.</b> ${esc(v.comp)}</p></section>
    ${topics.length?`<section class="up-vd-s"><h2 class="up-h3">Free topic previews from this volume</h2><div class="up-vls">${topics.map(t=>`<a class="up-vl" href="${upHref("resources",t.id)}"><b>${esc(t.t)}</b></a>`).join("")}</div></section>`:""}
    <nav class="up-pn" aria-label="Other volumes">${prev?`<a class="up-pn-a" href="${upHref("handbooks",prev.id)}"><span>Volume ${prev.n}</span>${esc(prev.title)}</a>`:"<span></span>"}${next?`<a class="up-pn-a" href="${upHref("handbooks",next.id)}"><span>Volume ${next.n}</span>${esc(next.title)}</a>`:"<span></span>"}</nav></div></div>`}
@@ -416,7 +416,7 @@ function hvMarkup(v,mode){const P=v.img.pages||[];if(!P.length)return "";const i
     <span class="hv-zl" aria-live="polite">${Math.round(HV_Z[st.z]*100)}%</span>
     <button type="button" class="hv-b" onclick="hvZoom('${id}',1)" aria-label="Zoom in"${st.z===HV_Z.length-1?" disabled":""}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M8 3v10"/></svg></button>
     <button type="button" class="hv-b hv-fsb" onclick="hvFull('${id}')" aria-label="Full screen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg></button></div></div>
-  <div class="hv-stage" data-z="${st.z}"><figure class="hv-fig"><img class="hv-img" src="${esA(p.src)}" width="${p.w}" height="${p.h}" alt="${esA(hvAlt(v,p,st.i))}" decoding="async" style="background-image:url('${esA(p.t.src)}')" onload="this.classList.add('ok')"><figcaption class="hv-cap">${esc(p.cap)}</figcaption></figure></div>
+  <div class="hv-stage" data-z="${st.z}" tabindex="0" role="group" aria-label="The page; scroll to move around it when zoomed"><figure class="hv-fig"><img class="hv-img" src="${esA(p.src)}" width="${p.w}" height="${p.h}" alt="${esA(hvAlt(v,p,st.i))}" decoding="async" style="background-image:url('${esA(p.t.src)}')" onload="this.classList.add('ok')"><figcaption class="hv-cap">${esc(p.cap)}</figcaption></figure></div>
   <ol class="hv-th" aria-label="Preview pages">${P.map((q,k)=>`<li><button type="button" class="hv-t${k===st.i?" on":""}" onclick="hvTo('${id}',${k})" aria-label="Preview ${k+1} of ${P.length}: page ${q.p}, ${esA(q.cap)}"${k===st.i?' aria-current="true"':""}><img src="${esA(q.t.src)}" width="${q.t.w}" height="${q.t.h}" alt="" loading="lazy" decoding="async"><span>p. ${q.p}</span></button></li>`).join("")}</ol>
  </div>`}
 function hvAlt(v,p,i){return `Volume ${v.n}, page ${p.p} (preview ${i+1} of ${(v.img.pages||[]).length}): ${p.cap}`}

@@ -1,5 +1,6 @@
-/* UPSC CSE Economics: the pathways on the home page, the eight tabs, the
-   Handbook Collection and its previews, enquiries that use only the published
+/* UPSC CSE Economics: the pathways on the ecosystem home page, the eight tabs,
+   the Indian Economy Collection, its filters and its eight-page preview viewer,
+   enquiries that use only the published
    contact details, the syllabus explorer, the resource library, the connector,
    no exposed handbook file, widths, reduced motion and axe. */
 import fs from 'node:fs';
@@ -23,9 +24,13 @@ const PAGES = [41, 43, 49, 49, 49, 50, 49, 55, 43, 45, 50];
   const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
   check(!/Platinum[^"']*\.(pdf|docx)/i.test(html) && !/handbooks?\/[^"']*\.pdf/i.test(html), 'the page names no handbook file');
   const imgs = fs.readdirSync(path.join(ROOT, 'assets/upsc/handbooks')).flatMap(d => fs.readdirSync(path.join(ROOT, 'assets/upsc/handbooks', d)).map(f => d + '/' + f));
-  check(imgs.length === 44 && imgs.every(f => /\.webp$/.test(f)), `the previews are 44 WebP images, four per volume (${imgs.length})`);
-  const big = imgs.filter(f => fs.statSync(path.join(ROOT, 'assets/upsc/handbooks', f)).size > 120000);
-  check(big.length === 0, 'every preview is small (under 120 KB)', big.join(', '));
+  check(imgs.length === 198 && imgs.every(f => /\.webp$/.test(f)), `the previews are 198 WebP images: per volume a cover in two sizes, eight pages and eight thumbnails (${imgs.length})`);
+  const perVol = fs.readdirSync(path.join(ROOT, 'assets/upsc/handbooks')).map(d => fs.readdirSync(path.join(ROOT, 'assets/upsc/handbooks', d)).filter(f => /^page-\d\d\.webp$/.test(f)).length);
+  check(perVol.length === 11 && perVol.every(n => n === 8), 'every volume has exactly eight preview pages', perVol.join(','));
+  const big = imgs.filter(f => fs.statSync(path.join(ROOT, 'assets/upsc/handbooks', f)).size > (/thumb-/.test(f) ? 24000 : 260000));
+  check(big.length === 0, 'pages stay under 260 KB and thumbnails under 24 KB, so the viewer loads progressively', big.join(', '));
+  const src = fs.readFileSync(path.join(ROOT, 'tools/upsc/build_upsc.py'), 'utf8');
+  check(!/def watermark|Preview Only|alpha_composite/.test(src), 'the build draws nothing over a page: no watermark step remains');
   for (const u of ['assets/upsc/handbooks/volume-iii/volume-iii.pdf', 'assets/upsc/volume-i.pdf', 'content/upsc/handbooks.pdf']) {
     const r = await fetch(base + u); check(r.status === 404, `${u} is not served`);
   }
@@ -37,20 +42,19 @@ const PAGES = [41, 43, 49, 49, 49, 50, 49, 55, 43, 45, 50];
   const { p, errors } = await open(ctx, base);
   await p.evaluate(() => document.fonts.ready);
   const home = await p.evaluate(() => {
-    const h1 = [...document.querySelectorAll('#view h1')].map(x => x.textContent.trim());
-    const ib = document.querySelector('.hp-p.ib'), up = document.querySelector('.hp-p.up');
+    const h1 = [...document.querySelectorAll('#view h1')].map(x => x.textContent.replace(/\s+/g, ' ').trim());
+    const ib = document.querySelector('.sy-pp-ib'), up = document.querySelector('.sy-pp-up');
     return { h1, ib: ib && ib.getBoundingClientRect().top < innerHeight, up: up && up.getBoundingClientRect().top < innerHeight,
-      ibT: ib && ib.querySelector('.hp-pt').textContent, upT: up && up.querySelector('.hp-pt').textContent, title: document.title };
+      ibT: ib && ib.querySelector('.sy-ppt').textContent, upT: up && up.querySelector('.sy-ppt').textContent, title: document.title };
   });
-  check(home.h1.length === 1 && home.h1[0] === 'Economics. Understood. Connected. Applied.', 'the home page has one heading: Economics. Understood. Connected. Applied.', JSON.stringify(home.h1));
+  check(home.h1.length === 1 && home.h1[0] === 'Economics is not just a subject to study. It is a way to understand the world.', 'the home page has one heading, as briefed', JSON.stringify(home.h1));
   check(home.ib && home.up, 'both pathways begin on the first screen');
-  check(home.ibT === 'Think like an economist.' && home.upT === 'Understand the economy. Master the examination.', 'each pathway carries its own line');
-  check(await p.locator('#cv-h').evaluate(e => e.tagName) === 'H2', 'the IB cover follows, headed "Think like an economist."');
-  await p.locator('.hp-p.ib .hp-btn').click(); await p.waitForTimeout(700);
-  check(await p.evaluate(() => { const h = document.querySelector('#view section.at-hero'); const r = h.getBoundingClientRect(); return r.top < 140 && r.top > -40 }), 'Enter IB DP Economics brings the IB cover into view');
-  await p.evaluate(() => scrollTo(0, 0));
-  await p.locator('.hp-p.up .hp-btn').click(); await p.waitForTimeout(400);
-  check((await st(p)).v === 'upsc', 'Enter UPSC CSE Economics opens the UPSC section');
+  check(home.ibT === 'Think like an economist.' && home.upT === 'Understand the Indian economy. Prepare with clarity.', 'each pathway carries its own line');
+  await p.locator('.sy-pp-ib .sy-cta').click(); await p.waitForTimeout(700);
+  check((await st(p)).v === 'ib' && await p.locator('#cv-h').count() === 1, 'Explore IB DP Economics opens the IB landing page, with the IB cover on it');
+  await p.evaluate(() => nav('home')); await p.waitForTimeout(300);
+  await p.locator('.sy-pp-up .sy-cta').click(); await p.waitForTimeout(400);
+  check((await st(p)).v === 'upsc', 'Explore UPSC Economics opens the UPSC section');
 
   /* the pathway strip */
   const pb = await p.evaluate(() => { const n = document.getElementById('pathbar'); const t = document.querySelector('header.top');
@@ -58,7 +62,7 @@ const PAGES = [41, 43, 49, 49, 49, 50, 49, 55, 43, 45, 50];
   check(pb.before && pb.on === 'upsc', 'the pathway strip sits above the header and marks UPSC CSE Economics as current');
   check(pb.ab === '#/upsc/about-the-educator' && pb.ct === '#/upsc/contact-enrolment', 'inside the section, About and Contact lead to its own pages');
   await p.locator('#pathbar .pb-a[data-p="ib"]').click(); await p.waitForTimeout(400);
-  check((await st(p)).v === 'home', 'IB DP Economics returns to the home page');
+  check((await st(p)).v === 'ib', 'IB DP Economics in the strip opens the IB landing page');
 
   /* the eight tabs */
   for (const [i, h] of TABS.entries()) {
@@ -70,27 +74,52 @@ const PAGES = [41, 43, 49, 49, 49, 50, 49, 55, 43, 45, 50];
 
   /* the collection */
   await go(p, '#/upsc/economics-handbooks');
-  const cards = await p.evaluate(() => [...document.querySelectorAll('.up-hb')].map(c => ({ k: c.querySelector('.up-hb-k').textContent, t: c.querySelector('.up-hb-t').textContent, price: c.querySelector('.up-price').textContent,
-    buy: c.querySelector('a.up-buy').href, ex: c.querySelector('.up-hb-b a.up-gh').getAttribute('href'), topics: c.querySelectorAll('.up-chips li').length, rel: c.querySelectorAll('.up-rel dd').length })));
+  check(/^The Indian Economy Collection$/.test((await p.locator('#view h1').innerText()).replace(/\s+/g, ' ').trim()) && /Eleven carefully structured volumes covering essential dimensions of Indian and international Economics for UPSC CSE preparation\./.test(await p.locator('.up-lede').innerText()),
+    'the library is titled THE INDIAN ECONOMY COLLECTION, with the briefed subtitle');
+  const cards = await p.evaluate(() => [...document.querySelectorAll('.hl-card')].map(c => ({ k: c.querySelector('.hl-vn').textContent, pp: c.querySelector('.hl-pp').textContent, t: c.querySelector('.hl-t').textContent, cat: c.querySelector('.hl-cat').textContent,
+    price: c.querySelector('.hl-price').textContent.replace(/\s+/g, ' ').trim(), buy: c.querySelector('a.up-buy').href, ex: c.querySelector('.hl-b a.up-gh').getAttribute('href'), topics: c.querySelectorAll('.up-chips li').length, rel: c.querySelectorAll('.hl-rel dd').length,
+    pv: !!c.querySelector('button.hl-pv'), inside: !!c.querySelector('img.hl-in') })));
   check(cards.length === 11, 'eleven handbook cards');
-  check(cards.every((c, i) => c.k.includes(PAGES[i] + ' pages')), 'each card shows the page count from its PDF', cards.map(c => c.k).join(' | '));
-  check(cards.every(c => c.price === '₹99 / Volume'), 'each card shows ₹99 / Volume');
+  check(cards.every((c, i) => c.pp.includes(PAGES[i] + ' pages') && c.k === 'Volume ' + ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI'][i]), 'each card shows its volume number and the page count from its PDF', cards.map(c => c.pp).join(' | '));
+  check(cards.every(c => c.price === '₹99 per soft copy' && c.cat && c.pv && c.inside), 'each card shows ₹99 per soft copy, its category, an inside page and a preview button');
   check(cards.every(c => c.topics >= 4 && c.rel === 2), 'each card lists major topics and its Prelims and Mains relevance');
   const msgs = cards.map(c => decodeURIComponent(new URL(c.buy).searchParams.get('text') || ''));
   check(cards.every(c => c.buy.startsWith('https://wa.me/917092844945?text=')) && msgs.every((m, i) => m.includes('₹99') && /digital copy \(PDF\)/.test(m) && m.includes(cards[i].t)),
-    'each Purchase PDF opens WhatsApp to the published number with a message naming the volume, its title, ₹99 and the digital copy');
-  const imgsOk = await p.evaluate(async () => { const im = [...document.querySelectorAll('.up-hb img')]; for (const i of im) { i.loading = 'eager'; if (!i.complete) await new Promise(r => { i.onload = i.onerror = r }) }
-    return im.every(i => i.naturalWidth > 0 && Math.abs(i.naturalWidth / i.naturalHeight - i.getBoundingClientRect().width / i.getBoundingClientRect().height) < 0.02) });
-  check(imgsOk, 'every cover loads and is shown in its own proportions');
-  await p.locator('.up-hb').nth(2).locator('.up-hb-b a.up-gh').click(); await p.waitForTimeout(400);
+    'each enquiry opens WhatsApp to the published number with a message naming the volume, its title, ₹99 and the digital copy');
+  const imgsOk = await p.evaluate(async () => { const im = [...document.querySelectorAll('.hl-card img')]; for (const i of im) { i.loading = 'eager'; if (!i.complete) await new Promise(r => { i.onload = i.onerror = r }) }
+    return im.length === 22 && im.every(i => i.naturalWidth > 0 && Math.abs(i.naturalWidth / i.naturalHeight - i.offsetWidth / i.offsetHeight) < 0.03) });   /* the layout box: the cards tilt their covers */
+  check(imgsOk, 'every cover and inside page loads and is shown in its own proportions');
+  await p.locator('.hl-chip[data-cat="external"]').click(); await p.waitForTimeout(150);
+  let shown = await p.evaluate(() => [...document.querySelectorAll('.hl-card')].filter(c => !c.hidden).map(c => c.id));
+  check(shown.join() === 'card-volume-viii,card-volume-ix' && /Showing 2 of 11/.test(await p.locator('#hl-count').innerText()), 'a category filter narrows the grid to its volumes', shown.join());
+  await p.locator('.hl-chip[data-cat="all"]').click(); await p.locator('.hl-vs select').selectOption('volume-iv'); await p.waitForTimeout(150);
+  shown = await p.evaluate(() => [...document.querySelectorAll('.hl-card')].filter(c => !c.hidden).map(c => c.id));
+  check(shown.join() === 'card-volume-iv', 'the volume filter shows one volume');
+  await p.locator('.hl-vs select').selectOption('all'); await p.waitForTimeout(100);
+  /* the preview, opened from a card */
+  await p.locator('#card-volume-vi .hl-pv').click(); await p.waitForTimeout(600);
+  const dlg = await p.evaluate(() => { const d = document.getElementById('hv-dlg'); const v = d && d.querySelector('.hv'); return d && d.open && v ? { th: v.querySelectorAll('.hv-t').length, n: v.querySelector('.hv-n').textContent, note: v.querySelector('.hv-note').textContent, img: v.querySelector('.hv-img').getAttribute('src') } : null });
+  check(!!dlg && dlg.th === 8 && dlg.n === '1' && /Selected preview\. 8 of the 50 pages/.test(dlg.note) && /volume-vi\/page-02\.webp$/.test(dlg.img), 'Preview 8 pages opens the viewer on page 1 of 8, with eight thumbnails and the selected-preview notice', JSON.stringify(dlg));
+  await p.keyboard.press('ArrowRight'); await p.keyboard.press('ArrowRight'); await p.waitForTimeout(500);
+  const k3 = await p.evaluate(async () => { const v = document.querySelector('#hv-dlg .hv'), im = v.querySelector('.hv-img'); if (!im.complete) await new Promise(r => { im.onload = im.onerror = r }); return { n: v.querySelector('.hv-n').textContent, w: im.naturalWidth, cur: v.querySelector('.hv-t[aria-current="true"] span').textContent } });
+  check(k3.n === '3' && k3.w >= 1000 && k3.cur === 'p. 4', 'the arrow keys turn the pages; each page is a full-width image (at least 1000 px), and its thumbnail is marked current', JSON.stringify(k3));
+  await p.keyboard.press('Escape'); await p.waitForTimeout(250);
+  check(await p.evaluate(() => !document.getElementById('hv-dlg').open), 'Escape closes the preview');
+  /* a volume */
+  await p.locator('#card-volume-iii .hl-b a.up-gh').click(); await p.waitForTimeout(500);
   const vol = await p.evaluate(() => ({ s: { v: VIEW, t: TAB, a: ARG }, h1: document.querySelector('#view h1').textContent, parts: document.querySelectorAll('.up-toc li').length, map: document.querySelectorAll('.up-tbl.map tbody tr').length,
-    samples: document.querySelectorAll('.up-samples img').length, mail: document.querySelector('.up-buybox a[href^="mailto:"]').getAttribute('href') }));
-  check(vol.s.a === 'volume-iii' && vol.h1 === 'Inflation and Price Stability' && vol.parts === 11 && vol.map === 10, 'Explore Handbook opens Volume III with its contents and its syllabus map', JSON.stringify(vol));
-  check(vol.samples === 3 && /^mailto:arjun1agr@gmail\.com\?subject=/.test(vol.mail) && decodeURIComponent(vol.mail).includes('Volume III'), 'it shows three sample pages and an email enquiry to the published address');
-  await p.locator('.up-sp').first().click(); await p.waitForTimeout(300);
-  check(await p.evaluate(() => { const d = document.getElementById('up-zoom'); return d && d.open && /Preview only/.test(d.textContent) }), 'a sample page enlarges in a dialog, marked as a preview');
-  await p.keyboard.press('Escape'); await p.waitForTimeout(200);
-  check(await p.evaluate(() => !document.getElementById('up-zoom').open), 'Escape closes it');
+    th: document.querySelectorAll('.hv-inline .hv-t').length, side: !!document.querySelector('.hl-side .up-cv') && /49/.test(document.querySelector('.hl-sf').textContent), mail: document.querySelector('.hl-buy a[href^="mailto:"]').getAttribute('href'),
+    order: (() => { const a = document.querySelector('.hl-side'), b = document.querySelector('.hl-main'); return a.getBoundingClientRect().left < b.getBoundingClientRect().left })() }));
+  check(vol.s.a === 'volume-iii' && vol.h1 === 'Inflation and Price Stability' && vol.parts === 11 && vol.map === 10, 'View volume opens Volume III with its parts and its syllabus map', JSON.stringify(vol));
+  check(vol.side && vol.order && vol.th === 8 && /^mailto:arjun1agr@gmail\.com\?subject=/.test(vol.mail) && decodeURIComponent(vol.mail).includes('Volume III'), 'the cover, facts and enquiry sit on the left, the preview of eight pages on the right, with an email enquiry to the published address');
+  await p.locator('.hv-inline .hv-t').nth(5).click(); await p.waitForTimeout(300);
+  await p.locator('.hv-inline [aria-label="Zoom in"]').click(); await p.locator('.hv-inline [aria-label="Zoom in"]').click(); await p.waitForTimeout(300);
+  const z = await p.evaluate(() => { const v = document.querySelector('.hv-inline'); const s = v.querySelector('.hv-stage'); return { n: v.querySelector('.hv-n').textContent, zl: v.querySelector('.hv-zl').textContent, wide: s.scrollWidth > s.clientWidth, dis: v.querySelector('[aria-label="Zoom in"]').disabled } });
+  check(z.n === '6' && z.zl === '200%' && z.wide && z.dis, 'a thumbnail jumps to its page; zoom goes to 200% and the page can be panned', JSON.stringify(z));
+  await p.locator('.hv-inline [aria-label="Full screen"]').click(); await p.waitForTimeout(500);
+  check(await p.evaluate(() => { const v = document.querySelector('.hv-inline'); return document.fullscreenElement === v || v.classList.contains('hv-fs') }), 'Full screen shows the viewer alone');
+  await p.evaluate(() => { if (document.fullscreenElement) return document.exitFullscreen(); hvFull(document.querySelector('.hv-inline').id) }); await p.waitForTimeout(300);
+  check(!/cannot be (copied|downloaded)|DRM|copy-protected|screenshots? (are|is) (blocked|disabled)/i.test(await p.locator('#view').innerText()), 'nothing claims that the preview cannot be copied or screenshotted');
 
   /* the programme */
   await go(p, '#/upsc/upsc-economics-course');
@@ -193,7 +222,7 @@ for (const w of [1024, 768, 390, 360, 320]) {
   const { p } = await open(ctx, base);
   for (const h of ['#/upsc', '#/upsc/economics-handbooks', '#/upsc/upsc-economics-course']) {
     await go(p, h);
-    const hidden = await p.evaluate(() => [...document.querySelectorAll('#view .up-pl, #view .up-hb, #view .up-feat li, #view .up-rm')].filter(e => getComputedStyle(e).opacity !== '1' || e.classList.contains('rv-wait')).length);
+    const hidden = await p.evaluate(() => [...document.querySelectorAll('#view .up-pl, #view .hl-card, #view .up-feat li, #view .up-rm')].filter(e => getComputedStyle(e).opacity !== '1' || e.classList.contains('rv-wait')).length);
     check(hidden === 0, `reduced motion: every block on ${h} is visible`);
   }
   await ctx.close();
@@ -210,7 +239,7 @@ for (const w of [1024, 768, 390, 360, 320]) {
       if (h === '#/') await p.evaluate(() => nav('home')); else await go(p, h);
       if (h === '#/upsc/syllabus') await p.evaluate(() => upAccAll(true));
       if (!(await p.evaluate(() => typeof axe !== 'undefined'))) await p.addScriptTag({ content: axe });
-      const sel = h === '#/' ? 'section.hp' : '#view';
+      const sel = h === '#/' ? '.sy-home' : '#view';
       const r = await p.evaluate(async s => (await axe.run(document.querySelector(s), { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } })).violations.map(x => x.id + ':' + x.nodes.length + ' ' + x.nodes.slice(0, 2).map(n => n.target.join(' ')).join(' ; ')), sel);
       if (r.length) viol.push(h + ' ' + r.join(','));
     }

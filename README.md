@@ -1,8 +1,9 @@
-# Arjun Agrawal · IB DP Economics
+# Arjun Agrawal | Economics
 
-**Think like an economist.**
+**One Economics ecosystem. Two distinct learning pathways.**
 
-A free, browser-based learning environment for IB Diploma Programme Economics, built by
+A free, browser-based learning environment for IB Diploma Programme Economics and UPSC CSE
+Economics, built by
 **Arjun Agrawal**: IB DP Facilitator in Economics, Business Management and Global Politics,
 Economics educator, UPSC CSE mentor and resource creator.
 
@@ -35,23 +36,57 @@ the video studio says so and everything else works exactly as before.
 
 > Economics is not only a subject you study. It is a way of understanding the world.
 
+## The ecosystem: one brand, two pathways
+
+**The home page (`#/`)** is the ecosystem, in seven sections: the headline ("Economics is not just
+a subject to study. It is a way to understand the world.") with two large pathway panels, IB DP
+Economics in deep burgundy and UPSC CSE Economics in deep forest green; an interactive map of eight
+fields of Economics showing where each pathway meets each field (and only where it does); the
+learning experience, in screenshots of the platform itself (`assets/home/*.webp`); selected original
+work, each shown in part; The Business Brief, a sister platform for IB DP Business Management
+(an editorial aside, not a third pathway, opening in a new tab); the educator, from the supplied
+profile only; and where to begin. Built by `src/modules/44-ecosystem.js`, styled by
+`src/styles/css-eco.css`.
+
+**The IB DP Economics landing page (`#/ib`)** carries the IB front page that used to be the home
+page, every band unchanged, under its own masthead: the SL/HL switch (the platform's own level),
+the five-stage journey (Understand, Visualise, Apply, Practise, Evaluate) and a finder that filters
+every IB destination by stage and kind. No IB endorsement is claimed.
+
+**The main navigation** reads Home | IB DP Economics | UPSC CSE Economics | Learning Tools | About
+Arjun | The Business Brief on every page. The three menus open as mega menus (pointer, click,
+ArrowDown into the panel, Escape back to its button): the IB menu in five groups (Learn, Visualise,
+Apply, Practise, Advance) with "Every IB section and tool" opening the platform's full list; the
+UPSC menu in five (Start here, Learn, Handbook library, Prepare, Coaching); Learning Tools with the
+calculator, timer and search and the model and study tools. The bar is measured after every paint:
+the optional tools fold into Learning Tools first, then, only if it still cannot fit, the bar
+becomes the grouped drawer. The IB section bar is still painted and keeps its order and self-tests;
+it is reached through the IB menu, the IB landing page, the drawer and search. The pathway strip
+(`#pathbar`) is the switch between the two pathways at every width.
+
+**Shared concepts (`#/concepts`)**: eleven concepts, each with an IB DP reading and a UPSC CSE
+reading at their own addresses (`#/concepts/ib-dp/inflation`, `#/concepts/upsc-cse/inflation`).
+Both open with the same idea and the platform's glossary definitions; each then keeps to its own
+examination, and its practice prompts are original and labelled as such, never as past papers.
+Built by `src/modules/45-concepts.js` from the connector, topic and glossary data already on the
+platform.
+
+**The footer** opens with "Explore the academic ecosystem" (IB DP Economics, UPSC CSE Economics,
+and IB DP Business Management at The Business Brief) and the verified contacts.
+
 ## UPSC CSE Economics
 
-The platform has two pathways. The home page opens with "Economics. Understood. Connected.
-Applied." and two cards: **IB DP Economics** ("Think like an economist."), which leads into
-everything described below, and **UPSC CSE Economics** ("Understand the economy. Master the
-examination."). A slim strip above the header (`#pathbar`) carries
-"IB DP Economics | UPSC CSE Economics | About | Contact" at every width; inside the UPSC section,
-About and Contact lead to its own pages. The IB primary bar is unchanged.
+Inside the UPSC section the pathway strip turns forest green and About and Contact lead to the
+section's own pages.
 
 The section lives at `#/upsc` and has eight tabs, each a real address:
 
 | Tab | Address | What it holds |
 |---|---|---|
-| UPSC Overview | `#/upsc` | Five pillars, the seven-step approach (the repo rate from concept to Mains), a map of how the eleven volumes connect |
-| Syllabus | `#/upsc/syllabus` (`/mains`) | The official UPSC wording, quoted from Examination Notice No. 05/2026-CSE, kept apart from explanation; fourteen Prelims themes and the ten GS III lines, each mapped to volumes |
+| UPSC Overview | `#/upsc` | "Understand the Indian Economy. Prepare with clarity.", the seven-stage roadmap (syllabus, foundations, the Indian economy, current affairs, Prelims practice, Mains answer writing, revision), five pillars, the seven-step approach, a map of how the eleven volumes connect |
+| Syllabus | `#/upsc/syllabus` (`/mains`, `/optional`) | The official UPSC wording, quoted from Examination Notice No. 05/2026-CSE, kept apart from explanation; fourteen Prelims GS I themes and the ten GS III lines, each mapped to volumes; a third tab places the Economics Optional and says plainly that it is not covered here |
 | Economics Resources | `#/upsc/economics-resources/<topic>` | Eleven free topic previews with original diagrams, a question each, search and categories; "One Concept. Two Examination Perspectives." links shared concepts to existing IB pages |
-| Economics Handbooks | `#/upsc/economics-handbooks/<volume-id>` | The eleven-volume collection at ₹99 / Volume, each with its own page |
+| Economics Handbooks | `#/upsc/economics-handbooks/<volume-id>` (`/category-<key>`) | THE INDIAN ECONOMY COLLECTION: eleven volumes at ₹99 per soft copy, filtered by category and volume, each with its own page and an eight-page preview |
 | Current Affairs | `#/upsc/current-affairs` | A hand-edited list of dated developments, each with its source and handbook part |
 | UPSC Economics Course | `#/upsc/upsc-economics-course` | The 3-month intensive programme: ₹9,999 for the complete programme, online, at most 25 students |
 | About the Educator | `#/upsc/about-the-educator` | Facts already published on the site and on the handbooks' title pages |
@@ -65,9 +100,18 @@ topic previews, current affairs, the connector and the programme are in
 
 **The handbooks are never in this repository.** `tools/upsc/build_upsc.py` reads the eleven PDFs
 from a private folder outside the repository, checks each title and page count against the
-catalogue, and writes only four low-resolution, watermarked WebP previews per volume (cover,
-contents, two sample pages) to `assets/upsc/handbooks/`, then regenerates
-`src/modules/41-upsc-data.js`:
+catalogue, and writes the cover (in two sizes) and an eight-page selected preview of each volume
+(the contents and syllabus map, the opening of Part A, and two spreads the catalogue names), with a
+thumbnail of each page, as WebP files in `assets/upsc/handbooks/`, then regenerates
+`src/modules/41-upsc-data.js`. Pages are rendered exactly as the PDF prints them: the site draws
+nothing over a page, and each page keeps its own running header, footer and copyright line.
+
+**The preview viewer** shows the eight pages large: previous and next, page numbers, zoom (100, 150
+and 200 per cent), full screen, thumbnails, the arrow keys and a swipe on touch screens. The
+thumbnail shows first and the full page replaces it; the next page is fetched ahead. It says that it
+is a selected preview, and makes no claim that the images cannot be copied: there is no DRM. The
+volume page puts the cover, facts, price and enquiry on the left, and the overview, preview, what
+students learn, the parts, the concepts and the syllabus relevance on the right.
 
 ```
 python3 tools/upsc/build_upsc.py --src /path/to/private/handbooks   # previews + data
@@ -80,8 +124,8 @@ add an entry to `UP_CA` with its date, theme, source and volume, and update `UP_
 
 **Purchases and enrolment are enquiries.** Buttons open WhatsApp (+91 7092844945), email
 (arjun1agr@gmail.com) or a call, with the message prefilled: a handbook message names the volume,
-its title and ₹99; the enrolment message is the exact text the brief sets. Nothing is charged,
-booked or confirmed on the site.
+its title and ₹99; the enrolment message is the exact text the brief sets. The purchase is
+completed by direct contact; nothing is charged, booked or confirmed on the site.
 
 ## What it contains
 
@@ -780,54 +824,39 @@ offering to open the assignment, and nothing about what they then do is reported
 
 ## The opening sequence
 
-Exactly five seconds, on one clock. The sequence runs:
+Exactly five seconds, on one clock: one Economics ecosystem, two pathways.
 
 | Time | Stage |
 |---|---|
-| 0–0.9 s | an obsidian field with a faint grid; the axes rule themselves in from their origins |
-| 0.7 s | the monogram, with a data series appearing beneath it (0.9–1.9 s) |
-| 1.4 s | the name and "Knowledge. Insight. Impact.", assembled from the brand vectors rather than set again in type |
-| 2.2 s | "IB DP Economics", with supply and demand and a frontier (micro) brought into focus behind it |
-| 3.1 s | "Think like an economist.", the peak, as a growth path with its cycle (macro) and a faint network of trade (global) take over the background |
-| 4.0 s | "Learn. Think. Calculate." |
-| 4.7–5.0 s | the exit fade into the page |
+| 0–1.0 s | a dark field of coordinates, data points and the lines between them; the Arjun Agrawal identity emerges from the brand vectors (never set again in type) |
+| 1.0–2.0 s | the identity settles to the top; axes, supply and demand appear, demand shifts and the equilibrium moves along supply, with a trade network behind |
+| 2.0–3.25 s | the field divides: IB DP Economics (global perspectives, international evidence) in burgundy with a globe, UPSC CSE Economics (the Indian economy, policy, institutions) in forest green with a kolam dot grid |
+| 3.15–4.25 s | the two converge: "One discipline. Two pathways.", then both names (3.70–3.95 s is still) |
+| 4.3–5.0 s | the two halves of the field open onto the page underneath |
 
 **One start timestamp.** The start is the first frame the reader sees. It is taken from
-`requestAnimationFrame` and re-anchored to the browser's reported first paint during a still passage
-of the sequence. Every stage is a Web Animation scheduled from that timestamp, not a chain of timers.
+`requestAnimationFrame` and re-anchored to the browser's reported first paint during the still
+passage. Every stage is a Web Animation scheduled from that timestamp, not a chain of timers, and
+animates opacity and transform only, so the compositor keeps time while the start-up self-test
+occupies the main thread. The overlay is transparent at exactly start + 5000 ms and removed on the
+next frame. If the platform is not ready when the reveal is due, the last frame holds rather than
+uncovering an unfinished page; begun late, the reveal is quicker and still ends at 5000 ms.
 
-**Nothing can lengthen it.** The stages animate opacity and transform only, so they run on the
-compositor while the start-up self-test occupies the main thread. The exit fade reaches full
-transparency at exactly start + 5000 ms, and the overlay is removed on the next frame.
-
-**Fallbacks rather than delays.**
-- The font stylesheet no longer blocks the first frame; a late font is swapped in, not waited for.
-- On a device slow enough that the platform is not ready at 4.7 s, the final frame holds rather than
-  uncovering an unfinished page, and the timing record says so.
-
-**When it plays: the opening state model.** The rule depends on the address, not on the cache or
-the kind of load:
-
-| How the reader arrives | What they see |
-|---|---|
-| The home page (`/`, `#/home`), first visit or any later one | the full five seconds |
-| The home page by reload, hard reload, cache disabled, a bookmark or a typed address | the full five seconds |
-| The home page by the browser's Back or Forward from another site | the full five seconds |
-| The home page from a page restored by the back/forward cache | the page as it was left (it never unloaded, so there is nothing to open) |
-| A deep link to any other page (`#/events/archive/india-1991`) | the identity still, gone as soon as the page is ready |
-| Moving inside the platform, including Home and Back between its own pages | no opening at all |
-
-The page records the navigation type, the route and the result in `window.__INTRO`. There is no
-timer that waits for the opening: the page is built behind it, so it is ready when the overlay leaves.
+**When it plays.** On every full-page load of any address: a first visit, a revisit, a reload, a
+hard reload, a bookmark, a shared link to any page, and the browser's Back or Forward from another
+site. Never on navigation inside the platform, and never from a page restored by the back/forward
+cache (it never unloaded). Nothing is read from or written to local or session storage to decide.
 
 **Skip and reduced motion.**
-- **Skip intro** fades out over about 170 ms and leaves through the same exit.
-- Reduced motion shows the same hierarchy at once and leaves after 1.5 s.
+- **Skip intro** is a real button, reachable by keyboard; it fades out over about 170 ms.
+- Reduced motion shows one still frame (the identity, the line and both pathways) and leaves after
+  1.5 s.
 
-`tests/intro.mjs` measures the timing at 360, 390, 768, 1024, 1440 and 1920 px, from the record the
-page keeps in `window.__INTRO`, and every row of the table above: a fresh profile, reload, hard
-reload with the cache disabled, a direct address, Back and Forward from another site, a revisit
-controlled by the service worker, and a deep link.
+`tests/intro.mjs` measures the timing at 360, 390, 768, 1024, 1440 and 1920 px from the record the
+page keeps in `window.__INTRO`, checks each stage is on screen and clear of Skip at its moment, and
+covers a fresh profile, reload, hard reload with the cache disabled, direct and shared addresses,
+Back and Forward from another site, a revisit controlled by the service worker, and that nothing is
+stored.
 
 ## Installable, and honest about offline
 

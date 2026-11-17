@@ -8,8 +8,9 @@ const { p, errors } = await open(ctx, base);
 const st = () => p.evaluate(() => ({ v: VIEW, t: TAB, a: ARG, h: location.hash }));
 
 /* routing */
-await p.locator('#mainnav button', { hasText: 'Real World' }).first().click();
-check((await st()).h === '#/world', 'a primary navigation click writes an address');
+await p.locator('#sy-t-ib').click(); await p.waitForTimeout(150);
+await p.locator('#sy-p-ib a.sy-i', { hasText: 'Real World' }).first().click(); await p.waitForTimeout(200);
+check((await st()).h === '#/world', 'a main-navigation click (the IB menu) writes an address');
 await p.locator('#subnavin button').nth(2).click();
 const tabHash = (await st()).h;
 await p.evaluate(() => nav('lab', 3, 'ped'));

@@ -4028,7 +4028,7 @@ body.up-on .subnav button:focus-visible{outline:2px solid var(--up-gold-l);outli
 .up-road{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;list-style:none;padding:0;margin:0;position:relative}
 .up-rm{background:var(--up-card);border:1px solid var(--up-line);border-radius:4px;overflow:hidden}
 .up-rm-h{padding:16px 20px;background:var(--up-navy);color:#fff;display:flex;flex-direction:column;gap:2px}
-.up-rm:nth-child(2) .up-rm-h{background:var(--up-navy-3)}.up-rm:nth-child(3) .up-rm-h{background:var(--up-green)}
+.up-rm:nth-child(2) .up-rm-h{background:#24503C}.up-rm:nth-child(3) .up-rm-h{background:var(--up-green)}
 .up-rm-h span{font-family:var(--ff-ui);font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--up-gold-l)}
 .up-rm:nth-child(3) .up-rm-h span{color:#E4EEE8}
 .up-rm-h b{font-family:var(--ff-display);font-weight:400;font-size:22px}
@@ -4371,7 +4371,7 @@ body.hv-lock{overflow:hidden}
    See docs/design-system.md. Built on the tokens in the base stylesheet.
    ═══════════════════════════════════════════════════════════════════════════ */
 :root{
- --iv:#F7F2E7; --iv-2:#EFE7D6; --gold:#B8944F; --gold-l:#D9BE7C; --gold-d:#8C6D33;
+ --iv:#F7F2E7; --iv-2:#EFE7D6; --gold:#B8944F; --gold-l:#D9BE7C; --gold-d:#765A24;
  --fg:#1F4A37; --fg-d:#14301F; --fg-2:#183D2C; --fg-l:#2F6A4F; --fg-w:#E7EFE9; --ag:#B08D57; --ag-l:#D7BD86;
  --ch:#1E2126;
 }
@@ -4407,6 +4407,8 @@ body.sy-on .top .in>.mainnav{display:none!important}
 .sy-ld{font-size:15px;line-height:1.55;color:var(--tx-2);margin-top:10px}
 .sy-go.sy-go{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 16px;background:var(--bur);color:#fff;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;border-radius:2px}
 .sy-p-up .sy-go{background:var(--fg)}
+.sy-all.sy-all{display:inline-flex;align-items:center;gap:6px;margin-top:12px;min-height:36px;padding:6px 0;font-weight:700;font-size:14px;color:var(--tx-2);border-bottom:1px solid var(--hair-2)}
+.sy-all:hover,.sy-all:focus-visible{color:var(--bur);border-color:currentColor;outline:none}
 .sy-go:hover{filter:brightness(1.1)}
 .sy-cols{display:grid;grid-template-columns:repeat(var(--n,5),minmax(0,1fr));gap:clamp(16px,2vw,28px)}
 .sy-p-tools .sy-cols{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -44610,10 +44612,10 @@ function upConnector(){
    says plainly that it is a selected preview; it does not claim to prevent copying.
    Purchase is completed by direct contact: nothing is charged on this website. */
 const UPF={cat:"all",vol:"all"};
-function upCat(k){return (UPSC_HB.categories||[]).find(c=>c.k===k)||{k,n:k}}
+function upHbCat(k){return (UPSC_HB.categories||[]).find(c=>c.k===k)||{k,n:k}}
 function upCatCount(k){return UPSC_HB.volumes.filter(v=>k==="all"||v.cat===k).length}
 function upReq(v,cls,label){return upExt(upWa(upHbMsg(v)),label||`Request on WhatsApp <span class="up-sep" aria-hidden="true">|</span> ₹99`,cls||"up-btn up-buy",`Request the soft copy of Volume ${v.n} (₹99) on WhatsApp`)}
-function upHandbooks(){if(ARG){const v=upVol(ARG);if(v)return upVolume(v);const m=/^category-([a-z]+)$/.exec(ARG);if(m&&upCat(m[1]).n!==m[1]){UPF.cat=m[1];UPF.vol="all"}}
+function upHandbooks(){if(ARG){const v=upVol(ARG);if(v)return upVolume(v);const m=/^category-([a-z]+)$/.exec(ARG);if(m&&upHbCat(m[1]).n!==m[1]){UPF.cat=m[1];UPF.vol="all"}}
  const H=UPSC_HB.volumes,pages=H.reduce((a,v)=>a+v.pages,0),C=UPSC_HB.categories||[];
  return `<section class="up-mast up-hbm"><div class="wrap full up-mast-in up-hbm-in"><div>
   <div class="up-eb"><span>UPSC CSE Economics</span><span class="up-eb-s">Handbook library</span></div>
@@ -44629,7 +44631,7 @@ function upHandbooks(){if(ARG){const v=upVol(ARG);if(v)return upVolume(v);const 
    <p class="hl-count" id="hl-count" aria-live="polite"></p></div>
   <ul class="hl-grid" id="hl-grid">${H.map((v,i)=>upCard(v,i)).join("")}</ul>
   <p class="up-note">Each volume is sold individually as a soft copy (PDF) at ₹99, and the purchase is completed by direct contact with Arjun Agrawal. The library shows each volume's cover and eight selected pages; the complete handbook is never published on this website.</p></div>`}
-function upCard(v,i){const pg=(v.img.pages||[]),inside=pg.find(p=>p.p>5)||pg[1]||pg[0],c=upCat(v.cat),hide=!upShown(v);
+function upCard(v,i){const pg=(v.img.pages||[]),inside=pg.find(p=>p.p>5)||pg[1]||pg[0],c=upHbCat(v.cat),hide=!upShown(v);
  return `<li class="hl-card rv" style="--i:${i%3}" id="card-${v.id}" data-cat="${v.cat}"${hide?" hidden":""}>
   <div class="hl-art">${upCover(v,"up-cv hl-cv")}${inside?`<img class="hl-in" src="${esA(inside.t.src)}" alt="" width="${inside.t.w}" height="${inside.t.h}" loading="lazy" decoding="async">`:""}
    <button type="button" class="hl-pv" onclick="hvOpen('${v.id}',0)" aria-label="Preview eight pages of Volume ${esA(v.n)}: ${esA(v.title)}">Preview 8 pages</button></div>
@@ -44647,7 +44649,7 @@ function upFilt(k,val){UPF[k]=val;if(k==="cat")UPF.vol="all";
  const s=document.querySelector(".hl-vs select");if(s&&k==="cat")s.value="all";
  const c=document.getElementById("hl-count");if(c)c.textContent=n===H.length?"":`Showing ${n} of ${H.length} volumes`}
 function upShort(s){const i=s.indexOf(":");let t=i>0&&i<70?s.slice(i+1).trim():s;t=t.charAt(0).toUpperCase()+t.slice(1);return t.length>140?t.slice(0,t.lastIndexOf(",",138))+"…":t}
-function upVolume(v){const H=UPSC_HB.volumes,i=H.indexOf(v),prev=H[i-1],next=H[i+1],c=upCat(v.cat);
+function upVolume(v){const H=UPSC_HB.volumes,i=H.indexOf(v),prev=H[i-1],next=H[i+1],c=upHbCat(v.cat);
  const topics=UP_TOPICS.filter(t=>t.vol===v.n||t.also===v.n);
  return `<section class="up-mast up-vm hl-vm"><div class="wrap full up-mast-in"><nav class="up-crumb" aria-label="Breadcrumb"><a href="${upHref("handbooks")}">The Indian Economy Collection</a><span aria-hidden="true">/</span><a href="${upHref("handbooks","category-"+v.cat)}">${esc(c.n)}</a><span aria-hidden="true">/</span><span aria-current="page">Volume ${esc(v.n)}</span></nav>
   <div class="hl-vk">Volume ${esc(v.n)} · The Indian Economy Collection · ${esc(v.edition)}</div><h1 class="up-h1 hl-vt">${esc(v.title)}</h1><p class="up-vsub">${esc(v.sub)}</p></div></section>
@@ -44665,7 +44667,7 @@ function upVolume(v){const H=UPSC_HB.volumes,i=H.indexOf(v),prev=H[i-1],next=H[i
    <section class="up-vd-s"><h2 class="up-h3">Topics: the ${v.parts.length} parts</h2><ol class="up-toc">${v.parts.map(p=>`<li><span class="up-toc-l">Part ${esc(p.l)}</span><span class="up-toc-x"><b>${esc(p.t)}</b><span>${esc(p.d)}</span></span><span class="up-toc-p">p. ${p.p}</span></li>`).join("")}</ol></section>
    <section class="up-vd-s up-grid2"><div><h2 class="up-h4">Key concepts</h2><ul class="up-chips">${v.concepts.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div><h2 class="up-h4">Institutions, policies and schemes</h2><ul class="up-chips g">${v.inst.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></section>
    <section class="up-vd-s"><h2 class="up-h3">Syllabus relevance</h2><div class="up-grid2"><div class="up-card up-pre"><h3 class="up-h4">Prelims</h3><p>${esc(v.pre)}</p></div><div class="up-card up-mains"><h3 class="up-h4">Mains</h3><p>${esc(v.mains)}</p></div></div>
-    <h3 class="up-h4">The volume's own syllabus map</h3><div class="up-tw"><table class="up-tbl map"><thead><tr><th scope="col">Syllabus area</th><th scope="col">Prelims (parts)</th><th scope="col">Mains (sections)</th><th scope="col">Also useful for</th></tr></thead><tbody>${v.map.map(r=>`<tr><th scope="row">${esc(r[0])}</th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join("")}</tbody></table></div></section>
+    <h3 class="up-h4">The volume's own syllabus map</h3><div class="up-tw" tabindex="0" role="region" aria-label="Syllabus map table"><table class="up-tbl map"><thead><tr><th scope="col">Syllabus area</th><th scope="col">Prelims (parts)</th><th scope="col">Mains (sections)</th><th scope="col">Also useful for</th></tr></thead><tbody>${v.map.map(r=>`<tr><th scope="row">${esc(r[0])}</th><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`).join("")}</tbody></table></div></section>
    <section class="up-vd-s"><h2 class="up-h3">How the volume is built</h2><p>Recurring boxes: ${v.boxes.map(b=>`<span class="up-box-n">${esc(b)}</span>`).join(" ")}</p><p><b>Revision compendium.</b> ${esc(v.comp)}</p></section>
    ${topics.length?`<section class="up-vd-s"><h2 class="up-h3">Free topic previews from this volume</h2><div class="up-vls">${topics.map(t=>`<a class="up-vl" href="${upHref("resources",t.id)}"><b>${esc(t.t)}</b></a>`).join("")}</div></section>`:""}
    <nav class="up-pn" aria-label="Other volumes">${prev?`<a class="up-pn-a" href="${upHref("handbooks",prev.id)}"><span>Volume ${prev.n}</span>${esc(prev.title)}</a>`:"<span></span>"}${next?`<a class="up-pn-a" href="${upHref("handbooks",next.id)}"><span>Volume ${next.n}</span>${esc(next.title)}</a>`:"<span></span>"}</nav></div></div>`}
@@ -44683,7 +44685,7 @@ function hvMarkup(v,mode){const P=v.img.pages||[];if(!P.length)return "";const i
     <span class="hv-zl" aria-live="polite">${Math.round(HV_Z[st.z]*100)}%</span>
     <button type="button" class="hv-b" onclick="hvZoom('${id}',1)" aria-label="Zoom in"${st.z===HV_Z.length-1?" disabled":""}><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M8 3v10"/></svg></button>
     <button type="button" class="hv-b hv-fsb" onclick="hvFull('${id}')" aria-label="Full screen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 6V2h4M10 2h4v4M14 10v4h-4M6 14H2v-4"/></svg></button></div></div>
-  <div class="hv-stage" data-z="${st.z}"><figure class="hv-fig"><img class="hv-img" src="${esA(p.src)}" width="${p.w}" height="${p.h}" alt="${esA(hvAlt(v,p,st.i))}" decoding="async" style="background-image:url('${esA(p.t.src)}')" onload="this.classList.add('ok')"><figcaption class="hv-cap">${esc(p.cap)}</figcaption></figure></div>
+  <div class="hv-stage" data-z="${st.z}" tabindex="0" role="group" aria-label="The page; scroll to move around it when zoomed"><figure class="hv-fig"><img class="hv-img" src="${esA(p.src)}" width="${p.w}" height="${p.h}" alt="${esA(hvAlt(v,p,st.i))}" decoding="async" style="background-image:url('${esA(p.t.src)}')" onload="this.classList.add('ok')"><figcaption class="hv-cap">${esc(p.cap)}</figcaption></figure></div>
   <ol class="hv-th" aria-label="Preview pages">${P.map((q,k)=>`<li><button type="button" class="hv-t${k===st.i?" on":""}" onclick="hvTo('${id}',${k})" aria-label="Preview ${k+1} of ${P.length}: page ${q.p}, ${esA(q.cap)}"${k===st.i?' aria-current="true"':""}><img src="${esA(q.t.src)}" width="${q.t.w}" height="${q.t.h}" alt="" loading="lazy" decoding="async"><span>p. ${q.p}</span></button></li>`).join("")}</ol>
  </div>`}
 function hvAlt(v,p,i){return `Volume ${v.n}, page ${p.p} (preview ${i+1} of ${(v.img.pages||[]).length}): ${p.cap}`}
@@ -44928,7 +44930,7 @@ function esyBBLink(cls,label){return `<a class="${cls}" href="${ESY_BB.url}" tar
 const ESY_IB_GROUPS=[
  ["Learn",[["Course at a glance","course",0,null,"The whole course, unit by unit"],["Concept spine","learn",0,null,"Concepts in the order they build"],
    ["Key concepts","course","Key concepts",null,"The nine concepts of the course"],["Economics in 60 Seconds","learn","Economics in 60 Seconds",null,"One idea, one minute"],
-   ["Mindmaps","mind",0,null,"How a topic connects, node by node"]]],
+   ["Mindmaps","mind",0,null,"How a topic connects, node by node"],["Resource hub","resources",0,null,"Presentations, handbooks and question banks"]]],
  ["Visualise",[["Diagram atlas","lab","Diagram atlas",null,"Every diagram, drawn and explained"],["Market lab","lab","Market lab",null,"Move demand and supply"],
    ["AD-AS lab","lab","AD-AS lab",null,"Shocks, gaps and policy"],["Policy simulator","lab","Policy simulator",null,"Choose a policy, read the trade-offs"],
    ["Learning Studio","studio",0,null,"Visual explainers and guides"]]],
@@ -44969,7 +44971,8 @@ function esyItem(it){const h=esyItemHref(it),inner=`<b>${esc(it[0])}</b><span>${
  return h?`<li><a class="sy-i" href="${esA(h)}">${inner}</a></li>`:`<li><button class="sy-i" type="button" data-tool="${it[1].slice(1)}" onclick="esyTool('${it[1].slice(1)}')">${inner}</button></li>`}
 function esyPanel(m){return `<div class="sy-p sy-p-${m.k}" id="sy-p-${m.k}" role="region" aria-label="${esA(m.label)}" hidden><div class="wrap full sy-pin">
   <div class="sy-lead"><div class="sy-k">${esc(m.label)}</div><p class="sy-lt">${esc(m.lead)}</p><p class="sy-ld">${esc(m.copy)}</p>
-   ${m.go?`<a class="sy-go" href="${m.go[0]}">${esc(m.go[1])} <span aria-hidden="true">→</span></a>`:""}</div>
+   ${m.go?`<a class="sy-go" href="${m.go[0]}">${esc(m.go[1])} <span aria-hidden="true">→</span></a>`:""}
+   ${m.k==="ib"?`<button type="button" class="sy-all" id="sy-all" aria-haspopup="menu" onclick="esyAll(event)">Every IB section and tool <span aria-hidden="true">▾</span></button>`:""}</div>
   <div class="sy-cols" style="--n:${m.groups.length}">${m.groups.map(([g,items])=>`<div class="sy-col"><div class="sy-gh">${esc(g)}</div><ul>${items.map(esyItem).join("")}</ul></div>`).join("")}</div>
  </div></div>`}
 function esyNavHTML(){const caret=`<svg class="sy-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg>`;
@@ -45002,6 +45005,11 @@ function esyWire(nav){
  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&ESYM.open)esyClose(true)});
  document.addEventListener("click",e=>{if(ESYM.open&&!e.target.closest("#synav"))esyClose(false)});
  nav.addEventListener("focusout",e=>{if(ESYM.open&&e.relatedTarget&&!nav.contains(e.relatedTarget))esyClose(false)})}
+/* the platform's full list of sections (the More menu), opened from the IB menu */
+function esyAll(e){const t=document.getElementById("sy-all"),r=t?t.getBoundingClientRect():null;esyClose(false);
+ if(typeof moreMenu!=="function")return;moreMenu(e||{stopPropagation(){}});const m=document.getElementById("menu");if(!m)return;
+ const h=document.querySelector("header.top"),hb=h?h.getBoundingClientRect().bottom:70;m.style.top=(Math.max(0,hb)+8)+"px";
+ m.style.left=Math.max(10,Math.min(innerWidth-m.getBoundingClientRect().width-10,r&&r.width?r.left:24))+"px";const f=m.querySelector("button");if(f)f.focus()}
 /* the three instant tools open where the header puts them, or under the header when it has folded them away */
 function esyTool(k){esyClose(false);try{if(typeof closeMenu==="function"&&document.getElementById("mob"))closeMenu()}catch(e){}
  const f={search:()=>searchPop(),calc:()=>calcPop(),timer:()=>tmrPop()}[k];if(!f)return;f();
@@ -45216,7 +45224,8 @@ function esyHero(){const H=UPSC_HB.volumes,fig=typeof rsSD==="function"?`<svg vi
     <div class="sy-ppc" aria-hidden="true">${H.slice(1,4).map((v,i)=>`<span style="--i:${i};background-image:url('${esA((v.img.coverSm||v.img.cover).src)}')"></span>`).join("")}</div>
     <ul class="sy-ppl">${[["Syllabus","syllabus"],["Handbooks","handbooks"],["Resources","resources"],["Current Affairs","current"],["Course","course"]].map(([t,k])=>`<li><a href="${esA(esyUp(k))}">${esc(t)}</a></li>`).join("")}</ul>
     <a class="sy-cta" href="#/upsc">Explore UPSC Economics <span aria-hidden="true">→</span></a></article></div></div></section>`}
-VIEWS.home=function(){return `<div class="sy-home">${esyHero()}${esyMap()}${esyShots()}${esyWork()}${esyBB()}${esyEducator()}${esyBegin()}</div>`};
+/* a shared assignment link (#assign=...) opens on the home page, as before: its banner leads */
+VIEWS.home=function(){return `${typeof assignBanner==="function"?assignBanner():""}<div class="sy-home">${esyHero()}${esyMap()}${esyShots()}${esyWork()}${esyBB()}${esyEducator()}${esyBegin()}</div>`};
 /* the IB cover's entrance plays when a reader arrives at the IB landing page */
 (function(){if(typeof lnEnter!=="function")return;lnEnter=function(){const prev=LN_LASTVIEW;LN_LASTVIEW=typeof VIEW!=="undefined"?VIEW:null;
  if(VIEW!=="ib"||!prev||prev==="ib")return;
@@ -45268,6 +45277,7 @@ function ESYSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r
    &&/Explore IB DP Economics/.test(h)&&/Explore UPSC Economics/.test(h)});
  T("Home · one h1, and the seven sections in order: pathways, map, experience, work, The Business Brief, educator, beginning",()=>{const h=VIEWS.home();const order=["sy-hero","sy-map","sy-exp","sy-work","sy-bb","sy-ed","sy-begin"].map(c=>h.indexOf('class="'+(c==="sy-hero"||c==="sy-bb"?c:"sy-sec "+c)));
   return (h.match(/<h1[\s>]/g)||[]).length===1&&order.every((x,i)=>x>0&&(i===0||x>order[i-1]))});
+ T("Home · a shared assignment link still opens with its banner on the home page",()=>/assignBanner\(\)/.test(String(VIEWS.home))&&typeof assignBanner==="function");
  T("Home · the pathway calls lead to #/ib and #/upsc",()=>{const h=esyHero();return /href="#\/ib">Explore IB DP Economics/.test(h)&&/href="#\/upsc">Explore UPSC Economics/.test(h)&&parse("#/ib")&&parse("#/upsc")});
  T("Home · every link on the ecosystem page is a route that exists or a supplied asset",()=>{const h=VIEWS.home(),bad=[];(h.match(/href="([^"]+)"/g)||[]).forEach(m=>{const u=m.slice(6,-1).replace(/&amp;/g,"&");if(/^https:\/\/the-business-brief-dun\.vercel\.app\/$/.test(u))return;if(/^#/.test(u)){if(!parse(u))bad.push(u)}else bad.push(u)});return {ok:!bad.length,d:bad.join(" ")}});
  T("Home · the map gives every field a description and only real connections, IB or UPSC",()=>ESY_FIELDS.length===8&&ESY_FIELDS.every(f=>f.d&&(f.ib.length||f.up.length))&&ESY_FIELDS.every(f=>f.ib.every(x=>parse(esyFieldHref(x,"ib")))&&f.up.every(x=>parse(esyFieldHref(x,"up")))));
@@ -45280,6 +45290,7 @@ function ESYSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r
   return {ok:L.length>=20&&L.every(x=>parse(x.h))&&a>0&&a<L.length&&z,d:`${L.length} ${a}`}});
  T("IB landing · no claim of IB endorsement",()=>!/endorsed by the International Baccalaureate|official IB (platform|resource)|IB-approved|IB approved/i.test(txt(esyIBHead()+VIEWS.home())));
  T("Ecosystem · the IB section bar is still painted, so its order and More menu are unchanged",()=>{const m=document.getElementById("mainnav");return !m||m.querySelectorAll("button").length>=8});
+ T("Ecosystem · the full list of sections (the More menu) stays reachable from the IB menu",()=>/id="sy-all"/.test(esyNavHTML())&&/moreMenu\(/.test(String(esyAll)));
  T("Ecosystem · the intro is never replayed by navigation inside the app",()=>!/__INTRO|splash/.test(String(nav))&&!/__INTRO|splash/.test(String(esyState)));
  return out}
 if(typeof EXTRA_SUITES!=="undefined")EXTRA_SUITES.push(ESYSUITE);

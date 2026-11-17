@@ -6,7 +6,7 @@ import { serve, browser, open, check, done } from './lib.mjs';
 const { srv, base } = await serve();
 const b = await browser();
 const ctx = await b.newContext({ viewport: { width: 1366, height: 900 } });
-let { p, errors } = await open(ctx, base);
+let { p, errors } = await open(ctx, base + '#/ib');
 const st = () => p.evaluate(() => ({ v: VIEW, t: TAB, a: ARG }));
 
 /* the home page */
@@ -14,7 +14,7 @@ const st = () => p.evaluate(() => ({ v: VIEW, t: TAB, a: ARG }));
 check(await p.locator('details.rn-desk').count() === 1 && !(await p.locator('details.rn-desk').evaluate(d => d.open)), 'on a first visit the desk is folded');
 await p.locator('details.rn-desk > summary').click(); await p.waitForTimeout(150);
 check(await p.locator('details.rn-desk').evaluate(d => d.open), 'the desk opens on request');
-await p.evaluate(() => nav('course')); await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
+await p.evaluate(() => nav('course')); await p.evaluate(() => nav('ib')); await p.waitForTimeout(200);
 check(await p.locator('details.rn-desk').evaluate(d => d.open), 'the desk stays as the reader left it');
 check(/One next step/.test(await p.locator('details.rn-desk').innerText()), 'the folded desk still holds the existing bands');
 check(await p.locator('.rn-home.cv svg.cv-svg').count() === 1, 'the home opener draws its model');
@@ -22,11 +22,11 @@ check(await p.locator('#explore .rs-m').count() >= 7, 'the resource doors show t
 check(await p.locator('#explore .rs-a').count() === 8 && await p.locator('#explore .rs-lib a[href="#/resources"]').count() === 1, 'the resources band offers eight doors and the Resource hub\'s library');
 await p.locator('#explore .rs-a', { hasText: 'Real-world examples' }).first().click(); await p.waitForTimeout(200);
 check((await st()).v === 'world', 'a resource door opens its section');
-await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
+await p.evaluate(() => nav('ib')); await p.waitForTimeout(200);
 check(await p.locator('.td-card').count() === 4, 'Today in Economics shows an idea, a case, a question and a word');
 await p.locator('.td-card').first().getByRole('button', { name: /Read it/ }).click(); await p.waitForTimeout(200);
 check(['learn', 'everywhere'].includes((await st()).v), 'the idea of the day opens its page');
-await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
+await p.evaluate(() => nav('ib')); await p.waitForTimeout(200);
 
 /* Random Economics */
 await p.getByRole('button', { name: /Surprise me/ }).first().click(); await p.waitForTimeout(200);

@@ -162,22 +162,44 @@ Hover lifts the card by 2px, deepens its border and moves the arrow. Below 720px
   - It does not play on a first visit, because the opening sequence is the entrance there.
 - **Reduced motion** removes every reveal, transition and entrance.
 
+## The ecosystem and its two pathways
+
+One brand, ARJUN AGRAWAL | ECONOMICS, and one set of typefaces (Bodoni Moda for display, Source
+Serif 4 for reading, Manrope for the interface, JetBrains Mono for figures) for both pathways. Colour
+marks the pathway and nothing else (`src/styles/css-eco.css`): the IB DP pathway is deep burgundy
+(`--bur`, `#7A2436`), the UPSC CSE pathway deep forest green (`--fg`, `#1F4A37`); both sit on warm
+ivory (`--iv`, `#F7F2E7`) with muted or antique gold (`--gold`, `#B8944F`; `--ag`, `#B08D57`) and
+charcoal (`--ch`, `#1E2126`). No glassmorphism and no decorative gradients beyond a soft radial
+light on the two pathway panels; text is never set below 12 px.
+
+- **The main navigation.** One bar, measured; mega menus are full-width panels under the header, a
+  lead column in the pathway's colour and five groups of real destinations.
+- **The Business Brief** appears as an editorial aside in ivory and charcoal, never as a third
+  pathway panel.
+- **Motion.** Sections and cards rise into place with the platform's own reveal (40-launch.js), with
+  a short stagger; the hero figure drifts slowly with the scroll where the browser supports scroll
+  timelines. Nothing moves under reduced motion.
+
 ## The UPSC section
 
-The UPSC pages share the platform's typefaces and spacing and take a second palette, defined as
-`--up-*` tokens in `src/styles/css-upsc.css`: midnight navy (`#0F1C36`), warm ivory (`#F7F2E7`),
-muted gold (`#B08A47`, with `#7A5D27` for gold text on ivory and `#D8BF8C` on navy), forest green
-(`#2E5E4E`) and a restrained burgundy (`#7A2436`). Inside the section the sub-navigation turns
-navy with a gold underline (`body.up-on`).
+The UPSC pages take the forest-green palette, defined as `--up-*` tokens in
+`src/styles/css-upsc.css`. The token names (`--up-navy` and its steps) are kept from the first
+edition so that no rule changes; their values are now forest greens: `#14301F`, `#1F4A37`,
+`#2F5E48`, with warm ivory (`#F7F2E7`), antique gold (`#B08D57`, with `#7A5D27` for gold text on
+ivory and `#D7BD86` on green), a brighter green for actions (`#2F6A4F`) and a restrained burgundy
+(`#7A2436`) kept for IB cross-references. Inside the section the sub-navigation turns forest green
+with a gold underline (`body.up-on`).
 
-- **Labels.** Four kinds of text are always marked: Official (navy), Explained (gold tint),
+- **Labels.** Four kinds of text are always marked: Official (green), Explained (gold tint),
   Covered (green tint) and Current (burgundy tint).
 - **Figures.** Original SVG, computed where there is anything to compute (the bond price curve, the
   PPC, the deficit bars), in the `uf-*` inks. Each has a title and a caption saying what it shows.
 - **Coverage dots.** Eleven dots, one per volume, filled where the volume's own contents or syllabus
   map treats the topic. They are a map, never a percentage.
-- **Covers.** Shown at their own proportions (520 × 735), with a soft shadow, as publications.
-- **Motion.** Cards lift by 2 px on hover and the batch-of-25 seats settle in once, only with the
-  motion layer on; nothing moves under reduced motion.
-- **The pathway strip.** Graphite on IB pages and navy on UPSC pages; on phones the two pathways
+- **Covers and pages.** Covers at their own proportions with a soft shadow, as publications; on a
+  card an inside page leans behind the cover. Preview pages are shown exactly as printed, large, on
+  a quiet stone ground, with the selected-preview notice above them.
+- **Motion.** Cards lift by 3 px on hover and reveal once, only with the motion layer on; nothing
+  moves under reduced motion.
+- **The pathway strip.** Graphite on IB and shared pages and forest green on UPSC pages; on phones the two pathways
   split the width as a two-way switch.

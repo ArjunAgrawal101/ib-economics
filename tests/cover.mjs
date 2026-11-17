@@ -12,7 +12,7 @@ const allErrors = [];
 
 for (const [w, h] of [[1440, 900], [1024, 768], [390, 844], [320, 640]]) {
   const ctx = await b.newContext({ viewport: { width: w, height: h } });
-  const { p, errors } = await open(ctx, base);
+  const { p, errors } = await open(ctx, base + '#/ib');
   const plate = await box(p, '.cv-plate'), por = await box(p, '.cv-portrait');
   check(plate && por && !meet(plate, por), `${w}px · the cover's portrait and its model never overlap`);
   const txt = await p.evaluate(() => [...document.querySelectorAll('.cv-copy h1, .cv-copy p, .cv-cta .btn')].map(e => e.getBoundingClientRect().toJSON()));
@@ -29,7 +29,7 @@ for (const [w, h] of [[1440, 900], [1024, 768], [390, 844], [320, 640]]) {
 }
 
 const ctx = await b.newContext({ viewport: { width: 1366, height: 900 } });
-const { p, errors } = await open(ctx, base);
+const { p, errors } = await open(ctx, base + '#/ib');
 /* the movable market */
 const r0 = await p.textContent('#cv-read');
 await p.locator('#cv-shift').fill('2'); await p.dispatchEvent('#cv-shift', 'input');
@@ -39,16 +39,16 @@ await p.locator('#cv-shift').fill('-2'); await p.dispatchEvent('#cv-shift', 'inp
 check(/surplus/.test(await p.textContent('#cv-read')), 'moving demand down explains the surplus');
 await p.locator('#explore .rs-grid a.rs-a', { hasText: 'Real-world examples' }).click(); await p.waitForTimeout(300);
 check((await st(p)).v === 'world', 'a resource door opens what it counts');
-await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
+await p.evaluate(() => nav('ib')); await p.waitForTimeout(200);
 await p.locator('.cv-cta .btn').first().click(); await p.waitForTimeout(700);
 check(await p.evaluate(() => { const g = document.getElementById('explore'); const r = g && g.getBoundingClientRect(); return !!r && r.top < innerHeight * 0.5 && r.bottom > 0 && document.activeElement === g.querySelector('h2') }),
   'Explore Economics brings the gateway into view and moves focus to it');
 await p.locator('.cv-cta a.btn', { hasText: 'Explore Resources' }).click(); await p.waitForTimeout(300);
 check((await st(p)).v === 'resources', 'Explore Resources opens the Resource hub');
-await p.evaluate(() => nav('home')); await p.waitForTimeout(300);
+await p.evaluate(() => nav('ib')); await p.waitForTimeout(300);
 await p.locator('.at-sigl a', { hasText: 'The Learning Studio' }).click(); await p.waitForTimeout(300);
 check((await st(p)).v === 'studio', 'the author signature still leads to the Learning Studio');
-await p.evaluate(() => nav('home')); await p.waitForTimeout(200);
+await p.evaluate(() => nav('ib')); await p.waitForTimeout(200);
 check(await p.locator('.rn-hinge').count() === 1 && await p.locator('.rn-final').count() === 1, 'the home page runs from the hinge to the closing invitation');
 const order = await p.evaluate(() => [...document.querySelectorAll('.rn-chap .ch-t, .rn-hinge .ch-t')].map(e => e.textContent.trim()));
 check([...new Set(order)].join('|').startsWith('Think|Discover|The course|Learn|See the world|Master the models|Exam|Research|Explore|Watch|Teach|About'), 'the chapters run in the narrative order', order.join('|'));

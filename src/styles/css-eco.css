@@ -7,7 +7,7 @@
    See docs/design-system.md. Built on the tokens in the base stylesheet.
    ═══════════════════════════════════════════════════════════════════════════ */
 :root{
- --iv:#F7F2E7; --iv-2:#EFE7D6; --gold:#B8944F; --gold-l:#D9BE7C; --gold-d:#8C6D33;
+ --iv:#F7F2E7; --iv-2:#EFE7D6; --gold:#B8944F; --gold-l:#D9BE7C; --gold-d:#765A24;
  --fg:#1F4A37; --fg-d:#14301F; --fg-2:#183D2C; --fg-l:#2F6A4F; --fg-w:#E7EFE9; --ag:#B08D57; --ag-l:#D7BD86;
  --ch:#1E2126;
 }
@@ -43,6 +43,8 @@ body.sy-on .top .in>.mainnav{display:none!important}
 .sy-ld{font-size:15px;line-height:1.55;color:var(--tx-2);margin-top:10px}
 .sy-go.sy-go{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 16px;background:var(--bur);color:#fff;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;border-radius:2px}
 .sy-p-up .sy-go{background:var(--fg)}
+.sy-all.sy-all{display:inline-flex;align-items:center;gap:6px;margin-top:12px;min-height:36px;padding:6px 0;font-weight:700;font-size:14px;color:var(--tx-2);border-bottom:1px solid var(--hair-2)}
+.sy-all:hover,.sy-all:focus-visible{color:var(--bur);border-color:currentColor;outline:none}
 .sy-go:hover{filter:brightness(1.1)}
 .sy-cols{display:grid;grid-template-columns:repeat(var(--n,5),minmax(0,1fr));gap:clamp(16px,2vw,28px)}
 .sy-p-tools .sy-cols{grid-template-columns:repeat(4,minmax(0,1fr))}

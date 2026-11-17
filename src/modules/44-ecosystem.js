@@ -29,7 +29,7 @@ function esyBBLink(cls,label){return `<a class="${cls}" href="${ESY_BB.url}" tar
 const ESY_IB_GROUPS=[
  ["Learn",[["Course at a glance","course",0,null,"The whole course, unit by unit"],["Concept spine","learn",0,null,"Concepts in the order they build"],
    ["Key concepts","course","Key concepts",null,"The nine concepts of the course"],["Economics in 60 Seconds","learn","Economics in 60 Seconds",null,"One idea, one minute"],
-   ["Mindmaps","mind",0,null,"How a topic connects, node by node"]]],
+   ["Mindmaps","mind",0,null,"How a topic connects, node by node"],["Resource hub","resources",0,null,"Presentations, handbooks and question banks"]]],
  ["Visualise",[["Diagram atlas","lab","Diagram atlas",null,"Every diagram, drawn and explained"],["Market lab","lab","Market lab",null,"Move demand and supply"],
    ["AD-AS lab","lab","AD-AS lab",null,"Shocks, gaps and policy"],["Policy simulator","lab","Policy simulator",null,"Choose a policy, read the trade-offs"],
    ["Learning Studio","studio",0,null,"Visual explainers and guides"]]],
@@ -70,7 +70,8 @@ function esyItem(it){const h=esyItemHref(it),inner=`<b>${esc(it[0])}</b><span>${
  return h?`<li><a class="sy-i" href="${esA(h)}">${inner}</a></li>`:`<li><button class="sy-i" type="button" data-tool="${it[1].slice(1)}" onclick="esyTool('${it[1].slice(1)}')">${inner}</button></li>`}
 function esyPanel(m){return `<div class="sy-p sy-p-${m.k}" id="sy-p-${m.k}" role="region" aria-label="${esA(m.label)}" hidden><div class="wrap full sy-pin">
   <div class="sy-lead"><div class="sy-k">${esc(m.label)}</div><p class="sy-lt">${esc(m.lead)}</p><p class="sy-ld">${esc(m.copy)}</p>
-   ${m.go?`<a class="sy-go" href="${m.go[0]}">${esc(m.go[1])} <span aria-hidden="true">→</span></a>`:""}</div>
+   ${m.go?`<a class="sy-go" href="${m.go[0]}">${esc(m.go[1])} <span aria-hidden="true">→</span></a>`:""}
+   ${m.k==="ib"?`<button type="button" class="sy-all" id="sy-all" aria-haspopup="menu" onclick="esyAll(event)">Every IB section and tool <span aria-hidden="true">▾</span></button>`:""}</div>
   <div class="sy-cols" style="--n:${m.groups.length}">${m.groups.map(([g,items])=>`<div class="sy-col"><div class="sy-gh">${esc(g)}</div><ul>${items.map(esyItem).join("")}</ul></div>`).join("")}</div>
  </div></div>`}
 function esyNavHTML(){const caret=`<svg class="sy-c" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5L6 8l3.5-3.5"/></svg>`;
@@ -103,6 +104,11 @@ function esyWire(nav){
  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&ESYM.open)esyClose(true)});
  document.addEventListener("click",e=>{if(ESYM.open&&!e.target.closest("#synav"))esyClose(false)});
  nav.addEventListener("focusout",e=>{if(ESYM.open&&e.relatedTarget&&!nav.contains(e.relatedTarget))esyClose(false)})}
+/* the platform's full list of sections (the More menu), opened from the IB menu */
+function esyAll(e){const t=document.getElementById("sy-all"),r=t?t.getBoundingClientRect():null;esyClose(false);
+ if(typeof moreMenu!=="function")return;moreMenu(e||{stopPropagation(){}});const m=document.getElementById("menu");if(!m)return;
+ const h=document.querySelector("header.top"),hb=h?h.getBoundingClientRect().bottom:70;m.style.top=(Math.max(0,hb)+8)+"px";
+ m.style.left=Math.max(10,Math.min(innerWidth-m.getBoundingClientRect().width-10,r&&r.width?r.left:24))+"px";const f=m.querySelector("button");if(f)f.focus()}
 /* the three instant tools open where the header puts them, or under the header when it has folded them away */
 function esyTool(k){esyClose(false);try{if(typeof closeMenu==="function"&&document.getElementById("mob"))closeMenu()}catch(e){}
  const f={search:()=>searchPop(),calc:()=>calcPop(),timer:()=>tmrPop()}[k];if(!f)return;f();
@@ -317,7 +323,8 @@ function esyHero(){const H=UPSC_HB.volumes,fig=typeof rsSD==="function"?`<svg vi
     <div class="sy-ppc" aria-hidden="true">${H.slice(1,4).map((v,i)=>`<span style="--i:${i};background-image:url('${esA((v.img.coverSm||v.img.cover).src)}')"></span>`).join("")}</div>
     <ul class="sy-ppl">${[["Syllabus","syllabus"],["Handbooks","handbooks"],["Resources","resources"],["Current Affairs","current"],["Course","course"]].map(([t,k])=>`<li><a href="${esA(esyUp(k))}">${esc(t)}</a></li>`).join("")}</ul>
     <a class="sy-cta" href="#/upsc">Explore UPSC Economics <span aria-hidden="true">→</span></a></article></div></div></section>`}
-VIEWS.home=function(){return `<div class="sy-home">${esyHero()}${esyMap()}${esyShots()}${esyWork()}${esyBB()}${esyEducator()}${esyBegin()}</div>`};
+/* a shared assignment link (#assign=...) opens on the home page, as before: its banner leads */
+VIEWS.home=function(){return `${typeof assignBanner==="function"?assignBanner():""}<div class="sy-home">${esyHero()}${esyMap()}${esyShots()}${esyWork()}${esyBB()}${esyEducator()}${esyBegin()}</div>`};
 /* the IB cover's entrance plays when a reader arrives at the IB landing page */
 (function(){if(typeof lnEnter!=="function")return;lnEnter=function(){const prev=LN_LASTVIEW;LN_LASTVIEW=typeof VIEW!=="undefined"?VIEW:null;
  if(VIEW!=="ib"||!prev||prev==="ib")return;
@@ -369,6 +376,7 @@ function ESYSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r
    &&/Explore IB DP Economics/.test(h)&&/Explore UPSC Economics/.test(h)});
  T("Home · one h1, and the seven sections in order: pathways, map, experience, work, The Business Brief, educator, beginning",()=>{const h=VIEWS.home();const order=["sy-hero","sy-map","sy-exp","sy-work","sy-bb","sy-ed","sy-begin"].map(c=>h.indexOf('class="'+(c==="sy-hero"||c==="sy-bb"?c:"sy-sec "+c)));
   return (h.match(/<h1[\s>]/g)||[]).length===1&&order.every((x,i)=>x>0&&(i===0||x>order[i-1]))});
+ T("Home · a shared assignment link still opens with its banner on the home page",()=>/assignBanner\(\)/.test(String(VIEWS.home))&&typeof assignBanner==="function");
  T("Home · the pathway calls lead to #/ib and #/upsc",()=>{const h=esyHero();return /href="#\/ib">Explore IB DP Economics/.test(h)&&/href="#\/upsc">Explore UPSC Economics/.test(h)&&parse("#/ib")&&parse("#/upsc")});
  T("Home · every link on the ecosystem page is a route that exists or a supplied asset",()=>{const h=VIEWS.home(),bad=[];(h.match(/href="([^"]+)"/g)||[]).forEach(m=>{const u=m.slice(6,-1).replace(/&amp;/g,"&");if(/^https:\/\/the-business-brief-dun\.vercel\.app\/$/.test(u))return;if(/^#/.test(u)){if(!parse(u))bad.push(u)}else bad.push(u)});return {ok:!bad.length,d:bad.join(" ")}});
  T("Home · the map gives every field a description and only real connections, IB or UPSC",()=>ESY_FIELDS.length===8&&ESY_FIELDS.every(f=>f.d&&(f.ib.length||f.up.length))&&ESY_FIELDS.every(f=>f.ib.every(x=>parse(esyFieldHref(x,"ib")))&&f.up.every(x=>parse(esyFieldHref(x,"up")))));
@@ -381,6 +389,7 @@ function ESYSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r
   return {ok:L.length>=20&&L.every(x=>parse(x.h))&&a>0&&a<L.length&&z,d:`${L.length} ${a}`}});
  T("IB landing · no claim of IB endorsement",()=>!/endorsed by the International Baccalaureate|official IB (platform|resource)|IB-approved|IB approved/i.test(txt(esyIBHead()+VIEWS.home())));
  T("Ecosystem · the IB section bar is still painted, so its order and More menu are unchanged",()=>{const m=document.getElementById("mainnav");return !m||m.querySelectorAll("button").length>=8});
+ T("Ecosystem · the full list of sections (the More menu) stays reachable from the IB menu",()=>/id="sy-all"/.test(esyNavHTML())&&/moreMenu\(/.test(String(esyAll)));
  T("Ecosystem · the intro is never replayed by navigation inside the app",()=>!/__INTRO|splash/.test(String(nav))&&!/__INTRO|splash/.test(String(esyState)));
  return out}
 if(typeof EXTRA_SUITES!=="undefined")EXTRA_SUITES.push(ESYSUITE);

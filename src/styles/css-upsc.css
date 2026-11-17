@@ -388,7 +388,7 @@ body.up-on .subnav button:focus-visible{outline:2px solid var(--up-gold-l);outli
 .up-road{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;list-style:none;padding:0;margin:0;position:relative}
 .up-rm{background:var(--up-card);border:1px solid var(--up-line);border-radius:4px;overflow:hidden}
 .up-rm-h{padding:16px 20px;background:var(--up-navy);color:#fff;display:flex;flex-direction:column;gap:2px}
-.up-rm:nth-child(2) .up-rm-h{background:var(--up-navy-3)}.up-rm:nth-child(3) .up-rm-h{background:var(--up-green)}
+.up-rm:nth-child(2) .up-rm-h{background:#24503C}.up-rm:nth-child(3) .up-rm-h{background:var(--up-green)}
 .up-rm-h span{font-family:var(--ff-ui);font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--up-gold-l)}
 .up-rm:nth-child(3) .up-rm-h span{color:#E4EEE8}
 .up-rm-h b{font-family:var(--ff-display);font-weight:400;font-size:22px}
