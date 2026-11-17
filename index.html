@@ -4465,7 +4465,7 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
      paint before the first frame of the opening (the page painted before this script ran) is not
      the opening's first frame: the start stays where it is. */
   var fp=firstPaint();if(fp===null)return;
-  I.fp=fp;var sh=fp-I.t0,lo=t-sh,hi=t;
+  I.fp=fp;var sh=fp-I.t0,lo=t-sh,hi=t+34;   /* hi: the change shows a frame or two after it is made */
   if(sh<=4||sh>1000){I.anchored=true;return}
   if(lo>=I.QUIET[0]&&hi<I.QUIET[1]){for(var k=0;k<I.anims.length;k++)if(!I.anims[k].ambient)try{I.anims[k].startTime=fp}catch(e){}I.start=fp;I.exitAt=fp+I.ms;I.anchored=true}
   else if(t>=I.QUIET[1]){I.start=fp;I.exitAt=fp+I.ms;I.anchored=true;I.split=true}
@@ -4488,7 +4488,7 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
   var at=Math.max(I.start+I.fadeAt,now),left=I.exitAt-at;
   if(at>I.start+I.fadeAt+1)I.late=true;
   if(left<120){left=300;I.exitAt=at+left;I.late=true}
-  try{I.fade=sp.animate([{opacity:1},{opacity:0}],{duration:left,fill:"forwards",easing:"cubic-bezier(.4,0,.2,1)"});I.fade.startTime=at;I.fadeEnd=at+left}catch(e){}
+  try{I.fade=sp.animate([{opacity:1},{opacity:0}],{duration:left,fill:"forwards",easing:"cubic-bezier(.4,0,.2,1)"});I.fade.startTime=at;I.fadeStart=at;I.fadeEnd=at+left}catch(e){}
   if(I.mode==="play")fly(now);
  }
  I.done=function(how){
@@ -4512,18 +4512,21 @@ body[data-pathway="upsc"]{--path-accent:var(--up-forest);--path-accent-d:var(--u
  function tick(now){
   if(I.state==="done")return;
   if(I.t0===null)start(now);
-  var t=now-I.start,ready=!!window.__APP_READY;
-  if(I.skipAt){if(now-I.skipAt>=I.SKIPMS)return I.done("skipped")}
+  /* every decision after the first frame reads the real time: when the main thread has been busy,
+     a frame's timestamp can be older than the moment its callback runs, and a fade scheduled from
+     it would begin in the past, already finished */
+  var real=performance.now(),t=real-I.start,ready=!!window.__APP_READY;
+  if(I.skipAt){if(real-I.skipAt>=I.SKIPMS)return I.done("skipped")}
   else if(I.fadeAt!==null){
    /* once the exit is scheduled the start is settled: a late first-paint report changes nothing */
-   if(!I.anchored&&!I.fade)anchor(now-I.t0);
-   if(!I.fade&&ready&&(I.anchored||t>=I.QUIET[1]))exit(now);
-   if(I.fade&&now>=I.exitAt)return I.done(I.late?"late":I.mode==="play"?"timer":"brief");
+   if(!I.anchored&&!I.fade)anchor(real-I.t0);
+   if(!I.fade&&ready&&(I.anchored||t>=I.QUIET[1]))exit(real);
+   if(I.fade&&real>=I.exitAt)return I.done(I.late?"late":I.mode==="play"?"timer":"brief");
   }else{
    /* the still card and the cover: hold, then a short dissolve */
-   if(!I.fade&&ready&&t>=I.ms-I.DISSOLVE){var dd=Math.max(I.DISSOLVE,I.start+I.ms-now);
-    try{I.fade=sp.animate([{opacity:1},{opacity:0}],{duration:dd,fill:"forwards",easing:"linear"})}catch(e){}I.exitAt=now+dd;I.fadeEnd=I.exitAt}
-   if(I.fade&&now>=I.exitAt)return I.done(I.mode);
+   if(!I.fade&&ready&&t>=I.ms-I.DISSOLVE){var dd=Math.max(I.DISSOLVE,I.start+I.ms-real);
+    try{I.fade=sp.animate([{opacity:1},{opacity:0}],{duration:dd,fill:"forwards",easing:"linear"});I.fade.startTime=real}catch(e){}I.fadeStart=real;I.exitAt=real+dd;I.fadeEnd=I.exitAt}
+   if(I.fade&&real>=I.exitAt)return I.done(I.mode);
   }
   requestAnimationFrame(tick);
  }
