@@ -329,7 +329,7 @@ for (const [w, h] of SIZES) {
     await finished(p);
     await cdp.send('Page.stopScreencast');
     const I = await p.evaluate(() => { const I = window.__INTRO;
-      return { origin: performance.timeOrigin + I.t0, shift: I.anims.find(a => a).startTime - I.t0, end: I.end - I.start, how: I.how, mode: I.mode,
+      return { origin: performance.timeOrigin + I.t0, end: I.end - I.start, how: I.how, mode: I.mode,
         ready: window.__READY_AT - I.start }; });
     await ctx.close();
     const an = await (await b.newContext()).newPage();
@@ -352,15 +352,16 @@ for (const [w, h] of SIZES) {
     const lags = S.map(x => x.t - x.bar), lag = [...lags].sort((a, b) => a - b), q = f => lag[Math.min(lag.length - 1, Math.floor(f * lag.length))];
     const third = Math.floor(lags.length / 3), mid = a => [...a].sort((x, y) => x - y)[a.length >> 1];
     const drift = mid(lags.slice(-third)) - mid(lags.slice(0, third));   /* a clock that falls behind drifts; this one must not */
-    /* a stage's arrival: the first frame at half its full presence, read on the bar's clock;
-       stages after the still passage (3700-3950) run on the re-anchored start */
-    const WIN = { logo: [150, 1100], ax: [1000, 1900], ib: [2000, 3000], tg: [3050, 3690], vb: [3900, 4250] }, LATE = { vb: 1 };
+    /* a stage's arrival: the first frame at half its full presence, read on the bar's clock. The bar is one of
+       the stages' own animations, so when the clock re-anchors to the first paint (in the still passage,
+       3700-3950) the bar moves with them: a stage after it needs no correction on the bar's clock */
+    const WIN = { logo: [150, 1100], ax: [1000, 1900], ib: [2000, 3000], tg: [3050, 3690], vb: [3900, 4250] };
     const land = {};
     for (const k of Object.keys(WIN)) {
       const w = S.filter(x => x.bar >= WIN[k][0] && x.bar <= WIN[k][1]), mx = Math.max(...w.map(x => x[k]));
       const i = w.findIndex(x => x[k] >= mx / 2);
       /* resolved only when two frames close together bracket the arrival (a busy machine drops frames) */
-      land[k] = i > 0 && w[i].bar - w[i - 1].bar <= 120 ? [w[i - 1].bar, w[i].bar].map(v => Math.round(v - (LATE[k] ? I.shift : 0))) : null;
+      land[k] = i > 0 && w[i].bar - w[i - 1].bar <= 120 ? [w[i - 1].bar, w[i].bar].map(v => Math.round(v)) : null;
     }
     return { land, frames: S.length, px: S.length ? S[0].px : 0, lagMed: q(.5), lagBand: q(.9) - q(.1), drift, gap: Math.max(...S.slice(1).map((x, i) => x.t - S[i].t)), I };
   };
