@@ -1,310 +1,183 @@
-# Release report: Arjun Agrawal · Economics, one discipline and two pathways
+# Release report: PR #13 reconciled with `main`
 
-Branch `claude/sleepy-pascal-rlzusx`, from `main` at `2d238cd` (the merge of
-[ArjunAgrawal101/ib-economics#11](https://github.com/ArjunAgrawal101/ib-economics/pull/11)). Not merged, and nothing is merged without the
-owner's approval. The previous report is kept at `docs/releases/2026-11-16-upsc-cse-economics-report.md`.
+Branch `claude/upbeat-hawking-69d7gz`, started from `main` at `186e8d4` (the merge of
+[ArjunAgrawal101/ib-economics#12](https://github.com/ArjunAgrawal101/ib-economics/pull/12)). Not merged, and
+nothing is merged without the owner's approval. The previous report (the flagship release) is kept at
+`docs/releases/2026-11-17-flagship-two-pathways-report.md`; the decisions of this release, line by line, are in
+`docs/flagship/INTEGRATION-PR13.md`.
 
-**Status in one line.** The redesign is built, integrated and tested on this branch. Three things stand
-between it and a merge, and each needs the owner:
-
-1. **The branch could not be pushed.** This session's GitHub account cannot write to the repository
-   (403). Until it is pushed there is no pull request and no Vercel preview. The commits are intact
-   locally and in a git bundle (see *Deployment*).
-2. **The eleven handbook PDFs were not available in this session.** The Handbook Library and its
-   viewer are complete, and the pipeline renders clean pages with no watermark, but until it is run on the
-   PDFs the previews are the images the previous release made: the cover, the contents page and two
-   sample pages per volume, all with that release's "Preview Only" watermark. Titles and page counts
-   are the ones recorded from the volumes in the previous release; they were not re-checked here.
-3. **Five syllabus lines are marked "Wording to be confirmed".** The 2026 notice PDF could not be
-   opened from this environment.
+**What this is.** [ArjunAgrawal101/ib-economics#13](https://github.com/ArjunAgrawal101/ib-economics/pull/13) was
+built in parallel with PR #12 on an older base and conflicts with `main` in about 33 files. It was not merged and
+nothing in `main` was replaced by it. `main` is the foundation; what it lacked, or did less well, was rebuilt on
+`main`'s own architecture: its modules, design tokens, routes, data files, build pipeline and tests.
 
 ## At a glance
 
 | Area | State |
 |---|---|
-| Opening (five seconds) | Done. World, the language of economics, two economic worlds, the identity, the words; one clock; Skip; reduced motion; remembered |
-| Identity, home and navigation | Done. ARJUN AGRAWAL · ECONOMICS; the shared home in ten movements; HOME · IB DP ECONOMICS · UPSC CSE ECONOMICS · ABOUT with pathway menus and context bars; search labelled by pathway |
-| IB DP environment | Every working feature and address kept. The old IB home page is the IB DP landing (`#/ib`), intact, under a pathway header |
-| UPSC environment | Done. Eight destinations in forest green, ivory and antique gold |
-| Handbook Library | Done, with search, filters, a page per volume and the viewer. **Previews wait for the PDFs** |
-| Course, enquiries, strategy, current affairs | Done. The owner's facts and wording only; no dates, payment links, countdowns or promised extras |
-| One Concept. Two Perspectives. | Done. Nineteen shared concept records |
-| About and Contact | Done. The owner's positioning; separate IB DP and UPSC CSE enquiries |
-| SEO, performance, accessibility | Done for what can be verified here (see below) |
-| Push, pull request, preview URL | **Blocked** by GitHub access |
+| Opening (five seconds) | **PR #13's**, two pathways: the identity, supply and demand, IB DP Economics (burgundy) and UPSC CSE Economics (forest green), "One discipline. *Two pathways.*", the halves opening onto the page. Every full page load plays it; navigation inside the app never does; nothing is stored. `main`'s Skip introduction label, Escape, 180 ms skip fade, real-time scheduling, Replay link and 30 s failsafe are kept |
+| Home, navigation, IB DP environment, UPSC environment, concepts | **`main`'s**, unchanged except for The Business Brief and one accessibility fix in the concepts |
+| Handbook catalogue and viewer | **`main`'s**, now titled The Indian Economy Collection, with **eight clean pages per volume** rendered from the PDFs by `main`'s own pipeline (88 pages, no watermark or overlay) |
+| The Business Brief | **New in `main`**: header (from 1360 px), mobile menu, a home panel and the footer's "Explore the academic ecosystem" |
+| Service worker | `aa-ibdp-econ-v23`, so installed copies fetch the new preview images |
 
-## What was built
+## Integrated from PR #13
 
-### Part 1 · Audit
+1. **The opening**, through `tools/migrations/2026-11-19-opening-two-pathways.py` from
+   `tools/build/opening-two-pathways.json` (PR #13's overlay and clock as built at `3b6eac9`), with its styles in
+   `src/styles/css-opening.css`. One opening remains: the 2026-11-17 world-map migration now stops when the newer
+   opening is present. The state model is the one the owner asked for: the full five seconds on every full page
+   load of any address (first visit, reload, bookmark, a shared link to any page, Back or Forward from another
+   site), never during navigation inside the app, the page as it was left when restored from the back-forward
+   cache, nothing read from or written to storage (so a skip is not remembered), one still frame of 1.5 s under
+   reduced motion. Carried over from `main`'s opening: the button reads "Skip introduction"; Escape skips from
+   anywhere; a skip fades out in 180 ms on the compositor; every decision reads the real time and the exit is
+   scheduled ahead, so a busy main thread cannot start it in the past; "Replay the opening" (`?intro=1`) still
+   works and is removed from the address; a CSS failsafe hides the overlay after 30 s if its script never ran;
+   `overflow:clip`; the stage text is hidden from assistive technology and the overlay is announced once by its
+   name. The settings page now says the opening keeps nothing.
+2. **Clean previews of the handbooks.** PR #13's goal (eight readable pages per volume, no watermark), reached
+   with `main`'s pipeline rather than PR #13's image set: `build_upsc.py --check` confirmed all eleven titles and
+   page counts against the catalogue (523 pages); `propose_pages.py` drafted candidates; the pages were then
+   chosen by reading each one: eight per volume, one of each kind (contents, concept, figure, policy, table, case,
+   exam, extra), spread across the parts, never the cover, the back cover, an answer key, a reference list or a
+   page with contact details. Every caption describes what its page shows, from the page's own text (twelve were
+   re-checked against the PDF text). `main`'s three checked pages per volume are all kept with their captions.
+   Rendered at 1400 px (quality 72) with 400 px thumbnails: 198 images, 19.8 MB, inside the pipeline's 20 MB budget
+   (1600 px came to 25.3 MB at quality 78 and 22.7 MB at quality 70). Nothing is added to the pages; the PDFs
+   stay outside the repository.
+3. **The Business Brief** (`https://the-business-brief-dun.vercel.app/`, a new tab, `rel="noopener noreferrer"`):
+   a quiet link in the header and in the mobile menu, an editorial panel on the home page ("Beyond Economics.
+   Explore Business Management." / "Discover The Business Brief, an interactive learning platform for IB DP
+   Business Management."), and an "Explore the academic ecosystem" group in the footer (IB DP Economics, UPSC CSE
+   Economics, IB DP Business Management). A sister platform, not a third pathway: no pathway colour, no place in
+   the switcher, and the two pathway cards keep their equal weight. The header has room for it from 1360 px; below
+   that, and while the exam timer runs below 1600 px, it is in the menu, the home and the footer (measured, so
+   `main`'s header tests hold).
+4. **The collection title**: the catalogue is titled *The Indian Economy Collection* with the brief's subtitle;
+   the tab, routes and breadcrumbs keep "Handbook Library", and the volumes keep the series name printed on their
+   covers, *The Indian Economy Series*.
 
-The codebase, routes, both pathways, the eleven handbook records, assets, responsiveness, search,
-storage, the service worker, both deployments, SEO, accessibility and Git were audited before any
-change. The audit and the plan are in `docs/flagship/PLAN.md`. Two findings shaped the work: every IB
-DP check that described "the home page" meant the IB DP home page, and the handbook PDFs were not
-in the session.
+## Kept from `main`
 
-### Part 2 · The opening
+Everything else: the shared home in its sections, the global header and pathway context bars, the IB DP landing
+(`#/ib`) with the IB home intact, every IB DP feature and address, the eight-tab UPSC environment (syllabus,
+resources, current affairs, preparation strategy with its eight clickable steps, the ₹9,999 three-month course,
+contact), the 19 shared concepts with their IB and UPSC pathways, the handbook catalogue with its filters, volume
+pages and viewer, the pricing (₹99 per volume), the search, the footer and every test.
 
-Five seconds, on the one clock the platform already had (`#splash`, `#intro-clock`, `window.__INTRO`):
+## Not brought in, and why
 
-| Time | Stage |
-|---|---|
-| 0 to 1 s | A dotted world map (Natural Earth 1:110m) appears west to east; financial and trading hubs light; trade arcs draw |
-| 1 to 2 s | Demand and supply cross at a gold equilibrium; a business cycle with its trend and a price series; GDP, CPI, USD/INR, REPO RATE and EXPORTS beside the hubs |
-| 2 to 3 s | International perspectives in the IB pathway's burgundy; India's dots turn gold and five sectors of Indian development fan out in the UPSC pathway's forest green |
-| 3 to 4 s | The monogram rises; the name and the gold rule follow |
-| 4 to 5 s | ECONOMICS, then THINK LIKE AN ECONOMIST.; the monogram travels to the header's mark as the overlay dissolves, at exactly 5000 ms |
+- PR #13's home page, mega menus, "Learning Tools" menu, IB finder, knowledge map and its screenshots: `main` has
+  a reviewed version of each, and a second would be a parallel implementation.
+- PR #13's 11-concept module: `main`'s 19 concepts include all eleven.
+- PR #13's 7-stage UPSC roadmap and its Optional tab: `main`'s eight clickable preparation steps are the roadmap,
+  and its syllabus already says the pages cover General Studies, not the Economics Optional paper.
+- PR #13's handbook viewer, its `build_upsc.py` rewrite and its image set: `main`'s pipeline does the same job with
+  page kinds, captions, budget checks and its own test.
+- PR #13's syllabus wording without the "to be confirmed" flags: see *Remaining issues*.
+- PR #13's tests and reports for the parts above. Its opening test is merged into `main`'s.
 
-Only opacity and transform move. There is no video, image or extra font: the world map and the words
-are vectors built from Natural Earth and the site's own typefaces. The full sequence plays on the first
-home load of a browser tab; later home loads, or any load within 30 days of pressing Skip, show a brief
-card; reduced motion shows a still card; a deep link shows only the cover until the page is ready;
-navigation inside the app shows nothing; `?intro=1` plays it in full. **Skip introduction** is a real
-button, and Escape works anywhere. Settings lists what the opening stores and offers *Replay the
-opening*. If the page is slow to start, the last frame holds until it is ready rather than showing an
-unready page.
+## Fixes to failures that were already on `main`
 
-### Part 3 · The shared home (`#/`)
+The baseline run of every suite on untouched `main` (`186e8d4`) found these; each was investigated, not skipped:
 
-1. **The statement and the two pathways.** "Economics is not just a subject to study. It is a way to
-   think." with the supporting statement and the platform's idea. Two cards of equal weight:
-   - **IB DP Economics** in burgundy, ivory and muted gold, with a live model and eight features.
-   - **UPSC CSE Economics** in forest green, ivory and antique gold, with four real handbook covers and
-     eight features.
-   - Both begin on the first screen at 1440 × 900.
-2. **Think like an economist.** Concept, model, evidence, judgement, with a demand-and-supply model
-   the reader can move.
-3. **The IB DP environment.** Five groups (Learn, Explore, Practise, Research, Resources) with their
-   destinations.
-4. **The UPSC environment.** Five steps, from the syllabus to the course.
-5. **Selected resources.** All eleven handbook covers, three Economics in 60 Seconds issues and a
-   Learning Studio piece.
-6. **The laboratory.** Six models, each opening its lab.
-7. **One concept, two perspectives.** The shared concepts, readable in IB DP or UPSC CSE terms.
-8. **About.** The portrait, the owner's positioning and the facts the site already states.
-9. **Enrolment and contact.** Separate IB DP and UPSC CSE enquiries.
-10. **The footer.** It now names both pathways and adds a separate UPSC independence statement. The IB
-    statement is unchanged.
+- **concepts**: axe reported WCAG 2.2 target-size violations on three UPSC concept pages (links alone on their
+  line under 24 px). Fixed in `css-concepts.css`.
+- **transform**: "hovering shows the year and every value" moved the mouse to an off-screen point (the chart now
+  starts at y = 766 in a 900 px window); the test now scrolls the chart into view, as a reader would.
+- **library**: the pipeline test could not start because this machine's system Pillow is broken (`_imaging`
+  missing). A working Pillow was installed for the test machine; nothing in the repository changed for it.
+- **course**: crashed on `main`'s baseline with a click timeout while a second full run shared the machine. Run
+  alone, it passes on `main` (39 of 39) and on this branch (39 of 39): no fault in either, and nothing was changed.
 
-A teacher's assignment link (`#assign=…`) still opens here, with its banner first.
+## Tests changed, and why (none weakened)
 
-### Parts 4, 12 · Navigation and the IB DP environment
-
-- **The header** reads HOME · IB DP ECONOMICS · UPSC CSE ECONOMICS · ABOUT, with search. The two
-  pathways form a switcher; the chevron beside each opens a panel of its environment. Panels work from
-  the mouse and the keyboard: focus moves into a panel opened from the keyboard, Escape returns it to
-  the button, and tabbing out or clicking outside closes it.
-- **A context bar** under the header gives each pathway its own navigation in its own colour. The IB DP
-  bar is IB Home · Learn · Explore · Practise · Research · Resources · Tutorials, grouped as the brief
-  sets; the UPSC bar has its eight destinations.
-- **On tablets and phones** a pathway switcher sits under the header, and the drawer holds Home, both
-  pathways (the IB DP groups folded) and the shared pages.
-- **Search** labels every result IB DP, UPSC CSE or Both, read from where it leads.
-- **Page titles** name their pathway, for example "Learn · IB DP Economics · Arjun Agrawal".
-- **Every IB DP feature and address is kept.** The previous IB home page is the IB DP landing,
-  complete. The older primary bar and More menu remain in the page, hidden, because earlier layers and
-  their checks measure them; a check fails if any section a reader can open is unreachable from the new
-  navigation.
-- **The welcome dialogue**, which asks for an IB DP level, now opens on the first visit to an IB DP
-  page rather than over the shared home or the UPSC pages.
-
-### Part 5 · The UPSC environment (`#/upsc`)
-
-| Destination | Address | What it holds |
+| Test | Change | Why |
 |---|---|---|
-| UPSC Home | `#/upsc` | The headline and both actions, why Economics matters for UPSC, the eight preparation steps, previews of the syllabus, the handbooks, the latest current affairs and the course |
-| Syllabus | `#/upsc/syllabus` | Prelims GS I and Mains GS III kept apart, with two GS II lines. Each line in four labelled layers: the official wording, the explanation, the handbook coverage (from each volume's own syllabus map) and how classes and current affairs support it. A print view. It says plainly that this is not Economics Optional preparation |
-| Economics Resources | `#/upsc/economics-resources` | Eleven free topic previews and the shared concepts in UPSC terms |
-| Handbook Library | `#/upsc/handbook-library` | Part 6 |
-| Current Affairs | `#/upsc/current-affairs` | Part 7 |
-| Preparation Strategy | `#/upsc/preparation-strategy` | Four phases, a weekly rhythm, joining static concepts to current affairs, previous-year questions (linked to upsc.gov.in, none reproduced), an answer frame and a revision cycle; no promised results |
-| Online Course | `#/upsc/online-course` | Part 8 |
-| Contact / Enrol | `#/upsc/contact-enrol` | Handbook, course, mentorship and resource enquiries |
+| `tests/intro.mjs` | Rewritten for the integrated opening | `main`'s structure, busy-machine handling and every check that still applies (timing at six widths, geometry, accessible name, Skip by keyboard and mouse, Escape, stray input, 320 px in every state, a warm service worker, four times slower) are kept; PR #13's state-model checks replace the session, brief-card and remembered-skip checks, because that behaviour is the one the owner asked to change, and are checked the other way round (nothing stored, a skip not remembered, a shared link plays in full) |
+| In-page opening self-tests | Replaced with the new opening's (32 checks) | They test the opening that ships |
+| `tests/library.mjs` | The catalogue's heading is The Indian Economy Collection; the viewer's navigation checks step to the real last page | The title is the owner's; the volume now has eight preview pages, not three |
+| `tests/upsc.mjs` | Image weights held to the pipeline's budget (pages 300 KB, thumbnails and covers 60 KB, 20 MB in all) instead of 120 KB a file | 120 KB was the size of the earlier 640 px watermarked images, written before the pipeline had run |
+| `tools/upsc/test_pipeline.py` | A blocked volume's images compared byte for byte with what the repository held | It read a width of 640, true only before the pipeline ran; the new check is stricter |
+| `tests/transform.mjs` | Scrolls the chart into view before hovering | Above |
+| New self-tests | The Business Brief (4), the collection title (1) | New features |
 
-The first release's addresses still work and are rewritten to the new ones; `#/upsc/about-the-educator`
-opens the shared About page.
+## Test results on the final build
 
-### Part 6 · The Handbook Library
-
-The catalogue has search, filters (ten topics; Prelims, Mains or Both; volume number) and every field
-the brief lists: number, title, category, page count, description, topics, Prelims relevance, Mains
-relevance, ₹99, Preview and **GET THIS HANDBOOK · ₹99**, with "Digital soft copy. Individual volume
-pricing." Each volume has its own page (contents with page numbers, syllabus map, concepts,
-institutions, related volumes, a purchase card), and the viewer has zoom, full screen, swipe and the
-keyboard, and draws nothing over a page. The purchase button opens WhatsApp or email with the owner's
-message: "Hello, I am interested in purchasing Volume [X], [Title], of the Arjun Agrawal Economics
-Handbook Series. Please share the payment and delivery details." The terms say a preview in a browser
-can be saved or photographed; no protection is claimed. See *The handbooks* for the previews.
-
-### Part 7 · Current affairs
-
-Twenty-seven dated entries under twelve themes, newest first, with filters. Each gives the topic, the
-concept, why it matters, Prelims and Mains relevance, a handbook link, and the source and date. The
-section is edited by hand and says when it was last compiled (17 November 2026); nothing is a feed.
-Nine entries are marked *Checked at source*: each was opened in the official document and links to it.
-The others come from the dated trackers in the handbooks and name the authority they report; the page
-says figures may since have been revised. Three entries were checked again while integrating (see
-*Accuracy*).
-
-### Part 8 · The course
-
-"ARJUN AGRAWAL UPSC CSE ECONOMICS 3-MONTH INTENSIVE ONLINE PROGRAMME", with the owner's facts only:
-₹9,999, online only, at most 25 students, three months, Prelims and Mains within General Studies,
-static concepts and current affairs. Twelve modules are mapped to the volumes; national income has no
-volume of its own, and the page says so. The three months follow the owner's outline and are labelled
-indicative. **ENQUIRE ABOUT THE NEXT BATCH** sends the owner's exact message. No batch date, timing,
-payment link, recording, mock test, individual mentoring, doubt support, evaluation, countdown or
-claim about remaining places appears; a self-check fails if one does.
-
-### Part 9 · One Concept. Two Perspectives. (`#/concepts`)
-
-Nineteen concept records in six groups (foundations, markets, the macroeconomy, policy, the global
-economy, development). Each has the shared foundation and diagrams, then an IB DP perspective and a UPSC
-CSE perspective, with their own links, practice and volumes; where a concept matters less to one
-pathway, the record says so. 371 links were checked; none fails to resolve.
-
-### Parts 10, 11 · Design and motion
-
-`src/styles/css-flagship.css` holds the tokens (charcoal, ivory and gold shared; burgundy for IB DP;
-forest green for UPSC CSE) and the primitives. The pathway's colour follows `body[data-pathway]`.
-Motion uses opacity and transform only, follows the platform's motion layer, and stops under reduced
-motion; the home's large blocks reveal as they arrive.
-
-### Parts 13, 14 · About and Contact
-
-About carries the owner's positioning, *IB DP Economics Educator | Economics Resource Designer | UPSC
-Economics Mentor*, links to both pathways, and every professional detail the site already stated,
-unchanged. Contact opens with separate IB DP enquiries (tutoring, the IA, the EE, resources, teacher
-collaboration) and UPSC CSE enquiries (handbooks, the course, mentorship, resources), above the existing
-message form. Only the published email, phone and WhatsApp number are used.
-
-### Part 15 · SEO, performance and accessibility
-
-- **SEO.** The site name, share image, installed-app names and structured data (the platform, and the
-  course with the owner's facts) name both pathways. The structured data claims no URL, as before,
-  because the same file is served from Vercel, GitHub Pages and a disk. The share image is rebuilt by
-  `tools/build/build_social_card.mjs`. No ranking or traffic claim is made.
-- **Performance.** `index.html` is 6.19 MB (2.04 MB gzipped), up from 5.74 MB (1.92 MB) before the
-  redesign; the concept records and the new pages account for most of it. Handbook previews load on
-  demand and are not precached. The service worker is v22.
-- **Accessibility.** One h1 per page; landmarks; keyboard-reachable menus with visible focus; AA
-  contrast; nothing scrolls sideways at 320 px. axe (WCAG A and AA) is run on the home, Contact, every
-  UPSC page, the library, the viewer and the concept pages.
-
-## The handbooks
-
-**Inspection.** The eleven PDFs did not reach this session, so they were **not inspected here**. The
-titles and page counts below are those the previous release recorded from the volumes themselves (five
-PDFs and six Word files, privately). The pipeline refuses to render a volume whose title or page count
-differs from them, and never renames one.
-
-| Vol. | Recorded title | Pages | Title in the brief, where different |
+| Suite | `main` `186e8d4` (before) | This branch, final build | Notes |
 |---|---|---|---|
-| I | Introduction to Economics | 41 | |
-| II | Money & Monetary Policy | 43 | Money and Monetary Policy |
-| III | Inflation and Price Stability | 49 | Inflation and Related Concepts |
-| IV | Taxation and Public Revenue | 49 | Taxation and Public Finance |
-| V | Fiscal Policy and Budget Management | 49 | Fiscal Policy and Budget |
-| VI | Banking and Financial Institutions | 50 | |
-| VII | Financial Markets and Instruments | 49 | |
-| VIII | Balance of Payments and International Trade | 55 | Balance of Payments and Foreign Trade |
-| IX | Global Economic Institutions and Trade Architecture | 43 | International Financial Institutions |
-| X | Indian Agriculture and Allied Sectors | 45 | Agriculture |
-| XI | Indian Industry, Manufacturing, Trade and Labour Markets | 50 | Industry, Manufacturing, Trade, Employment and Labour |
+| api-youtube | 21 passed | 21 passed |  |
+| selftest | 37 passed | 37 passed |  |
+| e2e | 22 passed | 22 passed |  |
+| ecosystem | 30 passed | 30 passed |  |
+| renaissance | 25 passed | 25 passed |  |
+| cover | 35 passed | 35 passed |  |
+| pwa | 4 passed | 4 passed |  |
+| widths | 15 passed | 15 passed |  |
+| overlap | 5 passed, **2 failed** | 5 passed, **2 failed** | the same two checks fail on `main`, with identical findings (see *Remaining issues*) |
+| routes | 2 passed | 2 passed |  |
+| intro | 84 passed | 99 passed | rewritten for the integrated opening; on `main` it tests the world-map opening. In the full run 98 passed and 1 failed (a correction in the slow-CPU check counted the re-anchoring twice; fixed in `e1f3e02`, a test-only change); re-run on the final commit: 99 of 99 |
+| course | **crashed** after 13 passed | 39 passed | on `main` the baseline run crashed on a click timeout while a second full run shared the machine; run alone on `main` it passes 39 of 39 |
+| transform | 32 passed, **1 failed** | 33 passed | on `main`: the hover check moved the mouse off the screen; fixed in the test |
+| events | 49 passed | 49 passed |  |
+| tabs | 9 passed | 9 passed |  |
+| notices | 4 passed | 4 passed |  |
+| events-scroll | 26 passed | 26 passed |  |
+| final | 18 passed | 18 passed |  |
+| studio | 89 passed | 89 passed | its privacy check caught an HTML input file during the work; moved to JSON |
+| launch | 58 passed | 58 passed |  |
+| upsc | 98 passed | 98 passed | image weights held to the pipeline's budget |
+| library | 111 passed, **1 failed** | 112 passed | on `main`: the pipeline test could not start because the machine's system Pillow is broken; a working Pillow was installed on the test machine, nothing in the repository. Here the viewer's checks walk all eight pages |
+| concepts | 52 passed, **2 failed** | 54 passed | on `main`: two axe target-size violations; fixed in `css-concepts.css` |
+| flagship | 50 passed | 50 passed | on this branch it also checks The Business Brief (in the page's self-test) |
+| **All 24 suites** | 889 passed, 6 failed, 1 crash; 5 suites red | **934 passed, 2 failed**; 1 suite red (overlap, as on `main`) | |
 
-Total: 523 pages. The counts for Volumes I, II, III, IV, VII and IX were taken from Word files in the
-previous release and should be confirmed against the PDFs that are sold.
+Every suite in `tests/run-all.mjs` was run, in its order, by one runner on the final build (`851bea9`; the one later
+commit, `e1f3e02`, changes only `tests/intro.mjs`, and the intro suite was re-run on it). The baseline is the same
+runner on untouched `main` (`186e8d4`) in a separate worktree, before any change. Nothing was skipped, and no check
+was removed or loosened; the changed checks are listed above with the reason for each.
 
-**Previews today.** Per volume: the cover and three pages (the contents page and two samples), 640 px,
-with the previous release's watermark. That is three pages, not the eight the brief prefers, and they
-are watermarked. **Clean previews: none yet.**
+Also run on the final build:
+- `tools/upsc/test_pipeline.py` (the preview pipeline end to end on synthetic PDFs): 32 of 32 passed.
+- The page's own start-up self-test (2,218 checks, counted inside the selftest suite as one): every check passed,
+  including the 32 checks of the opening, the 4 of The Business Brief and the collection title.
+- Under a subdirectory (`/ib-economics/`, as GitHub Pages serves it): home, a volume page, `#/ib` and a concept
+  page loaded with no page error; the only request that failed was `/api/youtube`, the Vercel function, which a
+  static host does not have and which the `api-youtube` suite covers; the service worker registered at the
+  subdirectory.
+- Visual review at 1440, 820 and 390 px of the opening (eight moments of the sequence), the home (with The Business
+  Brief panel), the header, the mobile menu, the footer, `#/ib`, `#/upsc`, the collection, a volume page, the
+  viewer and a concept page: no page error, no broken image, no sideways scroll.
+- Contrast of every new colour, computed: the lowest is 5.02:1.
 
-**When the PDFs are supplied** (in a private folder outside the repository), the pipeline in
-`tools/upsc/` checks every PDF against the catalogue, drafts about eight pages per volume by what they
-show (contents, a concept, an infographic, a policy, a table, a case, an examination application), and
-renders the chosen pages at 1600 px with 400 px thumbnails and **no watermark or overlay**. Steps:
-`tools/upsc/README.md`. The first run replaces today's images without any code change.
+## Remaining issues
 
-**Protection.** No handbook PDF or Word file is in the repository or its history; `.gitignore` refuses
-any PDF, Word or e-book file except the ten public carousels, and `tests/library.mjs` fails if one is
-tracked. Only preview pages are published. A browser preview cannot prevent screenshots or copying,
-and the site says so.
+- **overlap** fails two checks, exactly as on `main` (75 and 123 findings, identical line for line): on the home
+  hero at 320 to 834 px the fanned handbook covers in the UPSC pathway card overlap one another, and the decorative
+  wave behind the hero runs under the pathway cards' links. Both are `main`'s design, unchanged here; this release
+  adds no overlap anywhere. A proposed fix, for the owner to decide: below 835 px set the four covers side by side
+  without rotation (`.pc-book{position:static;width:23%;transform:none}` in a flex row) and hide `.hx-wave`.
+- **Four Mains syllabus lines stay marked "Wording to be confirmed"** (crops and irrigation, farm subsidies and
+  PDS, land reforms, liberalisation and industrial policy), as `main` has them. PR #13 shows the same wording
+  without the flag, but the 2026 notice PDF cannot be opened from this environment (the request is refused) and
+  this session never read its text directly, so the flag stays until someone checks the PDF.
+- **The Business Brief's own screenshots** could not be taken (the site is refused by this environment's network),
+  so its home panel is typographic, as PR #13's was. Real screenshots can be added once the site is reachable.
+- **The Vercel preview** for this branch cannot be opened from this environment; it should be checked in a browser
+  before merging, as should GitHub Pages after the merge.
 
-## Accuracy
+## Commits
 
-- **Current affairs, checked at source while integrating:**
-  - RBI press release 2026-2027/1495 (13 November 2026): the current account deficit, capital account,
-    NRI deposits and overall balance for April to September 2026, as stated.
-  - Economic Survey 2025-26, chapter 1, paragraph 1.46: FY27 real growth projected at 6.8 to 7.2 per
-    cent, as stated.
-  - Minutes of the MPC meeting of 5 to 7 October 2026: a unanimous rise of 25 basis points to 5.50%
-    and a change of stance to calibrated tightening. The entry now notes the two dissents on the
-    stance, drops "from neutral" (which neither source states), links the minutes and is marked
-    *Checked at source*.
-- **The syllabus.** The official wording is quoted as the previous release recorded it from
-  Examination Notice No. 05/2026-CSE; five lines are marked "Wording to be confirmed" because the notice
-  could not be opened here. The platform's explanations are labelled as such and never presented as
-  official.
-- **Contact details.** Only those the site already published: arjun1agr@gmail.com, +91 7092844945
-  (phone and WhatsApp), LinkedIn and Instagram.
-- **Claims.** No award, credential, affiliation, ranking or result is added. The About page keeps the
-  professional details exactly as the site stated them.
+On top of `main` at `186e8d4`:
 
-## Tests
-
-<!-- TESTS -->
-
-## Deployment
-
-**Vercel** (https://ib-economics-pi.vercel.app/) deploys `main`. There is no build step on Vercel:
-`index.html` is committed already built, and `api/youtube.js` is unchanged. When this branch is pushed,
-a pull request gives a Vercel preview if the project's GitHub integration is on; merging to `main`
-publishes it.
-
-**GitHub Pages** keeps working: every path is relative and the routes are hash routes, so the site runs
-from a project subfolder and from a disk. See *Publish it on GitHub Pages* in `README.md`.
-
-**Before merging:**
-1. Push the branch and open the pull request (this needs write access for the session's GitHub account,
-   or a push from the owner's machine using the bundle below).
-2. Run the handbook pipeline on the eleven PDFs (`tools/upsc/README.md`), choose about eight pages per
-   volume, run `python3 tools/build/splice.py`, and commit only the generated images and data.
-3. Confirm the five syllabus lines against the notice, and the decisions listed below.
-4. Check the Vercel preview on a phone and a desktop, then merge.
-
-**Building.** Sources are in `src/modules` and `src/styles`; changes to the older base code are
-re-runnable scripts in `tools/migrations/`. After any change: `python3 tools/build/splice.py`. Tests:
-`cd tests && PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install --no-save playwright@1.63.0 axe-core && node run-all.mjs`.
-
-**If the push stays blocked**, the branch is also saved as a git bundle. From a clone of the repository:
-`git fetch <path>/flagship-redesign.bundle claude/sleepy-pascal-rlzusx:claude/sleepy-pascal-rlzusx`,
-then `git push -u origin claude/sleepy-pascal-rlzusx`.
-
-## Decisions for the owner
-
-- **The handbook PDFs**, for clean previews and to confirm the six page counts taken from Word files.
-- **Five syllabus lines** marked "Wording to be confirmed".
-- **India's boundary in the opening's map** is drawn to the Survey of India boundary (Gilgit-Baltistan,
-  Shaksgam and Aksai Chin added with an approximate outline, since Natural Earth follows the line of
-  control). Please confirm.
-- **Volume titles** that differ from the brief's list are kept as recorded from the volumes (table
-  above).
-- **The brief card** after the first visit waits until the page is ready, so on a slow device it lasts
-  about three seconds rather than one.
-- **"UGC-NET and MH-SET qualified"** appeared on the first release's UPSC About tab, taken from the
-  handbooks' title pages. That tab now opens the shared About page, which does not carry the line; the
-  line remains on the handbook covers themselves.
-- **Comparison sites** (ClearIAS, Vision IAS and others) could not be opened from this environment,
-  so no comparison was made.
-
-## Files
-
-| Area | Files |
-|---|---|
-| Shell, home, landing, About, Contact, search, SEO | `src/modules/44-flagship-core.js`, `47-shell.js`, `48-home.js`, `49-flagship-tests.js`, `50-search.js`, `src/styles/css-flagship.css`, `tools/migrations/2026-11-17-flagship-*.py`, `tools/build/build_social_card.mjs`, `assets/brand/social-card.png`, `manifest.webmanifest`, `service-worker.js`, `tests/flagship.mjs` |
-| Opening | `tools/migrations/2026-11-17-opening-sequence.py`, `src/styles/css-opening.css`, `tools/build/build_worldmap.mjs`, `opening-worldmap.json`, `build_opening_type.py`, `opening-type.json`, `tests/intro.mjs` |
-| UPSC environment | `src/modules/42-upsc-content.js`, `43-upsc.js`, `src/styles/css-upsc.css`, `tests/upsc.mjs` |
-| Handbook Library | `src/modules/45-library.js`, `41-upsc-data.js` (generated), `src/styles/css-library.css`, `content/upsc/handbooks.json`, `tools/upsc/`, `assets/upsc/handbooks/`, `tests/library.mjs`, `.gitignore` |
-| Concepts | `src/modules/46-concepts.js`, `46-concepts-data.js`, `src/styles/css-concepts.css`, `tools/migrations/2026-11-17-concepts-more-menu.py`, `tests/concepts.mjs` |
-| Older modules adjusted | `08-about.js` (positioning), `09-tests.js`, `12-tests.js`, `38-studio.js`, `39-atlas.js` (checks read the IB DP landing), `17-snap.js` (print titles), `27-wire-t6.js` (More menu), `32-pathways.js`, `33-tests-events.js` (the civil-services overlay leads to the UPSC pathway), `40-launch.js` (the cover's entrance), `src/styles/css.css`, `css-launch.css` (the landing's spacing), `css-studio.css` (Contact on a phone) |
-| Tests and docs | `tests/lib.mjs`, `run-all.mjs` and the suites that drove the old bar or the old home; `README.md`; `docs/flagship/PLAN.md` |
+- `5d5cc6f` Integrate PR #13 into main: the two-pathway opening, clean previews, The Business Brief
+- `5d7adb9` Library: two captions without currency amounts; the pipeline test compares a blocked volume byte for byte
+- `d0ef314` Concepts: a link alone on its line is a 24 px target (WCAG 2.2, 2.5.8)
+- `7e7d7a5` Library test: the viewer's navigation checks follow the volume's real page count
+- `3ba069d` UPSC test: the preview images are held to the pipeline's own budget
+- `e24bb50` The Business Brief: its small type meets 4.5:1 contrast
+- `934b4e2` Transform test: bring the data chart into view before hovering it
+- `851bea9` The opening's input is JSON, so the host never serves it as a page
+- `e1f3e02` Intro test: the slow-CPU arrivals are read on the bar's clock without a second correction
+- this report

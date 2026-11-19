@@ -78,6 +78,15 @@ data files, build pipeline and tests). Everything else in `main` is kept as it i
   replace `main`'s session, brief-card and remembered-skip checks, because that
   behaviour is the one the owner asked to change. These are now checked the other way
   round: a skip is not remembered, a deep link plays in full, and nothing is stored.
-- `tests/library.mjs` expects the catalogue's new title.
+- `tests/library.mjs` expects the catalogue's new title, and its viewer checks step to the
+  volume's real last page (eight pages now, not three).
+- `tests/upsc.mjs` holds the preview images to the pipeline's own budget (pages 300 KB,
+  thumbnails and covers 60 KB, 20 MB in all) instead of the 120 KB of the old 640 px images.
+- `tools/upsc/test_pipeline.py` compares a blocked volume's images byte for byte with what
+  the repository held, instead of reading the old 640 px width.
+- `tests/transform.mjs` scrolls the data chart into view before hovering it (it failed on
+  `main` too: the point it hovered was off the screen).
 - Every suite in `tests/run-all.mjs` was run on `main` before the integration (the
-  baseline) and on the final build; the results are in the pull request.
+  baseline) and on the final build. The results, suite by suite, are in `RELEASE-REPORT.md`:
+  934 checks passed and 2 failed on the final build (both in `overlap`, identical to `main`),
+  against 889 passed, 6 failed and one crash on `main`.
