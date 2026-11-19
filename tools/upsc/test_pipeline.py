@@ -189,6 +189,8 @@ def main():
             os.makedirs(os.path.dirname(os.path.join(root, rel)), exist_ok=True)
             shutil.copy(os.path.join(B.REPO, rel), os.path.join(root, rel))
         shutil.copytree(os.path.join(B.REPO, 'assets/upsc/handbooks'), os.path.join(root, 'assets/upsc/handbooks'))
+        # the images a blocked volume must keep, byte for byte: whatever the repository holds when the test starts
+        before = {k: open(os.path.join(root, 'assets/upsc/handbooks', k), 'rb').read() for k in ('volume-ii/page-02.webp', 'volume-ix/page-02.webp')}
         paths = B.Paths(root)
         cat = json.load(open(paths.cat, encoding='utf-8'))
         sel = B.load_selection(paths)
@@ -225,7 +227,7 @@ def main():
         diff = sum(abs(a - b) for a, b in zip(ref.resize((400, 566)).tobytes(), im.resize((400, 566)).tobytes())) / (400 * 566)
         check(diff < 3, f'the rendered page matches the PDF page itself (mean difference {diff:.2f} of 255)')
         old2 = os.path.join(root, 'assets/upsc/handbooks/volume-ii/page-02.webp')
-        check(Image.open(old2).size[0] == 640, 'a blocked volume keeps its previous images')
+        check(open(old2, 'rb').read() == before['volume-ii/page-02.webp'], 'a blocked volume keeps its previous images')
 
         mod = open(paths.mod, encoding='utf-8').read()
         data = json.loads(mod[mod.index('const UPSC_HB=') + 14:mod.rindex(';')])
@@ -243,7 +245,7 @@ def main():
         orig = open(os.path.join(B.REPO, 'content/upsc/handbooks.json'), encoding='utf-8').read()
         check(raw.replace('"pages": 44', '"pages": 43', 1) == orig, 'and changes nothing else in handbooks.json')
         check(Image.open(os.path.join(root, 'assets/upsc/handbooks/volume-ii/page-02.webp')).size[0] == 1600, 'Volume II then renders')
-        check(Image.open(os.path.join(root, 'assets/upsc/handbooks/volume-ix/page-02.webp')).size[0] == 640, 'Volume IX stays blocked by its title')
+        check(open(os.path.join(root, 'assets/upsc/handbooks/volume-ix/page-02.webp'), 'rb').read() == before['volume-ix/page-02.webp'], 'Volume IX stays blocked by its title')
         code, out = quiet(B.main, ['--src', src, '--root', root, '--force-title'])
         cat3 = json.load(open(paths.cat, encoding='utf-8'))
         check(code == 0 and Image.open(os.path.join(root, 'assets/upsc/handbooks/volume-ix/page-02.webp')).size[0] == 1600

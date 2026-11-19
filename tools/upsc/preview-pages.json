@@ -33,7 +33,7 @@
   ],
   "volume-iv": [
     {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
-    {"p": 8, "kind": "concept", "cap": "Part B: impact, incidence and shifting of a tax, worked through a ₹10 excise on cigarettes"},
+    {"p": 8, "kind": "concept", "cap": "Part B: impact, incidence and shifting of a tax, worked through an excise on a pack of cigarettes"},
     {"p": 12, "kind": "case", "cap": "Part C: the divisible pool, the 16th Finance Commission formula and the GST Council"},
     {"p": 17, "kind": "policy", "cap": "Part E: income-tax slabs for 2026-27 under both regimes, and the Income-tax Act, 2025"},
     {"p": 23, "kind": "figure", "cap": "Part F: the input tax credit chain at an 18% rate"},
@@ -56,7 +56,7 @@
     {"p": 3, "kind": "concept", "cap": "Part A: the bank as an intermediary, its four transformations and the safety net behind it"},
     {"p": 9, "kind": "table", "cap": "Part B: scheduled and non-scheduled banks, and a master comparison of bank types in India"},
     {"p": 15, "kind": "figure", "cap": "Part D: from standard asset to loss, the NPA classification"},
-    {"p": 25, "kind": "policy", "cap": "Part F: how DICGC deposit insurance works, from the ₹5 lakh cover to risk-based premiums"},
+    {"p": 25, "kind": "policy", "cap": "Part F: how DICGC deposit insurance works, from the cover per depositor per bank to risk-based premiums"},
     {"p": 32, "kind": "case", "cap": "Part I: financial inclusion by access, usage and quality, and the Pradhan Mantri Jan Dhan Yojana"},
     {"p": 40, "kind": "extra", "cap": "Part K: a dashboard of the banking sector, and the case for and against bank mergers"},
     {"p": 42, "kind": "exam", "cap": "Part L: the opening of the revision compendium"}
