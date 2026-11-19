@@ -871,7 +871,7 @@ video or fonts of its own.
 | 4.3–5 s | **The reveal.** The two halves open onto the page (sideways on a wide screen, up and down on a phone); the overlay is transparent at exactly start + 5000 ms. |
 
 The overlay and its clock are put into `index.html` by `tools/migrations/2026-11-19-opening-two-pathways.py`
-from `tools/build/opening-two-pathways.html`; the styles are in `src/styles/css-opening.css`.
+from `tools/build/opening-two-pathways.json`; the styles are in `src/styles/css-opening.css`.
 
 **One start timestamp.** The start is the first frame the reader sees. It is taken from
 `requestAnimationFrame` and re-anchored to the browser's reported first paint during the still

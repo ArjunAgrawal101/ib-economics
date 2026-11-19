@@ -23,8 +23,8 @@ back-forward cache is shown as it was left; nothing is read from or written to s
 skip is not remembered either. Reduced motion shows one still frame for 1.5 s. A slow start holds
 the final frame rather than uncovering an unfinished page.
 
-Input: tools/build/opening-two-pathways.html, the overlay and its clock exactly as PR #13 built
-them. The edits below bring in what the 2026-11-17 opening did better, each one named:
+Input: tools/build/opening-two-pathways.json, the overlay and its clock exactly as PR #13 built
+them (JSON, so that the host never serves the fragment as a page). The edits below bring in what the 2026-11-17 opening did better, each one named:
   - the button reads "Skip introduction", and Escape skips from anywhere on the page;
   - a skip fades the overlay out in 180 ms on the compositor, from wherever it is;
   - every decision after the first frame reads the real time, and the exit is scheduled ahead
@@ -38,12 +38,12 @@ The styles are in src/styles/css-opening.css (PR #13's, with overflow:clip and a
 from 2026-11-17). This script also replaces the in-page self-tests of the opening, the quality
 report's description of them, and the settings page's note on what the opening stores.
 Run python3 tools/build/splice.py afterwards."""
-import pathlib, re
+import json, pathlib, re
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 P = ROOT / 'index.html'
 s = P.read_text(encoding='utf-8')
-SRC = (ROOT / 'tools' / 'build' / 'opening-two-pathways.html').read_text(encoding='utf-8')
+SRC = json.loads((ROOT / 'tools' / 'build' / 'opening-two-pathways.json').read_text(encoding='utf-8'))['html']
 MARK = 'data-opening="2026-11-19"'
 done = []
 
