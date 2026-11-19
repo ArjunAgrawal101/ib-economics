@@ -174,11 +174,14 @@ for (const u of ['assets/upsc/handbooks/volume-iii/volume-iii.pdf', 'assets/upsc
   check(w.i === 1 && w.pos.includes(`Page ${pv3[1].p} of`) && w.cap.includes(pv3[1].cap) && Math.abs(w.w - box0[0]) < 1 && Math.abs(w.h - box0[1]) < 1, 'the right arrow turns to the next page, at the same size', JSON.stringify(w));
   await p.locator('#hl-viewer [data-a="next"]').click(); await p.waitForTimeout(450);
   check((await vw(p)).i === 2, 'the Next button turns the page');
-  check(await p.locator('#hl-viewer [data-a="next"]').isDisabled(), 'Next is disabled on the last page');
+  /* on to the last preview page, however many the volume has */
+  for (let k = 2; k < pv3.length - 1; k++) { await p.locator('#hl-viewer [data-a="next"]').click(); await p.waitForTimeout(250); }
+  const last = pv3.length - 1;
+  check((await vw(p)).i === last && await p.locator('#hl-viewer [data-a="next"]').isDisabled(), 'Next is disabled on the last page');
   await p.locator('#hl-viewer [data-a="prev"]').click(); await p.waitForTimeout(450);
-  check((await vw(p)).i === 1, 'the Previous button turns back');
+  check((await vw(p)).i === last - 1, 'the Previous button turns back');
   await p.keyboard.press('ArrowLeft'); await p.waitForTimeout(450);
-  check((await vw(p)).i === 0, 'the left arrow turns back');
+  check((await vw(p)).i === last - 2, 'the left arrow turns back');
   await p.keyboard.press('End'); await p.waitForTimeout(450);
   check((await vw(p)).i === pv3.length - 1, 'End goes to the last preview page');
   await p.keyboard.press('Home'); await p.waitForTimeout(450);
