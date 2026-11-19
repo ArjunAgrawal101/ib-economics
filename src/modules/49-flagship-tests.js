@@ -97,6 +97,23 @@ function FLAGSHIPSUITE(){
   return t.includes("It is not an official IB platform and is not endorsed by the International Baccalaureate Organization.")&&/not affiliated with or endorsed by the Union Public Service Commission/.test(t)&&/not a preparation for the Economics Optional/.test(t)});
  T("Flagship · the footer opens both pathways with equal weight",()=>{const n=document.querySelector("footer.ft .ft-paths");
   return !!n&&n.querySelectorAll('a[href="#/ib"]').length===1&&n.querySelectorAll('a[href="#/upsc"]').length===1});
+ /* ── The Business Brief: the wider academic ecosystem, in four places, never a third pathway ── */
+ T("Business Brief · the header, the drawer, the home and the footer each link to it, in a new tab with rel noopener noreferrer",()=>{
+  const g=document.getElementById("gnav"),f=document.querySelector("footer.ft .ft-paths");
+  const all={header:g?g.innerHTML:"",drawer:fxDrawerHtml(),home:fxBusinessBrief(),footer:f?f.innerHTML:""};
+  const bad=Object.entries(all).filter(([,h])=>{const L=[...h.matchAll(/<a\b[^>]*href="https:\/\/the-business-brief-dun\.vercel\.app\/"[^>]*>[\s\S]*?<\/a>/g)].map(m=>m[0]);
+   return L.length!==1||!L.every(a=>/target="_blank"/.test(a)&&/rel="noopener noreferrer"/.test(a)&&/↗/.test(a)&&/opens in a new tab/.test(a))}).map(([k])=>k);
+  return bad.length?{ok:false,d:bad.join(", ")}:true});
+ T("Business Brief · it is a sister platform, not a third pathway: no pathway colour, no place in the switcher, the two pathways keep equal weight",()=>{
+  const sw=fxSwitcher("shared","x"),f=document.querySelector("footer.ft .ft-paths");
+  return !/business/i.test(sw)&&!/pathway 03|p-bb[^"]*\b(ib|up)\b/i.test(fxBusinessBrief()+(f?f.innerHTML:""))&&FX_SHARED.has("home")
+   &&!!f&&f.querySelector(".ft-path.p-bb .ft-pn").textContent==="Beyond Economics"&&f.querySelectorAll(".ft-path.p-ib,.ft-path.p-up").length===2});
+ T("Business Brief · the home panel reads as the brief asks, and claims nothing more",()=>{const t=txt(fxBusinessBrief());
+  return t.includes("Beyond Economics. Explore Business Management.")&&t.includes("Discover The Business Brief, an interactive learning platform for IB DP Business Management.")
+   &&/Explore The Business Brief/.test(t)&&!/(best|number one|award|students use|trusted by|\d+\s*(students|users))/i.test(t)});
+ T("Business Brief · the footer explores the academic ecosystem: IB DP Economics, UPSC CSE Economics and IB DP Business Management",()=>{
+  const f=document.querySelector("footer.ft .ft-paths");if(!f)return false;const t=f.textContent.replace(/\s+/g," ");
+  return f.getAttribute("aria-label")==="Explore the academic ecosystem"&&/Explore the academic ecosystem/.test(t)&&t.indexOf("IB DP Economics")<t.indexOf("UPSC CSE Economics")&&t.indexOf("UPSC CSE Economics")<t.indexOf("IB DP Business Management")});
  T("Flagship · the welcome dialogue waits for the IB DP environment",()=>/fxPathway\(VIEW\)!=="ib"/.test(String(bootOnboarding))&&typeof FX_OB.run==="function");
 
  /* ── motion ── */

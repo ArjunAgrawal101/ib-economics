@@ -73,7 +73,7 @@ for (const u of ['assets/upsc/handbooks/volume-iii/volume-iii.pdf', 'assets/upsc
   const home = await addr(p);
   await go(p, home);
   const st = await p.evaluate(() => ({ v: VIEW, t: TAB, h1: [...document.querySelectorAll('#view h1')].map(h => h.textContent), html: document.getElementById('view').innerHTML }));
-  check(st.v === 'upsc' && st.t === 3 && st.h1.length === 1 && st.h1[0] === 'The Economics Handbook Library', `${home} opens the Handbook Library with one heading`, JSON.stringify(st.h1));
+  check(st.v === 'upsc' && st.t === 3 && st.h1.length === 1 && st.h1[0] === 'The Indian Economy Collection', `${home} opens the Handbook Library with one heading`, JSON.stringify(st.h1));
   const cards = await p.evaluate(() => [...document.querySelectorAll('#hl-list > li')].map(li => ({ id: li.id.replace('hl-c-', ''), t: li.querySelector('.hl-card-t').textContent, kick: li.querySelector('.hl-kick').textContent,
     text: li.innerText, pages: li.querySelector('.hl-meta dd').textContent, rel: [...li.querySelectorAll('.hl-rel dt')].map(d => d.firstChild.textContent.trim()),
     cta: [...li.querySelectorAll('a.hl-buy')].map(a => ({ t: a.textContent, h: a.href })), mail: [...li.querySelectorAll('a.hl-mail')].map(a => a.getAttribute('href')),
@@ -174,11 +174,14 @@ for (const u of ['assets/upsc/handbooks/volume-iii/volume-iii.pdf', 'assets/upsc
   check(w.i === 1 && w.pos.includes(`Page ${pv3[1].p} of`) && w.cap.includes(pv3[1].cap) && Math.abs(w.w - box0[0]) < 1 && Math.abs(w.h - box0[1]) < 1, 'the right arrow turns to the next page, at the same size', JSON.stringify(w));
   await p.locator('#hl-viewer [data-a="next"]').click(); await p.waitForTimeout(450);
   check((await vw(p)).i === 2, 'the Next button turns the page');
-  check(await p.locator('#hl-viewer [data-a="next"]').isDisabled(), 'Next is disabled on the last page');
+  /* on to the last preview page, however many the volume has */
+  for (let k = 2; k < pv3.length - 1; k++) { await p.locator('#hl-viewer [data-a="next"]').click(); await p.waitForTimeout(250); }
+  const last = pv3.length - 1;
+  check((await vw(p)).i === last && await p.locator('#hl-viewer [data-a="next"]').isDisabled(), 'Next is disabled on the last page');
   await p.locator('#hl-viewer [data-a="prev"]').click(); await p.waitForTimeout(450);
-  check((await vw(p)).i === 1, 'the Previous button turns back');
+  check((await vw(p)).i === last - 1, 'the Previous button turns back');
   await p.keyboard.press('ArrowLeft'); await p.waitForTimeout(450);
-  check((await vw(p)).i === 0, 'the left arrow turns back');
+  check((await vw(p)).i === last - 2, 'the left arrow turns back');
   await p.keyboard.press('End'); await p.waitForTimeout(450);
   check((await vw(p)).i === pv3.length - 1, 'End goes to the last preview page');
   await p.keyboard.press('Home'); await p.waitForTimeout(450);

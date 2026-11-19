@@ -491,3 +491,40 @@ body[data-sec="home"] footer.ft{margin-top:0}
 
 /* ═══ About: the three-part positioning sits on one line where it fits ═════ */
 @media (min-width:760px){.ab-cover .ab-pos{grid-template-columns:repeat(3,minmax(0,max-content))}}
+
+/* ═══ The Business Brief · the wider academic ecosystem, not a third pathway ═══
+   The same educator's IB DP Business Management platform (FX_BB in 44-flagship-core.js;
+   docs/flagship/INTEGRATION-PR13.md). No pathway colour anywhere: ink, ivory and gold. */
+/* the header: a quiet external link, shown where the bar has room for it */
+.gnav .gn-bb{display:none;align-items:center;gap:5px;padding:10px 2px;font-size:11px;letter-spacing:.1em;color:var(--fx-text-2);border-bottom:1.5px solid transparent;white-space:nowrap}
+.gnav .gn-bb:hover{color:var(--fx-text);border-bottom-color:var(--fx-line-2)}
+.gnav .gn-bb .fx-ext{font-size:12px;letter-spacing:0;color:var(--fx-gold-text)}
+@media (min-width:1360px){.gnav .gn-bb{display:inline-flex}}
+/* the exam timer needs the room more: below 1600 px a running timer hides the link (the drawer, the home and the footer keep it) */
+@media (min-width:1360px) and (max-width:1599px){.top:has(#tmr.run) .gnav .gn-bb{display:none}}
+/* the drawer */
+.fxdrawer .dw-bb .dw-ext{display:inline-flex;align-items:baseline;gap:6px}
+.fxdrawer .dw-bb .fx-ext{font:400 16px/1 var(--fx-sans);color:var(--fx-gold-text)}
+.fxdrawer .dw-note{margin:0;font:400 13px/1.4 var(--fx-sans);color:var(--fx-text-2)}
+/* the home: an editorial panel between the concepts and About */
+.fx-bb{background:var(--fx-ivory-2);border-top:1px solid var(--fx-line);border-bottom:1px solid var(--fx-line);padding:clamp(40px,5vw,64px) 0}
+.fx-bb .bb-in{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(20px,3vw,44px);align-items:center}
+.fx-bb .bb-mark{width:clamp(72px,8vw,104px)}
+.fx-bb .bb-mark svg{display:block;width:100%;height:auto}
+.fx-bb .bb-mark rect,.fx-bb .bb-mark path{fill:none;stroke:var(--fx-charcoal);stroke-width:2}
+.fx-bb .bb-mark path.t{stroke:var(--fx-gold);stroke-dasharray:5 5}
+.fx-bb .bb-k{color:var(--fx-gold-text)}
+.fx-bb .fx-h2{margin-top:10px;text-wrap:balance}
+.fx-bb .fx-lede{margin-top:10px}
+.fx-bb .bb-act{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.fx-bb .bb-btn{background:var(--fx-charcoal);color:#fff;border:1px solid var(--fx-charcoal)}
+.fx-bb .bb-btn:hover{background:var(--fx-ink)}
+.fx-bb .bb-btn .fx-ext{color:var(--fx-gold-l)}
+.fx-bb .bb-url{font:400 13.5px/1.4 var(--fx-sans);color:var(--fx-text-2)}
+@media (max-width:860px){.fx-bb .bb-in{grid-template-columns:minmax(0,1fr)}.fx-bb .bb-mark{width:72px}}
+/* the footer: the two pathways with equal weight, then a quieter card */
+.ft-paths>.ft-eco-k{grid-column:1/-1;margin:0;color:rgba(255,255,255,.62)}
+@media (min-width:981px){.ft-paths{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.8fr)}}
+@media (min-width:641px) and (max-width:980px){.ft-path.p-bb{grid-column:1/-1}}
+.ft-path.p-bb{box-shadow:none;border-style:dashed;border-color:rgba(255,255,255,.24)}
+.ft-path.p-bb b{font-size:21px}

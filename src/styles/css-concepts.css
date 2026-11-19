@@ -183,6 +183,8 @@
 .cc-q q{quotes:"“" "”" "‘" "’";font-style:italic}
 .cc-q .cc-qe{margin-top:10px;font:500 13.5px/1.5 var(--cc-sans);color:var(--cc-text)}
 .cc-q .cc-qe a,.cc-go a{color:var(--cc-up);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+/* a link that stands alone in its line (not inside a sentence) is a target of at least 24 px (WCAG 2.2, 2.5.8) */
+.cc-go>.cc-ql,.cc-q .cc-qe>.cc-ql:only-child{display:inline-flex;align-items:center;gap:.3em;min-height:24px}
 .cc-qk{display:block;font:600 11px/1.35 var(--cc-sans);letter-spacing:.12em;text-transform:uppercase;color:var(--cc-up);margin:2px 0 6px}
 .cc-lab{display:inline-block;margin-right:8px;padding:4px 7px;border-radius:2px;font:700 10px/1 var(--cc-sans);letter-spacing:.14em;text-transform:uppercase;vertical-align:2px}
 .cc-lab.o{background:var(--cc-up);color:#fff}

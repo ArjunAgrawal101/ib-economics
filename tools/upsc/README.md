@@ -78,6 +78,10 @@ overlay is added**: the pages are shown as they are in the volume. Branding belo
 catalogue. The tool reports the total weight of the images; the budget is about 20 MB for 88 pages. Over it,
 re-run with `--quality 70` or `--width 1400`.
 
+The images now in `assets/upsc/handbooks/` were rendered from the PDFs on 2026-11-19 with `--width 1400
+--quality 72`, because 1600 px came to 25.3 MB at quality 78 and 22.7 MB at quality 70: 88 pages, eleven covers and
+their thumbnails, 19.8 MB. At 1400 px an A4 page is about 169 dpi, and the smallest type in the tables stays sharp.
+
 A preview in a browser can always be saved or photographed. The site says so and claims no protection; what
 it guarantees is that the complete volumes are never in the repository or on the site. `.gitignore` refuses
 any PDF, Word or e-book file anywhere except the ten public carousel PDFs, and `tests/library.mjs` fails if

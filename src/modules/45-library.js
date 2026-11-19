@@ -130,10 +130,10 @@ function hlCatalogue(missing){const V=hlVols(),T=V.length,n=V.filter(v=>hlMatch(
  const cats=HL_CATS.map(c=>[c,V.filter(v=>v.category===c).length]);
  return `<div class="hl hl-catv">
  <header class="hl-mast"><div class="hl-wrap">
-  <p class="hl-eb"><span>UPSC CSE Economics</span><span>The Indian Economy Series</span></p>
+  <p class="hl-eb"><span>UPSC CSE Economics</span><span>Handbook Library</span></p>
   <div class="hl-mast-g"><div class="hl-mast-x">
-   <h1 class="hl-h1">The Economics Handbook Library</h1>
-   <p class="hl-lede">Eleven original handbooks by Arjun Agrawal for UPSC CSE Economics, from the foundations of economic thinking to India's agriculture, industry and labour markets. Look inside each volume before you buy it.</p></div>
+   <h1 class="hl-h1">The Indian Economy Collection</h1>
+   <p class="hl-lede">Eleven carefully structured volumes covering essential dimensions of Indian and international Economics for UPSC CSE preparation. Original handbooks by Arjun Agrawal, from the foundations of economic thinking to India's agriculture, industry and labour markets: look inside each volume before you buy it.</p></div>
    <dl class="hl-facts"><div><dt>Volumes</dt><dd>${T}</dd></div><div><dt>Pages in all</dt><dd>${hlPages()}</dd></div><div><dt>Each volume</dt><dd>₹${hlPriceN()}</dd></div><div><dt>Format</dt><dd>Digital soft copy (PDF)</dd></div></dl></div>
   <nav class="hl-shelf" aria-label="The eleven volumes"><ol>${V.map(v=>`<li><a href="${hlHref(v.id)}" title="Volume ${esA(v.n)}: ${esA(v.title)}">${hlCover(v,"hl-shelf-cv","(max-width: 640px) 16vw, 104px",true)}<span class="hl-shelf-n" aria-hidden="true">${esc(v.n)}</span><span class="hl-sr">Volume ${esc(v.n)}: ${esc(v.title)}</span></a></li>`).join("")}</ol></nav>
  </div></header>
@@ -411,6 +411,8 @@ function LIBSUITE(){const out=[];const T=(n,f)=>{let ok=false,det="";try{const r
  const V=hlVols(),cat=hlRender(null),saved={...HL};
  T("Library · eleven volumes, each filed under one of the ten topics, every topic used",()=>V.length===11&&V.every(v=>HL_CATS.includes(v.category))&&HL_CATS.every(c=>V.some(v=>v.category===c)));
  T("Library · the catalogue has one heading and a card for every volume",()=>(cat.match(/<h1/g)||[]).length===1&&V.every(v=>cat.includes(`id="hl-c-${v.id}"`)));
+ T("Library · the catalogue is titled The Indian Economy Collection, with the brief's subtitle, in the Handbook Library tab",()=>/<h1 class="hl-h1">The Indian Economy Collection<\/h1>/.test(cat)
+  &&cat.includes("Eleven carefully structured volumes covering essential dimensions of Indian and international Economics for UPSC CSE preparation.")&&/<span>Handbook Library<\/span>/.test(cat));
  T("Library · every card shows ₹99, the page count and GET THIS HANDBOOK · ₹99",()=>V.every(v=>{const c=hlCard(v);return c.includes("₹99")&&c.includes(`<dd>${v.pages}</dd>`)&&c.includes("GET THIS HANDBOOK · ₹99")&&c.includes("Digital soft copy. Individual volume pricing.")}));
  T("Library · every enquiry carries the owner's message for its volume",()=>V.every(v=>{const m=fxHandbookMsg(v);return hlWa(v)===FX_CONTACT.wa()+"?text="+encodeURIComponent(m)&&hlMail(v).startsWith("mailto:"+FX_CONTACT.email()+"?")&&decodeURIComponent(hlMail(v)).includes(m)&&m.includes("Volume "+v.n+", "+v.title+",")}));
  T("Library · each volume page has one heading, its contents and its syllabus map",()=>V.every(v=>{const h=hlRender(v.id);return (h.match(/<h1/g)||[]).length===1&&(h.match(/class="hl-toc-l"/g)||[]).length===v.parts.length&&(h.match(/<tr>/g)||[]).length===v.map.length+1}));

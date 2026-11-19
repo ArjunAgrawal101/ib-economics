@@ -17,6 +17,15 @@ const FXI={
   upsc:{key:"upsc",name:"UPSC CSE Economics",short:"UPSC CSE",home:"#/upsc",view:"upsc"}
  }
 };
+/* ── the sister platform: The Business Brief ───────────────────────────
+   The same educator's platform for IB DP Business Management. It is linked
+   from the header, the drawer, the home page and the footer as part of the
+   wider academic ecosystem, never as a third pathway: it has no pathway
+   colour and no place in the pathway switcher. It opens in a new tab. */
+const FX_BB={name:"The Business Brief",subject:"IB DP Business Management",url:"https://the-business-brief-dun.vercel.app/"};
+function fxBBLink(cls,label){
+ return `<a class="${cls}" href="${FX_BB.url}" target="_blank" rel="noopener noreferrer">${esc(label||FX_BB.name)}<span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (${esc(FX_BB.subject)}, opens in a new tab)</span></a>`;
+}
 /* Sections that belong to neither pathway: the shared home, About, Contact,
    settings, the concept layer and the site's own quality pages. Everything
    else that is not the UPSC section is part of the IB DP environment. */
