@@ -73,7 +73,7 @@ for (const u of ['assets/upsc/handbooks/volume-iii/volume-iii.pdf', 'assets/upsc
   const home = await addr(p);
   await go(p, home);
   const st = await p.evaluate(() => ({ v: VIEW, t: TAB, h1: [...document.querySelectorAll('#view h1')].map(h => h.textContent), html: document.getElementById('view').innerHTML }));
-  check(st.v === 'upsc' && st.t === 3 && st.h1.length === 1 && st.h1[0] === 'The Economics Handbook Library', `${home} opens the Handbook Library with one heading`, JSON.stringify(st.h1));
+  check(st.v === 'upsc' && st.t === 3 && st.h1.length === 1 && st.h1[0] === 'The Indian Economy Collection', `${home} opens the Handbook Library with one heading`, JSON.stringify(st.h1));
   const cards = await p.evaluate(() => [...document.querySelectorAll('#hl-list > li')].map(li => ({ id: li.id.replace('hl-c-', ''), t: li.querySelector('.hl-card-t').textContent, kick: li.querySelector('.hl-kick').textContent,
     text: li.innerText, pages: li.querySelector('.hl-meta dd').textContent, rel: [...li.querySelectorAll('.hl-rel dt')].map(d => d.firstChild.textContent.trim()),
     cta: [...li.querySelectorAll('a.hl-buy')].map(a => ({ t: a.textContent, h: a.href })), mail: [...li.querySelectorAll('a.hl-mail')].map(a => a.getAttribute('href')),

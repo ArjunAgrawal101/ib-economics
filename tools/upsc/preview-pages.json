@@ -1,59 +1,114 @@
 {
-  "_about": "The pages of each volume shown in the Handbook Library's preview viewer, chosen by what they show. tools/upsc/build_upsc.py renders exactly these pages (and the cover, page 1) from the private PDFs as clean images, with no watermark or overlay, and deletes any image no longer listed. The owner's brief: about 8 pages per volume (at least 5, at most 10), ideally 1 contents, 2 a strong conceptual explanation, 3 an infographic or diagram, 4 a detailed topic or policy explanation, 5 a table or data presentation, 6 a case study, scheme or institution, 7 an examination-oriented application, 8 another high-value page. tools/upsc/propose_pages.py ranks the candidates. Until the PDFs are run, each volume lists the three pages that already exist as images (contents and two samples).",
+  "_about": "The pages of each volume shown in the Handbook Library's preview viewer, chosen by what they show. tools/upsc/build_upsc.py renders exactly these pages (and the cover, page 1) from the private PDFs as clean images, with no watermark or overlay, and deletes any image no longer listed. The owner's brief: about 8 pages per volume (at least 5, at most 10), ideally 1 contents, 2 a strong conceptual explanation, 3 an infographic or diagram, 4 a detailed topic or policy explanation, 5 a table or data presentation, 6 a case study, scheme or institution, 7 an examination-oriented application, 8 another high-value page. tools/upsc/propose_pages.py ranks the candidates. The selection below was made from the PDFs on 2026-11-19: eight pages per volume, one of each kind, spread across the parts; every caption was checked against the page's own text.",
   "_kinds": {"contents": "Contents", "concept": "A concept explained", "figure": "Infographic or diagram", "policy": "Policy in detail", "table": "Table and data", "case": "Case study, scheme or institution", "exam": "For the examination", "extra": "From the volume"},
   "volume-i": [
     {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 7, "kind": "concept", "cap": "Part B: the three central problems, opportunity cost worked through, and explicit and implicit costs"},
     {"p": 12, "kind": "figure", "cap": "Part D: the production possibility curve, its shape and its shifts"},
+    {"p": 15, "kind": "policy", "cap": "Part E: India's mixed economy, its milestones from 1948 to 2021 and the 1991 reforms"},
+    {"p": 26, "kind": "case", "cap": "Part I: price controls, with the ceiling on essential medicines and MSP as a floor"},
+    {"p": 30, "kind": "table", "cap": "Part J: a master table of the four elasticities, tax incidence and Indian applications"},
+    {"p": 33, "kind": "extra", "cap": "Part K: each market failure matched to a government response and its risk of failure"},
     {"p": 34, "kind": "exam", "cap": "Part L: the opening of the revision compendium"}
   ],
   "volume-ii": [
     {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 3, "kind": "concept", "cap": "Part A: the meaning of money, its evolution from barter and why barter fails"},
+    {"p": 8, "kind": "table", "cap": "Part B: reserve money and M1 to M4, their components and published values, nested by liquidity"},
+    {"p": 14, "kind": "case", "cap": "Part D: the RBI's origins, governance and institutional architecture, and its functions"},
+    {"p": 19, "kind": "policy", "cap": "Part E: the master architecture of monetary policy, and the 4% target, band and failure"},
     {"p": 23, "kind": "figure", "cap": "Part F: the LAF corridor, with the SDF floor, the repo rate and the MSF ceiling"},
+    {"p": 29, "kind": "extra", "cap": "Part H: the repo rate and CRR charted from 2022, with a timeline to November 2026"},
     {"p": 36, "kind": "exam", "cap": "Part K: the opening of the revision compendium"}
   ],
   "volume-iii": [
     {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 3, "kind": "concept", "cap": "Part A: what inflation is and is not, and the price level versus the inflation rate"},
+    {"p": 11, "kind": "table", "cap": "Part B: a master dashboard of India's price indices, with publisher, base, use and limitation"},
     {"p": 18, "kind": "figure", "cap": "Part D: the causes of inflation brought together in the triangle model"},
+    {"p": 25, "kind": "extra", "cap": "Part F: the September 2026 inflation dashboard and what makes Indian inflation distinctive"},
+    {"p": 29, "kind": "case", "cap": "Part G: the Food Corporation of India, buffer stocking norms and who manages food prices"},
+    {"p": 35, "kind": "policy", "cap": "Part I: a policy selection matrix by type of inflation, and RBI-Government coordination"},
     {"p": 40, "kind": "exam", "cap": "Part K: the opening of the revision compendium"}
   ],
   "volume-iv": [
     {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 8, "kind": "concept", "cap": "Part B: impact, incidence and shifting of a tax, worked through a ₹10 excise on cigarettes"},
+    {"p": 12, "kind": "case", "cap": "Part C: the divisible pool, the 16th Finance Commission formula and the GST Council"},
+    {"p": 17, "kind": "policy", "cap": "Part E: income-tax slabs for 2026-27 under both regimes, and the Income-tax Act, 2025"},
     {"p": 23, "kind": "figure", "cap": "Part F: the input tax credit chain at an 18% rate"},
+    {"p": 30, "kind": "extra", "cap": "Part H: GAAR and SAAR compared, and transfer pricing shown in a worked illustration"},
+    {"p": 37, "kind": "table", "cap": "Part J: tax buoyancy versus elasticity, and the composition of Union gross tax revenue"},
     {"p": 40, "kind": "exam", "cap": "Part K: the opening of the revision compendium"}
   ],
   "volume-v": [
     {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 8, "kind": "concept", "cap": "Part C: how government spending becomes income round by round, and the expenditure multiplier"},
+    {"p": 15, "kind": "figure", "cap": "Part D: the public expenditure execution cycle, from allocation to audit, with bottlenecks at each stage"},
+    {"p": 18, "kind": "policy", "cap": "Part E: the Union Budget documents and the budget cycle from preparation to audit"},
     {"p": 25, "kind": "table", "cap": "Part G: how the Union fiscal deficit is financed"},
+    {"p": 32, "kind": "extra", "cap": "Part I: a timeline of India's fiscal rules, and the N. K. Singh Committee's recommendations"},
+    {"p": 36, "kind": "case", "cap": "Part J: SASCI loans to States for capital investment, and the NITI Aayog Fiscal Health Index 2026"},
     {"p": 41, "kind": "exam", "cap": "Part L: the opening of the revision compendium"}
   ],
   "volume-vi": [
     {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 3, "kind": "concept", "cap": "Part A: the bank as an intermediary, its four transformations and the safety net behind it"},
+    {"p": 9, "kind": "table", "cap": "Part B: scheduled and non-scheduled banks, and a master comparison of bank types in India"},
     {"p": 15, "kind": "figure", "cap": "Part D: from standard asset to loss, the NPA classification"},
+    {"p": 25, "kind": "policy", "cap": "Part F: how DICGC deposit insurance works, from the ₹5 lakh cover to risk-based premiums"},
+    {"p": 32, "kind": "case", "cap": "Part I: financial inclusion by access, usage and quality, and the Pradhan Mantri Jan Dhan Yojana"},
+    {"p": 40, "kind": "extra", "cap": "Part K: a dashboard of the banking sector, and the case for and against bank mergers"},
     {"p": 42, "kind": "exam", "cap": "Part L: the opening of the revision compendium"}
   ],
   "volume-vii": [
     {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 4, "kind": "extra", "cap": "Part A: the institutional architecture of Indian financial markets, and FDI versus FPI"},
     {"p": 12, "kind": "figure", "cap": "Part D: the price-yield relation of a ten-year G-sec"},
+    {"p": 17, "kind": "policy", "cap": "Part F: fresh issue versus offer for sale, and the IPO process step by step"},
+    {"p": 22, "kind": "case", "cap": "Part H: the trust structure of an Indian mutual fund, and how investing and redeeming work"},
+    {"p": 27, "kind": "concept", "cap": "Part J: payoff and profit at expiry of the four basic option positions"},
+    {"p": 33, "kind": "table", "cap": "Part L: who regulates what in Indian financial markets, and the Securities Markets Code, 2025"},
     {"p": 35, "kind": "exam", "cap": "Part M: the opening of the revision compendium"}
   ],
   "volume-viii": [
     {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
     {"p": 5, "kind": "concept", "cap": "Part B: the structure of the balance of payments under BPM6"},
+    {"p": 8, "kind": "figure", "cap": "Part C: from a large goods deficit to a small current account deficit, April-June 2026"},
+    {"p": 16, "kind": "table", "cap": "Part F: the composition and adequacy of India's foreign exchange reserves, component by component"},
+    {"p": 26, "kind": "policy", "cap": "Part I: Tarapore I and II compared, and what complete capital account convertibility offers and risks"},
+    {"p": 34, "kind": "extra", "cap": "Part K: the stages of economic integration, and the status of India's recent trade agreements"},
+    {"p": 38, "kind": "case", "cap": "Part L: the Asian and global financial crises compared, with India's exposure to each"},
     {"p": 41, "kind": "exam", "cap": "Part M: the opening of the revision compendium"}
   ],
   "volume-ix": [
     {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 7, "kind": "policy", "cap": "Part B: GATS supply modes, TRIPS flexibilities, and the WTO farm-support boxes where India's measures fall"},
+    {"p": 10, "kind": "concept", "cap": "Part C: tariff types and bindings, effective protection, and the welfare effects of a tariff"},
     {"p": 14, "kind": "table", "cap": "Part D: the IMF's lending facilities, classified"},
+    {"p": 20, "kind": "case", "cap": "Part F: ADB, AIIB and NDB compared, and how the BRICS Contingent Reserve Arrangement works"},
+    {"p": 28, "kind": "extra", "cap": "Part I: the EU's CBAM in five steps, its operative rules and why India is exposed"},
+    {"p": 31, "kind": "figure", "cap": "Part J: India's positions across the multilateral economic order, institution by institution"},
     {"p": 33, "kind": "exam", "cap": "Part K: the opening of the revision compendium"}
   ],
   "volume-x": [
     {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 3, "kind": "concept", "cap": "Part A: agriculture's eight roles at a glance and the output-employment gap in farming"},
+    {"p": 5, "kind": "figure", "cap": "Part B: the kharif, rabi and zaid crop calendar, the seasons compared and agro-climatic regions"},
+    {"p": 15, "kind": "case", "cap": "Part E: NABARD's roles, the risks farmers face, and how a PMFBY claim is worked out"},
     {"p": 21, "kind": "policy", "cap": "Part G: from cost data to the farmer, how MSP is set and where it reaches"},
+    {"p": 27, "kind": "extra", "cap": "Part I: the four pillars of food security and the chain from procurement to ration shop"},
+    {"p": 31, "kind": "table", "cap": "Part K: livestock and fishing growth against crops, and crop farming versus allied activities"},
     {"p": 36, "kind": "exam", "cap": "Part M: the opening of the revision compendium"}
   ],
   "volume-xi": [
     {"p": 2, "kind": "contents", "cap": "The contents page: each part with the page it begins on, and the volume's syllabus map"},
+    {"p": 6, "kind": "figure", "cap": "Part B: industrial policy from 1948 to 2026 in three regimes, and the 1991 break"},
+    {"p": 16, "kind": "table", "cap": "Part D: the priority-sector scorecard, seven industries rated on six criteria"},
+    {"p": 22, "kind": "case", "cap": "Part F: how TReDS turns an accepted invoice into cash for MSMEs, and credit guarantees"},
     {"p": 25, "kind": "concept", "cap": "Part H: from population to the labour force"},
+    {"p": 30, "kind": "extra", "cap": "Part I: the gig and platform work architecture and its social-security link under the 2020 Code"},
+    {"p": 34, "kind": "policy", "cap": "Part J: the Labour Codes from assent to state rules, in seven legal steps and a timeline"},
     {"p": 42, "kind": "exam", "cap": "Part M: the opening of the revision compendium"}
   ]
 }

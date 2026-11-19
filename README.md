@@ -141,11 +141,12 @@ opens the viewer.
 **The handbooks are never in this repository.** `tools/upsc/build_upsc.py` reads the eleven PDFs from a
 private folder outside the repository and checks each title, page count and part against the catalogue,
 reporting any difference rather than changing it. It renders the cover and the pages listed in
-`tools/upsc/preview-pages.json` as clean WebP images (pages 1600 px wide with 400 px thumbnails, no watermark
+`tools/upsc/preview-pages.json` as clean WebP images (pages 1600 px wide by default, 1400 px in this release, with 400 px thumbnails, no watermark
 or overlay) to `assets/upsc/handbooks/`, deletes images no longer chosen and regenerates
 `src/modules/41-upsc-data.js`. `tools/upsc/propose_pages.py` drafts the selection, with a contact sheet of
-every page. Until the PDFs are run, the folder holds the images the previous version made (cover, contents
-and two samples per volume, 640 px, with its watermark); the first run replaces them. Full steps are in
+every page. It was run on the PDFs on 2026-11-19: the folder holds each volume's cover and eight chosen
+pages (one of each kind, spread across the parts, every caption checked against the page), 88 in all,
+with nothing added to them. Full steps are in
 `tools/upsc/README.md`:
 
 ```
@@ -479,9 +480,8 @@ That framework is a teacher's framing, not IB terminology, and the platform labe
   address is a hash, so it works from a `file://` path and from a subdirectory with no server
   rewrite rules; the short form the install shortcuts use (`#mind`, `#session`, `#video`) works
   too. The router writes nothing while the self-tests run, leaves assignment links (`#assign=…`)
-  untouched and stores nothing. The home page plays the five-second opening sequence on the first
-  load of a browser session and a brief identity card after that; a deep link to any other page
-  shows only the cover (see *The opening sequence*).
+  untouched and stores nothing. Every full page load, of any address, plays the five-second opening
+  sequence; moving inside the platform never does (see *The opening sequence*).
 - A command palette opens on `/` or `Ctrl`/`Cmd` + `K` and reaches every section, every printable and
   every indexed item of content.
 - The build includes a self-test of **2,076 checks** reported across every area of the build: startup, printing,
@@ -856,92 +856,75 @@ offering to open the assignment, and nothing about what they then do is reported
 
 ## The opening sequence
 
-ARJUN AGRAWAL · ECONOMICS, *Think like an economist.*: five seconds on one clock, for a platform with
-two pathways. It adds about 26 KB to the page (inline SVG, CSS and a short script) and uses no
-images, video or fonts of its own.
+Arjun Agrawal · Economics, *One discipline. Two pathways.*: five seconds on one clock that say, before
+anything else, that the platform serves IB DP Economics and UPSC CSE Economics. It is the opening built
+in PR #13, chosen by the owner in place of the earlier world-map opening (see
+`docs/flagship/INTEGRATION-PR13.md`). It is inline SVG, CSS and a short script, and uses no images,
+video or fonts of its own.
 
 | Time | Stage |
 |---|---|
-| 0–1 s | **The world.** On a midnight ground a dotted world map appears west to east; the financial and trading hubs light up and fine arcs of trade join them. |
-| 1–2 s | **The language of economics.** Demand and supply cross at a gold equilibrium, a business cycle runs round its trend, a price series moves, and indicator labels (GDP, CPI, USD/INR, REPO RATE, EXPORTS) appear beside the hubs in JetBrains Mono. |
-| 2–3 s | **Two economic worlds.** International perspectives in the IB pathway's burgundy (trade, markets, exchange rates, models); then India's dots warm to gold and five sectors of its development (agriculture, industry, infrastructure, public finance, economic policy) fan out beneath it in the UPSC pathway's forest green. |
-| 3–4 s | **The identity.** The AA monogram rises (the logo's own vectors), then the name and its gold rule. |
-| 4–5 s | **The philosophy.** ECONOMICS, in Bodoni Moda, and THINK LIKE AN ECONOMIST.; the monogram travels to the brand mark in the header and the overlay dissolves into the page. |
+| 0–1 s | **The field.** A dark field of coordinates, data points and the lines between them; the Arjun Agrawal identity (the logo's own vectors) emerges. |
+| 1–2 s | **The language of economics.** The identity settles to the top; axes, supply and demand appear, demand shifts and the equilibrium moves along supply, with a trade network behind. |
+| 2–3.25 s | **Two pathways.** The field divides: IB DP Economics in burgundy, with a globe (global perspectives, international evidence), and UPSC CSE Economics in forest green, with a kolam (the Indian economy, policy, institutions). |
+| 3.15–4.25 s | **One discipline.** "One discipline. *Two pathways.*", then both names (3.70–3.95 s is still). |
+| 4.3–5 s | **The reveal.** The two halves open onto the page (sideways on a wide screen, up and down on a phone); the overlay is transparent at exactly start + 5000 ms. |
 
-The map is generated at build time from Natural Earth 1:110m by `tools/build/build_worldmap.mjs`
-(Natural Earth I projection; about 3,700 dots drawn as runs of zero-length dashes with round caps, in
-eight longitudinal bands so they can be revealed one after another, and India on its own layer drawn
-to its official boundary). ECONOMICS and the motto are outlines generated from the self-hosted Bodoni
-Moda and Manrope by `tools/build/build_opening_type.py`, and the name is the logo's own vectors, so
-the identity looks the same before the web fonts arrive as after. The migration
-`tools/migrations/2026-11-17-opening-sequence.py` embeds both outputs; the styles are in
-`src/styles/css-opening.css`.
+The overlay and its clock are put into `index.html` by `tools/migrations/2026-11-19-opening-two-pathways.py`
+from `tools/build/opening-two-pathways.html`; the styles are in `src/styles/css-opening.css`.
 
 **One start timestamp.** The start is the first frame the reader sees. It is taken from
-`requestAnimationFrame` and re-anchored to the browser's reported first paint during a still passage
-of the sequence (3.42–3.80 s). Every stage is a Web Animation scheduled from that timestamp, not a
-chain of timers.
+`requestAnimationFrame` and re-anchored to the browser's reported first paint during the still
+passage (3.70–3.95 s). Every stage is a Web Animation scheduled from that timestamp, not a chain of
+timers.
 
-**Nothing can lengthen it.** Every moving part is an HTML element or a whole `<svg>`, animated with
-opacity and transform only, so the compositor keeps time while the start-up self-test occupies the
-main thread. Every layer that fades is a leaf, so no stage needs an offscreen pass, and the scene dims
-under a veil of the ground colour rather than fading as a whole: about fifty small layers in all.
-Lines are drawn by sliding windows (an overflow-hidden frame moving one way and its content the other)
-and by scaling from an origin, never by dash offsets. The exit fade is scheduled ahead, reaches full
-transparency at exactly start + 5000 ms, and the overlay is removed on the next frame. With the
-processor slowed four times the stages still land on schedule, to the frame; only the exit waits,
-because the page is not ready.
+**Nothing can lengthen it.** Every stage animates opacity and transform only, so the compositor keeps
+time while the start-up self-test occupies the main thread. The exit is scheduled ahead as soon as the
+page is ready, reaches full transparency at exactly start + 5000 ms, and the overlay is removed on the
+next frame. With the processor slowed four times the stages still land on schedule; only the exit
+waits, because the page is not ready.
 
 **Fallbacks rather than delays.**
-- The font stylesheet does not block the first frame, and nothing in the overlay needs a web font
-  to look right.
-- On a device slow enough that the platform is not ready at 4.7 s, the final frame holds rather
-  than uncovering an unfinished page, and the timing record says so.
+- The font stylesheet does not block the first frame.
+- On a device slow enough that the platform is not ready in time, the final frame holds rather than
+  uncovering an unfinished page, and the timing record says so.
 - Every decision after the first frame reads the real time, so a frame that a busy main thread
-  delivers late cannot start the exit fade in the past.
+  delivers late cannot start the exit in the past.
 - If the overlay's own script never ran, a CSS failsafe hides it after 30 seconds.
 
 **When it plays: the state model.**
 
 | How the reader arrives | What they see |
 |---|---|
-| The home page (`/`, `#/home`), the first time in this browser session (a tab) | the full five seconds |
-| The home page again in that session: a reload, a typed address, Back from another site | a brief identity card, 1.2 s |
-| The home page within 30 days of pressing Skip introduction | the brief card |
-| Any address with `?intro=1` (Settings has a **Replay the opening** link) | the full five seconds |
-| A reduced-motion preference | a still identity card, 1.5 s |
-| A deep link to any other page (`#/events/archive/india-1991`) | the cover, gone as soon as the page is ready |
+| Any full page load of any address: a first visit, a reload, a bookmark, a shared link to any page, Back or Forward from another site | the full five seconds |
+| **Replay the opening** in Settings (`?intro=1`) | the full five seconds; the parameter is taken out of the address |
+| A reduced-motion preference | one still frame, 1.5 s |
 | A page restored by the back/forward cache | the page as it was left |
 | Moving inside the platform, including Home and Back between its own pages | no opening at all |
 
-Every card waits for the page behind it to be ready before it leaves. `?intro=1` is taken out of the
-address once read. The page records the navigation type, the route, the mode and the result in
-`window.__INTRO`.
-
-**What it stores.** Two small notes, both listed in **Settings → What is stored on this device**:
-`aae.intro.seen` in session storage (the full sequence has played in this tab) and `aae.intro.skip`
-in local storage (the time Skip introduction was last pressed). Every read and write is wrapped in
-`try`/`catch`, so a private window that refuses storage simply sees the full sequence.
+**What it stores.** Nothing: no storage is read or written, so a skip is not remembered either and the
+next full load plays again. The page records the navigation type, the route, the mode and the result
+in `window.__INTRO`.
 
 **Skip and reduced motion.**
 - **Skip introduction**, in the bottom right corner, is a real button and the first stop for the
   keyboard. Enter or a click on it, or Escape anywhere, starts the exit within one frame (a 180 ms
-  fade) and remembers the choice. Stray clicks, scrolls and other keys do not skip.
-- The overlay is a status with the accessible name "Arjun Agrawal · Economics. Think like an
-  economist."; its decorative layers are hidden from assistive technology, and nothing behind it is
-  ever made inert.
-- Reduced motion shows the whole identity at once and leaves after 1.5 s.
+  fade). Stray clicks, scrolls and other keys do not skip.
+- The overlay is a status named for both pathways ("Arjun Agrawal | Economics. One discipline, two
+  pathways: IB DP Economics and UPSC CSE Economics."); every decorative layer is hidden from assistive
+  technology, and nothing behind it is ever made inert.
+- Reduced motion shows the identity, the line and both pathways at once and leaves after 1.5 s.
 
 `tests/intro.mjs` measures the timing at 360, 390, 768, 1024, 1440 and 1920 px from the record the
 page keeps in `window.__INTRO`; checks where every stage sits at its moment (on screen, clear of
-Skip, fully visible); walks the state model (a deep link, the first load of a session, a reload, a
-hard reload, a direct address, navigation inside the app, Back from another site, a new tab, a
-remembered and an expired skip, `?intro=1`, refused storage, reduced motion); presses Skip by
-keyboard and Escape; checks for horizontal scroll at 320 px in every state; and, with the processor
-slowed four times, reads the compositor's own frames (a screencast) to confirm that the stages land on
-time: the progress hairline is itself a linear animation, so its length in each frame says which
-moment of the sequence the frame shows. When the machine is too busy for the page to be ready by
-4.58 s, the timing rows check the hold instead and say so.
+Skip, fully visible); checks what the overlay says and how it is announced; walks the state model (a
+shared link, the home page, a reload, a hard reload, direct addresses, navigation inside the app, Back
+and Forward from another site, a new tab, refused storage, `?intro=1`, reduced motion) and confirms
+that nothing is stored; presses Skip by keyboard, mouse and Escape; checks for horizontal scroll at
+320 px in every state; and, with the processor slowed four times, reads the compositor's own frames (a
+screencast) to confirm that the stages land on time: the progress bar is itself a linear animation, so
+its length in each frame says which moment of the sequence the frame shows. When the machine is too
+busy for the page to be ready in time, the timing rows check the hold instead and say so.
 
 ## Installable, and honest about offline
 
@@ -1584,9 +1567,7 @@ platform is sent with it. An assignment link carries the chosen items and nothin
 teacher can set work without a server and without anything about a student leaving their device.
 The service worker caches this platform's own files and leaves every other origin alone.
 
-The opening sequence keeps two notes of its own and nothing else: `aae.intro.seen` in session
-storage, so the full five seconds play once a visit, and `aae.intro.skip` in local storage, the time
-Skip introduction was last pressed, so for thirty days the home page shows a brief card instead.
+The opening sequence stores nothing at all.
 
 ## Run it locally
 

@@ -44,6 +44,11 @@ import json, math, pathlib, re
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 P = ROOT / 'index.html'
 s = P.read_text(encoding='utf-8')
+if 'data-opening="2026-11-19"' in s:
+    # superseded: tools/migrations/2026-11-19-opening-two-pathways.py replaced this opening with the
+    # two-pathway one; running this again must not bring the world-map opening back
+    print('applied: nothing (superseded by 2026-11-19-opening-two-pathways.py)')
+    raise SystemExit(0)
 MAP = json.loads((ROOT / 'tools' / 'build' / 'opening-worldmap.json').read_text(encoding='utf-8'))
 TYPE = json.loads((ROOT / 'tools' / 'build' / 'opening-type.json').read_text(encoding='utf-8'))
 done = []

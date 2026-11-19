@@ -195,6 +195,22 @@ function fxAcross(){
  </div></section>`;
 }
 
+/* ── beyond Economics: The Business Brief ──────────────────────────────────
+   An editorial panel for the same educator's IB DP Business Management
+   platform. It is unnumbered and carries no pathway colour, because it is the
+   wider academic ecosystem, not a third pathway. Its own screenshots are not
+   shown: they could not be taken, so the panel is typographic, with a small
+   drawn mark. The copy is the owner's brief, nothing added. */
+function fxBusinessBrief(){
+ return `<section class="fx-section fx-bb" aria-labelledby="bb-h"><div class="fx-wrap bb-in rv">
+  <div class="bb-mark" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><path d="M14 100H110"/><rect x="18" y="64" width="16" height="36"/><rect x="42" y="48" width="16" height="52"/><rect x="66" y="34" width="16" height="66"/><rect x="90" y="20" width="16" height="80"/><path class="t" d="M20 58L50 42L74 30L102 14"/></svg></div>
+  <div class="bb-copy"><p class="fx-kicker bb-k">From the same educator</p>
+   <h2 class="fx-h2" id="bb-h">Beyond Economics. Explore Business Management.</h2>
+   <p class="fx-lede">Discover ${esc(FX_BB.name)}, an interactive learning platform for ${esc(FX_BB.subject)}.</p></div>
+  <div class="bb-act">${fxBBLink("fx-btn bb-btn","Explore The Business Brief")}<span class="bb-url">the-business-brief-dun.vercel.app</span></div>
+ </div></section>`;
+}
+
 /* ── 8 · about ──────────────────────────────────────────────────────────── */
 function fxAboutBand(){
  let facts=[];try{facts=CV_AUTHOR}catch(e){}
@@ -245,7 +261,7 @@ function fxContactPaths(){
 VIEWS.home=function(){
  /* a teacher's assignment link (#assign=…) opens on the home page, so its banner leads it, as before */
  let asn="";try{if(typeof assignBanner==="function")asn=assignBanner()}catch(e){asn=""}
- return `${asn}<div class="fxhome">${fxHero()}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxAboutBand()}${fxContactBand()}</div>`;
+ return `${asn}<div class="fxhome">${fxHero()}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxBusinessBrief()}${fxAboutBand()}${fxContactBand()}</div>`;
 };
 
 /* ── the IB DP landing's opening ────────────────────────────────────────── */

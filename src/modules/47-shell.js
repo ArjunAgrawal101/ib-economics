@@ -177,7 +177,8 @@ function fxPaintShell(){
   const pathBtn=(k,lab)=>`<span class="gn-path gn-${k}${path===k?" on":""}"><a class="fx-a" href="${FXI.paths[k].home}"${cur(k)}>${lab}</a><button type="button" class="gn-dd" aria-expanded="false" aria-controls="fxpanel" data-label="${esA(lab)} menu" aria-label="${esA(lab)}: show the sections" onclick="fxTogglePanel('${k}',this,event)"><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button></span>`;
   g.innerHTML=`<a class="gn-item${VIEW==="home"?" on":""}" href="#/"${VIEW==="home"?' aria-current="page"':""}>Home</a>
    <span class="gn-pair" role="group" aria-label="Pathways">${pathBtn("ib","IB DP Economics")}${pathBtn("upsc","UPSC CSE Economics")}</span>
-   <a class="gn-item${VIEW==="about"?" on":""}" href="#/about"${VIEW==="about"?' aria-current="page"':""}>About</a>`;
+   <a class="gn-item${VIEW==="about"?" on":""}" href="#/about"${VIEW==="about"?' aria-current="page"':""}>About</a>
+   ${fxBBLink("gn-bb")}`;
  }
  const c=document.getElementById("ctxbar");
  if(c){
@@ -214,7 +215,8 @@ function fxDrawerHtml(){
   <div class="dw-sec p-ib"><div class="dw-k">Pathway 01</div><a class="dw-main" href="#/ib"${VIEW==="ib"?' aria-current="page"':""}>IB DP Economics</a>${ib}
    <details class="dw-g"><summary>Your progress</summary><div class="dw-l">${prog}</div></details></div>
   <div class="dw-sec p-up"><div class="dw-k">Pathway 02</div><a class="dw-main" href="#/upsc"${VIEW==="upsc"&&TAB===0?' aria-current="page"':""}>UPSC CSE Economics</a><div class="dw-l flat">${up}</div></div>
-  <div class="dw-sec"><a class="dw-main" href="#/about"${VIEW==="about"?' aria-current="page"':""}>About</a><a class="dw-main" href="#/contact"${VIEW==="contact"?' aria-current="page"':""}>Contact</a></div>`;
+  <div class="dw-sec"><a class="dw-main" href="#/about"${VIEW==="about"?' aria-current="page"':""}>About</a><a class="dw-main" href="#/contact"${VIEW==="contact"?' aria-current="page"':""}>Contact</a></div>
+  <div class="dw-sec dw-bb"><div class="dw-k">Beyond Economics</div>${fxBBLink("dw-main dw-ext")}<p class="dw-note">${esc(FX_BB.subject)}</p></div>`;
 }
 function fxMobileDrawer(){
  if(document.getElementById("mob"))return closeMenu();
