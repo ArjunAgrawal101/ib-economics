@@ -36,7 +36,11 @@ const text = u => decodeURIComponent(new URL(u).searchParams.get('text') || '');
   check(!/Platinum[^"'`]*\.(pdf|docx)/i.test(html) && !/handbooks?\/[^"'`]*\.(pdf|docx)/i.test(html), 'the page names no handbook file');
   const dir = path.join(ROOT, 'assets/upsc/handbooks');
   const imgs = fs.readdirSync(dir).flatMap(d => fs.readdirSync(path.join(dir, d)).map(f => d + '/' + f));
-  check(imgs.length >= 11 && imgs.every(f => /\.webp$/.test(f)) && imgs.every(f => fs.statSync(path.join(dir, f)).size <= 120000), `the handbook previews are small WebP images (${imgs.length})`);
+  /* the budget of tools/upsc/README.md: readable pages (1400 to 1600 px), small thumbnails and covers, about 20 MB in all;
+     a page at print quality, or the volume itself, would be far larger */
+  const sz = f => fs.statSync(path.join(dir, f)).size, total = imgs.reduce((a, f) => a + sz(f), 0);
+  check(imgs.length >= 11 && imgs.every(f => /\.webp$/.test(f)) && imgs.every(f => sz(f) <= (/^.+\/page-\d\d\.webp$/.test(f) ? 300000 : 60000)) && total <= 20 * 1024 * 1024,
+    `the handbook previews are small WebP images (${imgs.length}, ${(total / 1048576).toFixed(2)} MB; pages at most 300 KB, thumbnails and covers at most 60 KB, 20 MB in all)`);
   for (const u of ['assets/upsc/handbooks/volume-iii/volume-iii.pdf', 'assets/upsc/volume-i.pdf', 'content/upsc/handbooks.pdf']) {
     const r = await fetch(base + u); check(r.status === 404, `${u} is not served`);
   }
