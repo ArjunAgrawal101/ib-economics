@@ -505,7 +505,7 @@ body[data-sec="home"] footer.ft{margin-top:0}
 /* the drawer */
 .fxdrawer .dw-bb .dw-ext{display:inline-flex;align-items:baseline;gap:6px}
 .fxdrawer .dw-bb .fx-ext{font:400 16px/1 var(--fx-sans);color:var(--fx-gold-text)}
-.fxdrawer .dw-note{margin:0;font:400 13px/1.4 var(--fx-sans);color:var(--fx-text-3)}
+.fxdrawer .dw-note{margin:0;font:400 13px/1.4 var(--fx-sans);color:var(--fx-text-2)}
 /* the home: an editorial panel between the concepts and About */
 .fx-bb{background:var(--fx-ivory-2);border-top:1px solid var(--fx-line);border-bottom:1px solid var(--fx-line);padding:clamp(40px,5vw,64px) 0}
 .fx-bb .bb-in{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(20px,3vw,44px);align-items:center}
@@ -520,7 +520,7 @@ body[data-sec="home"] footer.ft{margin-top:0}
 .fx-bb .bb-btn{background:var(--fx-charcoal);color:#fff;border:1px solid var(--fx-charcoal)}
 .fx-bb .bb-btn:hover{background:var(--fx-ink)}
 .fx-bb .bb-btn .fx-ext{color:var(--fx-gold-l)}
-.fx-bb .bb-url{font:400 13.5px/1.4 var(--fx-sans);color:var(--fx-text-3)}
+.fx-bb .bb-url{font:400 13.5px/1.4 var(--fx-sans);color:var(--fx-text-2)}
 @media (max-width:860px){.fx-bb .bb-in{grid-template-columns:minmax(0,1fr)}.fx-bb .bb-mark{width:72px}}
 /* the footer: the two pathways with equal weight, then a quieter card */
 .ft-paths>.ft-eco-k{grid-column:1/-1;margin:0;color:rgba(255,255,255,.62)}
