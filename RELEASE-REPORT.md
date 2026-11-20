@@ -15,8 +15,10 @@ previous report (PR #14) is now `docs/releases/2026-11-19-reconcile-pr13-report.
 - **Navigation**: *The Indian Economy* and a *Resources* menu join the header, the drawer, the More menu and search;
   the header fits every width from 1181 px, on every page, with the exam timer idle or running.
 - **The ecosystem, About and the footer** in the final brief's words; **Back to top** on long pages.
-- **Nothing overlaps**: the overlap audit's findings on `main` (the fanned handbook covers, the hero's wave under the
-  pathway links) are resolved, at every audited width.
+- **Nothing overlaps**: the overlap audit, which failed on this branch's first full run (184 places where content
+  overlapped content and 148 where a figure ran under text, chiefly the fanned handbook covers and the hero's wave
+  under the pathway links), now finds none at any of the 570 route-widths it measures. (An audit of `main` on
+  19 November, before its last commit, had also failed: 75 and 123.)
 
 ## 2. The new home page
 
@@ -101,9 +103,59 @@ ecosystem."), the footer and About, always in a new tab with `rel="noopener nore
 
 ## 7. QA
 
-The final full run (`node tests/run-all.mjs`, 25 suites, on commit `efd8b6c`) is in progress; this section is
-completed with every suite's actual result when it ends. Passed so far, all checks in each: api-youtube, selftest
-(2,254 built-in checks in 31 areas, 0 failing), e2e, ecosystem, renaissance, cover, pwa.
+Every suite in `tests/` was run with Playwright (Chromium) and axe-core in this environment; the numbers are the
+checks each suite printed as passed. The full run (`run-all.mjs`, 25 suites) was cut short by a container restart
+after its eighth suite, so it was finished as a second run of the other seventeen; three suites were then rerun on
+their own after the fix below.
+
+| Suite | Checks passed | Failed | Run on |
+|---|---|---|---|
+| api-youtube | 21 | 0 | `efd8b6c` |
+| selftest (built-in self-tests) | 37 (2,254 built-in checks in 31 areas) | 0 | `efd8b6c` |
+| e2e | 22 | 0 | `efd8b6c` |
+| ecosystem | 30 | 0 | `efd8b6c` |
+| renaissance | 25 | 0 | `efd8b6c` |
+| cover | 35 | 0 | `efd8b6c` |
+| pwa | 4 | 0 | `efd8b6c` |
+| widths (15 widths, 320 to 2560 px, the book's two pages added) | 15 | 0 | `efd8b6c` |
+| overlap (570 route-widths, 177,504 elements measured) | 7 | 0 | `efd8b6c` |
+| routes | 2 | 0 | `efd8b6c` |
+| intro (the seven-second opening) | 100 | 0 | `efd8b6c` |
+| course | 39 | 0 | `efd8b6c` |
+| transform | 33 | 0 | `efd8b6c` |
+| events | 49 | 0 | `efd8b6c` |
+| tabs | 9 | 0 | `efd8b6c` |
+| notices | 4 | 0 | `efd8b6c` |
+| events-scroll | 26 | 0 | `efd8b6c` |
+| final | 18 | 0 | `efd8b6c` |
+| studio | 89 | 0 | `efd8b6c` |
+| upsc | 98 | 0 | `efd8b6c` (the drawer fix was built while it ran; upsc does not open the drawer) |
+| concepts | 54 | 0 | `9ad4720` |
+| flagship (axe included) | 50 | 0 | `9ad4720` |
+| book (axe at 1440 and 390 px included) | 51 | 0 | `9ad4720` |
+| **launch** | 58 | 0 | `9ad4720`, rerun on its own |
+| **library** | 112 | 0 | `9ad4720`, rerun on its own |
+| **selftest**, again | 37 (2,255 built-in checks) | 0 | `9ad4720`, rerun on its own |
+
+What failed on the way, and why:
+
+- **launch** failed on `efd8b6c` (33 checks passed, then it stopped): the drawer's new book section repeated the
+  whole Resources menu, so the drawer had two groups named Resources and two Resource hub links, and the test's
+  click on them was ambiguous. That was a real flaw for readers too, not only for the test. Fixed in `9ad4720`: the
+  book's section adds only what the drawer lacks (the book and the Digital Revision Companion), and a new built-in
+  check confirms the drawer repeats no link and no group name. The test was not changed; it passes (58 checks).
+- **library** failed one check in the long run: "only the current page is placed, and the next one is fetched in
+  advance", which allows 500 ms for the next page to be fetched after the current one loads. It ran while a second
+  browser suite was running alongside it and while the page was being rebuilt, both my doing. Run on its own on
+  `9ad4720` it passed in full (112 checks), as it did on the branch's first full run. The check was not changed.
+- The only code change after `efd8b6c` is the drawer fix (`src/modules/51-book.js` and the built `index.html`); of
+  the suites run on `efd8b6c`, only launch and flagship open the drawer, and both were run again after the fix.
+
+Also checked, outside the suites: no PDF of the book or the companion is tracked (the ten PDFs in the repository are
+the "Economics in 60 Seconds" carousels already on `main`); the preview is 22 WebP images, 2.4 MB; no key or token
+is in the diff; the only price added is the handbooks' existing ₹99; no test was removed or loosened (`intro.mjs`
+went from 48 to 50 checks with the new timings, `flagship.mjs` stays at 43 with ten features in place of eight, the
+built-in self-tests from 1,115 declarations to 1,144).
 
 ## 8. Remaining limitations
 
@@ -137,6 +189,11 @@ Moved: `RELEASE-REPORT.md` (PR #14) to `docs/releases/2026-11-19-reconcile-pr13-
 
 ## 10. Commits, branch, preview, merge
 
-Branch `claude/upbeat-hawking-69d7gz`; pull request [#15](https://github.com/ArjunAgrawal101/ib-economics/pull/15);
-Vercel preview https://ib-economics-git-claude-upbeat-hawking-69d7gz-arjun-98c6.vercel.app. **Not merged into
-`main`.** Commits on this branch since `main` (`aa8c506`): `c2c01b2`, `c1d5bad`, `728f542`, `efd8b6c`, and this report.
+- Branch: `claude/upbeat-hawking-69d7gz`, from `main` at `aa8c506`.
+- Commits: `c2c01b2` (the book, the opening, the hero), `c1d5bad` (fixes from the first full run, Back to top,
+  documentation), `728f542` (nothing drawn over anything), `efd8b6c` (the UPSC card's covers), `34e3964` (this
+  report, first draft), `9ad4720` (the drawer fix), and the commit that completes this report.
+- Pull request: [#15](https://github.com/ArjunAgrawal101/ib-economics/pull/15).
+- Vercel preview: https://ib-economics-git-claude-upbeat-hawking-69d7gz-arjun-98c6.vercel.app (built by Vercel
+  for this branch; it could not be opened from this environment).
+- **Not merged into `main`.** The owner reviews the preview and merges.
