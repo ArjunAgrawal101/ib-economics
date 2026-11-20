@@ -20,7 +20,7 @@
 .bk-h3{font:600 15px/1.3 var(--fx-sans);letter-spacing:.02em;margin:0 0 12px;color:var(--fx-text)}
 .bk-p{font:400 17px/1.7 var(--fx-serif);color:var(--fx-text-2);max-width:66ch;margin:14px 0 0}
 .bk-gold{color:var(--bk-gold)!important}
-.bk-mini-k{font:600 11px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--fx-text-3);margin:0 0 14px}
+.bk-mini-k{font:600 11px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--fx-text-2);margin:0 0 14px}
 .bk-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px;margin:28px 0 0}
 .fx-btn.sm{min-height:40px;padding:0 16px;font-size:13px}
 .fx-btn .hl-ic{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6}
@@ -66,10 +66,10 @@
 .bk-thumbs img{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--fx-line);box-shadow:var(--fx-shadow-2);transition:transform var(--fx-t2) var(--fx-ease),box-shadow var(--fx-t2) var(--fx-ease)}
 .bk-thumbs button:hover img,.bk-thumbs button:focus-visible img{transform:translateY(-4px);box-shadow:var(--fx-shadow-3)}
 .bk-thumbs button:focus-visible{outline:2px solid var(--bk-gold);outline-offset:4px}
-.bk-thumbs span{font:600 11.5px/1.35 var(--fx-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--fx-text-3)}
+.bk-thumbs span{font:600 11.5px/1.35 var(--fx-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--fx-text-2)}
 .bk-home-map{margin-top:clamp(36px,5vw,60px)}
 .bk-scope{font:400 15px/1.6 var(--fx-serif);color:var(--fx-text-2);max-width:78ch;margin:22px 0 0}
-.bk-scope.sm{font-size:14px;color:var(--fx-text-3)}
+.bk-scope.sm{font-size:14px;color:var(--fx-text-2)}
 @media (max-width:900px){.bk-home-g{grid-template-columns:1fr}.bk-home-v{padding:8px 0 24px}.bk-points{grid-template-columns:1fr}}
 @media (max-width:640px){.bk-thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
@@ -204,10 +204,18 @@
 /* the header holds seven destinations from 1181 px: the spacing tightens, the long labels shorten with the width,
    and every shortened label keeps its full name for screen readers */
 .top .in>.gnav{gap:clamp(8px,1.1vw,24px)}
-@media (max-width:1699px){.gn-book-tag{display:none}}
+@media (max-width:1799px){.gn-book-tag{display:none}}
 @media (max-width:1599px){.gnav .gn-eco-a{display:none}}
 @media (min-width:1600px) and (max-width:1699px){.top:has(#tmr.run) .gnav .gn-eco-a{display:none}}
 @media (max-width:1439px){.gnav a,.gnav button{letter-spacing:.08em}.gnav .gn-path a{padding:0 8px 0 11px}}
 @media (max-width:1359px){.gnav .gn-x{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0}}
 .bk-pn{text-transform:none;letter-spacing:.02em}
 .hl-vw-strip span{white-space:nowrap}
+/* on IB DP pages the header also carries the calculator, the exam timer, SL/HL and the profile, about 300 px more:
+   the IB DP context bar has its own Resources menu, so the global one steps aside there; the pathways read
+   "IB DP" and "UPSC CSE" below 1800 px; and between 1181 and 1279 px the book's link steps aside too (it stays in
+   the footer, search and the home page). Measured with the timer idle and running. */
+body[data-pathway="ib"] .gnav .gn-res{display:none}
+@media (max-width:1799px){body[data-pathway="ib"] .gnav .gn-x{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0}}
+@media (max-width:1279px){body[data-pathway="ib"] .gnav .gn-book{display:none}}
+@media (max-width:1359px){body[data-pathway="ib"] .top:has(#tmr.run) .gnav .gn-book{display:none}}

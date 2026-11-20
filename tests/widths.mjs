@@ -6,7 +6,7 @@ import { serve, browser, open, check, done } from './lib.mjs';
 const { srv, base } = await serve();
 const b = await browser();
 const WIDTHS = [320, 360, 375, 390, 414, 430, 768, 834, 1024, 1280, 1366, 1440, 1600, 1920, 2560];
-const ROUTES = ['', '#/course', '#/learn', '#/world', '#/mind', '#/lab/diagram-atlas', '#/practise', '#/examiner', '#/calculate', '#/tools',
+const ROUTES = ['', '#/book', '#/book/digital-revision-companion', '#/course', '#/learn', '#/world', '#/mind', '#/lab/diagram-atlas', '#/practise', '#/examiner', '#/calculate', '#/tools',
   '#/everywhere', '#/everywhere/big-questions', '#/everywhere/big-questions/q-flights', '#/everywhere/big-questions/q-unemployment',
   '#/everywhere/in-real-life/r-surge', '#/everywhere/one-idea/i-externality', '#/everywhere/labs/trade', '#/everywhere/labs/adas',
   '#/everywhere/labs/game', '#/everywhere/economist-s-eye', '#/everywhere/where-the-numbers-live',

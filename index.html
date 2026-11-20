@@ -5836,7 +5836,7 @@ dialog.hl-vw.is-fallback{display:block}
 .bk-h3{font:600 15px/1.3 var(--fx-sans);letter-spacing:.02em;margin:0 0 12px;color:var(--fx-text)}
 .bk-p{font:400 17px/1.7 var(--fx-serif);color:var(--fx-text-2);max-width:66ch;margin:14px 0 0}
 .bk-gold{color:var(--bk-gold)!important}
-.bk-mini-k{font:600 11px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--fx-text-3);margin:0 0 14px}
+.bk-mini-k{font:600 11px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--fx-text-2);margin:0 0 14px}
 .bk-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 14px;margin:28px 0 0}
 .fx-btn.sm{min-height:40px;padding:0 16px;font-size:13px}
 .fx-btn .hl-ic{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6}
@@ -5882,10 +5882,10 @@ dialog.hl-vw.is-fallback{display:block}
 .bk-thumbs img{display:block;width:100%;height:auto;background:#fff;border:1px solid var(--fx-line);box-shadow:var(--fx-shadow-2);transition:transform var(--fx-t2) var(--fx-ease),box-shadow var(--fx-t2) var(--fx-ease)}
 .bk-thumbs button:hover img,.bk-thumbs button:focus-visible img{transform:translateY(-4px);box-shadow:var(--fx-shadow-3)}
 .bk-thumbs button:focus-visible{outline:2px solid var(--bk-gold);outline-offset:4px}
-.bk-thumbs span{font:600 11.5px/1.35 var(--fx-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--fx-text-3)}
+.bk-thumbs span{font:600 11.5px/1.35 var(--fx-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--fx-text-2)}
 .bk-home-map{margin-top:clamp(36px,5vw,60px)}
 .bk-scope{font:400 15px/1.6 var(--fx-serif);color:var(--fx-text-2);max-width:78ch;margin:22px 0 0}
-.bk-scope.sm{font-size:14px;color:var(--fx-text-3)}
+.bk-scope.sm{font-size:14px;color:var(--fx-text-2)}
 @media (max-width:900px){.bk-home-g{grid-template-columns:1fr}.bk-home-v{padding:8px 0 24px}.bk-points{grid-template-columns:1fr}}
 @media (max-width:640px){.bk-thumbs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
@@ -6020,13 +6020,21 @@ dialog.hl-vw.is-fallback{display:block}
 /* the header holds seven destinations from 1181 px: the spacing tightens, the long labels shorten with the width,
    and every shortened label keeps its full name for screen readers */
 .top .in>.gnav{gap:clamp(8px,1.1vw,24px)}
-@media (max-width:1699px){.gn-book-tag{display:none}}
+@media (max-width:1799px){.gn-book-tag{display:none}}
 @media (max-width:1599px){.gnav .gn-eco-a{display:none}}
 @media (min-width:1600px) and (max-width:1699px){.top:has(#tmr.run) .gnav .gn-eco-a{display:none}}
 @media (max-width:1439px){.gnav a,.gnav button{letter-spacing:.08em}.gnav .gn-path a{padding:0 8px 0 11px}}
 @media (max-width:1359px){.gnav .gn-x{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0}}
 .bk-pn{text-transform:none;letter-spacing:.02em}
 .hl-vw-strip span{white-space:nowrap}
+/* on IB DP pages the header also carries the calculator, the exam timer, SL/HL and the profile, about 300 px more:
+   the IB DP context bar has its own Resources menu, so the global one steps aside there; the pathways read
+   "IB DP" and "UPSC CSE" below 1800 px; and between 1181 and 1279 px the book's link steps aside too (it stays in
+   the footer, search and the home page). Measured with the timer idle and running. */
+body[data-pathway="ib"] .gnav .gn-res{display:none}
+@media (max-width:1799px){body[data-pathway="ib"] .gnav .gn-x{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0}}
+@media (max-width:1279px){body[data-pathway="ib"] .gnav .gn-book{display:none}}
+@media (max-width:1359px){body[data-pathway="ib"] .top:has(#tmr.run) .gnav .gn-book{display:none}}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    THE FINAL FLAGSHIP · the hero with its portrait, the pathways' positioning,
@@ -6108,7 +6116,7 @@ dialog.hl-vw.is-fallback{display:block}
 .cnx-book .eq-a a{font:600 13px/1.4 var(--fx-sans);color:var(--fx-text);text-decoration:underline;text-underline-offset:3px}
 
 /* ── the footer: the book, the website and the closing line ── */
-.ft-final{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);padding:28px 0 6px;margin-top:28px;border-top:1px solid var(--line,rgba(0,0,0,.1))}
+.ft-final{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);padding-top:28px;padding-bottom:6px;margin-top:28px;border-top:1px solid var(--line,rgba(0,0,0,.1))}
 .ft-final .ft-close{font:italic 400 clamp(19px,1.6vw,23px)/1.35 var(--fx-display);margin:0}
 .ft-final .ft-pos{font:400 14.5px/1.6 var(--fx-serif);opacity:.8;margin:10px 0 0;max-width:46ch}
 .ft-final h2{font:600 11px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;margin:0 0 10px;opacity:.75}
@@ -6131,6 +6139,33 @@ dialog.hl-vw.is-fallback{display:block}
 /* ── the footer: The Indian Economy beside the pathways ── */
 .ft-path.p-bk{border-style:solid;border-color:rgba(201,168,102,.5)}
 .ft-path.p-bk .ft-pn{color:var(--fx-gold-text,#7A5E26)}
+
+/* ── back to the top ── */
+.fx-top{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:60;display:inline-flex;align-items:center;gap:8px;
+ min-height:44px;padding:0 16px;border:1px solid var(--fx-line-2);border-radius:999px;background:rgba(251,249,244,.94);color:var(--fx-text);
+ font:600 12px/1 var(--fx-sans);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;box-shadow:var(--fx-shadow-2);backdrop-filter:blur(4px)}
+.fx-top[hidden]{display:none}
+.fx-top svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fx-top:hover{border-color:var(--fx-text)}
+.fx-top:focus-visible{outline:2px solid var(--fx-gold);outline-offset:3px}
+@media (prefers-reduced-motion:no-preference){.fx-top{animation:fx-top-in .26s var(--fx-ease)}}
+@keyframes fx-top-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media print{.fx-top{display:none!important}}
+
+/* ── nothing drawn over anything on a phone or a tablet (the overlap audit, 320 to 834 px) ──
+   The fanned handbook covers in the UPSC pathway card stand side by side, the decorative wave behind the
+   hero gives way to the pathway cards' links, and the live AD-AS card sits below the portrait rather
+   than over it. Above 834 px the editorial layering stays as it was. */
+@media (max-width:834px){
+ .pc-shelf{display:flex;align-items:flex-end;gap:8px;aspect-ratio:auto;max-width:360px}
+ .pc-book,.pc-book.b0,.pc-book.b1,.pc-book.b2,.pc-book.b3{position:static;width:calc((100% - 24px)/4);transform:none}
+ .pc-shelf:hover .pc-book.b0,.pc-shelf:hover .pc-book.b3{transform:none}
+ .hx-wave{display:none}
+}
+@media (max-width:900px){
+ .hx2-card,.hx2-card{position:static;left:auto;right:auto;bottom:auto;width:auto;margin-top:16px;grid-template-columns:150px minmax(0,1fr);align-items:center;gap:14px}
+ .hx2-plate::before{display:none}
+}
 
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
@@ -32045,7 +32080,7 @@ function SPLASHSUITE(){
  T("Opening · keyframes are in time order inside each stage's window",
    PL.every(p=>p[3].every(([t],n,a)=>t>=p[1]&&t<=p[2]&&(n===0||t>a[n-1][0]))));
  T("Opening · the overlay reads demand, supply, AD-AS, the network, then the monogram, the name, Economics · Politics · Business and Think like an economist.",
-   (()=>{const m=/<div id="splash"[\s\S]*?<\/button><\/div>/.exec(html);if(!m)return true;const b=m[0].replace(/aria-label="[^"]*"/g,"");
+   (()=>{const m=sp?[sp.outerHTML]:null;if(!m)return true;const b=m[0].replace(/aria-label="[^"]*"/g,"");
      const o=['class="if-w if-wd"','class="if-w if-ws"','class="if-grp if-mac"','class="if if-net"','class="ia-mk"','class="ia-wm"',">Economics<",">Politics<",">Business<","Think like an economist."].map(x=>b.indexOf(x));
      return o.every((x,k)=>x>=0&&(k===0||x>o[k-1]))&&!/One discipline\.|class="ia-tl"/.test(b)})());
  T("Opening · the figures are economically exact: demand falls and supply rises to one equilibrium; AD shifts along SRAS and the equilibrium stays on both",
@@ -32060,7 +32095,7 @@ function SPLASHSUITE(){
       &&!!ad&&ad.getAttribute("d")==="M90 110L330 350"&&!!lr&&lr.getAttribute("d")==="M270 50V350"
       &&/Concepts/i.test(sp.textContent)&&/Evidence/i.test(sp.textContent)&&/Policy/i.test(sp.textContent)&&/Outcomes/i.test(sp.textContent)})());
  T("Opening · the name is carried by the brand vectors, never set again in type",
-   (()=>{const m=/<div id="splash"[\s\S]*?<\/button><\/div>/.exec(html);if(!m)return true;
+   (()=>{const m=sp?[sp.outerHTML]:null;if(!m)return true;
      return (m[0].replace(/aria-label="[^"]*"/g,"").replace(/<!--[\s\S]*?-->/g,"").match(/Arjun\s+Agrawal/gi)||[]).length===0})());
  T("Opening · the overlay is a status named for the identity and its line, and every decorative layer is hidden from assistive technology",
    !sp||(sp.getAttribute("role")==="status"&&sp.getAttribute("aria-label")==="Arjun Agrawal. Economics, Politics, Business. Think like an economist."
@@ -49645,6 +49680,56 @@ function BOOKSUITE(){
 }
 BOOKSUITE.suiteName="The Indian Economy";
 EXTRA_SUITES.push(BOOKSUITE);
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE FINAL FLAGSHIP · back to the top
+   Long pages (the home page, the book, the course, the handbook library) gain
+   one quiet control: after a reader has scrolled more than one and a half
+   screens, a "Back to top" button appears in the corner, and returns focus to
+   the page's heading when used. It is hidden while the opening plays and
+   whenever a dialogue or the drawer is open, scrolls instantly for reduced
+   motion, and stores nothing.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const FX_TOP={el:null,on:false,raf:0};
+function fxTopEl(){
+ if(FX_TOP.el&&FX_TOP.el.isConnected)return FX_TOP.el;
+ const b=document.createElement("button");
+ b.type="button";b.id="fx-top";b.className="fx-top";b.setAttribute("aria-label","Back to top");b.hidden=true;
+ b.innerHTML=`<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 16V4M4.5 9.5 10 4l5.5 5.5"/></svg><span>Top</span>`;
+ b.addEventListener("click",()=>{
+  let reduce=false;try{reduce=matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+  try{window.scrollTo({top:0,behavior:reduce?"auto":"smooth"})}catch(e){window.scrollTo(0,0)}
+  const h=document.querySelector("#view h1");
+  if(h){if(!h.hasAttribute("tabindex"))h.setAttribute("tabindex","-1");try{h.focus({preventScroll:true})}catch(e){}}
+ });
+ /* inside main, after the view (which is repainted on every render): the page keeps its few top-level children */
+ (document.getElementById("main")||document.body).appendChild(b);FX_TOP.el=b;return b;
+}
+function fxTopPaint(){
+ FX_TOP.raf=0;
+ const b=fxTopEl();
+ const busy=!!document.getElementById("splash")||!!document.querySelector("dialog[open]")||!!document.getElementById("mob");
+ const show=!busy&&window.scrollY>window.innerHeight*1.5;
+ if(show!==FX_TOP.on){FX_TOP.on=show;b.hidden=!show}
+}
+(function(){
+ if(typeof window==="undefined"||typeof document==="undefined")return;
+ const go=()=>{try{fxTopEl();fxTopPaint()}catch(e){}
+  window.addEventListener("scroll",()=>{if(!FX_TOP.raf)FX_TOP.raf=requestAnimationFrame(fxTopPaint)},{passive:true});
+  window.addEventListener("resize",()=>{if(!FX_TOP.raf)FX_TOP.raf=requestAnimationFrame(fxTopPaint)},{passive:true});
+  document.addEventListener("intro:done",()=>{try{fxTopPaint()}catch(e){}})};
+ /* the platform's script runs at the end of the body, so the button exists before the start-up self-test */
+ if(document.body)go();else document.addEventListener("DOMContentLoaded",go);
+})();
+function FXTOPSUITE(){
+ const out=[];const T=(n,f)=>{let ok=false,det="";try{const r=f();ok=r===true||(r&&r.ok===true);if(r&&r.d)det=r.d}catch(e){det=e.message}out.push({n,ok:!!ok,detail:det})};
+ T("Back to top · one labelled button, a real button, hidden at the top of a page",()=>{const b=document.getElementById("fx-top");
+  return !!b&&b.tagName==="BUTTON"&&b.type==="button"&&b.getAttribute("aria-label")==="Back to top"&&(window.scrollY>innerHeight*1.5||b.hidden)});
+ T("Back to top · it stays hidden while the opening plays or a dialogue is open",()=>/getElementById\("splash"\)/.test(String(fxTopPaint))&&/dialog\[open\]/.test(String(fxTopPaint)));
+ return out;
+}
+FXTOPSUITE.suiteName="Back to top";
+EXTRA_SUITES.push(FXTOPSUITE);
 
 /* ▓▓ RENAISSANCE:END ▓▓ */
 /* ═══════════════════════════════════════════════════════════════════════════

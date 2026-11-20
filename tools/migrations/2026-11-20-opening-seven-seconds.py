@@ -277,7 +277,7 @@ rep('''T("Opening · the stages read monogram, name, the two pathways, then one 
        &&b.indexOf('class="ia-tl"')<b.indexOf("IB DP Economics")&&b.indexOf("IB DP Economics")<b.indexOf("UPSC CSE Economics")
        &&b.indexOf("UPSC CSE Economics")<b.indexOf("One discipline.")&&b.indexOf("One discipline.")<b.indexOf("Two pathways.")})());''',
     '''T("Opening · the overlay reads demand, supply, AD-AS, the network, then the monogram, the name, Economics · Politics · Business and Think like an economist.",
-   (()=>{const m=/<div id="splash"[\\s\\S]*?<\\/button><\\/div>/.exec(html);if(!m)return true;const b=m[0].replace(/aria-label="[^"]*"/g,"");
+   (()=>{const m=sp?[sp.outerHTML]:null;if(!m)return true;const b=m[0].replace(/aria-label="[^"]*"/g,"");
      const o=['class="if-w if-wd"','class="if-w if-ws"','class="if-grp if-mac"','class="if if-net"','class="ia-mk"','class="ia-wm"',">Economics<",">Politics<",">Business<","Think like an economist."].map(x=>b.indexOf(x));
      return o.every((x,k)=>x>=0&&(k===0||x>o[k-1]))&&!/One discipline\\.|class="ia-tl"/.test(b)})());''', 'test: order')
 rep('''T("Opening · both pathways in their own colours: IB DP Economics in burgundy, UPSC CSE Economics in forest green",
@@ -298,6 +298,16 @@ rep('''T("Opening · the overlay is a status named for both pathways, and every 
    !sp||(sp.getAttribute("role")==="status"&&/IB DP Economics/.test(sp.getAttribute("aria-label")||"")&&/UPSC CSE Economics/.test(sp.getAttribute("aria-label")||"")''',
     '''T("Opening · the overlay is a status named for the identity and its line, and every decorative layer is hidden from assistive technology",
    !sp||(sp.getAttribute("role")==="status"&&sp.getAttribute("aria-label")==="Arjun Agrawal. Economics, Politics, Business. Think like an economist."''', 'test: status')
+
+# the overlay is read from the live element, never by searching the page's text: after the overlay has
+# gone (a later run of the suite, such as the link audit), a search for its opening tag finds this suite's
+# own source instead, and reads whatever follows it
+OLDM = 'const m=/<div id="splash"[\\s\\S]*?<\\/button><\\/div>/.exec(html);if(!m)return true;'
+NEWM = 'const m=sp?[sp.outerHTML]:null;if(!m)return true;'
+if OLDM in s:
+    assert s.count(OLDM) in (1, 2), f'live overlay: anchor found {s.count(OLDM)} times'
+    s = s.replace(OLDM, NEWM)
+    done.append('tests read the live overlay')
 
 # ═══ 3 · the platform side, the quality report and the feature list ════════
 rep('const SPLASH_MS=5000;', 'const SPLASH_MS=7000;', 'SPLASH_MS')
