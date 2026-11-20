@@ -84,6 +84,14 @@ function abStory(){return `<section class="sec ab-story" aria-labelledby="ab-s">
   <div class="cols2 abs-doors mt4">${ABOUT2.teaches.map(([n,d,go])=>`<button class="sp-room" onclick="${go}"><span class="sp-t">${esc(n)}</span><span class="sp-d">${esc(d)}</span></button>`).join("")}</div>
  </div></section>`}
 
+/* the academic ecosystem: the three platforms, from the shared list in 44-flagship-core.js */
+function abEcosystem(){if(typeof fxEcoCard!=="function")return "";
+ return `<section class="sec ab-eco fx-eco" aria-labelledby="ab-e"><div class="wrap full">
+  <div class="rn-chap"><span class="ch-n">06</span><span class="ch-t" id="ab-e">The academic ecosystem</span></div>
+  <p class="ed mt3" style="max-width:66ch">Economics is one of three independent platforms I have created, each with its own subject, examinations and design: Economics, The Business Brief for IB DP Business Management, and Political Studies &amp; Global Affairs.</p>
+  <ol class="eco-grid mt4">${FX_ECO.map(fxEcoCard).join("")}</ol>
+ </div></section>`}
+
 function abLonger(){const A=ABOUT,B=ABOUT2;
  return `<section class="sec t ab-longer"><div class="wrap full">
   <details class="ab-more"><summary><span class="ch-t">The longer version</span><span class="xs">The full statement, the four positions, the portfolio and the method</span></summary>
@@ -105,4 +113,4 @@ function abClose(){const A=ABOUT;return `<section class="sec rn-final bg-ink ab-
    <button class="btn lg gh on-ink" onclick="nav('learn')">Start learning</button></div></div></section>`}
 
 (function(){if(typeof aboutPage!=="function")return;
- aboutPage=function(){return abCover()+abFacts()+abJourney()+abClassroom()+abPrinciples()+abStory()+abLonger()+abClose()+abLightboxMarkup()}})();
+ aboutPage=function(){return abCover()+abFacts()+abJourney()+abClassroom()+abPrinciples()+abStory()+abEcosystem()+abLonger()+abClose()+abLightboxMarkup()}})();

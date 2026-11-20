@@ -492,39 +492,78 @@ body[data-sec="home"] footer.ft{margin-top:0}
 /* ═══ About: the three-part positioning sits on one line where it fits ═════ */
 @media (min-width:760px){.ab-cover .ab-pos{grid-template-columns:repeat(3,minmax(0,max-content))}}
 
-/* ═══ The Business Brief · the wider academic ecosystem, not a third pathway ═══
-   The same educator's IB DP Business Management platform (FX_BB in 44-flagship-core.js;
-   docs/flagship/INTEGRATION-PR13.md). No pathway colour anywhere: ink, ivory and gold. */
-/* the header: a quiet external link, shown where the bar has room for it */
-.gnav .gn-bb{display:none;align-items:center;gap:5px;padding:10px 2px;font-size:11px;letter-spacing:.1em;color:var(--fx-text-2);border-bottom:1.5px solid transparent;white-space:nowrap}
-.gnav .gn-bb:hover{color:var(--fx-text);border-bottom-color:var(--fx-line-2)}
-.gnav .gn-bb .fx-ext{font-size:12px;letter-spacing:0;color:var(--fx-gold-text)}
-@media (min-width:1360px){.gnav .gn-bb{display:inline-flex}}
-/* the exam timer needs the room more: below 1600 px a running timer hides the link (the drawer, the home and the footer keep it) */
-@media (min-width:1360px) and (max-width:1599px){.top:has(#tmr.run) .gnav .gn-bb{display:none}}
+/* ═══ The Arjun Agrawal Academic Ecosystem · the wider ecosystem, not a third pathway ═══
+   Three independent platforms from the same educator (FX_ECO in 44-flagship-core.js): Economics, The
+   Business Brief (IB DP Business Management) and Political Studies & Global Affairs. The sisters carry
+   no pathway colour: each panel wears its own platform's colours, and this one is marked as current. */
+/* the header: the Academic Ecosystem menu, after About */
+.gnav .gn-eco{display:inline-flex;align-items:center;gap:6px;padding:10px 2px;font-size:11px;letter-spacing:.1em;color:var(--fx-text-2);border-bottom:1.5px solid transparent;white-space:nowrap}
+.gnav .gn-eco:hover,.gnav .gn-eco[aria-expanded="true"]{color:var(--fx-text);border-bottom-color:var(--fx-gold)}
+.gnav .gn-eco svg{color:var(--fx-text-3)}
+/* where the bar is narrower, or the exam timer runs, the label shortens to "Ecosystem"; its name stays "Academic Ecosystem" */
+@media (max-width:1359px){.gnav .gn-eco-a{display:none}}
+@media (min-width:1360px) and (max-width:1599px){.top:has(#tmr.run) .gnav .gn-eco-a{display:none}}
+/* the menu */
+.fxpanel .fxp-eco{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px}
+.fxpanel .fxe a{display:grid;grid-template-columns:48px minmax(0,1fr) auto;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--fx-line);border-radius:var(--fx-r1);text-decoration:none;color:var(--fx-text)}
+.fxpanel .fxe a:hover{border-color:var(--fx-line-2);background:var(--fx-ivory)}
+.fxpanel .fxe-mark svg{display:block;width:48px;height:36px;fill:none;stroke:currentColor;stroke-width:1.6}
+.fxpanel .fxe-mark svg .f{fill:currentColor;stroke:none}
+.fxpanel .fxe-t{display:grid;gap:4px;min-width:0}
+.fxpanel .fxe-t b{font:400 19px/1.15 var(--fx-display);font-weight:400}
+.fxpanel .fxe-t span{font:500 10.5px/1.5 var(--fx-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--fx-text-2)}
+.fxpanel .fxe .fx-ext{font:400 16px/1 var(--fx-sans);color:var(--fx-gold-text)}
+.fxpanel .fxe-here{font:600 10px/1 var(--fx-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--fx-gold-text);white-space:nowrap}
+.fxpanel .fxe.here a{border-color:var(--fx-gold);box-shadow:inset 3px 0 0 var(--fx-gold)}
+.fxpanel .fxe-eco .fxe-mark{color:var(--fx-charcoal)}
+.fxpanel .fxe-bb .fxe-mark{color:#13264A}
+.fxpanel .fxe-ps .fxe-mark{color:#713D4C}
 /* the drawer */
-.fxdrawer .dw-bb .dw-ext{display:inline-flex;align-items:baseline;gap:6px}
-.fxdrawer .dw-bb .fx-ext{font:400 16px/1 var(--fx-sans);color:var(--fx-gold-text)}
-.fxdrawer .dw-note{margin:0;font:400 13px/1.4 var(--fx-sans);color:var(--fx-text-2)}
-/* the home: an editorial panel between the concepts and About */
-.fx-bb{background:var(--fx-ivory-2);border-top:1px solid var(--fx-line);border-bottom:1px solid var(--fx-line);padding:clamp(40px,5vw,64px) 0}
-.fx-bb .bb-in{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(20px,3vw,44px);align-items:center}
-.fx-bb .bb-mark{width:clamp(72px,8vw,104px)}
-.fx-bb .bb-mark svg{display:block;width:100%;height:auto}
-.fx-bb .bb-mark rect,.fx-bb .bb-mark path{fill:none;stroke:var(--fx-charcoal);stroke-width:2}
-.fx-bb .bb-mark path.t{stroke:var(--fx-gold);stroke-dasharray:5 5}
-.fx-bb .bb-k{color:var(--fx-gold-text)}
-.fx-bb .fx-h2{margin-top:10px;text-wrap:balance}
-.fx-bb .fx-lede{margin-top:10px}
-.fx-bb .bb-act{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
-.fx-bb .bb-btn{background:var(--fx-charcoal);color:#fff;border:1px solid var(--fx-charcoal)}
-.fx-bb .bb-btn:hover{background:var(--fx-ink)}
-.fx-bb .bb-btn .fx-ext{color:var(--fx-gold-l)}
-.fx-bb .bb-url{font:400 13.5px/1.4 var(--fx-sans);color:var(--fx-text-2)}
-@media (max-width:860px){.fx-bb .bb-in{grid-template-columns:minmax(0,1fr)}.fx-bb .bb-mark{width:72px}}
-/* the footer: the two pathways with equal weight, then a quieter card */
+.fxdrawer .dw-ecol{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:6px}
+.fxdrawer .dw-eco .dw-ext{display:inline-flex;align-items:baseline;gap:6px}
+.fxdrawer .dw-eco .fx-ext{font:400 16px/1 var(--fx-sans);color:var(--fx-gold-text)}
+.fxdrawer .dw-here{margin-left:6px;font:600 10px/1 var(--fx-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--fx-gold-text);vertical-align:middle}
+.fxdrawer .dw-note{margin:0;font:400 12.5px/1.45 var(--fx-sans);color:var(--fx-text-2)}
+/* the home and About: three panels, each in its own platform's colours */
+.fx-eco{background:var(--fx-paper);border-top:1px solid var(--fx-line)}
+.fx-eco .eco-head{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(18px,4vw,64px);align-items:end}
+.fx-eco .eco-k{color:var(--fx-gold-text)}
+.fx-eco .fx-h2{margin-top:12px;text-wrap:balance}
+.eco-grid{list-style:none;margin:clamp(28px,4vw,52px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.8vw,24px);align-items:stretch}
+.eco-card{display:flex;flex-direction:column;padding:clamp(22px,2.4vw,32px);border-radius:var(--fx-r1);border:1px solid transparent}
+.eco-card .eco-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.eco-card .eco-sub{margin:0;font:600 11px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase}
+.eco-card .eco-mark svg{display:block;width:64px;height:48px;fill:none;stroke:currentColor;stroke-width:1.5}
+.eco-card .eco-mark svg .f{fill:currentColor;stroke:none}
+.eco-card .eco-name{margin:clamp(18px,2vw,26px) 0 0;font:400 clamp(26px,2.4vw,34px)/1.06 var(--fx-display);letter-spacing:-.01em;text-wrap:balance;color:inherit}
+.eco-card .eco-line{margin:12px 0 0;font:600 11px/1.6 var(--fx-sans);letter-spacing:.08em;text-transform:uppercase}
+.eco-card .eco-d{margin:12px 0 0;font:400 15.5px/1.6 var(--fx-serif)}
+.eco-card .eco-foot{margin-top:auto;padding-top:22px}
+.eco-card .eco-foot::before{content:"";display:block;height:1px;margin-bottom:16px;background:currentColor;opacity:.22}
+.eco-card .eco-go{display:inline-flex;align-items:baseline;gap:8px;min-height:44px;padding:10px 0;font:600 12px/1.7 var(--fx-sans);letter-spacing:.12em;text-transform:uppercase;color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.eco-card .eco-go:hover{text-decoration-thickness:2px}
+.eco-card .eco-go .fx-ext{font-size:14px;letter-spacing:0}
+.eco-card .eco-go:focus-visible,.eco-card .eco-paths a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.eco-card .eco-url{display:block;margin-top:2px;font:400 12.5px/1.4 var(--fx-mono)}
+.eco-card .eco-here{display:inline-block;font:600 11px/1 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase}
+.eco-card .eco-paths{display:flex;flex-wrap:wrap;gap:0 18px;margin-top:6px}
+.eco-card .eco-paths a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font:600 13.5px/1.2 var(--fx-sans);color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+/* Economics, this platform: charcoal and gold, marked as the current one */
+.eco-card.eco-eco{background:var(--fx-charcoal);color:var(--fx-on-dark);outline:2px solid var(--fx-gold);outline-offset:3px}
+.eco-card.eco-eco .eco-sub,.eco-card.eco-eco .eco-mark,.eco-card.eco-eco .eco-here{color:var(--fx-gold-l)}
+.eco-card.eco-eco .eco-line,.eco-card.eco-eco .eco-d{color:var(--fx-on-dark-2)}
+/* The Business Brief: its warm paper, navy ink and green */
+.eco-card.eco-bb{background:#F6F1E7;color:#13264A;border-color:rgba(19,38,74,.16)}
+.eco-card.eco-bb .eco-sub,.eco-card.eco-bb .eco-mark{color:#2B6A59}
+.eco-card.eco-bb .eco-line,.eco-card.eco-bb .eco-d,.eco-card.eco-bb .eco-url{color:rgba(19,38,74,.8)}
+/* Political Studies & Global Affairs: midnight, ivory, antique gold and a burgundy rule */
+.eco-card.eco-ps{background:#101D32;color:#F7F5EF;box-shadow:inset 0 3px 0 #713D4C}
+.eco-card.eco-ps .eco-sub,.eco-card.eco-ps .eco-mark{color:#C9AD6E}
+.eco-card.eco-ps .eco-line,.eco-card.eco-ps .eco-d,.eco-card.eco-ps .eco-url{color:rgba(247,245,239,.78)}
+@media (max-width:980px){.fx-eco .eco-head{grid-template-columns:minmax(0,1fr)}.eco-grid{grid-template-columns:minmax(0,1fr)}}
+/* the footer: the two pathways with equal weight, then the two sister platforms, quieter */
 .ft-paths>.ft-eco-k{grid-column:1/-1;margin:0;color:rgba(255,255,255,.62)}
-@media (min-width:981px){.ft-paths{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.8fr)}}
-@media (min-width:641px) and (max-width:980px){.ft-path.p-bb{grid-column:1/-1}}
-.ft-path.p-bb{box-shadow:none;border-style:dashed;border-color:rgba(255,255,255,.24)}
-.ft-path.p-bb b{font-size:21px}
+.ft-paths>.ft-eco-k .ft-here{color:var(--fx-gold-l)}
+@media (min-width:1181px){.ft-paths{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.86fr) minmax(0,.86fr)}}
+.ft-path.p-bb,.ft-path.p-ps{box-shadow:none;border-style:dashed;border-color:rgba(255,255,255,.24)}
+.ft-path.p-bb b,.ft-path.p-ps b{font-size:21px}

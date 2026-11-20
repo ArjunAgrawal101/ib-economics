@@ -4820,42 +4820,81 @@ body[data-sec="home"] footer.ft{margin-top:0}
 /* ═══ About: the three-part positioning sits on one line where it fits ═════ */
 @media (min-width:760px){.ab-cover .ab-pos{grid-template-columns:repeat(3,minmax(0,max-content))}}
 
-/* ═══ The Business Brief · the wider academic ecosystem, not a third pathway ═══
-   The same educator's IB DP Business Management platform (FX_BB in 44-flagship-core.js;
-   docs/flagship/INTEGRATION-PR13.md). No pathway colour anywhere: ink, ivory and gold. */
-/* the header: a quiet external link, shown where the bar has room for it */
-.gnav .gn-bb{display:none;align-items:center;gap:5px;padding:10px 2px;font-size:11px;letter-spacing:.1em;color:var(--fx-text-2);border-bottom:1.5px solid transparent;white-space:nowrap}
-.gnav .gn-bb:hover{color:var(--fx-text);border-bottom-color:var(--fx-line-2)}
-.gnav .gn-bb .fx-ext{font-size:12px;letter-spacing:0;color:var(--fx-gold-text)}
-@media (min-width:1360px){.gnav .gn-bb{display:inline-flex}}
-/* the exam timer needs the room more: below 1600 px a running timer hides the link (the drawer, the home and the footer keep it) */
-@media (min-width:1360px) and (max-width:1599px){.top:has(#tmr.run) .gnav .gn-bb{display:none}}
+/* ═══ The Arjun Agrawal Academic Ecosystem · the wider ecosystem, not a third pathway ═══
+   Three independent platforms from the same educator (FX_ECO in 44-flagship-core.js): Economics, The
+   Business Brief (IB DP Business Management) and Political Studies & Global Affairs. The sisters carry
+   no pathway colour: each panel wears its own platform's colours, and this one is marked as current. */
+/* the header: the Academic Ecosystem menu, after About */
+.gnav .gn-eco{display:inline-flex;align-items:center;gap:6px;padding:10px 2px;font-size:11px;letter-spacing:.1em;color:var(--fx-text-2);border-bottom:1.5px solid transparent;white-space:nowrap}
+.gnav .gn-eco:hover,.gnav .gn-eco[aria-expanded="true"]{color:var(--fx-text);border-bottom-color:var(--fx-gold)}
+.gnav .gn-eco svg{color:var(--fx-text-3)}
+/* where the bar is narrower, or the exam timer runs, the label shortens to "Ecosystem"; its name stays "Academic Ecosystem" */
+@media (max-width:1359px){.gnav .gn-eco-a{display:none}}
+@media (min-width:1360px) and (max-width:1599px){.top:has(#tmr.run) .gnav .gn-eco-a{display:none}}
+/* the menu */
+.fxpanel .fxp-eco{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:8px}
+.fxpanel .fxe a{display:grid;grid-template-columns:48px minmax(0,1fr) auto;align-items:center;gap:14px;padding:12px 14px;border:1px solid var(--fx-line);border-radius:var(--fx-r1);text-decoration:none;color:var(--fx-text)}
+.fxpanel .fxe a:hover{border-color:var(--fx-line-2);background:var(--fx-ivory)}
+.fxpanel .fxe-mark svg{display:block;width:48px;height:36px;fill:none;stroke:currentColor;stroke-width:1.6}
+.fxpanel .fxe-mark svg .f{fill:currentColor;stroke:none}
+.fxpanel .fxe-t{display:grid;gap:4px;min-width:0}
+.fxpanel .fxe-t b{font:400 19px/1.15 var(--fx-display);font-weight:400}
+.fxpanel .fxe-t span{font:500 10.5px/1.5 var(--fx-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--fx-text-2)}
+.fxpanel .fxe .fx-ext{font:400 16px/1 var(--fx-sans);color:var(--fx-gold-text)}
+.fxpanel .fxe-here{font:600 10px/1 var(--fx-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--fx-gold-text);white-space:nowrap}
+.fxpanel .fxe.here a{border-color:var(--fx-gold);box-shadow:inset 3px 0 0 var(--fx-gold)}
+.fxpanel .fxe-eco .fxe-mark{color:var(--fx-charcoal)}
+.fxpanel .fxe-bb .fxe-mark{color:#13264A}
+.fxpanel .fxe-ps .fxe-mark{color:#713D4C}
 /* the drawer */
-.fxdrawer .dw-bb .dw-ext{display:inline-flex;align-items:baseline;gap:6px}
-.fxdrawer .dw-bb .fx-ext{font:400 16px/1 var(--fx-sans);color:var(--fx-gold-text)}
-.fxdrawer .dw-note{margin:0;font:400 13px/1.4 var(--fx-sans);color:var(--fx-text-2)}
-/* the home: an editorial panel between the concepts and About */
-.fx-bb{background:var(--fx-ivory-2);border-top:1px solid var(--fx-line);border-bottom:1px solid var(--fx-line);padding:clamp(40px,5vw,64px) 0}
-.fx-bb .bb-in{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(20px,3vw,44px);align-items:center}
-.fx-bb .bb-mark{width:clamp(72px,8vw,104px)}
-.fx-bb .bb-mark svg{display:block;width:100%;height:auto}
-.fx-bb .bb-mark rect,.fx-bb .bb-mark path{fill:none;stroke:var(--fx-charcoal);stroke-width:2}
-.fx-bb .bb-mark path.t{stroke:var(--fx-gold);stroke-dasharray:5 5}
-.fx-bb .bb-k{color:var(--fx-gold-text)}
-.fx-bb .fx-h2{margin-top:10px;text-wrap:balance}
-.fx-bb .fx-lede{margin-top:10px}
-.fx-bb .bb-act{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
-.fx-bb .bb-btn{background:var(--fx-charcoal);color:#fff;border:1px solid var(--fx-charcoal)}
-.fx-bb .bb-btn:hover{background:var(--fx-ink)}
-.fx-bb .bb-btn .fx-ext{color:var(--fx-gold-l)}
-.fx-bb .bb-url{font:400 13.5px/1.4 var(--fx-sans);color:var(--fx-text-2)}
-@media (max-width:860px){.fx-bb .bb-in{grid-template-columns:minmax(0,1fr)}.fx-bb .bb-mark{width:72px}}
-/* the footer: the two pathways with equal weight, then a quieter card */
+.fxdrawer .dw-ecol{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:6px}
+.fxdrawer .dw-eco .dw-ext{display:inline-flex;align-items:baseline;gap:6px}
+.fxdrawer .dw-eco .fx-ext{font:400 16px/1 var(--fx-sans);color:var(--fx-gold-text)}
+.fxdrawer .dw-here{margin-left:6px;font:600 10px/1 var(--fx-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--fx-gold-text);vertical-align:middle}
+.fxdrawer .dw-note{margin:0;font:400 12.5px/1.45 var(--fx-sans);color:var(--fx-text-2)}
+/* the home and About: three panels, each in its own platform's colours */
+.fx-eco{background:var(--fx-paper);border-top:1px solid var(--fx-line)}
+.fx-eco .eco-head{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(18px,4vw,64px);align-items:end}
+.fx-eco .eco-k{color:var(--fx-gold-text)}
+.fx-eco .fx-h2{margin-top:12px;text-wrap:balance}
+.eco-grid{list-style:none;margin:clamp(28px,4vw,52px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,1.8vw,24px);align-items:stretch}
+.eco-card{display:flex;flex-direction:column;padding:clamp(22px,2.4vw,32px);border-radius:var(--fx-r1);border:1px solid transparent}
+.eco-card .eco-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.eco-card .eco-sub{margin:0;font:600 11px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase}
+.eco-card .eco-mark svg{display:block;width:64px;height:48px;fill:none;stroke:currentColor;stroke-width:1.5}
+.eco-card .eco-mark svg .f{fill:currentColor;stroke:none}
+.eco-card .eco-name{margin:clamp(18px,2vw,26px) 0 0;font:400 clamp(26px,2.4vw,34px)/1.06 var(--fx-display);letter-spacing:-.01em;text-wrap:balance;color:inherit}
+.eco-card .eco-line{margin:12px 0 0;font:600 11px/1.6 var(--fx-sans);letter-spacing:.08em;text-transform:uppercase}
+.eco-card .eco-d{margin:12px 0 0;font:400 15.5px/1.6 var(--fx-serif)}
+.eco-card .eco-foot{margin-top:auto;padding-top:22px}
+.eco-card .eco-foot::before{content:"";display:block;height:1px;margin-bottom:16px;background:currentColor;opacity:.22}
+.eco-card .eco-go{display:inline-flex;align-items:baseline;gap:8px;min-height:44px;padding:10px 0;font:600 12px/1.7 var(--fx-sans);letter-spacing:.12em;text-transform:uppercase;color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.eco-card .eco-go:hover{text-decoration-thickness:2px}
+.eco-card .eco-go .fx-ext{font-size:14px;letter-spacing:0}
+.eco-card .eco-go:focus-visible,.eco-card .eco-paths a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.eco-card .eco-url{display:block;margin-top:2px;font:400 12.5px/1.4 var(--fx-mono)}
+.eco-card .eco-here{display:inline-block;font:600 11px/1 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase}
+.eco-card .eco-paths{display:flex;flex-wrap:wrap;gap:0 18px;margin-top:6px}
+.eco-card .eco-paths a{display:inline-flex;align-items:center;gap:6px;min-height:44px;font:600 13.5px/1.2 var(--fx-sans);color:inherit;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+/* Economics, this platform: charcoal and gold, marked as the current one */
+.eco-card.eco-eco{background:var(--fx-charcoal);color:var(--fx-on-dark);outline:2px solid var(--fx-gold);outline-offset:3px}
+.eco-card.eco-eco .eco-sub,.eco-card.eco-eco .eco-mark,.eco-card.eco-eco .eco-here{color:var(--fx-gold-l)}
+.eco-card.eco-eco .eco-line,.eco-card.eco-eco .eco-d{color:var(--fx-on-dark-2)}
+/* The Business Brief: its warm paper, navy ink and green */
+.eco-card.eco-bb{background:#F6F1E7;color:#13264A;border-color:rgba(19,38,74,.16)}
+.eco-card.eco-bb .eco-sub,.eco-card.eco-bb .eco-mark{color:#2B6A59}
+.eco-card.eco-bb .eco-line,.eco-card.eco-bb .eco-d,.eco-card.eco-bb .eco-url{color:rgba(19,38,74,.8)}
+/* Political Studies & Global Affairs: midnight, ivory, antique gold and a burgundy rule */
+.eco-card.eco-ps{background:#101D32;color:#F7F5EF;box-shadow:inset 0 3px 0 #713D4C}
+.eco-card.eco-ps .eco-sub,.eco-card.eco-ps .eco-mark{color:#C9AD6E}
+.eco-card.eco-ps .eco-line,.eco-card.eco-ps .eco-d,.eco-card.eco-ps .eco-url{color:rgba(247,245,239,.78)}
+@media (max-width:980px){.fx-eco .eco-head{grid-template-columns:minmax(0,1fr)}.eco-grid{grid-template-columns:minmax(0,1fr)}}
+/* the footer: the two pathways with equal weight, then the two sister platforms, quieter */
 .ft-paths>.ft-eco-k{grid-column:1/-1;margin:0;color:rgba(255,255,255,.62)}
-@media (min-width:981px){.ft-paths{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.8fr)}}
-@media (min-width:641px) and (max-width:980px){.ft-path.p-bb{grid-column:1/-1}}
-.ft-path.p-bb{box-shadow:none;border-style:dashed;border-color:rgba(255,255,255,.24)}
-.ft-path.p-bb b{font-size:21px}
+.ft-paths>.ft-eco-k .ft-here{color:var(--fx-gold-l)}
+@media (min-width:1181px){.ft-paths{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.86fr) minmax(0,.86fr)}}
+.ft-path.p-bb,.ft-path.p-ps{box-shadow:none;border-style:dashed;border-color:rgba(255,255,255,.24)}
+.ft-path.p-bb b,.ft-path.p-ps b{font-size:21px}
 
 /* css-opening.css · owned by its workstream; see docs/flagship/PLAN.md and docs/flagship/INTEGRATION-PR13.md
    THE OPENING · its styles (spliced at the end of the base stylesheet).
@@ -5980,11 +6019,12 @@ dialog.hl-vw.is-fallback{display:block}
    <button class="lnk" onclick="nav('everywhere')">Economics, Everywhere</button><button class="lnk" onclick="nav('ees')">EE Studio</button>
    <button class="lnk" onclick="nav('arjun')">Videos</button><button class="lnk" onclick="nav('educator')">Teacher Studio</button>
    <button class="lnk" onclick="randomOpen('')">Random Economics</button><button class="lnk" onclick="nav('about')">About</button></nav>
- </div><nav class="wrap full ft-paths" aria-label="Explore the academic ecosystem">
-  <p class="kicker ft-eco-k">Explore the academic ecosystem</p>
+ </div><nav class="wrap full ft-paths" aria-label="The Arjun Agrawal Academic Ecosystem">
+  <p class="kicker ft-eco-k">The Arjun Agrawal Academic Ecosystem <span class="ft-here">· You are on Economics</span></p>
   <a class="ft-path p-ib" href="#/ib"><span class="ft-pn">Pathway 01</span><b>IB DP Economics</b><span>The course, the models, the real world, the examinations, the IA and the EE.</span></a>
   <a class="ft-path p-up" href="#/upsc"><span class="ft-pn">Pathway 02</span><b>UPSC CSE Economics</b><span>The syllabus, the handbooks, current affairs, a preparation strategy and the three-month course.</span></a>
-  <a class="ft-path p-bb" href="https://the-business-brief-dun.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="ft-pn">Beyond Economics</span><b>IB DP Business Management</b><span>The Business Brief, an interactive learning platform <span aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></span></a>
+  <a class="ft-path p-bb" href="https://the-business-brief-dun.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="ft-pn">Beyond Economics</span><b>The Business Brief</b><span>IB Business Management | Strategy | Leadership | Decisions <span aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></span></a>
+  <a class="ft-path p-ps" href="https://arjun-agrawal-political-studies.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="ft-pn">Beyond Economics</span><b>Political Studies &amp; Global Affairs</b><span>Indian Polity | International Relations | PSIR | IB Global Politics <span aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></span></a>
  </nav></div><div class="wrap full in">
   <div class="ftbrand">
    <div style="width:230px;height:70px;max-width:100%;background:var(--lg) left center/contain no-repeat" role="img" aria-label="Arjun Agrawal: Knowledge. Insight. Impact."></div>
@@ -41383,6 +41423,14 @@ function abStory(){return `<section class="sec ab-story" aria-labelledby="ab-s">
   <div class="cols2 abs-doors mt4">${ABOUT2.teaches.map(([n,d,go])=>`<button class="sp-room" onclick="${go}"><span class="sp-t">${esc(n)}</span><span class="sp-d">${esc(d)}</span></button>`).join("")}</div>
  </div></section>`}
 
+/* the academic ecosystem: the three platforms, from the shared list in 44-flagship-core.js */
+function abEcosystem(){if(typeof fxEcoCard!=="function")return "";
+ return `<section class="sec ab-eco fx-eco" aria-labelledby="ab-e"><div class="wrap full">
+  <div class="rn-chap"><span class="ch-n">06</span><span class="ch-t" id="ab-e">The academic ecosystem</span></div>
+  <p class="ed mt3" style="max-width:66ch">Economics is one of three independent platforms I have created, each with its own subject, examinations and design: Economics, The Business Brief for IB DP Business Management, and Political Studies &amp; Global Affairs.</p>
+  <ol class="eco-grid mt4">${FX_ECO.map(fxEcoCard).join("")}</ol>
+ </div></section>`}
+
 function abLonger(){const A=ABOUT,B=ABOUT2;
  return `<section class="sec t ab-longer"><div class="wrap full">
   <details class="ab-more"><summary><span class="ch-t">The longer version</span><span class="xs">The full statement, the four positions, the portfolio and the method</span></summary>
@@ -41404,7 +41452,7 @@ function abClose(){const A=ABOUT;return `<section class="sec rn-final bg-ink ab-
    <button class="btn lg gh on-ink" onclick="nav('learn')">Start learning</button></div></div></section>`}
 
 (function(){if(typeof aboutPage!=="function")return;
- aboutPage=function(){return abCover()+abFacts()+abJourney()+abClassroom()+abPrinciples()+abStory()+abLonger()+abClose()+abLightboxMarkup()}})();
+ aboutPage=function(){return abCover()+abFacts()+abJourney()+abClassroom()+abPrinciples()+abStory()+abEcosystem()+abLonger()+abClose()+abLightboxMarkup()}})();
 
 /* ═══════════════════════════════════════════════════════════════════════════
    RENAISSANCE · 9 · the self-tests for this release
@@ -46329,14 +46377,44 @@ const FXI={
   upsc:{key:"upsc",name:"UPSC CSE Economics",short:"UPSC CSE",home:"#/upsc",view:"upsc"}
  }
 };
-/* ── the sister platform: The Business Brief ───────────────────────────
-   The same educator's platform for IB DP Business Management. It is linked
-   from the header, the drawer, the home page and the footer as part of the
-   wider academic ecosystem, never as a third pathway: it has no pathway
-   colour and no place in the pathway switcher. It opens in a new tab. */
+/* ── the Arjun Agrawal Academic Ecosystem ──────────────────────────────────
+   Three independent platforms from the same educator, under one academic
+   identity (ARJUN AGRAWAL · KNOWLEDGE. INSIGHT. IMPACT.): this one, The
+   Business Brief (IB DP Business Management) and Political Studies & Global
+   Affairs. Each keeps its own repository, address and design; the names and
+   lines are the owner's. The two sisters are linked from the header's
+   Academic Ecosystem menu, the drawer, the home page, the footer and About,
+   always in a new tab and never as a third pathway: they have no pathway
+   colour and no place in the pathway switcher. */
 const FX_BB={name:"The Business Brief",subject:"IB DP Business Management",url:"https://the-business-brief-dun.vercel.app/"};
-function fxBBLink(cls,label){
- return `<a class="${cls}" href="${FX_BB.url}" target="_blank" rel="noopener noreferrer">${esc(label||FX_BB.name)}<span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (${esc(FX_BB.subject)}, opens in a new tab)</span></a>`;
+const FX_PS={name:"Political Studies & Global Affairs",subject:"Indian Polity, International Relations, PSIR and IB DP Global Politics",url:"https://arjun-agrawal-political-studies.vercel.app/"};
+const FX_ECO=[
+ {k:"eco",name:"Economics",line:"IB Economics | Economic Analysis | Academic Resources",url:"https://ib-economics-pi.vercel.app/",current:true,
+  d:"IB DP Economics and UPSC CSE Economics: concepts, models you can move, real-world evidence and examination practice."},
+ {k:"bb",name:FX_BB.name,line:"IB Business Management | Strategy | Leadership | Decisions",url:FX_BB.url,
+  d:"A Business Management learning platform with topic notes, mindmaps, case studies, interactive tools and an Assessment Centre for the IB Diploma Programme."},
+ {k:"ps",name:FX_PS.name,line:"Indian Polity | International Relations | PSIR | IB Global Politics",url:FX_PS.url,
+  d:"UPSC CSE Indian Polity and International Relations, Political Science and International Relations (PSIR) and IB DP Global Politics, read as one connected body of knowledge."}];
+/* a small drawn mark for each: two curves meeting, a decision's rising bars, a meridian globe */
+const FX_ECO_MARK={
+ eco:`<svg viewBox="0 0 64 48" aria-hidden="true" focusable="false"><path d="M6 6C22 18 38 30 58 42"/><path d="M6 42C22 30 38 18 58 6" opacity=".6"/><circle class="f" cx="32" cy="24" r="3"/></svg>`,
+ bb:`<svg viewBox="0 0 64 48" aria-hidden="true" focusable="false"><path d="M4 44H60"/><rect x="10" y="32" width="8" height="12"/><rect x="22" y="24" width="8" height="20"/><rect x="34" y="16" width="8" height="28"/><rect x="46" y="8" width="8" height="36"/></svg>`,
+ ps:`<svg viewBox="0 0 64 48" aria-hidden="true" focusable="false"><circle cx="32" cy="24" r="19"/><ellipse cx="32" cy="24" rx="8" ry="19" opacity=".7"/><path d="M13 24H51M16 14H48M16 34H48" opacity=".55"/></svg>`};
+/* a link to a sister platform: a new tab, said in words to a screen reader */
+function fxSisterLink(e,cls,label){
+ return `<a class="${cls}" href="${esA(e.url)}" target="_blank" rel="noopener noreferrer">${esc(label||e.name)}<span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>`;
+}
+function fxBBLink(cls,label){return fxSisterLink(FX_ECO[1],cls,label)}
+/* one platform as a panel, on the home page and on About; the current one says so and opens its two pathways */
+function fxEcoCard(e){
+ const host=e.url.replace(/^https?:\/\//,"").replace(/\/$/,"");
+ const foot=e.current
+  ?`<span class="eco-here">You are here</span><span class="eco-paths"><a class="fx-a" href="#/ib">IB DP Economics <span aria-hidden="true">→</span></a><a class="fx-a" href="#/upsc">UPSC CSE Economics <span aria-hidden="true">→</span></a></span>`
+  :`${fxSisterLink(e,"eco-go","Visit "+e.name)}<span class="eco-url">${esc(host)}</span>`;
+ return `<li class="eco-card eco-${e.k}${e.current?" here":""}"${e.current?' aria-current="true"':""}>
+  <div class="eco-top"><p class="eco-sub">${e.current?"This platform":"Sister platform"}</p><span class="eco-mark">${FX_ECO_MARK[e.k]}</span></div>
+  <h3 class="eco-name">${esc(e.name)}</h3><p class="eco-line">${esc(e.line)}</p><p class="eco-d">${esc(e.d)}</p>
+  <div class="eco-foot">${foot}</div></li>`;
 }
 /* Sections that belong to neither pathway: the shared home, About, Contact,
    settings, the concept layer and the site's own quality pages. Everything
@@ -47964,8 +48042,9 @@ QAREPORT.push({area:"One Concept. Two Perspectives.",re:/^Shared concepts · /,
 /* ═══════════════════════════════════════════════════════════════════════════
    FLAGSHIP · the shell: one header, two environments
    The global header carries HOME · IB DP ECONOMICS · UPSC CSE ECONOMICS ·
-   ABOUT; the two pathways sit together as a switcher, and each opens a panel of
-   its environment. Inside a pathway a context bar gives that environment its
+   ABOUT · ACADEMIC ECOSYSTEM; the two pathways sit together as a switcher, and
+   each opens a panel of its environment; the Academic Ecosystem menu lists the
+   three platforms, this one marked as current. Inside a pathway a context bar gives that environment its
    own navigation: IB Home, Learn, Explore, Practise, Research and Resources
    for IB DP; the eight UPSC destinations for UPSC CSE. The older primary bar,
    the More menu and their measuring code stay in the page, hidden, because
@@ -48074,7 +48153,16 @@ function fxBuildShell(){
 }
 
 const FXDD={open:null,btn:null};
+/* the Academic Ecosystem menu: the three platforms, this one marked as the current one */
+function fxEcoPanelHtml(){
+ return `<div class="fxp-head"><div><div class="fx-kicker">Arjun Agrawal · Knowledge. Insight. Impact.</div><div class="fxp-title">The Academic Ecosystem</div></div></div>
+  <p class="fxp-d">Three independent platforms from the same educator. The other two open in a new tab.</p>
+  <ul class="fxp-eco">${FX_ECO.map(e=>`<li class="fxe fxe-${e.k}${e.current?" here":""}">${e.current
+   ?`<a class="fx-a" href="#/" aria-current="true" data-fxclose><span class="fxe-mark">${FX_ECO_MARK[e.k]}</span><span class="fxe-t"><b>${esc(e.name)}</b><span>${esc(e.line)}</span></span><span class="fxe-here">You are here</span></a>`
+   :`<a class="fx-a" href="${esA(e.url)}" target="_blank" rel="noopener noreferrer" data-fxclose><span class="fxe-mark">${FX_ECO_MARK[e.k]}</span><span class="fxe-t"><b>${esc(e.name)}</b><span>${esc(e.line)}</span></span><span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>`}</li>`).join("")}</ul>`;
+}
 function fxPanelHtml(k){
+ if(k==="eco")return fxEcoPanelHtml();
  if(k==="ib"){
   const gs=fxIbGroups();
   return `<div class="fxp-head"><div><div class="fx-kicker">Pathway 01</div><div class="fxp-title">IB DP Economics</div></div>
@@ -48098,7 +48186,7 @@ function fxPlacePanel(){
  const p=document.getElementById("fxpanel"),b=FXDD.btn;if(!p||!b)return;
  const r=b.getBoundingClientRect(),vw=document.documentElement.clientWidth;
  const wide=FXDD.open==="ib"||FXDD.open==="upsc";
- const w=Math.min(wide?(FXDD.open==="ib"?1080:720):420,vw-24);
+ const w=Math.min(wide?(FXDD.open==="ib"?1080:720):(FXDD.open==="eco"?500:420),vw-24);
  p.style.width=w+"px";
  const left=Math.max(12,Math.min(vw-w-12,wide?r.left+r.width/2-w/2:r.left));
  p.style.left=left+"px";p.style.top=(r.bottom+8)+"px";
@@ -48141,7 +48229,7 @@ function fxPaintShell(){
   g.innerHTML=`<a class="gn-item${VIEW==="home"?" on":""}" href="#/"${VIEW==="home"?' aria-current="page"':""}>Home</a>
    <span class="gn-pair" role="group" aria-label="Pathways">${pathBtn("ib","IB DP Economics")}${pathBtn("upsc","UPSC CSE Economics")}</span>
    <a class="gn-item${VIEW==="about"?" on":""}" href="#/about"${VIEW==="about"?' aria-current="page"':""}>About</a>
-   ${fxBBLink("gn-bb")}`;
+   <button type="button" class="gn-eco" aria-expanded="false" aria-controls="fxpanel" data-label="Academic Ecosystem" aria-label="Academic Ecosystem" onclick="fxTogglePanel('eco',this,event)"><span class="gn-eco-l"><span class="gn-eco-a">Academic </span>Ecosystem</span><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>`;
  }
  const c=document.getElementById("ctxbar");
  if(c){
@@ -48179,7 +48267,9 @@ function fxDrawerHtml(){
    <details class="dw-g"><summary>Your progress</summary><div class="dw-l">${prog}</div></details></div>
   <div class="dw-sec p-up"><div class="dw-k">Pathway 02</div><a class="dw-main" href="#/upsc"${VIEW==="upsc"&&TAB===0?' aria-current="page"':""}>UPSC CSE Economics</a><div class="dw-l flat">${up}</div></div>
   <div class="dw-sec"><a class="dw-main" href="#/about"${VIEW==="about"?' aria-current="page"':""}>About</a><a class="dw-main" href="#/contact"${VIEW==="contact"?' aria-current="page"':""}>Contact</a></div>
-  <div class="dw-sec dw-bb"><div class="dw-k">Beyond Economics</div>${fxBBLink("dw-main dw-ext")}<p class="dw-note">${esc(FX_BB.subject)}</p></div>`;
+  <div class="dw-sec dw-eco"><div class="dw-k">Academic Ecosystem</div><ul class="dw-ecol">${FX_ECO.map(e=>`<li class="fxe-${e.k}">${e.current
+   ?`<a class="dw-main" href="#/" aria-current="true">${esc(e.name)} <span class="dw-here">You are here</span></a>`
+   :fxSisterLink(e,"dw-main dw-ext")}<p class="dw-note">${esc(e.line)}</p></li>`).join("")}</ul></div>`;
 }
 function fxMobileDrawer(){
  if(document.getElementById("mob"))return closeMenu();
@@ -48414,19 +48504,20 @@ function fxAcross(){
  </div></section>`;
 }
 
-/* ── beyond Economics: The Business Brief ──────────────────────────────────
-   An editorial panel for the same educator's IB DP Business Management
-   platform. It is unnumbered and carries no pathway colour, because it is the
-   wider academic ecosystem, not a third pathway. Its own screenshots are not
-   shown: they could not be taken, so the panel is typographic, with a small
-   drawn mark. The copy is the owner's brief, nothing added. */
-function fxBusinessBrief(){
- return `<section class="fx-section fx-bb" aria-labelledby="bb-h"><div class="fx-wrap bb-in rv">
-  <div class="bb-mark" aria-hidden="true"><svg viewBox="0 0 120 120" focusable="false"><path d="M14 100H110"/><rect x="18" y="64" width="16" height="36"/><rect x="42" y="48" width="16" height="52"/><rect x="66" y="34" width="16" height="66"/><rect x="90" y="20" width="16" height="80"/><path class="t" d="M20 58L50 42L74 30L102 14"/></svg></div>
-  <div class="bb-copy"><p class="fx-kicker bb-k">From the same educator</p>
-   <h2 class="fx-h2" id="bb-h">Beyond Economics. Explore Business Management.</h2>
-   <p class="fx-lede">Discover ${esc(FX_BB.name)}, an interactive learning platform for ${esc(FX_BB.subject)}.</p></div>
-  <div class="bb-act">${fxBBLink("fx-btn bb-btn","Explore The Business Brief")}<span class="bb-url">the-business-brief-dun.vercel.app</span></div>
+/* ── the Arjun Agrawal Academic Ecosystem ──────────────────────────────────
+   Three independent platforms from the same educator, each panel in its own
+   platform's colours: Economics on this platform's charcoal and gold, The
+   Business Brief on its warm paper and navy, Political Studies & Global
+   Affairs on midnight with burgundy. The section is unnumbered and carries no
+   pathway colour, because it is the wider ecosystem, not a third pathway. The
+   panels are typographic, each with a small drawn mark: no screenshots of the
+   other platforms are used. */
+function fxEcosystem(){
+ return `<section class="fx-section fx-eco" aria-labelledby="eco-h"><div class="fx-wrap">
+  <div class="eco-head rv"><div><p class="fx-kicker eco-k">Arjun Agrawal · Knowledge. Insight. Impact.</p>
+   <h2 class="fx-h2" id="eco-h">Explore the Arjun Agrawal Academic Ecosystem</h2></div>
+   <p class="fx-lede">Three independent academic platforms, each with its own subject, examinations and design, from the same educator.</p></div>
+  <ol class="eco-grid rv">${FX_ECO.map(fxEcoCard).join("")}</ol>
  </div></section>`;
 }
 
@@ -48480,7 +48571,7 @@ function fxContactPaths(){
 VIEWS.home=function(){
  /* a teacher's assignment link (#assign=…) opens on the home page, so its banner leads it, as before */
  let asn="";try{if(typeof assignBanner==="function")asn=assignBanner()}catch(e){asn=""}
- return `${asn}<div class="fxhome">${fxHero()}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxBusinessBrief()}${fxAboutBand()}${fxContactBand()}</div>`;
+ return `${asn}<div class="fxhome">${fxHero()}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxEcosystem()}${fxAboutBand()}${fxContactBand()}</div>`;
 };
 
 /* ── the IB DP landing's opening ────────────────────────────────────────── */
@@ -48613,23 +48704,37 @@ function FLAGSHIPSUITE(){
   return t.includes("It is not an official IB platform and is not endorsed by the International Baccalaureate Organization.")&&/not affiliated with or endorsed by the Union Public Service Commission/.test(t)&&/not a preparation for the Economics Optional/.test(t)});
  T("Flagship · the footer opens both pathways with equal weight",()=>{const n=document.querySelector("footer.ft .ft-paths");
   return !!n&&n.querySelectorAll('a[href="#/ib"]').length===1&&n.querySelectorAll('a[href="#/upsc"]').length===1});
- /* ── The Business Brief: the wider academic ecosystem, in four places, never a third pathway ── */
- T("Business Brief · the header, the drawer, the home and the footer each link to it, in a new tab with rel noopener noreferrer",()=>{
-  const g=document.getElementById("gnav"),f=document.querySelector("footer.ft .ft-paths");
-  const all={header:g?g.innerHTML:"",drawer:fxDrawerHtml(),home:fxBusinessBrief(),footer:f?f.innerHTML:""};
-  const bad=Object.entries(all).filter(([,h])=>{const L=[...h.matchAll(/<a\b[^>]*href="https:\/\/the-business-brief-dun\.vercel\.app\/"[^>]*>[\s\S]*?<\/a>/g)].map(m=>m[0]);
-   return L.length!==1||!L.every(a=>/target="_blank"/.test(a)&&/rel="noopener noreferrer"/.test(a)&&/↗/.test(a)&&/opens in a new tab/.test(a))}).map(([k])=>k);
+ /* ── the Arjun Agrawal Academic Ecosystem: two sister platforms in five places, never a third pathway ── */
+ const ecoLinks=(h,u)=>{const t=document.createElement("template");t.innerHTML=h;return [...t.content.querySelectorAll("a")].filter(a=>a.getAttribute("href")===u)};
+ T("Academic Ecosystem · the addresses are the three platforms' production addresses, with no placeholder",()=>
+  FX_ECO.map(e=>e.url).join(" ")==="https://ib-economics-pi.vercel.app/ https://the-business-brief-dun.vercel.app/ https://arjun-agrawal-political-studies.vercel.app/"
+  &&FX_ECO.map(e=>e.name).join("|")==="Economics|The Business Brief|Political Studies & Global Affairs"&&FX_ECO.filter(e=>e.current).length===1&&FX_ECO[0].current);
+ T("Academic Ecosystem · the header menu, the drawer, the home, the footer and About each link once to each sister, in a new tab with rel noopener noreferrer",()=>{
+  const f=document.querySelector("footer.ft .ft-paths");
+  const all={menu:fxEcoPanelHtml(),drawer:fxDrawerHtml(),home:fxEcosystem(),footer:f?f.innerHTML:"",about:abEcosystem()};
+  const bad=[];for(const [k,h] of Object.entries(all))for(const u of [FX_BB.url,FX_PS.url]){const L=ecoLinks(h,u);
+   if(L.length!==1||!L.every(a=>a.target==="_blank"&&a.rel==="noopener noreferrer"&&a.textContent.includes("↗")&&/opens in a new tab/.test(a.textContent)))bad.push(k+": "+u)}
   return bad.length?{ok:false,d:bad.join(", ")}:true});
- T("Business Brief · it is a sister platform, not a third pathway: no pathway colour, no place in the switcher, the two pathways keep equal weight",()=>{
+ T("Academic Ecosystem · the header carries the menu after About, and the menu marks Economics as the platform you are on",()=>{
+  const g=document.getElementById("gnav"),b=g&&g.querySelector("button.gn-eco");const t=document.createElement("template");t.innerHTML=fxEcoPanelHtml();
+  const cur=t.content.querySelectorAll("[aria-current]");const items=[...g.children].map(x=>x.className);
+  return !!b&&b.getAttribute("aria-label")==="Academic Ecosystem"&&b.getAttribute("aria-controls")==="fxpanel"&&items.indexOf("gn-eco")>items.map((c,k)=>/gn-item/.test(c)?k:-1).reduce((m,k)=>Math.max(m,k),-1)
+   &&cur.length===1&&cur[0].getAttribute("href")==="#/"&&/Economics/.test(cur[0].textContent)&&/You are here/.test(cur[0].textContent)
+   &&[...t.content.querySelectorAll(".fxe b")].map(x=>x.textContent).join("|")==="Economics|The Business Brief|Political Studies & Global Affairs"});
+ T("Academic Ecosystem · the sisters are not pathways: no pathway colour, no place in the switcher, the two pathways keep equal weight",()=>{
   const sw=fxSwitcher("shared","x"),f=document.querySelector("footer.ft .ft-paths");
-  return !/business/i.test(sw)&&!/pathway 03|p-bb[^"]*\b(ib|up)\b/i.test(fxBusinessBrief()+(f?f.innerHTML:""))&&FX_SHARED.has("home")
-   &&!!f&&f.querySelector(".ft-path.p-bb .ft-pn").textContent==="Beyond Economics"&&f.querySelectorAll(".ft-path.p-ib,.ft-path.p-up").length===2});
- T("Business Brief · the home panel reads as the brief asks, and claims nothing more",()=>{const t=txt(fxBusinessBrief());
-  return t.includes("Beyond Economics. Explore Business Management.")&&t.includes("Discover The Business Brief, an interactive learning platform for IB DP Business Management.")
-   &&/Explore The Business Brief/.test(t)&&!/(best|number one|award|students use|trusted by|\d+\s*(students|users))/i.test(t)});
- T("Business Brief · the footer explores the academic ecosystem: IB DP Economics, UPSC CSE Economics and IB DP Business Management",()=>{
+  return !/business|political/i.test(sw)&&!/pathway 03|p-(bb|ps)[^"]*\b(ib|up)\b/i.test(fxEcosystem()+(f?f.innerHTML:""))&&FX_SHARED.has("home")
+   &&!!f&&[...f.querySelectorAll(".ft-path.p-bb .ft-pn,.ft-path.p-ps .ft-pn")].map(x=>x.textContent).join("|")==="Beyond Economics|Beyond Economics"&&f.querySelectorAll(".ft-path.p-ib,.ft-path.p-up").length===2});
+ T("Academic Ecosystem · the home section reads as the brief asks: its heading, the shared identity, the three names and lines, and nothing claimed",()=>{const t=txt(fxEcosystem());
+  return t.includes("Explore the Arjun Agrawal Academic Ecosystem")&&t.includes("Knowledge. Insight. Impact.")&&/You are here/.test(t)
+   &&["IB Economics | Economic Analysis | Academic Resources","IB Business Management | Strategy | Leadership | Decisions","Indian Polity | International Relations | PSIR | IB Global Politics"].every(x=>t.includes(x))
+   &&!/(best|number one|award|students use|trusted by|\d+\s*(students|users))/i.test(t)});
+ T("Academic Ecosystem · the footer names the ecosystem, says which platform this is and lists the pathways, then the two sisters",()=>{
   const f=document.querySelector("footer.ft .ft-paths");if(!f)return false;const t=f.textContent.replace(/\s+/g," ");
-  return f.getAttribute("aria-label")==="Explore the academic ecosystem"&&/Explore the academic ecosystem/.test(t)&&t.indexOf("IB DP Economics")<t.indexOf("UPSC CSE Economics")&&t.indexOf("UPSC CSE Economics")<t.indexOf("IB DP Business Management")});
+  const o=["IB DP Economics","UPSC CSE Economics","The Business Brief","Political Studies & Global Affairs"].map(x=>t.indexOf(x));
+  return f.getAttribute("aria-label")==="The Arjun Agrawal Academic Ecosystem"&&/You are on Economics/.test(t)&&o.every((x,k)=>x>=0&&(k===0||x>o[k-1]))});
+ T("Academic Ecosystem · About shows the three platforms after the platform story",()=>{const h=aboutPage();
+  return h.includes('id="ab-e"')&&h.indexOf('id="ab-s"')<h.indexOf('id="ab-e"')&&(h.match(/class="eco-card /g)||[]).length===3});
  T("Flagship · the welcome dialogue waits for the IB DP environment",()=>/fxPathway\(VIEW\)!=="ib"/.test(String(bootOnboarding))&&typeof FX_OB.run==="function");
 
  /* ── motion ── */

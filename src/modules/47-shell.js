@@ -1,8 +1,9 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    FLAGSHIP · the shell: one header, two environments
    The global header carries HOME · IB DP ECONOMICS · UPSC CSE ECONOMICS ·
-   ABOUT; the two pathways sit together as a switcher, and each opens a panel of
-   its environment. Inside a pathway a context bar gives that environment its
+   ABOUT · ACADEMIC ECOSYSTEM; the two pathways sit together as a switcher, and
+   each opens a panel of its environment; the Academic Ecosystem menu lists the
+   three platforms, this one marked as current. Inside a pathway a context bar gives that environment its
    own navigation: IB Home, Learn, Explore, Practise, Research and Resources
    for IB DP; the eight UPSC destinations for UPSC CSE. The older primary bar,
    the More menu and their measuring code stay in the page, hidden, because
@@ -111,7 +112,16 @@ function fxBuildShell(){
 }
 
 const FXDD={open:null,btn:null};
+/* the Academic Ecosystem menu: the three platforms, this one marked as the current one */
+function fxEcoPanelHtml(){
+ return `<div class="fxp-head"><div><div class="fx-kicker">Arjun Agrawal · Knowledge. Insight. Impact.</div><div class="fxp-title">The Academic Ecosystem</div></div></div>
+  <p class="fxp-d">Three independent platforms from the same educator. The other two open in a new tab.</p>
+  <ul class="fxp-eco">${FX_ECO.map(e=>`<li class="fxe fxe-${e.k}${e.current?" here":""}">${e.current
+   ?`<a class="fx-a" href="#/" aria-current="true" data-fxclose><span class="fxe-mark">${FX_ECO_MARK[e.k]}</span><span class="fxe-t"><b>${esc(e.name)}</b><span>${esc(e.line)}</span></span><span class="fxe-here">You are here</span></a>`
+   :`<a class="fx-a" href="${esA(e.url)}" target="_blank" rel="noopener noreferrer" data-fxclose><span class="fxe-mark">${FX_ECO_MARK[e.k]}</span><span class="fxe-t"><b>${esc(e.name)}</b><span>${esc(e.line)}</span></span><span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>`}</li>`).join("")}</ul>`;
+}
 function fxPanelHtml(k){
+ if(k==="eco")return fxEcoPanelHtml();
  if(k==="ib"){
   const gs=fxIbGroups();
   return `<div class="fxp-head"><div><div class="fx-kicker">Pathway 01</div><div class="fxp-title">IB DP Economics</div></div>
@@ -135,7 +145,7 @@ function fxPlacePanel(){
  const p=document.getElementById("fxpanel"),b=FXDD.btn;if(!p||!b)return;
  const r=b.getBoundingClientRect(),vw=document.documentElement.clientWidth;
  const wide=FXDD.open==="ib"||FXDD.open==="upsc";
- const w=Math.min(wide?(FXDD.open==="ib"?1080:720):420,vw-24);
+ const w=Math.min(wide?(FXDD.open==="ib"?1080:720):(FXDD.open==="eco"?500:420),vw-24);
  p.style.width=w+"px";
  const left=Math.max(12,Math.min(vw-w-12,wide?r.left+r.width/2-w/2:r.left));
  p.style.left=left+"px";p.style.top=(r.bottom+8)+"px";
@@ -178,7 +188,7 @@ function fxPaintShell(){
   g.innerHTML=`<a class="gn-item${VIEW==="home"?" on":""}" href="#/"${VIEW==="home"?' aria-current="page"':""}>Home</a>
    <span class="gn-pair" role="group" aria-label="Pathways">${pathBtn("ib","IB DP Economics")}${pathBtn("upsc","UPSC CSE Economics")}</span>
    <a class="gn-item${VIEW==="about"?" on":""}" href="#/about"${VIEW==="about"?' aria-current="page"':""}>About</a>
-   ${fxBBLink("gn-bb")}`;
+   <button type="button" class="gn-eco" aria-expanded="false" aria-controls="fxpanel" data-label="Academic Ecosystem" aria-label="Academic Ecosystem" onclick="fxTogglePanel('eco',this,event)"><span class="gn-eco-l"><span class="gn-eco-a">Academic </span>Ecosystem</span><svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>`;
  }
  const c=document.getElementById("ctxbar");
  if(c){
@@ -216,7 +226,9 @@ function fxDrawerHtml(){
    <details class="dw-g"><summary>Your progress</summary><div class="dw-l">${prog}</div></details></div>
   <div class="dw-sec p-up"><div class="dw-k">Pathway 02</div><a class="dw-main" href="#/upsc"${VIEW==="upsc"&&TAB===0?' aria-current="page"':""}>UPSC CSE Economics</a><div class="dw-l flat">${up}</div></div>
   <div class="dw-sec"><a class="dw-main" href="#/about"${VIEW==="about"?' aria-current="page"':""}>About</a><a class="dw-main" href="#/contact"${VIEW==="contact"?' aria-current="page"':""}>Contact</a></div>
-  <div class="dw-sec dw-bb"><div class="dw-k">Beyond Economics</div>${fxBBLink("dw-main dw-ext")}<p class="dw-note">${esc(FX_BB.subject)}</p></div>`;
+  <div class="dw-sec dw-eco"><div class="dw-k">Academic Ecosystem</div><ul class="dw-ecol">${FX_ECO.map(e=>`<li class="fxe-${e.k}">${e.current
+   ?`<a class="dw-main" href="#/" aria-current="true">${esc(e.name)} <span class="dw-here">You are here</span></a>`
+   :fxSisterLink(e,"dw-main dw-ext")}<p class="dw-note">${esc(e.line)}</p></li>`).join("")}</ul></div>`;
 }
 function fxMobileDrawer(){
  if(document.getElementById("mob"))return closeMenu();

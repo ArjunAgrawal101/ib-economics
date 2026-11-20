@@ -17,14 +17,44 @@ const FXI={
   upsc:{key:"upsc",name:"UPSC CSE Economics",short:"UPSC CSE",home:"#/upsc",view:"upsc"}
  }
 };
-/* ── the sister platform: The Business Brief ───────────────────────────
-   The same educator's platform for IB DP Business Management. It is linked
-   from the header, the drawer, the home page and the footer as part of the
-   wider academic ecosystem, never as a third pathway: it has no pathway
-   colour and no place in the pathway switcher. It opens in a new tab. */
+/* ── the Arjun Agrawal Academic Ecosystem ──────────────────────────────────
+   Three independent platforms from the same educator, under one academic
+   identity (ARJUN AGRAWAL · KNOWLEDGE. INSIGHT. IMPACT.): this one, The
+   Business Brief (IB DP Business Management) and Political Studies & Global
+   Affairs. Each keeps its own repository, address and design; the names and
+   lines are the owner's. The two sisters are linked from the header's
+   Academic Ecosystem menu, the drawer, the home page, the footer and About,
+   always in a new tab and never as a third pathway: they have no pathway
+   colour and no place in the pathway switcher. */
 const FX_BB={name:"The Business Brief",subject:"IB DP Business Management",url:"https://the-business-brief-dun.vercel.app/"};
-function fxBBLink(cls,label){
- return `<a class="${cls}" href="${FX_BB.url}" target="_blank" rel="noopener noreferrer">${esc(label||FX_BB.name)}<span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (${esc(FX_BB.subject)}, opens in a new tab)</span></a>`;
+const FX_PS={name:"Political Studies & Global Affairs",subject:"Indian Polity, International Relations, PSIR and IB DP Global Politics",url:"https://arjun-agrawal-political-studies.vercel.app/"};
+const FX_ECO=[
+ {k:"eco",name:"Economics",line:"IB Economics | Economic Analysis | Academic Resources",url:"https://ib-economics-pi.vercel.app/",current:true,
+  d:"IB DP Economics and UPSC CSE Economics: concepts, models you can move, real-world evidence and examination practice."},
+ {k:"bb",name:FX_BB.name,line:"IB Business Management | Strategy | Leadership | Decisions",url:FX_BB.url,
+  d:"A Business Management learning platform with topic notes, mindmaps, case studies, interactive tools and an Assessment Centre for the IB Diploma Programme."},
+ {k:"ps",name:FX_PS.name,line:"Indian Polity | International Relations | PSIR | IB Global Politics",url:FX_PS.url,
+  d:"UPSC CSE Indian Polity and International Relations, Political Science and International Relations (PSIR) and IB DP Global Politics, read as one connected body of knowledge."}];
+/* a small drawn mark for each: two curves meeting, a decision's rising bars, a meridian globe */
+const FX_ECO_MARK={
+ eco:`<svg viewBox="0 0 64 48" aria-hidden="true" focusable="false"><path d="M6 6C22 18 38 30 58 42"/><path d="M6 42C22 30 38 18 58 6" opacity=".6"/><circle class="f" cx="32" cy="24" r="3"/></svg>`,
+ bb:`<svg viewBox="0 0 64 48" aria-hidden="true" focusable="false"><path d="M4 44H60"/><rect x="10" y="32" width="8" height="12"/><rect x="22" y="24" width="8" height="20"/><rect x="34" y="16" width="8" height="28"/><rect x="46" y="8" width="8" height="36"/></svg>`,
+ ps:`<svg viewBox="0 0 64 48" aria-hidden="true" focusable="false"><circle cx="32" cy="24" r="19"/><ellipse cx="32" cy="24" rx="8" ry="19" opacity=".7"/><path d="M13 24H51M16 14H48M16 34H48" opacity=".55"/></svg>`};
+/* a link to a sister platform: a new tab, said in words to a screen reader */
+function fxSisterLink(e,cls,label){
+ return `<a class="${cls}" href="${esA(e.url)}" target="_blank" rel="noopener noreferrer">${esc(label||e.name)}<span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>`;
+}
+function fxBBLink(cls,label){return fxSisterLink(FX_ECO[1],cls,label)}
+/* one platform as a panel, on the home page and on About; the current one says so and opens its two pathways */
+function fxEcoCard(e){
+ const host=e.url.replace(/^https?:\/\//,"").replace(/\/$/,"");
+ const foot=e.current
+  ?`<span class="eco-here">You are here</span><span class="eco-paths"><a class="fx-a" href="#/ib">IB DP Economics <span aria-hidden="true">→</span></a><a class="fx-a" href="#/upsc">UPSC CSE Economics <span aria-hidden="true">→</span></a></span>`
+  :`${fxSisterLink(e,"eco-go","Visit "+e.name)}<span class="eco-url">${esc(host)}</span>`;
+ return `<li class="eco-card eco-${e.k}${e.current?" here":""}"${e.current?' aria-current="true"':""}>
+  <div class="eco-top"><p class="eco-sub">${e.current?"This platform":"Sister platform"}</p><span class="eco-mark">${FX_ECO_MARK[e.k]}</span></div>
+  <h3 class="eco-name">${esc(e.name)}</h3><p class="eco-line">${esc(e.line)}</p><p class="eco-d">${esc(e.d)}</p>
+  <div class="eco-foot">${foot}</div></li>`;
 }
 /* Sections that belong to neither pathway: the shared home, About, Contact,
    settings, the concept layer and the site's own quality pages. Everything
