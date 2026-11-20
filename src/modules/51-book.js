@@ -391,12 +391,17 @@ function fxResPanelHtml(){
  const dw=fxDrawerHtml;
  fxDrawerHtml=function(){
   const h=dw.apply(this,arguments);
-  const link=(href,n,on)=>`<a class="fx-a" href="${esA(href)}"${on?' aria-current="page"':""}>${esc(n)}</a>`;
-  const sec=`<div class="dw-sec dw-book"><div class="dw-k">A new academic work</div><a class="dw-main" href="#/book"${VIEW==="book"&&TAB===0?' aria-current="page"':""}>The Indian Economy <span class="dw-here">Book</span></a>
-   <details class="dw-g"><summary>Resources</summary><div class="dw-l">${fxResGroups().map(g=>g.items.map(i=>link(i.href,i.n,false)).join("")).join("")}</div></details></div>`;
+  const link=(href,n)=>`<a class="fx-a" href="${esA(href)}"${VIEW==="book"&&fxHref("book",TAB)===href?' aria-current="page"':""}>${esc(n)}</a>`;
+  /* the book, then only what the Resources menu adds to the drawer: its other
+     entries (the handbooks, the topic resources, the IB DP resources) are
+     already listed under the two pathways, and are not repeated */
+  const have=new Set([...h.matchAll(/href="([^"]*)"/g)].map(m=>m[1]));
+  const extra=fxResGroups().flatMap(g=>g.items).filter(i=>i.href!=="#/book"&&!have.has(i.href));
+  const sec=`<div class="dw-sec dw-book"><div class="dw-k">A new academic work</div><a class="dw-main" href="#/book"${VIEW==="book"&&TAB===0?' aria-current="page"':""}>The Indian Economy <span class="dw-here">Book</span></a>${extra.length?`<div class="dw-l flat">${extra.map(i=>link(i.href,i.n)).join("")}</div>`:""}</div>`;
   const at=h.indexOf('<div class="dw-sec"><a class="dw-main" href="#/about"');
   return at<0?h+sec:h.slice(0,at)+sec+h.slice(at);
  };
+ fxDrawerHtml.base=dw;
 })();
 
 /* ── search: the book, its Parts and the companion ─────────────────────── */
@@ -454,6 +459,11 @@ function BOOKSUITE(){
  T("Book · the header links the book and opens Resources; the drawer lists both",()=>{
   const g=document.getElementById("gnav");const d=fxDrawerHtml();
   return !!g&&!!g.querySelector('a.gn-book[href="#/book"]')&&!!g.querySelector('button.gn-res[aria-controls="fxpanel"]')&&d.includes('href="#/book"')&&d.includes('href="#/book/digital-revision-companion"')});
+ T("Book · the drawer adds the book and the companion and repeats nothing it already lists",()=>{
+  const h=fxDrawerHtml(),base=fxDrawerHtml.base?fxDrawerHtml.base():"",hrefs=x=>[...x.matchAll(/href="([^"]*)"/g)].map(m=>m[1]);
+  const had=new Set(hrefs(base)),added=hrefs(h).filter(x=>!had.has(x)),more=hrefs(h).length-hrefs(base).length;
+  const sums=[...h.matchAll(/<summary>([^<]*)<\/summary>/g)].map(m=>m[1].trim());
+  return {ok:!!base&&added.includes("#/book")&&added.includes("#/book/digital-revision-companion")&&more===new Set(added).size&&added.length===new Set(added).size&&new Set(sums).size===sums.length,d:added.join(" ")+" | "+sums.join(", ")}});
  T("Book · the Resources menu lists the book, the companion and the handbooks, and every link resolves",()=>{const h=fxResPanelHtml();
   const hs=[...h.matchAll(/href="([^"]*)"/g)].map(m=>m[1]);
   return h.includes('href="#/book"')&&h.includes('href="#/book/digital-revision-companion"')&&/Economics Handbooks/.test(h)&&hs.length>=8&&hs.every(x=>routeParse(x)!==null)});

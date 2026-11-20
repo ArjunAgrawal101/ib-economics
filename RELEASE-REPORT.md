@@ -82,7 +82,9 @@ content is in the page behind the overlay throughout, for assistive technology a
   carries the calculator, the exam timer, SL/HL and the profile, the global Resources steps aside (the IB DP context
   bar has its own), the pathways shorten below 1800 px, and the book's link steps aside between 1181 and 1279 px
   and below 1360 px while the timer runs.
-- The drawer (phones and tablets) adds *A new academic work*: The Indian Economy, and the Resources list.
+- The drawer (phones and tablets) adds *A new academic work*: The Indian Economy and the Digital Revision Companion.
+  The rest of the Resources menu (the handbooks, the topic resources, the IB DP resources) is already in the drawer
+  under the two pathways, so it is not listed twice.
 - Search finds the book, the companion and each of the eight Parts (labelled "The Indian Economy").
 - Back to top on long pages; the footer's *Replay the opening*.
 
