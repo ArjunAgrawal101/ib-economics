@@ -22,18 +22,18 @@ const FXI={
    identity (ARJUN AGRAWAL · KNOWLEDGE. INSIGHT. IMPACT.): this one, The
    Business Brief (IB DP Business Management) and Political Studies & Global
    Affairs. Each keeps its own repository, address and design; the names and
-   lines are the owner's. The two sisters are linked from the header's
+   lines are the owner's (the subject lines and taglines of the final brief, 2026-11-20). The two sisters are linked from the header's
    Academic Ecosystem menu, the drawer, the home page, the footer and About,
    always in a new tab and never as a third pathway: they have no pathway
    colour and no place in the pathway switcher. */
 const FX_BB={name:"The Business Brief",subject:"IB DP Business Management",url:"https://the-business-brief-dun.vercel.app/"};
 const FX_PS={name:"Political Studies & Global Affairs",subject:"Indian Polity, International Relations, PSIR and IB DP Global Politics",url:"https://arjun-agrawal-political-studies.vercel.app/"};
 const FX_ECO=[
- {k:"eco",name:"Economics",line:"IB Economics | Economic Analysis | Academic Resources",url:"https://ib-economics-pi.vercel.app/",current:true,
+ {k:"eco",name:"Economics",line:"Arjun Agrawal | IB DP Economics and UPSC CSE Economics",tag:"Think like an economist.",url:"https://ib-economics-pi.vercel.app/",current:true,
   d:"IB DP Economics and UPSC CSE Economics: concepts, models you can move, real-world evidence and examination practice."},
- {k:"bb",name:FX_BB.name,line:"IB Business Management | Strategy | Leadership | Decisions",url:FX_BB.url,
+ {k:"bb",name:FX_BB.name,line:"IB DP Business Management",tag:"Strategy. Leadership. Decisions.",url:FX_BB.url,
   d:"A Business Management learning platform with topic notes, mindmaps, case studies, interactive tools and an Assessment Centre for the IB Diploma Programme."},
- {k:"ps",name:FX_PS.name,line:"Indian Polity | International Relations | PSIR | IB Global Politics",url:FX_PS.url,
+ {k:"ps",name:FX_PS.name,line:"IB DP Global Politics | Indian Polity | International Relations | PSIR",tag:"Understand power, politics and global affairs.",url:FX_PS.url,
   d:"UPSC CSE Indian Polity and International Relations, Political Science and International Relations (PSIR) and IB DP Global Politics, read as one connected body of knowledge."}];
 /* a small drawn mark for each: two curves meeting, a decision's rising bars, a meridian globe */
 const FX_ECO_MARK={
@@ -53,7 +53,7 @@ function fxEcoCard(e){
   :`${fxSisterLink(e,"eco-go","Visit "+e.name)}<span class="eco-url">${esc(host)}</span>`;
  return `<li class="eco-card eco-${e.k}${e.current?" here":""}"${e.current?' aria-current="true"':""}>
   <div class="eco-top"><p class="eco-sub">${e.current?"This platform":"Sister platform"}</p><span class="eco-mark">${FX_ECO_MARK[e.k]}</span></div>
-  <h3 class="eco-name">${esc(e.name)}</h3><p class="eco-line">${esc(e.line)}</p><p class="eco-d">${esc(e.d)}</p>
+  <h3 class="eco-name">${esc(e.name)}</h3><p class="eco-line">${esc(e.line)}</p>${e.tag?`<p class="eco-tag">${esc(e.tag)}</p>`:""}<p class="eco-d">${esc(e.d)}</p>
   <div class="eco-foot">${foot}</div></li>`;
 }
 /* Sections that belong to neither pathway: the shared home, About, Contact,
