@@ -6162,6 +6162,8 @@ body[data-pathway="ib"] .gnav .gn-res{display:none}
 .pc-book,.pc-book.b0,.pc-book.b1,.pc-book.b2,.pc-book.b3{position:static;width:calc((100% - 30px)/4);transform:none}
 .pc-book.b1,.pc-book.b3{transform:translateY(-12px)}
 .pc-shelf:hover .pc-book.b0,.pc-shelf:hover .pc-book.b2{transform:translateY(-4px)}.pc-shelf:hover .pc-book.b1,.pc-shelf:hover .pc-book.b3{transform:translateY(-16px)}
+/* without the fan the covers need the card's width: in the UPSC card the shelf runs under the text, four across */
+@media (min-width:835px){.pc-up .pc-body{grid-template-columns:minmax(0,1fr)}.pc-up .pc-shelf{max-width:540px}}
 @media (max-width:834px){.pc-shelf{max-width:360px}}
 /* the new hero has its grid; the decorative wave would run under the pathway cards' links */
 .hx2 .hx-wave{display:none}
