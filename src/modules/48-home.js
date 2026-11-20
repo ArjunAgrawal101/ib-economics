@@ -111,10 +111,11 @@ function fxHeroMacro(){
  </svg>`;
 }
 function fxPortrait(){
+ /* the photograph alone in its frame; the live AD-AS card sits beside the caption, so nothing is drawn over the face or the figure */
  return `<figure class="hx2-por">
-  <div class="hx2-plate"><div class="hx2-frame"><img src="assets/brand/arjun-agrawal-portrait-hero.webp" width="539" height="674" alt="Arjun Agrawal, in a navy blazer and tie, smiling, in front of a stone wall." decoding="async" fetchpriority="high"></div>
+  <div class="hx2-plate"><div class="hx2-frame"><img src="assets/brand/arjun-agrawal-portrait-hero.webp" width="539" height="674" alt="Arjun Agrawal, in a navy blazer and tie, smiling, in front of a stone wall." decoding="async" fetchpriority="high"></div></div>
+  <div class="hx2-under"><figcaption><b>Arjun Agrawal</b><span>${esc(FXI.roles)}</span></figcaption>
    <div class="hx2-card" aria-hidden="true">${fxHeroMacro()}<span>Aggregate demand rises: output and the price level rise</span></div></div>
-  <figcaption><b>Arjun Agrawal</b><span>${esc(FXI.roles)}</span></figcaption>
  </figure>`;
 }
 function fxHero(){
