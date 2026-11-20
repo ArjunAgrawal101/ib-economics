@@ -31,8 +31,13 @@ The platform is **Arjun Agrawal · Economics**, *Think like an economist.*, with
 weight: **IB DP Economics** and **UPSC CSE Economics**. *One discipline. Two pathways. A shared
 understanding of Economics.*
 
-- **The header** carries the brand, then **Home · IB DP Economics · UPSC CSE Economics · About**, then
-  search. The two pathways sit together as a switcher; the chevron beside each opens a panel of its
+- **The header** carries the brand, then **Home · IB DP Economics · UPSC CSE Economics · The Indian
+  Economy · Resources · About · Academic Ecosystem**, then search. The Indian Economy opens the book's
+  page (`#/book`); Resources opens a menu of the book, the Digital Revision Companion, the Economics
+  handbooks, the UPSC topic resources and the IB resource hub, question banks, revision, Economics in 60
+  Seconds and the Learning Studio. From 1181 px the header holds all seven: below 1600 px "Academic
+  Ecosystem" reads "Ecosystem", and below 1360 px the pathways read "IB DP" and "UPSC CSE" (the word
+  "Economics" stays for screen readers). The two pathways sit together as a switcher; the chevron beside each opens a panel of its
   environment (the IB DP panel shows all five groups at once). Panels open from the mouse or the
   keyboard: from the keyboard, focus moves to the first destination; Escape closes a panel and returns
   focus to its button; tabbing out of a panel, or a click outside it, closes it.
@@ -168,6 +173,32 @@ Please share the payment and delivery details."; ENQUIRE ABOUT THE NEXT BATCH se
 joining the three-month UPSC CSE Economics Intensive Online Programme priced at ₹9,999. Please share the upcoming
 batch schedule and enrolment details." Nothing is charged, booked or confirmed on the site, and there is no
 payment gateway, countdown or claim about remaining places.
+
+## The Indian Economy (book) and its Digital Revision Companion
+
+*The Indian Economy: A Comprehensive Academic and Examination Reference*, First Edition 2026-27, authored
+and compiled by Arjun Agrawal, for UPSC CSE, State PCS, RBI Grade B (General), undergraduate and
+postgraduate readers. It covers the economics components of these examinations and courses, not their
+complete syllabi (the book's own words).
+
+| Address | What it shows |
+|---|---|
+| `#/book` | The cover as a three-dimensional book; the facts (641 numbered pages; the PDF edition has 706 pages including the front matter; eight Parts, 153 chapters, thirteen units); a look-inside preview of ten chosen pages; the eight-Part contents map, drawn to scale; the companion; the purchasing enquiry |
+| `#/book/digital-revision-companion` | The free Digital Revision Companion (13 units, 254 PDF pages): what it contains, and its address in the author's free resource library, as printed in the book |
+| the home page | "A new academic work", right after the two pathways: the book, its readers, four pages to look inside and the contents map; then the companion |
+
+**Look inside.** Ten pages chosen by reading the book (a systems map, the syllabus and reader maps, a
+concept with its diagrams, a policy analysis, market failure, a revision mind map, rapid revision, a
+worked national-income exercise and India's GDP by expenditure), each with its printed page number
+(roman numerals in the front matter). Previous and next, thumbnails, and the reading view of the
+handbook library: zoom, full screen, the arrow keys, swipe, Escape. The pages are images at 1600 px, with
+no watermark or overlay; the complete book is not on the site and no PDF is linked or stored.
+`tools/book/README.md` explains how the pages are rendered and checked.
+
+**Purchasing.** The price, the publisher and the ISBN have not been confirmed, so the site sells
+nothing: "Interested in purchasing the book? Write to me to enquire about availability and purchasing
+details." Enquire by email and Contact on WhatsApp open the reader's own app with the message written,
+to the address and number the site already publishes.
 
 ## What it contains
 
@@ -856,31 +887,32 @@ offering to open the assignment, and nothing about what they then do is reported
 
 ## The opening sequence
 
-Arjun Agrawal · Economics, *One discipline. Two pathways.*: five seconds on one clock that say, before
-anything else, that the platform serves IB DP Economics and UPSC CSE Economics. It is the opening built
-in PR #13, chosen by the owner in place of the earlier world-map opening (see
-`docs/flagship/INTEGRATION-PR13.md`). It is inline SVG, CSS and a short script, and uses no images,
-video or fonts of its own.
+**From economic thought to real-world understanding**: seven seconds on one clock, in the register of an
+academic publication: midnight charcoal, a fine-line grid and champagne gold. It is inline SVG, CSS and a
+short script, and uses no images, video, audio or fonts of its own.
 
 | Time | Stage |
 |---|---|
-| 0–1 s | **The field.** A dark field of coordinates, data points and the lines between them; the Arjun Agrawal identity (the logo's own vectors) emerges. |
-| 1–2 s | **The language of economics.** The identity settles to the top; axes, supply and demand appear, demand shifts and the equilibrium moves along supply, with a trade network behind. |
-| 2–3.25 s | **Two pathways.** The field divides: IB DP Economics in burgundy, with a globe (global perspectives, international evidence), and UPSC CSE Economics in forest green, with a kolam (the Indian economy, policy, institutions). |
-| 3.15–4.25 s | **One discipline.** "One discipline. *Two pathways.*", then both names (3.70–3.95 s is still). |
-| 4.3–5 s | **The reveal.** The two halves open onto the page (sideways on a wide screen, up and down on a phone); the overlay is transparent at exactly start + 5000 ms. |
+| 0–0.7 s | **The field.** A midnight field, lit from the seam, and a fine-line economic grid. |
+| 0.25–1.65 s | **The market.** Price and quantity axes; demand draws itself, then supply; the equilibrium, with its price and quantity. |
+| 1.75–3.4 s | **The macroeconomy.** Aggregate demand shifts right along short-run aggregate supply and the equilibrium moves with it (output and the price level rise); long-run supply stays where it is. The dot's path is the intersection's, worked out from the slopes and checked by a self-test. |
+| 3–4.4 s | **The network.** Concepts, evidence, policy and outcomes, joined, then receding. |
+| 3.95–5.75 s | **The identity.** The monogram, then the name ARJUN AGRAWAL (the logo's own vectors), then **Economics · Politics · Business**, then **Think like an economist.** (5.80–6.05 s is still). |
+| 6.2–7 s | **The reveal.** The two halves open onto the page like the covers of a book (sideways on a wide screen, up and down on a phone); the overlay is transparent at exactly start + 7000 ms. |
 
-The overlay and its clock are put into `index.html` by `tools/migrations/2026-11-19-opening-two-pathways.py`
-from `tools/build/opening-two-pathways.json`; the styles are in `src/styles/css-opening.css`.
+The overlay and its clock are put into `index.html` by `tools/migrations/2026-11-20-opening-seven-seconds.py`
+(which keeps the engine of the 2026-11-19 opening and changes its storyboard); the styles are in
+`src/styles/css-opening.css`. The curves "draw" by a window that slides open over them while the curve moves
+the other way, so every stage still animates opacity and transform only.
 
 **One start timestamp.** The start is the first frame the reader sees. It is taken from
 `requestAnimationFrame` and re-anchored to the browser's reported first paint during the still
-passage (3.70–3.95 s). Every stage is a Web Animation scheduled from that timestamp, not a chain of
+passage (5.80–6.05 s). Every stage is a Web Animation scheduled from that timestamp, not a chain of
 timers.
 
 **Nothing can lengthen it.** Every stage animates opacity and transform only, so the compositor keeps
 time while the start-up self-test occupies the main thread. The exit is scheduled ahead as soon as the
-page is ready, reaches full transparency at exactly start + 5000 ms, and the overlay is removed on the
+page is ready, reaches full transparency at exactly start + 7000 ms, and the overlay is removed on the
 next frame. With the processor slowed four times the stages still land on schedule; only the exit
 waits, because the page is not ready.
 
@@ -896,24 +928,24 @@ waits, because the page is not ready.
 
 | How the reader arrives | What they see |
 |---|---|
-| Any full page load of any address: a first visit, a reload, a bookmark, a shared link to any page, Back or Forward from another site | the full five seconds |
-| **Replay the opening** in Settings (`?intro=1`) | the full five seconds; the parameter is taken out of the address |
+| Any full page load of any address: a first visit, a reload or refresh, a bookmark, a shared link to any page, Back or Forward from another site | the full seven seconds |
+| **Replay the opening** in Settings or in the footer (`?intro=1`) | the full seven seconds; the parameter is taken out of the address |
 | A reduced-motion preference | one still frame, 1.5 s |
 | A page restored by the back/forward cache | the page as it was left |
 | Moving inside the platform, including Home and Back between its own pages | no opening at all |
 
-**What it stores.** Nothing: no storage is read or written, so a skip is not remembered either and the
-next full load plays again. The page records the navigation type, the route, the mode and the result
-in `window.__INTRO`.
+**What it stores.** Nothing: no storage is read or written (no `localStorage`, no `sessionStorage`), so a
+skip is not remembered either and the next full load plays again. The page records the navigation type,
+the route, the mode and the result in `window.__INTRO`.
 
 **Skip and reduced motion.**
 - **Skip introduction**, in the bottom right corner, is a real button and the first stop for the
   keyboard. Enter or a click on it, or Escape anywhere, starts the exit within one frame (a 180 ms
   fade). Stray clicks, scrolls and other keys do not skip.
-- The overlay is a status named for both pathways ("Arjun Agrawal | Economics. One discipline, two
-  pathways: IB DP Economics and UPSC CSE Economics."); every decorative layer is hidden from assistive
-  technology, and nothing behind it is ever made inert.
-- Reduced motion shows the identity, the line and both pathways at once and leaves after 1.5 s.
+- The overlay is a status named "Arjun Agrawal. Economics, Politics, Business. Think like an
+  economist."; every decorative layer is hidden from assistive technology, nothing behind it is ever made
+  inert, and the platform's own content is in the page behind it all along, for search engines too.
+- Reduced motion shows the monogram, the name, the positioning and the line at once and leaves after 1.5 s.
 
 `tests/intro.mjs` measures the timing at 360, 390, 768, 1024, 1440 and 1920 px from the record the
 page keeps in `window.__INTRO`; checks where every stage sits at its moment (on screen, clear of
@@ -922,9 +954,7 @@ shared link, the home page, a reload, a hard reload, direct addresses, navigatio
 and Forward from another site, a new tab, refused storage, `?intro=1`, reduced motion) and confirms
 that nothing is stored; presses Skip by keyboard, mouse and Escape; checks for horizontal scroll at
 320 px in every state; and, with the processor slowed four times, reads the compositor's own frames (a
-screencast) to confirm that the stages land on time: the progress bar is itself a linear animation, so
-its length in each frame says which moment of the sequence the frame shows. When the machine is too
-busy for the page to be ready in time, the timing rows check the hold instead and say so.
+screencast) to confirm that the stages land on time.
 
 ## Installable, and honest about offline
 

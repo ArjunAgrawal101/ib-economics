@@ -92,6 +92,16 @@ function abEcosystem(){if(typeof fxEcoCard!=="function")return "";
   <ol class="eco-grid mt4">${FX_ECO.map(fxEcoCard).join("")}</ol>
  </div></section>`}
 
+/* the book: The Indian Economy, in the author's own words from its preface; facts from 51-book.js */
+function abBook(){if(typeof bkMockup!=="function")return "";
+ return `<section class="sec ab-book" aria-labelledby="ab-k"><div class="wrap full">
+  <div class="rn-chap"><span class="ch-n">07</span><span class="ch-t" id="ab-k">The Indian Economy</span></div>
+  <div class="abk-grid mt4"><div class="abk-v">${bkMockup("md")}</div>
+   <div><p class="ed" style="max-width:62ch"><i>The Indian Economy: A Comprehensive Academic and Examination Reference</i> (First Edition, 2026-27), authored and compiled by Arjun Agrawal, brings India's economic concepts, institutions, policies and sectors together in one connected reference for UPSC CSE, State PCS and RBI Grade B (General) candidates and for university study of the Indian economy. Its free Digital Revision Companion carries the revision and practice for each of its thirteen units.</p>
+    <blockquote class="abk-q mt3">“I have always believed that meaningful learning rests on three closely related elements: Concepts, Content and Contexts.”<cite>From the preface</cite></blockquote>
+    <div class="row mt4"><a class="btn a" href="#/book">About the book →</a><a class="btn gh" href="#/book/digital-revision-companion">The Digital Revision Companion</a></div></div></div>
+ </div></section>`}
+
 function abLonger(){const A=ABOUT,B=ABOUT2;
  return `<section class="sec t ab-longer"><div class="wrap full">
   <details class="ab-more"><summary><span class="ch-t">The longer version</span><span class="xs">The full statement, the four positions, the portfolio and the method</span></summary>
@@ -113,4 +123,4 @@ function abClose(){const A=ABOUT;return `<section class="sec rn-final bg-ink ab-
    <button class="btn lg gh on-ink" onclick="nav('learn')">Start learning</button></div></div></section>`}
 
 (function(){if(typeof aboutPage!=="function")return;
- aboutPage=function(){return abCover()+abFacts()+abJourney()+abClassroom()+abPrinciples()+abStory()+abEcosystem()+abLonger()+abClose()+abLightboxMarkup()}})();
+ aboutPage=function(){return abCover()+abFacts()+abJourney()+abClassroom()+abPrinciples()+abStory()+abEcosystem()+abBook()+abLonger()+abClose()+abLightboxMarkup()}})();

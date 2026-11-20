@@ -24,14 +24,21 @@ function FLAGSHIPSUITE(){
  T("Flagship · the home has one h1, and it is the platform's statement",()=>{const h=home();
   return (h.match(/<h1\b/g)||[]).length===1&&/Economics is not just a subject to study\./.test(txt(h))&&/It is a way to think\./.test(txt(h))});
  T("Flagship · the home carries the supporting statement and the platform's idea",()=>{const t=txt(home());
-  return t.includes("An interactive Economics learning ecosystem connecting economic concepts, visual understanding, real-world evidence and examination preparation across international and Indian perspectives.")
-   &&t.includes("One discipline. Two pathways. A shared understanding of Economics.")});
- T("Flagship · two pathway cards of equal weight, eight features each and their own call to action",()=>{const h=home();
+  return t.includes("An integrated learning ecosystem connecting economic concepts, visual understanding, real-world evidence and examination thinking.")
+   &&t.includes("One discipline. Two pathways. A shared understanding of Economics.")&&t.includes("Think like an economist.")&&t.includes("Concepts. Content. Contexts.")});
+ T("Flagship · the hero opens both pathways at once and shows the educator's photograph, uncropped and described",()=>{const h=home();const i=h.indexOf('<section class="hx'),j=h.indexOf('<div class="hx-paths">');const hero=h.slice(i,j);
+  return /<a class="fx-btn hx-go ib" href="#\/ib">Explore IB DP Economics/.test(hero)&&/<a class="fx-btn hx-go up" href="#\/upsc">Explore UPSC CSE Economics/.test(hero)
+   &&/<img src="assets\/brand\/arjun-agrawal-portrait-hero\.webp" width="539" height="674" alt="Arjun Agrawal[^"]+"/.test(hero)});
+ T("Flagship · two pathway cards of equal weight, the brief's ten features each, its positioning line and their own call to action",()=>{const h=home();
   const card=c=>{const i=h.indexOf(`<article class="pc ${c}"`);return i<0?"":h.slice(i,h.indexOf("</article>",i))};
   const ib=card("pc-ib"),up=card("pc-up");const n=s=>((s.split('<ul class="pc-f">')[1]||"").split("</ul>")[0].match(/<li>/g)||[]).length;
-  return n(ib)===8&&n(up)===8&&/Explore IB Economics/.test(ib)&&/Explore UPSC Economics/.test(up)&&/href="#\/ib"/.test(ib)&&/href="#\/upsc"/.test(up)});
+  return n(ib)===10&&n(up)===10&&/Explore IB Economics/.test(ib)&&/Explore UPSC Economics/.test(up)&&/href="#\/ib"/.test(ib)&&/href="#\/upsc"/.test(up)
+   &&ib.includes("Think conceptually. Apply theory. Evaluate real-world economics.")&&up.includes("Understand the Indian economy through concepts, institutions, policies and evidence.")
+   &&/SL and HL learning pathways/.test(ib)&&/Extended Essay support/.test(ib)&&/The Indian Economy book/.test(up)&&/Digital Revision Companion/.test(up)&&/Intensive online coaching/.test(up)});
+ T("Flagship · the figures on the pathway cards are counted from the platform's data",()=>{const n=rnCount(),h=home();
+  return h.includes(`<b>${fmtN(n.diagrams)}</b> diagrams`)&&h.includes(`<b>${fmtN(n.cases)}</b> real-world cases`)&&h.includes(`<b>${fmtN(fxVols().length)}</b> handbooks`)&&h.includes(`<b>${fmtN(UP_CA.length)}</b> current-affairs notes`)});
  T("Flagship · the home's movements follow the brief, in order",()=>{const h=home();
-  const ids=["hx-h","pc-ib-h","pc-up-h","th-h","eib-h","eup-h","res-h","lab-h","ac-h","ab-h","ct-h"];
+  const ids=["hx-h","pc-ib-h","pc-up-h","bk-h","dc-h","th-h","eib-h","eup-h","res-h","lab-h","ac-h","eco-h","ab-h","ct-h"];
   const at=ids.map(id=>h.indexOf(`id="${id}"`));const ok=at.every((x,i)=>x>=0&&(i===0||x>at[i-1]));
   return ok?true:{ok:false,d:ids.filter((id,i)=>at[i]<0).join(", ")||"out of order"}});
  T("Flagship · headings on the home descend without skipping a level",()=>{const lv=[...home().matchAll(/<h([1-6])\b/g)].map(m=>+m[1]);
@@ -67,6 +74,8 @@ function FLAGSHIPSUITE(){
  T("Flagship · every section a reader can open is reachable from the new navigation",()=>{
   const inNav=new Set(["home","ib","upsc","about","contact","concepts","design"]);
   FX_IBNAV.forEach(g=>g.items.forEach(i=>inNav.add(i[1])));FX_IBPROGRESS.forEach(i=>inNav.add(i[1]));
+  /* and whatever the header and the Resources menu actually link */
+  const g=document.getElementById("gnav");hrefs((g?g.innerHTML:"")+fxResPanelHtml()).forEach(x=>{const r=/^#/.test(x)&&routeParse(x);if(r)inNav.add(r.v)});
   const miss=SECTIONS.filter(s=>!s.hide&&!inNav.has(s.v)).map(s=>s.v);return miss.length?{ok:false,d:miss.join(", ")}:true});
  T("Flagship · each view belongs to one pathway, or to both",()=>fxPathway("home")==="shared"&&fxPathway("about")==="shared"&&fxPathway("upsc")==="upsc"
   &&fxPathway("learn")==="ib"&&fxPathway("ib")==="ib"&&fxPathway("lab")==="ib");
@@ -118,9 +127,10 @@ function FLAGSHIPSUITE(){
   const sw=fxSwitcher("shared","x"),f=document.querySelector("footer.ft .ft-paths");
   return !/business|political/i.test(sw)&&!/pathway 03|p-(bb|ps)[^"]*\b(ib|up)\b/i.test(fxEcosystem()+(f?f.innerHTML:""))&&FX_SHARED.has("home")
    &&!!f&&[...f.querySelectorAll(".ft-path.p-bb .ft-pn,.ft-path.p-ps .ft-pn")].map(x=>x.textContent).join("|")==="Beyond Economics|Beyond Economics"&&f.querySelectorAll(".ft-path.p-ib,.ft-path.p-up").length===2});
- T("Academic Ecosystem · the home section reads as the brief asks: its heading, the shared identity, the three names and lines, and nothing claimed",()=>{const t=txt(fxEcosystem());
-  return t.includes("Explore the Arjun Agrawal Academic Ecosystem")&&t.includes("Knowledge. Insight. Impact.")&&/You are here/.test(t)
-   &&["IB Economics | Economic Analysis | Academic Resources","IB Business Management | Strategy | Leadership | Decisions","Indian Polity | International Relations | PSIR | IB Global Politics"].every(x=>t.includes(x))
+ T("Academic Ecosystem · the home section reads as the final brief asks: its heading, the shared identity, the three names, lines and taglines, and nothing claimed",()=>{const t=txt(fxEcosystem());
+  return t.includes("One educator. Three disciplines.")&&t.includes("One connected learning ecosystem.")&&t.includes("Knowledge. Insight. Impact.")&&/You are here/.test(t)
+   &&["Arjun Agrawal | IB DP Economics and UPSC CSE Economics","IB DP Business Management","IB DP Global Politics | Indian Polity | International Relations | PSIR"].every(x=>t.includes(x))
+   &&["Think like an economist.","Strategy. Leadership. Decisions.","Understand power, politics and global affairs."].every(x=>t.includes(x))
    &&!/(best|number one|award|students use|trusted by|\d+\s*(students|users))/i.test(t)});
  T("Academic Ecosystem · the footer names the ecosystem, says which platform this is and lists the pathways, then the two sisters",()=>{
   const f=document.querySelector("footer.ft .ft-paths");if(!f)return false;const t=f.textContent.replace(/\s+/g," ");

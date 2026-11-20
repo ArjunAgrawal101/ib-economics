@@ -1,22 +1,25 @@
-/* css-opening.css · owned by its workstream; see docs/flagship/PLAN.md and docs/flagship/INTEGRATION-PR13.md
+/* css-opening.css · owned by its workstream; see docs/flagship/FINAL-FLAGSHIP.md
    THE OPENING · its styles (spliced at the end of the base stylesheet).
-   The two-pathway opening, from PR #13, chosen by the owner in place of the world-map opening of
-   2026-11-17. The overlay and its clock are in the body of index.html, put there by
-   tools/migrations/2026-11-19-opening-two-pathways.py from tools/build/opening-two-pathways.json.
-   Two rules come from the 2026-11-17 opening: overflow:clip, so the overlay can never scroll
-   sideways, and a 30 s failsafe, so it cannot stay if its script never runs. */
-/* ── THE OPENING · five seconds: one Economics ecosystem, two pathways ───
-   One clock drives every stage (see the script beside the overlay). The
-   stages share one centred cell and cross-fade, so nothing moves the layout;
-   every stage animates opacity and transform only, which run on the
-   compositor. Timeline, in ms from the first presented frame: the field of
-   coordinates, data and lines 0-1000 with the identity emerging 300-1150; the
-   identity settles to the top 1150-1500 while supply and demand appear and
-   demand shifts, moving the equilibrium along supply (1520-1900), a trade
-   network behind; the field divides into IB DP Economics and UPSC CSE
-   Economics 2000-3250; "One discipline. Two pathways." 3150-3600, still
-   3700-3950, the two names 3950-4250; the halves open onto the page 4300-5000.
-   The overlay is fixed, locks nothing, writes nothing, and is removed at 5000.
+   The seven-second opening of the final flagship release (2026-11-20), in place of the five-second
+   two-pathway opening of 2026-11-19. The overlay and its clock are in the body of index.html, put
+   there by tools/migrations/2026-11-20-opening-seven-seconds.py. Two rules are kept from the
+   earlier openings: overflow:clip, so the overlay can never scroll sideways, and a 30 s failsafe,
+   so it cannot stay if its script never runs. */
+/* ── THE OPENING · seven seconds: from economic thought to real-world understanding ───
+   One clock drives every stage (see the script beside the overlay). Every stage animates
+   opacity and transform only, which run on the compositor; the curves "draw" by a window that
+   slides open over them (the window moves one way, the curve the other), so nothing repaints.
+   Timeline, in ms from the first presented frame:
+     0-700      a midnight field and a fine-line economic grid
+     250-1650   price and quantity axes; demand draws itself, then supply; the equilibrium
+     1750-3400  the market gives way to the macroeconomy: aggregate demand shifts right along
+                short-run aggregate supply, output and the price level rise, long-run supply stays
+     3000-4400  a network joins concepts, evidence, policy and outcomes, then recedes
+     3950-4750  the monogram, then the name (the brand vectors)
+     4800-5250  ECONOMICS · POLITICS · BUSINESS
+     5300-5750  THINK LIKE AN ECONOMIST.            (5800-6050 is still)
+     6200-7000  the two halves open onto the page like the covers of a book
+   The overlay is fixed, locks nothing, writes nothing, and is removed at 7000.
    Reduced motion shows one still frame and leaves after 1.5 s. */
 #splash{position:fixed;inset:0;z-index:999;background:transparent;color:#fff;overflow:hidden;overflow:clip;contain:layout paint;
  display:grid;place-items:center;padding:24px;transition:opacity .16s linear;
@@ -24,71 +27,60 @@
  animation:splash-failsafe 1ms linear 30s forwards}
 @keyframes splash-failsafe{to{visibility:hidden;pointer-events:none}}
 #splash.out{opacity:0;pointer-events:none}
-#splash .dr{position:absolute;top:0;bottom:0;width:50.5%;background:var(--obs);overflow:hidden}
+/* the two halves: midnight charcoal, lit from the seam */
+#splash .dr{position:absolute;top:0;bottom:0;width:50.5%;background:#111418;overflow:hidden}
 #splash .dr-l{left:0}#splash .dr-r{right:0}
 #splash .dr i{position:absolute;inset:0;opacity:0}
-#splash .dr-l i{background:radial-gradient(110% 80% at 72% 50%,#33141D 0%,#22141A 58%,#16181C 100%)}
-#splash .dr-r i{background:radial-gradient(110% 80% at 28% 50%,#0F2C20 0%,#12201A 58%,#16181C 100%)}
+#splash .dr-l i{background:radial-gradient(120% 90% at 100% 50%,#1E2638 0%,#151A24 52%,#0F1216 100%)}
+#splash .dr-r i{background:radial-gradient(120% 90% at 0% 50%,#1E2638 0%,#151A24 52%,#0F1216 100%)}
 #splash .ifs{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 #splash .if{position:absolute;inset:0;width:100%;height:100%;opacity:0}
-#splash .if path{fill:none;stroke:rgba(244,239,228,.1);stroke-width:1.2;vector-effect:non-scaling-stroke}
-#splash .if-grid path{stroke:rgba(244,239,228,.05);stroke-width:1}
-#splash .if-data .d circle{fill:rgba(244,239,228,.32)}
-#splash .if-data .l text{fill:rgba(244,239,228,.3);font-family:var(--mono);font-size:15px;letter-spacing:.04em}
-#splash .if-lines path{stroke:rgba(201,168,102,.42);stroke-width:1.3}
-#splash .if-lines path.k{stroke:rgba(244,239,228,.14);stroke-dasharray:4 7}
-#splash .if-lines .d circle{fill:rgba(201,168,102,.75)}
+#splash .if path{fill:none;vector-effect:non-scaling-stroke}
+#splash .if-grid path{stroke:rgba(217,190,124,.07);stroke-width:1}
+#splash .if-grid .mj{stroke:rgba(217,190,124,.11)}
+/* the figure: one square cell in the middle of the screen */
+#splash .if-fig{position:absolute;left:50%;top:50%;width:min(440px,80vw,54vh);aspect-ratio:1;transform:translate(-50%,-50%)}
+#splash .if-grp{position:absolute;inset:0}
+#splash .if-mic{opacity:1}#splash .if-mac{opacity:0}
+#splash .if-f{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#splash .if-f path{fill:none;stroke-width:2.6;vector-effect:non-scaling-stroke;stroke-linecap:round}
+#splash .if-f .ax{stroke:rgba(244,239,228,.55);stroke-width:1.6}
+#splash .if-f .gd{stroke:rgba(244,239,228,.3);stroke-width:1.2;stroke-dasharray:4 6}
+#splash .if-f text{font-family:var(--mono);font-size:15px;fill:rgba(244,239,228,.62)}
+#splash .if-f text.k{font-size:17px;font-weight:600;fill:rgba(244,239,228,.86)}
+#splash .if-d path{stroke:#E7B4BD}#splash .if-s path{stroke:#D9BE7C}
+#splash .if-ad path{stroke:#E7B4BD}#splash .if-mac .sr{stroke:#D9BE7C}#splash .if-mac .lr{stroke:rgba(244,239,228,.7);stroke-dasharray:7 7}
+#splash .if-eq .e,#splash .if-eq2 .e{fill:#F4EFE4}
+#splash .if-eq .r,#splash .if-eq2 .r{fill:none;stroke:rgba(217,190,124,.7);stroke-width:1.5}
+#splash .if-eq,#splash .if-ax,#splash .if-ad,#splash .if-eq2{opacity:0}
+/* a curve draws by a window sliding open over it */
+#splash .if-w{position:absolute;inset:0;overflow:hidden;transform:translateX(-101%)}
+#splash .if-wi{position:absolute;inset:0;transform:translateX(101%)}
+/* the network of ideas */
 #splash .if-net{transform-origin:50% 50%}
-#splash .if-net .a path{stroke:rgba(201,168,102,.2);stroke-width:1}
-#splash .if-net .n circle{fill:rgba(244,239,228,.32)}
-#splash .if-fig{position:absolute;left:50%;top:54%;width:min(520px,84vw,56vh);aspect-ratio:1;transform:translate(-50%,-50%);overflow:hidden}
-#splash .if-f{position:absolute;inset:0;width:100%;height:100%;opacity:0;overflow:visible}
-#splash .if-f path{fill:none;stroke-width:2.4;vector-effect:non-scaling-stroke}
-#splash .if-ax path{stroke:rgba(244,239,228,.5);stroke-width:1.6}
-#splash .if-sd path.s{stroke:#C9A866}
-#splash .if-sd path.d{stroke:rgba(244,239,228,.45);stroke-dasharray:7 7}
-#splash .if-sd path.g{stroke:rgba(244,239,228,.22);stroke-dasharray:4 6;stroke-width:1.2}
-#splash .if-sd .e0{fill:rgba(244,239,228,.5)}
-#splash .if-d2 path{stroke:#F4EFE4}
-#splash .if-eq .e{fill:#C9A866}#splash .if-eq .r{fill:none;stroke:rgba(201,168,102,.55);stroke-width:1.5}
-#splash .if-f .l text{fill:rgba(244,239,228,.66);font-family:var(--mono);font-size:22px}
-#splash .if-m{position:absolute;--g:min(46vmin,420px);width:var(--g);height:var(--g);top:calc(50% - var(--g)/2);opacity:0;overflow:visible}
-#splash .if-globe{left:calc(50% - min(880px,100vw - 48px)/4 - var(--g)/2)}
-#splash .if-kolam{left:calc(50% + min(880px,100vw - 48px)/4 - var(--g)/2)}
-#splash .if-m path,#splash .if-m circle,#splash .if-m ellipse{fill:none;stroke-width:1.3;vector-effect:non-scaling-stroke}
-#splash .if-globe *{stroke:rgba(214,140,156,.32)}
-#splash .if-globe .t{stroke:rgba(201,168,102,.6);stroke-dasharray:5 6}
-#splash .if-globe .n{fill:#C9A866;stroke:none}
-#splash .if-kolam *{stroke:rgba(126,190,150,.34)}
-#splash .if-kolam .d circle{fill:rgba(201,168,102,.62);stroke:none}
-#splash .if-seam{position:absolute;left:50%;top:16%;bottom:16%;width:1px;margin-left:-.5px;opacity:0;
- background:linear-gradient(transparent,rgba(201,168,102,.75) 30%,rgba(201,168,102,.75) 70%,transparent)}
-#splash .if-conv path{stroke:rgba(201,168,102,.46);stroke-width:1.4}
-#splash .if-conv .e{fill:#C9A866}#splash .if-conv .r{fill:none;stroke:rgba(201,168,102,.4);stroke-width:1.2}
-#splash .stage{position:relative;display:grid;place-items:center;width:100%;max-width:880px;text-align:center;overflow-x:clip}
-#splash .stage>*{grid-area:1/1}
+#splash .if-net .e path{stroke:rgba(217,190,124,.32);stroke-width:1.2}
+#splash .if-net .e path.x{stroke:rgba(244,239,228,.14);stroke-dasharray:3 7}
+#splash .if-net .s circle{fill:rgba(244,239,228,.3)}
+#splash .if-net .n circle{fill:#111418;stroke:#D9BE7C;stroke-width:2}
+#splash .if-net .n circle.c{fill:#D9BE7C;stroke:none}
+#splash .if-net .n text{font-family:var(--ui);font-weight:700;font-size:24px;letter-spacing:.2em;fill:#F4EFE4;text-anchor:middle}
+#splash .if-net .if-n{opacity:0}#splash .if-net .if-e{opacity:0}
+/* the identity */
+#splash .stage{position:relative;display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2.4vh,26px);width:100%;max-width:880px;text-align:center;overflow-x:clip}
 #splash .sc{opacity:0}
-#splash .ia-logo{position:relative;width:min(360px,68vw);aspect-ratio:760/462}
+#splash .ia-logo{position:relative;width:min(340px,66vw,40vh);aspect-ratio:760/392}
 #splash .ia-logo svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-#splash .ia-wm,#splash .ia-tl{opacity:0}
-#splash .ia-path{display:grid;grid-template-columns:1fr 1fr;width:100%;align-items:start}
-#splash .ia-ib,#splash .ia-up{display:flex;flex-direction:column;align-items:center;gap:12px;padding:0 clamp(12px,3vw,36px)}
-#splash .ia-ib::before,#splash .ia-up::before{content:"";width:44px;height:2px;margin-bottom:4px}
-#splash .ia-ib::before{background:#C8697B}#splash .ia-up::before{background:#5FA37F}
-#splash .ia-path b{font-family:var(--ui);font-weight:700;font-size:clamp(15px,2vw,22px);letter-spacing:.2em;text-transform:uppercase;color:#F4EFE4;white-space:nowrap}
-#splash .ia-path span{font-family:var(--ui);font-weight:500;font-size:clamp(13px,1.5vw,16px);line-height:1.45;color:rgba(244,239,228,.74);max-width:26ch;text-wrap:balance}
-#splash .ia-peak{display:flex;flex-direction:column;align-items:center}
-#splash .ia-tg{font-family:var(--dsp);font-weight:400;font-size:clamp(36px,7vw,80px);line-height:1.04;letter-spacing:-.02em;color:#fff;text-wrap:balance}
-#splash .ia-tg em{display:block;font-style:italic;color:#D9BE7C}
-#splash .ia-vb{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:10px 14px;margin-top:clamp(18px,3vw,28px);
- font-family:var(--ui);font-weight:700;font-size:clamp(12px,1.6vw,15px);letter-spacing:.2em;text-transform:uppercase;opacity:0}
-#splash .ia-vb .v-ib{color:#E7B4BD}#splash .ia-vb .v-up{color:#9FD0B3}
-#splash .ia-vb i{flex:none;width:6px;height:6px;border-radius:50%;background:#C9A866}
+#splash .ia-wm{opacity:0}
+#splash .ia-pos{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 16px;font-family:var(--ui);font-weight:600;
+ font-size:clamp(12px,1.6vw,16px);letter-spacing:.34em;text-transform:uppercase;color:#D9BE7C;padding-left:.34em}
+#splash .ia-pos i{width:5px;height:5px;border-radius:50%;background:rgba(217,190,124,.7);flex:none}
+#splash .ia-tg{font-family:var(--dsp);font-weight:400;font-size:clamp(26px,4.4vw,54px);line-height:1.08;letter-spacing:.08em;text-transform:uppercase;color:#F4EFE4;text-wrap:balance;
+ padding-top:clamp(10px,2vh,18px);border-top:1px solid rgba(217,190,124,.32);max-width:22ch}
 #splash .ia-bar{position:absolute;left:50%;bottom:max(30px,env(safe-area-inset-bottom));width:min(180px,40vw);height:2px;
  transform:translateX(-50%);background:rgba(255,255,255,.14);overflow:hidden}
 #splash .ia-bar i{display:block;height:100%;background:#C9A866;transform:scaleX(0);transform-origin:left center}
 .spskip{position:absolute;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));
-  padding:10px 18px;border:1px solid rgba(255,255,255,.34);border-radius:2px;background:rgba(22,24,28,.5);color:rgba(255,255,255,.86);
+  padding:10px 18px;border:1px solid rgba(255,255,255,.34);border-radius:2px;background:rgba(17,20,24,.6);color:rgba(255,255,255,.86);
   font-family:var(--ui);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
   opacity:0;animation:spst .4s var(--ez) .3s forwards;transition:border-color .2s,color .2s}
 .spskip:hover,.spskip:focus-visible{border-color:rgba(255,255,255,.8);color:#fff;outline:2px solid #C9A866;outline-offset:2px}
@@ -96,23 +88,18 @@
 @media (max-width:640px){
  #splash .dr{top:auto;bottom:auto;left:0;right:0;width:auto;height:50.5%}
  #splash .dr-l{top:0}#splash .dr-r{bottom:0}
- #splash .dr-l i{background:radial-gradient(90% 110% at 50% 74%,#33141D 0%,#22141A 58%,#16181C 100%)}
- #splash .dr-r i{background:radial-gradient(90% 110% at 50% 26%,#0F2C20 0%,#12201A 58%,#16181C 100%)}
- #splash .ia-path{grid-template-columns:1fr;gap:clamp(48px,10vh,80px)}
- #splash .if-m{--g:min(40vmin,170px)}
- #splash .ia-vb{flex-direction:column;gap:8px}#splash .ia-vb i{display:none}
- #splash .if-globe{left:calc(50% - var(--g)/2);top:calc(50% - 84px - var(--g)/2)}
- #splash .if-kolam{left:calc(50% - var(--g)/2);top:calc(50% + 84px - var(--g)/2)}
- #splash .if-seam{left:14%;right:14%;top:50%;bottom:auto;width:auto;height:1px;margin:0;
-  background:linear-gradient(90deg,transparent,rgba(201,168,102,.75) 30%,rgba(201,168,102,.75) 70%,transparent)}}
-/* still: reduced motion shows one frame, the identity, the line and both pathways */
-#splash.still .stage{display:flex;flex-direction:column;gap:clamp(18px,3vw,30px)}
-#splash.still .sc,#splash.still .ia-wm,#splash.still .ia-tl,#splash.still .if-grid,#splash.still .dr i{opacity:1}
-#splash.still .if-data,#splash.still .if-lines{opacity:.5}
-#splash.still .if-net,#splash.still .if-fig,#splash.still .if-m,#splash.still .if-conv,#splash.still .if-seam,#splash.still .ia-vb,#splash.still .ia-bar{display:none}
-#splash.still .ia-logo{width:min(230px,52vw)}
-#splash.still .ia-peak{order:1}#splash.still .ia-path{order:2;gap:28px}
-#splash.still .ia-tg{font-size:clamp(28px,5vw,52px)}
-@media (max-height:520px){#splash .ia-logo{width:min(220px,38vw)}#splash .ia-tg{font-size:clamp(26px,7vh,44px)}#splash .if-fig{width:min(520px,84vw,50vh)}
- #splash.still .ia-logo{width:min(140px,28vw)}#splash.still .ia-tg{font-size:clamp(22px,5vh,34px)}#splash .ia-bar{display:none}}
+ #splash .dr-l i{background:radial-gradient(110% 120% at 50% 100%,#1E2638 0%,#151A24 52%,#0F1216 100%)}
+ #splash .dr-r i{background:radial-gradient(110% 120% at 50% 0%,#1E2638 0%,#151A24 52%,#0F1216 100%)}
+ #splash .ia-pos{letter-spacing:.18em;gap:6px 10px;padding-left:.18em}
+ #splash .ia-tg{letter-spacing:.05em}
+ #splash .if-net .n text{font-size:30px}
+ /* the bar keeps clear of Skip on a phone */
+ #splash .ia-bar{left:max(24px,env(safe-area-inset-left));transform:none;width:min(120px,30vw);bottom:max(36px,env(safe-area-inset-bottom))}}
+/* still: reduced motion shows one frame, the identity, the positioning and the line */
+#splash.still .sc,#splash.still .ia-wm,#splash.still .if-grid,#splash.still .dr i{opacity:1}
+#splash.still .if-net{opacity:.1}#splash.still .if-net .if-n,#splash.still .if-net .if-e{opacity:1}
+#splash.still .if-fig,#splash.still .ia-bar{display:none}
+#splash.still .ia-logo{width:min(240px,52vw,34vh)}
+@media (max-height:520px){#splash .ia-logo{width:min(200px,36vw,34vh)}#splash .ia-tg{font-size:clamp(20px,6vh,34px)}#splash .if-fig{width:min(440px,70vw,62vh)}
+ #splash .stage{gap:10px}#splash .ia-bar{display:none}}
 @media (prefers-reduced-motion:reduce){.spskip{animation:none;opacity:1}}
