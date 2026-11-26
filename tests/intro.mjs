@@ -1,6 +1,7 @@
-/* The opening sequence (the two-pathway opening, tools/migrations/2026-11-19-opening-two-pathways.py):
-   exactly five seconds from the first frame the reader sees, at the six widths the brief names; what
-   it says (both pathways) and how it is announced; Skip by mouse and keyboard, and Escape; the state
+/* The opening sequence (the seven-second opening, tools/migrations/2026-11-20-opening-seven-seconds.py):
+   exactly seven seconds from the first frame the reader sees, at the six widths the brief names; what
+   it says (demand and supply, the macroeconomy, the network of ideas, the monogram and the name,
+   Economics · Politics · Business, Think. Understand. Connect.) and how it is announced; Skip by mouse and keyboard, and Escape; the state
    model the owner asked for (every full page load of any address plays in full, navigation inside
    the app never does, nothing is stored, so a skip is not remembered); reduced motion; no horizontal
    scroll at 320 px; a warm service worker; and, under a four-times CPU slowdown, that the stages
@@ -13,9 +14,10 @@ import { serve, browser, check, done } from './lib.mjs';
 const { srv, base } = await serve();
 const b = await browser();
 const SIZES = [[360, 780], [390, 844], [768, 1024], [1024, 768], [1440, 900], [1920, 1080]];
+const MS = 7000, FADE = 6200;           /* the sequence and the start of its reveal */
 const FRAME = 50;                      /* the node is removed on the first frame at or after the exit: up to three frames at 60 Hz */
-const REVEAL = 700;                    /* the halves open over the last 700 ms (fadeAt 4300) */
-const LABEL = 'Arjun Agrawal | Economics. One discipline, two pathways: IB DP Economics and UPSC CSE Economics.';
+const REVEAL = 800;                    /* the halves open over the last 800 ms (fadeAt 6200) */
+const LABEL = 'Arjun Agrawal. Economics, Politics, Business. Think. Understand. Connect.';
 const rec = () => { const I = window.__INTRO; return { mode: I.mode, how: I.how, late: I.late, t0: I.t0, start: I.start, fp: I.fp,
   end: I.end, exitAt: I.exitAt, fadeStart: I.fadeStart, fadeEnd: I.fadeEnd, state: I.state, skipAt: I.skipAt || null,
   forced: I.forced, route: I.route, nav: I.nav, ready: window.__READY_AT || null }; };
@@ -25,17 +27,17 @@ const readyClock = () => { let v; Object.defineProperty(window, '__APP_READY', {
   get() { return v; }, set(x) { v = x; if (x && !window.__READY_AT) window.__READY_AT = performance.now(); } }); };
 /* holds the overlay: the platform never reports ready, so nothing leaves */
 const holdReady = () => { Object.defineProperty(window, '__APP_READY', { configurable: true, get() { return false; }, set(x) { window.__R = x; } }); };
-/* the full sequence: on its own clock (the exit fade ending at exactly 5000 ms, the node removed
+/* the full sequence: on its own clock (the exit fade ending at exactly 7000 ms, the node removed
    promptly; section 1 holds the removal to 50 ms), or held until the page was ready when it was not */
 const fullOK = r => r.mode === 'play' && (r.how === 'timer'
-  ? Math.abs(r.exitAt - r.start - 5000) < 0.5 && Math.abs(r.fadeEnd - r.start - 5000) < 0.5 && r.end - r.start >= 4999.5 && r.end - r.start <= 5000 + 250
-  : r.how === 'late' && r.ready !== null && r.ready - r.start > 4400 && r.fadeStart >= r.ready - 0.5 && r.fadeEnd - r.fadeStart >= 119.5 && r.end - r.ready <= 1250);
+  ? Math.abs(r.exitAt - r.start - MS) < 0.5 && Math.abs(r.fadeEnd - r.start - MS) < 0.5 && r.end - r.start >= MS - 0.5 && r.end - r.start <= MS + 250
+  : r.how === 'late' && r.ready !== null && r.ready - r.start > FADE + 100 && r.fadeStart >= r.ready - 0.5 && r.fadeEnd - r.fadeStart >= 119.5 && r.end - r.ready <= 1250);
 const ctxWith = async (opts = {}, ...scripts) => { const c = await b.newContext({ viewport: { width: 1024, height: 768 }, ...opts }); for (const s of scripts) await c.addInitScript(s); return c; };
 const afterward = p => p.evaluate(() => ({ inert: !!document.querySelector('[inert]'), hidden: document.body.getAttribute('aria-hidden') === 'true' || !!document.querySelector('main[aria-hidden="true"]'),
   gone: !document.getElementById('splash') }));
 const noOpeningStorage = p => p.evaluate(() => { try { return Object.keys(localStorage).every(k => !/intro|splash|opening/i.test(k)) && Object.keys(sessionStorage).every(k => !/intro|splash|opening/i.test(k)); } catch (e) { return true; } });
 
-/* ── 1 · five seconds, on one clock, at six widths ───────────────────────── */
+/* ── 1 · seven seconds, on one clock, at six widths ──────────────────────── */
 for (const [w, h] of SIZES) {
   const ctx = await ctxWith({ viewport: { width: w, height: h } }, readyClock);
   const p = await ctx.newPage(); const errs = []; p.on('pageerror', e => errs.push(e.message));
@@ -46,12 +48,12 @@ for (const [w, h] of SIZES) {
   if (!r.late) {
     /* the page was ready in time: the clock alone decides */
     check(r.mode === 'play' && r.how === 'timer', `${w}px · a full page load plays the full sequence and ends on its own clock`, JSON.stringify({ mode: r.mode, how: r.how, late: r.late }));
-    check(Math.abs(r.exitAt - r.start - 5000) < 0.5, `${w}px · the exit is scheduled at exactly start + 5000 ms`, (r.exitAt - r.start).toFixed(2));
-    check(Math.abs(r.fadeEnd - r.start - 5000) < 0.5, `${w}px · the exit reaches full transparency at exactly start + 5000 ms`, String(r.fadeEnd - r.start));
-    check(vis >= 5000 - 0.5 && vis <= 5000 + FRAME, `${w}px · the overlay node leaves ${vis.toFixed(1)} ms after the start (invisible from 5000 ms, removed on the next frame)`);
+    check(Math.abs(r.exitAt - r.start - MS) < 0.5, `${w}px · the exit is scheduled at exactly start + ${MS} ms`, (r.exitAt - r.start).toFixed(2));
+    check(Math.abs(r.fadeEnd - r.start - MS) < 0.5, `${w}px · the exit reaches full transparency at exactly start + ${MS} ms`, String(r.fadeEnd - r.start));
+    check(vis >= MS - 0.5 && vis <= MS + FRAME, `${w}px · the overlay node leaves ${vis.toFixed(1)} ms after the start (invisible from ${MS} ms, removed on the next frame)`);
   } else {
     /* the machine was too busy for the page to be ready in time: the final frame must hold, then leave promptly */
-    console.log(`     (${w}px: the page was not ready until ${Math.round(r.ready - r.start)} ms, so the five-second exit could not be measured on this run)`);
+    console.log(`     (${w}px: the page was not ready until ${Math.round(r.ready - r.start)} ms, so the seven-second exit could not be measured on this run)`);
     check(r.mode === 'play' && r.how === 'late' && r.fadeStart >= r.ready - 0.5 && r.fadeStart - r.ready <= 1000 && r.fadeEnd - r.fadeStart >= 119.5 && r.fadeEnd - r.fadeStart <= REVEAL + 0.5
       && r.end >= r.fadeEnd - 0.5 && r.end - r.fadeEnd <= 600,
       `${w}px · a page not ready in time keeps the final frame until it is, then opens (${Math.round(vis)} ms)`, JSON.stringify({ how: r.how, ready: r.ready - r.start, fadeStart: r.fadeStart - r.start, fadeEnd: r.fadeEnd - r.start, end: vis }));
@@ -70,8 +72,8 @@ for (const [w, h] of SIZES) {
   await q.waitForFunction(() => window.__R === true && window.__INTRO && window.__INTRO.anims.length > 20, null, { timeout: 60000 });
   await q.evaluate(() => { const I = window.__INTRO; I.anchored = true; I.state = 'done'; });   /* stop the clock so nothing re-anchors what the test pauses */
   const bad = [], seen = {};
-  const STAGES = [[1150, ['.ia-logo']], [1700, ['.ia-logo', '.if-ax']], [2800, ['.ia-logo', '.ia-ib', '.ia-up']],
-    [3800, ['.ia-logo', '.ia-tg']], [4280, ['.ia-logo', '.ia-tg', '.ia-vb']]];
+  const STAGES = [[1700, ['.if-ax', '.if-eq']], [2600, ['.if-mac', '.if-ad', '.if-eq2']], [3900, ['.if-n1', '.if-n2', '.if-n3', '.if-n4']],
+    [4600, ['.ia-logo']], [5100, ['.ia-logo', '.ia-pos']], [5900, ['.ia-logo', '.ia-pos', '.ia-tg']]];
   for (const [t, sels] of STAGES) {
     await q.evaluate(t => __INTRO.anims.forEach(a => { a.pause(); a.currentTime = t; }), t);
     await q.waitForTimeout(60);
@@ -92,7 +94,7 @@ for (const [w, h] of SIZES) {
     }
     if (g.sl !== 0 || g.clip !== 'clip' || g.dw > g.vw) bad.push(`@${t}: horizontal scroll ${JSON.stringify({ sl: g.sl, clip: g.clip, dw: g.dw, vw: g.vw })}`);
   }
-  check(bad.length === 0 && Object.keys(seen).length === 6, `${w}px · every stage sits inside the screen, clear of Skip, fully visible at its moment`, bad.slice(0, 6).join(' | '));
+  check(bad.length === 0 && Object.keys(seen).length === 12, `${w}px · every stage sits inside the screen, clear of Skip, fully visible at its moment`, bad.slice(0, 6).join(' | '));
   await c2.close();
 }
 
@@ -102,18 +104,22 @@ for (const [w, h] of SIZES) {
   const p = await ctx.newPage();
   await p.goto(base, { waitUntil: 'commit' });
   await p.waitForFunction(() => window.__INTRO && window.__INTRO.state === 'playing', null, { timeout: 30000 });
-  const id = await p.evaluate(() => { const sp = document.getElementById('splash'), tx = s => (sp.querySelector(s) || {}).textContent || '';
-    return { label: sp.getAttribute('aria-label'), role: sp.getAttribute('role'), ib: tx('.ia-ib b'), up: tx('.ia-up b'), tg: tx('.ia-tg'), vb: tx('.ia-vb'),
+  const id = await p.evaluate(() => { const sp = document.getElementById('splash'), tx = s => ((sp.querySelector(s) || {}).textContent || '').replace(/\s+/g, ' ').trim();
+    return { label: sp.getAttribute('aria-label'), role: sp.getAttribute('role'), pos: tx('.ia-pos'), tg: tx('.ia-tg'), net: [...sp.querySelectorAll('.if-net .n text')].map(t => t.textContent),
+      vec: !!sp.querySelector('.ia-logo .ia-mk') && !!sp.querySelector('.ia-logo .ia-wm'), fig: ['.if-wd .if-d', '.if-ws .if-s', '.if-eq', '.if-mac', '.if-ad', '.if-eq2'].every(s => !!sp.querySelector(s)),
+      axes: [...sp.querySelectorAll('.if-fig text')].map(t => t.textContent).join('|'),
       deco: [...sp.children].filter(e => e.id !== 'splashskip').every(e => e.getAttribute('aria-hidden') === 'true'),
-      old: !!sp.querySelector('.o-band, .o-mk, .o-ec'), media: sp.querySelectorAll('img,video,canvas,iframe').length,
-      doors: !!sp.querySelector('.dr-l') && !!sp.querySelector('.dr-r'), motifs: !!sp.querySelector('.if-globe') && !!sp.querySelector('.if-kolam'),
-      tint: [getComputedStyle(sp.querySelector('.dr-l i')).backgroundImage, getComputedStyle(sp.querySelector('.dr-r i')).backgroundImage] }; });
-  check(id.ib === 'IB DP Economics' && id.up === 'UPSC CSE Economics', 'the field divides into IB DP Economics and UPSC CSE Economics', JSON.stringify([id.ib, id.up]));
-  check(/^One discipline\.\s*Two pathways\.$/.test(id.tg.trim()) && /IB DP Economics/.test(id.vb) && /UPSC CSE Economics/.test(id.vb), 'then "One discipline. Two pathways." and both names', JSON.stringify([id.tg, id.vb]));
-  check(id.doors && id.motifs && /gradient/.test(id.tint[0]) && /gradient/.test(id.tint[1]) && id.tint[0] !== id.tint[1], 'each pathway has its own half, colour and motif (a globe, a kolam)', JSON.stringify(id.tint).slice(0, 160));
+      old: !!sp.querySelector('.o-band, .o-mk, .o-ec, .ia-ib, .ia-up, .if-globe, .if-kolam'), media: sp.querySelectorAll('img,video,canvas,iframe').length,
+      doors: !!sp.querySelector('.dr-l') && !!sp.querySelector('.dr-r'),
+      bg: getComputedStyle(sp.querySelector('.dr-l')).backgroundColor, tint: [getComputedStyle(sp.querySelector('.dr-l i')).backgroundImage, getComputedStyle(sp.querySelector('.dr-r i')).backgroundImage] }; });
+  check(id.fig && /Price/.test(id.axes) && /Quantity/.test(id.axes) && /Price level/.test(id.axes) && /Real GDP/.test(id.axes) && /LRAS/.test(id.axes) && /SRAS/.test(id.axes) && /\bAD\b/.test(id.axes),
+    'a demand and supply diagram draws itself, then the macroeconomy: AD, SRAS and LRAS, every axis labelled', id.axes);
+  check(id.net.join('|') === 'CONCEPTS|EVIDENCE|POLICY|OUTCOMES', 'the network joins concepts, evidence, policy and outcomes', id.net.join('|'));
+  check(id.vec && id.pos === 'Economics Politics Business' && id.tg === 'Think. Understand. Connect.', 'then the monogram and the name, "Economics · Politics · Business" and "Think. Understand. Connect."', JSON.stringify([id.pos, id.tg]));
+  check(id.doors && /gradient/.test(id.tint[0]) && /gradient/.test(id.tint[1]) && /rgb\(17, 20, 24\)/.test(id.bg), 'a midnight field in two halves, which open onto the page like the covers of a book', JSON.stringify([id.bg, id.tint[0].slice(0, 60)]));
   check(id.role === 'status' && id.label === LABEL, `the overlay is a status with the accessible name "${LABEL}"`, JSON.stringify({ role: id.role, label: id.label }));
   check(id.deco, 'every decorative layer, the stage text included, is hidden from assistive technology; only Skip is exposed');
-  check(!id.old, 'the world-map opening of 2026-11-17 is gone: one opening remains');
+  check(!id.old, 'the earlier openings (the world map, the two pathways) are gone: one opening remains');
   check(id.media === 0, 'the opening is inline vector art and type: no image, video, canvas or frame');
   const name = await p.getByRole('button', { name: 'Skip introduction' }).count();
   check(name === 1, 'Skip is a button named "Skip introduction"');
@@ -199,8 +205,8 @@ for (const [w, h] of SIZES) {
   const ctx = await ctxWith({}, readyClock);
   const p = await ctx.newPage();
   const full = async (label) => { await finished(p); const r = await p.evaluate(rec);
-    const timed = r.how === 'timer' ? Math.abs(r.exitAt - r.start - 5000) < 0.5 && r.end - r.start >= 4999.5 && r.end - r.start <= 5000 + FRAME
-      : r.how === 'late' && r.ready - r.start > 4400 && r.fadeStart >= r.ready - 0.5 && r.end - r.ready <= 1250;
+    const timed = r.how === 'timer' ? Math.abs(r.exitAt - r.start - MS) < 0.5 && r.end - r.start >= MS - 0.5 && r.end - r.start <= MS + FRAME
+      : r.how === 'late' && r.ready - r.start > FADE + 100 && r.fadeStart >= r.ready - 0.5 && r.end - r.ready <= 1250;
     check(r.mode === 'play' && timed, `${label}: the full sequence plays (${Math.round(r.end - r.start)} ms${r.how === 'late' ? ', held until the page was ready' : ''}, navigation type ${r.nav})`,
       JSON.stringify({ mode: r.mode, how: r.how, ready: r.ready - r.start })); return r; };
   await p.goto(base + '#/course', { waitUntil: 'commit' }); await full('a shared link to another page');
@@ -257,15 +263,15 @@ for (const [w, h] of SIZES) {
   await p.goto(base, { waitUntil: 'commit' });
   /* measured inside the page on the first frame the clock runs, before the overlay can leave */
   await p.waitForFunction(() => { const I = window.__INTRO; if (!I || I.state === 'waiting') return false;
-    window.__RM = ['.ia-logo', '.ia-ib', '.ia-up', '.ia-tg'].every(s => { const e = document.querySelector('#splash ' + s); return !!e && +getComputedStyle(e).opacity === 1 && e.getBoundingClientRect().height > 0; })
+    window.__RM = ['.ia-logo', '.ia-wm', '.ia-pos', '.ia-tg'].every(s => { const e = document.querySelector('#splash ' + s); return !!e && +getComputedStyle(e).opacity === 1 && e.getBoundingClientRect().height > 0; })
       && document.getAnimations().filter(a => a.effect && a.effect.target && a.effect.target.closest && a.effect.target.closest('#splash') && a.effect.target.id !== 'splash').length === 0;
     return true; }, null, { timeout: 30000, polling: 'raf' });
   const still = await p.evaluate(() => window.__RM);
   await finished(p);
   const r = await p.evaluate(rec);
-  check(r.mode === 'still' && still, 'reduced motion shows the identity, the line and both pathways at once, with nothing moving');
+  check(r.mode === 'still' && still, 'reduced motion shows the monogram, the name, the positioning and the line at once, with nothing moving');
   check(r.how === 'still' && r.end - r.start >= 1500 - 0.5 && r.end >= r.ready && (r.ready - r.start <= 1450 ? r.end - r.start <= 1500 + FRAME : r.end - r.ready <= 1250),
-    `reduced motion leaves after ${Math.round(r.end - r.start)} ms (1.5 s, or as soon after as the page is ready at ${Math.round(r.ready - r.start)} ms), without the five-second sequence`);
+    `reduced motion leaves after ${Math.round(r.end - r.start)} ms (1.5 s, or as soon after as the page is ready at ${Math.round(r.ready - r.start)} ms), without the seven-second sequence`);
   await ctx.close();
 }
 
@@ -277,11 +283,11 @@ for (const [w, h] of SIZES) {
     const p = await ctx.newPage();
     await p.goto(base + (kind === 'deep' ? '#/course' : ''), { waitUntil: 'commit' });
     await p.waitForFunction(() => window.__R === true && window.__INTRO && window.__INTRO.state === 'playing', null, { timeout: 60000 });
-    for (const t of kind === 'still' ? [0] : [600, 1150, 1700, 2800, 3800, 4280]) {
+    for (const t of kind === 'still' ? [0] : [700, 1200, 2600, 3900, 4600, 5100, 5900]) {
       if (kind !== 'still') { await p.evaluate(t => { __INTRO.state = 'done'; __INTRO.anims.forEach(a => { a.pause(); a.currentTime = t; }); }, t); await p.waitForTimeout(50); }
       const g = await p.evaluate(() => { const sp = document.getElementById('splash'), k = document.getElementById('splashskip').getBoundingClientRect();
         const op = e => { let o = 1; for (let n = e; n && n !== document; n = n.parentElement) o *= +getComputedStyle(n).opacity; return o; };
-        const shown = [...sp.querySelectorAll('.ia-logo, .ia-ib b, .ia-ib span, .ia-up b, .ia-up span, .ia-tg, .ia-vb span, #splashskip')].filter(e => op(e) > 0.05);
+        const shown = [...sp.querySelectorAll('.ia-logo, .ia-pos, .ia-tg, .if-fig text, .if-net .n text, #splashskip')].filter(e => op(e) > 0.05);
         const rs = shown.map(e => e.getBoundingClientRect()).filter(r => r.width);
         sp.scrollLeft = 80;
         return { sl: sp.scrollLeft, clip: getComputedStyle(sp).overflowX, dw: document.documentElement.scrollWidth, out: rs.filter(r => r.left < -0.5 || r.right > innerWidth + 0.5).length,
@@ -307,7 +313,7 @@ for (const [w, h] of SIZES) {
 }
 
 /* ── 8 · four times slower: the stages still land on time ──────────────────
-   The main thread is busy for most of the five seconds (start-up and the
+   The main thread is busy for much of the seven seconds (start-up and the
    self-test), so the overlay is read from what the compositor drew: a
    screencast of every frame. The progress bar is a linear compositor
    animation from the first frame, so its length in a frame says which
@@ -325,7 +331,7 @@ for (const [w, h] of SIZES) {
     await p.goto(base, { waitUntil: 'commit' });
     await p.waitForFunction(() => window.__INTRO && window.__INTRO.state === 'playing', null, { timeout: 60000 });
     const R = await p.evaluate(() => { const r = s => { const b = document.querySelector('#splash ' + s).getBoundingClientRect(); return [b.left, b.top, b.width, b.height]; };
-      return { bar: r('.ia-bar'), logo: r('.ia-logo'), ax: r('.if-ax'), ib: r('.ia-ib b'), tg: r('.ia-tg'), vb: r('.ia-vb') }; });
+      return { bar: r('.ia-bar'), fig: r('.if-fig'), net: r('.if-n1 text'), logo: r('.ia-logo'), pos: r('.ia-pos'), tg: r('.ia-tg') }; });
     await finished(p);
     await cdp.send('Page.stopScreencast');
     const I = await p.evaluate(() => { const I = window.__INTRO;
@@ -335,8 +341,8 @@ for (const [w, h] of SIZES) {
     const an = await (await b.newContext()).newPage();
     const S = [];
     for (const f of frames) {
-      const t = f.ts - I.origin; if (t < 150 || t > 4250) continue;
-      S.push({ t, ...await an.evaluate(async ({ data, R }) => {
+      const t = f.ts - I.origin; if (t < 150 || t > FADE + 50) continue;
+      S.push({ t, ...await an.evaluate(async ({ data, R, MS }) => {
         const img = new Image(); img.src = 'data:image/png;base64,' + data; await img.decode();
         const c = document.createElement('canvas'); c.width = img.width; c.height = img.height; const g = c.getContext('2d'); g.drawImage(img, 0, 0);
         /* the bar: 2 px tall; read the row through its middle, from its left end to its right */
@@ -345,7 +351,7 @@ for (const [w, h] of SIZES) {
         const part = ([x, y, w, h], gold) => { const d = g.getImageData(Math.max(0, x | 0), Math.max(0, y | 0), Math.max(1, w | 0), Math.max(1, h | 0)).data; let n = 0;
           for (let i = 0; i < d.length; i += 4) { const r = d[i], gg = d[i + 1], bb = d[i + 2];
             if (gold ? r > 90 && r - bb > 35 && gg - bb > 20 : (r + gg + bb) / 3 > 150) n++; } return n / (d.length / 4); };
-        return { bar: lit / Math.round(bw) * 5000, px: 5000 / Math.round(bw), logo: part(R.logo, true), ax: part(R.ax), ib: part(R.ib), tg: part(R.tg), vb: part(R.vb) }; }, { data: f.data, R }) });
+        return { bar: lit / Math.round(bw) * MS, px: MS / Math.round(bw), fig: part(R.fig), net: part(R.net), logo: part(R.logo, true), pos: part(R.pos, true), tg: part(R.tg) }; }, { data: f.data, R, MS }) });
     }
     await an.context().close();
     S.sort((a, b) => a.t - b.t);
@@ -354,8 +360,8 @@ for (const [w, h] of SIZES) {
     const drift = mid(lags.slice(-third)) - mid(lags.slice(0, third));   /* a clock that falls behind drifts; this one must not */
     /* a stage's arrival: the first frame at half its full presence, read on the bar's clock. The bar is one of
        the stages' own animations, so when the clock re-anchors to the first paint (in the still passage,
-       3700-3950) the bar moves with them: a stage after it needs no correction on the bar's clock */
-    const WIN = { logo: [150, 1100], ax: [1000, 1900], ib: [2000, 3000], tg: [3050, 3690], vb: [3900, 4250] };
+       5800-6050) the bar moves with them: a stage after it needs no correction on the bar's clock */
+    const WIN = { fig: [300, 1450], net: [3000, 3700], logo: [3800, 4700], pos: [4700, 5350], tg: [5200, 5790] };
     const land = {};
     for (const k of Object.keys(WIN)) {
       const w = S.filter(x => x.bar >= WIN[k][0] && x.bar <= WIN[k][1]), mx = Math.max(...w.map(x => x[k]));
@@ -371,8 +377,8 @@ for (const [w, h] of SIZES) {
   console.log(`     unthrottled: ${fmt(base1)} ms; ${desc(base1)}; one bar pixel is ${Math.round(base1.px)} ms`);
   console.log(`     4x slower:   ${fmt(slow)} ms; ${desc(slow)}; ${slow.frames} frames, longest gap ${Math.round(slow.gap)} ms`);
   console.log(`     the page was ready ${Math.round(base1.I.ready)} ms after the start unthrottled and ${Math.round(slow.I.ready)} ms four times slower; the overlay left at ${Math.round(base1.I.end)} and ${Math.round(slow.I.end)} ms`);
-  check(slow.I.ready > Math.max(4700, 1.8 * base1.I.ready), 'the slowed run really was slowed: its start-up took far longer than the unthrottled one', JSON.stringify({ base: base1.I.ready, slow: slow.I.ready }));
-  /* the bar is 156 px for 5000 ms here, so a reading is good to one bar pixel (about 32 ms) */
+  check(slow.I.ready > 1.8 * base1.I.ready, 'the slowed run really was slowed: its start-up took far longer than the unthrottled one', JSON.stringify({ base: base1.I.ready, slow: slow.I.ready }));
+  /* the bar is 117 px for 7000 ms here (it sits clear of Skip on a phone), so a reading is good to one bar pixel (about 60 ms) */
   const PX = Math.max(base1.px, slow.px);
   check(slow.frames > 60 && Math.abs(slow.lagMed - base1.lagMed) <= 34 + PX && slow.lagBand <= 70 + PX && Math.abs(slow.drift) <= 34 + PX,
     'four times slower, the compositor keeps the sequence\'s time: frame by frame the bar reads the moment the frame was drawn, without drifting',
@@ -382,6 +388,9 @@ for (const [w, h] of SIZES) {
   const both = Object.keys(base1.land).filter(k => slow.land[k] && base1.land[k]);
   const ok = both.length >= 3 && both.every(k => Math.max(slow.land[k][0], base1.land[k][0]) <= Math.min(slow.land[k][1], base1.land[k][1]) + TOL);
   check(ok, `four times slower, every stage still lands on schedule (${both.length} of 5 arrivals resolved in both runs: ${both.join(', ')})`, JSON.stringify({ base: base1.land, slow: slow.land }));
-  check(slow.I.mode === 'play' && slow.I.how === 'late' && slow.I.end >= slow.I.ready, `four times slower, the final frame holds until the page is ready (${Math.round(slow.I.ready)} ms) rather than uncovering it unfinished`);
+  /* the slowed start-up either outlasts the reveal (then the final frame must hold until the page is ready) or it does not
+     (then the clock alone decides, and the exit is exactly on time); either way the page is never uncovered unfinished */
+  if (slow.I.ready > FADE + 100) check(slow.I.mode === 'play' && slow.I.how === 'late' && slow.I.end >= slow.I.ready, `four times slower, the final frame holds until the page is ready (${Math.round(slow.I.ready)} ms) rather than uncovering it unfinished`);
+  else check(slow.I.mode === 'play' && slow.I.how === 'timer' && Math.abs(slow.I.end - MS) <= FRAME && slow.I.end >= slow.I.ready, `four times slower, the page was ready (${Math.round(slow.I.ready)} ms) before the reveal, and the overlay left on its own clock (${Math.round(slow.I.end)} ms)`);
 }
 await b.close(); srv.close(); done();

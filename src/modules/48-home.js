@@ -38,11 +38,20 @@ function fxLibHref(id){return fxHref("upsc",(typeof UP_T!=="undefined"&&UP_T.han
 function fxUpHref(k){const t=(typeof UP_T!=="undefined"&&UP_T[k]!==undefined)?UP_T[k]:0;return fxHref("upsc",t)}
 
 /* ── 1 · the hero and the two pathways ──────────────────────────────────── */
-const FX_IB_FEATURES=[["Interactive Economics concepts","learn",null],["Visual diagrams and explainers","lab","Diagram atlas"],["Real-world economic cases","world",null],
- ["Interactive mindmaps","mind",null],["Calculations and application tools","calculate",null],["Examination preparation","examiner",null],
- ["Internal Assessment and Extended Essay guidance","ia",null],["Tutorials and revision resources","tutorials",null]];
-const FX_UP_FEATURES=[["UPSC Economics syllabus","syllabus"],["Topic-wise handbooks","handbooks"],["Indian Economy explainers","resources"],["Prelims preparation","strategy"],
- ["Mains answer development","strategy"],["Current affairs integration","current"],["Interactive learning resources","resources"],["Three-month intensive online course","course"]];
+/* the features of each pathway, in the words of the owner's final brief; each opens the place that provides it */
+const FX_IB_FEATURES=[["Complete IB Economics learning resources","course","At a glance"],["SL and HL learning pathways","paths","Choose your path"],["Interactive economic diagrams","lab","Market lab"],
+ ["Conceptual mindmaps","mind",null],["Real-world economics cases","world",null],["Calculations and numerical tools","calculate",null],
+ ["Exam preparation and original practice","examiner",null],["Internal Assessment support","ia",null],["Extended Essay support","ees",null],["Tutorials and revision resources","tutorials",null]];
+const FX_UP_FEATURES=[["Indian Economy learning resources","resources"],["Structured topic-wise study","syllabus"],["Prelims-oriented factual understanding","strategy"],
+ ["Mains-oriented analytical frameworks","strategy"],["Economic concepts and numerical understanding","#/concepts"],["Current developments and policy analysis","current"],
+ ["Handbooks and revision resources","handbooks"],["The Indian Economy book","#/book"],["Digital Revision Companion","#/book/digital-revision-companion"],["Intensive online coaching","course"]];
+/* what each pathway holds, counted from its own data when the page is drawn: no figure is typed in */
+function fxIbCounts(){let n={};try{n=rnCount()}catch(e){}
+ const f=[[n.subtopics,"subtopics"],[n.diagrams,"diagrams"],[n.maps,"mindmaps"],[n.cases,"real-world cases"],[n.calcs,"calculators"]].filter(([v])=>v>0);
+ return f.map(([v,l])=>`<span><b>${fmtN(v)}</b> ${esc(l)}</span>`).join("")}
+function fxUpCounts(){const L=(a)=>{try{return a().length}catch(e){return 0}};
+ const f=[[L(()=>UP_PRE_LINES)+L(()=>UP_MAINS)+L(()=>UP_GS2),"syllabus lines"],[fxVols().length,"handbooks"],[L(()=>UP_TOPICS),"topic previews"],[L(()=>UP_CA),"current-affairs notes"]].filter(([v])=>v>0);
+ return f.map(([v,l])=>`<span><b>${fmtN(v)}</b> ${esc(l)}</span>`).join("")}
 function fxHeroBg(){
  /* the economic cycle, drawn once across the ground; the grid is a CSS background, so nothing extends past the page */
  return `<svg class="hx-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
@@ -57,16 +66,18 @@ function fxHeroMark(){
 }
 function fxPathCards(){
  const ibF=FX_IB_FEATURES.map(([n,v,lab])=>{const t=fxTabIndex(v,lab);return `<li>${t<0?esc(n):`<a class="fx-a" href="${esA(fxHref(v,t))}">${esc(n)}</a>`}</li>`}).join("");
- const upF=FX_UP_FEATURES.map(([n,k])=>`<li><a class="fx-a" href="${esA(fxUpHref(k))}">${esc(n)}</a></li>`).join("");
+ const upF=FX_UP_FEATURES.map(([n,k])=>`<li><a class="fx-a" href="${esA(k.charAt(0)==="#"?k:fxUpHref(k))}">${esc(n)}</a></li>`).join("");
  const vols=fxVols();const shelf=[2,1,4,9].map(i=>vols[i]).filter(Boolean);
  return `<div class="hx-paths">
   <article class="pc pc-ib" aria-labelledby="pc-ib-h">
    <div class="pc-top"><span class="pc-num">Pathway 01</span><span class="pc-rule" aria-hidden="true"></span></div>
    <div class="pc-body">
     <div class="pc-text"><h2 class="pc-h" id="pc-ib-h">IB DP Economics</h2>
-     <p class="pc-d">A complete interactive learning environment for IB Diploma Programme Economics students and educators.</p></div>
+     <p class="pc-pos">Concepts. Diagrams. Real-world applications. Examination thinking.</p>
+     <p class="pc-d">A complete interactive learning environment for IB Diploma Programme Economics students and teachers, at SL and HL.</p></div>
     <figure class="pc-prev pc-model" aria-hidden="true">${motifSVG("shift")}<figcaption>${esc(motifCap("shift"))}</figcaption></figure>
    </div>
+   <p class="pc-n">${fxIbCounts()}</p>
    <ul class="pc-f">${ibF}</ul>
    <a class="fx-btn primary pc-cta" href="#/ib">Explore IB Economics ${fxArr()}</a>
   </article>
@@ -74,26 +85,52 @@ function fxPathCards(){
    <div class="pc-top"><span class="pc-num">Pathway 02</span><span class="pc-rule" aria-hidden="true"></span></div>
    <div class="pc-body">
     <div class="pc-text"><h2 class="pc-h" id="pc-up-h">UPSC CSE Economics</h2>
-     <p class="pc-d">A structured learning environment for UPSC Civil Services aspirants, combining conceptual clarity, Indian economic developments, carefully developed handbooks and examination-oriented preparation.</p></div>
+     <p class="pc-pos">Economic foundations. Indian institutions. Public policy. Prelims and Mains.</p>
+     <p class="pc-d">A structured preparation pathway for Civil Services aspirants: conceptual clarity, the Indian economy and its policies, handbooks, current developments and examination thinking.</p></div>
     <a class="pc-prev pc-shelf" href="${esA(fxLibHref())}" aria-label="The Economics Handbook Collection: eleven volumes">${shelf.map((v,i)=>`<span class="pc-book b${i}">${fxCover(v,true)}</span>`).join("")}</a>
    </div>
+   <p class="pc-n">${fxUpCounts()}</p>
    <ul class="pc-f">${upF}</ul>
    <a class="fx-btn primary pc-cta" href="#/upsc">Explore UPSC Economics ${fxArr()}</a>
   </article>
  </div>`;
 }
+/* the macroeconomy behind the statement: aggregate demand shifts right along short-run aggregate
+   supply while long-run supply stays put, slowly and faintly, and still for reduced motion.
+   In the drawing's units (y grows downward): SRAS y = 470 - 0.45(x - 110), AD y = 210 + 0.8(x - 110),
+   meeting at (318, 376.4). Moving AD right by d moves the meeting point by (0.64d, -0.288d), so for the
+   120-unit shift the dot travels (76.8, -34.56) on the same clock and stays on both curves throughout. */
+function fxHeroMacro(){
+ return `<svg class="hx-macro" viewBox="0 0 640 560" aria-hidden="true" focusable="false">
+  <path class="hm-ax" d="M60 40V520H620"/>
+  <text class="hm-l" x="70" y="52">Price level</text><text class="hm-l" x="616" y="544" text-anchor="end">Real GDP</text>
+  <path class="hm-lr" d="M430 70V520"/><text class="hm-t" x="438" y="86">LRAS</text>
+  <path class="hm-as" d="M110 470L600 249.5"/><text class="hm-t" x="562" y="246">SRAS</text>
+  <g class="hm-adg"><path class="hm-ad" d="M110 210L497.5 520"/><text class="hm-t" x="452" y="470">AD</text></g>
+  <circle class="hm-e" cx="318" cy="376.4" r="5"/>
+ </svg>`;
+}
+function fxPortrait(){
+ /* the photograph alone in its frame; the live AD-AS card sits beside the caption, so nothing is drawn over the face or the figure */
+ return `<figure class="hx2-por">
+  <div class="hx2-plate"><div class="hx2-frame"><img src="assets/brand/arjun-agrawal-portrait-hero.webp" width="539" height="674" alt="Arjun Agrawal, in a navy blazer and tie, smiling, in front of a stone wall." decoding="async" fetchpriority="high"></div></div>
+  <div class="hx2-under"><figcaption><b>Arjun Agrawal</b><span>${esc(FXI.roles)}</span></figcaption>
+   <div class="hx2-card" aria-hidden="true">${fxHeroMacro()}<span>Aggregate demand rises: output and the price level rise</span></div></div>
+ </figure>`;
+}
 function fxHero(){
- return `<section class="hx" aria-labelledby="hx-h"><div class="hx-bg" aria-hidden="true">${fxHeroBg()}</div>
-  <div class="fx-wrap hx-in">
-   <div class="hx-k"><span class="hx-mark" aria-hidden="true"></span>Arjun Agrawal · Economics</div>
-   <div class="hx-head">
+ return `<section class="hx hx2" aria-labelledby="hx-h"><div class="hx-bg" aria-hidden="true">${fxHeroBg()}</div>
+  <div class="fx-wrap hx2-in">
+   <div class="hx2-t">
+    <div class="hx-k"><span class="hx-mark" aria-hidden="true"></span>Arjun Agrawal · Economics</div>
     <h1 class="hx-h" id="hx-h">Economics is not just a subject to study. <em>It is a way to think.</em></h1>
-    <div class="hx-side">${fxHeroMark()}
-     <p class="hx-lede">An interactive Economics learning ecosystem connecting economic concepts, visual understanding, real-world evidence and examination preparation across international and Indian perspectives.</p></div>
+    <p class="hx-lede">An integrated learning ecosystem connecting economic concepts, visual understanding, real-world evidence and examination thinking.</p>
+    <div class="hx-ctas"><a class="fx-btn hx-go ib" href="#/ib">Explore IB DP Economics ${fxArr()}</a><a class="fx-btn hx-go up" href="#/upsc">Explore UPSC CSE Economics ${fxArr()}</a></div>
+    <p class="hx-sig">${fxHeroMark()}<span class="hx-sig-m">Think like an economist.</span><span class="hx-sig-s">Concepts. Content. Contexts.</span></p>
    </div>
-   <p class="hx-idea"><span>One discipline. Two pathways. A shared understanding of Economics.</span></p>
+   ${fxPortrait()}
   </div>
-  <div class="fx-wrap">${fxPathCards()}</div>
+  <div class="fx-wrap"><p class="hx-idea"><span>${esc(FXI.idea)}</span></p>${fxPathCards()}</div>
  </section>`;
 }
 
@@ -195,34 +232,36 @@ function fxAcross(){
  </div></section>`;
 }
 
-/* ── the Arjun Agrawal Academic Ecosystem ──────────────────────────────────
+/* ── ARJUN AGRAWAL | ACADEMIC ECOSYSTEM ────────────────────────────────────
    Three independent platforms from the same educator, each panel in its own
-   platform's colours: Economics on this platform's charcoal and gold, The
-   Business Brief on its warm paper and navy, Political Studies & Global
-   Affairs on midnight with burgundy. The section is unnumbered and carries no
-   pathway colour, because it is the wider ecosystem, not a third pathway. The
-   panels are typographic, each with a small drawn mark: no screenshots of the
-   other platforms are used. */
+   platform's colours and with its own preview card and mark where the platform
+   publishes them (44-flagship-core.js says which). The section is unnumbered and
+   carries no pathway colour: it is the wider ecosystem, not a third pathway. */
 function fxEcosystem(){
  return `<section class="fx-section fx-eco" aria-labelledby="eco-h"><div class="fx-wrap">
-  <div class="eco-head rv"><div><p class="fx-kicker eco-k">Arjun Agrawal · Knowledge. Insight. Impact.</p>
-   <h2 class="fx-h2" id="eco-h">Explore the Arjun Agrawal Academic Ecosystem</h2></div>
-   <p class="fx-lede">Three independent academic platforms, each with its own subject, examinations and design, from the same educator.</p></div>
+  <div class="eco-head rv"><div><p class="fx-kicker eco-k">${esc(FX_ECO_ID.name)} · ${esc(FX_ECO_ID.line)}</p>
+   <h2 class="fx-h2" id="eco-h">One educator. Three disciplines. <em>One connected learning ecosystem.</em></h2></div>
+   <p class="fx-lede">Economics, Political Studies and Business Management: three independent academic platforms, each with its own subject, examinations and design language, from the same educator. This one is the home of Economics.</p></div>
   <ol class="eco-grid rv">${FX_ECO.map(fxEcoCard).join("")}</ol>
  </div></section>`;
 }
 
 /* ── 8 · about ──────────────────────────────────────────────────────────── */
+/* the author: the definitive brief asks for the educator and author to be visible on the home
+   page, in the book section and on About. Every fact is the site's own (CV_AUTHOR) or the book's. */
+const FX_AUTHOR_BIO="Arjun Agrawal is an Economics educator, academic resource creator and author. His work connects economic theory with public policy, examination preparation and university-level study, and his academic interests extend across Economics, Political Studies and Business Management. Through his teaching, his publications and these learning platforms, he aims to make complex ideas accessible, analytical and relevant to the world around us.";
 function fxAboutBand(){
  let facts=[];try{facts=CV_AUTHOR}catch(e){}
  let por="";try{por=`<img src="${esA(CV_PORTRAIT.src)}" width="${CV_PORTRAIT.w}" height="${CV_PORTRAIT.h}" alt="${esA(CV_PORTRAIT.alt)}" loading="lazy" decoding="async">`}catch(e){}
+ let cover="";try{cover=BOOK_PV.book.cover?`<img class="ab-bk-c" src="${esA(BOOK_PV.book.cover.src)}" width="${BOOK_PV.book.cover.w}" height="${BOOK_PV.book.cover.h}" alt="The cover of The Indian Economy" loading="lazy" decoding="async">`:""}catch(e){}
  return `<section class="fx-section fx-aboutb" aria-labelledby="ab-h"><div class="fx-wrap abx-grid">
   <figure class="ab-por rv">${por}</figure>
-  <div>${fxSecHead("08","About","Arjun Agrawal","","ab-h")}
+  <div>${fxSecHead("08","About the author","Arjun Agrawal","","ab-h")}
    <p class="ab-roles">${esc(FXI.roles)}</p>
-   <p class="fx-lede">Arjun teaches IB Diploma Programme Economics, mentors Civil Services aspirants in the Economics of General Studies, and designs the resources on this platform, from the diagrams and mindmaps to the handbooks.</p>
+   <p class="fx-lede">${esc(FX_AUTHOR_BIO)}</p>
+   <a class="ab-bk" href="#/book">${cover}<span><span class="ab-bk-k">Author</span><b><i>The Indian Economy</i></b><span>A Comprehensive Academic and Examination Reference · First Edition, 2026-27</span></span></a>
    <dl class="ab-facts">${facts.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-   <p><a class="fx-btn secondary" href="#/about">About Arjun Agrawal ${fxArr()}</a></p></div>
+   <p class="ab-acts"><a class="fx-btn secondary" href="#/about">About Arjun Agrawal ${fxArr()}</a><a class="fx-a fx-link" href="#/book">The Indian Economy</a></p></div>
  </div></section>`;
 }
 
@@ -241,6 +280,7 @@ function fxContactBand(){
  return `<section class="fx-section fx-contact" aria-labelledby="ct-h"><div class="fx-wrap">
   ${fxSecHead("09","Enrolment and contact","Learn with Arjun Agrawal","Every enquiry opens your own WhatsApp or email with the message written for you. Nothing is booked or charged on this site.","ct-h")}
   ${fxContactCols()}
+  <p class="cnx-book"><span class="eq-n"><i>The Indian Economy</i>: purchasing enquiries</span><span class="eq-a"><a class="fx-a" href="${esA(fxEnquiryLinks("book").wa)}" target="_blank" rel="noopener noreferrer" aria-label="The Indian Economy, purchasing enquiry: message on WhatsApp">WhatsApp</a><a class="fx-a" href="${esA(fxEnquiryLinks("book").mail)}" aria-label="The Indian Economy, purchasing enquiry: send an email">Email</a></span></p>
   <p class="cnx-direct"><a class="fx-a" href="${esA("mailto:"+FX_CONTACT.email())}">${esc(FX_CONTACT.email())}</a> · <a class="fx-a" href="${esA(fxWa())}" target="_blank" rel="noopener noreferrer">WhatsApp ${esc(FX_CONTACT.phone())} ↗</a>${FX_CONTACT.linkedin()?` · <a class="fx-a" href="${esA(FX_CONTACT.linkedin())}" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>`:""}${FX_CONTACT.instagram()?` · <a class="fx-a" href="${esA(FX_CONTACT.instagram())}" target="_blank" rel="noopener noreferrer">Instagram ↗</a>`:""}</p>
  </div></section>`;
 }
@@ -262,7 +302,12 @@ function fxContactPaths(){
 VIEWS.home=function(){
  /* a teacher's assignment link (#assign=…) opens on the home page, so its banner leads it, as before */
  let asn="";try{if(typeof assignBanner==="function")asn=assignBanner()}catch(e){asn=""}
- return `${asn}<div class="fxhome">${fxHero()}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxEcosystem()}${fxAboutBand()}${fxContactBand()}</div>`;
+ let book="";try{book=bkHomeFeature()+bkHomeCompanion()}catch(e){book=""}
+ /* the editorial sequence of the definitive brief: the hero and both pathways, each pathway's
+    environment, the book and its companion, the learning experience, the ecosystem, the author, contact */
+ let n=1;const h=`${fxHero()}${fxIbEnv()}${fxUpEnv()}${book}${fxThink()}${fxResources()}${fxLab()}${fxAcross()}${fxEcosystem()}${fxAboutBand()}${fxContactBand()}`
+  .replace(/<span class="fx-num">\d+<\/span>/g,()=>`<span class="fx-num">${String(++n).padStart(2,"0")}</span>`);
+ return `${asn}<div class="fxhome">${h}</div>`;
 };
 
 /* ── the IB DP landing's opening ────────────────────────────────────────── */

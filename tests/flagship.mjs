@@ -18,7 +18,7 @@ const allErrors = [];
   check((await st(p)).path === 'shared', 'the home page belongs to both pathways');
   check(await p.locator('#view h1').count() === 1 && /Economics is not just a subject to study\.\s*It is a way to think\./.test(await p.locator('#view h1').innerText()), 'one h1, and it is the statement');
   const cards = await p.evaluate(() => [...document.querySelectorAll('.hx-paths .pc')].map(c => { const r = c.getBoundingClientRect(); return { top: Math.round(r.top), w: Math.round(r.width), f: c.querySelectorAll('.pc-f li').length, cta: c.querySelector('.pc-cta').textContent.trim(), href: c.querySelector('.pc-cta').getAttribute('href') }; }));
-  check(cards.length === 2 && cards.every(c => c.f === 8) && Math.abs(cards[0].w - cards[1].w) <= 1, 'two pathway cards of equal width, eight features each', JSON.stringify(cards));
+  check(cards.length === 2 && cards.every(c => c.f === 10) && Math.abs(cards[0].w - cards[1].w) <= 1, 'two pathway cards of equal width, the brief\'s ten features each', JSON.stringify(cards));
   check(cards.every(c => c.top < 900), 'both pathway cards begin within the first screen', JSON.stringify(cards.map(c => c.top)));
   check(/Explore IB Economics/i.test(cards[0].cta) && cards[0].href === '#/ib' && /Explore UPSC Economics/i.test(cards[1].cta) && cards[1].href === '#/upsc', 'each card leads into its own pathway');
   await p.locator('.pc-ib .pc-cta').click(); await p.waitForTimeout(300);

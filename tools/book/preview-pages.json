@@ -1,0 +1,78 @@
+{
+ "_about": "The pages of THE INDIAN ECONOMY (First Edition, 2026-27) shown on the website, chosen by reading the book, not by taking its first pages. tools/book/build_book.py renders exactly these pages from the private PDF (kept outside the repository) and checks that each page's printed folio, read from the page itself, is the one written here. 'pdf' is the page of the supplied file; 'p' is the printed page number. Captions describe the page; they quote nothing that is not on it. The book's About the Author page is not shown, because it names current appointments. The companion's list is empty because its PDF has not been supplied: the website shows its switch only when the list has pages.",
+ "book": {
+  "id": "the-indian-economy",
+  "title": "The Indian Economy",
+  "sub": "A Comprehensive Academic and Examination Reference",
+  "edition": "First Edition | 2026-27",
+  "source": "The_Indian_Economy_First_Edition_2026-27_FINAL-Part_1.pdf (pages 1 to 100 of the book's 706 PDF pages)",
+  "cover_pdf": 1,
+  "pages": [
+   {
+    "pdf": 8,
+    "p": "vii",
+    "kind": "contents",
+    "cap": "Contents at a Glance: the eight Parts and 153 chapters of the book, numbered continuously, with the page on which each Part and unit begins."
+   },
+   {
+    "pdf": 22,
+    "p": "xxi",
+    "kind": "figure",
+    "cap": "Master Systems Map: the Indian economy as one system. Five linked systems, the flows of goods, labour and money between them, and the chapters that treat each."
+   },
+   {
+    "pdf": 23,
+    "p": "xxii",
+    "kind": "table",
+    "cap": "Master UPSC Syllabus Map: the economics-related areas of the Civil Services syllabus matched to the Parts, chapters and sections of the book."
+   },
+   {
+    "pdf": 41,
+    "p": "2",
+    "kind": "chapter",
+    "cap": "A chapter as it opens: Chapter 1, Understanding Economics, with the meaning and definitions of Economics across its major schools and the scope of its branches, each with a typical Indian question."
+   },
+   {
+    "pdf": 51,
+    "p": "12",
+    "kind": "concept",
+    "cap": "Opportunity cost and the shape of the production possibility curve: concave and straight-line curves drawn from a schedule, with the marginal rate of transformation."
+   },
+   {
+    "pdf": 55,
+    "p": "16",
+    "kind": "policy",
+    "cap": "The Indian economic system: the mixed economy and its milestones from the Industrial Policy Resolution of 1948, with a UPSC trap and a Mains application."
+   },
+   {
+    "pdf": 75,
+    "p": "36",
+    "kind": "figure",
+    "cap": "Externalities and public goods: negative and positive externalities drawn with social and private costs and benefits, and goods classified by rivalry and excludability."
+   },
+   {
+    "pdf": 78,
+    "p": "39",
+    "kind": "map",
+    "cap": "Prelims and Mains Revision Compendium: the integrated mind map of the foundations of Economics, and where each concept is used later in the book."
+   },
+   {
+    "pdf": 93,
+    "p": "54",
+    "kind": "numerical",
+    "cap": "The expenditure method and the integrated Arthapur exercise: one economy measured by production, income and expenditure, and the three reconciled."
+   },
+   {
+    "pdf": 97,
+    "p": "58",
+    "kind": "data",
+    "cap": "The composition of India's GDP by expenditure in 2025-26, read from the official estimates, with a Mains application and Prelims facts."
+   }
+  ]
+ },
+ "companion": {
+  "id": "digital-revision-companion",
+  "title": "The Indian Economy: Digital Revision Companion",
+  "pages": []
+ }
+}

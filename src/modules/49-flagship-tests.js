@@ -24,14 +24,21 @@ function FLAGSHIPSUITE(){
  T("Flagship · the home has one h1, and it is the platform's statement",()=>{const h=home();
   return (h.match(/<h1\b/g)||[]).length===1&&/Economics is not just a subject to study\./.test(txt(h))&&/It is a way to think\./.test(txt(h))});
  T("Flagship · the home carries the supporting statement and the platform's idea",()=>{const t=txt(home());
-  return t.includes("An interactive Economics learning ecosystem connecting economic concepts, visual understanding, real-world evidence and examination preparation across international and Indian perspectives.")
-   &&t.includes("One discipline. Two pathways. A shared understanding of Economics.")});
- T("Flagship · two pathway cards of equal weight, eight features each and their own call to action",()=>{const h=home();
+  return t.includes("An integrated learning ecosystem connecting economic concepts, visual understanding, real-world evidence and examination thinking.")
+   &&t.includes("One discipline. Two pathways. A shared understanding of Economics.")&&t.includes("Think like an economist.")&&t.includes("Concepts. Content. Contexts.")});
+ T("Flagship · the hero opens both pathways at once and shows the educator's photograph, uncropped and described",()=>{const h=home();const i=h.indexOf('<section class="hx'),j=h.indexOf('<div class="hx-paths">');const hero=h.slice(i,j);
+  return /<a class="fx-btn hx-go ib" href="#\/ib">Explore IB DP Economics/.test(hero)&&/<a class="fx-btn hx-go up" href="#\/upsc">Explore UPSC CSE Economics/.test(hero)
+   &&/<img src="assets\/brand\/arjun-agrawal-portrait-hero\.webp" width="539" height="674" alt="Arjun Agrawal[^"]+"/.test(hero)});
+ T("Flagship · two pathway cards of equal weight, the brief's ten features each, its positioning line and their own call to action",()=>{const h=home();
   const card=c=>{const i=h.indexOf(`<article class="pc ${c}"`);return i<0?"":h.slice(i,h.indexOf("</article>",i))};
   const ib=card("pc-ib"),up=card("pc-up");const n=s=>((s.split('<ul class="pc-f">')[1]||"").split("</ul>")[0].match(/<li>/g)||[]).length;
-  return n(ib)===8&&n(up)===8&&/Explore IB Economics/.test(ib)&&/Explore UPSC Economics/.test(up)&&/href="#\/ib"/.test(ib)&&/href="#\/upsc"/.test(up)});
+  return n(ib)===10&&n(up)===10&&/Explore IB Economics/.test(ib)&&/Explore UPSC Economics/.test(up)&&/href="#\/ib"/.test(ib)&&/href="#\/upsc"/.test(up)
+   &&ib.includes("Concepts. Diagrams. Real-world applications. Examination thinking.")&&up.includes("Economic foundations. Indian institutions. Public policy. Prelims and Mains.")
+   &&/SL and HL learning pathways/.test(ib)&&/Extended Essay support/.test(ib)&&/The Indian Economy book/.test(up)&&/Digital Revision Companion/.test(up)&&/Intensive online coaching/.test(up)});
+ T("Flagship · the figures on the pathway cards are counted from the platform's data",()=>{const n=rnCount(),h=home();
+  return h.includes(`<b>${fmtN(n.diagrams)}</b> diagrams`)&&h.includes(`<b>${fmtN(n.cases)}</b> real-world cases`)&&h.includes(`<b>${fmtN(fxVols().length)}</b> handbooks`)&&h.includes(`<b>${fmtN(UP_CA.length)}</b> current-affairs notes`)});
  T("Flagship · the home's movements follow the brief, in order",()=>{const h=home();
-  const ids=["hx-h","pc-ib-h","pc-up-h","th-h","eib-h","eup-h","res-h","lab-h","ac-h","ab-h","ct-h"];
+  const ids=["hx-h","pc-ib-h","pc-up-h","eib-h","eup-h","bk-h","dc-h","th-h","res-h","lab-h","ac-h","eco-h","ab-h","ct-h"];
   const at=ids.map(id=>h.indexOf(`id="${id}"`));const ok=at.every((x,i)=>x>=0&&(i===0||x>at[i-1]));
   return ok?true:{ok:false,d:ids.filter((id,i)=>at[i]<0).join(", ")||"out of order"}});
  T("Flagship · headings on the home descend without skipping a level",()=>{const lv=[...home().matchAll(/<h([1-6])\b/g)].map(m=>+m[1]);
@@ -67,6 +74,8 @@ function FLAGSHIPSUITE(){
  T("Flagship · every section a reader can open is reachable from the new navigation",()=>{
   const inNav=new Set(["home","ib","upsc","about","contact","concepts","design"]);
   FX_IBNAV.forEach(g=>g.items.forEach(i=>inNav.add(i[1])));FX_IBPROGRESS.forEach(i=>inNav.add(i[1]));
+  /* and whatever the header and the Resources menu actually link */
+  const g=document.getElementById("gnav");hrefs((g?g.innerHTML:"")+fxResPanelHtml()).forEach(x=>{const r=/^#/.test(x)&&routeParse(x);if(r)inNav.add(r.v)});
   const miss=SECTIONS.filter(s=>!s.hide&&!inNav.has(s.v)).map(s=>s.v);return miss.length?{ok:false,d:miss.join(", ")}:true});
  T("Flagship · each view belongs to one pathway, or to both",()=>fxPathway("home")==="shared"&&fxPathway("about")==="shared"&&fxPathway("upsc")==="upsc"
   &&fxPathway("learn")==="ib"&&fxPathway("ib")==="ib"&&fxPathway("lab")==="ib");
@@ -100,32 +109,40 @@ function FLAGSHIPSUITE(){
  /* ── the Arjun Agrawal Academic Ecosystem: two sister platforms in five places, never a third pathway ── */
  const ecoLinks=(h,u)=>{const t=document.createElement("template");t.innerHTML=h;return [...t.content.querySelectorAll("a")].filter(a=>a.getAttribute("href")===u)};
  T("Academic Ecosystem · the addresses are the three platforms' production addresses, with no placeholder",()=>
-  FX_ECO.map(e=>e.url).join(" ")==="https://ib-economics-pi.vercel.app/ https://the-business-brief-dun.vercel.app/ https://arjun-agrawal-political-studies.vercel.app/"
-  &&FX_ECO.map(e=>e.name).join("|")==="Economics|The Business Brief|Political Studies & Global Affairs"&&FX_ECO.filter(e=>e.current).length===1&&FX_ECO[0].current);
+  FX_ECO.map(e=>e.url).join(" ")==="https://ib-economics-pi.vercel.app/ https://arjun-agrawal-political-studies.vercel.app/ https://the-business-brief-dun.vercel.app/"
+  &&FX_ECO.map(e=>e.name).join("|")==="Economics|Political Studies & Global Affairs|The Business Brief"&&FX_ECO.map(e=>e.disc).join("|")==="Economics|Political Studies|Business Management"&&FX_ECO.filter(e=>e.current).length===1&&FX_ECO[0].current);
  T("Academic Ecosystem · the header menu, the drawer, the home, the footer and About each link once to each sister, in a new tab with rel noopener noreferrer",()=>{
   const f=document.querySelector("footer.ft .ft-paths");
   const all={menu:fxEcoPanelHtml(),drawer:fxDrawerHtml(),home:fxEcosystem(),footer:f?f.innerHTML:"",about:abEcosystem()};
   const bad=[];for(const [k,h] of Object.entries(all))for(const u of [FX_BB.url,FX_PS.url]){const L=ecoLinks(h,u);
    if(L.length!==1||!L.every(a=>a.target==="_blank"&&a.rel==="noopener noreferrer"&&a.textContent.includes("↗")&&/opens in a new tab/.test(a.textContent)))bad.push(k+": "+u)}
   return bad.length?{ok:false,d:bad.join(", ")}:true});
- T("Academic Ecosystem · the header carries the menu after About, and the menu marks Economics as the platform you are on",()=>{
+ T("Academic Ecosystem · the header carries the menu after Resources and before About, and the menu marks Economics as the platform you are on",()=>{
   const g=document.getElementById("gnav"),b=g&&g.querySelector("button.gn-eco");const t=document.createElement("template");t.innerHTML=fxEcoPanelHtml();
   const cur=t.content.querySelectorAll("[aria-current]");const items=[...g.children].map(x=>x.className);
-  return !!b&&b.getAttribute("aria-label")==="Academic Ecosystem"&&b.getAttribute("aria-controls")==="fxpanel"&&items.indexOf("gn-eco")>items.map((c,k)=>/gn-item/.test(c)?k:-1).reduce((m,k)=>Math.max(m,k),-1)
+  return !!b&&b.getAttribute("aria-label")==="Academic Ecosystem"&&b.getAttribute("aria-controls")==="fxpanel"&&(()=>{const k=[...g.children],e=k.indexOf(b),r=k.findIndex(x=>x.classList.contains("gn-res")),a=k.findIndex(x=>x.getAttribute&&x.getAttribute("href")==="#/about");return r>=0&&a>e&&e>r})()
    &&cur.length===1&&cur[0].getAttribute("href")==="#/"&&/Economics/.test(cur[0].textContent)&&/You are here/.test(cur[0].textContent)
-   &&[...t.content.querySelectorAll(".fxe b")].map(x=>x.textContent).join("|")==="Economics|The Business Brief|Political Studies & Global Affairs"});
+   &&[...t.content.querySelectorAll(".fxe b")].map(x=>x.textContent).join("|")==="Economics|Political Studies & Global Affairs|The Business Brief"});
  T("Academic Ecosystem · the sisters are not pathways: no pathway colour, no place in the switcher, the two pathways keep equal weight",()=>{
   const sw=fxSwitcher("shared","x"),f=document.querySelector("footer.ft .ft-paths");
   return !/business|political/i.test(sw)&&!/pathway 03|p-(bb|ps)[^"]*\b(ib|up)\b/i.test(fxEcosystem()+(f?f.innerHTML:""))&&FX_SHARED.has("home")
    &&!!f&&[...f.querySelectorAll(".ft-path.p-bb .ft-pn,.ft-path.p-ps .ft-pn")].map(x=>x.textContent).join("|")==="Beyond Economics|Beyond Economics"&&f.querySelectorAll(".ft-path.p-ib,.ft-path.p-up").length===2});
- T("Academic Ecosystem · the home section reads as the brief asks: its heading, the shared identity, the three names and lines, and nothing claimed",()=>{const t=txt(fxEcosystem());
-  return t.includes("Explore the Arjun Agrawal Academic Ecosystem")&&t.includes("Knowledge. Insight. Impact.")&&/You are here/.test(t)
-   &&["IB Economics | Economic Analysis | Academic Resources","IB Business Management | Strategy | Leadership | Decisions","Indian Polity | International Relations | PSIR | IB Global Politics"].every(x=>t.includes(x))
+ T("Academic Ecosystem · the home section reads as the final brief asks: its heading, the shared identity, the three names, lines and taglines, and nothing claimed",()=>{const t=txt(fxEcosystem());
+  return t.includes("One educator. Three disciplines.")&&t.includes("One connected learning ecosystem.")&&t.includes("Arjun Agrawal | Academic Ecosystem")&&t.includes("Think. Understand. Connect.")&&/You are here/.test(t)
+   &&["IB DP Economics | UPSC CSE Economics","IB DP Business Management","IB DP Global Politics | International Relations | Indian Polity | PSIR"].every(x=>t.includes(x))
+   &&["Think like an economist.","Strategy. Leadership. Decisions.","Power. Politics. Perspectives."].every(x=>t.includes(x))
    &&!/(best|number one|award|students use|trusted by|\d+\s*(students|users))/i.test(t)});
  T("Academic Ecosystem · the footer names the ecosystem, says which platform this is and lists the pathways, then the two sisters",()=>{
   const f=document.querySelector("footer.ft .ft-paths");if(!f)return false;const t=f.textContent.replace(/\s+/g," ");
   const o=["IB DP Economics","UPSC CSE Economics","The Business Brief","Political Studies & Global Affairs"].map(x=>t.indexOf(x));
   return f.getAttribute("aria-label")==="The Arjun Agrawal Academic Ecosystem"&&/You are on Economics/.test(t)&&o.every((x,k)=>x>=0&&(k===0||x>o[k-1]))});
+ T("Academic Ecosystem · each card uses its platform's own preview and mark where one exists, and Political Studies, with none available, stays typographic",()=>{
+  const t=document.createElement("template");t.innerHTML=fxEcosystem();const c=k=>t.content.querySelector(".eco-card.eco-"+k);
+  const img=(k,s)=>{const i=c(k)&&c(k).querySelector(s);return i?i.getAttribute("src"):""};
+  return img("bb",".eco-pv-img")==="assets/ecosystem/the-business-brief-preview.webp"&&img("bb",".eco-logo")==="assets/ecosystem/the-business-brief-mark.svg"
+   &&img("eco",".eco-pv-img")==="assets/ecosystem/economics-preview.webp"&&!!c("ps")&&!c("ps").querySelector("img,svg")&&!!c("ps").querySelector(".eco-pv-type")
+   &&[...t.content.querySelectorAll(".eco-card img")].every(i=>+i.getAttribute("width")>0&&+i.getAttribute("height")>0&&i.getAttribute("loading")==="lazy")
+   &&[...t.content.querySelectorAll(".eco-card .eco-go")].length===2&&[...t.content.querySelectorAll(".eco-card .eco-go")].every(a=>/^Visit platform: /.test(a.textContent))});
  T("Academic Ecosystem · About shows the three platforms after the platform story",()=>{const h=aboutPage();
   return h.includes('id="ab-e"')&&h.indexOf('id="ab-s"')<h.indexOf('id="ab-e"')&&(h.match(/class="eco-card /g)||[]).length===3});
  T("Flagship · the welcome dialogue waits for the IB DP environment",()=>/fxPathway\(VIEW\)!=="ib"/.test(String(bootOnboarding))&&typeof FX_OB.run==="function");

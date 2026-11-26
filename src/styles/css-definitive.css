@@ -1,0 +1,148 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE DEFINITIVE RELEASE (2026-11-26)
+   ARJUN AGRAWAL | ACADEMIC ECOSYSTEM · Think. Understand. Connect.
+   The palette stays the platform's: obsidian and charcoal, warm ivory and
+   parchment, champagne gold, with burgundy (the IB register's --ib-bur) as the
+   one deep accent. Nothing here changes a pathway's colours.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root{--df-bur:#7A2436;--df-bur-l:#B5566A;--df-gold:#D9BE7C}
+
+/* ── the opening: burgundy as the quiet second accent ── */
+#splash .ia-pos i{background:var(--df-bur-l)}
+#splash .ia-tg{word-spacing:.12em}
+#splash .ia-tg::before{content:"";display:block;width:64px;height:1px;margin:0 auto clamp(12px,2vh,18px);background:linear-gradient(90deg,transparent,var(--df-bur-l) 30%,var(--df-gold) 50%,var(--df-bur-l) 70%,transparent)}
+
+/* ── the three-platform ecosystem: each panel shows its platform's own preview ── */
+.eco-card{gap:0}
+.eco-card .eco-pv{margin:calc(clamp(22px,2.4vw,32px)*-1) calc(clamp(22px,2.4vw,32px)*-1) clamp(18px,2vw,24px);aspect-ratio:960/504;overflow:hidden;border-bottom:1px solid rgba(127,127,127,.18)}
+.eco-card .eco-pv-img{display:block;width:100%;height:100%;object-fit:cover}
+.eco-card .eco-pv-type{height:100%;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:0 clamp(18px,2.4vw,30px);box-sizing:border-box}
+.eco-card .eco-pv-n{font:400 clamp(20px,1.9vw,27px)/1.12 var(--fx-display);max-width:16ch}
+.eco-card .eco-pv-t{font:600 10.5px/1.4 var(--fx-sans);letter-spacing:.18em;text-transform:uppercase}
+.eco-card.eco-ps .eco-pv{background:#0B1628;box-shadow:inset 0 -3px 0 #713D4C}
+.eco-card.eco-ps .eco-pv-n{color:#F7F5EF}.eco-card.eco-ps .eco-pv-t{color:#C9AD6E}
+.eco-card .eco-top{align-items:center}
+.eco-card .eco-rel{font-weight:500;letter-spacing:.12em;opacity:.78}
+.eco-card .eco-logo{display:block;width:40px;height:40px;flex:none;border-radius:var(--fx-r2)}
+.eco-card .eco-name{margin-top:12px}
+.eco-card .eco-tag{font-style:italic}
+.fxpanel .fxe-t i{font:italic 400 13.5px/1.35 var(--fx-serif);color:var(--fx-text-2)}
+
+/* ── the footer: four columns, a compact strip between the three platforms ── */
+.ft-final{grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr))}
+@media (max-width:1000px){.ft-final{grid-template-columns:repeat(2,minmax(0,1fr))}.ft-final>div:first-child{grid-column:1/-1}}
+@media (max-width:560px){.ft-final{grid-template-columns:minmax(0,1fr)}}
+.ft-final .mt3{margin-top:16px}
+.ft-xp{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin-top:24px;padding-top:18px;border-top:1px solid color-mix(in srgb,currentColor 16%,transparent)}
+.ft-xp-k{flex:1 1 100%;font:600 11px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;opacity:.75;margin-bottom:10px}
+.ft-xp-a{flex:1 1 200px;display:grid;gap:3px;min-height:44px;padding:10px 16px 10px 0;margin-right:16px;text-decoration:none;color:inherit;border-left:2px solid transparent}
+.ft-xp-a b{font:400 18px/1.2 var(--fx-display)}
+.ft-xp-a span{font:italic 400 13.5px/1.35 var(--fx-serif);opacity:.78}
+.ft-xp-a.on b::after{content:" · you are here";font:600 10px/1 var(--fx-sans);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.ft-xp-a:hover b{text-decoration:underline;text-underline-offset:3px}
+.ft-xp-a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){#splash .ia-tg::before{transition:none}}
+
+/* ── the author: on the home page, the book page and About ── */
+.ab-bk{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;margin:22px 0 4px;padding:14px 16px;border:1px solid var(--fx-line-2);border-left:3px solid var(--df-bur);border-radius:var(--fx-r1);text-decoration:none;color:inherit;max-width:560px;background:var(--fx-paper)}
+.ab-bk:hover{border-color:var(--fx-gold)}.ab-bk:focus-visible{outline:2px solid var(--fx-gold-text);outline-offset:3px}
+.ab-bk-c{display:block;width:58px;height:auto;aspect-ratio:auto;box-shadow:0 6px 16px -8px rgba(20,22,26,.5)}
+.ab-bk>span{display:grid;gap:3px;min-width:0}
+.ab-bk-k{font:600 10.5px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--df-bur)}
+.ab-bk b{font:400 21px/1.15 var(--fx-display)}
+.ab-bk>span>span:last-child{font:400 13.5px/1.45 var(--fx-serif);color:var(--fx-text-2)}
+.ab-acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.bk-by-k{font:600 10.5px/1 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;opacity:.75;margin-right:6px}
+.bk-author{background:var(--fx-ivory)}
+.bk-author-g{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1.45fr);gap:clamp(24px,5vw,72px);align-items:center}
+.bk-author-p{margin:0;max-width:340px}
+.bk-author-p img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:var(--fx-r2);box-shadow:var(--fx-shadow-2)}
+.bk-author-r{font:600 11.5px/1.7 var(--fx-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--fx-gold-text);margin:6px 0 14px}
+.bk-author-q{margin:18px 0 0;padding:4px 0 4px 18px;border-left:2px solid var(--df-bur);font:italic 400 clamp(17px,1.5vw,20px)/1.5 var(--fx-serif);color:var(--fx-text)}
+.bk-author-q cite{display:block;margin-top:6px;font:600 10.5px/1.3 var(--fx-sans);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--fx-text-2)}
+@media (max-width:760px){.bk-author-g{grid-template-columns:minmax(0,1fr)}.bk-author-p{max-width:260px}}
+
+/* ── the companion: how it relates to the book ── */
+.bk-comp-rel{margin:16px 0 0;max-width:60ch;font:400 15.5px/1.6 var(--fx-serif);color:var(--fx-on-dark)}
+.bk-comp-rel span:first-child{color:var(--fx-gold-l)}
+
+/* ── the chapter explorer ── */
+.bk-ex{margin-top:clamp(28px,4vw,48px);padding-top:clamp(20px,3vw,32px);border-top:1px solid var(--fx-line)}
+.bk-ex-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px}
+.bk-ex-t{all:unset;box-sizing:border-box;display:grid;gap:4px;min-height:44px;padding:12px 14px;border:1px solid var(--fx-line-2);border-radius:var(--fx-r1);cursor:pointer;background:var(--fx-paper);color:var(--fx-text)}
+.bk-ex-t span{font:600 10.5px/1.3 var(--fx-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--fx-text-2)}
+.bk-ex-t b{font:400 15px/1.3 var(--fx-display);font-weight:400}
+.bk-ex-t:hover{border-color:var(--fx-gold)}
+.bk-ex-t:focus-visible{outline:2px solid var(--fx-gold-text);outline-offset:2px}
+.bk-ex-t.on{background:#16274A;border-color:#16274A;color:#F7F5EF}.bk-ex-t.on span{color:#D9C28F}
+.bk-ex-panel{margin-top:18px;padding:clamp(16px,2.4vw,28px);border:1px solid var(--fx-line-2);border-radius:var(--fx-r1);background:var(--fx-paper)}
+.bk-ex-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 18px;margin:0 0 14px;font:400 15px/1.4 var(--fx-serif)}
+.bk-ex-meta b{font:400 clamp(19px,1.8vw,24px)/1.2 var(--fx-display)}
+.bk-ex-meta span{font:500 12.5px/1.6 var(--fx-mono);color:var(--fx-text-2)}
+.bk-ex-u+.bk-ex-u{margin-top:18px}
+.bk-ex-uh{margin:0 0 8px;font:600 12px/1.5 var(--fx-sans);letter-spacing:.06em;color:var(--fx-text)}
+.bk-ex-uh span{display:inline-block;margin-right:10px;padding:2px 8px;border-radius:2px;background:var(--fx-ivory-2);color:var(--fx-gold-text);letter-spacing:.12em;text-transform:uppercase;font-size:10.5px}
+.bk-ex-l{list-style:none;margin:0;padding:0;columns:2 320px;column-gap:32px}
+.bk-ex-l li{break-inside:avoid;display:grid;grid-template-columns:2.6em minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--fx-line)}
+.bk-ex-n{font:500 12.5px/1.4 var(--fx-mono);color:var(--fx-text-2)}
+.bk-ex-c{font:400 15px/1.45 var(--fx-serif)}
+.bk-ex-c em{display:block;font:italic 400 12.5px/1.4 var(--fx-serif);color:var(--fx-text-2)}
+.bk-ex-p{font:500 12.5px/1.4 var(--fx-mono);color:var(--fx-text-2);white-space:nowrap}
+.bk-ex-note{margin:16px 0 0;font:400 13px/1.55 var(--fx-serif);color:var(--fx-text-2)}
+@media (max-width:900px){.bk-ex-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.bk-ex-tabs{grid-template-columns:minmax(0,1fr)}}
+
+/* ── About: the philosophy and the publications ── */
+.ab-ccc{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(18px,4vw,56px);align-items:start;padding:clamp(18px,3vw,32px) 0;border-top:1px solid var(--fx-line);border-bottom:1px solid var(--fx-line)}
+.ab-ccc-h{margin:0;font:400 clamp(30px,3.6vw,48px)/1.08 var(--fx-display)}
+.ab-ccc-h span{display:block}.ab-ccc-h span:nth-child(2){color:var(--fx-gold-text)}.ab-ccc-h span:nth-child(3){color:var(--df-bur)}
+.ab-ccc .ed{margin:0;max-width:62ch}
+@media (max-width:760px){.ab-ccc{grid-template-columns:minmax(0,1fr)}}
+.ab-pubs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ab-pubs a{display:grid;gap:4px;height:100%;box-sizing:border-box;padding:16px 18px;border:1px solid var(--fx-line-2);border-radius:var(--fx-r1);text-decoration:none;color:inherit;background:var(--fx-paper)}
+.ab-pubs a:hover{border-color:var(--fx-gold)}.ab-pubs a:focus-visible{outline:2px solid var(--fx-gold-text);outline-offset:3px}
+.ab-pubs b{font:400 19px/1.2 var(--fx-display)}.ab-pubs span{font:400 14px/1.5 var(--fx-serif);color:var(--fx-text-2)}
+@media (max-width:640px){.ab-pubs{grid-template-columns:minmax(0,1fr)}}
+.ab-cover .ab-bk{margin-top:18px}
+
+/* ── UPSC CSE Economics: four ways in ── */
+.upw{background:var(--up-paper,#FBF9F4)}
+.upw-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,20px);margin-top:clamp(20px,3vw,36px)}
+.upw-col{display:flex;flex-direction:column;padding:clamp(18px,2vw,26px);border:1px solid var(--up-line,#DDD4C1);border-top:3px solid var(--up-forest,#1F4434);border-radius:var(--fx-r1);background:#fff}
+.upw-col.upw-core{border-top-color:var(--up-gold,#A8843F)}
+.upw-k{margin:0;font:600 10.5px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--up-gold-text,#765B22)}
+.upw-col .up-h3{margin:6px 0 12px}
+.upw-col ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.upw-a{display:grid;gap:2px;padding:9px 0;border-bottom:1px solid var(--up-line,#DDD4C1);text-decoration:none;color:var(--up-ink,#16241C);min-height:44px;box-sizing:border-box}
+.upw-a b{font:600 14px/1.35 var(--fx-sans)}
+.upw-a span{font:400 13.5px/1.45 var(--fx-serif);color:var(--up-mute,#56615A)}
+.upw-a:hover b{text-decoration:underline;text-underline-offset:3px}
+.upw-a:focus-visible{outline:2px solid var(--up-forest,#1F4434);outline-offset:2px}
+.upw-tag{justify-self:start;margin-top:3px;padding:1px 7px;border-radius:2px;font:600 10px/1.6 var(--fx-sans);font-style:normal;letter-spacing:.12em;text-transform:uppercase;background:var(--up-gold-w,#F3EAD2);color:var(--up-gold-dk,#5A4416)}
+.upw-core-l li{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 10px;padding:7px 0;border-bottom:1px solid var(--up-line,#DDD4C1)}
+.upw-ct{font:600 13.5px/1.35 var(--fx-sans);color:var(--up-ink,#16241C)}
+.upw-cl{display:flex;flex-wrap:wrap;gap:6px}
+.upw-vol,.upw-part{display:inline-flex;align-items:center;min-height:28px;padding:0 8px;border:1px solid var(--up-line-2,#C9BC9C);border-radius:2px;font:600 11px/1 var(--fx-sans);letter-spacing:.04em;text-decoration:none;color:var(--up-forest,#1F4434)}
+.upw-part{color:#16274A;border-color:#B9C3D6}
+.upw-vol:hover,.upw-part:hover{background:var(--up-gold-w,#F3EAD2)}
+.upw-vol:focus-visible,.upw-part:focus-visible{outline:2px solid var(--up-forest,#1F4434);outline-offset:2px}
+.upw-n{margin:12px 0 0;font:400 12.5px/1.5 var(--fx-serif);color:var(--up-mute,#56615A)}
+@media (max-width:1180px){.upw-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.upw-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* ── Real World: the case at a glance ── */
+.rwg{border-top:3px solid var(--df-bur)}
+.rwg-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 16px}
+.rwg-h{margin:0;font:400 clamp(20px,2vw,26px)/1.2 var(--fx-display,Georgia,serif)}
+.rwg-kind{font:600 10.5px/1.6 var(--fx-sans,system-ui);letter-spacing:.14em;text-transform:uppercase;padding:2px 9px;border-radius:2px;background:#F3EAD6;color:#5A4416}
+.rwg-kind.k-current{background:#E3EFE6;color:#1F4434}.rwg-kind.k-illustrative{background:#EEE9F3;color:#4E3A63}
+.rwg-l{display:grid;grid-template-columns:minmax(0,1fr);margin:14px 0 0}
+.rwg-r{display:grid;grid-template-columns:minmax(120px,190px) minmax(0,1fr);gap:4px 20px;padding:9px 0;border-top:1px solid rgba(127,127,127,.2)}
+.rwg-r dt{font:600 11px/1.5 var(--fx-sans,system-ui);letter-spacing:.1em;text-transform:uppercase;opacity:.75;padding-top:2px}
+.rwg-r dd{margin:0;font:400 15px/1.55 var(--fx-serif,Georgia,serif)}
+.rwg-r dd ul{margin:0;padding-left:18px}.rwg-r dd li+li{margin-top:4px}
+.rwg-v{display:block;margin-top:6px;font-style:italic}
+@media (max-width:640px){.rwg-r{grid-template-columns:minmax(0,1fr)}}
+.cprow .cp-p.cp-lv{grid-row:2;justify-self:start;margin-left:0;color:#3A3F47;background:#ECE7DC}
+.cprow .cp-p.cp-uni{white-space:nowrap}
+.cprow{column-gap:10px}

@@ -292,10 +292,10 @@ function hlOpenViewer(id,i){const v=hlVol(id);if(!v||!(v.pv&&v.pv.length)||typeo
  const d=hlViewerEl(),pv=v.pv;
  if(!d.open)HLV.ret=document.activeElement;
  HLV.id=v.id;HLV.i=Math.max(0,Math.min(pv.length-1,(i|0)));HLV.z=0;
- d.querySelector("#hl-vw-k").textContent=`Volume ${v.n} · ${v.category} · Look inside`;
+ d.querySelector("#hl-vw-k").textContent=v.kicker||`Volume ${v.n} · ${v.category} · Look inside`;
  d.querySelector("#hl-vw-t").textContent=v.title;
- d.querySelector("#hl-vw-strip").innerHTML=pv.map((p,k)=>`<li><button type="button" data-i="${k}" aria-label="${esA(`Page ${p.p}: ${HL_KIND[p.kind]||""}, ${p.cap}`)}"><img src="${esA((p.sm||p).src)}" alt="" width="${(p.sm||p).w}" height="${(p.sm||p).h}" loading="lazy" decoding="async"><span>p. ${p.p}</span></button></li>`).join("");
- d.querySelector("#hl-vw-buy").innerHTML=`<span class="hl-vw-price">₹${hlPriceN()} · Digital soft copy</span>${hlBuy(v,"hl-btn hl-buy sm")}`;
+ d.querySelector("#hl-vw-strip").innerHTML=pv.map((p,k)=>`<li><button type="button" data-i="${k}" aria-label="${esA(`${p.p==="Cover"?"The cover":"Page "+p.p}: ${HL_KIND[p.kind]||""}, ${p.cap}`)}"><img src="${esA((p.sm||p).src)}" alt="" width="${(p.sm||p).w}" height="${(p.sm||p).h}" loading="lazy" decoding="async"><span>${esc(v.strip?v.strip(p):"p. "+p.p)}</span></button></li>`).join("");
+ d.querySelector("#hl-vw-buy").innerHTML=v.buy?v.buy():`<span class="hl-vw-price">₹${hlPriceN()} · Digital soft copy</span>${hlBuy(v,"hl-btn hl-buy sm")}`;
  d.classList.toggle("is-one",pv.length<2);
  d.querySelector("#hl-vw-sheet").innerHTML="";
  if(!d.open){try{d.showModal()}catch(e){d.setAttribute("open","");d.classList.add("is-fallback")}}
@@ -340,17 +340,18 @@ function hlvShow(i,dir){const v=hlvVol(),d=HLV.el;if(!v||!d)return;const pv=v.pv
  sh.style.backgroundImage=p.sm?`url("${p.sm.src}")`:"none";
  sh.querySelectorAll("img:not(.on)").forEach(x=>x.remove());
  const old=sh.querySelector("img.on"),im=hlvImgFor(p,b.w);
- im.alt=`Page ${p.p} of ${v.pages} in Volume ${v.n}, ${v.title}. ${HL_KIND[p.kind]||""}: ${p.cap}`;
+ im.alt=v.alt?v.alt(p):`Page ${p.p} of ${v.pages} in Volume ${v.n}, ${v.title}. ${HL_KIND[p.kind]||""}: ${p.cap}`;
  const still=hlReduced()||!dir||!old;
  if(still){if(old)old.remove();im.classList.add("on");sh.appendChild(im)}
  else{im.classList.add(dir>0?"from-r":"from-l");sh.appendChild(im);
   const swap=()=>{if(!im.isConnected)return;requestAnimationFrame(()=>{im.classList.remove("from-r","from-l");im.classList.add("on");if(old&&old.isConnected){old.classList.remove("on");old.classList.add(dir>0?"to-l":"to-r");setTimeout(()=>old.remove(),360)}})};
   (im.decode?im.decode().catch(()=>{}):Promise.resolve()).then(swap)}
  const kind=HL_KIND[p.kind]||"";
- d.querySelector("#hl-vw-pos").innerHTML=`<b>Page ${p.p}</b> of ${v.pages}<span class="hl-sep" aria-hidden="true">·</span>preview ${i+1} of ${pv.length}`;
+ d.querySelector("#hl-vw-pos").innerHTML=v.pos?v.pos(p,i,pv.length):`<b>Page ${p.p}</b> of ${v.pages}<span class="hl-sep" aria-hidden="true">·</span>preview ${i+1} of ${pv.length}`;
  d.querySelector("#hl-vw-c").innerHTML=`<span class="hl-vw-kind">${esc(kind)}</span>${esc(p.cap)}`;
- d.querySelector("#hl-vw-stage").setAttribute("aria-label",`Page ${p.p} of ${v.pages}, preview ${i+1} of ${pv.length}. ${kind}: ${p.cap}`);
- const live=d.querySelector("#hl-vw-live");if(live&&dir)live.textContent=`Page ${p.p}. ${kind}: ${p.cap}`;
+ const word=p.p==="Cover"?"The cover":`Page ${p.p}`;
+ d.querySelector("#hl-vw-stage").setAttribute("aria-label",`${word}${p.p==="Cover"?"":` of ${v.pages}`}, preview ${i+1} of ${pv.length}. ${kind}: ${p.cap}`);
+ const live=d.querySelector("#hl-vw-live");if(live&&dir)live.textContent=`${word}. ${kind}: ${p.cap}`;
  d.querySelectorAll("#hl-vw-strip button").forEach(x=>{const on=+x.dataset.i===i;if(on)x.setAttribute("aria-current","page");else x.removeAttribute("aria-current")});
  const cur=d.querySelector('#hl-vw-strip button[aria-current]');if(cur&&cur.scrollIntoView){try{cur.scrollIntoView({block:"nearest",inline:"nearest"})}catch(e){}}
  d.querySelector('[data-a="prev"]').disabled=i<=0;d.querySelector('[data-a="next"]').disabled=i>=pv.length-1;hlvKeepFocus();

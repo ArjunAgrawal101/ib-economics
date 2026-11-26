@@ -11,30 +11,42 @@ const FXI={
  discipline:"Economics",
  motto:"Think like an economist.",
  idea:"One discipline. Two pathways. A shared understanding of Economics.",
- roles:"IB DP Economics Educator | Economics Resource Designer | UPSC Economics Mentor",
+ roles:"IB DP Economics Educator | UPSC Economics Mentor | Academic Resource Creator | Author of The Indian Economy",
  paths:{
   ib:{key:"ib",name:"IB DP Economics",short:"IB DP",home:"#/ib",view:"ib"},
   upsc:{key:"upsc",name:"UPSC CSE Economics",short:"UPSC CSE",home:"#/upsc",view:"upsc"}
  }
 };
-/* ── the Arjun Agrawal Academic Ecosystem ──────────────────────────────────
+/* ── ARJUN AGRAWAL | ACADEMIC ECOSYSTEM ────────────────────────────────────
    Three independent platforms from the same educator, under one academic
-   identity (ARJUN AGRAWAL · KNOWLEDGE. INSIGHT. IMPACT.): this one, The
-   Business Brief (IB DP Business Management) and Political Studies & Global
-   Affairs. Each keeps its own repository, address and design; the names and
-   lines are the owner's. The two sisters are linked from the header's
-   Academic Ecosystem menu, the drawer, the home page, the footer and About,
-   always in a new tab and never as a third pathway: they have no pathway
-   colour and no place in the pathway switcher. */
+   identity whose positioning is "Think. Understand. Connect." (the definitive
+   brief, 2026-11-26): Economics (this one), Political Studies and Business
+   Management (The Business Brief). Each keeps its own repository, address,
+   design language and line: "Think like an economist.", "Power. Politics.
+   Perspectives." and "Strategy. Leadership. Decisions.". The sisters are linked
+   from the header's Academic Ecosystem menu, the drawer, the home page, the
+   footer and About, always in a new tab and never as a third pathway: they have
+   no pathway colour and no place in the pathway switcher.
+   Brand assets are the platforms' own: this platform's monogram and social
+   card, and The Business Brief's favicon mark and social card, copied unchanged
+   from its public repository (public/favicon.svg, public/brand/social-card.png).
+   No logo or preview of Political Studies was available to this build, so its
+   panel is typographic: nothing is drawn that could pass for its logo. */
+const FX_ECO_ID={name:"Arjun Agrawal | Academic Ecosystem",line:"Think. Understand. Connect."};
 const FX_BB={name:"The Business Brief",subject:"IB DP Business Management",url:"https://the-business-brief-dun.vercel.app/"};
-const FX_PS={name:"Political Studies & Global Affairs",subject:"Indian Polity, International Relations, PSIR and IB DP Global Politics",url:"https://arjun-agrawal-political-studies.vercel.app/"};
+const FX_PS={name:"Political Studies & Global Affairs",subject:"IB DP Global Politics, International Relations, Indian Polity and PSIR",url:"https://arjun-agrawal-political-studies.vercel.app/"};
 const FX_ECO=[
- {k:"eco",name:"Economics",line:"IB Economics | Economic Analysis | Academic Resources",url:"https://ib-economics-pi.vercel.app/",current:true,
-  d:"IB DP Economics and UPSC CSE Economics: concepts, models you can move, real-world evidence and examination practice."},
- {k:"bb",name:FX_BB.name,line:"IB Business Management | Strategy | Leadership | Decisions",url:FX_BB.url,
-  d:"A Business Management learning platform with topic notes, mindmaps, case studies, interactive tools and an Assessment Centre for the IB Diploma Programme."},
- {k:"ps",name:FX_PS.name,line:"Indian Polity | International Relations | PSIR | IB Global Politics",url:FX_PS.url,
-  d:"UPSC CSE Indian Polity and International Relations, Political Science and International Relations (PSIR) and IB DP Global Politics, read as one connected body of knowledge."}];
+ {k:"eco",disc:"Economics",name:"Economics",line:"IB DP Economics | UPSC CSE Economics",tag:"Think like an economist.",url:"https://ib-economics-pi.vercel.app/",current:true,
+  d:"IB DP Economics and UPSC CSE Economics: concepts, interactive diagrams, real-world evidence, examination practice and The Indian Economy.",
+  img:{src:"assets/ecosystem/economics-preview.webp",w:960,h:504,alt:"The Economics platform's own preview card: Economics is not just a subject to study. It is a way to think."},
+  logo:{src:"assets/brand/monogram-reversed.svg",alt:"The Arjun Agrawal monogram"}},
+ {k:"ps",disc:"Political Studies",name:FX_PS.name,line:"IB DP Global Politics | International Relations | Indian Polity | PSIR",tag:"Power. Politics. Perspectives.",url:FX_PS.url,
+  d:"IB DP Global Politics, International Relations, Indian Polity and Political Science and International Relations (PSIR), read as one connected body of knowledge."},
+ {k:"bb",disc:"Business Management",name:FX_BB.name,line:"IB DP Business Management",tag:"Strategy. Leadership. Decisions.",url:FX_BB.url,
+  d:"IB DP Business Management: topics, mindmaps, glossary, diagrams and the Assessment Centre.",
+  img:{src:"assets/ecosystem/the-business-brief-preview.webp",w:960,h:504,alt:"The Business Brief's own preview card: Understand business. Think strategically. Make better decisions."},
+  logo:{src:"assets/ecosystem/the-business-brief-mark.svg",alt:"The Business Brief's mark: the Arjun Agrawal monogram on navy"}}];
+const fxEco=k=>FX_ECO.find(e=>e.k===k);
 /* a small drawn mark for each: two curves meeting, a decision's rising bars, a meridian globe */
 const FX_ECO_MARK={
  eco:`<svg viewBox="0 0 64 48" aria-hidden="true" focusable="false"><path d="M6 6C22 18 38 30 58 42"/><path d="M6 42C22 30 38 18 58 6" opacity=".6"/><circle class="f" cx="32" cy="24" r="3"/></svg>`,
@@ -44,16 +56,22 @@ const FX_ECO_MARK={
 function fxSisterLink(e,cls,label){
  return `<a class="${cls}" href="${esA(e.url)}" target="_blank" rel="noopener noreferrer">${esc(label||e.name)}<span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>`;
 }
-function fxBBLink(cls,label){return fxSisterLink(FX_ECO[1],cls,label)}
-/* one platform as a panel, on the home page and on About; the current one says so and opens its two pathways */
+function fxBBLink(cls,label){return fxSisterLink(fxEco("bb"),cls,label)}
+/* one platform as a panel, on the home page and on About: the discipline, the
+   platform's own preview and mark, its name, line and tagline, a description
+   and a Visit link (the current one says so and opens its two pathways) */
 function fxEcoCard(e){
  const host=e.url.replace(/^https?:\/\//,"").replace(/\/$/,"");
  const foot=e.current
   ?`<span class="eco-here">You are here</span><span class="eco-paths"><a class="fx-a" href="#/ib">IB DP Economics <span aria-hidden="true">→</span></a><a class="fx-a" href="#/upsc">UPSC CSE Economics <span aria-hidden="true">→</span></a></span>`
-  :`${fxSisterLink(e,"eco-go","Visit "+e.name)}<span class="eco-url">${esc(host)}</span>`;
+  :`<a class="eco-go" href="${esA(e.url)}" target="_blank" rel="noopener noreferrer">Visit platform<span class="sr-only">: ${esc(e.name)}</span><span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a><span class="eco-url">${esc(host)}</span>`;
+ const pv=e.img
+  ?`<img class="eco-pv-img" src="${esA(e.img.src)}" width="${e.img.w}" height="${e.img.h}" alt="${esA(e.img.alt)}" loading="lazy" decoding="async">`
+  :`<div class="eco-pv-type" aria-hidden="true"><span class="eco-pv-n">${esc(e.name)}</span><span class="eco-pv-t">${esc(e.tag)}</span></div>`;
  return `<li class="eco-card eco-${e.k}${e.current?" here":""}"${e.current?' aria-current="true"':""}>
-  <div class="eco-top"><p class="eco-sub">${e.current?"This platform":"Sister platform"}</p><span class="eco-mark">${FX_ECO_MARK[e.k]}</span></div>
-  <h3 class="eco-name">${esc(e.name)}</h3><p class="eco-line">${esc(e.line)}</p><p class="eco-d">${esc(e.d)}</p>
+  <div class="eco-pv">${pv}</div>
+  <div class="eco-top"><p class="eco-sub">${esc(e.disc)}<span class="eco-rel"> · ${e.current?"This platform":"Sister platform"}</span></p>${e.logo?`<img class="eco-logo" src="${esA(e.logo.src)}" width="40" height="40" alt="${esA(e.logo.alt)}" loading="lazy" decoding="async">`:""}</div>
+  <h3 class="eco-name">${esc(e.name)}</h3><p class="eco-line">${esc(e.line)}</p>${e.tag?`<p class="eco-tag">${esc(e.tag)}</p>`:""}<p class="eco-d">${esc(e.d)}</p>
   <div class="eco-foot">${foot}</div></li>`;
 }
 /* Sections that belong to neither pathway: the shared home, About, Contact,
