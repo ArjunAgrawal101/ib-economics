@@ -10,10 +10,13 @@
    workplace. The portrait sits in its own grid cell; nothing is drawn over it.
    ═══════════════════════════════════════════════════════════════════════════ */
 /* the positioning the owner set for the two-pathway platform */
-const AB_POS=["IB DP Economics Educator","Economics Resource Designer","UPSC Economics Mentor"];
+/* updated for the definitive brief (2026-11-26): educator, resource creator and author */
+const AB_POS=["IB DP Economics Educator","UPSC Economics Mentor","Academic Resource Creator","Author of The Indian Economy"];
 /* the credentials, as data blocks */
 const AB_FACTS=()=>[
- ["Education","Economics","St. Stephen's College, University of Delhi"],
+ ["Education","BA (Programme), Economics and Political Science","St. Stephen's College, University of Delhi"],
+ ["Postgraduate study","MA Economics · MA Political Science","Fergusson College, Pune · Indira Gandhi National Open University (IGNOU)"],
+ ["Qualifications","UGC-NET, qualified twice · MH-SET","Economics"],
  ["Higher education","Assistant Professor","Fergusson College, Pune · undergraduate Economics"],
  ["IB Diploma Programme","Teaching and academic work","BLISS International School, Pune · Symbiosis International School, Pune"],
  ["Subjects","Economics · Business Management · Global Politics","SL and HL"],
@@ -36,7 +39,8 @@ function abCover(){const A=ABOUT;
    <div class="eb a">About</div>
    <h1 class="ab-h mt2" id="ab-h">${esc(A.name)}</h1>
    <ul class="ab-pos mt3">${AB_POS.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>
-   <p class="ab-lede mt4">${esc(A.lede)}</p>
+   <p class="ab-lede mt4">${esc(typeof FX_AUTHOR_BIO==="string"?FX_AUTHOR_BIO:A.lede)}</p>
+   ${abAuthorPlate()}
    <p class="ab-meta mt3"><span>${esc(A.role)}</span>${A.subjects.map(s=>`<span>${esc(s)}</span>`).join("")}</p>
    <div class="row mt4"><button class="btn a" onclick="nav('tutorials')">Learn with Arjun →</button><a class="btn gh" href="#/ib">IB DP Economics</a>
     <a class="btn gh" href="#/upsc">UPSC CSE Economics</a><a class="btn gh" href="mailto:${A.email}">Email</a></div></div>
@@ -73,7 +77,10 @@ function abClassroom(){return `<section class="sec ab-room" aria-labelledby="ab-
  </div></section>`}
 
 function abPrinciples(){return `<section class="sec t ab-believe" aria-labelledby="ab-b"><div class="wrap full">
-  <div class="rn-chap"><span class="ch-n">04</span><span class="ch-t" id="ab-b">What I believe</span></div>
+  <div class="rn-chap"><span class="ch-n">04</span><span class="ch-t" id="ab-b">Teaching philosophy</span></div>
+  <div class="ab-ccc mt4"><p class="ab-ccc-h"><span>Concepts.</span> <span>Content.</span> <span>Contexts.</span></p>
+   <p class="ed">Effective learning connects three things: the concepts that explain how an economy works, the content that gives them substance, and the contexts in which they matter. A concept learnt without evidence stays abstract; evidence without a concept is only a list of facts. The work on these platforms, and in <i>The Indian Economy</i>, is built to connect knowledge, concepts and evidence to the real world.</p></div>
+  <h3 class="h3 mt5">What I believe</h3>
   <ol class="abb-grid mt4">${AB_PRINCIPLES.map(([h,d],i)=>`<li><span class="abb-n">${String(i+1).padStart(2,"0")}</span><p class="abb-h">${esc(h)}</p><p class="abb-d">${esc(d)}</p></li>`).join("")}</ol>
  </div></section>`}
 
@@ -95,11 +102,16 @@ function abEcosystem(){if(typeof fxEcoCard!=="function")return "";
 /* the book: The Indian Economy, in the author's own words from its preface; facts from 51-book.js */
 function abBook(){if(typeof bkMockup!=="function")return "";
  return `<section class="sec ab-book" aria-labelledby="ab-k"><div class="wrap full">
-  <div class="rn-chap"><span class="ch-n">07</span><span class="ch-t" id="ab-k">The Indian Economy</span></div>
+  <div class="rn-chap"><span class="ch-n">07</span><span class="ch-t" id="ab-k">Publications</span></div>
   <div class="abk-grid mt4"><div class="abk-v">${bkMockup("md")}</div>
    <div><p class="ed" style="max-width:62ch"><i>The Indian Economy: A Comprehensive Academic and Examination Reference</i> (First Edition, 2026-27), authored and compiled by Arjun Agrawal, brings India's economic concepts, institutions, policies and sectors together in one connected reference for UPSC CSE, State PCS and RBI Grade B (General) candidates and for university study of the Indian economy. Its free Digital Revision Companion carries the revision and practice for each of its thirteen units.</p>
     <blockquote class="abk-q mt3">“I have always believed that meaningful learning rests on three closely related elements: Concepts, Content and Contexts.”<cite>From the preface</cite></blockquote>
     <div class="row mt4"><a class="btn a" href="#/book">About the book →</a><a class="btn gh" href="#/book/digital-revision-companion">The Digital Revision Companion</a></div></div></div>
+  <ul class="ab-pubs mt5">
+   <li><a href="#/book"><b><i>The Indian Economy</i></b><span>A Comprehensive Academic and Examination Reference · First Edition, 2026-27 · 641 numbered pages</span></a></li>
+   <li><a href="#/book/digital-revision-companion"><b><i>The Indian Economy</i>: Digital Revision Companion</b><span>An Integrated Revision Resource for Competitive Examinations and University Study · free · 13 units</span></a></li>
+   <li><a href="${esA(typeof fxHref==="function"?fxHref("upsc",(typeof UP_T!=="undefined"&&UP_T.handbooks)||3):"#/upsc")}"><b>Economics handbooks</b><span>Eleven topic volumes for the Economics of the UPSC General Studies papers</span></a></li>
+   <li><a href="#/studio"><b>Economics Learning Studio</b><span>Visual explainers, Economics in 60 Seconds and guides for IB DP Economics</span></a></li></ul>
  </div></section>`}
 
 function abLonger(){const A=ABOUT,B=ABOUT2;
@@ -123,4 +135,13 @@ function abClose(){const A=ABOUT;return `<section class="sec rn-final bg-ink ab-
    <button class="btn lg gh on-ink" onclick="nav('learn')">Start learning</button></div></div></section>`}
 
 (function(){if(typeof aboutPage!=="function")return;
- aboutPage=function(){return abCover()+abFacts()+abJourney()+abClassroom()+abPrinciples()+abStory()+abEcosystem()+abBook()+abLonger()+abClose()+abLightboxMarkup()}})();
+ /* the definitive order: who, at a glance, the philosophy, the publications, then the journey,
+    the classroom, the platform story and the ecosystem; chapters are numbered as they fall */
+ aboutPage=function(){let n=0;
+  return (abCover()+abFacts()+abPrinciples()+abBook()+abJourney()+abClassroom()+abStory()+abEcosystem()+abLonger()+abClose()+abLightboxMarkup())
+   .replace(/<span class="ch-n">\d+<\/span>/g,()=>`<span class="ch-n">${String(++n).padStart(2,"0")}</span>`)}})();
+/* the author's plate on the cover: the book, linked */
+function abAuthorPlate(){
+ let c="";try{const k=BOOK_PV.book.cover;c=k?`<img class="ab-bk-c" src="${esA(k.src)}" width="${k.w}" height="${k.h}" alt="The cover of The Indian Economy" loading="lazy" decoding="async">`:""}catch(e){}
+ return `<a class="ab-bk" href="#/book">${c}<span><span class="ab-bk-k">Author</span><b><i>The Indian Economy</i></b><span>A Comprehensive Academic and Examination Reference · First Edition, 2026-27</span></span></a>`;
+}

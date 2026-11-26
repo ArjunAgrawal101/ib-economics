@@ -46,6 +46,13 @@ const axeSrc = (() => { try { return fs.readFileSync(path.join(ROOT, 'tests/node
   check(/641 numbered pages/.test(t) && /PDF edition has 706 pages/.test(t), 'numbered pages (641) and PDF pages (706) are stated separately');
   check(/UPSC CSE/.test(t) && /STATE PCS/i.test(t) && /RBI GRADE B \(GENERAL\)/i.test(t) && /UNDERGRADUATE/i.test(t) && /POSTGRADUATE/i.test(t), 'the five readers are labelled');
   check(await p.locator('.bk-map-sec .bk-part').count() === 8, 'the contents map shows the eight Parts');
+  const sel2 = await p.evaluate(() => BOOK_PV.book.pv.map(x => x.p));
+  check(sel2.join(',') === 'vii,xxi,xxii,2,12,16,36,39,54,58' && !sel2.includes('vi'), 'the preview shows the contents at a glance, the maps, a chapter opening and seven more pages; never the About the Author page, which names current appointments', sel2.join(','));
+  check(await p.locator('#bk-ex .bk-ex-t').count() === 8 && await p.locator('#bk-ex .bk-ex-l li').count() === 22, 'the chapter explorer offers the eight Parts and opens on Part One, with its 22 chapters');
+  await p.locator('#bk-ex .bk-ex-t.p3').click(); await p.waitForTimeout(200);
+  const ex = await p.evaluate(() => ({ n: document.querySelectorAll('#bk-ex .bk-ex-l li').length, first: document.querySelector('#bk-ex .bk-ex-l li') && document.querySelector('#bk-ex .bk-ex-l li').textContent.replace(/\s+/g, ' ').trim(), on: document.querySelector('#bk-ex .bk-ex-t.p3').getAttribute('aria-pressed'), focus: document.activeElement && document.activeElement.classList.contains('p3') }));
+  check(ex.n === 22 && /^34\s*Foundations and Characteristics of Money\s*p\. 122$/.test(ex.first) && ex.on === 'true' && ex.focus, 'choosing Part Three lists its chapters from 34, with the book\'s own titles and first pages, and keeps focus on the choice', JSON.stringify(ex));
+  check(/^author\s+arjun agrawal$/i.test((await p.locator('.bk-hero .bk-by').innerText()).trim()) && await p.locator('.bk-author img').count() === 1 && /Concepts, Content and Contexts/.test(await p.locator('.bk-author').innerText()), 'the book page names its author and introduces the author, with the photograph and the preface\'s line');
   check(/To be confirmed by the publisher/.test(t) && /To be assigned at publication/.test(t) && !/₹/.test(t), 'price, publisher and ISBN are not invented, and no price is shown');
 
   /* look inside: previous and next, thumbnails, the printed page number */
@@ -54,12 +61,12 @@ const axeSrc = (() => { try { return fs.readFileSync(path.join(ROOT, 'tests/node
   const r0 = await read();
   await p.locator('.bk-lk-nav.next').click(); await p.waitForTimeout(250);
   const r1 = await read();
-  check(r0.cap === 'Page xxi' && r1.cap === 'Page xxii' && r0.src !== r1.src && r1.pos === '3 of 11', 'Next turns to the next chosen page, with its printed number (xxi, then xxii)', JSON.stringify([r0, r1]));
+  check(r0.cap === 'Page vii' && r1.cap === 'Page xxi' && r0.src !== r1.src && r1.pos === '3 of 11', 'Next turns to the next chosen page, with its printed number (vii, the contents at a glance, then xxi)', JSON.stringify([r0, r1]));
   await p.locator('.bk-lk-strip li').nth(8).locator('button').click(); await p.waitForTimeout(250);
   const r2 = await read();
-  check(r2.cap === 'Page 40' && await p.locator('.bk-lk-strip button[aria-current="page"]').count() === 1, 'a thumbnail opens its page and is marked as current', JSON.stringify(r2));
+  check(r2.cap === 'Page 39' && await p.locator('.bk-lk-strip button[aria-current="page"]').count() === 1, 'a thumbnail opens its page and is marked as current', JSON.stringify(r2));
   await p.locator('.bk-lk-nav.prev').click(); await p.waitForTimeout(250);
-  check((await read()).cap === 'Page 39', 'Previous turns back');
+  check((await read()).cap === 'Page 36', 'Previous turns back');
   const big = await p.evaluate(() => new Promise(res => { const i = new Image(); i.onload = () => res(i.naturalWidth); i.onerror = () => res(0); i.src = BOOK_PV.book.pv[0].src; }));
   check(big >= 1600, `each page is published at a width that can be read (${big} px), with no watermark or overlay`);
   check(await p.evaluate(() => !document.querySelector('.bk-lk-fig .watermark, .bk-lk-fig [class*="overlay"]')), 'nothing is drawn over the page');
@@ -69,9 +76,9 @@ const axeSrc = (() => { try { return fs.readFileSync(path.join(ROOT, 'tests/node
   await p.keyboard.press('Enter'); await p.waitForTimeout(600);
   const v = await p.evaluate(() => { const d = document.getElementById('hl-viewer'); return { open: !!(d && d.open), z: d && d.querySelector('#hl-vw-zv').textContent, k: d && d.querySelector('#hl-vw-k').textContent, pos: d && d.querySelector('#hl-vw-pos').textContent, buy: d && d.querySelector('#hl-vw-buy').textContent }; });
   check(v.open && v.z === '125%' && /First Edition \| 2026-27 · Look inside/.test(v.k), 'Zoom in to read opens the reading view already magnified', JSON.stringify(v));
-  check(/Page 39 of 641 numbered pages/.test(v.pos) && /Enquire about purchasing/.test(v.buy) && !/₹/.test(v.buy), 'the reading view names the printed page and invites an enquiry, never a price', JSON.stringify(v));
+  check(/Page 36 of 641 numbered pages/.test(v.pos) && /Enquire about purchasing/.test(v.buy) && !/₹/.test(v.buy), 'the reading view names the printed page and invites an enquiry, never a price', JSON.stringify(v));
   await p.keyboard.press('ArrowRight'); await p.waitForTimeout(400);
-  check(/Page 40 of 641/.test(await p.locator('#hl-vw-pos').innerText()), 'the arrow keys turn the pages in the reading view');
+  check(/Page 39 of 641/.test(await p.locator('#hl-vw-pos').innerText()), 'the arrow keys turn the pages in the reading view');
   await p.keyboard.press('+'); await p.waitForTimeout(250);
   check(await p.locator('#hl-vw-zv').innerText() !== 'Fit', 'plus zooms in');
   await p.keyboard.press('Escape'); await p.waitForTimeout(400);
@@ -108,8 +115,8 @@ const axeSrc = (() => { try { return fs.readFileSync(path.join(ROOT, 'tests/node
 {
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
   const { p, errors } = await open(ctx, base);
-  const order = await p.evaluate(() => ['pc-up-h', 'bk-h', 'dc-h', 'th-h'].map(id => { const e = document.getElementById(id); return e ? Math.round(e.getBoundingClientRect().top + scrollY) : -1; }));
-  check(order.every((y, i) => y > 0 && (i === 0 || y > order[i - 1])), 'the book follows the two pathways on the home page, then the companion', JSON.stringify(order));
+  const order = await p.evaluate(() => ['pc-up-h', 'eib-h', 'eup-h', 'bk-h', 'dc-h', 'th-h'].map(id => { const e = document.getElementById(id); return e ? Math.round(e.getBoundingClientRect().top + scrollY) : -1; }));
+  check(order.every((y, i) => y > 0 && (i === 0 || y > order[i - 1])), 'the home page runs: both pathways, the IB DP and UPSC environments, then the book and the companion', JSON.stringify(order));
   await p.locator('.bk-thumbs li').nth(2).locator('button').click(); await p.waitForTimeout(600);
   check(/Page 39 of 641/.test(await p.locator('#hl-vw-pos').innerText()), 'a page on the home page opens the reading view at that page');
   await p.keyboard.press('Escape'); await p.waitForTimeout(300);

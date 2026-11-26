@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    THE INDIAN ECONOMY · the book and its Digital Revision Companion
-   A new academic work by Arjun Agrawal (First Edition, 2026-27). This module
+   A new academic publication by Arjun Agrawal (First Edition, 2026-27). This module
    gives it a home at #/book (the book) and #/book/digital-revision-companion
    (the companion), a feature on the shared home page, a place in the header,
    the Resources menu, the drawer and search, and a preview that uses the
@@ -93,7 +93,7 @@ function bkReaderPages(key){
  const c=bkCoverImg();return c?[{p:"Cover",kind:"cover",cap:"The front cover of the First Edition, 2026-27.",src:c.src,w:c.w,h:c.h,sm:c.sm}].concat(pv):pv;
 }
 function bkHasCompanionPages(){return bkPv("companion").length>0}
-Object.assign(HL_KIND,{cover:"The cover",map:"Revision map",numerical:"A worked example",data:"Data on the Indian economy"});
+Object.assign(HL_KIND,{cover:"The cover",map:"Revision map",numerical:"A worked example",data:"Data on the Indian economy",contents:"Contents at a glance",chapter:"A chapter opening"});
 function bkPageWord(p){return p.p==="Cover"?"The cover":"Page "+p.p}
 /* the printed folio as printed: roman numerals stay lower case even where the label is set in capitals */
 function bkPageWordH(p){return p.p==="Cover"?"The cover":`Page <span class="bk-pn">${esc(p.p)}</span>`}
@@ -102,7 +102,7 @@ function bkVolume(id){
  const key=id==="bk-companion"?"companion":id==="bk-book"?"book":null;if(!key)return null;
  const pv=bkReaderPages(key);
  const isBook=key==="book",total=isBook?BK.pages:BK_COMP.pdfPages;
- return {id,n:"",num:0,title:isBook?BK.title:BK_COMP.title+": "+BK_COMP.name,category:isBook?"A new academic work":"Free digital revision resource",pages:total,pv,
+ return {id,n:"",num:0,title:isBook?BK.title:BK_COMP.title+": "+BK_COMP.name,category:isBook?"A new academic publication":"Free digital revision resource",pages:total,pv,
   kicker:isBook?`${BK.edition} · Look inside`:`${BK_COMP.edition} · Look inside`,
   pos:(p,i,n)=>isBook?`<b>${bkPageWordH(p)}</b>${p.p==="Cover"?"":` of ${BK.pages} numbered pages`}<span class="hl-sep" aria-hidden="true">·</span>preview ${i+1} of ${n}`
    :`<b>${bkPageWordH(p)}</b><span class="hl-sep" aria-hidden="true">·</span>preview ${i+1} of ${n}`,
@@ -172,8 +172,34 @@ function bkMap(full){
  </div>`;
 }
 
+/* ── the chapter explorer: choose a Part, read its units and chapters ─────
+   Chapter titles and first pages are the book's own (51-book-chapters.js, from
+   the Detailed Contents); each chapter belongs to the unit whose first page it
+   follows. The revision compendium that closes every unit is marked as such. */
+function bkPartChapters(P){
+ const cs=(typeof BK_CHAPTERS!=="undefined"?BK_CHAPTERS:[]).filter(c=>c[0]>=P.ch[0]&&c[0]<=P.ch[1]);
+ return P.units.map((u,k)=>{const next=P.units[k+1];return {u,cs:cs.filter(c=>c[2]>=u[2]&&(!next||c[2]<next[2]))}});
+}
+function bkExplorer(){
+ if(typeof BK_CHAPTERS==="undefined"||!BK_CHAPTERS.length)return "";
+ const P=BK_PARTS.find(x=>x.n===BKX.p)||BK_PARTS[0],i=BK_PARTS.indexOf(P);
+ return `<div class="bk-ex" id="bk-ex">
+  <h3 class="bk-h3" id="bk-ex-h">Explore the chapters</h3>
+  <div class="bk-ex-tabs" role="group" aria-labelledby="bk-ex-h">${BK_PARTS.map(x=>`<button type="button" class="bk-ex-t p${x.n}${x.n===P.n?" on":""}" aria-pressed="${x.n===P.n}" aria-controls="bk-ex-panel" onclick="bkExPart(${x.n})"><span>Part ${esc(x.w)}</span><b>${esc(x.t)}</b></button>`).join("")}</div>
+  <div class="bk-ex-panel p${P.n}" id="bk-ex-panel" aria-live="polite">
+   <p class="bk-ex-meta"><b>Part ${esc(P.w)}: ${esc(P.t)}</b><span>pp. ${P.p}-${bkPartEnd(i)} · Chapters ${P.ch[0]}-${P.ch[1]}</span></p>
+   ${bkPartChapters(P).map(({u,cs})=>`<div class="bk-ex-u"><p class="bk-ex-uh">${P.units.length>1||u[0].includes(".")?`<span>Unit ${esc(u[0])}</span>`:""}${esc(u[1])}</p>
+    <ol class="bk-ex-l">${cs.map(c=>`<li class="${/Revision Compendium/.test(c[1])?"rc":""}"><span class="bk-ex-n">${c[0]}</span><span class="bk-ex-c">${esc(c[1])}${/Revision Compendium/.test(c[1])?' <em>the unit\'s revision compendium</em>':""}</span><span class="bk-ex-p">p. ${c[2]}</span></li>`).join("")}</ol></div>`).join("")}
+   <p class="bk-ex-note">In the book's words: sections marked DC belong to the revision compendiums and are published in full in the Digital Revision Companion.</p>
+  </div>
+ </div>`;
+}
+function bkExPart(n){BKX.p=n;const el=document.getElementById("bk-ex");if(!el)return;el.outerHTML=bkExplorer();
+ const b=document.querySelector(`#bk-ex .bk-ex-t.p${n}`);if(b)try{b.focus({preventScroll:true})}catch(e){}}
+
 /* ── the inline look inside: a page at reading width, thumbnails, the reader ── */
 const BKV={key:"book",i:1};
+const BKX={p:1};
 function bkLook(){
  const key=BKV.key,pv=bkReaderPages(key);if(!pv.length)return "";
  const i=Math.max(0,Math.min(pv.length-1,BKV.i)),p=pv[i];
@@ -218,7 +244,8 @@ function bkCompanion(id,head){
   <div class="bk-comp-head">
    <div><p class="fx-kicker bk-gold">${head||"Free with the book"}</p>
     <h2 class="bk-h2" id="${id}"><span class="bk-t-s">${esc(BK_COMP.title)}</span> ${esc(BK_COMP.name)}</h2>
-    <p class="bk-comp-sub">${esc(BK_COMP.sub)}</p><p class="bk-ed">${esc(BK_COMP.edition)}</p></div>
+    <p class="bk-comp-sub">${esc(BK_COMP.sub)}</p><p class="bk-ed">${esc(BK_COMP.edition)}</p>
+    <p class="bk-comp-rel"><span>The book builds comprehensive understanding.</span> <span>The companion supports structured revision and examination practice.</span></p></div>
    <dl class="bk-facts on-dark"><div><dt>units</dt><dd>${BK_COMP.units}</dd></div><div><dt>PDF pages</dt><dd>${BK_COMP.pdfPages}</dd></div><div><dt>to read</dt><dd>Free</dd></div></dl>
   </div>
   <div class="bk-comp-grid">${BK_COMP.groups.map(([g,items],gi)=>`<div class="bk-cg rv" style="--i:${gi}"><h3 class="bk-cg-h">${esc(g)}</h3><ul>${items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("")}</div>
@@ -233,11 +260,11 @@ function bkCompanion(id,head){
 function bkHero(){
  return `<section class="bk-hero" aria-labelledby="bk-page-h"><div class="fx-wrap bk-hero-in">
   <div class="bk-hero-t">
-   <p class="fx-kicker bk-gold">A new academic work</p>
+   <p class="fx-kicker bk-gold">A new academic publication</p>
    <h1 class="bk-title" id="bk-page-h">${esc(BK.title)}</h1>
    <p class="bk-sub">${esc(BK.sub)}</p>
    <p class="bk-ed">${esc(BK.edition)}</p>
-   <p class="bk-by">${esc(BK.credit)}</p>
+   <p class="bk-by"><span class="bk-by-k">Author</span> Arjun Agrawal</p>
    <p class="bk-intro">${esc(BK.intro)}</p>
    ${bkAudience()}
    <p class="bk-cta"><a class="fx-btn primary" href="#bk-look-h" onclick="return bkJump('bk-look-h')">Look inside ${fxArr()}</a><a class="fx-btn secondary on-dark" href="#bk-buy-h" onclick="return bkJump('bk-buy-h')">Enquire about purchasing</a></p>
@@ -253,6 +280,7 @@ function bkAbout(){
    <p class="bk-p">Designed for competitive examination preparation and university-level study.</p></div>
   <div class="bk-about-f">${bkFacts()}
    <ul class="bk-detail">
+    <li><span>Author</span><b>${esc(BK.credit)}</b></li>
     <li><span>Edition</span><b>${esc(BK.edition)}</b></li>
     <li><span>Pages</span><b>${BK.pages} numbered pages. The PDF edition has ${BK.pdfPages} pages, including the front matter and unnumbered pages.</b></li>
     <li><span>Currency</span><b>${esc(BK.currency)}</b></li>
@@ -263,7 +291,7 @@ function bkAbout(){
 function bkLookSec(){
  return `<section class="bk-sec bk-look-sec" aria-labelledby="bk-look-h"><div class="fx-wrap">
   <header class="bk-sec-head"><p class="fx-kicker">Look inside</p><h2 class="bk-h2" id="bk-look-h">Browse selected pages</h2>
-   <p class="bk-p">A systems map, the syllabus and reader maps, explanations with their diagrams, a policy analysis, a worked example, a revision map and current Indian data, chosen to show the range of the book.</p></header>
+   <p class="bk-p">The contents at a glance, the Master Systems Map, the UPSC syllabus map, a chapter as it opens, an explanation with its diagrams, a policy analysis, market failure drawn, a revision mind map, a worked national-income exercise and current Indian data, chosen to show the range of the book.</p></header>
   ${bkLook()}
  </div></section>`;
 }
@@ -272,6 +300,7 @@ function bkMapSec(){
   <header class="bk-sec-head"><p class="fx-kicker">What the book covers</p><h2 class="bk-h2" id="bk-map-h">Eight Parts, 153 chapters, one economy</h2>
    <p class="bk-p">The bar is the book: each Part is as wide as its share of the numbered pages.</p></header>
   ${bkMap(true)}
+  ${bkExplorer()}
   <p class="bk-scope"><b>Scope.</b> Written for UPSC CSE, State PCS and RBI Grade B (General) candidates and for undergraduate and postgraduate study of the Indian economy. ${esc(BK.scope)} The Reader and Course Alignment Map (page xxv) shows what each group of readers should add from other sources.</p>
  </div></section>`;
 }
@@ -299,9 +328,22 @@ function bkCompPage(){
  ${bkCompanion("bk-comp-h","What it contains")}
  ${bkEnquiry("bk-buy-h")}`;
 }
+/* ── the author, on the book page: the same facts as the home page and About ── */
+function bkAuthor(){
+ let por="";try{por=`<img src="${esA(CV_PORTRAIT.src)}" width="${CV_PORTRAIT.w}" height="${CV_PORTRAIT.h}" alt="${esA(CV_PORTRAIT.alt)}" loading="lazy" decoding="async">`}catch(e){}
+ const bio=typeof FX_AUTHOR_BIO==="string"?FX_AUTHOR_BIO:"";
+ return `<section class="bk-sec bk-author" aria-labelledby="bk-author-h"><div class="fx-wrap bk-author-g">
+  <figure class="bk-author-p">${por}</figure>
+  <div><p class="fx-kicker">The author</p><h2 class="bk-h2" id="bk-author-h">Arjun Agrawal</h2>
+   <p class="bk-author-r">${esc(typeof FXI!=="undefined"?FXI.roles:"")}</p>
+   <p class="bk-p">${esc(bio)}</p>
+   <blockquote class="bk-author-q">“I have always believed that meaningful learning rests on three closely related elements: Concepts, Content and Contexts.”<cite>From the preface</cite></blockquote>
+   <p class="bk-cta"><a class="fx-btn secondary" href="#/about">About Arjun Agrawal ${fxArr()}</a></p></div>
+ </div></section>`;
+}
 VIEWS.book=function(){
  if(TAB===1)return `<div class="bkpage">${bkCompPage()}</div>`;
- return `<div class="bkpage">${bkHero()}${bkAbout()}${bkLookSec()}${bkMapSec()}${bkCompanion("bk-comp-h")}${bkEnquiry("bk-buy-h")}${bkLinks()}</div>`;
+ return `<div class="bkpage">${bkHero()}${bkAbout()}${bkAuthor()}${bkLookSec()}${bkMapSec()}${bkCompanion("bk-comp-h")}${bkEnquiry("bk-buy-h")}${bkLinks()}</div>`;
 };
 
 /* ── on the shared home page ───────────────────────────────────────────── */
@@ -311,7 +353,7 @@ function bkHomeFeature(){
   <div class="bk-home-g">
    <div class="bk-home-v rv">${bkMockup("md")}</div>
    <div class="bk-home-t">
-    <p class="fx-kicker">A new academic work</p>
+    <p class="fx-kicker">A new academic publication</p>
     <h2 class="bk-title md" id="bk-h">${esc(BK.title)}</h2>
     <p class="bk-sub">${esc(BK.sub)}</p>
     <p class="bk-ed">${esc(BK.edition)} <span aria-hidden="true">·</span> ${esc(BK.credit)}</p>
@@ -383,6 +425,8 @@ function fxResPanelHtml(){
    const t=document.createElement("template");
    t.innerHTML=`<a class="gn-item gn-book${on?" on":""}" href="#/book"${on?' aria-current="page"':""}><span class="gn-book-l">The Indian Economy</span><span class="gn-book-tag" aria-hidden="true">Book</span><span class="sr-only"> (book)</span></a><button type="button" class="gn-res" aria-expanded="false" aria-controls="fxpanel" data-label="Resources" aria-label="Resources" onclick="fxTogglePanel('res',this,event)">Resources<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>`;
    g.insertBefore(t.content,about);
+   /* the definitive order: … The Indian Economy · Resources · Academic Ecosystem · About */
+   const eco=g.querySelector("button.gn-eco");if(eco)g.insertBefore(eco,about);
    /* the pathways' names shorten on a narrow desktop; the word Economics stays for screen readers */
    g.querySelectorAll(".gn-path>a.fx-a").forEach(a=>{const m=/^(.*) Economics$/.exec(a.textContent.trim());if(m&&!a.querySelector(".gn-x"))a.innerHTML=`<span>${esc(m[1])}<span class="gn-x"> Economics</span></span>`});
   }catch(e){}
@@ -397,7 +441,7 @@ function fxResPanelHtml(){
      already listed under the two pathways, and are not repeated */
   const have=new Set([...h.matchAll(/href="([^"]*)"/g)].map(m=>m[1]));
   const extra=fxResGroups().flatMap(g=>g.items).filter(i=>i.href!=="#/book"&&!have.has(i.href));
-  const sec=`<div class="dw-sec dw-book"><div class="dw-k">A new academic work</div><a class="dw-main" href="#/book"${VIEW==="book"&&TAB===0?' aria-current="page"':""}>The Indian Economy <span class="dw-here">Book</span></a>${extra.length?`<div class="dw-l flat">${extra.map(i=>link(i.href,i.n)).join("")}</div>`:""}</div>`;
+  const sec=`<div class="dw-sec dw-book"><div class="dw-k">A new academic publication</div><a class="dw-main" href="#/book"${VIEW==="book"&&TAB===0?' aria-current="page"':""}>The Indian Economy <span class="dw-here">Book</span></a>${extra.length?`<div class="dw-l flat">${extra.map(i=>link(i.href,i.n)).join("")}</div>`:""}</div>`;
   const at=h.indexOf('<div class="dw-sec"><a class="dw-main" href="#/about"');
   return at<0?h+sec:h.slice(0,at)+sec+h.slice(at);
  };
@@ -455,7 +499,7 @@ function BOOKSUITE(){
  T("Book · the handbook catalogue is unchanged: the book is not a twelfth volume",()=>hlVols().length===11&&!hlVols().some(v=>/^bk-/.test(v.id)));
  T("Book · the home presents the book after the two pathways, with the cover and four pages to look inside",()=>{const h=home();
   const a=h.indexOf('id="pc-up-h"'),b=h.indexOf('id="bk-h"'),c=h.indexOf('id="dc-h"');
-  return a>0&&b>a&&c>b&&/A new academic work/.test(txt(h))&&(bkHomeFeature().match(/class="bk-thumbs"[\s\S]*?<\/ul>/)[0].match(/<li>/g)||[]).length===4});
+  return a>0&&b>a&&c>b&&/A new academic publication/.test(txt(h))&&(bkHomeFeature().match(/class="bk-thumbs"[\s\S]*?<\/ul>/)[0].match(/<li>/g)||[]).length===4});
  T("Book · the header links the book and opens Resources; the drawer lists both",()=>{
   const g=document.getElementById("gnav");const d=fxDrawerHtml();
   return !!g&&!!g.querySelector('a.gn-book[href="#/book"]')&&!!g.querySelector('button.gn-res[aria-controls="fxpanel"]')&&d.includes('href="#/book"')&&d.includes('href="#/book/digital-revision-companion"')});

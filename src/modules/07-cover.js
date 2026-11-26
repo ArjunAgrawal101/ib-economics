@@ -49,7 +49,7 @@ const CV_SPOTS=[["Demand",s=>{const q=Math.max(1.2,2.2+s);return [q,CVF.D(q,s)]}
  ["Equilibrium",s=>{const e=CVF.eq(s);return [e.q,e.p]},"nav('mind',0,'market')","Where plans agree"]];
 const cvPos=f=>{const [q,p]=f(CV.s);return [(cx(q)/CV_W*100).toFixed(2),(cy(p)/CV_H*100).toFixed(2)]};
 /* who the author is, stated only from the supplied profile (ABOUT, ABOUT2): no degree, date or title is added */
-const CV_AUTHOR=[["Studied","Economics, St. Stephen's College, University of Delhi"],["Taught","Undergraduate Economics, Fergusson College, Pune"],
+const CV_AUTHOR=[["Studied","Economics and Political Science, St. Stephen's College, University of Delhi"],["Qualified","UGC-NET (twice) and MH-SET, Economics"],["Taught","Undergraduate Economics, Fergusson College, Pune"],
  ["Teaches","IB DP Economics, Business Management and Global Politics"],["Mentors","UPSC Civil Services aspirants in Economics"]];
 /* The cover leads with the platform's signature, "Think like an economist.", then
    the idea behind it, one line on what the platform is, and two actions: explore

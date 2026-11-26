@@ -114,11 +114,11 @@ function fxBuildShell(){
 const FXDD={open:null,btn:null};
 /* the Academic Ecosystem menu: the three platforms, this one marked as the current one */
 function fxEcoPanelHtml(){
- return `<div class="fxp-head"><div><div class="fx-kicker">Arjun Agrawal · Knowledge. Insight. Impact.</div><div class="fxp-title">The Academic Ecosystem</div></div></div>
-  <p class="fxp-d">Three independent platforms from the same educator. The other two open in a new tab.</p>
+ return `<div class="fxp-head"><div><div class="fx-kicker">Arjun Agrawal | Academic Ecosystem</div><div class="fxp-title">Think. Understand. Connect.</div></div></div>
+  <p class="fxp-d">Economics, Political Studies and Business Management: three independent platforms from the same educator. The other two open in a new tab.</p>
   <ul class="fxp-eco">${FX_ECO.map(e=>`<li class="fxe fxe-${e.k}${e.current?" here":""}">${e.current
-   ?`<a class="fx-a" href="#/" aria-current="true" data-fxclose><span class="fxe-mark">${FX_ECO_MARK[e.k]}</span><span class="fxe-t"><b>${esc(e.name)}</b><span>${esc(e.line)}</span></span><span class="fxe-here">You are here</span></a>`
-   :`<a class="fx-a" href="${esA(e.url)}" target="_blank" rel="noopener noreferrer" data-fxclose><span class="fxe-mark">${FX_ECO_MARK[e.k]}</span><span class="fxe-t"><b>${esc(e.name)}</b><span>${esc(e.line)}</span></span><span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>`}</li>`).join("")}</ul>`;
+   ?`<a class="fx-a" href="#/" aria-current="true" data-fxclose><span class="fxe-mark">${FX_ECO_MARK[e.k]}</span><span class="fxe-t"><b>${esc(e.name)}</b><span>${esc(e.line)}</span><i>${esc(e.tag)}</i></span><span class="fxe-here">You are here</span></a>`
+   :`<a class="fx-a" href="${esA(e.url)}" target="_blank" rel="noopener noreferrer" data-fxclose><span class="fxe-mark">${FX_ECO_MARK[e.k]}</span><span class="fxe-t"><b>${esc(e.name)}</b><span>${esc(e.line)}</span><i>${esc(e.tag)}</i></span><span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>`}</li>`).join("")}</ul>`;
 }
 function fxPanelHtml(k){
  if(k==="eco")return fxEcoPanelHtml();

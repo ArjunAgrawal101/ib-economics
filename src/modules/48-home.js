@@ -73,7 +73,7 @@ function fxPathCards(){
    <div class="pc-top"><span class="pc-num">Pathway 01</span><span class="pc-rule" aria-hidden="true"></span></div>
    <div class="pc-body">
     <div class="pc-text"><h2 class="pc-h" id="pc-ib-h">IB DP Economics</h2>
-     <p class="pc-pos">Think conceptually. Apply theory. Evaluate real-world economics.</p>
+     <p class="pc-pos">Concepts. Diagrams. Real-world applications. Examination thinking.</p>
      <p class="pc-d">A complete interactive learning environment for IB Diploma Programme Economics students and teachers, at SL and HL.</p></div>
     <figure class="pc-prev pc-model" aria-hidden="true">${motifSVG("shift")}<figcaption>${esc(motifCap("shift"))}</figcaption></figure>
    </div>
@@ -85,7 +85,7 @@ function fxPathCards(){
    <div class="pc-top"><span class="pc-num">Pathway 02</span><span class="pc-rule" aria-hidden="true"></span></div>
    <div class="pc-body">
     <div class="pc-text"><h2 class="pc-h" id="pc-up-h">UPSC CSE Economics</h2>
-     <p class="pc-pos">Understand the Indian economy through concepts, institutions, policies and evidence.</p>
+     <p class="pc-pos">Economic foundations. Indian institutions. Public policy. Prelims and Mains.</p>
      <p class="pc-d">A structured preparation pathway for Civil Services aspirants: conceptual clarity, the Indian economy and its policies, handbooks, current developments and examination thinking.</p></div>
     <a class="pc-prev pc-shelf" href="${esA(fxLibHref())}" aria-label="The Economics Handbook Collection: eleven volumes">${shelf.map((v,i)=>`<span class="pc-book b${i}">${fxCover(v,true)}</span>`).join("")}</a>
    </div>
@@ -232,34 +232,36 @@ function fxAcross(){
  </div></section>`;
 }
 
-/* ── the Arjun Agrawal Academic Ecosystem ──────────────────────────────────
+/* ── ARJUN AGRAWAL | ACADEMIC ECOSYSTEM ────────────────────────────────────
    Three independent platforms from the same educator, each panel in its own
-   platform's colours: Economics on this platform's charcoal and gold, The
-   Business Brief on its warm paper and navy, Political Studies & Global
-   Affairs on midnight with burgundy. The section is unnumbered and carries no
-   pathway colour, because it is the wider ecosystem, not a third pathway. The
-   panels are typographic, each with a small drawn mark: no screenshots of the
-   other platforms are used. */
+   platform's colours and with its own preview card and mark where the platform
+   publishes them (44-flagship-core.js says which). The section is unnumbered and
+   carries no pathway colour: it is the wider ecosystem, not a third pathway. */
 function fxEcosystem(){
  return `<section class="fx-section fx-eco" aria-labelledby="eco-h"><div class="fx-wrap">
-  <div class="eco-head rv"><div><p class="fx-kicker eco-k">The Arjun Agrawal Academic Ecosystem · Knowledge. Insight. Impact.</p>
+  <div class="eco-head rv"><div><p class="fx-kicker eco-k">${esc(FX_ECO_ID.name)} · ${esc(FX_ECO_ID.line)}</p>
    <h2 class="fx-h2" id="eco-h">One educator. Three disciplines. <em>One connected learning ecosystem.</em></h2></div>
-   <p class="fx-lede">Economics, Politics and Business: three independent academic platforms, each with its own subject, examinations and design, from the same educator. This one is the home of Economics.</p></div>
+   <p class="fx-lede">Economics, Political Studies and Business Management: three independent academic platforms, each with its own subject, examinations and design language, from the same educator. This one is the home of Economics.</p></div>
   <ol class="eco-grid rv">${FX_ECO.map(fxEcoCard).join("")}</ol>
  </div></section>`;
 }
 
 /* ── 8 · about ──────────────────────────────────────────────────────────── */
+/* the author: the definitive brief asks for the educator and author to be visible on the home
+   page, in the book section and on About. Every fact is the site's own (CV_AUTHOR) or the book's. */
+const FX_AUTHOR_BIO="Arjun Agrawal is an Economics educator, academic resource creator and author. His work connects economic theory with public policy, examination preparation and university-level study, and his academic interests extend across Economics, Political Studies and Business Management. Through his teaching, his publications and these learning platforms, he aims to make complex ideas accessible, analytical and relevant to the world around us.";
 function fxAboutBand(){
  let facts=[];try{facts=CV_AUTHOR}catch(e){}
  let por="";try{por=`<img src="${esA(CV_PORTRAIT.src)}" width="${CV_PORTRAIT.w}" height="${CV_PORTRAIT.h}" alt="${esA(CV_PORTRAIT.alt)}" loading="lazy" decoding="async">`}catch(e){}
+ let cover="";try{cover=BOOK_PV.book.cover?`<img class="ab-bk-c" src="${esA(BOOK_PV.book.cover.src)}" width="${BOOK_PV.book.cover.w}" height="${BOOK_PV.book.cover.h}" alt="The cover of The Indian Economy" loading="lazy" decoding="async">`:""}catch(e){}
  return `<section class="fx-section fx-aboutb" aria-labelledby="ab-h"><div class="fx-wrap abx-grid">
   <figure class="ab-por rv">${por}</figure>
-  <div>${fxSecHead("08","About","Arjun Agrawal","","ab-h")}
+  <div>${fxSecHead("08","About the author","Arjun Agrawal","","ab-h")}
    <p class="ab-roles">${esc(FXI.roles)}</p>
-   <p class="fx-lede">Arjun teaches IB Diploma Programme Economics, mentors Civil Services aspirants in the Economics of General Studies, and designs the resources on this platform, from the diagrams and mindmaps to the handbooks. He is the author of <a class="fx-a" href="#/book"><i>The Indian Economy</i></a> (First Edition, 2026-27).</p>
+   <p class="fx-lede">${esc(FX_AUTHOR_BIO)}</p>
+   <a class="ab-bk" href="#/book">${cover}<span><span class="ab-bk-k">Author</span><b><i>The Indian Economy</i></b><span>A Comprehensive Academic and Examination Reference · First Edition, 2026-27</span></span></a>
    <dl class="ab-facts">${facts.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-   <p><a class="fx-btn secondary" href="#/about">About Arjun Agrawal ${fxArr()}</a></p></div>
+   <p class="ab-acts"><a class="fx-btn secondary" href="#/about">About Arjun Agrawal ${fxArr()}</a><a class="fx-a fx-link" href="#/book">The Indian Economy</a></p></div>
  </div></section>`;
 }
 
@@ -301,7 +303,11 @@ VIEWS.home=function(){
  /* a teacher's assignment link (#assign=…) opens on the home page, so its banner leads it, as before */
  let asn="";try{if(typeof assignBanner==="function")asn=assignBanner()}catch(e){asn=""}
  let book="";try{book=bkHomeFeature()+bkHomeCompanion()}catch(e){book=""}
- return `${asn}<div class="fxhome">${fxHero()}${book}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxEcosystem()}${fxAboutBand()}${fxContactBand()}</div>`;
+ /* the editorial sequence of the definitive brief: the hero and both pathways, each pathway's
+    environment, the book and its companion, the learning experience, the ecosystem, the author, contact */
+ let n=1;const h=`${fxHero()}${fxIbEnv()}${fxUpEnv()}${book}${fxThink()}${fxResources()}${fxLab()}${fxAcross()}${fxEcosystem()}${fxAboutBand()}${fxContactBand()}`
+  .replace(/<span class="fx-num">\d+<\/span>/g,()=>`<span class="fx-num">${String(++n).padStart(2,"0")}</span>`);
+ return `${asn}<div class="fxhome">${h}</div>`;
 };
 
 /* ── the IB DP landing's opening ────────────────────────────────────────── */

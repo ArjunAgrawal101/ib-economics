@@ -10,7 +10,7 @@ SRC = os.path.join(ROOT, 'index.html')
 OUT = sys.argv[sys.argv.index('--out') + 1] if '--out' in sys.argv else SRC
 STYLES = ['css.css', 'css-course.css', 'css-t6.css', 'css-studio.css', 'css-atlas.css', 'css-launch.css', 'css-upsc.css',
           'css-flagship.css', 'css-opening.css', 'css-library.css', 'css-concepts.css',
-          'css-book.css', 'css-final.css']
+          'css-book.css', 'css-final.css', 'css-definitive.css']
 s = open(SRC, encoding='utf-8').read()
 JB, JE = '/* ▓▓ RENAISSANCE:BEGIN ▓▓ */', '/* ▓▓ RENAISSANCE:END ▓▓ */'
 CB, CE = '/* ▓▓ REN-CSS:BEGIN ▓▓ */', '/* ▓▓ REN-CSS:END ▓▓ */'

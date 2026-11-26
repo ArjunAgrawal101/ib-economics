@@ -6170,6 +6170,113 @@ body[data-pathway="ib"] .gnav .gn-res{display:none}
 @media (max-width:900px){.hx2-plate::before{display:none}}
 @media (prefers-reduced-motion:reduce){.pc-shelf:hover .pc-book.b0,.pc-shelf:hover .pc-book.b2{transform:none}.pc-shelf:hover .pc-book.b1,.pc-shelf:hover .pc-book.b3{transform:translateY(-12px)}}
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE DEFINITIVE RELEASE (2026-11-26)
+   ARJUN AGRAWAL | ACADEMIC ECOSYSTEM · Think. Understand. Connect.
+   The palette stays the platform's: obsidian and charcoal, warm ivory and
+   parchment, champagne gold, with burgundy (the IB register's --ib-bur) as the
+   one deep accent. Nothing here changes a pathway's colours.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root{--df-bur:#7A2436;--df-bur-l:#B5566A;--df-gold:#D9BE7C}
+
+/* ── the opening: burgundy as the quiet second accent ── */
+#splash .ia-pos i{background:var(--df-bur-l)}
+#splash .ia-tg{word-spacing:.12em}
+#splash .ia-tg::before{content:"";display:block;width:64px;height:1px;margin:0 auto clamp(12px,2vh,18px);background:linear-gradient(90deg,transparent,var(--df-bur-l) 30%,var(--df-gold) 50%,var(--df-bur-l) 70%,transparent)}
+
+/* ── the three-platform ecosystem: each panel shows its platform's own preview ── */
+.eco-card{gap:0}
+.eco-card .eco-pv{margin:calc(clamp(22px,2.4vw,32px)*-1) calc(clamp(22px,2.4vw,32px)*-1) clamp(18px,2vw,24px);aspect-ratio:960/504;overflow:hidden;border-bottom:1px solid rgba(127,127,127,.18)}
+.eco-card .eco-pv-img{display:block;width:100%;height:100%;object-fit:cover}
+.eco-card .eco-pv-type{height:100%;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:0 clamp(18px,2.4vw,30px);box-sizing:border-box}
+.eco-card .eco-pv-n{font:400 clamp(20px,1.9vw,27px)/1.12 var(--fx-display);max-width:16ch}
+.eco-card .eco-pv-t{font:600 10.5px/1.4 var(--fx-sans);letter-spacing:.18em;text-transform:uppercase}
+.eco-card.eco-ps .eco-pv{background:#0B1628;box-shadow:inset 0 -3px 0 #713D4C}
+.eco-card.eco-ps .eco-pv-n{color:#F7F5EF}.eco-card.eco-ps .eco-pv-t{color:#C9AD6E}
+.eco-card .eco-top{align-items:center}
+.eco-card .eco-rel{font-weight:500;letter-spacing:.12em;opacity:.78}
+.eco-card .eco-logo{display:block;width:40px;height:40px;flex:none;border-radius:var(--fx-r2)}
+.eco-card .eco-name{margin-top:12px}
+.eco-card .eco-tag{font-style:italic}
+.fxpanel .fxe-t i{font:italic 400 13.5px/1.35 var(--fx-serif);color:var(--fx-text-2)}
+
+/* ── the footer: four columns, a compact strip between the three platforms ── */
+.ft-final{grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr))}
+@media (max-width:1000px){.ft-final{grid-template-columns:repeat(2,minmax(0,1fr))}.ft-final>div:first-child{grid-column:1/-1}}
+@media (max-width:560px){.ft-final{grid-template-columns:minmax(0,1fr)}}
+.ft-final .mt3{margin-top:16px}
+.ft-xp{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin-top:24px;padding-top:18px;border-top:1px solid color-mix(in srgb,currentColor 16%,transparent)}
+.ft-xp-k{flex:1 1 100%;font:600 11px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;opacity:.75;margin-bottom:10px}
+.ft-xp-a{flex:1 1 200px;display:grid;gap:3px;min-height:44px;padding:10px 16px 10px 0;margin-right:16px;text-decoration:none;color:inherit;border-left:2px solid transparent}
+.ft-xp-a b{font:400 18px/1.2 var(--fx-display)}
+.ft-xp-a span{font:italic 400 13.5px/1.35 var(--fx-serif);opacity:.78}
+.ft-xp-a.on b::after{content:" · you are here";font:600 10px/1 var(--fx-sans);letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.ft-xp-a:hover b{text-decoration:underline;text-underline-offset:3px}
+.ft-xp-a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){#splash .ia-tg::before{transition:none}}
+
+/* ── the author: on the home page, the book page and About ── */
+.ab-bk{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;margin:22px 0 4px;padding:14px 16px;border:1px solid var(--fx-line-2);border-left:3px solid var(--df-bur);border-radius:var(--fx-r1);text-decoration:none;color:inherit;max-width:560px;background:var(--fx-paper)}
+.ab-bk:hover{border-color:var(--fx-gold)}.ab-bk:focus-visible{outline:2px solid var(--fx-gold-text);outline-offset:3px}
+.ab-bk-c{display:block;width:58px;height:auto;aspect-ratio:auto;box-shadow:0 6px 16px -8px rgba(20,22,26,.5)}
+.ab-bk>span{display:grid;gap:3px;min-width:0}
+.ab-bk-k{font:600 10.5px/1.3 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;color:var(--df-bur)}
+.ab-bk b{font:400 21px/1.15 var(--fx-display)}
+.ab-bk>span>span:last-child{font:400 13.5px/1.45 var(--fx-serif);color:var(--fx-text-2)}
+.ab-acts{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.bk-by-k{font:600 10.5px/1 var(--fx-sans);letter-spacing:.16em;text-transform:uppercase;opacity:.75;margin-right:6px}
+.bk-author{background:var(--fx-ivory)}
+.bk-author-g{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1.45fr);gap:clamp(24px,5vw,72px);align-items:center}
+.bk-author-p{margin:0;max-width:340px}
+.bk-author-p img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:var(--fx-r2);box-shadow:var(--fx-shadow-2)}
+.bk-author-r{font:600 11.5px/1.7 var(--fx-sans);letter-spacing:.1em;text-transform:uppercase;color:var(--fx-gold-text);margin:6px 0 14px}
+.bk-author-q{margin:18px 0 0;padding:4px 0 4px 18px;border-left:2px solid var(--df-bur);font:italic 400 clamp(17px,1.5vw,20px)/1.5 var(--fx-serif);color:var(--fx-text)}
+.bk-author-q cite{display:block;margin-top:6px;font:600 10.5px/1.3 var(--fx-sans);font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--fx-text-2)}
+@media (max-width:760px){.bk-author-g{grid-template-columns:minmax(0,1fr)}.bk-author-p{max-width:260px}}
+
+/* ── the companion: how it relates to the book ── */
+.bk-comp-rel{margin:16px 0 0;max-width:60ch;font:400 15.5px/1.6 var(--fx-serif);color:var(--fx-on-dark)}
+.bk-comp-rel span:first-child{color:var(--fx-gold-l)}
+
+/* ── the chapter explorer ── */
+.bk-ex{margin-top:clamp(28px,4vw,48px);padding-top:clamp(20px,3vw,32px);border-top:1px solid var(--fx-line)}
+.bk-ex-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:14px}
+.bk-ex-t{all:unset;box-sizing:border-box;display:grid;gap:4px;min-height:44px;padding:12px 14px;border:1px solid var(--fx-line-2);border-radius:var(--fx-r1);cursor:pointer;background:var(--fx-paper);color:var(--fx-text)}
+.bk-ex-t span{font:600 10.5px/1.3 var(--fx-sans);letter-spacing:.14em;text-transform:uppercase;color:var(--fx-text-2)}
+.bk-ex-t b{font:400 15px/1.3 var(--fx-display);font-weight:400}
+.bk-ex-t:hover{border-color:var(--fx-gold)}
+.bk-ex-t:focus-visible{outline:2px solid var(--fx-gold-text);outline-offset:2px}
+.bk-ex-t.on{background:#16274A;border-color:#16274A;color:#F7F5EF}.bk-ex-t.on span{color:#D9C28F}
+.bk-ex-panel{margin-top:18px;padding:clamp(16px,2.4vw,28px);border:1px solid var(--fx-line-2);border-radius:var(--fx-r1);background:var(--fx-paper)}
+.bk-ex-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 18px;margin:0 0 14px;font:400 15px/1.4 var(--fx-serif)}
+.bk-ex-meta b{font:400 clamp(19px,1.8vw,24px)/1.2 var(--fx-display)}
+.bk-ex-meta span{font:500 12.5px/1.6 var(--fx-mono);color:var(--fx-text-2)}
+.bk-ex-u+.bk-ex-u{margin-top:18px}
+.bk-ex-uh{margin:0 0 8px;font:600 12px/1.5 var(--fx-sans);letter-spacing:.06em;color:var(--fx-text)}
+.bk-ex-uh span{display:inline-block;margin-right:10px;padding:2px 8px;border-radius:2px;background:var(--fx-ivory-2);color:var(--fx-gold-text);letter-spacing:.12em;text-transform:uppercase;font-size:10.5px}
+.bk-ex-l{list-style:none;margin:0;padding:0;columns:2 320px;column-gap:32px}
+.bk-ex-l li{break-inside:avoid;display:grid;grid-template-columns:2.6em minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--fx-line)}
+.bk-ex-n{font:500 12.5px/1.4 var(--fx-mono);color:var(--fx-text-2)}
+.bk-ex-c{font:400 15px/1.45 var(--fx-serif)}
+.bk-ex-c em{display:block;font:italic 400 12.5px/1.4 var(--fx-serif);color:var(--fx-text-2)}
+.bk-ex-p{font:500 12.5px/1.4 var(--fx-mono);color:var(--fx-text-2);white-space:nowrap}
+.bk-ex-note{margin:16px 0 0;font:400 13px/1.55 var(--fx-serif);color:var(--fx-text-2)}
+@media (max-width:900px){.bk-ex-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:420px){.bk-ex-tabs{grid-template-columns:minmax(0,1fr)}}
+
+/* ── About: the philosophy and the publications ── */
+.ab-ccc{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(18px,4vw,56px);align-items:start;padding:clamp(18px,3vw,32px) 0;border-top:1px solid var(--fx-line);border-bottom:1px solid var(--fx-line)}
+.ab-ccc-h{margin:0;font:400 clamp(30px,3.6vw,48px)/1.08 var(--fx-display)}
+.ab-ccc-h span{display:block}.ab-ccc-h span:nth-child(2){color:var(--fx-gold-text)}.ab-ccc-h span:nth-child(3){color:var(--df-bur)}
+.ab-ccc .ed{margin:0;max-width:62ch}
+@media (max-width:760px){.ab-ccc{grid-template-columns:minmax(0,1fr)}}
+.ab-pubs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ab-pubs a{display:grid;gap:4px;height:100%;box-sizing:border-box;padding:16px 18px;border:1px solid var(--fx-line-2);border-radius:var(--fx-r1);text-decoration:none;color:inherit;background:var(--fx-paper)}
+.ab-pubs a:hover{border-color:var(--fx-gold)}.ab-pubs a:focus-visible{outline:2px solid var(--fx-gold-text);outline-offset:3px}
+.ab-pubs b{font:400 19px/1.2 var(--fx-display)}.ab-pubs span{font:400 14px/1.5 var(--fx-serif);color:var(--fx-text-2)}
+@media (max-width:640px){.ab-pubs{grid-template-columns:minmax(0,1fr)}}
+.ab-cover .ab-bk{margin-top:18px}
+
 /* ▓▓ REN-CSS:END ▓▓ */
 </style>
 </head>
@@ -6178,14 +6285,14 @@ body[data-pathway="ib"] .gnav .gn-res{display:none}
  <p style="font:700 12px/1.4 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#7A2436">Arjun Agrawal · IB DP Economics</p>
  <p style="margin-top:14px">This platform runs entirely in your browser, and JavaScript is turned off. Turn it on for this page and reload: nothing is sent anywhere, and your progress stays on this device.</p>
 </div></noscript>
-<div id="splash" role="status" data-opening="2026-11-20" aria-label="Arjun Agrawal. Economics, Politics, Business. Think like an economist.">
+<div id="splash" role="status" data-opening="2026-11-20" aria-label="Arjun Agrawal. Economics, Politics, Business. Think. Understand. Connect.">
  <!-- THE OPENING · seven seconds; the name is carried by the brand vectors, never set again in type -->
  <div class="dr dr-l" aria-hidden="true"><i></i></div><div class="dr dr-r" aria-hidden="true"><i></i></div>
  <div class="ifs" aria-hidden="true"><svg class="if if-grid" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><defs><pattern id="ifg" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40"/></pattern><pattern id="ifg5" width="200" height="200" patternUnits="userSpaceOnUse"><path class="mj" d="M200 0H0V200"/></pattern></defs><rect width="1600" height="1000" fill="url(#ifg)"/><rect width="1600" height="1000" fill="url(#ifg5)"/></svg><div class="if-fig"><div class="if-grp if-mic"><svg class="if-f if-ax" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path class="ax" d="M50 30V350H380"/><text x="58" y="40">Price</text><text x="378" y="374" text-anchor="end">Quantity</text></svg><div class="if-w if-wd"><div class="if-wi"><svg class="if-f if-d" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M80 80L340 330"/><text class="k" x="346" y="340">D</text></svg></div></div><div class="if-w if-ws"><div class="if-wi"><svg class="if-f if-s" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M80 330L340 80"/><text class="k" x="346" y="84">S</text></svg></div></div><svg class="if-f if-eq" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path class="gd" d="M210 205V350M210 205H50"/><circle class="r" cx="210" cy="205" r="14"/><circle class="e" cx="210" cy="205" r="6"/><text x="42" y="210" text-anchor="end">P*</text><text x="210" y="374" text-anchor="middle">Q*</text></svg></div><div class="if-grp if-mac"><svg class="if-f" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path class="ax" d="M50 30V350H380"/><text x="58" y="40">Price level</text><text x="378" y="374" text-anchor="end">Real GDP</text><path class="lr" d="M270 50V350"/><text x="276" y="62">LRAS</text><path class="sr" d="M90 320L370 110"/><text class="k" x="384" y="100" text-anchor="end">SRAS</text></svg><svg class="if-f if-ad" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><path d="M90 110L330 350"/><text class="k" x="318" y="318">AD</text></svg><svg class="if-f if-eq2" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><circle class="r" cx="210" cy="230" r="14"/><circle class="e" cx="210" cy="230" r="6"/></svg></div></div><svg class="if if-net" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false"><g class="if-e e"><path d="M300 330H700V670H300Z"/><path class="x" d="M300 330L700 670M700 330L300 670"/><path class="x" d="M150 190L300 330"/><path class="x" d="M500 150L300 330"/><path class="x" d="M850 200L700 330"/><path class="x" d="M880 500L700 330"/><path class="x" d="M830 840L700 670"/><path class="x" d="M500 860L700 670"/><path class="x" d="M160 820L300 670"/><path class="x" d="M110 500L300 670"/></g><g class="s"><circle cx="150" cy="190" r="4"/><circle cx="500" cy="150" r="4"/><circle cx="850" cy="200" r="4"/><circle cx="880" cy="500" r="4"/><circle cx="830" cy="840" r="4"/><circle cx="500" cy="860" r="4"/><circle cx="160" cy="820" r="4"/><circle cx="110" cy="500" r="4"/></g><g class="if-n if-n1 n"><circle cx="300" cy="330" r="15"/><circle class="c" cx="300" cy="330" r="5"/><text x="300" y="290">CONCEPTS</text></g><g class="if-n if-n2 n"><circle cx="700" cy="330" r="15"/><circle class="c" cx="700" cy="330" r="5"/><text x="700" y="290">EVIDENCE</text></g><g class="if-n if-n3 n"><circle cx="700" cy="670" r="15"/><circle class="c" cx="700" cy="670" r="5"/><text x="700" y="744">POLICY</text></g><g class="if-n if-n4 n"><circle cx="300" cy="670" r="15"/><circle class="c" cx="300" cy="670" r="5"/><text x="300" y="744">OUTCOMES</text></g></svg></div>
  <div class="stage" aria-hidden="true">
   <div class="sc ia-logo" aria-hidden="true"><svg class="ia-mk" viewBox="0 0 760 392" aria-hidden="true" focusable="false"><path fill-rule="evenodd" fill="#F4EFE4" d="M380 184.6L397.9 226.4C403 240.3 410.2 259.3 386 258.6L385.2 259.6C385.2 260.4 385.4 261.3 386.2 261.5L466.1 261.6C466.9 261.5 467.4 261.2 467.6 260.4C467.8 259.4 467.1 258.8 466.4 258.4C462.5 258.5 459 257.5 455.5 256.8C424.6 240 422.2 198.7 405.2 172C396.6 175.5 387.6 179.3 380 184.6ZM274.5 148C259.5 149.5 244.6 151.9 231.1 156.8C244.1 155.6 258.6 151.9 272.2 153.9L237.8 239.8C234.8 243.8 232.3 248.2 228.1 251.6C221.6 256.3 214.5 258.6 206 258.6L205.2 259.9C205.3 260.9 205.9 261.4 206.8 261.6L269.4 261.5C270.1 261.1 270.3 260.3 270.2 259.5C270 258.5 269 258.5 268.2 258.2C221.3 256.3 265.6 200 268.2 178.4L273.4 165.1L278.2 153.8C308.7 154.4 337 163.7 362.1 178.5L400.4 160.6L332.5 2.1L274.5 148ZM320 45.6L372.9 169.2C345.1 155 314.8 147.2 281 147.1L320 45.6Z"/><path fill-rule="evenodd" fill="#C9A866" d="M495.2 152.2C496.9 154.3 503.8 154.2 506.6 153.4C503.4 152.3 498.9 151.4 495.2 152.2ZM388.4 119.8L413.5 58.1C416 60.5 416.6 64.6 418.9 67.4L452.9 149.8L452.8 152.5C451.3 153.3 449.5 152.5 448.2 154C381.2 160.8 318.7 202.1 285.2 261.9L304.6 261.9C334.1 202.9 393.6 166.5 455.1 157C460 163.1 460.4 173.4 465.8 178.4C465.6 179.3 464.6 179.6 465.2 180.6L491.9 244.8C492.1 248.2 492.5 251.6 490.8 254.5C488.1 257.5 484.6 259.3 480.4 258.9C479.6 258.9 478.8 259.3 479 260.2C500.8 262.5 526.3 262 548 260.1L530.4 253.9C526.5 250.3 523.6 246.3 520.2 242.6L483.1 154.2C486.4 152.6 491 152.9 494.5 153.2C491.7 149.5 485.8 151.7 481.5 150.8L425.5 17L386.9 113C386.5 115.6 387.7 117.7 388.4 119.8Z"/></svg><svg class="ia-wm" viewBox="0 0 760 392" aria-hidden="true" focusable="false"><path fill="#F4EFE4" d="M33 302.7 58.9 362.5H49L30.2 313.4ZM14.9 356.8Q14.3 358.5 14.7 359.7Q15.1 360.9 16.1 361.5Q17.1 362.2 18.1 362.2H18.8V363H1.6V362.2Q1.6 362.2 1.9 362.2Q2.3 362.2 2.3 362.2Q4.3 362.2 6.3 360.9Q8.4 359.7 9.7 356.8ZM33 302.7 33.7 310 12.6 362.7H7.1L28.8 312.1Q28.9 311.9 29.4 310.8Q30 309.6 30.6 308Q31.2 306.4 31.7 304.9Q32.2 303.4 32.2 302.7ZM43.9 341V343.9H18.1V341ZM46.8 356.8H56.3Q57.7 359.7 59.8 360.9Q61.8 362.2 63.8 362.2Q63.8 362.2 64.1 362.2Q64.4 362.2 64.4 362.2V363H42.9V362.2H43.6Q45.3 362.2 46.6 360.8Q47.8 359.4 46.8 356.8ZM89.6 314H99.2Q102.4 314 105.1 314.8Q107.8 315.7 109.8 317.3Q111.7 319 112.8 321.4Q113.9 323.9 113.9 327.2Q113.9 330.4 112.5 333.4Q111 336.5 108.4 338.4Q105.7 340.4 102.2 340.5Q103.7 341.1 105.3 342.7Q106.8 344.3 107.9 345.9Q107.9 345.9 108.8 347.2Q109.7 348.4 111 350.3Q112.3 352.1 113.7 354Q115.1 355.8 116.1 357Q117.5 358.7 118.9 359.8Q120.2 361 121.8 361.6Q123.4 362.3 125.3 362.3V363H120.4Q117.1 363 114.5 362.1Q111.9 361.2 110 359.7Q108.1 358.2 106.8 356.5Q106.5 356 105.6 354.7Q104.8 353.3 103.7 351.6Q102.6 349.9 101.5 348.2Q100.5 346.6 99.7 345.3Q99 344.1 98.7 343.8Q97.6 341.9 96.1 340.5Q94.6 339.1 92.9 339.1V338.4Q92.9 338.4 93.9 338.4Q94.8 338.4 96.1 338.4Q97.9 338.3 100 337.7Q102 337.2 103.8 335.6Q105.5 333.9 106.3 330.8Q106.5 330.1 106.6 329.1Q106.7 328 106.7 326.9Q106.6 322.1 104.2 319.4Q101.9 316.7 98.1 316.5Q96.5 316.4 94.8 316.4Q93 316.4 91.7 316.4Q90.5 316.4 90.3 316.4Q90.3 316.4 90.2 315.8Q90 315.2 89.8 314.6Q89.6 314 89.6 314ZM90.6 314V363H84V314ZM84.3 357.9V363H78.7V362.3Q78.7 362.3 79.1 362.3Q79.6 362.3 79.6 362.3Q81.4 362.3 82.7 361Q84 359.7 84 357.9ZM84.3 319.1H84Q84 317.3 82.7 316Q81.4 314.7 79.6 314.7Q79.6 314.7 79.1 314.7Q78.7 314.7 78.7 314.7V314H84.3ZM90.3 357.9H90.6Q90.6 359.7 91.9 361Q93.2 362.3 95 362.3Q95.1 362.3 95.5 362.3Q95.9 362.3 95.9 362.3V363H90.3ZM153.7 314V362.3Q153.7 365.5 152.5 368.3Q151.3 371.1 149.3 373Q147.3 375 144.6 376.1Q142 377.1 139 377V376.4Q141.5 375.4 143.3 373.2Q145.2 371 146.2 368.1Q147.1 365.2 147.1 362.1V314ZM147.4 319.1H147.1Q147.1 317.3 145.8 316Q144.5 314.7 142.7 314.7Q142.7 314.7 142.2 314.7Q141.8 314.7 141.8 314.7V314H147.4ZM153.4 319.1V314H159V314.7Q159 314.7 158.6 314.7Q158.1 314.7 158.1 314.7Q156.3 314.7 155 316Q153.7 317.3 153.7 319.1ZM189.1 314V344.8Q189.1 349.8 190.9 353.6Q192.7 357.4 195.9 359.5Q199.2 361.5 203.5 361.5Q208.1 361.5 211.5 359.6Q214.9 357.6 216.7 354Q218.6 350.5 218.6 345.7V314H222.4V345.6Q222.4 351.1 220.1 355.2Q217.7 359.4 213.3 361.7Q209 364 203.1 364Q196.7 364 192.1 361.7Q187.5 359.4 185 355.3Q182.6 351.2 182.6 345.6V314ZM182.8 314V318.2H182.6Q182.6 316.7 181.5 315.7Q180.4 314.7 178.9 314.7Q178.9 314.7 178.3 314.7Q177.8 314.7 177.8 314.7V314ZM193.9 314V314.7Q193.9 314.7 193.4 314.7Q192.8 314.7 192.8 314.7Q191.3 314.7 190.2 315.7Q189.1 316.7 189.1 318.2H189V314ZM218.8 314V318.2H218.6Q218.6 316.7 217.5 315.7Q216.4 314.7 214.9 314.7Q214.9 314.7 214.3 314.7Q213.7 314.7 213.7 314.7V314ZM227.2 314V314.7Q227.2 314.7 226.7 314.7Q226.1 314.7 226.1 314.7Q224.6 314.7 223.5 315.7Q222.4 316.7 222.4 318.2H222.3V314ZM248.7 312.9 290.7 356.1 291.4 364 249.4 320.9ZM248.9 358V363H243.1V362.3Q243.1 362.3 243.7 362.3Q244.3 362.3 244.4 362.3Q246.2 362.3 247.4 361Q248.7 359.8 248.7 358ZM254.1 358Q254.1 359.8 255.4 361Q256.7 362.3 258.4 362.3Q258.5 362.3 259.1 362.3Q259.7 362.3 259.7 362.3V363H253.9V358ZM248.7 312.9 254.1 319.1 254.1 363H248.7V321.7Q248.7 318 248.3 315.5Q248 312.9 248 312.9ZM291.3 314V355Q291.3 357.4 291.5 359.5Q291.7 361.5 291.8 362.8Q292 364 292 364H291.4L285.9 357.8V314ZM296.9 314V314.7Q296.9 314.7 296.3 314.7Q295.7 314.7 295.7 314.7Q293.9 314.7 292.6 315.9Q291.4 317.1 291.3 319H291.1V314ZM280.3 314H286.1V319H285.9Q285.9 317.1 284.6 315.9Q283.4 314.7 281.6 314.7Q281.6 314.7 281 314.7Q280.3 314.7 280.3 314.7ZM364 302.7 389.9 362.5H380L361.2 313.4ZM345.9 356.8Q345.3 358.5 345.7 359.7Q346.1 360.9 347.1 361.5Q348.1 362.2 349.1 362.2H349.8V363H332.6V362.2Q332.6 362.2 332.9 362.2Q333.3 362.2 333.3 362.2Q335.3 362.2 337.3 360.9Q339.4 359.7 340.7 356.8ZM364 302.7 364.7 310 343.6 362.7H338.1L359.8 312.1Q359.9 311.9 360.4 310.8Q361 309.6 361.6 308Q362.2 306.4 362.7 304.9Q363.2 303.4 363.2 302.7ZM374.9 341V343.9H349.1V341ZM377.8 356.8H387.3Q388.7 359.7 390.8 360.9Q392.8 362.2 394.8 362.2Q394.8 362.2 395.1 362.2Q395.4 362.2 395.4 362.2V363H373.9V362.2H374.6Q376.3 362.2 377.6 360.8Q378.8 359.4 377.8 356.8ZM452.6 343.4V354.9Q451 357.1 448.1 359.1Q445.1 361.2 441 362.6Q436.8 364 431.4 364Q423.8 363.9 418 360.8Q412.2 357.6 409 351.9Q405.8 346.2 405.8 338.5Q405.8 330.8 409 325.1Q412.2 319.3 418 316.2Q423.8 313 431.5 313Q435.3 313 438.6 313.6Q441.9 314.2 444.6 315.2Q447.2 316.2 449.3 317.5L450.3 328.1H449.6Q448.5 323.7 446.1 321Q443.6 318.2 440.1 316.8Q436.5 315.4 432.2 315.4Q426.4 315.4 422.1 318.3Q417.8 321.1 415.4 326.4Q413.1 331.6 413.1 338.6Q413.1 345.5 415.4 350.7Q417.7 355.9 421.9 358.7Q426 361.5 431.7 361.6Q434.6 361.6 437.3 360.8Q440 360.1 442.3 358.7Q444.6 357.3 446.1 355.2L446.2 343.4Q446.2 340.2 442.6 340.2H441.5V339.6H457.2V340.2H456.1Q452.5 340.2 452.6 343.4ZM484.1 314H493.7Q496.9 314 499.6 314.8Q502.3 315.7 504.3 317.3Q506.2 319 507.3 321.4Q508.4 323.9 508.4 327.2Q508.4 330.4 507 333.4Q505.5 336.5 502.9 338.4Q500.2 340.4 496.7 340.5Q498.2 341.1 499.8 342.7Q501.3 344.3 502.4 345.9Q502.4 345.9 503.3 347.2Q504.2 348.4 505.5 350.3Q506.8 352.1 508.2 354Q509.6 355.8 510.6 357Q512 358.7 513.4 359.8Q514.7 361 516.3 361.6Q517.9 362.3 519.8 362.3V363H514.9Q511.6 363 509 362.1Q506.4 361.2 504.5 359.7Q502.6 358.2 501.3 356.5Q501 356 500.1 354.7Q499.3 353.3 498.2 351.6Q497.1 349.9 496 348.2Q495 346.6 494.2 345.3Q493.5 344.1 493.2 343.8Q492.1 341.9 490.6 340.5Q489.1 339.1 487.4 339.1V338.4Q487.4 338.4 488.4 338.4Q489.3 338.4 490.6 338.4Q492.4 338.3 494.5 337.7Q496.5 337.2 498.2 335.6Q500 333.9 500.8 330.8Q501 330.1 501.1 329.1Q501.2 328 501.2 326.9Q501.1 322.1 498.7 319.4Q496.4 316.7 492.6 316.5Q491 316.4 489.3 316.4Q487.5 316.4 486.2 316.4Q485 316.4 484.8 316.4Q484.8 316.4 484.7 315.8Q484.5 315.2 484.3 314.6Q484.1 314 484.1 314ZM485.1 314V363H478.5V314ZM478.8 357.9V363H473.2V362.3Q473.2 362.3 473.6 362.3Q474.1 362.3 474.1 362.3Q475.9 362.3 477.2 361Q478.5 359.7 478.5 357.9ZM478.8 319.1H478.5Q478.5 317.3 477.2 316Q475.9 314.7 474.1 314.7Q474.1 314.7 473.6 314.7Q473.2 314.7 473.2 314.7V314H478.8ZM484.8 357.9H485.1Q485.1 359.7 486.4 361Q487.7 362.3 489.5 362.3Q489.6 362.3 490 362.3Q490.4 362.3 490.4 362.3V363H484.8ZM554 312.9 575.5 362.6H567.3L551.7 321.8ZM539 357.9Q538.5 359.3 538.8 360.3Q539.2 361.2 540 361.8Q540.8 362.3 541.6 362.3H542.2V363H527.9V362.3Q527.9 362.3 528.2 362.3Q528.5 362.3 528.5 362.3Q530.1 362.3 531.8 361.3Q533.6 360.3 534.7 357.9ZM554 312.9 554.6 319 537.1 362.8H532.5L550.5 320.7Q550.6 320.6 551 319.6Q551.5 318.7 552 317.4Q552.5 316 553 314.8Q553.4 313.5 553.4 312.9ZM563 344.7V347.1H541.6V344.7ZM565.5 357.9H573.4Q574.5 360.3 576.2 361.3Q577.9 362.3 579.5 362.3Q579.5 362.3 579.8 362.3Q580.1 362.3 580.1 362.3V363H562.2V362.3H562.8Q564.2 362.3 565.3 361.1Q566.3 360 565.5 357.9ZM587.1 314.4H594.8L607.1 352.9L605 364ZM619.7 312.9 620.5 319 607.1 356.2Q607.1 356.2 606.8 357.4Q606.4 358.7 606 360.4Q605.7 362.2 605.6 364H605L603.4 357.1L619.1 312.9ZM619.7 312.9 634.7 351.8 632.5 364 616.5 322.7ZM647.7 314.4 634.6 356.2Q634.6 356.2 634.2 357.5Q633.9 358.7 633.5 360.5Q633.2 362.3 633.2 364H632.5L631.3 357.1L643.5 314.4ZM642.1 319Q642.7 316.9 641.8 315.8Q640.9 314.7 639.5 314.7H638.9V314H652.9V314.7Q652.9 314.7 652.6 314.7Q652.4 314.7 652.4 314.7Q650.8 314.7 648.9 315.7Q647 316.7 646.2 319ZM596.3 319H588.8Q588 316.7 586.1 315.7Q584.2 314.7 582.6 314.7Q582.6 314.7 582.4 314.7Q582.1 314.7 582.1 314.7V314H599.6V314.7H599Q597.6 314.7 596.6 315.8Q595.6 316.9 596.3 319ZM681 312.9 702.5 362.6H694.3L678.7 321.8ZM666 357.9Q665.5 359.3 665.8 360.3Q666.2 361.2 667 361.8Q667.8 362.3 668.6 362.3H669.2V363H654.9V362.3Q654.9 362.3 655.2 362.3Q655.5 362.3 655.5 362.3Q657.1 362.3 658.8 361.3Q660.6 360.3 661.7 357.9ZM681 312.9 681.6 319 664.1 362.8H659.5L677.5 320.7Q677.6 320.6 678 319.6Q678.5 318.7 679 317.4Q679.5 316 680 314.8Q680.4 313.5 680.4 312.9ZM690 344.7V347.1H668.6V344.7ZM692.5 357.9H700.4Q701.5 360.3 703.2 361.3Q704.9 362.3 706.5 362.3Q706.5 362.3 706.8 362.3Q707.1 362.3 707.1 362.3V363H689.2V362.3H689.8Q691.2 362.3 692.3 361.1Q693.3 360 692.5 357.9ZM732.3 314V363H725.8V314ZM751.1 360.6 751.6 363H732.1V360.6ZM755.6 350.7 751.8 363H739.5L742 360.6Q745.7 360.6 748.1 359.3Q750.6 358.1 752.2 355.9Q753.8 353.6 754.9 350.7ZM726 357.9V363H720.4V362.3Q720.4 362.3 720.9 362.3Q721.3 362.3 721.3 362.3Q723.1 362.3 724.4 361Q725.7 359.7 725.8 357.9ZM726 319.1H725.8Q725.7 317.3 724.4 316Q723.1 314.7 721.3 314.7Q721.3 314.7 720.9 314.7Q720.4 314.7 720.4 314.7V314H726ZM732.1 319.1V314H737.7V314.7Q737.6 314.7 737.2 314.7Q736.8 314.7 736.8 314.7Q735 314.7 733.7 316Q732.4 317.3 732.3 319.1Z"/><g fill="#C9A866"><path d="M95 401.1H360V402.1H95ZM391 401.1H660V402.1H391ZM375.5 394.5L382.5 401.5L375.5 408.5L368.5 401.5Z"/></g></svg></div>
   <div class="sc ia-pos"><span>Economics</span> <i aria-hidden="true"></i> <span>Politics</span> <i aria-hidden="true"></i> <span>Business</span></div>
-  <div class="sc ia-tg">Think like an economist.</div>
+  <div class="sc ia-tg">Think. Understand. Connect.</div>
  </div>
  <div class="ia-bar" aria-hidden="true"><i></i></div>
  <button id="splashskip" class="spskip" type="button">Skip introduction</button></div>
@@ -6363,12 +6470,12 @@ body[data-pathway="ib"] .gnav .gn-res{display:none}
    <button class="lnk" onclick="nav('arjun')">Videos</button><button class="lnk" onclick="nav('educator')">Teacher Studio</button>
    <button class="lnk" onclick="randomOpen('')">Random Economics</button><button class="lnk" onclick="nav('about')">About</button></nav>
  </div><nav class="wrap full ft-paths" aria-label="The Arjun Agrawal Academic Ecosystem">
-  <p class="kicker ft-eco-k">The Arjun Agrawal Academic Ecosystem <span class="ft-here">· You are on Economics</span></p>
+  <p class="kicker ft-eco-k">Arjun Agrawal | Academic Ecosystem · Think. Understand. Connect. <span class="ft-here">· You are on Economics</span></p>
   <a class="ft-path p-ib" href="#/ib"><span class="ft-pn">Pathway 01</span><b>IB DP Economics</b><span>The course, the models, the real world, the examinations, the IA and the EE.</span></a>
   <a class="ft-path p-up" href="#/upsc"><span class="ft-pn">Pathway 02</span><b>UPSC CSE Economics</b><span>The syllabus, the handbooks, current affairs, a preparation strategy and the three-month course.</span></a>
-  <a class="ft-path p-bk" href="#/book"><span class="ft-pn">A new academic work</span><b>The Indian Economy</b><span>A Comprehensive Academic and Examination Reference · First Edition, 2026-27, with its free Digital Revision Companion.</span></a>
+  <a class="ft-path p-bk" href="#/book"><span class="ft-pn">A new academic publication</span><b>The Indian Economy</b><span>A Comprehensive Academic and Examination Reference · First Edition, 2026-27, with its free Digital Revision Companion.</span></a>
   <a class="ft-path p-bb" href="https://the-business-brief-dun.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="ft-pn">Beyond Economics</span><b>The Business Brief</b><span>IB DP Business Management · Strategy. Leadership. Decisions. <span aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></span></a>
-  <a class="ft-path p-ps" href="https://arjun-agrawal-political-studies.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="ft-pn">Beyond Economics</span><b>Political Studies &amp; Global Affairs</b><span>IB DP Global Politics | Indian Polity | International Relations | PSIR · Understand power, politics and global affairs. <span aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></span></a>
+  <a class="ft-path p-ps" href="https://arjun-agrawal-political-studies.vercel.app/" target="_blank" rel="noopener noreferrer"><span class="ft-pn">Beyond Economics</span><b>Political Studies &amp; Global Affairs</b><span>IB DP Global Politics | International Relations | Indian Polity | PSIR · Power. Politics. Perspectives. <span aria-hidden="true">↗</span><span class="sr-only">(opens in a new tab)</span></span></a>
  </nav></div><div class="wrap full in">
   <div class="ftbrand">
    <div style="width:230px;height:70px;max-width:100%;background:var(--lg) left center/contain no-repeat" role="img" aria-label="Arjun Agrawal: Knowledge. Insight. Impact."></div>
@@ -6413,10 +6520,10 @@ body[data-pathway="ib"] .gnav .gn-res{display:none}
   </nav>
 </div><div class="wrap full ft-final">
   <div><p class="ft-close">Think deeply. Understand clearly. Connect ideas.</p>
-   <p class="ft-pos">Arjun Agrawal · Economics: the flagship Economics platform of an academic ecosystem across Economics, Politics and Business, for IB DP Economics, UPSC CSE Economics and the study of the Indian economy.</p></div>
-  <div><h2>The platforms</h2><ul><li><a class="lnk" href="#/ib">IB DP Economics</a></li><li><a class="lnk" href="#/upsc">UPSC CSE Economics</a></li><li><a class="lnk" href="#/book">The Indian Economy (book)</a></li></ul></div>
+   <p class="ft-pos">Arjun Agrawal · Economics: the flagship Economics platform of an academic ecosystem across Economics, Political Studies and Business Management, for IB DP Economics, UPSC CSE Economics and the study of the Indian economy.</p></div>
+  <div><h2>Economics</h2><ul><li><a class="lnk" href="#/ib">IB DP Economics</a></li><li><a class="lnk" href="#/upsc">UPSC CSE Economics</a></li></ul><h2 class="mt3">Publications</h2><ul><li><a class="lnk" href="#/book">The Indian Economy (book)</a></li><li><a class="lnk" href="#/book/digital-revision-companion">Digital Revision Companion (free)</a></li></ul></div><div><h2>Follow</h2><ul class="ft-social"><li><a class="lnk" href="https://www.linkedin.com/in/arjun-agrawal-560405310/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li><li><a class="lnk" href="https://instagram.com/imarjun101" target="_blank" rel="noopener noreferrer">Instagram <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li><li><a class="lnk" href="https://www.youtube.com/@arjunagrawal5724" target="_blank" rel="noopener noreferrer">YouTube <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li></ul></div>
   <div><h2>The opening</h2><ul><li><a class="lnk ft-replay-l" href="./?intro=1">Replay the opening</a></li><li><span class="xs">Seven seconds, on every full page load; Escape or Skip introduction ends it.</span></li></ul></div>
-</div><div class="wrap full ft-res"><span>For more resources: <a class="ft-reslink" href="https://ib-economics-pi.vercel.app/">https://ib-economics-pi.vercel.app/</a></span></div><div class="wrap full ft-base"><span>© Arjun Agrawal. Explanations, diagrams and tools written and drawn for this platform.</span><span>An independent platform: no IB endorsement is claimed or implied.</span></div></footer>
+</div><nav class="wrap full ft-xp" aria-label="Arjun Agrawal | Academic Ecosystem: move between the three platforms"><span class="ft-xp-k">Arjun Agrawal | Academic Ecosystem</span><a class="ft-xp-a on" href="#/" aria-current="true"><b>Economics</b><span>Think like an economist.</span></a><a class="ft-xp-a" href="https://arjun-agrawal-political-studies.vercel.app/" target="_blank" rel="noopener noreferrer"><b>Political Studies <span aria-hidden="true">↗</span></b><span>Power. Politics. Perspectives.</span><span class="sr-only"> (opens in a new tab)</span></a><a class="ft-xp-a" href="https://the-business-brief-dun.vercel.app/" target="_blank" rel="noopener noreferrer"><b>Business Management <span aria-hidden="true">↗</span></b><span>Strategy. Leadership. Decisions.</span><span class="sr-only"> (opens in a new tab)</span></a></nav><div class="wrap full ft-res"><span>For more resources: <a class="ft-reslink" href="https://ib-economics-pi.vercel.app/">https://ib-economics-pi.vercel.app/</a></span></div><div class="wrap full ft-base"><span>© Arjun Agrawal. Explanations, diagrams and tools written and drawn for this platform.</span><span>An independent platform: no IB endorsement is claimed or implied.</span></div></footer>
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" aria-live="polite"></aside>
 <div id="toast" role="status"></div>
@@ -32082,9 +32189,9 @@ function SPLASHSUITE(){
    &&(clock.match(/\.animate\(\[\{(\w+)/g)||[]).every(x=>/opacity|transform/.test(x)));
  T("Opening · keyframes are in time order inside each stage's window",
    PL.every(p=>p[3].every(([t],n,a)=>t>=p[1]&&t<=p[2]&&(n===0||t>a[n-1][0]))));
- T("Opening · the overlay reads demand, supply, AD-AS, the network, then the monogram, the name, Economics · Politics · Business and Think like an economist.",
+ T("Opening · the overlay reads demand, supply, AD-AS, the network, then the monogram, the name, Economics · Politics · Business and Think. Understand. Connect.",
    (()=>{const m=sp?[sp.outerHTML]:null;if(!m)return true;const b=m[0].replace(/aria-label="[^"]*"/g,"");
-     const o=['class="if-w if-wd"','class="if-w if-ws"','class="if-grp if-mac"','class="if if-net"','class="ia-mk"','class="ia-wm"',">Economics<",">Politics<",">Business<","Think like an economist."].map(x=>b.indexOf(x));
+     const o=['class="if-w if-wd"','class="if-w if-ws"','class="if-grp if-mac"','class="if if-net"','class="ia-mk"','class="ia-wm"',">Economics<",">Politics<",">Business<","Think. Understand. Connect."].map(x=>b.indexOf(x));
      return o.every((x,k)=>x>=0&&(k===0||x>o[k-1]))&&!/One discipline\.|class="ia-tl"/.test(b)})());
  T("Opening · the figures are economically exact: demand falls and supply rises to one equilibrium; AD shifts along SRAS and the equilibrium stays on both",
    (()=>{const f=k=>(PL.find(p=>p[0]===k)||[,,,[]])[3];const last=k=>{const a=f(k);return a.length?a[a.length-1][1].transform:""};
@@ -32101,7 +32208,7 @@ function SPLASHSUITE(){
    (()=>{const m=sp?[sp.outerHTML]:null;if(!m)return true;
      return (m[0].replace(/aria-label="[^"]*"/g,"").replace(/<!--[\s\S]*?-->/g,"").match(/Arjun\s+Agrawal/gi)||[]).length===0})());
  T("Opening · the overlay is a status named for the identity and its line, and every decorative layer is hidden from assistive technology",
-   !sp||(sp.getAttribute("role")==="status"&&sp.getAttribute("aria-label")==="Arjun Agrawal. Economics, Politics, Business. Think like an economist."
+   !sp||(sp.getAttribute("role")==="status"&&sp.getAttribute("aria-label")==="Arjun Agrawal. Economics, Politics, Business. Think. Understand. Connect."
      &&[...sp.children].filter(x=>x.id!=="splashskip").every(x=>x.getAttribute("aria-hidden")==="true")));
  T("Opening · a Skip introduction control is a real button, reachable by keyboard",
    (()=>{const b=document.getElementById("splashskip");return !sp||(!!b&&b.tagName==="BUTTON"&&b.type==="button"&&/^Skip introduction$/.test(b.textContent.trim())&&b.tabIndex>=0)})());
@@ -35431,7 +35538,7 @@ QAREPORT.length=0;
  {area:"My economics",re:/^My economics · /,
   what:"That saving and flagging are reversible and leave no residue, that the empty state is honest, that every learning path step opens something that exists, that the HL-only path is hidden at SL, that marking a path step done records only that and not mastery, that every assignment pool resolves to real items, that an assignment link carries the items and nothing about any student, and that nothing in this section transmits anything."},
  {area:"Opening sequence",re:/^Splash · |^Opening · /,
-  what:"That the sequence runs for exactly seven seconds on one clock and plays in full on every full page load, whatever the address, and never during navigation inside the app, that it reads storage for nothing, that its stages follow the storyboard (demand and supply drawing themselves, the macroeconomy, a network of concepts, evidence, policy and outcomes, the monogram and the name, Economics · Politics · Business, then Think like an economist.), that its figures are economically exact, and that it animates opacity and transform only so the compositor keeps time, that reduced motion shows a still frame, that Skip introduction is a real button that also answers Escape, that a 30-second failsafe exists, that the faded overlay stops intercepting clicks and is then removed from the document, that nothing locks scrolling, that the sequence prints nothing, and that the welcome sequence is scheduled after the overlay rather than beside it."},
+  what:"That the sequence runs for exactly seven seconds on one clock and plays in full on every full page load, whatever the address, and never during navigation inside the app, that it reads storage for nothing, that its stages follow the storyboard (demand and supply drawing themselves, the macroeconomy, a network of concepts, evidence, policy and outcomes, the monogram and the name, Economics · Politics · Business, then Think. Understand. Connect.), that its figures are economically exact, and that it animates opacity and transform only so the compositor keeps time, that reduced motion shows a still frame, that Skip introduction is a real button that also answers Escape, that a 30-second failsafe exists, that the faded overlay stops intercepting clicks and is then removed from the document, that nothing locks scrolling, that the sequence prints nothing, and that the welcome sequence is scheduled after the overlay rather than beside it."},
  {area:"Installable and offline",re:/^PWA · /,
   what:"That a manifest is linked by a relative path so the platform works from a project subdirectory, that registration is attempted only on a secure origin and cannot delay the first paint, that the offline panel states exactly what is stored on the device and exactly what is not, that no claim is made that the videos or the Drive library work offline, that installing is described without implying an account or a sign-in, and that no install prompt interrupts the student."},
 ].forEach(x=>QAREPORT.push(x));
@@ -41576,7 +41683,7 @@ const CV_SPOTS=[["Demand",s=>{const q=Math.max(1.2,2.2+s);return [q,CVF.D(q,s)]}
  ["Equilibrium",s=>{const e=CVF.eq(s);return [e.q,e.p]},"nav('mind',0,'market')","Where plans agree"]];
 const cvPos=f=>{const [q,p]=f(CV.s);return [(cx(q)/CV_W*100).toFixed(2),(cy(p)/CV_H*100).toFixed(2)]};
 /* who the author is, stated only from the supplied profile (ABOUT, ABOUT2): no degree, date or title is added */
-const CV_AUTHOR=[["Studied","Economics, St. Stephen's College, University of Delhi"],["Taught","Undergraduate Economics, Fergusson College, Pune"],
+const CV_AUTHOR=[["Studied","Economics and Political Science, St. Stephen's College, University of Delhi"],["Qualified","UGC-NET (twice) and MH-SET, Economics"],["Taught","Undergraduate Economics, Fergusson College, Pune"],
  ["Teaches","IB DP Economics, Business Management and Global Politics"],["Mentors","UPSC Civil Services aspirants in Economics"]];
 /* The cover leads with the platform's signature, "Think like an economist.", then
    the idea behind it, one line on what the platform is, and two actions: explore
@@ -41708,10 +41815,13 @@ function rnChapter(n,t){
    workplace. The portrait sits in its own grid cell; nothing is drawn over it.
    ═══════════════════════════════════════════════════════════════════════════ */
 /* the positioning the owner set for the two-pathway platform */
-const AB_POS=["IB DP Economics Educator","Economics Resource Designer","UPSC Economics Mentor"];
+/* updated for the definitive brief (2026-11-26): educator, resource creator and author */
+const AB_POS=["IB DP Economics Educator","UPSC Economics Mentor","Academic Resource Creator","Author of The Indian Economy"];
 /* the credentials, as data blocks */
 const AB_FACTS=()=>[
- ["Education","Economics","St. Stephen's College, University of Delhi"],
+ ["Education","BA (Programme), Economics and Political Science","St. Stephen's College, University of Delhi"],
+ ["Postgraduate study","MA Economics · MA Political Science","Fergusson College, Pune · Indira Gandhi National Open University (IGNOU)"],
+ ["Qualifications","UGC-NET, qualified twice · MH-SET","Economics"],
  ["Higher education","Assistant Professor","Fergusson College, Pune · undergraduate Economics"],
  ["IB Diploma Programme","Teaching and academic work","BLISS International School, Pune · Symbiosis International School, Pune"],
  ["Subjects","Economics · Business Management · Global Politics","SL and HL"],
@@ -41734,7 +41844,8 @@ function abCover(){const A=ABOUT;
    <div class="eb a">About</div>
    <h1 class="ab-h mt2" id="ab-h">${esc(A.name)}</h1>
    <ul class="ab-pos mt3">${AB_POS.map(p=>`<li>${esc(p)}</li>`).join("")}</ul>
-   <p class="ab-lede mt4">${esc(A.lede)}</p>
+   <p class="ab-lede mt4">${esc(typeof FX_AUTHOR_BIO==="string"?FX_AUTHOR_BIO:A.lede)}</p>
+   ${abAuthorPlate()}
    <p class="ab-meta mt3"><span>${esc(A.role)}</span>${A.subjects.map(s=>`<span>${esc(s)}</span>`).join("")}</p>
    <div class="row mt4"><button class="btn a" onclick="nav('tutorials')">Learn with Arjun →</button><a class="btn gh" href="#/ib">IB DP Economics</a>
     <a class="btn gh" href="#/upsc">UPSC CSE Economics</a><a class="btn gh" href="mailto:${A.email}">Email</a></div></div>
@@ -41771,7 +41882,10 @@ function abClassroom(){return `<section class="sec ab-room" aria-labelledby="ab-
  </div></section>`}
 
 function abPrinciples(){return `<section class="sec t ab-believe" aria-labelledby="ab-b"><div class="wrap full">
-  <div class="rn-chap"><span class="ch-n">04</span><span class="ch-t" id="ab-b">What I believe</span></div>
+  <div class="rn-chap"><span class="ch-n">04</span><span class="ch-t" id="ab-b">Teaching philosophy</span></div>
+  <div class="ab-ccc mt4"><p class="ab-ccc-h"><span>Concepts.</span> <span>Content.</span> <span>Contexts.</span></p>
+   <p class="ed">Effective learning connects three things: the concepts that explain how an economy works, the content that gives them substance, and the contexts in which they matter. A concept learnt without evidence stays abstract; evidence without a concept is only a list of facts. The work on these platforms, and in <i>The Indian Economy</i>, is built to connect knowledge, concepts and evidence to the real world.</p></div>
+  <h3 class="h3 mt5">What I believe</h3>
   <ol class="abb-grid mt4">${AB_PRINCIPLES.map(([h,d],i)=>`<li><span class="abb-n">${String(i+1).padStart(2,"0")}</span><p class="abb-h">${esc(h)}</p><p class="abb-d">${esc(d)}</p></li>`).join("")}</ol>
  </div></section>`}
 
@@ -41793,11 +41907,16 @@ function abEcosystem(){if(typeof fxEcoCard!=="function")return "";
 /* the book: The Indian Economy, in the author's own words from its preface; facts from 51-book.js */
 function abBook(){if(typeof bkMockup!=="function")return "";
  return `<section class="sec ab-book" aria-labelledby="ab-k"><div class="wrap full">
-  <div class="rn-chap"><span class="ch-n">07</span><span class="ch-t" id="ab-k">The Indian Economy</span></div>
+  <div class="rn-chap"><span class="ch-n">07</span><span class="ch-t" id="ab-k">Publications</span></div>
   <div class="abk-grid mt4"><div class="abk-v">${bkMockup("md")}</div>
    <div><p class="ed" style="max-width:62ch"><i>The Indian Economy: A Comprehensive Academic and Examination Reference</i> (First Edition, 2026-27), authored and compiled by Arjun Agrawal, brings India's economic concepts, institutions, policies and sectors together in one connected reference for UPSC CSE, State PCS and RBI Grade B (General) candidates and for university study of the Indian economy. Its free Digital Revision Companion carries the revision and practice for each of its thirteen units.</p>
     <blockquote class="abk-q mt3">“I have always believed that meaningful learning rests on three closely related elements: Concepts, Content and Contexts.”<cite>From the preface</cite></blockquote>
     <div class="row mt4"><a class="btn a" href="#/book">About the book →</a><a class="btn gh" href="#/book/digital-revision-companion">The Digital Revision Companion</a></div></div></div>
+  <ul class="ab-pubs mt5">
+   <li><a href="#/book"><b><i>The Indian Economy</i></b><span>A Comprehensive Academic and Examination Reference · First Edition, 2026-27 · 641 numbered pages</span></a></li>
+   <li><a href="#/book/digital-revision-companion"><b><i>The Indian Economy</i>: Digital Revision Companion</b><span>An Integrated Revision Resource for Competitive Examinations and University Study · free · 13 units</span></a></li>
+   <li><a href="${esA(typeof fxHref==="function"?fxHref("upsc",(typeof UP_T!=="undefined"&&UP_T.handbooks)||3):"#/upsc")}"><b>Economics handbooks</b><span>Eleven topic volumes for the Economics of the UPSC General Studies papers</span></a></li>
+   <li><a href="#/studio"><b>Economics Learning Studio</b><span>Visual explainers, Economics in 60 Seconds and guides for IB DP Economics</span></a></li></ul>
  </div></section>`}
 
 function abLonger(){const A=ABOUT,B=ABOUT2;
@@ -41821,7 +41940,16 @@ function abClose(){const A=ABOUT;return `<section class="sec rn-final bg-ink ab-
    <button class="btn lg gh on-ink" onclick="nav('learn')">Start learning</button></div></div></section>`}
 
 (function(){if(typeof aboutPage!=="function")return;
- aboutPage=function(){return abCover()+abFacts()+abJourney()+abClassroom()+abPrinciples()+abStory()+abEcosystem()+abBook()+abLonger()+abClose()+abLightboxMarkup()}})();
+ /* the definitive order: who, at a glance, the philosophy, the publications, then the journey,
+    the classroom, the platform story and the ecosystem; chapters are numbered as they fall */
+ aboutPage=function(){let n=0;
+  return (abCover()+abFacts()+abPrinciples()+abBook()+abJourney()+abClassroom()+abStory()+abEcosystem()+abLonger()+abClose()+abLightboxMarkup())
+   .replace(/<span class="ch-n">\d+<\/span>/g,()=>`<span class="ch-n">${String(++n).padStart(2,"0")}</span>`)}})();
+/* the author's plate on the cover: the book, linked */
+function abAuthorPlate(){
+ let c="";try{const k=BOOK_PV.book.cover;c=k?`<img class="ab-bk-c" src="${esA(k.src)}" width="${k.w}" height="${k.h}" alt="The cover of The Indian Economy" loading="lazy" decoding="async">`:""}catch(e){}
+ return `<a class="ab-bk" href="#/book">${c}<span><span class="ab-bk-k">Author</span><b><i>The Indian Economy</i></b><span>A Comprehensive Academic and Examination Reference · First Edition, 2026-27</span></span></a>`;
+}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    RENAISSANCE · 9 · the self-tests for this release
@@ -46740,30 +46868,42 @@ const FXI={
  discipline:"Economics",
  motto:"Think like an economist.",
  idea:"One discipline. Two pathways. A shared understanding of Economics.",
- roles:"IB DP Economics Educator | Economics Resource Designer | UPSC Economics Mentor",
+ roles:"IB DP Economics Educator | UPSC Economics Mentor | Academic Resource Creator | Author of The Indian Economy",
  paths:{
   ib:{key:"ib",name:"IB DP Economics",short:"IB DP",home:"#/ib",view:"ib"},
   upsc:{key:"upsc",name:"UPSC CSE Economics",short:"UPSC CSE",home:"#/upsc",view:"upsc"}
  }
 };
-/* ── the Arjun Agrawal Academic Ecosystem ──────────────────────────────────
+/* ── ARJUN AGRAWAL | ACADEMIC ECOSYSTEM ────────────────────────────────────
    Three independent platforms from the same educator, under one academic
-   identity (ARJUN AGRAWAL · KNOWLEDGE. INSIGHT. IMPACT.): this one, The
-   Business Brief (IB DP Business Management) and Political Studies & Global
-   Affairs. Each keeps its own repository, address and design; the names and
-   lines are the owner's (the subject lines and taglines of the final brief, 2026-11-20). The two sisters are linked from the header's
-   Academic Ecosystem menu, the drawer, the home page, the footer and About,
-   always in a new tab and never as a third pathway: they have no pathway
-   colour and no place in the pathway switcher. */
+   identity whose positioning is "Think. Understand. Connect." (the definitive
+   brief, 2026-11-26): Economics (this one), Political Studies and Business
+   Management (The Business Brief). Each keeps its own repository, address,
+   design language and line: "Think like an economist.", "Power. Politics.
+   Perspectives." and "Strategy. Leadership. Decisions.". The sisters are linked
+   from the header's Academic Ecosystem menu, the drawer, the home page, the
+   footer and About, always in a new tab and never as a third pathway: they have
+   no pathway colour and no place in the pathway switcher.
+   Brand assets are the platforms' own: this platform's monogram and social
+   card, and The Business Brief's favicon mark and social card, copied unchanged
+   from its public repository (public/favicon.svg, public/brand/social-card.png).
+   No logo or preview of Political Studies was available to this build, so its
+   panel is typographic: nothing is drawn that could pass for its logo. */
+const FX_ECO_ID={name:"Arjun Agrawal | Academic Ecosystem",line:"Think. Understand. Connect."};
 const FX_BB={name:"The Business Brief",subject:"IB DP Business Management",url:"https://the-business-brief-dun.vercel.app/"};
-const FX_PS={name:"Political Studies & Global Affairs",subject:"Indian Polity, International Relations, PSIR and IB DP Global Politics",url:"https://arjun-agrawal-political-studies.vercel.app/"};
+const FX_PS={name:"Political Studies & Global Affairs",subject:"IB DP Global Politics, International Relations, Indian Polity and PSIR",url:"https://arjun-agrawal-political-studies.vercel.app/"};
 const FX_ECO=[
- {k:"eco",name:"Economics",line:"Arjun Agrawal | IB DP Economics and UPSC CSE Economics",tag:"Think like an economist.",url:"https://ib-economics-pi.vercel.app/",current:true,
-  d:"IB DP Economics and UPSC CSE Economics: concepts, models you can move, real-world evidence and examination practice."},
- {k:"bb",name:FX_BB.name,line:"IB DP Business Management",tag:"Strategy. Leadership. Decisions.",url:FX_BB.url,
-  d:"A Business Management learning platform with topic notes, mindmaps, case studies, interactive tools and an Assessment Centre for the IB Diploma Programme."},
- {k:"ps",name:FX_PS.name,line:"IB DP Global Politics | Indian Polity | International Relations | PSIR",tag:"Understand power, politics and global affairs.",url:FX_PS.url,
-  d:"UPSC CSE Indian Polity and International Relations, Political Science and International Relations (PSIR) and IB DP Global Politics, read as one connected body of knowledge."}];
+ {k:"eco",disc:"Economics",name:"Economics",line:"IB DP Economics | UPSC CSE Economics",tag:"Think like an economist.",url:"https://ib-economics-pi.vercel.app/",current:true,
+  d:"IB DP Economics and UPSC CSE Economics: concepts, interactive diagrams, real-world evidence, examination practice and The Indian Economy.",
+  img:{src:"assets/ecosystem/economics-preview.webp",w:960,h:504,alt:"The Economics platform's own preview card: Economics is not just a subject to study. It is a way to think."},
+  logo:{src:"assets/brand/monogram-reversed.svg",alt:"The Arjun Agrawal monogram"}},
+ {k:"ps",disc:"Political Studies",name:FX_PS.name,line:"IB DP Global Politics | International Relations | Indian Polity | PSIR",tag:"Power. Politics. Perspectives.",url:FX_PS.url,
+  d:"IB DP Global Politics, International Relations, Indian Polity and Political Science and International Relations (PSIR), read as one connected body of knowledge."},
+ {k:"bb",disc:"Business Management",name:FX_BB.name,line:"IB DP Business Management",tag:"Strategy. Leadership. Decisions.",url:FX_BB.url,
+  d:"IB DP Business Management: topics, mindmaps, glossary, diagrams and the Assessment Centre.",
+  img:{src:"assets/ecosystem/the-business-brief-preview.webp",w:960,h:504,alt:"The Business Brief's own preview card: Understand business. Think strategically. Make better decisions."},
+  logo:{src:"assets/ecosystem/the-business-brief-mark.svg",alt:"The Business Brief's mark: the Arjun Agrawal monogram on navy"}}];
+const fxEco=k=>FX_ECO.find(e=>e.k===k);
 /* a small drawn mark for each: two curves meeting, a decision's rising bars, a meridian globe */
 const FX_ECO_MARK={
  eco:`<svg viewBox="0 0 64 48" aria-hidden="true" focusable="false"><path d="M6 6C22 18 38 30 58 42"/><path d="M6 42C22 30 38 18 58 6" opacity=".6"/><circle class="f" cx="32" cy="24" r="3"/></svg>`,
@@ -46773,15 +46913,21 @@ const FX_ECO_MARK={
 function fxSisterLink(e,cls,label){
  return `<a class="${cls}" href="${esA(e.url)}" target="_blank" rel="noopener noreferrer">${esc(label||e.name)}<span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>`;
 }
-function fxBBLink(cls,label){return fxSisterLink(FX_ECO[1],cls,label)}
-/* one platform as a panel, on the home page and on About; the current one says so and opens its two pathways */
+function fxBBLink(cls,label){return fxSisterLink(fxEco("bb"),cls,label)}
+/* one platform as a panel, on the home page and on About: the discipline, the
+   platform's own preview and mark, its name, line and tagline, a description
+   and a Visit link (the current one says so and opens its two pathways) */
 function fxEcoCard(e){
  const host=e.url.replace(/^https?:\/\//,"").replace(/\/$/,"");
  const foot=e.current
   ?`<span class="eco-here">You are here</span><span class="eco-paths"><a class="fx-a" href="#/ib">IB DP Economics <span aria-hidden="true">→</span></a><a class="fx-a" href="#/upsc">UPSC CSE Economics <span aria-hidden="true">→</span></a></span>`
-  :`${fxSisterLink(e,"eco-go","Visit "+e.name)}<span class="eco-url">${esc(host)}</span>`;
+  :`<a class="eco-go" href="${esA(e.url)}" target="_blank" rel="noopener noreferrer">Visit platform<span class="sr-only">: ${esc(e.name)}</span><span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a><span class="eco-url">${esc(host)}</span>`;
+ const pv=e.img
+  ?`<img class="eco-pv-img" src="${esA(e.img.src)}" width="${e.img.w}" height="${e.img.h}" alt="${esA(e.img.alt)}" loading="lazy" decoding="async">`
+  :`<div class="eco-pv-type" aria-hidden="true"><span class="eco-pv-n">${esc(e.name)}</span><span class="eco-pv-t">${esc(e.tag)}</span></div>`;
  return `<li class="eco-card eco-${e.k}${e.current?" here":""}"${e.current?' aria-current="true"':""}>
-  <div class="eco-top"><p class="eco-sub">${e.current?"This platform":"Sister platform"}</p><span class="eco-mark">${FX_ECO_MARK[e.k]}</span></div>
+  <div class="eco-pv">${pv}</div>
+  <div class="eco-top"><p class="eco-sub">${esc(e.disc)}<span class="eco-rel"> · ${e.current?"This platform":"Sister platform"}</span></p>${e.logo?`<img class="eco-logo" src="${esA(e.logo.src)}" width="40" height="40" alt="${esA(e.logo.alt)}" loading="lazy" decoding="async">`:""}</div>
   <h3 class="eco-name">${esc(e.name)}</h3><p class="eco-line">${esc(e.line)}</p>${e.tag?`<p class="eco-tag">${esc(e.tag)}</p>`:""}<p class="eco-d">${esc(e.d)}</p>
   <div class="eco-foot">${foot}</div></li>`;
 }
@@ -48525,11 +48671,11 @@ function fxBuildShell(){
 const FXDD={open:null,btn:null};
 /* the Academic Ecosystem menu: the three platforms, this one marked as the current one */
 function fxEcoPanelHtml(){
- return `<div class="fxp-head"><div><div class="fx-kicker">Arjun Agrawal · Knowledge. Insight. Impact.</div><div class="fxp-title">The Academic Ecosystem</div></div></div>
-  <p class="fxp-d">Three independent platforms from the same educator. The other two open in a new tab.</p>
+ return `<div class="fxp-head"><div><div class="fx-kicker">Arjun Agrawal | Academic Ecosystem</div><div class="fxp-title">Think. Understand. Connect.</div></div></div>
+  <p class="fxp-d">Economics, Political Studies and Business Management: three independent platforms from the same educator. The other two open in a new tab.</p>
   <ul class="fxp-eco">${FX_ECO.map(e=>`<li class="fxe fxe-${e.k}${e.current?" here":""}">${e.current
-   ?`<a class="fx-a" href="#/" aria-current="true" data-fxclose><span class="fxe-mark">${FX_ECO_MARK[e.k]}</span><span class="fxe-t"><b>${esc(e.name)}</b><span>${esc(e.line)}</span></span><span class="fxe-here">You are here</span></a>`
-   :`<a class="fx-a" href="${esA(e.url)}" target="_blank" rel="noopener noreferrer" data-fxclose><span class="fxe-mark">${FX_ECO_MARK[e.k]}</span><span class="fxe-t"><b>${esc(e.name)}</b><span>${esc(e.line)}</span></span><span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>`}</li>`).join("")}</ul>`;
+   ?`<a class="fx-a" href="#/" aria-current="true" data-fxclose><span class="fxe-mark">${FX_ECO_MARK[e.k]}</span><span class="fxe-t"><b>${esc(e.name)}</b><span>${esc(e.line)}</span><i>${esc(e.tag)}</i></span><span class="fxe-here">You are here</span></a>`
+   :`<a class="fx-a" href="${esA(e.url)}" target="_blank" rel="noopener noreferrer" data-fxclose><span class="fxe-mark">${FX_ECO_MARK[e.k]}</span><span class="fxe-t"><b>${esc(e.name)}</b><span>${esc(e.line)}</span><i>${esc(e.tag)}</i></span><span class="fx-ext" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>`}</li>`).join("")}</ul>`;
 }
 function fxPanelHtml(k){
  if(k==="eco")return fxEcoPanelHtml();
@@ -48752,7 +48898,7 @@ function fxPathCards(){
    <div class="pc-top"><span class="pc-num">Pathway 01</span><span class="pc-rule" aria-hidden="true"></span></div>
    <div class="pc-body">
     <div class="pc-text"><h2 class="pc-h" id="pc-ib-h">IB DP Economics</h2>
-     <p class="pc-pos">Think conceptually. Apply theory. Evaluate real-world economics.</p>
+     <p class="pc-pos">Concepts. Diagrams. Real-world applications. Examination thinking.</p>
      <p class="pc-d">A complete interactive learning environment for IB Diploma Programme Economics students and teachers, at SL and HL.</p></div>
     <figure class="pc-prev pc-model" aria-hidden="true">${motifSVG("shift")}<figcaption>${esc(motifCap("shift"))}</figcaption></figure>
    </div>
@@ -48764,7 +48910,7 @@ function fxPathCards(){
    <div class="pc-top"><span class="pc-num">Pathway 02</span><span class="pc-rule" aria-hidden="true"></span></div>
    <div class="pc-body">
     <div class="pc-text"><h2 class="pc-h" id="pc-up-h">UPSC CSE Economics</h2>
-     <p class="pc-pos">Understand the Indian economy through concepts, institutions, policies and evidence.</p>
+     <p class="pc-pos">Economic foundations. Indian institutions. Public policy. Prelims and Mains.</p>
      <p class="pc-d">A structured preparation pathway for Civil Services aspirants: conceptual clarity, the Indian economy and its policies, handbooks, current developments and examination thinking.</p></div>
     <a class="pc-prev pc-shelf" href="${esA(fxLibHref())}" aria-label="The Economics Handbook Collection: eleven volumes">${shelf.map((v,i)=>`<span class="pc-book b${i}">${fxCover(v,true)}</span>`).join("")}</a>
    </div>
@@ -48911,34 +49057,36 @@ function fxAcross(){
  </div></section>`;
 }
 
-/* ── the Arjun Agrawal Academic Ecosystem ──────────────────────────────────
+/* ── ARJUN AGRAWAL | ACADEMIC ECOSYSTEM ────────────────────────────────────
    Three independent platforms from the same educator, each panel in its own
-   platform's colours: Economics on this platform's charcoal and gold, The
-   Business Brief on its warm paper and navy, Political Studies & Global
-   Affairs on midnight with burgundy. The section is unnumbered and carries no
-   pathway colour, because it is the wider ecosystem, not a third pathway. The
-   panels are typographic, each with a small drawn mark: no screenshots of the
-   other platforms are used. */
+   platform's colours and with its own preview card and mark where the platform
+   publishes them (44-flagship-core.js says which). The section is unnumbered and
+   carries no pathway colour: it is the wider ecosystem, not a third pathway. */
 function fxEcosystem(){
  return `<section class="fx-section fx-eco" aria-labelledby="eco-h"><div class="fx-wrap">
-  <div class="eco-head rv"><div><p class="fx-kicker eco-k">The Arjun Agrawal Academic Ecosystem · Knowledge. Insight. Impact.</p>
+  <div class="eco-head rv"><div><p class="fx-kicker eco-k">${esc(FX_ECO_ID.name)} · ${esc(FX_ECO_ID.line)}</p>
    <h2 class="fx-h2" id="eco-h">One educator. Three disciplines. <em>One connected learning ecosystem.</em></h2></div>
-   <p class="fx-lede">Economics, Politics and Business: three independent academic platforms, each with its own subject, examinations and design, from the same educator. This one is the home of Economics.</p></div>
+   <p class="fx-lede">Economics, Political Studies and Business Management: three independent academic platforms, each with its own subject, examinations and design language, from the same educator. This one is the home of Economics.</p></div>
   <ol class="eco-grid rv">${FX_ECO.map(fxEcoCard).join("")}</ol>
  </div></section>`;
 }
 
 /* ── 8 · about ──────────────────────────────────────────────────────────── */
+/* the author: the definitive brief asks for the educator and author to be visible on the home
+   page, in the book section and on About. Every fact is the site's own (CV_AUTHOR) or the book's. */
+const FX_AUTHOR_BIO="Arjun Agrawal is an Economics educator, academic resource creator and author. His work connects economic theory with public policy, examination preparation and university-level study, and his academic interests extend across Economics, Political Studies and Business Management. Through his teaching, his publications and these learning platforms, he aims to make complex ideas accessible, analytical and relevant to the world around us.";
 function fxAboutBand(){
  let facts=[];try{facts=CV_AUTHOR}catch(e){}
  let por="";try{por=`<img src="${esA(CV_PORTRAIT.src)}" width="${CV_PORTRAIT.w}" height="${CV_PORTRAIT.h}" alt="${esA(CV_PORTRAIT.alt)}" loading="lazy" decoding="async">`}catch(e){}
+ let cover="";try{cover=BOOK_PV.book.cover?`<img class="ab-bk-c" src="${esA(BOOK_PV.book.cover.src)}" width="${BOOK_PV.book.cover.w}" height="${BOOK_PV.book.cover.h}" alt="The cover of The Indian Economy" loading="lazy" decoding="async">`:""}catch(e){}
  return `<section class="fx-section fx-aboutb" aria-labelledby="ab-h"><div class="fx-wrap abx-grid">
   <figure class="ab-por rv">${por}</figure>
-  <div>${fxSecHead("08","About","Arjun Agrawal","","ab-h")}
+  <div>${fxSecHead("08","About the author","Arjun Agrawal","","ab-h")}
    <p class="ab-roles">${esc(FXI.roles)}</p>
-   <p class="fx-lede">Arjun teaches IB Diploma Programme Economics, mentors Civil Services aspirants in the Economics of General Studies, and designs the resources on this platform, from the diagrams and mindmaps to the handbooks. He is the author of <a class="fx-a" href="#/book"><i>The Indian Economy</i></a> (First Edition, 2026-27).</p>
+   <p class="fx-lede">${esc(FX_AUTHOR_BIO)}</p>
+   <a class="ab-bk" href="#/book">${cover}<span><span class="ab-bk-k">Author</span><b><i>The Indian Economy</i></b><span>A Comprehensive Academic and Examination Reference · First Edition, 2026-27</span></span></a>
    <dl class="ab-facts">${facts.map(([k,v])=>`<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-   <p><a class="fx-btn secondary" href="#/about">About Arjun Agrawal ${fxArr()}</a></p></div>
+   <p class="ab-acts"><a class="fx-btn secondary" href="#/about">About Arjun Agrawal ${fxArr()}</a><a class="fx-a fx-link" href="#/book">The Indian Economy</a></p></div>
  </div></section>`;
 }
 
@@ -48980,7 +49128,11 @@ VIEWS.home=function(){
  /* a teacher's assignment link (#assign=…) opens on the home page, so its banner leads it, as before */
  let asn="";try{if(typeof assignBanner==="function")asn=assignBanner()}catch(e){asn=""}
  let book="";try{book=bkHomeFeature()+bkHomeCompanion()}catch(e){book=""}
- return `${asn}<div class="fxhome">${fxHero()}${book}${fxThink()}${fxIbEnv()}${fxUpEnv()}${fxResources()}${fxLab()}${fxAcross()}${fxEcosystem()}${fxAboutBand()}${fxContactBand()}</div>`;
+ /* the editorial sequence of the definitive brief: the hero and both pathways, each pathway's
+    environment, the book and its companion, the learning experience, the ecosystem, the author, contact */
+ let n=1;const h=`${fxHero()}${fxIbEnv()}${fxUpEnv()}${book}${fxThink()}${fxResources()}${fxLab()}${fxAcross()}${fxEcosystem()}${fxAboutBand()}${fxContactBand()}`
+  .replace(/<span class="fx-num">\d+<\/span>/g,()=>`<span class="fx-num">${String(++n).padStart(2,"0")}</span>`);
+ return `${asn}<div class="fxhome">${h}</div>`;
 };
 
 /* ── the IB DP landing's opening ────────────────────────────────────────── */
@@ -49049,12 +49201,12 @@ function FLAGSHIPSUITE(){
   const card=c=>{const i=h.indexOf(`<article class="pc ${c}"`);return i<0?"":h.slice(i,h.indexOf("</article>",i))};
   const ib=card("pc-ib"),up=card("pc-up");const n=s=>((s.split('<ul class="pc-f">')[1]||"").split("</ul>")[0].match(/<li>/g)||[]).length;
   return n(ib)===10&&n(up)===10&&/Explore IB Economics/.test(ib)&&/Explore UPSC Economics/.test(up)&&/href="#\/ib"/.test(ib)&&/href="#\/upsc"/.test(up)
-   &&ib.includes("Think conceptually. Apply theory. Evaluate real-world economics.")&&up.includes("Understand the Indian economy through concepts, institutions, policies and evidence.")
+   &&ib.includes("Concepts. Diagrams. Real-world applications. Examination thinking.")&&up.includes("Economic foundations. Indian institutions. Public policy. Prelims and Mains.")
    &&/SL and HL learning pathways/.test(ib)&&/Extended Essay support/.test(ib)&&/The Indian Economy book/.test(up)&&/Digital Revision Companion/.test(up)&&/Intensive online coaching/.test(up)});
  T("Flagship · the figures on the pathway cards are counted from the platform's data",()=>{const n=rnCount(),h=home();
   return h.includes(`<b>${fmtN(n.diagrams)}</b> diagrams`)&&h.includes(`<b>${fmtN(n.cases)}</b> real-world cases`)&&h.includes(`<b>${fmtN(fxVols().length)}</b> handbooks`)&&h.includes(`<b>${fmtN(UP_CA.length)}</b> current-affairs notes`)});
  T("Flagship · the home's movements follow the brief, in order",()=>{const h=home();
-  const ids=["hx-h","pc-ib-h","pc-up-h","bk-h","dc-h","th-h","eib-h","eup-h","res-h","lab-h","ac-h","eco-h","ab-h","ct-h"];
+  const ids=["hx-h","pc-ib-h","pc-up-h","eib-h","eup-h","bk-h","dc-h","th-h","res-h","lab-h","ac-h","eco-h","ab-h","ct-h"];
   const at=ids.map(id=>h.indexOf(`id="${id}"`));const ok=at.every((x,i)=>x>=0&&(i===0||x>at[i-1]));
   return ok?true:{ok:false,d:ids.filter((id,i)=>at[i]<0).join(", ")||"out of order"}});
  T("Flagship · headings on the home descend without skipping a level",()=>{const lv=[...home().matchAll(/<h([1-6])\b/g)].map(m=>+m[1]);
@@ -49125,33 +49277,40 @@ function FLAGSHIPSUITE(){
  /* ── the Arjun Agrawal Academic Ecosystem: two sister platforms in five places, never a third pathway ── */
  const ecoLinks=(h,u)=>{const t=document.createElement("template");t.innerHTML=h;return [...t.content.querySelectorAll("a")].filter(a=>a.getAttribute("href")===u)};
  T("Academic Ecosystem · the addresses are the three platforms' production addresses, with no placeholder",()=>
-  FX_ECO.map(e=>e.url).join(" ")==="https://ib-economics-pi.vercel.app/ https://the-business-brief-dun.vercel.app/ https://arjun-agrawal-political-studies.vercel.app/"
-  &&FX_ECO.map(e=>e.name).join("|")==="Economics|The Business Brief|Political Studies & Global Affairs"&&FX_ECO.filter(e=>e.current).length===1&&FX_ECO[0].current);
+  FX_ECO.map(e=>e.url).join(" ")==="https://ib-economics-pi.vercel.app/ https://arjun-agrawal-political-studies.vercel.app/ https://the-business-brief-dun.vercel.app/"
+  &&FX_ECO.map(e=>e.name).join("|")==="Economics|Political Studies & Global Affairs|The Business Brief"&&FX_ECO.map(e=>e.disc).join("|")==="Economics|Political Studies|Business Management"&&FX_ECO.filter(e=>e.current).length===1&&FX_ECO[0].current);
  T("Academic Ecosystem · the header menu, the drawer, the home, the footer and About each link once to each sister, in a new tab with rel noopener noreferrer",()=>{
   const f=document.querySelector("footer.ft .ft-paths");
   const all={menu:fxEcoPanelHtml(),drawer:fxDrawerHtml(),home:fxEcosystem(),footer:f?f.innerHTML:"",about:abEcosystem()};
   const bad=[];for(const [k,h] of Object.entries(all))for(const u of [FX_BB.url,FX_PS.url]){const L=ecoLinks(h,u);
    if(L.length!==1||!L.every(a=>a.target==="_blank"&&a.rel==="noopener noreferrer"&&a.textContent.includes("↗")&&/opens in a new tab/.test(a.textContent)))bad.push(k+": "+u)}
   return bad.length?{ok:false,d:bad.join(", ")}:true});
- T("Academic Ecosystem · the header carries the menu after About, and the menu marks Economics as the platform you are on",()=>{
+ T("Academic Ecosystem · the header carries the menu after Resources and before About, and the menu marks Economics as the platform you are on",()=>{
   const g=document.getElementById("gnav"),b=g&&g.querySelector("button.gn-eco");const t=document.createElement("template");t.innerHTML=fxEcoPanelHtml();
   const cur=t.content.querySelectorAll("[aria-current]");const items=[...g.children].map(x=>x.className);
-  return !!b&&b.getAttribute("aria-label")==="Academic Ecosystem"&&b.getAttribute("aria-controls")==="fxpanel"&&items.indexOf("gn-eco")>items.map((c,k)=>/gn-item/.test(c)?k:-1).reduce((m,k)=>Math.max(m,k),-1)
+  return !!b&&b.getAttribute("aria-label")==="Academic Ecosystem"&&b.getAttribute("aria-controls")==="fxpanel"&&(()=>{const k=[...g.children],e=k.indexOf(b),r=k.findIndex(x=>x.classList.contains("gn-res")),a=k.findIndex(x=>x.getAttribute&&x.getAttribute("href")==="#/about");return r>=0&&a>e&&e>r})()
    &&cur.length===1&&cur[0].getAttribute("href")==="#/"&&/Economics/.test(cur[0].textContent)&&/You are here/.test(cur[0].textContent)
-   &&[...t.content.querySelectorAll(".fxe b")].map(x=>x.textContent).join("|")==="Economics|The Business Brief|Political Studies & Global Affairs"});
+   &&[...t.content.querySelectorAll(".fxe b")].map(x=>x.textContent).join("|")==="Economics|Political Studies & Global Affairs|The Business Brief"});
  T("Academic Ecosystem · the sisters are not pathways: no pathway colour, no place in the switcher, the two pathways keep equal weight",()=>{
   const sw=fxSwitcher("shared","x"),f=document.querySelector("footer.ft .ft-paths");
   return !/business|political/i.test(sw)&&!/pathway 03|p-(bb|ps)[^"]*\b(ib|up)\b/i.test(fxEcosystem()+(f?f.innerHTML:""))&&FX_SHARED.has("home")
    &&!!f&&[...f.querySelectorAll(".ft-path.p-bb .ft-pn,.ft-path.p-ps .ft-pn")].map(x=>x.textContent).join("|")==="Beyond Economics|Beyond Economics"&&f.querySelectorAll(".ft-path.p-ib,.ft-path.p-up").length===2});
  T("Academic Ecosystem · the home section reads as the final brief asks: its heading, the shared identity, the three names, lines and taglines, and nothing claimed",()=>{const t=txt(fxEcosystem());
-  return t.includes("One educator. Three disciplines.")&&t.includes("One connected learning ecosystem.")&&t.includes("Knowledge. Insight. Impact.")&&/You are here/.test(t)
-   &&["Arjun Agrawal | IB DP Economics and UPSC CSE Economics","IB DP Business Management","IB DP Global Politics | Indian Polity | International Relations | PSIR"].every(x=>t.includes(x))
-   &&["Think like an economist.","Strategy. Leadership. Decisions.","Understand power, politics and global affairs."].every(x=>t.includes(x))
+  return t.includes("One educator. Three disciplines.")&&t.includes("One connected learning ecosystem.")&&t.includes("Arjun Agrawal | Academic Ecosystem")&&t.includes("Think. Understand. Connect.")&&/You are here/.test(t)
+   &&["IB DP Economics | UPSC CSE Economics","IB DP Business Management","IB DP Global Politics | International Relations | Indian Polity | PSIR"].every(x=>t.includes(x))
+   &&["Think like an economist.","Strategy. Leadership. Decisions.","Power. Politics. Perspectives."].every(x=>t.includes(x))
    &&!/(best|number one|award|students use|trusted by|\d+\s*(students|users))/i.test(t)});
  T("Academic Ecosystem · the footer names the ecosystem, says which platform this is and lists the pathways, then the two sisters",()=>{
   const f=document.querySelector("footer.ft .ft-paths");if(!f)return false;const t=f.textContent.replace(/\s+/g," ");
   const o=["IB DP Economics","UPSC CSE Economics","The Business Brief","Political Studies & Global Affairs"].map(x=>t.indexOf(x));
   return f.getAttribute("aria-label")==="The Arjun Agrawal Academic Ecosystem"&&/You are on Economics/.test(t)&&o.every((x,k)=>x>=0&&(k===0||x>o[k-1]))});
+ T("Academic Ecosystem · each card uses its platform's own preview and mark where one exists, and Political Studies, with none available, stays typographic",()=>{
+  const t=document.createElement("template");t.innerHTML=fxEcosystem();const c=k=>t.content.querySelector(".eco-card.eco-"+k);
+  const img=(k,s)=>{const i=c(k)&&c(k).querySelector(s);return i?i.getAttribute("src"):""};
+  return img("bb",".eco-pv-img")==="assets/ecosystem/the-business-brief-preview.webp"&&img("bb",".eco-logo")==="assets/ecosystem/the-business-brief-mark.svg"
+   &&img("eco",".eco-pv-img")==="assets/ecosystem/economics-preview.webp"&&!!c("ps")&&!c("ps").querySelector("img,svg")&&!!c("ps").querySelector(".eco-pv-type")
+   &&[...t.content.querySelectorAll(".eco-card img")].every(i=>+i.getAttribute("width")>0&&+i.getAttribute("height")>0&&i.getAttribute("loading")==="lazy")
+   &&[...t.content.querySelectorAll(".eco-card .eco-go")].length===2&&[...t.content.querySelectorAll(".eco-card .eco-go")].every(a=>/^Visit platform: /.test(a.textContent))});
  T("Academic Ecosystem · About shows the three platforms after the platform story",()=>{const h=aboutPage();
   return h.includes('id="ab-e"')&&h.indexOf('id="ab-s"')<h.indexOf('id="ab-e"')&&(h.match(/class="eco-card /g)||[]).length===3});
  T("Flagship · the welcome dialogue waits for the IB DP environment",()=>/fxPathway\(VIEW\)!=="ib"/.test(String(bootOnboarding))&&typeof FX_OB.run==="function");
@@ -49203,15 +49362,22 @@ const FX_PATHTAG={ib:["cp-ib","IB DP"],upsc:["cp-up","UPSC CSE"],shared:["cp-sh"
  };
 })();
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE INDIAN ECONOMY · the 153 chapters, from the book's own Detailed Contents
+   (pp. viii-xx of the First Edition, 2026-27): [number, title, first page].
+   Generated once from the supplied PDF; titles are the book's, unchanged.
+   ═══════════════════════════════════════════════════════════════════════════ */
+const BK_CHAPTERS=[[1,"Understanding Economics",2],[2,"Scarcity, Choice and Opportunity Cost",5],[3,"Factors of Production, Goods and Economic Sectors",9],[4,"The Production Possibility Curve",11],[5,"Economic Systems and Resource Allocation",15],[6,"Economic Methodology: How Economists Think",18],[7,"Demand and Consumer Behaviour",21],[8,"Supply and Production",25],[9,"Market Equilibrium and the Price Mechanism",28],[10,"Elasticity of Demand and Supply",32],[11,"Efficiency, Equity and Market Failure",35],[12,"Prelims and Mains Revision Compendium",39],[13,"Foundations of National Income Accounting",43],[14,"The Circular Flow of Income",45],[15,"GDP and the Core Macroeconomic Aggregates",47],[16,"Measuring National Income: The Three Methods",52],[17,"Expenditure Components and Capital Formation",56],[18,"Income, Saving and Capital Formation",59],[19,"Nominal GDP, Real GDP and the GDP Deflator",62],[20,"India’s National Accounts, Base 2022-23",65],[21,"GDP, Growth and Development",70],[22,"Prelims and Mains Revision Compendium",74],[23,"Understanding the Indian Economy",78],[24,"The Colonial Economic Legacy",82],[25,"Economic Ideas and Development Models",85],[26,"Economic Planning in India, 1950-2017",88],[27,"The Mixed Economy and the Changing Role of the State",93],[28,"The Economic Reforms of 1991",96],[29,"The Indian Economy in the Post-Reform Era",100],[30,"From Planning Commission to NITI Aayog",103],[31,"India’s Development Challenges",106],[32,"Viksit Bharat 2047: India’s Development Strategy",113],[33,"Prelims and Mains Revision Compendium",117],[34,"Foundations and Characteristics of Money",122],[35,"Money Supply, Monetary Aggregates and Liquidity",126],[36,"Deposits and Forms of Deposit Money",131],[37,"The Reserve Bank of India",135],[38,"Monetary Policy Framework in India",139],[39,"Instruments of Monetary Policy",144],[40,"Monetary Transmission Mechanism",149],[41,"Recent Developments, 2023 to November 2026",152],[42,"Digital Money and Central Bank Digital Currency",155],[43,"Challenges, Limitations and Policy Debates",157],[44,"Prelims and Mains Revision Compendium",160],[45,"Foundations of Inflation",164],[46,"Measurement of Inflation and Price Indices",166],[47,"Types of Inflation and Related Concepts",174],[48,"Causes and Transmission of Inflation",176],[49,"Economic and Distributional Effects of Inflation",182],[50,"Inflation in India: Trends and Structural Drivers",188],[51,"Food Inflation and Agricultural Price Management",192],[52,"Inflation Targeting and the Monetary Policy Interface",197],[53,"Inflation Management: Policy and Institutional Responses",200],[54,"Global Inflation and Emerging Challenges",204],[55,"Prelims and Mains Revision Compendium",207],[56,"Foundations and Evolution of Indian Banking",212],[57,"Structure and Types of Banks in India",216],[58,"Banking Operations, Balance Sheets and Performance",222],[59,"Credit Appraisal, Asset Quality and Non-Performing Assets",226],[60,"Bank Regulation, Prudential Norms and the Basel Framework",233],[61,"Banking Supervision, Governance and Depositor Protection",239],[62,"Cooperative Banking and Rural Credit Institutions",243],[63,"NBFCs and Development Finance Institutions",247],[64,"Financial Inclusion and Priority Sector Lending",251],[65,"Digital Banking, Fintech and Technology Risks",256],[66,"Banking Reforms, Financial Stability and Contemporary Challenges",260],[67,"Prelims and Mains Revision Compendium",264],[68,"Foundations and Architecture of Financial Markets",269],[69,"Financial Instruments and Securities",271],[70,"Money Markets and Short-Term Financial Instruments",274],[71,"Government Securities and Sovereign Debt Markets",278],[72,"Corporate Debt and Bond Markets",281],[73,"Equity Markets and Primary Capital Markets",285],[74,"Secondary Markets and Financial Market Infrastructure",288],[75,"Mutual Funds, ETFs and Collective Investment",291],[76,"Alternative Investments and Real-Asset Investment Vehicles",293],[77,"Derivatives and Financial Risk Management Markets",295],[78,"Commodity Markets, International Financial Markets and GIFT IFSC",299],[79,"Financial Market Regulation, Investor Protection and Contemporary Challenges",301],[80,"Prelims and Mains Revision Compendium",304],[81,"Foundations of Public Finance and Taxation",310],[82,"Principles, Classification and Economics of Taxation",313],[83,"Constitutional and Institutional Framework of Taxation",318],[84,"Public Revenue and India’s Tax Structure",323],[85,"Direct Taxation in India",326],[86,"Indirect Taxation and the Goods and Services Tax",332],[87,"Customs and Other Indirect Taxes",340],[88,"International and Digital Taxation",342],[89,"Tax Administration, Compliance and Reforms",348],[90,"Revenue Mobilisation, Tax Reform and Fiscal Federalism",351],[91,"Prelims and Mains Revision Compendium",356],[92,"Foundations of Fiscal Policy",361],[93,"Instruments and Fiscal Stance",364],[94,"Fiscal Transmission, Multipliers and Crowding Effects",368],[95,"Public Expenditure and Expenditure Management",372],[96,"The Union Budget: Constitutional Framework and Process",379],[97,"Budget Classification, Types and Approaches",384],[98,"Fiscal Deficits and Deficit Financing",388],[99,"Public Debt and Debt Management",393],[100,"FRBM and Fiscal Consolidation",399],[101,"Fiscal Federalism: State and Local Government Finances",403],[102,"Contemporary Fiscal Developments and Global Spillovers",408],[103,"Prelims and Mains Revision Compendium",413],[104,"India’s External Sector: Foundations and Architecture",418],[105,"Balance of Payments: Concepts, Accounting and Structure",420],[106,"The Current Account: Merchandise, Services and Transfers",424],[107,"Capital and Financial Flows",427],[108,"BoP Disequilibrium and Adjustment Mechanisms",431],[109,"Foreign Exchange Reserves and External Liquidity",434],[110,"Exchange Rates: Determination and Economics",436],[111,"Exchange-Rate Regimes and India’s Policy Framework",439],[112,"Currency Convertibility and External Account Management",441],[113,"International Trade: Theory, Structure and India’s Performance",447],[114,"India’s Foreign Trade Policy and Global Trade Architecture",450],[115,"India’s External Sector: Vulnerabilities, Challenges and the Way Forward",453],[116,"Prelims and Mains Revision Compendium",460],[117,"Global Economic Governance: Architecture and Logic",464],[118,"The World Trade Organization",466],[119,"Tariffs, Non-Tariff Measures and WTO Disciplines",472],[120,"The International Monetary Fund",475],[121,"The World Bank Group",479],[122,"Regional and BRICS Finance: ADB, AIIB, NDB and the CRA",481],[123,"UNCTAD, OECD, BIS and ITC",484],[124,"Regional and Bilateral Trade Agreements",486],[125,"Contemporary Issues: CBAM, Digital Trade and Fragmentation",491],[126,"India and the Global Economic Order, 2024 to 2026",495],[127,"Prelims and Mains Revision Compendium",498],[128,"The Agricultural Economy: Structure and Productivity",504],[129,"Crops, Seasons and Agro-Ecology",507],[130,"Inputs and Technology: Land, Seeds, Fertilisers and Machines",511],[131,"Irrigation, Groundwater and Rainfed Farming",516],[132,"Farm Credit, Insurance and Risk",519],[133,"Research, Digital Agriculture and Sustainable Farming",524],[134,"Prices, MSP, Procurement and Subsidies",528],[135,"Agricultural Marketing and Value Chains",533],[136,"Food Security, PDS and Buffer Stocks",536],[137,"Horticulture and Food Processing",539],[138,"Allied Sectors: Livestock, Dairy, Fisheries and Beyond",541],[139,"Policy and Schemes Architecture",544],[140,"Prelims and Mains Revision Compendium",548],[141,"Industry, Services and Structural Transformation",554],[142,"Evolution of Industrial Policy in India",559],[143,"Measuring Industrial and Manufacturing Performance",562],[144,"India’s Manufacturing Ecosystem and Priority Industries",565],[145,"Infrastructure, Investment Models, Industrial Location and Clusters",572],[146,"MSMEs, Entrepreneurship and Industrial Development",578],[147,"Domestic Trade, Commerce and Industrial Value Chains",582],[148,"Employment Concepts and Measurement",585],[149,"Structural Challenges in Employment and Labour Markets",589],[150,"Labour Reforms, the Four Labour Codes and Social Security",594],[151,"Government Schemes and Policy Architecture",598],[152,"Industrial Challenges, Policy Reforms and Way Forward",603],[153,"Prelims and Mains Revision Compendium",605]];
+
 /* GENERATED by tools/book/build_book.py from tools/book/preview-pages.json and the private PDF.
    Do not edit by hand. The cover and the chosen pages of THE INDIAN ECONOMY, as images, with the
    printed page number of each (checked against the page itself). No PDF is referenced here or
    stored in the repository. */
-const BOOK_PV={"book":{"id":"the-indian-economy","title":"The Indian Economy","pv":[{"p":"xxi","kind":"figure","cap":"Master Systems Map: the Indian economy as one system. Five linked systems, the flows of goods, labour and money between them, and the chapters that treat each.","src":"assets/book/the-indian-economy/page-xxi.webp","w":1600,"h":1131,"sm":{"src":"assets/book/the-indian-economy/page-xxi-sm.webp","w":360,"h":254}},{"p":"xxii","kind":"table","cap":"Master UPSC Syllabus Map: the economics-related areas of the Civil Services syllabus matched to the Parts, chapters and sections of the book.","src":"assets/book/the-indian-economy/page-xxii.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-xxii-sm.webp","w":360,"h":510}},{"p":"xxv","kind":"table","cap":"Reader and Course Alignment Map: how each unit relates to UPSC Prelims, UPSC Mains, State PCS, RBI Grade B (General), undergraduate and postgraduate study.","src":"assets/book/the-indian-economy/page-xxv.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-xxv-sm.webp","w":360,"h":510}},{"p":"12","kind":"concept","cap":"Opportunity cost and the shape of the production possibility curve: concave and straight-line curves drawn from a schedule, with the marginal rate of transformation.","src":"assets/book/the-indian-economy/page-12.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-12-sm.webp","w":360,"h":510}},{"p":"16","kind":"policy","cap":"The Indian economic system: the mixed economy and its milestones from the Industrial Policy Resolution of 1948, with a UPSC trap and a Mains application.","src":"assets/book/the-indian-economy/page-16.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-16-sm.webp","w":360,"h":510}},{"p":"36","kind":"figure","cap":"Externalities and public goods: negative and positive externalities drawn with social and private costs and benefits, and goods classified by rivalry and excludability.","src":"assets/book/the-indian-economy/page-36.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-36-sm.webp","w":360,"h":510}},{"p":"39","kind":"map","cap":"Prelims and Mains Revision Compendium: the integrated mind map of the foundations of Economics, and where each concept is used later in the book.","src":"assets/book/the-indian-economy/page-39.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-39-sm.webp","w":360,"h":510}},{"p":"40","kind":"exam","cap":"One-page rapid revision: twelve rules to remember for Prelims, a key to the diagrams, and the master comparison of distinctions that decide Prelims answers.","src":"assets/book/the-indian-economy/page-40.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-40-sm.webp","w":360,"h":510}},{"p":"54","kind":"numerical","cap":"The expenditure method and the integrated Arthapur exercise: one economy measured by production, income and expenditure, and the three reconciled.","src":"assets/book/the-indian-economy/page-54.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-54-sm.webp","w":360,"h":510}},{"p":"58","kind":"data","cap":"The composition of India's GDP by expenditure in 2025-26, read from the official estimates, with a Mains application and Prelims facts.","src":"assets/book/the-indian-economy/page-58.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-58-sm.webp","w":360,"h":510}}],"cover":{"src":"assets/book/the-indian-economy/cover.webp","w":1000,"h":1415,"sm":{"src":"assets/book/the-indian-economy/cover-sm.webp","w":360,"h":509}}},"companion":{"id":"digital-revision-companion","title":"The Indian Economy: Digital Revision Companion","pv":[]}};
+const BOOK_PV={"book":{"id":"the-indian-economy","title":"The Indian Economy","pv":[{"p":"vii","kind":"contents","cap":"Contents at a Glance: the eight Parts and 153 chapters of the book, numbered continuously, with the page on which each Part and unit begins.","src":"assets/book/the-indian-economy/page-vii.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-vii-sm.webp","w":360,"h":510}},{"p":"xxi","kind":"figure","cap":"Master Systems Map: the Indian economy as one system. Five linked systems, the flows of goods, labour and money between them, and the chapters that treat each.","src":"assets/book/the-indian-economy/page-xxi.webp","w":1600,"h":1131,"sm":{"src":"assets/book/the-indian-economy/page-xxi-sm.webp","w":360,"h":254}},{"p":"xxii","kind":"table","cap":"Master UPSC Syllabus Map: the economics-related areas of the Civil Services syllabus matched to the Parts, chapters and sections of the book.","src":"assets/book/the-indian-economy/page-xxii.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-xxii-sm.webp","w":360,"h":510}},{"p":"2","kind":"chapter","cap":"A chapter as it opens: Chapter 1, Understanding Economics, with the meaning and definitions of Economics across its major schools and the scope of its branches, each with a typical Indian question.","src":"assets/book/the-indian-economy/page-2.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-2-sm.webp","w":360,"h":510}},{"p":"12","kind":"concept","cap":"Opportunity cost and the shape of the production possibility curve: concave and straight-line curves drawn from a schedule, with the marginal rate of transformation.","src":"assets/book/the-indian-economy/page-12.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-12-sm.webp","w":360,"h":510}},{"p":"16","kind":"policy","cap":"The Indian economic system: the mixed economy and its milestones from the Industrial Policy Resolution of 1948, with a UPSC trap and a Mains application.","src":"assets/book/the-indian-economy/page-16.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-16-sm.webp","w":360,"h":510}},{"p":"36","kind":"figure","cap":"Externalities and public goods: negative and positive externalities drawn with social and private costs and benefits, and goods classified by rivalry and excludability.","src":"assets/book/the-indian-economy/page-36.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-36-sm.webp","w":360,"h":510}},{"p":"39","kind":"map","cap":"Prelims and Mains Revision Compendium: the integrated mind map of the foundations of Economics, and where each concept is used later in the book.","src":"assets/book/the-indian-economy/page-39.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-39-sm.webp","w":360,"h":510}},{"p":"54","kind":"numerical","cap":"The expenditure method and the integrated Arthapur exercise: one economy measured by production, income and expenditure, and the three reconciled.","src":"assets/book/the-indian-economy/page-54.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-54-sm.webp","w":360,"h":510}},{"p":"58","kind":"data","cap":"The composition of India's GDP by expenditure in 2025-26, read from the official estimates, with a Mains application and Prelims facts.","src":"assets/book/the-indian-economy/page-58.webp","w":1600,"h":2265,"sm":{"src":"assets/book/the-indian-economy/page-58-sm.webp","w":360,"h":510}}],"cover":{"src":"assets/book/the-indian-economy/cover.webp","w":1000,"h":1415,"sm":{"src":"assets/book/the-indian-economy/cover-sm.webp","w":360,"h":509}}},"companion":{"id":"digital-revision-companion","title":"The Indian Economy: Digital Revision Companion","pv":[]}};
 
 /* ═══════════════════════════════════════════════════════════════════════════
    THE INDIAN ECONOMY · the book and its Digital Revision Companion
-   A new academic work by Arjun Agrawal (First Edition, 2026-27). This module
+   A new academic publication by Arjun Agrawal (First Edition, 2026-27). This module
    gives it a home at #/book (the book) and #/book/digital-revision-companion
    (the companion), a feature on the shared home page, a place in the header,
    the Resources menu, the drawer and search, and a preview that uses the
@@ -49304,7 +49470,7 @@ function bkReaderPages(key){
  const c=bkCoverImg();return c?[{p:"Cover",kind:"cover",cap:"The front cover of the First Edition, 2026-27.",src:c.src,w:c.w,h:c.h,sm:c.sm}].concat(pv):pv;
 }
 function bkHasCompanionPages(){return bkPv("companion").length>0}
-Object.assign(HL_KIND,{cover:"The cover",map:"Revision map",numerical:"A worked example",data:"Data on the Indian economy"});
+Object.assign(HL_KIND,{cover:"The cover",map:"Revision map",numerical:"A worked example",data:"Data on the Indian economy",contents:"Contents at a glance",chapter:"A chapter opening"});
 function bkPageWord(p){return p.p==="Cover"?"The cover":"Page "+p.p}
 /* the printed folio as printed: roman numerals stay lower case even where the label is set in capitals */
 function bkPageWordH(p){return p.p==="Cover"?"The cover":`Page <span class="bk-pn">${esc(p.p)}</span>`}
@@ -49313,7 +49479,7 @@ function bkVolume(id){
  const key=id==="bk-companion"?"companion":id==="bk-book"?"book":null;if(!key)return null;
  const pv=bkReaderPages(key);
  const isBook=key==="book",total=isBook?BK.pages:BK_COMP.pdfPages;
- return {id,n:"",num:0,title:isBook?BK.title:BK_COMP.title+": "+BK_COMP.name,category:isBook?"A new academic work":"Free digital revision resource",pages:total,pv,
+ return {id,n:"",num:0,title:isBook?BK.title:BK_COMP.title+": "+BK_COMP.name,category:isBook?"A new academic publication":"Free digital revision resource",pages:total,pv,
   kicker:isBook?`${BK.edition} · Look inside`:`${BK_COMP.edition} · Look inside`,
   pos:(p,i,n)=>isBook?`<b>${bkPageWordH(p)}</b>${p.p==="Cover"?"":` of ${BK.pages} numbered pages`}<span class="hl-sep" aria-hidden="true">·</span>preview ${i+1} of ${n}`
    :`<b>${bkPageWordH(p)}</b><span class="hl-sep" aria-hidden="true">·</span>preview ${i+1} of ${n}`,
@@ -49383,8 +49549,34 @@ function bkMap(full){
  </div>`;
 }
 
+/* ── the chapter explorer: choose a Part, read its units and chapters ─────
+   Chapter titles and first pages are the book's own (51-book-chapters.js, from
+   the Detailed Contents); each chapter belongs to the unit whose first page it
+   follows. The revision compendium that closes every unit is marked as such. */
+function bkPartChapters(P){
+ const cs=(typeof BK_CHAPTERS!=="undefined"?BK_CHAPTERS:[]).filter(c=>c[0]>=P.ch[0]&&c[0]<=P.ch[1]);
+ return P.units.map((u,k)=>{const next=P.units[k+1];return {u,cs:cs.filter(c=>c[2]>=u[2]&&(!next||c[2]<next[2]))}});
+}
+function bkExplorer(){
+ if(typeof BK_CHAPTERS==="undefined"||!BK_CHAPTERS.length)return "";
+ const P=BK_PARTS.find(x=>x.n===BKX.p)||BK_PARTS[0],i=BK_PARTS.indexOf(P);
+ return `<div class="bk-ex" id="bk-ex">
+  <h3 class="bk-h3" id="bk-ex-h">Explore the chapters</h3>
+  <div class="bk-ex-tabs" role="group" aria-labelledby="bk-ex-h">${BK_PARTS.map(x=>`<button type="button" class="bk-ex-t p${x.n}${x.n===P.n?" on":""}" aria-pressed="${x.n===P.n}" aria-controls="bk-ex-panel" onclick="bkExPart(${x.n})"><span>Part ${esc(x.w)}</span><b>${esc(x.t)}</b></button>`).join("")}</div>
+  <div class="bk-ex-panel p${P.n}" id="bk-ex-panel" aria-live="polite">
+   <p class="bk-ex-meta"><b>Part ${esc(P.w)}: ${esc(P.t)}</b><span>pp. ${P.p}-${bkPartEnd(i)} · Chapters ${P.ch[0]}-${P.ch[1]}</span></p>
+   ${bkPartChapters(P).map(({u,cs})=>`<div class="bk-ex-u"><p class="bk-ex-uh">${P.units.length>1||u[0].includes(".")?`<span>Unit ${esc(u[0])}</span>`:""}${esc(u[1])}</p>
+    <ol class="bk-ex-l">${cs.map(c=>`<li class="${/Revision Compendium/.test(c[1])?"rc":""}"><span class="bk-ex-n">${c[0]}</span><span class="bk-ex-c">${esc(c[1])}${/Revision Compendium/.test(c[1])?' <em>the unit\'s revision compendium</em>':""}</span><span class="bk-ex-p">p. ${c[2]}</span></li>`).join("")}</ol></div>`).join("")}
+   <p class="bk-ex-note">In the book's words: sections marked DC belong to the revision compendiums and are published in full in the Digital Revision Companion.</p>
+  </div>
+ </div>`;
+}
+function bkExPart(n){BKX.p=n;const el=document.getElementById("bk-ex");if(!el)return;el.outerHTML=bkExplorer();
+ const b=document.querySelector(`#bk-ex .bk-ex-t.p${n}`);if(b)try{b.focus({preventScroll:true})}catch(e){}}
+
 /* ── the inline look inside: a page at reading width, thumbnails, the reader ── */
 const BKV={key:"book",i:1};
+const BKX={p:1};
 function bkLook(){
  const key=BKV.key,pv=bkReaderPages(key);if(!pv.length)return "";
  const i=Math.max(0,Math.min(pv.length-1,BKV.i)),p=pv[i];
@@ -49429,7 +49621,8 @@ function bkCompanion(id,head){
   <div class="bk-comp-head">
    <div><p class="fx-kicker bk-gold">${head||"Free with the book"}</p>
     <h2 class="bk-h2" id="${id}"><span class="bk-t-s">${esc(BK_COMP.title)}</span> ${esc(BK_COMP.name)}</h2>
-    <p class="bk-comp-sub">${esc(BK_COMP.sub)}</p><p class="bk-ed">${esc(BK_COMP.edition)}</p></div>
+    <p class="bk-comp-sub">${esc(BK_COMP.sub)}</p><p class="bk-ed">${esc(BK_COMP.edition)}</p>
+    <p class="bk-comp-rel"><span>The book builds comprehensive understanding.</span> <span>The companion supports structured revision and examination practice.</span></p></div>
    <dl class="bk-facts on-dark"><div><dt>units</dt><dd>${BK_COMP.units}</dd></div><div><dt>PDF pages</dt><dd>${BK_COMP.pdfPages}</dd></div><div><dt>to read</dt><dd>Free</dd></div></dl>
   </div>
   <div class="bk-comp-grid">${BK_COMP.groups.map(([g,items],gi)=>`<div class="bk-cg rv" style="--i:${gi}"><h3 class="bk-cg-h">${esc(g)}</h3><ul>${items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("")}</div>
@@ -49444,11 +49637,11 @@ function bkCompanion(id,head){
 function bkHero(){
  return `<section class="bk-hero" aria-labelledby="bk-page-h"><div class="fx-wrap bk-hero-in">
   <div class="bk-hero-t">
-   <p class="fx-kicker bk-gold">A new academic work</p>
+   <p class="fx-kicker bk-gold">A new academic publication</p>
    <h1 class="bk-title" id="bk-page-h">${esc(BK.title)}</h1>
    <p class="bk-sub">${esc(BK.sub)}</p>
    <p class="bk-ed">${esc(BK.edition)}</p>
-   <p class="bk-by">${esc(BK.credit)}</p>
+   <p class="bk-by"><span class="bk-by-k">Author</span> Arjun Agrawal</p>
    <p class="bk-intro">${esc(BK.intro)}</p>
    ${bkAudience()}
    <p class="bk-cta"><a class="fx-btn primary" href="#bk-look-h" onclick="return bkJump('bk-look-h')">Look inside ${fxArr()}</a><a class="fx-btn secondary on-dark" href="#bk-buy-h" onclick="return bkJump('bk-buy-h')">Enquire about purchasing</a></p>
@@ -49464,6 +49657,7 @@ function bkAbout(){
    <p class="bk-p">Designed for competitive examination preparation and university-level study.</p></div>
   <div class="bk-about-f">${bkFacts()}
    <ul class="bk-detail">
+    <li><span>Author</span><b>${esc(BK.credit)}</b></li>
     <li><span>Edition</span><b>${esc(BK.edition)}</b></li>
     <li><span>Pages</span><b>${BK.pages} numbered pages. The PDF edition has ${BK.pdfPages} pages, including the front matter and unnumbered pages.</b></li>
     <li><span>Currency</span><b>${esc(BK.currency)}</b></li>
@@ -49474,7 +49668,7 @@ function bkAbout(){
 function bkLookSec(){
  return `<section class="bk-sec bk-look-sec" aria-labelledby="bk-look-h"><div class="fx-wrap">
   <header class="bk-sec-head"><p class="fx-kicker">Look inside</p><h2 class="bk-h2" id="bk-look-h">Browse selected pages</h2>
-   <p class="bk-p">A systems map, the syllabus and reader maps, explanations with their diagrams, a policy analysis, a worked example, a revision map and current Indian data, chosen to show the range of the book.</p></header>
+   <p class="bk-p">The contents at a glance, the Master Systems Map, the UPSC syllabus map, a chapter as it opens, an explanation with its diagrams, a policy analysis, market failure drawn, a revision mind map, a worked national-income exercise and current Indian data, chosen to show the range of the book.</p></header>
   ${bkLook()}
  </div></section>`;
 }
@@ -49483,6 +49677,7 @@ function bkMapSec(){
   <header class="bk-sec-head"><p class="fx-kicker">What the book covers</p><h2 class="bk-h2" id="bk-map-h">Eight Parts, 153 chapters, one economy</h2>
    <p class="bk-p">The bar is the book: each Part is as wide as its share of the numbered pages.</p></header>
   ${bkMap(true)}
+  ${bkExplorer()}
   <p class="bk-scope"><b>Scope.</b> Written for UPSC CSE, State PCS and RBI Grade B (General) candidates and for undergraduate and postgraduate study of the Indian economy. ${esc(BK.scope)} The Reader and Course Alignment Map (page xxv) shows what each group of readers should add from other sources.</p>
  </div></section>`;
 }
@@ -49510,9 +49705,22 @@ function bkCompPage(){
  ${bkCompanion("bk-comp-h","What it contains")}
  ${bkEnquiry("bk-buy-h")}`;
 }
+/* ── the author, on the book page: the same facts as the home page and About ── */
+function bkAuthor(){
+ let por="";try{por=`<img src="${esA(CV_PORTRAIT.src)}" width="${CV_PORTRAIT.w}" height="${CV_PORTRAIT.h}" alt="${esA(CV_PORTRAIT.alt)}" loading="lazy" decoding="async">`}catch(e){}
+ const bio=typeof FX_AUTHOR_BIO==="string"?FX_AUTHOR_BIO:"";
+ return `<section class="bk-sec bk-author" aria-labelledby="bk-author-h"><div class="fx-wrap bk-author-g">
+  <figure class="bk-author-p">${por}</figure>
+  <div><p class="fx-kicker">The author</p><h2 class="bk-h2" id="bk-author-h">Arjun Agrawal</h2>
+   <p class="bk-author-r">${esc(typeof FXI!=="undefined"?FXI.roles:"")}</p>
+   <p class="bk-p">${esc(bio)}</p>
+   <blockquote class="bk-author-q">“I have always believed that meaningful learning rests on three closely related elements: Concepts, Content and Contexts.”<cite>From the preface</cite></blockquote>
+   <p class="bk-cta"><a class="fx-btn secondary" href="#/about">About Arjun Agrawal ${fxArr()}</a></p></div>
+ </div></section>`;
+}
 VIEWS.book=function(){
  if(TAB===1)return `<div class="bkpage">${bkCompPage()}</div>`;
- return `<div class="bkpage">${bkHero()}${bkAbout()}${bkLookSec()}${bkMapSec()}${bkCompanion("bk-comp-h")}${bkEnquiry("bk-buy-h")}${bkLinks()}</div>`;
+ return `<div class="bkpage">${bkHero()}${bkAbout()}${bkAuthor()}${bkLookSec()}${bkMapSec()}${bkCompanion("bk-comp-h")}${bkEnquiry("bk-buy-h")}${bkLinks()}</div>`;
 };
 
 /* ── on the shared home page ───────────────────────────────────────────── */
@@ -49522,7 +49730,7 @@ function bkHomeFeature(){
   <div class="bk-home-g">
    <div class="bk-home-v rv">${bkMockup("md")}</div>
    <div class="bk-home-t">
-    <p class="fx-kicker">A new academic work</p>
+    <p class="fx-kicker">A new academic publication</p>
     <h2 class="bk-title md" id="bk-h">${esc(BK.title)}</h2>
     <p class="bk-sub">${esc(BK.sub)}</p>
     <p class="bk-ed">${esc(BK.edition)} <span aria-hidden="true">·</span> ${esc(BK.credit)}</p>
@@ -49594,6 +49802,8 @@ function fxResPanelHtml(){
    const t=document.createElement("template");
    t.innerHTML=`<a class="gn-item gn-book${on?" on":""}" href="#/book"${on?' aria-current="page"':""}><span class="gn-book-l">The Indian Economy</span><span class="gn-book-tag" aria-hidden="true">Book</span><span class="sr-only"> (book)</span></a><button type="button" class="gn-res" aria-expanded="false" aria-controls="fxpanel" data-label="Resources" aria-label="Resources" onclick="fxTogglePanel('res',this,event)">Resources<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>`;
    g.insertBefore(t.content,about);
+   /* the definitive order: … The Indian Economy · Resources · Academic Ecosystem · About */
+   const eco=g.querySelector("button.gn-eco");if(eco)g.insertBefore(eco,about);
    /* the pathways' names shorten on a narrow desktop; the word Economics stays for screen readers */
    g.querySelectorAll(".gn-path>a.fx-a").forEach(a=>{const m=/^(.*) Economics$/.exec(a.textContent.trim());if(m&&!a.querySelector(".gn-x"))a.innerHTML=`<span>${esc(m[1])}<span class="gn-x"> Economics</span></span>`});
   }catch(e){}
@@ -49608,7 +49818,7 @@ function fxResPanelHtml(){
      already listed under the two pathways, and are not repeated */
   const have=new Set([...h.matchAll(/href="([^"]*)"/g)].map(m=>m[1]));
   const extra=fxResGroups().flatMap(g=>g.items).filter(i=>i.href!=="#/book"&&!have.has(i.href));
-  const sec=`<div class="dw-sec dw-book"><div class="dw-k">A new academic work</div><a class="dw-main" href="#/book"${VIEW==="book"&&TAB===0?' aria-current="page"':""}>The Indian Economy <span class="dw-here">Book</span></a>${extra.length?`<div class="dw-l flat">${extra.map(i=>link(i.href,i.n)).join("")}</div>`:""}</div>`;
+  const sec=`<div class="dw-sec dw-book"><div class="dw-k">A new academic publication</div><a class="dw-main" href="#/book"${VIEW==="book"&&TAB===0?' aria-current="page"':""}>The Indian Economy <span class="dw-here">Book</span></a>${extra.length?`<div class="dw-l flat">${extra.map(i=>link(i.href,i.n)).join("")}</div>`:""}</div>`;
   const at=h.indexOf('<div class="dw-sec"><a class="dw-main" href="#/about"');
   return at<0?h+sec:h.slice(0,at)+sec+h.slice(at);
  };
@@ -49666,7 +49876,7 @@ function BOOKSUITE(){
  T("Book · the handbook catalogue is unchanged: the book is not a twelfth volume",()=>hlVols().length===11&&!hlVols().some(v=>/^bk-/.test(v.id)));
  T("Book · the home presents the book after the two pathways, with the cover and four pages to look inside",()=>{const h=home();
   const a=h.indexOf('id="pc-up-h"'),b=h.indexOf('id="bk-h"'),c=h.indexOf('id="dc-h"');
-  return a>0&&b>a&&c>b&&/A new academic work/.test(txt(h))&&(bkHomeFeature().match(/class="bk-thumbs"[\s\S]*?<\/ul>/)[0].match(/<li>/g)||[]).length===4});
+  return a>0&&b>a&&c>b&&/A new academic publication/.test(txt(h))&&(bkHomeFeature().match(/class="bk-thumbs"[\s\S]*?<\/ul>/)[0].match(/<li>/g)||[]).length===4});
  T("Book · the header links the book and opens Resources; the drawer lists both",()=>{
   const g=document.getElementById("gnav");const d=fxDrawerHtml();
   return !!g&&!!g.querySelector('a.gn-book[href="#/book"]')&&!!g.querySelector('button.gn-res[aria-controls="fxpanel"]')&&d.includes('href="#/book"')&&d.includes('href="#/book/digital-revision-companion"')});

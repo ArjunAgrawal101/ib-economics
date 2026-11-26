@@ -1,7 +1,7 @@
 /* The opening sequence (the seven-second opening, tools/migrations/2026-11-20-opening-seven-seconds.py):
    exactly seven seconds from the first frame the reader sees, at the six widths the brief names; what
    it says (demand and supply, the macroeconomy, the network of ideas, the monogram and the name,
-   Economics · Politics · Business, Think like an economist.) and how it is announced; Skip by mouse and keyboard, and Escape; the state
+   Economics · Politics · Business, Think. Understand. Connect.) and how it is announced; Skip by mouse and keyboard, and Escape; the state
    model the owner asked for (every full page load of any address plays in full, navigation inside
    the app never does, nothing is stored, so a skip is not remembered); reduced motion; no horizontal
    scroll at 320 px; a warm service worker; and, under a four-times CPU slowdown, that the stages
@@ -17,7 +17,7 @@ const SIZES = [[360, 780], [390, 844], [768, 1024], [1024, 768], [1440, 900], [1
 const MS = 7000, FADE = 6200;           /* the sequence and the start of its reveal */
 const FRAME = 50;                      /* the node is removed on the first frame at or after the exit: up to three frames at 60 Hz */
 const REVEAL = 800;                    /* the halves open over the last 800 ms (fadeAt 6200) */
-const LABEL = 'Arjun Agrawal. Economics, Politics, Business. Think like an economist.';
+const LABEL = 'Arjun Agrawal. Economics, Politics, Business. Think. Understand. Connect.';
 const rec = () => { const I = window.__INTRO; return { mode: I.mode, how: I.how, late: I.late, t0: I.t0, start: I.start, fp: I.fp,
   end: I.end, exitAt: I.exitAt, fadeStart: I.fadeStart, fadeEnd: I.fadeEnd, state: I.state, skipAt: I.skipAt || null,
   forced: I.forced, route: I.route, nav: I.nav, ready: window.__READY_AT || null }; };
@@ -115,7 +115,7 @@ for (const [w, h] of SIZES) {
   check(id.fig && /Price/.test(id.axes) && /Quantity/.test(id.axes) && /Price level/.test(id.axes) && /Real GDP/.test(id.axes) && /LRAS/.test(id.axes) && /SRAS/.test(id.axes) && /\bAD\b/.test(id.axes),
     'a demand and supply diagram draws itself, then the macroeconomy: AD, SRAS and LRAS, every axis labelled', id.axes);
   check(id.net.join('|') === 'CONCEPTS|EVIDENCE|POLICY|OUTCOMES', 'the network joins concepts, evidence, policy and outcomes', id.net.join('|'));
-  check(id.vec && id.pos === 'Economics Politics Business' && id.tg === 'Think like an economist.', 'then the monogram and the name, "Economics · Politics · Business" and "Think like an economist."', JSON.stringify([id.pos, id.tg]));
+  check(id.vec && id.pos === 'Economics Politics Business' && id.tg === 'Think. Understand. Connect.', 'then the monogram and the name, "Economics · Politics · Business" and "Think. Understand. Connect."', JSON.stringify([id.pos, id.tg]));
   check(id.doors && /gradient/.test(id.tint[0]) && /gradient/.test(id.tint[1]) && /rgb\(17, 20, 24\)/.test(id.bg), 'a midnight field in two halves, which open onto the page like the covers of a book', JSON.stringify([id.bg, id.tint[0].slice(0, 60)]));
   check(id.role === 'status' && id.label === LABEL, `the overlay is a status with the accessible name "${LABEL}"`, JSON.stringify({ role: id.role, label: id.label }));
   check(id.deco, 'every decorative layer, the stage text included, is hidden from assistive technology; only Skip is exposed');
