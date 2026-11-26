@@ -101,7 +101,7 @@ export default function EcosystemPage() {
             title="Which platform, for which purpose"
             intro="A quick guide to where each subject and resource sits, as each platform describes itself."
           />
-          <div className="reveal mt-12 overflow-x-auto rounded-[6px] border border-rule bg-paper">
+          <div className="reveal relative mt-12 overflow-x-auto rounded-[6px] border border-rule bg-paper">
             <table className="w-full min-w-[640px] border-collapse text-left">
               <caption className="sr-only">Areas covered by each platform</caption>
               <thead>

@@ -91,7 +91,7 @@ export function Hero() {
                   <span className="min-w-0 flex-1">
                     <span className="flex items-baseline gap-2">
                       <span className="text-[0.6875rem] font-semibold tabular-nums text-slate">{p.index}</span>
-                      <span className="display truncate text-[1.375rem] text-ink lg:text-[1.5rem]">{p.name}</span>
+                      <span className="display text-[1.375rem] leading-tight text-ink xl:text-[1.5rem]">{p.name}</span>
                     </span>
                     <span className="mt-0.5 block text-[0.8125rem] text-slate">{p.descriptor}</span>
                   </span>

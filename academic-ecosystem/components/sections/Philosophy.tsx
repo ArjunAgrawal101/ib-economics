@@ -18,7 +18,7 @@ export function Philosophy({ index = "07" }: { index?: string }) {
           }
         }
         @keyframes method-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-        @media (max-width: 1023px) { @keyframes method-fill { from { transform: scaleY(0); } to { transform: scaleY(1); } } }
+        @media (max-width: 1279px) { @keyframes method-fill { from { transform: scaleY(0); } to { transform: scaleY(1); } } }
       `}</style>
       <div className="shell relative">
         <SectionHeading
@@ -37,19 +37,19 @@ export function Philosophy({ index = "07" }: { index?: string }) {
 
         <div className="relative mt-16 lg:mt-24">
           {/* the line: horizontal on desktop, vertical on smaller screens */}
-          <div aria-hidden className="absolute bottom-6 left-[27px] top-6 w-px bg-ivory/15 lg:bottom-auto lg:left-0 lg:right-0 lg:top-[27px] lg:h-px lg:w-auto">
-            <div className="method-fill h-full w-full origin-top bg-gold-light/80 lg:origin-left" />
+          <div aria-hidden className="absolute bottom-6 left-[27px] top-6 w-px bg-ivory/15 xl:bottom-auto xl:left-0 xl:right-0 xl:top-[27px] xl:h-px xl:w-auto">
+            <div className="method-fill h-full w-full origin-top bg-gold-light/80 xl:origin-left" />
           </div>
 
-          <ol className="relative grid gap-10 lg:grid-cols-6 lg:gap-6">
+          <ol className="relative grid gap-10 xl:grid-cols-6 xl:gap-6">
             {principles.map((p, i) => (
-              <li key={p.verb} className="reveal grid grid-cols-[56px_1fr] gap-5 lg:block" style={{ animationDelay: `${i * 40}ms` }}>
+              <li key={p.verb} className="reveal grid grid-cols-[56px_1fr] gap-5 xl:block" style={{ animationDelay: `${i * 40}ms` }}>
                 <div className="relative z-10 flex size-14 items-center justify-center rounded-full border border-gold-light/50 bg-navy">
                   <Glyph index={i} />
                 </div>
-                <div className="lg:mt-8">
+                <div className="xl:mt-8">
                   <p className="text-[0.75rem] font-semibold tabular-nums tracking-[0.16em] text-gold-light">{p.index}</p>
-                  <h3 className="display mt-2 text-[2rem] leading-none text-ivory lg:text-[1.875rem] xl:text-[2.125rem]">{p.verb}</h3>
+                  <h3 className="display mt-2 text-[2rem] leading-none text-ivory xl:text-[2.125rem]">{p.verb}</h3>
                   <p className="mt-3 text-[0.9375rem] font-medium leading-snug text-ivory/90">{p.line}</p>
                   <p className="mt-3 font-serif text-[1rem] italic leading-relaxed text-mist">{p.detail}</p>
                 </div>

@@ -150,6 +150,7 @@ for (const width of WIDTHS) {
   if ((await eco.getAttribute("aria-expanded")) !== "false") fail("ecosystem menu: Escape did not close");
   // Discovery
   await page.getByRole("button", { name: "UPSC Preparation" }).click();
+  await page.waitForTimeout(800);
   const routes = await page.locator('[aria-live="polite"] a[target=_blank]').count();
   if (routes < 2) fail(`discovery: UPSC shows ${routes} routes (expected 2)`);
   await page.getByRole("button", { name: "IB Diploma Programme" }).click();
@@ -165,9 +166,15 @@ for (const width of WIDTHS) {
   const cards = await page.locator('section[aria-labelledby="insights-title"] article').count();
   if (cards !== 1) fail(`insights filter: ${cards} cards for Academic Reflections`);
   // Copy email
-  await ctx.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await ctx.grantPermissions(["clipboard-read", "clipboard-write"], { origin: BASE });
   await page.getByRole("button", { name: "Copy address" }).click();
-  if (!(await page.getByRole("button", { name: /Copied/ }).isVisible())) fail("copy email: no confirmation");
+  try {
+    await page.getByRole("button", { name: /Copied/ }).waitFor({ timeout: 3000 });
+    const clip = await page.evaluate(() => navigator.clipboard.readText());
+    if (clip !== "arjun1agr@gmail.com") fail(`copy email: clipboard holds "${clip}"`);
+  } catch {
+    fail("copy email: no confirmation");
+  }
   // Skip link
   await page.goto(BASE + "/about");
   await page.keyboard.press("Tab");

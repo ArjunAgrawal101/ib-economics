@@ -15,7 +15,7 @@ export function AboutIntro() {
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
           {/* Portrait */}
           <figure className="reveal relative lg:col-span-5">
-            <div className="relative mx-auto max-w-[460px] lg:mx-0">
+            <div className="relative mx-auto max-w-[320px] sm:max-w-[460px] lg:mx-0">
               <div aria-hidden className="absolute -left-3 -top-3 bottom-10 right-10 border border-gold/60 sm:-left-5 sm:-top-5" />
               <div className="relative aspect-[4/5] overflow-hidden bg-parchment">
                 <Image

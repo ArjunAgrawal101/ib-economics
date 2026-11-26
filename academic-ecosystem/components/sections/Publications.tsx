@@ -144,7 +144,7 @@ export function SeriesPlate({ pub, wide = false }: { pub: Publication; wide?: bo
       aria-labelledby={`pub-${pub.id}`}
       className="group relative flex h-full flex-col overflow-hidden rounded-[6px] border border-rule bg-paper transition-[box-shadow,border-color] duration-500 hover:border-rule-strong hover:shadow-[0_30px_60px_-40px_rgba(12,26,48,0.45)]"
     >
-      <div className={cn("grid h-full", wide && "md:grid-cols-2")}>
+      <div className={cn("grid h-full", wide && "lg:grid-cols-2")}>
         {/* Plate */}
         <div className={cn("relative flex min-h-[200px] overflow-hidden p-6", isSixty ? "items-center" : "items-end", a.bgSoft)}>
           <span aria-hidden className={cn("display absolute -right-2 -top-6 select-none text-[7.5rem] leading-none opacity-[0.16]", a.text)}>
@@ -169,7 +169,7 @@ export function SeriesPlate({ pub, wide = false }: { pub: Publication; wide?: bo
               ))}
             </div>
           ) : (
-            <div className="relative mx-auto w-full max-w-[220px] pt-8 transition-transform duration-500 group-hover:-translate-y-1">
+            <div className="relative mx-auto w-full max-w-[170px] pt-8 transition-transform sm:max-w-[220px] duration-500 group-hover:-translate-y-1">
               <div className="relative aspect-[3/4] border border-rule bg-paper p-4 shadow-[0_18px_30px_-18px_rgba(12,26,48,0.4)]">
                 <div className={cn("flex h-full flex-col border p-3 text-center", a.border)}>
                   <p className={cn("text-[0.5625rem] font-bold uppercase tracking-[0.2em]", a.textDeep)}>{pub.series}</p>

@@ -90,9 +90,9 @@ export function IntellectualMap() {
           }
         />
 
-        <div className="mt-14 grid gap-10 lg:mt-20 lg:grid-cols-12 lg:gap-12">
+        <div className="mt-14 grid gap-10 lg:mt-20 xl:grid-cols-12 xl:gap-12">
           {/* The map (tablet and up) */}
-          <div className="relative hidden md:block lg:col-span-7">
+          <div className="relative hidden md:block xl:col-span-7">
             <div className="relative mx-auto aspect-[1000/780] w-full max-w-[760px]">
               <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full" aria-hidden fill="none">
                 <defs>
@@ -219,7 +219,7 @@ export function IntellectualMap() {
           </div>
 
           {/* Control list and detail: all sizes */}
-          <div className="lg:col-span-5">
+          <div className="md:mx-auto md:w-full md:max-w-[760px] xl:col-span-5 xl:max-w-none">
             <MiniTriangle between={current.between} />
             <p id="map-list-label" className="eyebrow mt-8 text-slate md:mt-0">Where the disciplines meet</p>
             <ul role="list" aria-labelledby="map-list-label" className="mt-4 border-t border-rule">

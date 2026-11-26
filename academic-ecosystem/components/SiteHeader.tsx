@@ -97,6 +97,7 @@ export function SiteHeader() {
   const isActive = (href: string) => !href.includes("#") && (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   return (
+    <>
     <header
       className={cn(
         "sticky top-0 z-50 transition-[background-color,box-shadow,border-color] duration-500",
@@ -217,8 +218,10 @@ export function SiteHeader() {
           {menuOpen ? <X aria-hidden strokeWidth={1.5} /> : <Menu aria-hidden strokeWidth={1.5} />}
         </button>
       </div>
+    </header>
 
-      {/* Mobile menu */}
+      {/* Mobile menu: a sibling of the header, so the header's backdrop-filter
+          cannot become its containing block. */}
       <div
         id={drawerId}
         ref={drawerRef}
@@ -292,6 +295,6 @@ export function SiteHeader() {
           </div>
         </div>
       </div>
-    </header>
+    </>
   );
 }
