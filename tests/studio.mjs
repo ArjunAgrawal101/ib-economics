@@ -184,7 +184,9 @@ const served = []; const skip = new Set(['.git', 'node_modules']);
 const docs = served.filter(f => /\.(pdf|pptx?|docx?|key|zip|psd|ai|indd)$/i.test(f));
 check(docs.every(f => /^assets\/carousels\/economics-in-60-seconds-\d{3}\.pdf$/.test(f)), 'the only documents served are the ten public carousels', docs.filter(f => !/carousels/.test(f)).join(', '));
 const htmls = served.filter(f => /\.html?$/i.test(f));
-check(htmls.every(f => f === 'index.html' || f === '404.html' || /^studio\/([a-z0-9-]+\/)?index\.html$/.test(f)), 'no other application or page is served (the EE Navigator is not in the site)', htmls.filter(f => !/^(index|404)\.html$|^studio\//.test(f)).join(', '));
+/* the definitive release's three landing pages for search engines (tools/seo/build_landing.py), named exactly; nothing else */
+const LANDING = new Set(['ib-economics/index.html', 'upsc-economics/index.html', 'the-indian-economy/index.html']);
+check(htmls.every(f => f === 'index.html' || f === '404.html' || LANDING.has(f) || /^studio\/([a-z0-9-]+\/)?index\.html$/.test(f)), 'no other application or page is served (the EE Navigator is not in the site; the three landing pages are named)', htmls.filter(f => !/^(index|404)\.html$|^studio\//.test(f) && !LANDING.has(f)).join(', '));
 const studioFiles = served.filter(f => f.startsWith('assets/studio/'));
 check(studioFiles.length > 0 && studioFiles.every(f => /\.webp$/.test(f)), `the Studio's images are WebP excerpts only (${studioFiles.length})`);
 check(!served.some(f => /previews\.json$|inventory|masters?\//i.test(f)), 'neither the preview recipes nor an inventory nor a masters folder is served');
