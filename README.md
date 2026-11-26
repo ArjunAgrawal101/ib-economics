@@ -2,6 +2,12 @@
 
 **Think like an economist.**
 
+Part of **ARJUN AGRAWAL | ACADEMIC ECOSYSTEM** (*Think. Understand. Connect.*): three connected
+platforms from the same educator, Economics (this one), Political Studies (*Power. Politics.
+Perspectives.*) and Business Management, The Business Brief (*Strategy. Leadership. Decisions.*).
+This is the flagship destination for Economics, and the home of the author's book, *The Indian
+Economy* (First Edition, 2026-27).
+
 One discipline. Two pathways. A shared understanding of Economics. A free, browser-based learning
 platform with two pathways of equal weight, **IB DP Economics** and **UPSC CSE Economics**, built by
 **Arjun Agrawal**: IB DP Economics Educator, Economics Resource Designer and UPSC Economics Mentor,
@@ -32,7 +38,7 @@ weight: **IB DP Economics** and **UPSC CSE Economics**. *One discipline. Two pat
 understanding of Economics.*
 
 - **The header** carries the brand, then **Home · IB DP Economics · UPSC CSE Economics · The Indian
-  Economy · Resources · About · Academic Ecosystem**, then search. The Indian Economy opens the book's
+  Economy · Resources · Academic Ecosystem · About**, then search. The Indian Economy opens the book's
   page (`#/book`); Resources opens a menu of the book, the Digital Revision Companion, the Economics
   handbooks, the UPSC topic resources and the IB resource hub, question banks, revision, Economics in 60
   Seconds and the Learning Studio. From 1181 px the header holds all seven: below 1600 px "Academic
@@ -185,20 +191,54 @@ complete syllabi (the book's own words).
 |---|---|
 | `#/book` | The cover as a three-dimensional book; the facts (641 numbered pages; the PDF edition has 706 pages including the front matter; eight Parts, 153 chapters, thirteen units); a look-inside preview of ten chosen pages; the eight-Part contents map, drawn to scale; the companion; the purchasing enquiry |
 | `#/book/digital-revision-companion` | The free Digital Revision Companion (13 units, 254 PDF pages): what it contains, and its address in the author's free resource library, as printed in the book |
-| the home page | "A new academic work", right after the two pathways: the book, its readers, four pages to look inside and the contents map; then the companion |
+| the home page | "A new academic publication", after the hero, both pathways and their two environments: the book, its readers, four pages to look inside and the contents map; then the companion |
+| `/the-indian-economy/` | A plain landing page for search engines (no script), with the book's facts and links into the platform |
 
-**Look inside.** Ten pages chosen by reading the book (a systems map, the syllabus and reader maps, a
-concept with its diagrams, a policy analysis, market failure, a revision mind map, rapid revision, a
-worked national-income exercise and India's GDP by expenditure), each with its printed page number
-(roman numerals in the front matter). Previous and next, thumbnails, and the reading view of the
+**Look inside.** The cover and ten pages chosen by reading the book (Contents at a Glance, the Master
+Systems Map, the Master UPSC Syllabus Map, a chapter as it opens, a concept with its diagrams, a policy
+analysis, market failure, a revision mind map, a worked national-income exercise and India's GDP by
+expenditure), each with its printed page number (roman numerals in the front matter). The book's About
+the Author page is not shown, because it names current appointments. Previous and next, thumbnails, and the reading view of the
 handbook library: zoom, full screen, the arrow keys, swipe, Escape. The pages are images at 1600 px, with
 no watermark or overlay; the complete book is not on the site and no PDF is linked or stored.
 `tools/book/README.md` explains how the pages are rendered and checked.
+
+**The chapter explorer.** Under the contents map, choose a Part to read its units and chapters, with the
+book's own titles and first pages: all 153, taken once from the book's Detailed Contents
+(`src/modules/51-book-chapters.js`).
+
+**The author.** The book page, the home page and About introduce Arjun Agrawal as an Economics
+educator, academic resource creator and author, with the photograph, a short biography and, from the
+book's own author page, the qualifications (BA Programme in Economics and Political Science, St.
+Stephen's College; MA Economics, Fergusson College; MA Political Science, IGNOU; UGC-NET twice;
+MH-SET). No current employer is named.
 
 **Purchasing.** The price, the publisher and the ISBN have not been confirmed, so the site sells
 nothing: "Interested in purchasing the book? Write to me to enquire about availability and purchasing
 details." Enquire by email and Contact on WhatsApp open the reader's own app with the message written,
 to the address and number the site already publishes.
+
+## The definitive release (2026-11-26)
+
+- **The ecosystem.** ARJUN AGRAWAL | ACADEMIC ECOSYSTEM, *Think. Understand. Connect.*: three cards in
+  the brief's order (Economics, Political Studies, Business Management), each in its platform's own
+  colours, with The Business Brief's own mark and preview card (copied from its public repository);
+  Political Studies is typographic, as none of its brand assets was available. The footer adds a strip
+  between the three platforms, both publications and the social links the site already publishes.
+- **The home page** runs: the hero and both pathways, the IB DP and UPSC environments, the book and its
+  companion, the learning experience, the ecosystem, the author, contact.
+- **UPSC CSE Economics** opens on four ways in: Prelims, Mains, Core Economics (thirteen areas, each linked
+  to its handbook volume and its Part of the book) and Books and resources. Items that live only in the
+  Digital Revision Companion say so.
+- **Real World**: every case opens with *the case at a glance* (country, period, issue, theory, diagram,
+  evidence, evaluation, IB syllabus, sources), labelled historical evidence, current development or
+  illustrative example from the platform's own status. Stakeholders and the arguments for and against
+  appear for the deep cards that hold them; nothing is written for the others, and no case is called
+  verified unless its status says so.
+- **Search** labels SL and HL results, and the book and companion as UPSC CSE · University.
+- **Discovery**: structured data for the author and the book; titles for the book, companion and About;
+  plain landing pages at `/ib-economics/`, `/upsc-economics/` and `/the-indian-economy/`
+  (`tools/seo/build_landing.py`), listed in the sitemap and checked by `tests/landing.mjs`.
 
 ## What it contains
 
@@ -897,7 +937,7 @@ short script, and uses no images, video, audio or fonts of its own.
 | 0.25–1.65 s | **The market.** Price and quantity axes; demand draws itself, then supply; the equilibrium, with its price and quantity. |
 | 1.75–3.4 s | **The macroeconomy.** Aggregate demand shifts right along short-run aggregate supply and the equilibrium moves with it (output and the price level rise); long-run supply stays where it is. The dot's path is the intersection's, worked out from the slopes and checked by a self-test. |
 | 3–4.4 s | **The network.** Concepts, evidence, policy and outcomes, joined, then receding. |
-| 3.95–5.75 s | **The identity.** The monogram, then the name ARJUN AGRAWAL (the logo's own vectors), then **Economics · Politics · Business**, then **Think like an economist.** (5.80–6.05 s is still). |
+| 3.95–5.75 s | **The identity.** The monogram, then the name ARJUN AGRAWAL (the logo's own vectors), then **Economics · Politics · Business**, then **Think. Understand. Connect.** (5.80–6.05 s is still). |
 | 6.2–7 s | **The reveal.** The two halves open onto the page like the covers of a book (sideways on a wide screen, up and down on a phone); the overlay is transparent at exactly start + 7000 ms. |
 
 The overlay and its clock are put into `index.html` by `tools/migrations/2026-11-20-opening-seven-seconds.py`
